@@ -50,7 +50,7 @@ IP_INT=127.0.0.1
 IP_EXT=127.0.0.1
 sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
 apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all
-apt install -y netfilter-persistent iptables-persistent sublist3r tor torbrowser-launcher evolution gobuster zaproxy feroxbuster virt-manager testssl.sh beef-xss docker.io keepassxc
+apt install -y netfilter-persistent iptables-persistent sublist3r tor torbrowser-launcher evolution gobuster zaproxy feroxbuster virt-manager testssl.sh beef-xss jython docker.io keepassxc
 pip3 install bloodhound
 cat <<EOF >> /etc/iptables/rules.v4
 # /etc/iptables/rules.v4:
