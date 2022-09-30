@@ -50,6 +50,8 @@
 IP_INT=127.0.0.1
 IP_EXT=127.0.0.1
 BENUTZER=`cat /etc/passwd | grep $USER | cut -d':' -f3`
+FULL_PATH=$(readlink -f -- "$0")
+SCRIPT_NAME=$(basename $BASH_SOURCE)
 
 # Basic_Configuration
 sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
@@ -130,33 +132,11 @@ hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
 
 # Tool_Installation
-declare -a Array_GIT=("https://github.com/MobSF/Mobile-Security-Framework-MobSF"
-"https://github.com/FortyNorthSecurity/EyeWitness"
-"https://github.com/Hackplayers/evil-winrm"
-"https://github.com/honze-net/nmap-bootstrap-xsl"
-"https://github.com/TryCatchHCF/PacketWhisper"
-"https://github.com/stufus/egresscheck-framework"
-"https://github.com/tennc/webshell"
-"https://github.com/cddmp/enum4linux-ng"
-"https://github.com/rebootuser/LinEnum"
-"https://github.com/sleventyeleven/linuxprivchecker"
-"https://github.com/mzet-/linux-exploit-suggester"
-"https://github.com/bitsadmin/wesng"
-"https://github.com/PowershellMafia/PowerSploit"
-"https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite"
-"https://github.com/armosec/kubescape"
-"https://github.com/carlospolop/PEASS-ng"
-"https://github.com/SecureAuthCorp/impacket"
-"https://github.com/0xRadi/OWASP-Web-Checklist"
-"https://github.com/nabla-c0d3/sslyze"
-"https://github.com/bettercap/bettercap"
-"https://github.com/fozavci/viproy-voipkit"
-"https://github.com/rbagrov/SIPTools"
-"https://github.com/lgandx/Responder"
-"https://github.com/PowerShellMafia/PowerSploit"
-"https://github.com/the-useless-one/pywerview"
-"https://github.com/mozilla/ssh_scan"
-"https://github.com/AonCyberLabs/Windows-Exploit-Suggester")
+input=${FULL_PATH::-${#SCRIPT_NAME}}/Config/Tools.txt
+while IFS= read -r line
+do
+        git clone $line
+done < $input
 cd /opt ; mkdir kerbrute ; cd kerbrute
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O kerbrute
 chmod +x kerbrute ; cd /opt
@@ -175,14 +155,11 @@ ln -s /opt/Postman/app/Postman /usr/local/bin/postman
 
 # Wordlists_Installation
 mkdir -p /opt/wordlists ; cd /opt/wordlists
-declare -a Array_Wordlists=("https://github.com/fuzzdb-project/fuzzdb"
-"https://github.com/swisskyrepo/PayloadsAllTheThings"
-"https://github.com/danielmiessler/SecLists"
-"https://github.com/xmendez/wfuzz"
-"https://github.com/xajkep/wordlists")
-for i in ${Array_Wordlists[@]}; do
-	git clone $i
-done
+input=${FULL_PATH::-${#SCRIPT_NAME}}/Config/Wordlists.txt
+while IFS= read -r line
+do
+        git clone $line
+done < $input
 
 ########################################################################
 # Line 1-2 Protecting against IP-Spoofing                              #
