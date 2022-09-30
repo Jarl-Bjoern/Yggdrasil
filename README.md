@@ -9,4 +9,9 @@ cd Kali_Configuratior
 chmod +x *.sh
 ```
 
+## Troubleshooting
+In some cases you must try to convert the script from Windows (DOS) into the Unix Format
+```bash
+dos2unix *.sh
+```
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester, certain pre-settings.
