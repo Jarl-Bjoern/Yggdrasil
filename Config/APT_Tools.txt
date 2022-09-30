@@ -1,6 +1,5 @@
 netfilter-persistent
 iptables-persistent
-sublist3r
 tor
 torbrowser-launcher
 evolution
