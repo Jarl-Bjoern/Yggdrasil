@@ -1,4 +1,4 @@
-# Kali_Configurator
+# Script to install and configurate kali after the installation
 
 With this repository certain processes are automated, you have the choice between "full_install", which is aimed at a Kali installation with GUI and "minimal_install", which is aimed at the CLI variant.
 
