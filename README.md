@@ -6,12 +6,7 @@ With this repository certain processes are automated, you have the choice betwee
 ```bash
 git clone https://github.com/Jarl-Bjoern/Kali_Configurator/
 cd Kali_Configuratior
-chmod +x *.sh
+chmod +x *.sh ; dos2unix *.sh Config/*
 ```
 
-## Troubleshooting
-In some cases you must try to convert the script from Windows (DOS) into the Unix Format
-```bash
-dos2unix *.sh Config/*
-```
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester, certain pre-settings.
