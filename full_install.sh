@@ -40,7 +40,6 @@
 # Upstream Proxy Servers
 # * 127.0.0.1 8080
 #
-#
 # SOCKS Proxy
 # 127.0.0.1
 # 1234
