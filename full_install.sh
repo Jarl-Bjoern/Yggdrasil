@@ -268,4 +268,3 @@ chmod 600 /home/$USER/.updater/image_updater.py
 cat <<EOF >> /etc/crontab
 0 6     * * *  root /usr/bin/env python3 /home/$USER/.updater/image_updater.py
 EOF
-kali-undercover
