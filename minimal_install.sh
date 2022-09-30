@@ -70,8 +70,8 @@ msfdb init
 sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
 docker pull mikesplain/openvas
 docker pull tenableofficial/nessus
-docker run -d -p 8834:8834 --rm --name nessus tenableofficial/nessus
-docker run -d -p 443:443 --rm --name openvas mikesplain/openvas
+docker run -d -p 127.0.0.1:8834:8834 --rm --name nessus tenableofficial/nessus
+docker run -d -p 127.0.0.1:443:443 --rm --name openvas mikesplain/openvas
 ############################### UPDATE NVT ####################################
 #docker exec -it openvas bash
 #greenbone-nvt-sync
