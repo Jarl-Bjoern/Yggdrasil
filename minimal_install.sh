@@ -18,7 +18,11 @@ EOF
 sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
 
 # APT_Tools_Installation
-apt install -y testssl.sh docker.io
+input=${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_minimal_Tools.txt
+while IFS= read -r line
+do
+        apt install -y $line
+done < $input
 
 # Python_Tools
 pip3 install bloodhound
