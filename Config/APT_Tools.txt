@@ -1,0 +1,12 @@
+netfilter-persistent
+iptables-persistent
+sublist3r
+tor
+torbrowser-launcher
+evolution
+zaproxy
+virt-manager
+testssl.sh
+jython
+docker.io
+keepassxc
