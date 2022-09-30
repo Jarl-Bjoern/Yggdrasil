@@ -56,12 +56,20 @@ SCRIPT_NAME=$(basename $BASH_SOURCE)
 # Basic_Configuration
 sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
 apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all
-apt install -y netfilter-persistent iptables-persistent sublist3r tor torbrowser-launcher evolution gobuster zaproxy feroxbuster virt-manager testssl.sh beef-xss jython docker.io keepassxc
-pip3 install bloodhound
 sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
 cat <<EOF >> /etc/crontab
 0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
 EOF
+
+# APT_Tools_Installation
+input=${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_Tools.txt
+while IFS= read -r line
+do
+        apt install -y $line
+done < $input
+
+# Python_Tools
+pip3 install bloodhound
 
 # Firewall_Configuration
 cat <<EOF >> /etc/iptables/rules.v4
