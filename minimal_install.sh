@@ -35,6 +35,7 @@ hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
 
 # Git_Tools_Installation
+cd /opt
 input=${FULL_PATH::-${#SCRIPT_NAME}}/Config/GIT_Tools.txt
 while IFS= read -r line
 do
