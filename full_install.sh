@@ -138,7 +138,7 @@ hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
 
-# Tool_Installation
+# Git_Tools_Installation
 input=${FULL_PATH::-${#SCRIPT_NAME}}/Config/Tools.txt
 while IFS= read -r line
 do
