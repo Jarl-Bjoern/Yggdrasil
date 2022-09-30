@@ -1,0 +1,5 @@
+https://github.com/fuzzdb-project/fuzzdb
+https://github.com/swisskyrepo/PayloadsAllTheThings
+https://github.com/danielmiessler/SecLists
+https://github.com/xmendez/wfuzz
+https://github.com/xajkep/wordlists
