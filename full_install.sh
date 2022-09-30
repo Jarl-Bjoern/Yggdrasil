@@ -149,7 +149,7 @@ wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_
 chmod +x kerbrute ; cd /opt
 for i in ${Array_GIT[@]}; do
 	git clone $i
-done
+done < $input
 cd PEASS-ng/metasploit
 cp ./peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 bash /opt/EyeWitness/Python/setup/setup.sh
