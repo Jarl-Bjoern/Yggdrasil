@@ -47,8 +47,6 @@ cp ./peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 bash /opt/EyeWitness/Python/setup/setup.sh
 cd /opt/ssh_scan ; gem install bundler ; bundle install
 
-
-
 # Wordlists_Installation
 mkdir -p /opt/wordlists ; cd /opt/wordlists
 input=${FULL_PATH::-${#SCRIPT_NAME}}/Config/Wordlists.txt
