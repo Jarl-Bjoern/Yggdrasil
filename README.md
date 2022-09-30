@@ -5,7 +5,7 @@ With this repository certain processes are automated, you have the choice betwee
 ## How to download and install the tool
 ```bash
 git clone https://github.com/Jarl-Bjoern/Kali_Configurator/
-cd Kali_Configuratior
+cd Kali_Configurator
 chmod +x *.sh ; dos2unix *.sh Config/*
 ```
 
