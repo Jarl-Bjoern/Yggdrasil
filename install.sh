@@ -259,6 +259,7 @@ EOF
 	sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
 	sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
 	cat <<EOF >> /etc/ssh/sshd_config
+
 # Keyexchange algorithms
 KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
 # Host-key algorithms
