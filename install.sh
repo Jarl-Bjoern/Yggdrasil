@@ -5,7 +5,7 @@
 # Vers 0.3 24.09.2022
 # Vers 0.4 30.09.2022
 # Vers 0.5 01.10.2022
-# Vers 0.5b 01.10.2022
+# Vers 0.5c 01.10.2022
 
 ##################### BURP PLUGINS & Configuration ###########################
 # apt install -y jython
@@ -63,7 +63,7 @@ NOCOLOR='\033[0m'
 function initials {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "|                    Kali Configurator                   |"
-        echo "|                       Version 0.5b                     |"
+        echo "|                       Version 0.5c                     |"
         echo "|             Rainer Christian Bjoern Herold             |"
         echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
