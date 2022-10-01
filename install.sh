@@ -112,11 +112,9 @@ for i in ${Array_Path[@]}; do
 	while IFS= read -r line
 	do
 		if [[ $i =~ "APT" ]]; then
-			echo ""
-        		apt install -y $line
+			echo "" ; apt install -y $line
 		else
-			echo ""
-			echo -e "Download ${ORANGE}$line${NOCOLOR}"
+			echo -e "\nDownload ${ORANGE}$line${NOCOLOR}"
 			git clone $line
 		fi
 	done < $input
