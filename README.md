@@ -12,7 +12,11 @@ chmod +x *.sh ; dos2unix *.sh Config/*
 ## How to use the tool
 ```bash
 sudo bash install.sh
+```
 
+## Now you can choose between three installation types and get started right after the installation!
+```bash
+----------------------------------------------------------
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |                    Kali Configurator                   |
@@ -30,9 +34,7 @@ sudo bash install.sh
 |                                                        |
 ----------------------------------------------------------
 
-Your Choice: 
+Your Choice: full
 ```
-
-Now you can choose between the three installation types and enjoy!
 
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester, certain pre-settings.
