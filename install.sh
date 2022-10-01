@@ -276,13 +276,13 @@ docker pull tenableofficial/nessus
 docker run -d -p 127.0.0.1:8834:8834 --rm --name nessus tenableofficial/nessus
 docker run -d -p 127.0.0.1:443:443 --rm --name openvas mikesplain/openvas
 ############################### UPDATE NVT ####################################
-docker exec -it openvas greenbone-nvt-sync
-docker exec -it openvas openvasmd --rebuild --progress
-docker exec -it openvas greenbone-certdata-sync
-docker exec -it openvas greenbone-scapdata-sync
-docker exec -it openvas openvasmd --update --verbose --progress
-docker exec -it openvas /etc/init.d/openvas-manager restart
-docker exec -it openvas /etc/init.d/openvas-scanner restart
+#docker exec -it openvas greenbone-nvt-sync
+#docker exec -it openvas openvasmd --rebuild --progress
+#docker exec -it openvas greenbone-certdata-sync
+#docker exec -it openvas greenbone-scapdata-sync
+#docker exec -it openvas openvasmd --update --verbose --progress
+#docker exec -it openvas /etc/init.d/openvas-manager restart
+#docker exec -it openvas /etc/init.d/openvas-scanner restart
 ###############################################################################
 mkdir /root/.updater ; chmod 0700 /root/.updater
 cat <<EOF > /root/.updater/image_updater.py
