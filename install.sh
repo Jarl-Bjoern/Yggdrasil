@@ -65,13 +65,13 @@ function initials {
 # Installation_Type
 clear ; initials
 echo ""
-echo "Please choose between a installation"
-echo "------------------------------------"
-echo ""
-echo "full : full installation (GUI)      "
-echo "minimal : minimal installation (CLI)"
-echo "special : special installation      "
-echo "------------------------------------"
+echo "  Please choose between a installation"
+echo "----------------------------------------------------------"
+echo "|                                                        |"
+echo "|  full : full installation (GUI)                        |"
+echo "|  minimal : minimal installation (CLI)                  |"
+echo "|  special : special installation                        |"
+echo "----------------------------------------------------------"
 echo ""
 
 read -p "Your Choice: " decision
