@@ -137,8 +137,7 @@ EOF
 cd /opt ; mkdir kerbrute ; cd kerbrute
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O kerbrute
 chmod +x kerbrute ; cd /opt
-cd PEASS-ng/metasploit
-cp ./peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
+cp /opt/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 bash /opt/EyeWitness/Python/setup/setup.sh
 cd /opt/ssh_scan ; gem install bundler ; bundle install
 if [ $decision = "full" ]; then
