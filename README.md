@@ -9,4 +9,11 @@ cd Kali_Configurator
 chmod +x *.sh ; dos2unix *.sh Config/*
 ```
 
+## How to use the tool
+```bash
+sudo bash install.sh
+
+
+```
+
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester, certain pre-settings.
