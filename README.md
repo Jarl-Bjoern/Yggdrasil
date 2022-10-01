@@ -2,19 +2,16 @@
 
 With this repository certain processes are automated, you have the choice between "full_install", which is aimed at a Kali installation with GUI and "minimal_install", which is aimed at the CLI variant.
 
-## How to download and install the tool
+# How to download and install the tool
+## Download and start the tool
 ```bash
 git clone https://github.com/Jarl-Bjoern/Kali_Configurator/
 cd Kali_Configurator
 chmod +x *.sh ; dos2unix *.sh Config/*
-```
-
-## How to use the tool
-```bash
 sudo bash install.sh
 ```
 
-## Now you can choose between three installation types and get started right after the installation!
+## Choose one of the three installation types
 ```bash
 ----------------------------------------------------------
 
