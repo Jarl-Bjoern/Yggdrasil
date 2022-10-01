@@ -122,9 +122,8 @@ for i in ${Array_Path[@]}; do
         		apt install -y $line
 		else
 			echo ""
-			echo "Download $line"
-			git clone --quiet $line
-			echo "The download $line was successful"
+			echo "Download \033[1;31m$line"
+			git clone $line
 		fi
 	done < $input
 done
