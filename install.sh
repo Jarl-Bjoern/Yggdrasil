@@ -323,4 +323,4 @@ cat <<EOF >> /etc/crontab
 EOF
 echo ""
 echo ""
-echo "The installation was successful! :)"
+echo -e "${ORANGE}The installation was successful! :)${NOCOLOR}"
