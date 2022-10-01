@@ -15,8 +15,6 @@ sudo bash install.sh
 
 ## Choose one of the three installation types
 ```bash
-----------------------------------------------------------
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |                    Kali Configurator                   |
 |                       Version 0.5                      |
