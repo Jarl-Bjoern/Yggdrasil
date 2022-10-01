@@ -120,6 +120,7 @@ for i in ${Array_Path[@]}; do
 		if [[ $i =~ "APT" ]]; then
         		apt install -y $line
 		else
+			echo ""
 			echo "Download $line"
 			git clone --quiet $line
 			echo "The download $line was successful"
