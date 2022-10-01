@@ -81,9 +81,9 @@ echo -e "----------------------------------------------------------\n"
 
 read -p "Your Choice: " decision
 if [ $decision = "full" ]; then
-	Array_Path+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Full.txt")
+	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
 elif [ $decision = "minimal" ] || [ $decision = "special" ]; then
-	Array_Path+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Minimal.txt")
+	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
 else
         echo -e "Your decision was not accepted!\nPlease try again." ; exit
 fi
@@ -101,6 +101,7 @@ cat <<EOF >> /etc/crontab
 EOF
 
 # Tool_Installation
+input=$File_Path
 while IFS= read -r line
 do
         if [[ $line = "# APT" ]]; then
