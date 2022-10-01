@@ -117,7 +117,7 @@ do
         else
                 if [ $Skip = false ] && [ ! $line = "" ]; then
                         echo -e "\nDownload ${ORANGE}$line${NOCOLOR}"
-                        eval "$Command $line"
+                        eval $Command $line
                 fi
         fi
         Skip=false
