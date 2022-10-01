@@ -1,2 +1,0 @@
-testssl.sh
-docker.io
