@@ -51,7 +51,13 @@ IP_EXT=127.0.0.1
 BENUTZER=`cat /etc/passwd | grep $USER | cut -d':' -f3`
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
+
+# Color
+GREEN='\033[0;32m'
 RED='\033[0;31m'
+YELLOW='\033[1;32m'
+ORANGE='\033[0;33m'
+NOCOLOR='\033[0m'
 
 # Functions
 function initials {
@@ -69,9 +75,9 @@ echo ""
 echo "   Please choose between a installation"
 echo "----------------------------------------------------------"
 echo "|                                                        |"
-echo "|  full    : full installation (GUI)                     |"
-echo "|  minimal : minimal installation (CLI)                  |"
-echo "|  special : special installation                        |"
+echo -e "|  ${GREEN}full${NOCOLOR}    : full installation (GUI)                     |"
+echo -e "|  ${YELLOW}minimal${NOCOLOR} : minimal installation (CLI)                  |"
+echo -e "|  ${RED}special${NOCOLOR} : special installation                        |"
 echo "----------------------------------------------------------"
 echo ""
 
@@ -123,7 +129,7 @@ for i in ${Array_Path[@]}; do
         		apt install -y $line
 		else
 			echo ""
-			echo -e "Download ${RED} $line"
+			echo -e "Download ${RED}$line${NOCOLOR}"
 			git clone $line
 		fi
 	done < $input
