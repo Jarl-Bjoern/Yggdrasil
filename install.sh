@@ -118,6 +118,7 @@ for i in ${Array_Path[@]}; do
 	while IFS= read -r line
 	do
 		if [[ $i =~ "APT" ]]; then
+			echo ""
         		apt install -y $line
 		else
 			echo ""
