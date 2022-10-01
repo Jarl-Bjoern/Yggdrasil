@@ -272,11 +272,9 @@ fi
 systemctl enable --now postgresql
 msfdb init
 
-# Docker_Installation
-docker pull mikesplain/openvas
-docker pull tenableofficial/nessus
-docker run -d -p 127.0.0.1:8834:8834 --rm --name nessus tenableofficial/nessus
-docker run -d -p 127.0.0.1:443:443 --rm --name openvas mikesplain/openvas
+# Docker_Standard_Images
+if [[ `cat ${FULL_PATH::-${#SCRIPT_NAME}}/Config/Docker_Images.txt | grep openvas` ]]; then
+	docker run -d -p 127.0.0.1:443:443 --rm --name openvas mikesplain/openvas
 ############################### UPDATE NVT ####################################
 #docker exec -it openvas greenbone-nvt-sync
 #docker exec -it openvas openvasmd --rebuild --progress
@@ -286,6 +284,10 @@ docker run -d -p 127.0.0.1:443:443 --rm --name openvas mikesplain/openvas
 #docker exec -it openvas /etc/init.d/openvas-manager restart
 #docker exec -it openvas /etc/init.d/openvas-scanner restart
 ###############################################################################
+elif [[ `cat ${FULL_PATH::-${#SCRIPT_NAME}}/Config/Docker_Images.txt | grep nessus` ]]; then
+	docker run -d -p 127.0.0.1:8834:8834 --rm --name nessus tenableofficial/nessus
+fi
+
 mkdir /root/.updater ; chmod 0700 /root/.updater
 cat <<EOF > /root/.updater/image_updater.py
 #!/usr/bin/env python3
