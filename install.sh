@@ -55,8 +55,7 @@ SCRIPT_NAME=$(basename $BASH_SOURCE)
 # Color
 GREEN='\033[0;32m'
 RED='\033[0;31m'
-YELLOW='\033[1;33m'
-ORANGE='\033[0;33m'
+ORANGE='\033[1;33m'
 NOCOLOR='\033[0m'
 
 # Functions
@@ -76,7 +75,7 @@ echo "   Please choose between a installation"
 echo "----------------------------------------------------------"
 echo "|                                                        |"
 echo -e "|  ${GREEN}full${NOCOLOR}    : full installation (GUI)                     |"
-echo -e "|  ${YELLOW}minimal${NOCOLOR} : minimal installation (CLI)                  |"
+echo -e "|  ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)                  |"
 echo -e "|  ${RED}special${NOCOLOR} : special installation                        |"
 echo "----------------------------------------------------------"
 echo ""
