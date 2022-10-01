@@ -114,14 +114,15 @@ for i in ${Array_Path[@]}; do
 	input=$i
 	while IFS= read -r line
 	do
+		echo -e "\nDownload ${ORANGE}$line${NOCOLOR}"
 		if [[ $i =~ "APT" ]]; then
-			echo "" ; apt install -y $line
+			apt install -y $line
 		elif [[ $i =~ "Docker" ]]; then
-			echo ""; docker pull $line
+			docker pull $line
 		elif [[ $i =~ "Python" ]]; then
-			echo ""; pip3 install $line
+			pip3 install $line
 		else
-			echo -e "\nDownload ${ORANGE}$line${NOCOLOR}" ; git clone $line
+			git clone $line
 		fi
 	done < $input
 done
