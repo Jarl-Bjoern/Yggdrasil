@@ -115,7 +115,11 @@ for i in ${Array_Path[@]}; do
 	input=$i
 	while IFS= read -r line
 	do
-        	apt install -y $line
+		if [[ $i =~ "APT" ]]; then
+        		apt install -y $line
+		else
+			git clone $line
+		fi
 	done < $input
 done
 
