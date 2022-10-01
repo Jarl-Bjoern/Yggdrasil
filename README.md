@@ -2,6 +2,8 @@
 
 With this repository certain processes are automated, you have the choice between "full_install", which is aimed at a Kali installation with GUI and "minimal_install", which is aimed at the CLI variant.
 
+You have the possibility to customize the config files according to your needs.
+
 # How to download and install the tool
 ## Download and start the tool
 ```bash
