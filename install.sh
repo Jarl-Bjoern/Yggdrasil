@@ -4,6 +4,7 @@
 # Vers 0.2 03.06.2022
 # Vers 0.3 24.09.2022
 # Vers 0.4 30.09.2022
+# Vers 0.5 01.10.2022
 
 ##################### BURP PLUGINS & Configuration ###########################
 # apt install -y jython
@@ -65,23 +66,20 @@ NOCOLOR='\033[0m'
 function initials {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "|                    Kali Configurator                   |"
-        echo "|                       Version 0.4                      |"
+        echo "|                       Version 0.5                      |"
         echo "|             Rainer Christian Bjoern Herold             |"
-        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        echo ""
+        echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
 
 # Installation_Type
 clear ; initials
-echo ""
-echo "   Please choose between a installation"
+echo -e "\n   Please choose between a installation"
 echo "----------------------------------------------------------"
 echo "|                                                        |"
 echo -e "|  ${GREEN}full${NOCOLOR}    : full installation (GUI)                     |"
 echo -e "|  ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)                  |"
 echo -e "|  ${RED}special${NOCOLOR} : special installation                        |"
-echo "----------------------------------------------------------"
-echo ""
+echo -e "----------------------------------------------------------\n"
 
 read -p "Your Choice: " decision
 if [ $decision = "full" ]; then
@@ -312,6 +310,4 @@ chmod 600 /root/.updater/image_updater.py
 cat <<EOF >> /etc/crontab
 0 6     * * *  root /usr/bin/env python3 /root/.updater/image_updater.py
 EOF
-echo ""
-echo ""
-echo -e "${ORANGE}The installation was successful! :)${NOCOLOR}"
+echo -e "\n\n${ORANGE}The installation was successful! :)${NOCOLOR}"
