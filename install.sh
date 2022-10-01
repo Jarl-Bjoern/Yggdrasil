@@ -5,6 +5,7 @@
 # Vers 0.3 24.09.2022
 # Vers 0.4 30.09.2022
 # Vers 0.5 01.10.2022
+# Vers 0.5b 01.10.2022
 
 ##################### BURP PLUGINS & Configuration ###########################
 # apt install -y jython
@@ -50,13 +51,7 @@
 IP_INT=127.0.0.1
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
-
-# Arrays
-declare -a Array_Path=(
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/GIT_Tools.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Wordlists.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Python_Tools.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Docker_Images.txt")
+Skip=false
 
 # Color
 GREEN='\033[0;32m'
@@ -68,7 +63,7 @@ NOCOLOR='\033[0m'
 function initials {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "|                    Kali Configurator                   |"
-        echo "|                       Version 0.5                      |"
+        echo "|                       Version 0.5b                     |"
         echo "|             Rainer Christian Bjoern Herold             |"
         echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
@@ -86,9 +81,9 @@ echo -e "----------------------------------------------------------\n"
 
 read -p "Your Choice: " decision
 if [ $decision = "full" ]; then
-	Array_Path+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_Tools.txt")
+	Array_Path+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Full.txt")
 elif [ $decision = "minimal" ] || [ $decision = "special" ]; then
-	Array_Path+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_minimal_Tools.txt")
+	Array_Path+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Minimal.txt")
 else
         echo -e "Your decision was not accepted!\nPlease try again." ; exit
 fi
@@ -106,27 +101,26 @@ cat <<EOF >> /etc/crontab
 EOF
 
 # Tool_Installation
-for i in ${Array_Path[@]}; do
-	if [[ $i =~ "Wordlists" ]]; then
-		mkdir -p /opt/wordlists ; cd /opt/wordlists
-	else
-		cd /opt
-	fi
-	input=$i
-	while IFS= read -r line
-	do
-		echo -e "\nDownload ${ORANGE}$line${NOCOLOR}"
-		if [[ $i =~ "APT" ]]; then
-			apt install -y $line
-		elif [[ $i =~ "Docker" ]]; then
-			docker pull $line
-		elif [[ $i =~ "Python" ]]; then
-			pip3 install $line
-		else
-			git clone $line
-		fi
-	done < $input
-done
+while IFS= read -r line
+do
+        if [[ $line = "# APT" ]]; then
+                Command="apt install -y" ; Skip=true
+        elif [[ $line = "# Docker" ]]; then
+                Command="docker pull" ; Skip=true
+        elif [[ $line = "# Python" ]]; then
+                Command="pip3 install" ; Skip=true
+        elif [[ $line = "# GIT" ]]; then
+                Command="git clone" ; Skip=true ; cd /opt
+	elif [[ $line = "# Wordlists"]]; then
+		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists
+        else
+                if [ $Skip = false ] && [ ! $line = "" ]; then
+                        echo -e "\nDownload ${ORANGE}$line${NOCOLOR}"
+                        eval "$Command $line"
+                fi
+        fi
+        Skip=false
+done < $input
 
 # Screen_Configuration
 for i in `ls home | grep -v "lost+found"`; do
