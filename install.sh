@@ -65,7 +65,7 @@ function initials {
 # Installation_Type
 clear ; initials
 echo ""
-echo "  Please choose between a installation"
+echo "   Please choose between a installation"
 echo "----------------------------------------------------------"
 echo "|                                                        |"
 echo "|  full : full installation (GUI)                        |"
