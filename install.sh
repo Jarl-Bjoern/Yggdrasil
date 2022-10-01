@@ -127,11 +127,13 @@ done
 pip3 install bloodhound
 
 # Screen_Configuration
-cat <<EOF > /home/`ls /home | grep -v "lost+found"`/.screenrc
+for i in `ls home | grep -v "lost+found"`; do
+	cat <<EOF > /home/$i/.screenrc
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
+done
 
 # Git_Tools_Installation
 cd /opt ; mkdir kerbrute ; cd kerbrute
