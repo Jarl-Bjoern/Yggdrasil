@@ -73,7 +73,7 @@ function initials {
 
 # Installation_Type
 clear ; initials
-echo -e "\n   Please choose between a installation"
+echo -e "\n        Please choose between a installation"
 echo "----------------------------------------------------------"
 echo "|                                                        |"
 echo -e "|  ${GREEN}full${NOCOLOR}    : full installation (GUI)                     |"
@@ -114,8 +114,7 @@ for i in ${Array_Path[@]}; do
 		if [[ $i =~ "APT" ]]; then
 			echo "" ; apt install -y $line
 		else
-			echo -e "\nDownload ${ORANGE}$line${NOCOLOR}"
-			git clone $line
+			echo -e "\nDownload ${ORANGE}$line${NOCOLOR}" ; git clone $line
 		fi
 	done < $input
 done
