@@ -73,7 +73,7 @@ function initials {
 
 # Installation_Type
 clear ; initials
-echo -e "\n           Please choose between a installation"
+echo -e "\n          Please choose between a installation"
 echo "----------------------------------------------------------"
 echo "|                                                        |"
 echo -e "|  ${GREEN}full${NOCOLOR}    : full installation (GUI)                     |"
