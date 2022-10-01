@@ -14,6 +14,25 @@ chmod +x *.sh ; dos2unix *.sh Config/*
 sudo bash install.sh
 
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|                    Kali Configurator                   |
+|                       Version 0.5                      |
+|             Rainer Christian Bjoern Herold             |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+          Please choose between a installation
+----------------------------------------------------------
+|                                                        |
+|            full    : full installation (GUI)           |
+|            minimal : minimal installation (CLI)        |
+|            special : special installation              |
+|                                                        |
+----------------------------------------------------------
+
+Your Choice: 
 ```
+
+Now you can choose between the three installation types and enjoy!
 
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester, certain pre-settings.
