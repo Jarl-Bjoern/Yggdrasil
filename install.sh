@@ -102,6 +102,7 @@ apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all
 sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
 cat <<EOF >> /etc/crontab
 0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
+0 6     * * *  root for i in `docker images | cut -d " " -f1 | grep -v "REPOSITORY"`; do docker pull $i; done
 EOF
 
 # Tool_Installation
@@ -289,28 +290,4 @@ if [[ `cat ${FULL_PATH::-${#SCRIPT_NAME}}/Config/Docker_Images.txt | grep openva
 elif [[ `cat ${FULL_PATH::-${#SCRIPT_NAME}}/Config/Docker_Images.txt | grep nessus` ]]; then
 	docker run -d -p 127.0.0.1:8834:8834 --rm --name nessus tenableofficial/nessus
 fi
-
-mkdir /root/.updater ; chmod 0700 /root/.updater
-cat <<EOF > /root/.updater/image_updater.py
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Rainer C. Bjoern Herold
-# 04.06.2022
-
-# Libraries
-from subprocess import getoutput
-from os import system
-
-# Arrays
-Array_Container = getoutput('docker images').splitlines()
-
-# Main
-if __name__ == '__main__':
-        for i in range(1, len(Array_Container)):
-                system(f'docker pull {Array_Container[i].split(" ")[0]};')
-EOF
-chmod 600 /root/.updater/image_updater.py
-cat <<EOF >> /etc/crontab
-0 6     * * *  root /usr/bin/env python3 /root/.updater/image_updater.py
-EOF
 echo -e "\n\n${ORANGE}The installation was successful! :)${NOCOLOR}"
