@@ -141,11 +141,13 @@ cd PEASS-ng/metasploit
 cp ./peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 bash /opt/EyeWitness/Python/setup/setup.sh
 cd /opt/ssh_scan ; gem install bundler ; bundle install
-wget https://dl.pstmn.io/download/latest/linux64
-tar -xzvf linux64 -C /tmp/
-chown -R root: /tmp/Postman
-mv /tmp/Postman /opt/
-ln -s /opt/Postman/app/Postman /usr/local/bin/postman
+if [ $decision = "full" ]; then
+	wget https://dl.pstmn.io/download/latest/linux64
+	tar -xzvf linux64 -C /tmp/
+	chown -R root: /tmp/Postman
+	mv /tmp/Postman /opt/
+	ln -s /opt/Postman/app/Postman /usr/local/bin/postman
+fi
 
 if [ $decision != "special" ]; then
 	########################################################################
