@@ -54,7 +54,9 @@ SCRIPT_NAME=$(basename $BASH_SOURCE)
 # Arrays
 declare -a Array_Path=(
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/GIT_Tools.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Wordlists.txt")
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Wordlists.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Python_Tools.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Docker_Images.txt")
 
 # Color
 GREEN='\033[0;32m'
@@ -114,14 +116,15 @@ for i in ${Array_Path[@]}; do
 	do
 		if [[ $i =~ "APT" ]]; then
 			echo "" ; apt install -y $line
+		elif [[ $i =~ "Docker" ]]; then
+			echo ""; docker pull $line
+		elif [[ $i =~ "Python" ]]; then
+			echo ""; pip3 install $line
 		else
 			echo -e "\nDownload ${ORANGE}$line${NOCOLOR}" ; git clone $line
 		fi
 	done < $input
 done
-
-# Python_Tools
-pip3 install bloodhound
 
 # Screen_Configuration
 for i in `ls home | grep -v "lost+found"`; do
