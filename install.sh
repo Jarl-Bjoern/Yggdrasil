@@ -123,7 +123,7 @@ for i in ${Array_Path[@]}; do
         		apt install -y $line
 		else
 			echo ""
-			echo -e "Download {RED} $line"
+			echo -e "Download ${RED} $line"
 			git clone $line
 		fi
 	done < $input
