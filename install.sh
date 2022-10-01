@@ -47,10 +47,13 @@
 
 # Variables
 IP_INT=127.0.0.1
-IP_EXT=127.0.0.1
-BENUTZER=`cat /etc/passwd | grep $USER | cut -d':' -f3`
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
+
+# Arrays
+declare -a Array_Path=(
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/GIT_Tools.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Wordlists.txt")
 
 # Color
 GREEN='\033[0;32m'
@@ -82,20 +85,9 @@ echo ""
 
 read -p "Your Choice: " decision
 if [ $decision = "full" ]; then
-	declare -a Array_Path=(
-	"${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_Tools.txt"
-	"${FULL_PATH::-${#SCRIPT_NAME}}/Config/GIT_Tools.txt"
-	"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Wordlists.txt")
-elif [ $decision = "minimal" ]; then
-        declare -a Array_Path=(
-	"${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_minimal_Tools.txt"
-	"${FULL_PATH::-${#SCRIPT_NAME}}/Config/GIT_Tools.txt"
-	"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Wordlists.txt")
-elif [ $decision = "special" ]; then
-        declare -a Array_Path=(
-	"${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_minimal_Tools.txt"
-	"${FULL_PATH::-${#SCRIPT_NAME}}/Config/GIT_Tools.txt"
-	"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Wordlists.txt")
+	Array_Path += "${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_Tools.txt"
+elif [ $decision = "minimal" ] || [ $decision = "special" ]; then
+	Array_Path += "${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_minimal_Tools.txt"
 else
         echo "Your decision was not accepted!"
         echo "Please try again."
@@ -261,7 +253,7 @@ EOF
 	systemctl enable --now netfilter-persistent.service
 	
 	# SSH_Configuration
-	sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_EXT:33033\nListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
+	sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
 	sed -i "s/#LogLevel INFO/LogLevel VERBOSE/g" /etc/ssh/sshd_config
 	sed -i "s/#MaxAuthTries 6/MaxAuthTries 12/g" /etc/ssh/sshd_config
 	sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
