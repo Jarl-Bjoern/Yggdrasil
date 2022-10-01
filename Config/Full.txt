@@ -1,0 +1,44 @@
+# APT
+netfilter-persistent
+iptables-persistent
+tor
+torbrowser-launcher
+evolution
+zaproxy
+virt-manager
+testssl.sh
+jython
+docker.io
+keepassxc
+
+# Docker
+mikesplain/openvas
+tenableofficial/nessus
+
+# Git
+https://github.com/FortyNorthSecurity/EyeWitness
+https://github.com/Hackplayers/evil-winrm
+https://github.com/TryCatchHCF/PacketWhisper
+https://github.com/cddmp/enum4linux-ng
+https://github.com/PowershellMafia/PowerSploit
+https://github.com/carlospolop/PEASS-ng
+https://github.com/SecureAuthCorp/impacket
+https://github.com/0xRadi/OWASP-Web-Checklist
+https://github.com/nabla-c0d3/sslyze
+https://github.com/bettercap/bettercap
+https://github.com/fozavci/viproy-voipkit
+https://github.com/rbagrov/SIPTools
+https://github.com/lgandx/Responder
+https://github.com/the-useless-one/pywerview
+https://github.com/mozilla/ssh_scan
+https://github.com/AonCyberLabs/Windows-Exploit-Suggester
+
+# Python
+bloodhound
+
+# Wordlists
+https://github.com/fuzzdb-project/fuzzdb
+https://github.com/swisskyrepo/PayloadsAllTheThings
+https://github.com/danielmiessler/SecLists
+https://github.com/xmendez/wfuzz
+https://github.com/xajkep/wordlists
