@@ -51,6 +51,7 @@ IP_EXT=127.0.0.1
 BENUTZER=`cat /etc/passwd | grep $USER | cut -d':' -f3`
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
+RED='\033[0;31m'
 
 # Functions
 function initials {
@@ -122,7 +123,7 @@ for i in ${Array_Path[@]}; do
         		apt install -y $line
 		else
 			echo ""
-			echo "Download {\033[0;31m} $line"
+			echo -e "Download {RED} $line"
 			git clone $line
 		fi
 	done < $input
