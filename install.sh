@@ -87,9 +87,7 @@ if [ $decision = "full" ]; then
 elif [ $decision = "minimal" ] || [ $decision = "special" ]; then
 	Array_Path += "${FULL_PATH::-${#SCRIPT_NAME}}/Config/APT_minimal_Tools.txt"
 else
-        echo "Your decision was not accepted!"
-        echo "Please try again."
-	exit
+        echo -e "Your decision was not accepted!\nPlease try again." ; exit
 fi
 
 # Clear
