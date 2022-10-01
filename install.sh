@@ -112,7 +112,7 @@ do
                 Command="pip3 install" ; Skip=true
         elif [[ $line = "# GIT" ]]; then
                 Command="git clone" ; Skip=true ; cd /opt
-	elif [[ $line = "# Wordlists"]]; then
+	elif [[ $line = "# Wordlists" ]]; then
 		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists
         else
                 if [ $Skip = false ] && [ ! $line = "" ]; then
