@@ -63,7 +63,7 @@ function initials {
 }
 
 # Installation_Type
-initials
+clear ; initials
 echo "Please choose between a installation"
 echo "------------------------------------"
 echo ""
