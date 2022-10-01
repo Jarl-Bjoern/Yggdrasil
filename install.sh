@@ -307,3 +307,6 @@ chmod 600 /root/.updater/image_updater.py
 cat <<EOF >> /etc/crontab
 0 6     * * *  root /usr/bin/env python3 /root/.updater/image_updater.py
 EOF
+echo ""
+echo ""
+echo "The installation was successful! :)"
