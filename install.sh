@@ -77,7 +77,7 @@ do
 		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists
         else
                 if [ $Skip = false ] && [ ! $line = "" ]; then
-                        echo -e "\nDownload ${ORANGE}$line${NOCOLOR}"
+                        echo -e "echo "---------------------------------------------------------------------"\nDownload ${ORANGE}$line${NOCOLOR}"
 			eval "$Command $line"
                 fi
         fi
