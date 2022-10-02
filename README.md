@@ -2,7 +2,7 @@
 
 With this repository certain processes are automated, you have the choice between "full_install", which is aimed at a Kali installation with GUI and "minimal_install", which is aimed at the CLI variant.
 
-You have the possibility to customize the config files according to your needs.
+You have the possibility to customize the config files according to your needs.<br />
 
 # How to download and install the tool
 ## Download and start the tool
@@ -33,6 +33,7 @@ sudo bash install.sh
 
 Your Choice: full
 ```
+<br />
 # Customize your installation
 ## You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a #).
 ```bash
@@ -44,6 +45,6 @@ YOUR_EXAMPLE
 https://github.com/Jarl-Bjoern/Kali_Configurator/
 ```
 
-
+<br />
 # Remark
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester, certain pre-settings.
