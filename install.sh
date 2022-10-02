@@ -30,7 +30,7 @@ function initials {
 
 # Installation_Type
 clear ; initials
-echo -e "\n          Please choose between a installation"
+echo -e "\n          Please choose between one installation"
 echo "----------------------------------------------------------"
 echo "|                                                        |"
 echo -e "|            ${GREEN}full${NOCOLOR}    : full installation (GUI)           |"
@@ -244,5 +244,8 @@ if [[ `cat $File_Path | grep openvas` ]]; then
 	docker exec -it openvas /etc/init.d/openvas-scanner restart
 elif [[ `cat $File_Path | grep nessus` ]]; then
 	docker run -d -p 127.0.0.1:8834:8834 --rm --name nessus tenableofficial/nessus
+fi
+if [[ $decision = "full" ]];then
+	echo -e "\n\n"; cat Informational
 fi
 echo -e "\n----------------------------------------------------------\n${ORANGE}The installation was successful! :)${NOCOLOR}"
