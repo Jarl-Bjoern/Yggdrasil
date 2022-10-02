@@ -247,6 +247,6 @@ elif [[ `cat $File_Path | grep nessus` ]]; then
 	docker run -d -p 127.0.0.1:8834:8834 --rm --name nessus tenableofficial/nessus
 fi
 if [[ $decision = "full" ]];then
-	echo -e "\n\n"; cat $Informational
+	echo -e "\n"; cat $Informational
 fi
-echo -e "\n----------------------------------------------------------\n${ORANGE}The installation was successful! :)${NOCOLOR}"
+echo -e "\n-------------------------------------------------------------------------------\n${ORANGE}The installation was successful! :)${NOCOLOR}"
