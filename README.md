@@ -35,15 +35,7 @@ Your Choice: full
 ```
 <br />
 # Customize your installation
-## You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a #).
-```bash
-# APT
-feroxbuster
-YOUR_EXAMPLE
-
-# Git
-https://github.com/Jarl-Bjoern/Kali_Configurator/
-```
+You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a #).
 
 <br />
 # Remark
