@@ -7,46 +7,6 @@
 # Vers 0.5 01.10.2022
 # Vers 0.5c 01.10.2022
 
-##################### BURP PLUGINS & Configuration ###########################
-# apt install -y jython
-# /usr/bin/jython
-#
-# EsPReSSO
-# Freddy, Deserialization Bug Finder
-# Copy As Python-Requests
-# ActiveScan++
-# Additional Scanner Checks
-# AuthMatrix
-# Autorize
-# Backslash Powered Scanner
-# CSRF Scanner
-# Error Message Checks
-# ExifTool Scanner
-# GWT Insertion Points
-# Flow
-# Java Deserialization Scanner
-# JSON Web Token Attacker
-# J2EEScan
-# .NET Beautifier
-# NTLM Challenge Decoder
-# PHP Object Injection Check
-# PDF Metadata
-# Retire.js
-# Software Vulnerability Scanner
-# WAFDetect
-# Software Version Reporter
-# WCF Deserializer
-# Wsdler
-# GraphQL Raider
-#
-# Upstream Proxy Servers
-# * 127.0.0.1 8080
-#
-# SOCKS Proxy
-# 127.0.0.1
-# 1234
-#################################################################################
-
 # Variables
 IP_INT=127.0.0.1
 FULL_PATH=$(readlink -f -- "$0")
