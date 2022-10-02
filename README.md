@@ -33,10 +33,8 @@ sudo bash install.sh
 
 Your Choice: full
 ```
-<br />
 # Customize your installation
 You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a #).
 
-<br />
 # Remark
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester, certain pre-settings.
