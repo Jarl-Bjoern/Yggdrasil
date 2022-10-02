@@ -22,7 +22,7 @@ sudo bash install.sh
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-          Please choose between a installation
+          Please choose between one installation
 ----------------------------------------------------------
 |                                                        |
 |            full    : full installation (GUI)           |
