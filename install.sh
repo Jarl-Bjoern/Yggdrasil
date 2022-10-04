@@ -12,6 +12,7 @@
 IP_INT=127.0.0.1
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
+PATH_SCREEN=""
 Skip=false
 
 # Arrays
@@ -142,8 +143,13 @@ do
 done < $input
 
 # Screen_Configuration
-for i in `ls /home | grep -v "lost+found"`; do
-	cat <<EOF > /home/$i/.screenrc
+for i in `ls /home | grep -v "lost+found"` `echo /root`; do
+        if [[ !$i = "/root" ]]; then
+                PATH_SCREEN="/home/$i/.screenrc"
+        else
+                PATH_SCREEN="/root/.screenrc"
+        fi
+	cat <<EOF > PATH_SCREEN
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
