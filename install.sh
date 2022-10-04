@@ -147,7 +147,7 @@ for i in `ls home | grep -v "lost+found"`; do
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
-EOF
+EOF;
 done
 
 # Git_Tools_Installation
