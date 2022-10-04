@@ -223,7 +223,7 @@ $Rule
 EOF
 		fi
 	done
-	sed '/# COMMIT all changes/d' /etc/iptables/rules.v4
+	sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
 	sed -i '/COMMIT/d' /etc/iptables/rules.v4
 	cat <<EOF >> /etc/iptables/rules.v4
 # Commit all changes
@@ -240,7 +240,7 @@ $Rule
 EOF
 			fi
 		done
-		sed '/# COMMIT all changes/d' /etc/iptables/rules.v6
+		sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
 		sed -i '/COMMIT/d' /etc/iptables/rules.v6
 		cat <<EOF >> /etc/iptables/rules.v6
 # Commit all changes
