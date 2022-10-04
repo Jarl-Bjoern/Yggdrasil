@@ -208,7 +208,7 @@ if [ $decision != "special" ]; then
 	for i in ${Array_SED[@]}; do
 		sed -i 's/#$i/$i/g' /etc/sysctl.conf
 	done
-	
+
 	# Firewall_Configuration
 	for Rule in Array_Rules_v4; do
 		if [[ !`cat /opt/iptables/rules.v4 | grep $Rule` ]];
@@ -281,7 +281,7 @@ EOF
 	fi
 	chmod 0600 /etc/iptables/*
 	systemctl enable --now netfilter-persistent.service
-	
+
 	# SSH_Configuration
 	sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
 	sed -i "s/#LogLevel INFO/LogLevel VERBOSE/g" /etc/ssh/sshd_config
