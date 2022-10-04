@@ -16,13 +16,13 @@ Skip=false
 
 # Arrays
 declare -a Array_Rules_v4=('*filter'
-':INPUT DROP [0:0]'    
+':INPUT DROP [0:0]'
 ':FORWARD ACCEPT [0:0]'
-':OUTPUT ACCEPT [0:0]'   
+':OUTPUT ACCEPT [0:0]'
 '# Allow established, related and localhost traffic'
 '-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT'
 '-A INPUT -s 127.0.0.0/8 -j ACCEPT'
-'# Allow incoming PING'  
+'# Allow incoming PING'
 '-A INPUT -p icmp --icmp-type 8 -s 0/0 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT -m comment --comment "ACCEPT icmp echo (ping) requests"'
 '# Allow incoming SSH connections'
 '-A INPUT -p tcp --dport 22 -j ACCEPT -m comment --comment "ACCEPT ssh connections to port 22/tcp"'
@@ -147,7 +147,7 @@ for i in `ls home | grep -v "lost+found"`; do
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
-EOF;
+EOF
 done
 
 # Git_Tools_Installation
@@ -214,7 +214,8 @@ if [ $decision != "special" ]; then
 		if [[ !`cat /opt/iptables/rules.v4 | grep $Rule` ]];
 			cat <<EOF >> /etc/iptables/rules.v4
 $Rule
-EOF;
+EOF
+		fi
 	done
 	sed '/# COMMIT all changes/d' /etc/iptables/rules.v4
 	sed '/COMMIT/d' /etc/iptables/rules.v4
@@ -229,7 +230,8 @@ EOF
 			if [[ !`cat /opt/iptables/rules.v6 | grep $Rule` ]];
 				cat <<EOF >> /etc/iptables/rules.v6
 $Rule
-EOF;
+EOF
+			fi
 		done
 		sed '/# COMMIT all changes/d' /etc/iptables/rules.v6
 		sed '/COMMIT/d' /etc/iptables/rules.v6
@@ -237,7 +239,7 @@ EOF;
 # Commit all changes
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
-	EOF
+EOF
 	else
 		cat <<EOF > /etc/iptables/rules.v6
 # /etc/iptables/rules.v6:
@@ -294,7 +296,8 @@ EOF
 		if [[ ! cat /etc/ssh/sshd_config | $Cipher ]];
 			cat <<EOF >> /etc/sshd/sshd_config
 $Cipher
-EOF;
+EOF
+		fi
 	done
 	systemctl restart ssh.service
 fi
