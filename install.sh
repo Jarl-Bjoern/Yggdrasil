@@ -6,6 +6,7 @@
 # Vers 0.4 30.09.2022
 # Vers 0.5 01.10.2022
 # Vers 0.5c 01.10.2022
+# Vers 0.5d 04.10.2022
 
 # Variables
 IP_INT=127.0.0.1
@@ -57,6 +58,14 @@ declare -a Array_Rules_v6=('*filter'
 '-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 151 -j ACCEPT'
 '-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 152 -j ACCEPT'
 '-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 153 -j ACCEPT')
+declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
+"KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256"
+"# Host-key algorithms"
+"HostKeyAlgorithms ssh-ed25519"
+"# Encryption algorithms (ciphers)"
+"Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com"
+"# Message authentication code (MAC) algorithms"
+"MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com")
 
 # Color
 GREEN='\033[0;32m'
@@ -279,14 +288,12 @@ EOF
 	sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
 	cat <<EOF >> /etc/ssh/sshd_config
 
-# Keyexchange algorithms
-KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
-# Host-key algorithms
-HostKeyAlgorithms ssh-ed25519
-# Encryption algorithms (ciphers)
-Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com
-# Message authentication code (MAC) algorithms
-MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com
+EOF
+	for Cipher in `cat /etc/ssh/sshd_config`;
+	do
+		if [[ ! cat /etc/ssh/sshd_config | $Cipher ]];
+			cat <<EOF >> /etc/sshd/sshd_config
+$Cipher
 EOF
 	systemctl restart ssh.service
 fi
