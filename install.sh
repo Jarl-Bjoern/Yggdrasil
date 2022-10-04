@@ -211,10 +211,11 @@ if [ $decision != "special" ]; then
 	# Firewall_Configuration
 	for Rule in Array_Rules_v4;
 	do
-	if [[ !`cat /opt/iptables/rules.v4 | grep $Rule` ]];
-		cat <<EOF >> /etc/iptables/rules.v4
+		if [[ !`cat /opt/iptables/rules.v4 | grep $Rule` ]];
+			cat <<EOF >> /etc/iptables/rules.v4
 $Rule
 EOF
+	done
 	sed '/# COMMIT all changes/d' /etc/iptables/rules.v4
 	sed '/COMMIT/d' /etc/iptables/rules.v4
 	cat <<EOF >> /etc/iptables/rules.v4
@@ -230,6 +231,7 @@ EOF
 				cat <<EOF >> /etc/iptables/rules.v6
 $Rule
 EOF
+		done
 		sed '/# COMMIT all changes/d' /etc/iptables/rules.v6
 		sed '/COMMIT/d' /etc/iptables/rules.v6
 		cat <<EOF >> /etc/iptables/rules.v6
