@@ -217,7 +217,7 @@ if [ $decision != "special" ]; then
 
 	# Firewall_Configuration
 	for Rule in ${Array_Rules_v4[@]}; do
-		if [[ !`cat /opt/iptables/rules.v4 | grep $Rule` ]]; then
+		if [[ !`cat /etc/iptables/rules.v4 | grep $Rule` ]]; then
 			cat <<EOF >> /etc/iptables/rules.v4
 $Rule
 EOF
@@ -233,7 +233,7 @@ EOF
 
 	if [ -f /etc/iptables/rules.v6 ]; then
 		for Rule in ${Array_Rules_v6[@]}; do
-			if [[ !`cat /opt/iptables/rules.v6 | grep $Rule` ]]; then
+			if [[ !`cat /etc/iptables/rules.v6 | grep $Rule` ]]; then
 				cat <<EOF >> /etc/iptables/rules.v6
 $Rule
 EOF
