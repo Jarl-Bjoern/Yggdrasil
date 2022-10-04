@@ -142,7 +142,7 @@ do
 done < $input
 
 # Screen_Configuration
-for i in `ls home | grep -v "lost+found"`; do
+for i in `ls /home | grep -v "lost+found"`; do
 	cat <<EOF > /home/$i/.screenrc
 hardstatus on
 hardstatus alwayslastline
