@@ -13,6 +13,51 @@ FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
 Skip=false
 
+# Arrays
+declare -a Array_Rules_v4=('*filter'
+':INPUT DROP [0:0]'    
+':FORWARD ACCEPT [0:0]'
+':OUTPUT ACCEPT [0:0]'   
+'# Allow established, related and localhost traffic'
+'-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT'
+'-A INPUT -s 127.0.0.0/8 -j ACCEPT'
+'# Allow incoming PING'  
+'-A INPUT -p icmp --icmp-type 8 -s 0/0 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT -m comment --comment "ACCEPT icmp echo (ping) requests"'
+'# Allow incoming SSH connections'
+'-A INPUT -p tcp --dport 22 -j ACCEPT -m comment --comment "ACCEPT ssh connections to port 22/tcp"'
+'# Other stuff like reverse-shell access et alii'
+'# -A INPUT -i eth2 -s 123.123.123.123 -p tcp --dport 4444 -j ACCEPT -m comment --comment "Reverse Shell 4444/tcp"')
+declare -a Array_Rules_v6=('*filter'
+':INPUT DROP [0:0]'
+':FORWARD ACCEPT [0:0]'
+':OUTPUT ACCEPT [0:0]'
+'# Accept all established and related connections'
+'-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT'
+'# Accept all connections originating from Link-Local'
+'-A INPUT -s ::1/128 -j ACCEPT'
+'-A INPUT -m conntrack --ctstate NEW -s fe80::/10 -j ACCEPT'
+'# Permit needed ICMP packet types for IPv6 per RFC 4890.'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 1   -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 2   -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 3   -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 4   -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 133 -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 134 -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 135 -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 136 -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 137 -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 141 -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 142 -j ACCEPT'
+'-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 130 -j ACCEPT'
+'-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 131 -j ACCEPT'
+'-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 132 -j ACCEPT'
+'-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 143 -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 148 -j ACCEPT'
+'-A INPUT              -p ipv6-icmp --icmpv6-type 149 -j ACCEPT'
+'-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 151 -j ACCEPT'
+'-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 152 -j ACCEPT'
+'-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 153 -j ACCEPT')
+
 # Color
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -23,7 +68,7 @@ NOCOLOR='\033[0m'
 function initials {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "|                    Kali Configurator                   |"
-        echo "|                       Version 0.5c                     |"
+        echo "|                       Version 0.5d                     |"
         echo "|             Rainer Christian Bjoern Herold             |"
         echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
@@ -57,7 +102,8 @@ sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb h
 apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all
 sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
 export HISTCONTROL=ignoreboth:erasedups
-cat <<EOF >> /etc/crontab
+if [[ !`cat /etc/crontab | grep -E "apt full-upgrade -y ; apt autoremove -y --purge|docker images"` ]]; then
+	cat <<EOF >> /etc/crontab
 0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
 0 6     * * *  root for Cont_IMG in `docker images | cut -d " " -f1 | grep -v "REPOSITORY"`; do docker pull $Cont_IMG; done
 EOF
@@ -95,12 +141,18 @@ EOF
 done
 
 # Git_Tools_Installation
-cd /opt ; mkdir kerbrute ; cd kerbrute
+mkdir -p /opt/kerbrute ; cd /opt/kerbrute
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O kerbrute
 chmod +x kerbrute ; cd /opt
-cp /opt/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
-bash /opt/EyeWitness/Python/setup/setup.sh
-cd /opt/ssh_scan ; gem install bundler ; bundle install
+if [ -f "/opt/PEASS-ng/metasploit/peass.rb" ]; then
+	cp /opt/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
+fi
+if [ -f "/opt/EyeWitness/Python/setup/setup.sh" ]; then
+	bash /opt/EyeWitness/Python/setup/setup.sh
+fi
+if [ -d "/opt/ssh_scan" ]; then
+	cd /opt/ssh_scan ; gem install bundler ; bundle install
+fi
 if [ $decision = "full" ]; then
 	wget https://dl.pstmn.io/download/latest/linux64
 	tar -xzvf linux64 -C /tmp/
@@ -148,29 +200,38 @@ if [ $decision != "special" ]; then
 	done
 	
 	# Firewall_Configuration
-	cat <<EOF > /etc/iptables/rules.v4
-# /etc/iptables/rules.v4:
-# Generated by iptables-save v1.6.2 on Thu Mar 22 12:02:23 2018
-*filter
-:INPUT DROP [0:0]
-:FORWARD ACCEPT [0:0]
-:OUTPUT ACCEPT [0:0]
-# Allow established, related and localhost traffic
--A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
--A INPUT -s 127.0.0.0/8 -j ACCEPT
-# Allow incoming PING
--A INPUT -p icmp --icmp-type 8 -s 0/0 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT -m comment --comment "ACCEPT icmp echo (ping) requests"
-# Allow incoming SSH connections
--A INPUT -p tcp --dport 22 -j ACCEPT -m comment --comment "ACCEPT ssh connections to port 22/tcp"
-# Other stuff like reverse-shell access et alii
-# -A INPUT -i eth2 -s 123.123.123.123 -p tcp --dport 4444 -j ACCEPT -m comment --comment "Reverse Shell 4444/tcp"
+	for Rule in Array_Rules_v4;
+	do
+	if [[ !`cat /opt/iptables/rules.v4 | grep $Rule` ]];
+		cat <<EOF >> /etc/iptables/rules.v4
+$Rule
+EOF
+	sed '/# COMMIT all changes/d' /etc/iptables/rules.v4
+	sed '/COMMIT/d' /etc/iptables/rules.v4
+	cat <<EOF >> /etc/iptables/rules.v4
 # Commit all changes
 COMMIT
-# Completed on Thu Mar 22 12:02:23 2018
+# Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
-	cat <<EOF > /etc/iptables/rules.v6
+
+	if [ -f /etc/iptables/rules.v6 ]; then
+		for Rule in Array_Rules_v6;
+		do
+			if [[ !`cat /opt/iptables/rules.v6 | grep $Rule` ]];
+				cat <<EOF >> /etc/iptables/rules.v6
+$Rule
+EOF
+		sed '/# COMMIT all changes/d' /etc/iptables/rules.v6
+		sed '/COMMIT/d' /etc/iptables/rules.v6
+		cat <<EOF >> /etc/iptables/rules.v6
+# Commit all changes
+COMMIT
+# Completed on $(date +'%m/%d/%Y %H:%M:%S')
+EOF
+	else
+		cat <<EOF > /etc/iptables/rules.v6
 # /etc/iptables/rules.v6:
-# Generated by ip6tables-save v1.6.2 on Thu Mar 22 12:02:23 2018
+# Generated by ip6tables-save on $(date +'%m/%d/%Y %H:%M:%S')
 *filter
 :INPUT DROP [0:0]
 :FORWARD ACCEPT [0:0]
@@ -203,8 +264,9 @@ EOF
 -A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 153 -j ACCEPT
 # Commit all changes
 COMMIT
-# Completed on Thu Mar 22 12:02:23 201
+# Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
+	fi
 	chmod 0600 /etc/iptables/*
 	systemctl enable --now netfilter-persistent.service
 	
