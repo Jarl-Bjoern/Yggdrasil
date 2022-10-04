@@ -299,7 +299,7 @@ EOF
 
 EOF
 	for Cipher in `cat /etc/ssh/sshd_config`; do
-		if [[ ! cat /etc/ssh/sshd_config | $Cipher ]]; then
+		if [[ ! `cat /etc/ssh/sshd_config | $Cipher` ]]; then
 			cat <<EOF >> /etc/sshd/sshd_config
 $Cipher
 EOF
