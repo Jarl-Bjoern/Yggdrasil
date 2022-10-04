@@ -237,7 +237,7 @@ EOF;
 # Commit all changes
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
-EOF
+	EOF
 	else
 		cat <<EOF > /etc/iptables/rules.v6
 # /etc/iptables/rules.v6:
