@@ -225,6 +225,7 @@ EOF
 	done
 	sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
 	sed -i '/COMMIT/d' /etc/iptables/rules.v4
+	sed -i '/# Completed on/d' /etc/iptables/rules.v4
 	cat <<EOF >> /etc/iptables/rules.v4
 # Commit all changes
 COMMIT
@@ -242,6 +243,7 @@ EOF
 		done
 		sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
 		sed -i '/COMMIT/d' /etc/iptables/rules.v6
+		sed -i '/# Completed on/d' /etc/iptables/rules.v6
 		cat <<EOF >> /etc/iptables/rules.v6
 # Commit all changes
 COMMIT
