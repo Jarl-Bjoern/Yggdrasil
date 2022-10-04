@@ -116,6 +116,7 @@ if [[ !`cat /etc/crontab | grep -E "apt full-upgrade -y ; apt autoremove -y --pu
 0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
 0 6     * * *  root for Cont_IMG in `docker images | cut -d " " -f1 | grep -v "REPOSITORY"`; do docker pull $Cont_IMG; done
 EOF
+fi
 
 # Tool_Installation
 input=$File_Path
@@ -209,12 +210,11 @@ if [ $decision != "special" ]; then
 	done
 	
 	# Firewall_Configuration
-	for Rule in Array_Rules_v4;
-	do
+	for Rule in Array_Rules_v4; do
 		if [[ !`cat /opt/iptables/rules.v4 | grep $Rule` ]];
 			cat <<EOF >> /etc/iptables/rules.v4
 $Rule
-EOF
+EOF;
 	done
 	sed '/# COMMIT all changes/d' /etc/iptables/rules.v4
 	sed '/COMMIT/d' /etc/iptables/rules.v4
@@ -225,12 +225,11 @@ COMMIT
 EOF
 
 	if [ -f /etc/iptables/rules.v6 ]; then
-		for Rule in Array_Rules_v6;
-		do
+		for Rule in Array_Rules_v6; do
 			if [[ !`cat /opt/iptables/rules.v6 | grep $Rule` ]];
 				cat <<EOF >> /etc/iptables/rules.v6
 $Rule
-EOF
+EOF;
 		done
 		sed '/# COMMIT all changes/d' /etc/iptables/rules.v6
 		sed '/COMMIT/d' /etc/iptables/rules.v6
@@ -291,12 +290,12 @@ EOF
 	cat <<EOF >> /etc/ssh/sshd_config
 
 EOF
-	for Cipher in `cat /etc/ssh/sshd_config`;
-	do
+	for Cipher in `cat /etc/ssh/sshd_config`; do
 		if [[ ! cat /etc/ssh/sshd_config | $Cipher ]];
 			cat <<EOF >> /etc/sshd/sshd_config
 $Cipher
-EOF
+EOF;
+	done
 	systemctl restart ssh.service
 fi
 
