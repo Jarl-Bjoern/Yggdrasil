@@ -216,6 +216,7 @@ if [ $decision != "special" ]; then
 	done
 
 	# Firewall_Configuration
+	IFS=""
 	for Rule in ${Array_Rules_v4[@]}; do
 		if [[ !`cat /etc/iptables/rules.v4 | grep $Rule` ]]; then
 			cat <<EOF >> /etc/iptables/rules.v4
@@ -232,6 +233,7 @@ COMMIT
 EOF
 
 	if [ -f /etc/iptables/rules.v6 ]; then
+		IFS=""
 		for Rule in ${Array_Rules_v6[@]}; do
 			if [[ !`cat /etc/iptables/rules.v6 | grep $Rule` ]]; then
 				cat <<EOF >> /etc/iptables/rules.v6
@@ -298,6 +300,7 @@ EOF
 	cat <<EOF >> /etc/ssh/sshd_config
 
 EOF
+	IFS=""
 	for Cipher in ${Array_SSH_Ciphers[@]}; do
 		if [[ ! `cat /etc/ssh/sshd_config | $Cipher` ]]; then
 			cat <<EOF >> /etc/ssh/sshd_config
