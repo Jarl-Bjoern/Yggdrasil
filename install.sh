@@ -298,7 +298,7 @@ EOF
 	cat <<EOF >> /etc/ssh/sshd_config
 
 EOF
-	for Cipher in `cat /etc/ssh/sshd_config`; do
+	for Cipher in Array_SSH_Ciphers; do
 		if [[ ! `cat /etc/ssh/sshd_config | $Cipher` ]]; then
 			cat <<EOF >> /etc/sshd/sshd_config
 $Cipher
