@@ -83,15 +83,15 @@ input=$File_Path
 while IFS= read -r line
 do
         if [[ $line = "# APT" ]]; then
-                Command="apt install -y" ; Skip=true
+                Command="apt install -y" ; Skip=true ; Switch_WGET=false
         elif [[ $line = "# Docker" ]]; then
-                Command="docker pull" ; Skip=true
+                Command="docker pull" ; Skip=true ; Switch_WGET=false
         elif [[ $line = "# Python" ]]; then
-                Command="pip3 install" ; Skip=true
+                Command="pip3 install" ; Skip=true ; Switch_WGET=false
         elif [[ $line = "# Git" ]]; then
-                Command="git clone" ; Skip=true ; cd /opt
+                Command="git clone" ; Skip=true ; cd /opt ; Switch_WGET=false
 	elif [[ $line = "# Wordlists" ]]; then
-		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists
+		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
         else
 		if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
 			echo -e "-------------------------------------------------------------------------------\n\nDownload ${ORANGE}$line${NOCOLOR}"
