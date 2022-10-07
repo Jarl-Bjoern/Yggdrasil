@@ -1,6 +1,15 @@
 # APT
-testssl.sh
+charon-cmd
 docker.io
+feroxbuster
+iptables-persistent
+libcharon-extra-plugins
+libcharon-extauth-plugins
+libstrongswan-extra-plugins
+netfilter-persistent
+testssl.sh
+tor
+torbrowser-launcher
 
 # Docker
 mikesplain/openvas
