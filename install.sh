@@ -303,7 +303,8 @@ if [[ `cat $File_Path | grep openvas` ]]; then
 	docker exec -it openvas openvasmd --update --verbose --progress
 	docker exec -it openvas /etc/init.d/openvas-manager restart
 	docker exec -it openvas /etc/init.d/openvas-scanner restart
-elif [[ `cat $File_Path | grep nessus` ]]; then
+fi
+if [[ `cat $File_Path | grep nessus` ]]; then
 	docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
 if [[ $decision = "full" ]];then
