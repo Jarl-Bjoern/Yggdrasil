@@ -45,6 +45,8 @@ https://github.com/AonCyberLabs/Windows-Exploit-Suggester
 # Python
 bloodhound
 
+# Wget
+
 # Wordlists
 https://github.com/fuzzdb-project/fuzzdb
 https://github.com/swisskyrepo/PayloadsAllTheThings
