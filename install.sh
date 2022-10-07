@@ -213,6 +213,8 @@ EOF
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
+	fi
+	
 	if [ -f /etc/iptables/rules.v6 ]; then
 		python3 ${FULL_PATH::-${#SCRIPT_NAME}}/filter.py
 		sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
