@@ -114,7 +114,6 @@ do
 		fi
 	fi
 	Skip=false
-	Switch_WGET=false
 done < $input
 
 # Screen_Configuration
