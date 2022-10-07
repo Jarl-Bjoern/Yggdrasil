@@ -92,6 +92,8 @@ do
                 Command="git clone" ; Skip=true ; cd /opt ; Switch_WGET=false
 	elif [[ $line = "# Wordlists" ]]; then
 		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
+	elif [[ $line = "# Wget" ]]; then
+		Command="wget" ; Switch_WGET=true
         else
 		if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
 			echo -e "-------------------------------------------------------------------------------\n\nDownload ${ORANGE}$line${NOCOLOR}"
