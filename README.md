@@ -9,7 +9,7 @@ You have the possibility to customize the config files according to your needs.<
 ```bash
 git clone https://github.com/Jarl-Bjoern/Kali_Configurator/
 cd Kali_Configurator
-chmod +x *.sh ; dos2unix *.sh Config/*
+chmod +x *.sh *.py ; dos2unix *.sh *.py Config/*
 sudo bash install.sh
 ```
 
