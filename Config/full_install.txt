@@ -1,15 +1,23 @@
 # APT
-netfilter-persistent
+charon-cmd
+docker.io
+evolution
+feroxbuster
 iptables-persistent
+jython
+keepassxc
+i3
+libcharon-extra-plugins
+libcharon-extauth-plugins
+libstrongswan-extra-plugins
+netfilter-persistent
+nitrogen
+synaptic
+testssl.sh
 tor
 torbrowser-launcher
-evolution
-zaproxy
 virt-manager
-testssl.sh
-jython
-docker.io
-keepassxc
+zaproxy
 
 # Docker
 mikesplain/openvas
