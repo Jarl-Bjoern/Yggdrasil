@@ -130,9 +130,6 @@ EOF
 done
 
 # Git_Tools_Installation
-mkdir -p /opt/kerbrute ; cd /opt/kerbrute
-wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O kerbrute
-chmod +x kerbrute ; cd /opt
 if [ -f "/opt/PEASS-ng/metasploit/peass.rb" ]; then
 	cp /opt/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 fi
@@ -143,10 +140,6 @@ if [ -d "/opt/ssh_scan" ]; then
 	cd /opt/ssh_scan ; gem install bundler ; bundle install
 fi
 if [ $decision = "full" ]; then
-	wget https://dl.pstmn.io/download/latest/linux64
-	tar -xzvf linux64 -C /tmp/
-	chown -R root: /tmp/Postman
-	mv /tmp/Postman /opt/
 	ln -s /opt/Postman/app/Postman /usr/local/bin/postman
 fi
 
