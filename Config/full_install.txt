@@ -3,6 +3,7 @@ charon-cmd
 docker.io
 evolution
 feroxbuster
+htop
 iptables-persistent
 jython
 keepassxc
