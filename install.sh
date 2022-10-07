@@ -7,6 +7,7 @@
 # Vers 0.5 01.10.2022
 # Vers 0.5c 01.10.2022
 # Vers 0.5d 04.10.2022
+# Vers 0.6 07.10.2022
 
 # Variables
 IP_INT=127.0.0.1
@@ -14,6 +15,7 @@ FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
 PATH_SCREEN=""
 Skip=false
+Switch_WGET=false
 
 # Arrays
 declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
@@ -35,7 +37,7 @@ NOCOLOR='\033[0m'
 function initials {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "|                    Kali Configurator                   |"
-        echo "|                       Version 0.5d                     |"
+        echo "|                       Version 0.6                      |"
         echo "|             Rainer Christian Bjoern Herold             |"
         echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
@@ -91,12 +93,26 @@ do
 	elif [[ $line = "# Wordlists" ]]; then
 		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists
         else
-                if [ $Skip = false ] && [ ! $line = "" ]; then
-                        echo -e "-------------------------------------------------------------------------------\n\nDownload ${ORANGE}$line${NOCOLOR}"
-			eval "$Command $line"
-                fi
-        fi
-        Skip=false
+		if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
+			echo -e "-------------------------------------------------------------------------------\n\nDownload ${ORANGE}$line${NOCOLOR}"
+			if [ !"$Switch_WGET" = false ]; then
+				eval "$Command $line"
+			else
+				FILE_NAME=`echo "$line" | cut -d" " -f2`
+				FILE=`echo $line | cut -d" " -f1`
+				MODE=`echo $line | cut -d" " -f3`
+				mkdir -p /opt/$FILE_NAME ; cd /opt/$FILE_NAME
+				eval "$Command $FILE -O $FILE_NAME"
+				if [ "$MODE" = "Executeable" ]; then
+					chmod +x $FILE_NAME ; cd /opt
+				elif [ "$MODE" = "Tar" ]; then
+					tar -xzvf $FILE_NAME
+				fi
+			fi
+		fi
+	fi
+	Skip=false
+	Switch_WGET=false
 done < $input
 
 # Screen_Configuration
