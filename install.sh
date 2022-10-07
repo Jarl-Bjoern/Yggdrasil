@@ -93,7 +93,7 @@ do
 	elif [[ $line = "# Wordlists" ]]; then
 		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
 	elif [[ $line = "# Wget" ]]; then
-		Command="wget" ; Switch_WGET=true
+		Switch_WGET=true
         else
 		if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
 			echo -e "-------------------------------------------------------------------------------\n\nDownload ${ORANGE}$line${NOCOLOR}"
@@ -104,7 +104,7 @@ do
 				FILE=`echo $line | cut -d" " -f1`
 				MODE=`echo $line | cut -d" " -f3`
 				mkdir -p /opt/$FILE_NAME ; cd /opt/$FILE_NAME
-				eval "$Command $FILE -O $FILE_NAME"
+				wget $FILE -O $FILE_NAME
 				if [ "$MODE" = "Executeable" ]; then
 					chmod +x $FILE_NAME ; cd /opt
 				elif [ "$MODE" = "Tar" ]; then
