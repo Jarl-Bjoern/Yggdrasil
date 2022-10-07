@@ -97,7 +97,7 @@ do
         else
 		if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
 			echo -e "-------------------------------------------------------------------------------\n\nDownload ${ORANGE}$line${NOCOLOR}"
-			if [ !"$Switch_WGET" = false ]; then
+			if [ "$Switch_WGET" = false ]; then
 				eval "$Command $line"
 			else
 				FILE_NAME=`echo "$line" | cut -d" " -f2`
