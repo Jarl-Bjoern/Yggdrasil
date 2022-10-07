@@ -26,7 +26,7 @@ declare -a Array_Rules_v4=("*filter"
 "# Allow incoming PING"
 '-A INPUT -p icmp --icmp-type 8 -s 0/0 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT -m comment --comment "ACCEPT icmp echo (ping) requests"'
 "# Allow incoming SSH connections"
-"-A INPUT -p tcp --dport 22 -j ACCEPT -m comment --comment "ACCEPT ssh connections to port 22/tcp"'
+'-A INPUT -p tcp --dport 22 -j ACCEPT -m comment --comment "ACCEPT ssh connections to port 22/tcp"'
 "# Other stuff like reverse-shell access et alii"
 '# -A INPUT -i eth2 -s 123.123.123.123 -p tcp --dport 4444 -j ACCEPT -m comment --comment "Reverse Shell 4444/tcp"')
 declare -a Array_Rules_v6=('*filter'
