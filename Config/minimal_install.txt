@@ -37,6 +37,9 @@ https://github.com/AonCyberLabs/Windows-Exploit-Suggester
 # Python
 bloodhound
 
+# Wget
+https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 kerbrute Executeable
+
 # Wordlists
 https://github.com/fuzzdb-project/fuzzdb
 https://github.com/swisskyrepo/PayloadsAllTheThings
