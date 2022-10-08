@@ -51,7 +51,7 @@ For example, when you arrive at the "Wget" section, you need to see that they fo
 ```bash
 # Wget
 https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 kerbrute Executeable
-https://dl.pstmn.io/download/latest/linux64 Postman Tar
+https://dl.pstmn.io/download/latest/linux64 Postman Archive
 ```
 
 # Remark
