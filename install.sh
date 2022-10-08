@@ -71,7 +71,7 @@ elif [ $decision = "special" ]; then
 	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
 	Switch_SSH = false
 else
-        echo -e "Your decision was not accepted!\nPlease try again." ; exit
+        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
 
 # SSH_IP_Address
@@ -96,10 +96,10 @@ if [ $Switch_SSH = true ]; then
 			IP_INT=$IP_TEMP
 			clearing
 		else
-			echo -e "Your decision was not accepted!\nPlease try again." ; exit
+			echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 		fi
 	else
-		echo -e "Your decision was not accepted!\nPlease try again." ; exit
+		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	fi
 fi
 
