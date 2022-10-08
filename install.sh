@@ -8,6 +8,7 @@
 # Vers 0.5c 01.10.2022
 # Vers 0.5d 04.10.2022
 # Vers 0.6 07.10.2022
+# Vers 0.6b 08.10.2022
 
 # Variables
 IP_INT=127.0.0.1
@@ -144,8 +145,8 @@ do
 				wget $FILE -O $FILE_NAME
 				if [ "$MODE" = "Executeable" ]; then
 					chmod +x $FILE_NAME ; cd /opt
-				elif [ "$MODE" = "Tar" ]; then
-					tar -xzvf $FILE_NAME
+				elif [ "$MODE" = "Archive" ]; then
+					python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
 				fi
 			fi
 		fi
