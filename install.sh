@@ -75,7 +75,7 @@ if [ $Switch_SSH = true ]; then
 	NIC=`ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker"`
 	IP=`ifconfig | grep "inet" | grep -v "inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1" | sort -u`
 	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
-	
+
 	echo -e "\n          Please select an IP address to be used for SSH configuration."
 	echo "----------------------------------------------------------\n"
 	n=0
@@ -94,6 +94,7 @@ if [ $Switch_SSH = true ]; then
 		fi
 	else
 		echo -e "Your decision was not accepted!\nPlease try again." ; exit
+	fi
 fi
 
 # Basic_Configuration
@@ -245,7 +246,7 @@ COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
 	fi
-	
+
 	if [ -f /etc/iptables/rules.v6 ]; then
 		python3 ${FULL_PATH::-${#SCRIPT_NAME}}/filter.py
 		sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
