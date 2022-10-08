@@ -77,10 +77,10 @@ if [ $Switch_SSH = true ]; then
 	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
 
 	echo -e "\n          Please select an IP address to be used for SSH configuration."
-	echo "----------------------------------------------------------\n"
+	echo -e "----------------------------------------------------------\n"
 	n=0
 	while [[ n -le ${#ARRAY_NIC[@]} ]]; do
-        	echo ${ARRAY_NIC[n]} ${ARRAY_IP[n]}
+        	echo "          " ${ARRAY_NIC[n]} ${ARRAY_IP[n]}
         	n=$((n + 1))
 	done
 	echo -e "----------------------------------------------------------\n"
