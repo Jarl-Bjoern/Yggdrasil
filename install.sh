@@ -77,7 +77,7 @@ fi
 # SSH_IP_Address
 clearing
 if [ $Switch_SSH = true ]; then
-	NIC=`ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker"`
+	NIC=`ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker|veth"`
 	IP=`ifconfig | grep "inet" | grep -v "inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1" | sort -u`
 	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
 
