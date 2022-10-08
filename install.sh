@@ -147,7 +147,7 @@ do
 					chmod +x $FILE_NAME ; cd /opt
 				elif [ "$MODE" = "Archive" ]; then
 					wget --content-disposition $FILE
-					FILE_NAME=`curl -L --head -s https://dl.pstmn.io/download/latest/linux64 | grep filename | cut -d "=" -f2`
+					FILE_NAME=`curl -L --head -s $FILE | grep filename | cut -d "=" -f2`
 					python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
 				fi
 			fi
