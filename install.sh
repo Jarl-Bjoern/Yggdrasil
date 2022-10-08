@@ -76,11 +76,11 @@ if [ $Switch_SSH = true ]; then
 	IP=`ifconfig | grep "inet" | grep -v "inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1" | sort -u`
 	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
 
-	echo -e "\nPlease select an IP address to be used for SSH configuration."
+	echo -e "\n       Please select an IP address to be used\n           for SSH configuration."
 	echo -e "----------------------------------------------------------\n"
 	n=0
 	while [[ n -le ${#ARRAY_NIC[@]} ]]; do
-        	echo "          " ${ARRAY_NIC[n]} ${ARRAY_IP[n]}
+        	echo "                     " ${ARRAY_NIC[n]} ${ARRAY_IP[n]}
         	n=$((n + 1))
 	done
 	echo -e "----------------------------------------------------------\n"
