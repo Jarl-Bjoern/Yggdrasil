@@ -80,7 +80,7 @@ if [ $Switch_SSH = true ]; then
 	echo -e "----------------------------------------------------------\n"
 	n=0
 	while [[ n -le ${#ARRAY_NIC[@]} ]]; do
-        	echo "                   " ${ARRAY_NIC[n]} ${ARRAY_IP[n]}
+        	echo "                  " ${ARRAY_NIC[n]} ${ARRAY_IP[n]}
         	n=$((n + 1))
 	done
 	echo -e "----------------------------------------------------------\n"
