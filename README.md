@@ -44,6 +44,15 @@ YOUR_EXAMPLE
 https://github.com/Jarl-Bjoern/Kali_Configurator/
 ```
 
+For example, when you arrive at the "Wget" section, you need to see that they follow the structure below.
+
+"URL" "Name" "Method
+
+```bash
+# Wget
+https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 kerbrute Executeable
+https://dl.pstmn.io/download/latest/linux64 Postman Tar
+```
 
 # Remark
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester, certain pre-settings.
