@@ -92,7 +92,7 @@ if [ $Switch_SSH = true ]; then
 	read -p "Your Choice: " IP_TEMP
 	if [[ ${#IP_TEMP} -gt 0 ]]; then
 		LEN_CHECK=`ip a | grep "$IP_TEMP"`
-		if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP} = *"."* ]]; then
+		if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *"."* ]]; then
 			IP_INT=$IP_TEMP
 			clearing
 		else
