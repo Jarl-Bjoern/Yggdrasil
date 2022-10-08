@@ -16,6 +16,7 @@ SCRIPT_NAME=$(basename $BASH_SOURCE)
 PATH_SCREEN=""
 Skip=false
 Switch_WGET=false
+Switch_SSH=true
 
 # Arrays
 declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
@@ -57,14 +58,43 @@ read -p "Your Choice: " decision
 if [ $decision = "full" ]; then
 	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
 	Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/burp.txt"
-elif [ $decision = "minimal" ] || [ $decision = "special" ]; then
+elif [ $decision = "minimal" ];  then
 	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
+elif [ $decision = "special" ]; then
+	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
+	Switch_SSH = false
 else
         echo -e "Your decision was not accepted!\nPlease try again." ; exit
 fi
 
 # Clear
 sleep 2 ; clear ; initials
+
+# SSH_IP_Address
+if [ $Switch_SSH = true ]; then
+	NIC=`ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker"`
+	IP=`ifconfig | grep "inet" | grep -v "inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1" | sort -u`
+	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
+	
+	echo -e "\n          Please select an IP address to be used for SSH configuration."
+	echo "----------------------------------------------------------\n"
+	n=0
+	while [[ n -le ${#ARRAY_NIC[@]} ]]; do
+        	echo ${ARRAY_NIC[n]} ${ARRAY_IP[n]}
+        	n=$((n + 1))
+	done
+	echo -e "----------------------------------------------------------\n"
+	read -p "Your Choice: " IP_TEMP
+	if [ ${IP_TEMP} -gt 0 ]; then
+		LEN_CHECK=`ip a | grep "$IP_TEMP"`
+		if [[ ${#LEN_CHECK} -gt 0 ]]; then
+			IP_INT=$IP_TEMP
+		else
+			echo -e "Your decision was not accepted!\nPlease try again." ; exit
+		fi
+	else
+		echo -e "Your decision was not accepted!\nPlease try again." ; exit
+fi
 
 # Basic_Configuration
 sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
