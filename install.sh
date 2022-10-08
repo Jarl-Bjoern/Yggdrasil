@@ -43,6 +43,10 @@ function initials {
         echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
 
+function clearing {
+	sleep 2 ; clear ; initials
+}
+
 # Installation_Type
 clear ; initials
 echo -e "\n          Please choose between one installation"
@@ -68,7 +72,7 @@ else
 fi
 
 # Clear
-sleep 2 ; clear ; initials
+clearing
 
 # SSH_IP_Address
 if [ $Switch_SSH = true ]; then
@@ -89,6 +93,7 @@ if [ $Switch_SSH = true ]; then
 		LEN_CHECK=`ip a | grep "$IP_TEMP"`
 		if [[ ${#LEN_CHECK} -gt 0 ]]; then
 			IP_INT=$IP_TEMP
+			clearing
 		else
 			echo -e "Your decision was not accepted!\nPlease try again." ; exit
 		fi
