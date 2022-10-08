@@ -141,11 +141,12 @@ do
 				FILE_NAME=`echo "$line" | cut -d" " -f2`
 				FILE=`echo $line | cut -d" " -f1`
 				MODE=`echo $line | cut -d" " -f3`
-				mkdir -p /opt/$FILE_NAME ; cd /opt/$FILE_NAME
-				wget $FILE -O $FILE_NAME
 				if [ "$MODE" = "Executeable" ]; then
+					mkdir -p /opt/$FILE_NAME ; cd /opt/$FILE_NAME
+					wget --content-disposition $FILE
 					chmod +x $FILE_NAME ; cd /opt
 				elif [ "$MODE" = "Archive" ]; then
+					wget --content-disposition $FILE
 					python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
 				fi
 			fi
