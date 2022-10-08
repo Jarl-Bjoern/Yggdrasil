@@ -346,4 +346,4 @@ fi
 if [[ $decision = "full" ]];then
 	echo -e "\n"; cat $Informational
 fi
-echo -e "\n-------------------------------------------------------------------------------\n${ORANGE}The installation was successful! :)${NOCOLOR}"
+echo -e "\n---------------------------------------------------------------------------------\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
