@@ -143,7 +143,7 @@ do
 				MODE=`echo $line | cut -d" " -f3`
 				if [ "$MODE" = "Executeable" ]; then
 					mkdir -p /opt/$FILE_NAME ; cd /opt/$FILE_NAME
-					wget --content-disposition $FILE
+					wget $FILE -O $FILE_NAME
 					chmod +x $FILE_NAME ; cd /opt
 				elif [ "$MODE" = "Archive" ]; then
 					wget --content-disposition $FILE
