@@ -2,7 +2,7 @@
 charon-cmd
 docker.io
 feroxbuster
-hexdump
+hexedit
 htop
 iptables-persistent
 libcharon-extra-plugins
