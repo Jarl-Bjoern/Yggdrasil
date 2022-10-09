@@ -316,6 +316,9 @@ EOF
 	sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
 	cat <<EOF >> /etc/ssh/sshd_config
 
+# Disable OS-Banner
+DebianBanner no
+
 EOF
 	IFS=""
 	for Cipher in ${Array_SSH_Ciphers[@]}; do
