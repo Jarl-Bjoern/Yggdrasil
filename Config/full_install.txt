@@ -3,6 +3,7 @@ charon-cmd
 docker.io
 evolution
 feroxbuster
+gobuster
 hexedit
 htop
 i3
