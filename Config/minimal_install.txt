@@ -2,6 +2,7 @@
 charon-cmd
 docker.io
 feroxbuster
+gobuster
 hexedit
 htop
 iptables-persistent
@@ -9,6 +10,7 @@ libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
 netfilter-persistent
+rediscli
 testssl.sh
 tor
 torbrowser-launcher
