@@ -78,8 +78,8 @@ fi
 # SSH_IP_Address
 clearing
 if [ $Switch_SSH = true ]; then
-	NIC=`ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker|veth"`
-	IP=`ifconfig | grep "inet" | grep -v "inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1" | sort -u`
+	NIC=$(ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker|veth")
+	IP=$(ifconfig | grep "inet" | grep -v "inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1" | sort -u)
 	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
 
 	echo -e "\n           Please select an IP address to be used\n                   for SSH configuration"
@@ -109,7 +109,7 @@ sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb h
 apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all
 sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
 export HISTCONTROL=ignoreboth:erasedups
-LEN_CRON=`cat /etc/crontab | grep -E "apt full-upgrade -y ; apt autoremove -y --purge"`
+LEN_CRON=$(cat /etc/crontab | grep -E "apt full-upgrade -y ; apt autoremove -y --purge")
 if [[ !${#LEN_CRON} -gt 0 ]]; then
 	cat <<'EOF' >> /etc/crontab
 0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
@@ -219,7 +219,12 @@ if [ $decision != "special" ]; then
 	"net.ipv4.tcp_dsack=0"
 	"net.ipv4.tcp_fack=0")
 	for i in ${Array_SED[@]}; do
-		sed -i 's/#$i/$i/g' /etc/sysctl.conf
+        	LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep $i)
+        	if [[ !${#LEN_SYSCTL} -gt 0 ]]; then
+			cat <<EOF >> /etc/sysctl.conf
+$i
+EOF
+		fi
 	done
 
 	# Firewall_Configuration
