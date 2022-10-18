@@ -112,7 +112,7 @@ LEN_CRON=`cat /etc/crontab | grep -E "apt full-upgrade -y ; apt autoremove -y --
 if [[ !${#LEN_CRON} -gt 0 ]]; then
 	cat <<'EOF' >> /etc/crontab
 0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
-0 6     * * *  root for Cont_IMG in `docker images | cut -d " " -f1 | grep -v "REPOSITORY"`; do docker pull $Cont_IMG; done
+0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
 EOF
 fi
 
