@@ -9,6 +9,7 @@
 # Vers 0.5d 04.10.2022
 # Vers 0.6 07.10.2022
 # Vers 0.6b 08.10.2022
+# Vers 0.6c 18.10.2022
 
 # Variables
 IP_INT=127.0.0.1
@@ -41,7 +42,7 @@ NOCOLOR='\033[0m'
 function initials {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "|                    Kali Configurator                   |"
-        echo -e "|                       Version ${CYAN}0.6b${NOCOLOR}                     |"
+        echo -e "|                       Version ${CYAN}0.6c${NOCOLOR}                     |"
         echo "|             Rainer Christian Bjoern Herold             |"
         echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
