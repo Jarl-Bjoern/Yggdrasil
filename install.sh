@@ -65,7 +65,7 @@ echo -e "----------------------------------------------------------\n"
 read -p "Your Choice: " decision
 if [ $decision = "full" ]; then
 	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
-	Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/burp.txt"
+	Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 elif [ $decision = "minimal" ];  then
 	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
 elif [ $decision = "special" ]; then
