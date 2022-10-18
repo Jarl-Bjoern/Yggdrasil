@@ -92,7 +92,7 @@ if [ $Switch_SSH = true ]; then
 	echo -e "----------------------------------------------------------\n"
 	read -p "Your Choice: " IP_TEMP
 	if [[ ${#IP_TEMP} -gt 0 ]]; then
-		LEN_CHECK=`ip a | grep "$IP_TEMP"`
+		LEN_CHECK=$(ip a | grep "$IP_TEMP")
 		if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *"."* ]]; then
 			IP_INT=$IP_TEMP
 			clearing
@@ -139,16 +139,16 @@ do
 			if [ "$Switch_WGET" = false ]; then
 				eval "$Command $line"
 			else
-				FILE_NAME=`echo "$line" | cut -d" " -f2`
-				FILE=`echo $line | cut -d" " -f1`
-				MODE=`echo $line | cut -d" " -f3`
+				FILE_NAME=$(echo "$line" | cut -d" " -f2)
+				FILE=$(echo $line | cut -d" " -f1)
+				MODE=$(echo $line | cut -d" " -f3)
 				if [ "$MODE" = "Executeable" ]; then
 					mkdir -p /opt/$FILE_NAME ; cd /opt/$FILE_NAME
 					wget $FILE -O $FILE_NAME
 					chmod +x $FILE_NAME ; cd /opt
 				elif [ "$MODE" = "Archive" ]; then
 					wget --content-disposition $FILE
-					FILE_NAME=`curl -L --head -s $FILE | grep filename | cut -d "=" -f2`
+					FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
 					python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
 				fi
 			fi
@@ -158,7 +158,7 @@ do
 done < $input
 
 # Screen_Configuration
-for i in `ls /home | grep -v "lost+found"` `echo /root`; do
+for i in $(ls /home | grep -v "lost+found") $(echo /root); do
         if [[ !$i = "/root" ]]; then
                 PATH_SCREEN="/home/$i/.screenrc"
         else
@@ -328,7 +328,7 @@ DebianBanner no
 EOF
 	IFS=""
 	for Cipher in ${Array_SSH_Ciphers[@]}; do
-		if [[ ! `cat /etc/ssh/sshd_config | grep -e $Cipher` ]]; then
+		if [[ ! $(cat /etc/ssh/sshd_config | grep -e $Cipher) ]]; then
 			cat <<EOF >> /etc/ssh/sshd_config
 $Cipher
 EOF
@@ -342,7 +342,7 @@ systemctl enable --now postgresql
 msfdb init
 
 # Docker_Standard_Images
-if [[ `cat $File_Path | grep openvas` ]]; then
+if [[ $(cat $File_Path | grep openvas) ]]; then
 	docker run -d -p 127.0.0.1:443:443 --name openvas mikesplain/openvas
 	docker exec -it openvas greenbone-nvt-sync
 	docker exec -it openvas openvasmd --rebuild --progress
@@ -352,7 +352,7 @@ if [[ `cat $File_Path | grep openvas` ]]; then
 	docker exec -it openvas /etc/init.d/openvas-manager restart
 	docker exec -it openvas /etc/init.d/openvas-scanner restart
 fi
-if [[ `cat $File_Path | grep nessus` ]]; then
+if [[ $(cat $File_Path | grep nessus) ]]; then
 	docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
 if [[ $decision = "full" ]];then
