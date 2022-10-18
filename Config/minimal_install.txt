@@ -10,7 +10,7 @@ libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
 netfilter-persistent
-rediscli
+redis-tools
 testssl.sh
 tor
 torbrowser-launcher
