@@ -15,7 +15,7 @@ libcharon-extauth-plugins
 libstrongswan-extra-plugins
 netfilter-persistent
 nitrogen
-redis
+redis-tools
 synaptic
 testssl.sh
 tor
