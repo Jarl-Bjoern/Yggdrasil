@@ -44,6 +44,8 @@ https://github.com/lgandx/Responder
 https://github.com/the-useless-one/pywerview
 https://github.com/mozilla/ssh_scan
 https://github.com/AonCyberLabs/Windows-Exploit-Suggester
+https://github.com/rofl0r/proxychains-ng
+https://github.com/CISOfy/lynis
 
 # Python
 bloodhound
