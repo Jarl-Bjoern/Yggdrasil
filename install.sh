@@ -186,7 +186,7 @@ if [ $decision = "full" ]; then
 fi
 
 if [ $decision != "special" ]; then
-	declare -a Array_SED=("#Protecting against IP-Spoofing"
+	declare -a Array_HARDENING=("#Protecting against IP-Spoofing"
 	"net.ipv4.conf.default.rp_filter=1"
 	"net.ipv4.conf.all.rp_filter=1"
 	"#Protecting against SYN flood attacks"
@@ -232,7 +232,7 @@ if [ $decision != "special" ]; then
 	"kernel.sysrq=4"
 	"kernel.unprivileged_userns_clone=0"
 	"kernel.perf_event_paranoid=3")
-	for i in ${Array_SED[@]}; do
+	for i in ${Array_HARDENING[@]}; do
         	LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep $i)
         	if [[ !${#LEN_SYSCTL} -gt 0 ]]; then
 			cat <<EOF >> /etc/sysctl.conf
