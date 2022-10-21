@@ -361,16 +361,6 @@ systemctl enable --now postgresql
 msfdb init
 
 # Docker_Standard_Images
-if [[ $(cat $File_Path | grep openvas) ]]; then
-	docker run -d -p 127.0.0.1:443:443 --name openvas mikesplain/openvas
-	docker exec -it openvas greenbone-nvt-sync
-	docker exec -it openvas openvasmd --rebuild --progress
-	docker exec -it openvas greenbone-certdata-sync
-	docker exec -it openvas greenbone-scapdata-sync
-	docker exec -it openvas openvasmd --update --verbose --progress
-	docker exec -it openvas /etc/init.d/openvas-manager restart
-	docker exec -it openvas /etc/init.d/openvas-scanner restart
-fi
 if [[ $(cat $File_Path | grep nessus) ]]; then
 	docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
