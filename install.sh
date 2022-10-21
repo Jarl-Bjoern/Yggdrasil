@@ -195,6 +195,7 @@ if [ $decision != "special" ]; then
 	# Line 14-18 Protecting against MITM - Redirecting network traffic     #
 	# Line 19-20 Protecting against MITM - ipv6                            #
 	# Line 21-23 Protecting against TCP-SACK Exploits                      #
+	# Line 24 Kernel self-protection                                       #
 	########################################################################
 	declare -a Array_SED=("net.ipv4.conf.default.rp_filter=1"
 	"net.ipv4.conf.all.rp_filter=1"
@@ -226,7 +227,7 @@ $i
 EOF
 		fi
 	done
-
+	sysctl --system
 	# Firewall_Configuration
 	if [ -f /etc/iptables/rules.v4 ]; then
 		python3 ${FULL_PATH::-${#SCRIPT_NAME}}/filter.py
