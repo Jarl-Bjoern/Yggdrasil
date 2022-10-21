@@ -129,7 +129,7 @@ do
         elif [[ $line = "# Python" ]]; then
                 Command="pip3 install" ; Skip=true ; Switch_WGET=false
         elif [[ $line = "# Git" ]]; then
-                Command="git clone" ; Skip=true ; cd /opt ; Switch_WGET=false
+                Command="git clone" ; Skip=true ; mkdir -p /opt/pentest_tools ; cd /opt/pentest_tools ; Switch_WGET=false
 	elif [[ $line = "# Wordlists" ]]; then
 		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
 	elif [[ $line = "# Wget" ]]; then
@@ -144,7 +144,7 @@ do
 				FILE=$(echo $line | cut -d" " -f1)
 				MODE=$(echo $line | cut -d" " -f3)
 				if [ "$MODE" = "Executeable" ]; then
-					mkdir -p /opt/$FILE_NAME ; cd /opt/$FILE_NAME
+					mkdir -p /opt/pentest_tools/$FILE_NAME ; cd /opt/pentest_tools/$FILE_NAME
 					wget $FILE -O $FILE_NAME
 					chmod +x $FILE_NAME ; cd /opt
 				elif [ "$MODE" = "Archive" ]; then
@@ -173,17 +173,17 @@ EOF
 done
 
 # Git_Tools_Installation
-if [ -f "/opt/PEASS-ng/metasploit/peass.rb" ]; then
-	cp /opt/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
+if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
+	cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 fi
-if [ -f "/opt/EyeWitness/Python/setup/setup.sh" ]; then
-	bash /opt/EyeWitness/Python/setup/setup.sh
+if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
+	bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
 fi
-if [ -d "/opt/ssh_scan" ]; then
-	cd /opt/ssh_scan ; gem install bundler ; bundle install
+if [ -d "/opt/pentest_tools/ssh_scan" ]; then
+	cd /opt/pentest_tools/ssh_scan ; gem install bundler ; bundle install
 fi
 if [ $decision = "full" ]; then
-	ln -s /opt/Postman/app/Postman /usr/local/bin/postman
+	ln -s /opt/pentest_tools/Postman/app/Postman /usr/local/bin/postman
 fi
 
 if [ $decision != "special" ]; then
