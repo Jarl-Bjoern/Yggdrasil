@@ -15,11 +15,7 @@ Array_v4 = [":INPUT DROP [0:0]",":FORWARD ACCEPT [0:0]",":OUTPUT ACCEPT [0:0]",
 '-A INPUT -p tcp --dport 22 -j ACCEPT -m comment --comment "ACCEPT ssh connections to port 22/tcp"',
 "-A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --update --seconds 600 --hitcount 10 -j DROP",
 "# Other stuff like reverse-shell access et alii",
-'# -A INPUT -i eth2 -s 123.123.123.123 -p tcp --dport 4444 -j ACCEPT -m comment --comment "Reverse Shell 4444/tcp"',
-"# Portscanning protection",
-"-N port-scanning",
-"-A port-scanning -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit 1/s --limit-burst 2 -j RETURN",
-"-A port-scanning -j DROP"]
+'# -A INPUT -i eth2 -s 123.123.123.123 -p tcp --dport 4444 -j ACCEPT -m comment --comment "Reverse Shell 4444/tcp"']
 Array_v6 = [":INPUT DROP [0:0]",":FORWARD ACCEPT [0:0]",":OUTPUT ACCEPT [0:0]",
 "# Accept all established and related connections",
 "-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT",
