@@ -10,5 +10,5 @@ from sys import argv
 
 # Main
 if __name__ == '__main__':
-    unpack_archive(f'/opt/{argv[1][:-1]}', f'/opt')
-    remove (f'/opt/{argv[1][:-1]}')
+    unpack_archive(f'/opt/pentest_tools/{argv[1][:-1]}', f'/optpentest_tools/')
+    remove (f'/opt/pentest_tools/{argv[1][:-1]}')
