@@ -25,7 +25,6 @@ virt-manager
 zaproxy
 
 # Docker
-mikesplain/openvas
 tenableofficial/nessus
 
 # Git
