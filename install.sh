@@ -186,21 +186,14 @@ if [ $decision = "full" ]; then
 fi
 
 if [ $decision != "special" ]; then
-	########################################################################
-	# Line 1-2 Protecting against IP-Spoofing                              #
-	# Line 3 Protecting against SYN flood attacks                          #
-	# Line 4 Protecting against time-wait-assassination                    #
-	# Line 5-12 Protecting against MITM                                    #
-	# Line 13 Protecting against ICMP Smurf Attacks                        #
-	# Line 14-18 Protecting against MITM - Redirecting network traffic     #
-	# Line 19-20 Protecting against MITM - ipv6                            #
-	# Line 21-23 Protecting against TCP-SACK Exploits                      #
-	# Line 24 Kernel self-protection                                       #
-	########################################################################
-	declare -a Array_SED=("net.ipv4.conf.default.rp_filter=1"
+	declare -a Array_SED=("#Protecting against IP-Spoofing"
+	"net.ipv4.conf.default.rp_filter=1"
 	"net.ipv4.conf.all.rp_filter=1"
+	"#Protecting against SYN flood attacks"
 	"net.ipv4.tcp_syncookies=1"
+	"#Protecting against time-wait-assassination"
 	"net.ipv4.tcp_rfc1337=1"
+	"#Protecting against MITM"
 	"net.ipv4.conf.all.accept_redirects=0"
 	"net.ipv4.conf.default.accept_redirects=0"
 	"net.ipv4.conf.all.secure_redirects=0"
@@ -209,16 +202,36 @@ if [ $decision != "special" ]; then
 	"net.ipv6.conf.default.accept_redirects=0"
 	"net.ipv4.conf.all.send_redirects=0"
 	"net.ipv4.conf.default.send_redirects=0"
+	"#Protecting against MITM"
 	"net.ipv4.icmp_echo_ignore_all=1"
+	"#Protecting against ICMP Smurf Attacks"
 	"net.ipv4.conf.all.accept_source_route=0"
+	"#Protecting against MITM - Redirecting network traffic"
 	"net.ipv4.conf.default.accept_source_route=0"
 	"net.ipv6.conf.all.accept_source_route=0"
 	"net.ipv6.conf.default.accept_source_route=0"
 	"net.ipv6.conf.all.accept_ra=0"
+	"#Protecting against MITM - ipv6"
 	"net.ipv6.conf.default.accept_ra=0"
+	"#Protecting against TCP-SACK Exploits"
 	"net.ipv4.tcp_sack=0"
 	"net.ipv4.tcp_dsack=0"
-	"net.ipv4.tcp_fack=0")
+	"net.ipv4.tcp_fack=0"
+	"#Kernel self-protection"
+	"kernel.kptr_restrict=2"
+	"kernel.dmesg_restrict=1"
+	"kernel.printk=3 3 3 3"
+	"kernel.unprivileged_bpf_disabled=1"
+	"vsyscall=none"
+	"debugfs=off"
+	"oops=panic"
+	"net.core.bpf_jit_harden=2"
+	"dev.tty.ldisc_autoload=0"
+	"vm.unprivileged_userfaultfd=0"
+	"kernel.kexec_load_disabled=1"
+	"kernel.sysrq=4"
+	"kernel.unprivileged_userns_clone=0"
+	"kernel.perf_event_paranoid=3")
 	for i in ${Array_SED[@]}; do
         	LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep $i)
         	if [[ !${#LEN_SYSCTL} -gt 0 ]]; then
