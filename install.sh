@@ -146,7 +146,7 @@ do
 				if [ "$MODE" = "Executeable" ]; then
 					mkdir -p /opt/pentest_tools/$FILE_NAME ; cd /opt/pentest_tools/$FILE_NAME
 					wget $FILE -O $FILE_NAME
-					chmod +x $FILE_NAME ; cd /opt
+					chmod +x $FILE_NAME ; cd /opt/pentest_tools
 				elif [ "$MODE" = "Archive" ]; then
 					wget --content-disposition $FILE
 					FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
