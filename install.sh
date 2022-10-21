@@ -160,12 +160,12 @@ done < $input
 
 # Screen_Configuration
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
-        if [[ !$i = "/root" ]]; then
+        if [[ !($i = "/root") ]]; then
                 PATH_SCREEN="/home/$i/.screenrc"
         else
                 PATH_SCREEN="/root/.screenrc"
         fi
-	cat <<EOF > PATH_SCREEN
+	cat <<EOF > $PATH_SCREEN
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
