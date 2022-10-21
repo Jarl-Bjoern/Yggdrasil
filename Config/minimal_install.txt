@@ -17,7 +17,6 @@ tor
 torbrowser-launcher
 
 # Docker
-mikesplain/openvas
 tenableofficial/nessus
 
 # Git
