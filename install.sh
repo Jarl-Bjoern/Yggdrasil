@@ -251,10 +251,15 @@ EOF
 -A INPUT -s 127.0.0.0/8 -j ACCEPT
 # Allow incoming PING
 -A INPUT -p icmp --icmp-type 8 -s 0/0 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT -m comment --comment "ACCEPT icmp echo (ping) requests"
-# Allow incoming SSH connections
+# Allow incoming SSH connections with protection
 -A INPUT -p tcp --dport 22 -j ACCEPT -m comment --comment "ACCEPT ssh connections to port 22/tcp"
+-A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --update --seconds 600 --hitcount 10 -j DROP
 # Other stuff like reverse-shell access et alii
 # -A INPUT -i eth2 -s 123.123.123.123 -p tcp --dport 4444 -j ACCEPT -m comment --comment "Reverse Shell 4444/tcp
+# Portscanning protection
+-N port-scanning
+-A port-scanning -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit 1/s --limit-burst 2 -j RETURN
+-A port-scanning -j DROP
 # Commit all changes
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
