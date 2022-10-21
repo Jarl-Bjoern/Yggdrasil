@@ -234,7 +234,11 @@ if [ $decision != "special" ]; then
 	"kernel.unprivileged_userns_clone=0"
 	"kernel.perf_event_paranoid=3")
 	for i in ${Array_HARDENING[@]}; do
-        	LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep $i)
+		if [[ $i ~= "#" ]]; then
+			LEN_SYSCTL=$(cat /etc/sysctl.conf | grep $i)
+		else
+	        	LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep $i)
+		fi
         	if [[ !${#LEN_SYSCTL} -gt 0 ]]; then
 			cat <<EOF >> /etc/sysctl.conf
 $i
