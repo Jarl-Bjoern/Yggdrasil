@@ -187,7 +187,7 @@ if [ $decision = "full" ]; then
 	ln -s /opt/pentest_tools/Postman/app/Postman /usr/local/bin/postman
 fi
 
-if [[ $1 = "-s" ]]; then
+if [[ $1 != "-s" ]]; then
 	declare -a Array_HARDENING=("#Protecting against IP-Spoofing"
 	"net.ipv4.conf.default.rp_filter=1"
 	"net.ipv4.conf.all.rp_filter=1"
