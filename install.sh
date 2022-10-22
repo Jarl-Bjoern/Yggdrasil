@@ -19,7 +19,6 @@ SCRIPT_NAME=$(basename $BASH_SOURCE)
 PATH_SCREEN=""
 Skip=false
 Switch_WGET=false
-Switch_SSH=true
 
 # Arrays
 declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
@@ -72,13 +71,9 @@ else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
 
-if [[ $1 = "-s" ]]; then
-	Switch_SSH=false
-fi
-
 # SSH_IP_Address
 clearing
-if [ $Switch_SSH = true ]; then
+if [[ $1 != "-s" ]]; then
 	NIC=$(ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker|veth")
 	IP=$(ifconfig | grep "inet" | grep -v "inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1" | sort -u)
 	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
@@ -151,7 +146,10 @@ do
 				elif [ "$MODE" = "Archive" ]; then
 					wget --content-disposition $FILE
 					FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-					python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
+					if [[ ${#FILE_NAME} -gt 0 ]];
+						python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
+					else
+						python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE
 				fi
 			fi
 		fi
