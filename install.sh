@@ -10,6 +10,7 @@
 # Vers 0.6 07.10.2022
 # Vers 0.6b 08.10.2022
 # Vers 0.6c 18.10.2022
+# Vers 0.6d 22.10.2022
 
 # Variables
 IP_INT=127.0.0.1
@@ -42,7 +43,7 @@ NOCOLOR='\033[0m'
 function initials {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "|                    Kali Configurator                   |"
-        echo -e "|                       Version ${CYAN}0.6c${NOCOLOR}                     |"
+        echo -e "|                       Version ${CYAN}0.6d${NOCOLOR}                     |"
         echo "|             Rainer Christian Bjoern Herold             |"
         echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
@@ -58,7 +59,6 @@ echo "----------------------------------------------------------"
 echo "|                                                        |"
 echo -e "|            ${GREEN}full${NOCOLOR}    : full installation (GUI)           |"
 echo -e "|            ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)        |"
-echo -e "|            ${RED}special${NOCOLOR} : special installation              |"
 echo "|                                                        |"
 echo -e "----------------------------------------------------------\n"
 
@@ -68,11 +68,12 @@ if [ $decision = "full" ]; then
 	Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 elif [ $decision = "minimal" ];  then
 	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
-elif [ $decision = "special" ]; then
-	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
-	Switch_SSH = false
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+fi
+
+if [[ $1 = "-s" ]]; then
+	Switch_SSH = false
 fi
 
 # SSH_IP_Address
@@ -186,7 +187,7 @@ if [ $decision = "full" ]; then
 	ln -s /opt/pentest_tools/Postman/app/Postman /usr/local/bin/postman
 fi
 
-if [ $decision != "special" ]; then
+if [[ $1 = "-s" ]]; then
 	declare -a Array_HARDENING=("#Protecting against IP-Spoofing"
 	"net.ipv4.conf.default.rp_filter=1"
 	"net.ipv4.conf.all.rp_filter=1"
