@@ -150,6 +150,7 @@ do
 						python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
 					else
 						python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE
+					fi
 				fi
 			fi
 		fi
