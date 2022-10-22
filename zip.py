@@ -12,11 +12,12 @@ from sys import argv
 
 # Main
 if __name__ == '__main__':
-    if ("/" in argv[1]):
-        for Slash in finditer("/", argv[1]): Position = Slash.span()[1]
-        File = argv[1][Position:]
-    else:
-        if ('\n' in argv[1]): File = argv[1][:-1]
-        else: File = argv[1]
-    unpack_archive(f'/opt/pentest_tools/{File}', f'/opt/pentest_tools/')
-    remove (f'/opt/pentest_tools/{File}')
+    if (len(argv) > 1):
+        if ("/" in argv[1]):
+            for Slash in finditer("/", argv[1]): Position = Slash.span()[1]
+            File = argv[1][Position:]
+        else:
+            if ('\n' in argv[1]): File = argv[1][:-1]
+            else: File = argv[1]
+        unpack_archive(f'/opt/pentest_tools/{File}', f'/opt/pentest_tools/')
+        remove (f'/opt/pentest_tools/{File}')
