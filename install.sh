@@ -146,7 +146,7 @@ do
 				elif [ "$MODE" = "Archive" ]; then
 					wget --content-disposition $FILE
 					FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-					if [[ ${#FILE_NAME} -gt 0 ]];
+					if [[ ${#FILE_NAME} -gt 0 ]]; then
 						python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
 					else
 						python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE
