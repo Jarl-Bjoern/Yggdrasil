@@ -182,8 +182,15 @@ fi
 if [ -d "/opt/pentest_tools/ssh_scan" ]; then
 	cd /opt/pentest_tools/ssh_scan ; gem install bundler ; bundle install
 fi
+
 if [ $decision = "full" ]; then
 	ln -s /opt/pentest_tools/Postman/app/Postman /usr/local/bin/postman
+	if [[ -f $(ls /opt/pentest_tools | grep setup-gui-x64) ]]; then
+		cat <<EOF | bash $(ls /opt/pentest_tools | grep setup-gui-x64)
+1
+\r
+EOF
+	fi
 fi
 
 if [[ $1 != "-s" ]]; then
