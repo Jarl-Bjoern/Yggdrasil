@@ -73,7 +73,7 @@ else
 fi
 
 if [[ $1 = "-s" ]]; then
-	Switch_SSH = false
+	Switch_SSH=false
 fi
 
 # SSH_IP_Address
