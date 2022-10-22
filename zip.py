@@ -2,6 +2,7 @@
 #-*- coding: utf-8 -*-
 # Rainer Christian Bjoern Herold
 # Version 0.1 08.10.2022
+# Version 0.2 22.10.2022
 
 # Libraries
 from os import remove
@@ -10,5 +11,7 @@ from sys import argv
 
 # Main
 if __name__ == '__main__':
-    unpack_archive(f'/opt/pentest_tools/{argv[1][:-1]}', f'/optpentest_tools/')
-    remove (f'/opt/pentest_tools/{argv[1][:-1]}')
+    if ('\n' in argv[1]): File = argv[1][:-1]
+    else: File = argv[1]
+    unpack_archive(f'/opt/pentest_tools/{File}', f'/opt/pentest_tools/')
+    remove (f'/opt/pentest_tools/{File}')
