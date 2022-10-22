@@ -186,10 +186,8 @@ fi
 if [ $decision = "full" ]; then
 	ln -s /opt/pentest_tools/Postman/app/Postman /usr/local/bin/postman
 	if [[ -f $(ls /opt/pentest_tools | grep setup-gui-x64) ]]; then
-		cat <<EOF | bash $(ls /opt/pentest_tools | grep setup-gui-x64)
-1
-\r
-EOF
+		bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep setup-gui-x64)
+		for veracrypt_file in $(ls /opt/pentest_tools | grep setup); do rm -f /opt/pentest_tools/$veracrypt_file; done
 	fi
 fi
 
