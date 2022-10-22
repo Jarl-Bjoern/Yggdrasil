@@ -27,7 +27,6 @@ sudo bash install.sh
 |                                                        |
 |            full    : full installation (GUI)           |
 |            minimal : minimal installation (CLI)        |
-|            special : special installation              |
 |                                                        |
 ----------------------------------------------------------
 
