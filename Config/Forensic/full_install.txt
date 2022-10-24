@@ -3,6 +3,7 @@ autoconf
 automake
 bison
 build-essential
+bulk-extractor
 cargo
 charon-cmd
 docker.io
@@ -36,6 +37,7 @@ virt-manager
 # Docker
 
 # Git
+https://github.com/airbus-cert/regrippy
 
 # Python
 docker-compose
