@@ -93,7 +93,9 @@ header "installation"
 read -p "Your Choice: " decision
 if [ $decision = "full" ]; then
 	File_Path="${Path_Way}/full_install.txt"
-	Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+	if [ $category_type = "pentest" ];  then
+		Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+	fi
 elif [ $decision = "minimal" ];  then
 	File_Path="${Path_Way}/minimal_install.txt"
 else
@@ -148,9 +150,9 @@ input=$File_Path
 while IFS= read -r line
 do
         if [[ $line = "# APT" ]]; then
-                Command="apt install -y" ; Skip=true ; Switch_WGET=false
+                Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false
 	elif [[ $line = "# Cargo" ]]; then
-		Command="cargo install" ; Skip=true ; Switch_WGET=false
+		Command="sudo cargo install" ; Skip=true ; Switch_WGET=false
         elif [[ $line = "# Docker" ]]; then
                 Command="docker pull" ; Skip=true ; Switch_WGET=false
         elif [[ $line = "# Python" ]]; then
@@ -215,17 +217,19 @@ if [ $category_type = "pentest" ];  then
 		cd /opt/pentest_tools/ssh_scan ; gem install bundler ; bundle install
 	fi
 
-	if [ $decision = "full" ]; then
-		ln -s /opt/pentest_tools/Postman/app/Postman /usr/local/bin/postman
-		if [[ -f /opt/pentest_tools/$(ls /opt/pentest_tools | grep setup-gui-x64) ]]; then
-			bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep setup-gui-x64)
-			for veracrypt_file in $(ls /opt/pentest_tools | grep setup); do rm -f /opt/pentest_tools/$veracrypt_file; done
-		fi
-	fi
-
 	# Metasploit_Configuration
 	systemctl enable --now postgresql
 	msfdb init
+fi
+
+if [ $decision = "full" ]; then
+	if [ $category_type = "pentest" ];  then
+		ln -s $OPT_Path/Postman/app/Postman /usr/local/bin/postman
+	fi
+	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
+		bash $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
+		for veracrypt_file in $(ls $OPT_Path | grep setup); do rm -f $OPT_Path/$veracrypt_file; done
+	fi
 fi
 
 if [[ $1 != "-s" ]]; then
