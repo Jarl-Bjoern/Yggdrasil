@@ -62,18 +62,18 @@ function header() {
 	echo "----------------------------------------------------------"
 	echo "|                                                        |"
 	if [ $1 = "category" ]; then
-		echo -e "|     ${RED}complete${NOCOLOR}    :   installation of both tools         |"
-		echo -e "|     ${CYAN}custom${NOCOLOR}      :   installation of custom tools       |"
-		echo -e "|     ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools     |"
-		echo -e "|     ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools      |"
+		echo -e "| [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both tools         |"
+		echo -e "| [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :   installation of custom tools       |"
+		echo -e "| [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools     |"
+		echo -e "| [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools      |"
 	elif [ $1 = "installation" ]; then
-		echo -e "|            ${GREEN}full${NOCOLOR}    : full installation (GUI)           |"
-		echo -e "|            ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)        |"
+		echo -e "| [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full installation (GUI)           |"
+		echo -e "| [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)        |"
 	elif [ $1 = "pentesting_category" ]; then
-		echo -e "|     ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting     |"
-		echo -e "|     ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting       |"
-		echo -e "|     ${RED}red_teaming${NOCOLOR}     :   tools for red teaming          |"
-		echo -e "|     ${GREEN}web${NOCOLOR}             :   tools for web pentesting       |"
+		echo -e "| [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting     |"
+		echo -e "| [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting       |"
+		echo -e "| [${RED}3${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming          |"
+		echo -e "| [${CYAN}4${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting       |"
 	fi
 	echo "|                                                        |"
 	echo -e "----------------------------------------------------------\n"
