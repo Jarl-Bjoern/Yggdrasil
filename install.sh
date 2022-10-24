@@ -149,12 +149,14 @@ while IFS= read -r line
 do
         if [[ $line = "# APT" ]]; then
                 Command="apt install -y" ; Skip=true ; Switch_WGET=false
+	elif [[ $line = "# Cargo" ]]; then
+		Command="cargo install" ; Skip=true ; Switch_WGET=false
         elif [[ $line = "# Docker" ]]; then
                 Command="docker pull" ; Skip=true ; Switch_WGET=false
         elif [[ $line = "# Python" ]]; then
                 Command="pip3 install" ; Skip=true ; Switch_WGET=false
         elif [[ $line = "# Git" ]]; then
-                Command="git clone" ; Skip=true ; mkdir -p /opt/pentest_tools ; cd /opt/pentest_tools ; Switch_WGET=false
+                Command="git clone" ; Skip=true ; mkdir -p $OPT_Path ; cd $OPT_Path ; Switch_WGET=false
 	elif [[ $line = "# Wordlists" ]]; then
 		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
 	elif [[ $line = "# Wget" ]]; then
