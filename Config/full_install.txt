@@ -4,6 +4,7 @@ charon-cmd
 docker.io
 evolution
 feroxbuster
+freeipmi
 gobuster
 hexedit
 htop
