@@ -139,10 +139,10 @@ fi
 
 # Basic_Configuration
 if [[ $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d '"' -f2) =~ "Kali GNU/Linux" ]]; then
-	sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
-	sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
+	sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
+	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
 fi
-apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all
+sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 export HISTCONTROL=ignoreboth:erasedups
 LEN_CRON=$(cat /etc/crontab | grep -E "apt full-upgrade -y ; apt autoremove -y --purge")
 if [[ !${#LEN_CRON} -gt 0 ]]; then
