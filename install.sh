@@ -203,8 +203,8 @@ hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
 done
 
-# Git_Tools_Installation
 if [ $category_type = "pentest" ];  then
+	# Git_Tools_Installation
 	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
 		cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 	fi
