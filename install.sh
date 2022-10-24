@@ -182,9 +182,9 @@ do
 					wget --content-disposition $FILE
 					FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
 					if [[ ${#FILE_NAME} -gt 0 ]]; then
-						python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
+						sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
 					else
-						python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE
+						sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE
 					fi
 				fi
 			fi
@@ -210,18 +210,18 @@ done
 if [ $category_type = "pentest" ];  then
 	# Git_Tools_Installation
 	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
-		cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
+		sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 	fi
 	if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
-		bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
+		sudo bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
 	fi
 	if [ -d "/opt/pentest_tools/ssh_scan" ]; then
-		cd /opt/pentest_tools/ssh_scan ; gem install bundler ; bundle install
+		cd /opt/pentest_tools/ssh_scan ; sudo gem install bundler ; sudo bundle install
 	fi
 
 	# Metasploit_Configuration
-	systemctl enable --now postgresql
-	msfdb init
+	sudo systemctl enable --now postgresql
+	sudo msfdb init
 fi
 
 if [ $decision = "full" ]; then
@@ -229,8 +229,8 @@ if [ $decision = "full" ]; then
 		ln -s $OPT_Path/Postman/app/Postman /usr/local/bin/postman
 	fi
 	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
-		bash $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
-		for veracrypt_file in $(ls $OPT_Path | grep setup); do rm -f $OPT_Path/$veracrypt_file; done
+		sudo bash $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
+		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
 	fi
 fi
 
@@ -293,13 +293,13 @@ $i
 EOF
 		fi
 	done
-	sysctl --system
+	sudo sysctl --system
 	# Firewall_Configuration
 	if [ -f /etc/iptables/rules.v4 ]; then
-		python3 ${FULL_PATH::-${#SCRIPT_NAME}}/filter.py
-		sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
-		sed -i '/COMMIT/d' /etc/iptables/rules.v4
-		sed -i '/# Completed on/d' /etc/iptables/rules.v4
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/filter.py
+		sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
+		sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
+		sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
 		cat <<EOF >> /etc/iptables/rules.v4
 # Commit all changes
 COMMIT
@@ -330,10 +330,10 @@ EOF
 	fi
 
 	if [ -f /etc/iptables/rules.v6 ]; then
-		python3 ${FULL_PATH::-${#SCRIPT_NAME}}/filter.py
-		sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
-		sed -i '/COMMIT/d' /etc/iptables/rules.v6
-		sed -i '/# Completed on/d' /etc/iptables/rules.v6
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/filter.py
+		sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
+		sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
+		sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
 		cat <<EOF >> /etc/iptables/rules.v6
 # Commit all changes
 COMMIT
@@ -378,16 +378,16 @@ COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
 	fi
-	chmod 0600 /etc/iptables/*
-	systemctl enable --now netfilter-persistent.service
+	sudo chmod 0600 /etc/iptables/*
+	sudo systemctl enable --now netfilter-persistent.service
 
 	# SSH_Configuration
-	sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
-	sed -i "s/#LogLevel INFO/LogLevel VERBOSE/g" /etc/ssh/sshd_config
-	sed -i "s/#MaxAuthTries 6/MaxAuthTries 12/g" /etc/ssh/sshd_config
-	sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
-	sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
-	sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
+	sudo sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
+	sudo sed -i "s/#LogLevel INFO/LogLevel VERBOSE/g" /etc/ssh/sshd_config
+	sudo sed -i "s/#MaxAuthTries 6/MaxAuthTries 12/g" /etc/ssh/sshd_config
+	sudo sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
+	sudo sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
+	sudo sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
 	cat <<EOF >> /etc/ssh/sshd_config
 
 # Disable OS-Banner
@@ -402,12 +402,12 @@ $Cipher
 EOF
 		fi
 	done
-	systemctl restart ssh.service
+	sudo systemctl restart ssh.service
 fi
 
 # Docker_Standard_Images
 if [[ $(cat $File_Path | grep nessus) ]]; then
-	docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
+	sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
 if [[ $decision = "full" ]];then
 	echo -e "\n"; cat $Informational
