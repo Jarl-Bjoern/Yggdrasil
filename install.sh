@@ -82,33 +82,33 @@ function header() {
 # Category
 header "category"
 read -p "Your Choice: " category_type
-if [ $category_type = "forensic" ]; then
+if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Forensic"
 	OPT_Path="/opt/forensic_tools"
-elif [ $category_type = "pentest" ];  then
+elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest"
 	OPT_Path="/opt/pentest_tools"
-elif [ $category_type = "complete" ]; then
+elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         echo -e "\nUNDER CONSTRUCTION!\nPlease try again." ; exit
 	#Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config"
-elif [ $category_type = "custom" ]; then
+elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Custom"
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
 
 # Installation_Type
-if [ $category_type = "custom" ]; then
+if [[ $category_type = "custom" || $category_type = "2" ]]; then
 	File_Path="${Path_Way}/install.txt"
 else
 	header "installation"
 	read -p "Your Choice: " decision
-	if [ $decision = "full" ]; then
+	if [[ $decision = "full" || $decision = "1" ]]; then
 		File_Path="${Path_Way}/full_install.txt"
-		if [ $category_type = "pentest" ];  then
+		if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 			Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 		fi
-	elif [ $decision = "minimal" ];  then
+	elif [[ $decision = "minimal" || $decision = "2" ]];  then
 		File_Path="${Path_Way}/minimal_install.txt"
 	else
 		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
@@ -220,7 +220,7 @@ hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
 done
 
-if [ $category_type = "pentest" ];  then
+if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	# Git_Tools_Installation
 	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
 		sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
@@ -237,8 +237,8 @@ if [ $category_type = "pentest" ];  then
 	sudo msfdb init
 fi
 
-if [ $decision = "full" ]; then
-	if [ $category_type = "pentest" ];  then
+if [[ $decision = "full" || $decision = "1" ]]; then
+	if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 		ln -s $OPT_Path/Postman/app/Postman /usr/local/bin/postman
 	fi
 	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
@@ -422,8 +422,8 @@ fi
 if [[ $(cat $File_Path | grep nessus) ]]; then
 	sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
-if [ $category_type = "pentest" ];  then
-	if [[ $decision = "full" ]]; then
+if [[ $category_type = "pentest" || $category_type = "4"  ]];  then
+	if [[ $decision = "full" || $decision = "1"  ]]; then
 		echo -e "\n"; cat $Informational
 	fi
 fi
