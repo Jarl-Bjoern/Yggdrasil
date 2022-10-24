@@ -28,10 +28,10 @@ sudo bash install.sh
           Please choose between one category
 ----------------------------------------------------------
 |                                                        |
-|     complete    :   installation of both tools         |
-|     custom      :   installation of custom tools       |
-|     forensic    :   installation of forensic tools     |
-|     pentest     :   installation of pentest tools      |
+| [1] complete    :   installation of both tools         |
+| [2] custom      :   installation of custom tools       |
+| [3] forensic    :   installation of forensic tools     |
+| [4] pentest     :   installation of pentest tools      |
 |                                                        |
 ----------------------------------------------------------
 
@@ -50,8 +50,8 @@ Your Choice: pentest
           Please choose between one installation
 ----------------------------------------------------------
 |                                                        |
-|            full    : full installation (GUI)           |
-|            minimal : minimal installation (CLI)        |
+|  [1]       full    : full installation (GUI)           |
+|  [2]       minimal : minimal installation (CLI)        |
 |                                                        |
 ----------------------------------------------------------
 
