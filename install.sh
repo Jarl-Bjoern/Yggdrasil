@@ -404,5 +404,5 @@ fi
 if [[ $decision = "full" ]];then
 	echo -e "\n"; cat $Informational
 fi
-for i in $(ls /opt/pentest_tools | grep -E ".tar|.bz2|.zip|.rar"); do rm -f /opt/pentest_tools/$i; done
+for i in $(ls $OPT_Path | grep -E ".tar|.bz2|.zip|.rar"); do rm -f $OPT_Path/$i; done
 echo -e "\n---------------------------------------------------------------------------------\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
