@@ -98,17 +98,21 @@ else
 fi
 
 # Installation_Type
-header "installation"
-read -p "Your Choice: " decision
-if [ $decision = "full" ]; then
-	File_Path="${Path_Way}/full_install.txt"
-	if [ $category_type = "pentest" ];  then
-		Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
-	fi
-elif [ $decision = "minimal" ];  then
-	File_Path="${Path_Way}/minimal_install.txt"
+if [ $category = "custom" ]; then
+	File_Path="${Path_Way}/install.txt"
 else
-        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	header "installation"
+	read -p "Your Choice: " decision
+	if [ $decision = "full" ]; then
+		File_Path="${Path_Way}/full_install.txt"
+		if [ $category_type = "pentest" ];  then
+			Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+		fi
+	elif [ $decision = "minimal" ];  then
+		File_Path="${Path_Way}/minimal_install.txt"
+	else
+		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	fi
 fi
 
 # SSH_IP_Address
