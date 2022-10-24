@@ -9,15 +9,34 @@ You have the possibility to customize the config files according to your needs.<
 ```bash
 git clone https://github.com/Jarl-Bjoern/Kali_Configurator/
 cd Kali_Configurator
-chmod +x *.sh *.py ; dos2unix *.sh *.py Config/*
+chmod +x *.sh *.py ; dos2unix $(find . -type f)
 sudo bash install.sh
 ```
-
-## Choose one of the three installation types
+## Choose one of the three category types
 ```bash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |                    Kali Configurator                   |
-|                       Version 0.6                      |
+|                       Version 0.7                      |
+|             Rainer Christian Bjoern Herold             |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+          Please choose between one category
+----------------------------------------------------------
+|                                                        |
+|     complete    :   installation of both tools         |
+|     forensic    :   installation of forensic tools     |
+|     pentest     :   installation of pentest tools      |
+|                                                        |
+----------------------------------------------------------
+
+Your Choice: pentest
+
+## Choose one of the two installation types
+```bash
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|                    Kali Configurator                   |
+|                       Version 0.7                      |
 |             Rainer Christian Bjoern Herold             |
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
