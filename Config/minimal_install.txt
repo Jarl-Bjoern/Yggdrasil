@@ -3,6 +3,7 @@ bloodhound
 charon-cmd
 docker.io
 feroxbuster
+freeipmi
 gobuster
 hexedit
 htop
