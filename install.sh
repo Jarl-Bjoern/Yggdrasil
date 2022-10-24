@@ -202,21 +202,23 @@ EOF
 done
 
 # Git_Tools_Installation
-if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
-	cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
-fi
-if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
-	bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
-fi
-if [ -d "/opt/pentest_tools/ssh_scan" ]; then
-	cd /opt/pentest_tools/ssh_scan ; gem install bundler ; bundle install
-fi
+if [ $category_type = "pentest" ];  then
+	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
+		cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
+	fi
+	if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
+		bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
+	fi
+	if [ -d "/opt/pentest_tools/ssh_scan" ]; then
+		cd /opt/pentest_tools/ssh_scan ; gem install bundler ; bundle install
+	fi
 
-if [ $decision = "full" ]; then
-	ln -s /opt/pentest_tools/Postman/app/Postman /usr/local/bin/postman
-	if [[ -f /opt/pentest_tools/$(ls /opt/pentest_tools | grep setup-gui-x64) ]]; then
-		bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep setup-gui-x64)
-		for veracrypt_file in $(ls /opt/pentest_tools | grep setup); do rm -f /opt/pentest_tools/$veracrypt_file; done
+	if [ $decision = "full" ]; then
+		ln -s /opt/pentest_tools/Postman/app/Postman /usr/local/bin/postman
+		if [[ -f /opt/pentest_tools/$(ls /opt/pentest_tools | grep setup-gui-x64) ]]; then
+			bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep setup-gui-x64)
+			for veracrypt_file in $(ls /opt/pentest_tools | grep setup); do rm -f /opt/pentest_tools/$veracrypt_file; done
+		fi
 	fi
 fi
 
