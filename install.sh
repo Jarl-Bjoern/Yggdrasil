@@ -42,7 +42,7 @@ NOCOLOR='\033[0m'
 function initials {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "|                    Kali Configurator                   |"
-        echo -e "|                       Version ${CYAN}0.6d${NOCOLOR}                     |"
+        echo -e "|                       Version ${CYAN}0.7${NOCOLOR}                     |"
         echo "|             Rainer Christian Bjoern Herold             |"
         echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
@@ -51,15 +51,44 @@ function clearing {
 	sleep 2 ; clear ; initials
 }
 
+function header() {
+	clear ; initials
+	if [ $1 = "category" ]; then
+		echo -e "\n          Please choose between one category"
+	elif [ $1 = "installation" ]; then
+		echo -e "\n          Please choose between one installation"
+	fi
+	echo "----------------------------------------------------------"
+	echo "|                                                        |"
+	if [ $1 = "category" ]; then
+		echo -e "|     ${RED}complete${NOCOLOR}    :   installation of both tools         |"
+		echo -e "|     ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools     |"
+		echo -e "|     ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools      |"
+	elif [ $1 = "installation" ]; then
+		echo -e "|            ${GREEN}full${NOCOLOR}    : full installation (GUI)           |"
+		echo -e "|            ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)        |"
+	fi
+	echo "|                                                        |"
+	echo -e "----------------------------------------------------------\n"
+}
+
+# Category
+header "category"
+
+read -p "Your Choice: " category_type
+if [ $category_type = "forensic" ]; then
+	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
+	Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+elif [ $category_type = "pentest" ];  then
+	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
+elif [ $category_type = "complete" ]; then
+	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
+else
+        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+fi
+
 # Installation_Type
-clear ; initials
-echo -e "\n          Please choose between one installation"
-echo "----------------------------------------------------------"
-echo "|                                                        |"
-echo -e "|            ${GREEN}full${NOCOLOR}    : full installation (GUI)           |"
-echo -e "|            ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)        |"
-echo "|                                                        |"
-echo -e "----------------------------------------------------------\n"
+header "installation"
 
 read -p "Your Choice: " decision
 if [ $decision = "full" ]; then
