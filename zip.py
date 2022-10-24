@@ -19,5 +19,5 @@ if __name__ == '__main__':
         else:
             if ('\n' in argv[1]): File = argv[1][:-1]
             else: File = argv[1]
-        unpack_archive(f'/opt/pentest_tools/{File}', f'/opt/pentest_tools/')
-        remove (f'/opt/pentest_tools/{File}')
+        unpack_archive(f'{argv[2]}/{File}', f'{argv[2]}/')
+        remove (f'{argv[2]}/{File}')
