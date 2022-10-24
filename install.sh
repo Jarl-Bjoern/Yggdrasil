@@ -63,6 +63,7 @@ function header() {
 	echo "|                                                        |"
 	if [ $1 = "category" ]; then
 		echo -e "|     ${RED}complete${NOCOLOR}    :   installation of both tools         |"
+		echo -e "|     ${CYAN}custom${NOCOLOR}      :   installation of custom tools       |"
 		echo -e "|     ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools     |"
 		echo -e "|     ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools      |"
 	elif [ $1 = "installation" ]; then
