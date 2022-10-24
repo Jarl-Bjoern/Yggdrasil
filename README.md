@@ -1,6 +1,10 @@
 # General Description
 
-With this repository certain processes are automated, you have the choice between "full_install", which is aimed at a Kali installation with GUI and "minimal_install", which is aimed at the CLI variant.
+This repository is used to automate certain processes. 
+
+Since version 0.7 it is now possible to choose between the three categories "Forensic", "Complete" and "Pentest".
+
+Furthermore, you have the choice between "full_install", which is aimed at a Kali installation with GUI and "minimal_install", which is aimed at the CLI variant.
 
 You have the possibility to customize the config files according to your needs.<br />
 
