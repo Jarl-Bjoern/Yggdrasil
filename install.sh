@@ -98,7 +98,7 @@ else
 fi
 
 # Installation_Type
-if [ $category = "custom" ]; then
+if [ $category_type = "custom" ]; then
 	File_Path="${Path_Way}/install.txt"
 else
 	header "installation"
