@@ -29,6 +29,7 @@ sudo bash install.sh
 ----------------------------------------------------------
 |                                                        |
 |     complete    :   installation of both tools         |
+|     custom      :   installation of custom tools       |
 |     forensic    :   installation of forensic tools     |
 |     pentest     :   installation of pentest tools      |
 |                                                        |
