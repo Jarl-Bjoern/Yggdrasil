@@ -380,7 +380,7 @@ COMMIT
 EOF
 	fi
 	sudo chmod 0600 /etc/iptables/*
-	systemctl enable --now netfilter-persistent.service
+	sudo systemctl enable --now netfilter-persistent.service
 
 	# SSH_Configuration
 	sudo sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
@@ -410,8 +410,10 @@ fi
 if [[ $(cat $File_Path | grep nessus) ]]; then
 	sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
-if [[ $decision = "full" ]];then
-	echo -e "\n"; cat $Informational
+if [ $category_type = "pentest" ];  then
+	if [[ $decision = "full" ]];then
+		echo -e "\n"; cat $Informational
+	fi
 fi
 for i in $(ls $OPT_Path | grep -E ".tar|.bz2|.zip|.rar"); do rm -f $OPT_Path/$i; done
 echo -e "\n---------------------------------------------------------------------------------\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
