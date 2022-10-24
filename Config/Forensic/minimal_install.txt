@@ -1,0 +1,26 @@
+# APT
+charon-cmd
+docker.io
+hexedit
+htop
+i3
+iptables-persistent
+libcharon-extra-plugins
+libcharon-extauth-plugins
+libstrongswan-extra-plugins
+netfilter-persistent
+nitrogen
+synaptic
+virt-manager
+
+# Docker
+
+# Git
+
+
+# Python
+docker-compose
+
+# Wget
+
+# Wordlists
