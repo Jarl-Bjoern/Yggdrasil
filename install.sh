@@ -83,7 +83,7 @@ elif [ $category_type = "pentest" ];  then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest"
 	OPT_Path="/opt/pentest_tools"
 elif [ $category_type = "complete" ]; then
-	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
+	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config"
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
