@@ -416,7 +416,7 @@ if [[ $(cat $File_Path | grep nessus) ]]; then
 	sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
 if [ $category_type = "pentest" ];  then
-	if [[ $decision = "full" ]];then
+	if [[ $decision = "full" ]]; then
 		echo -e "\n"; cat $Informational
 	fi
 fi
