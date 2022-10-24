@@ -68,6 +68,11 @@ function header() {
 	elif [ $1 = "installation" ]; then
 		echo -e "|            ${GREEN}full${NOCOLOR}    : full installation (GUI)           |"
 		echo -e "|            ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)        |"
+	elif [ $1 = "pentesting_category" ]; then
+		echo -e "|     ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting     |"
+		echo -e "|     ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting       |"
+		echo -e "|     ${RED}red_teaming${NOCOLOR}     :   tools for red teaming          |"
+		echo -e "|     ${GREEN}web${NOCOLOR}             :   tools for web pentesting       |"
 	fi
 	echo "|                                                        |"
 	echo -e "----------------------------------------------------------\n"
