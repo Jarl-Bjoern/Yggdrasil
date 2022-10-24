@@ -11,6 +11,7 @@
 # Vers 0.6b 08.10.2022
 # Vers 0.6c 18.10.2022
 # Vers 0.6d 22.10.2022
+# Vers 0.7 24.10.2022
 
 # Variables
 IP_INT=127.0.0.1
@@ -74,28 +75,27 @@ function header() {
 
 # Category
 header "category"
-
 read -p "Your Choice: " category_type
 if [ $category_type = "forensic" ]; then
-	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
-	Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Forensic"
+	OPT_Path="/opt/forensic_tools"
 elif [ $category_type = "pentest" ];  then
-	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
+	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest"
+	OPT_Path="/opt/pentest_tools"
 elif [ $category_type = "complete" ]; then
-	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
+	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
 
 # Installation_Type
 header "installation"
-
 read -p "Your Choice: " decision
 if [ $decision = "full" ]; then
-	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/full_install.txt"
+	File_Path="${Path_Way}/full_install.txt"
 	Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 elif [ $decision = "minimal" ];  then
-	File_Path="${FULL_PATH::-${#SCRIPT_NAME}}/Config/minimal_install.txt"
+	File_Path="${Path_Way}/minimal_install.txt"
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
@@ -169,9 +169,9 @@ do
 				FILE=$(echo $line | cut -d" " -f1)
 				MODE=$(echo $line | cut -d" " -f3)
 				if [ "$MODE" = "Executeable" ]; then
-					mkdir -p /opt/pentest_tools/$FILE_NAME ; cd /opt/pentest_tools/$FILE_NAME
+					mkdir -p $OPT_Path/$FILE_NAME ; cd $OPT_Path/$FILE_NAME
 					wget $FILE -O $FILE_NAME
-					chmod +x $FILE_NAME ; cd /opt/pentest_tools
+					chmod +x $FILE_NAME ; cd $OPT_Path
 				elif [ "$MODE" = "Archive" ]; then
 					wget --content-disposition $FILE
 					FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
