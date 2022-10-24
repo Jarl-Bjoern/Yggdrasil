@@ -183,9 +183,9 @@ do
 					wget --content-disposition $FILE
 					FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
 					if [[ ${#FILE_NAME} -gt 0 ]]; then
-						sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME
+						sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME $OPT_Path
 					else
-						sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE
+						sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE $OPT_Path
 					fi
 				fi
 			fi
@@ -380,7 +380,7 @@ COMMIT
 EOF
 	fi
 	sudo chmod 0600 /etc/iptables/*
-	sudo systemctl enable --now netfilter-persistent.service
+	systemctl enable --now netfilter-persistent.service
 
 	# SSH_Configuration
 	sudo sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
