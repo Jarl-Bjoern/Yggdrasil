@@ -88,4 +88,4 @@ https://dl.pstmn.io/download/latest/linux64 Postman Archive
 ```
 
 # Remark
-It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester, certain pre-settings.
+It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester or digital forensics, certain pre-settings.
