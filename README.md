@@ -31,6 +31,7 @@ sudo bash install.sh
 ----------------------------------------------------------
 
 Your Choice: pentest
+```
 
 ## Choose one of the two installation types
 ```bash
