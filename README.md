@@ -56,6 +56,16 @@ Your Choice: pentest
 
 Your Choice: full
 ```
+
+## Using the automated variant
+```bash
+# Automated Variant without SSH and Firewall configuration
+cat <<EOF | sudo bash /opt/Kali_Configurator/install.sh -s
+pentest
+full
+EOF
+```
+
 # Customize your installation
 You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a #).
 ```bash
