@@ -222,6 +222,10 @@ if [ $category_type = "pentest" ];  then
 			for veracrypt_file in $(ls /opt/pentest_tools | grep setup); do rm -f /opt/pentest_tools/$veracrypt_file; done
 		fi
 	fi
+
+	# Metasploit_Configuration
+	systemctl enable --now postgresql
+	msfdb init
 fi
 
 if [[ $1 != "-s" ]]; then
@@ -394,10 +398,6 @@ EOF
 	done
 	systemctl restart ssh.service
 fi
-
-# Metasploit_Configuration
-systemctl enable --now postgresql
-msfdb init
 
 # Docker_Standard_Images
 if [[ $(cat $File_Path | grep nessus) ]]; then
