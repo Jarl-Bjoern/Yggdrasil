@@ -91,6 +91,8 @@ elif [ $category_type = "pentest" ];  then
 elif [ $category_type = "complete" ]; then
         echo -e "\nUNDER CONSTRUCTION!\nPlease try again." ; exit
 	#Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config"
+elif [ $category_type = "custom" ]; then
+	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Custom"
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
