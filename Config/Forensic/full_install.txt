@@ -1,18 +1,36 @@
 # APT
+autoconf
+automake
+bison
+build-essential
+cargo
 charon-cmd
 docker.io
+ewf-tools
+filezilla
+flex
+foremost
 git
 hexedit
 htop
 i3
 iptables-persistent
 keepassxc
+kpartx
 libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
+libtool
+lvm2
+make
+moreutils
 netfilter-persistent
 nitrogen
+qemu-utils
+ranger
+sleuthkit
 synaptic
+tree
 virt-manager
 
 # Docker
@@ -21,6 +39,8 @@ virt-manager
 
 # Python
 docker-compose
+evtxtract
+regrippy
 
 # Wget
 https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-setup.tar.bz2 veracrypt Archive
