@@ -1,6 +1,7 @@
 # APT
 charon-cmd
 docker.io
+git
 hexedit
 htop
 i3
