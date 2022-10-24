@@ -18,7 +18,6 @@ virt-manager
 
 # Git
 
-
 # Python
 docker-compose
 
