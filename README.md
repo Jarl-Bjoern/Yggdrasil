@@ -28,7 +28,7 @@ sudo bash install.sh
           Please choose between one category
 ----------------------------------------------------------
 |                                                        |
-| [1] complete    :   installation of both tools         |
+| [1] complete    :   installation of both toolkits      |
 | [2] custom      :   installation of custom tools       |
 | [3] forensic    :   installation of forensic tools     |
 | [4] pentest     :   installation of pentest tools      |
