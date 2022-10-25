@@ -3,9 +3,9 @@ cargo
 charon-cmd
 docker.io
 git
+hexedit
 htop
 iptables-persistent
-keepassxc
 libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
