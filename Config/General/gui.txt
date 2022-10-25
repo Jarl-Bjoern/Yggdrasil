@@ -9,6 +9,9 @@ renderer
 ranger
 synaptic
 
+# Python
+pyautogui
+
 # Wget
 https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-setup.tar.bz2 veracrypt Archive
 https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.26.3.13353.tar.gz PyCharm Archive
