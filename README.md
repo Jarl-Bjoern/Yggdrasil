@@ -18,11 +18,13 @@ sudo bash install.sh
 ```
 ## Choose one of the three category types
 ```bash
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|                    Kali Configurator                   |
-|                       Version 0.7                      |
-|             Rainer Christian Bjoern Herold             |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                      💀
+💀                       Ragnarök                       💀
+💀                     Version 0.7b                     💀
+💀           Rainer Christian Bjoern Herold             💀
+💀                                                      💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 
 
           Please choose between one category
@@ -40,11 +42,13 @@ Your Choice: pentest
 
 ## Choose between one of the Pentesting categories
 ```bash
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|                    Kali Configurator                   |
-|                       Version 0.7                      |
-|             Rainer Christian Bjoern Herold             |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                      💀
+💀                       Ragnarök                       💀
+💀                     Version 0.7b                     💀
+💀           Rainer Christian Bjoern Herold             💀
+💀                                                      💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 
 
           Please choose between one category
@@ -63,11 +67,13 @@ Your Choice: infrastructure
 
 ## Choose one of the two installation types
 ```bash
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|                    Kali Configurator                   |
-|                       Version 0.7                      |
-|             Rainer Christian Bjoern Herold             |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                      💀
+💀                       Ragnarök                       💀
+💀                     Version 0.7b                     💀
+💀           Rainer Christian Bjoern Herold             💀
+💀                                                      💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 
 
           Please choose between one installation
