@@ -232,13 +232,13 @@ EOF
 fi
 
 # Standard_Installation
-File_Installer() "/Config/General/standard.txt" $OPT_Path
+File_Installer() "/Config/General/standard.txt" $OPT_Path "0"
 if [[ $decision = "full" || $decision = "1" ]]; then
-	File_Installer() "/Config/General/gui.txt" $OPT_Path
+	File_Installer() "/Config/General/gui.txt" $OPT_Path "0"
 fi
 
 # Tool_Installation
-File_Installer() $File_Path $OPT_Path
+File_Installer() $File_Path $OPT_Path "1"
 
 # Screen_Configuration
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
