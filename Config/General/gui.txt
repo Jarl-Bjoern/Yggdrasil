@@ -1,7 +1,9 @@
 # APT
 filezilla
 keepassxc
+kitty
 i3
+meld
 nitrogen
 renderer
 ranger
