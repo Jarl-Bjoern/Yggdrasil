@@ -120,6 +120,10 @@ function File_Installer() {
 						else
 							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE $2
 						fi
+					elif [ "$MODE" = "Installer" ]; then
+						sudo bash $2/$FILE_Name
+					elif [ "$MODE" = "DPKG" ]; then
+						sudo dpkg -i $2/$FILE_Name
 					fi
 				fi
 			fi
