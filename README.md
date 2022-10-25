@@ -11,8 +11,8 @@ You have the possibility to customize the config files according to your needs.<
 # How to download and install the tool
 ## Download and start the tool
 ```bash
-git clone https://github.com/Jarl-Bjoern/Kali_Configurator/
-cd Kali_Configurator
+git clone https://github.com/Jarl-Bjoern/Ragnaroek/
+cd Ragnaroek
 chmod +x *.sh *.py ; dos2unix $(find . -type f)
 sudo bash install.sh
 ```
@@ -105,7 +105,7 @@ feroxbuster
 YOUR_EXAMPLE
 
 # Git
-https://github.com/Jarl-Bjoern/Kali_Configurator/
+https://github.com/Jarl-Bjoern/Ragnaroek/
 ```
 
 For example, when you arrive at the "Wget" section, you need to see that they follow the structure below.
