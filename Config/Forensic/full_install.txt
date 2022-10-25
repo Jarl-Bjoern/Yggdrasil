@@ -4,35 +4,19 @@ automake
 bison
 build-essential
 bulk-extractor
-cargo
-charon-cmd
-docker.io
 ewf-tools
-filezilla
 flex
 foremost
-git
+ghidra
 hexedit
-htop
-i3
-iptables-persistent
-keepassxc
 kpartx
-libcharon-extra-plugins
-libcharon-extauth-plugins
-libstrongswan-extra-plugins
 libtool
 lvm2
 make
 moreutils
-netfilter-persistent
-nitrogen
 qemu-utils
-ranger
 sleuthkit
-synaptic
 tree
-virt-manager
 
 # Cargo
 evtx
@@ -48,11 +32,9 @@ nt_hive2
 https://github.com/airbus-cert/regrippy
 
 # Python
-docker-compose
 evtxtract
 regrippy
 
 # Wget
-https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-setup.tar.bz2 veracrypt Archive
 
 # Wordlists
