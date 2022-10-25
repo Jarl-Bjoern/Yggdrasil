@@ -90,7 +90,7 @@ Your Choice: full
 ## Using the automated variant
 ```bash
 # Automated Variant without Firewall, Hardening and SSH configuration
-cat <<EOF | sudo bash /opt/Kali_Configurator/install.sh -s
+cat <<EOF | sudo bash /opt/Ragnaroek/install.sh -s
 pentest
 infrastructure
 full
