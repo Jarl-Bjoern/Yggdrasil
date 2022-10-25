@@ -72,8 +72,9 @@ function header() {
 	elif [ $1 = "pentesting_category" ]; then
 		echo -e "| [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting     |"
 		echo -e "| [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting       |"
-		echo -e "| [${RED}3${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming          |"
-		echo -e "| [${CYAN}4${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting       |"
+		echo -e "| [${BLUE}3${NOCOLOR}] ${BLUE}mobile${NOCOLOR}          :   tools for mobile pentesting    |"
+		echo -e "| [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming          |"
+		echo -e "| [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting       |"
 	fi
 	echo "|                                                        |"
 	echo -e "----------------------------------------------------------\n"
