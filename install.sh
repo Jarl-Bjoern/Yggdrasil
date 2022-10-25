@@ -87,8 +87,22 @@ if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Forensic"
 	OPT_Path="/opt/forensic_tools"
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
-	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest"
 	OPT_Path="/opt/pentest_tools"
+	header "pentesting_category"
+	read -p "Your Choice: " pentesting
+	if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
+		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Infrastructure"
+	elif [[ $pentesting = "iot" || $pentesting = "2" ]];  then
+		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/IOT"
+	elif [[ $pentesting = "mobile" || $pentesting = "3" ]];  then
+		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Mobile"
+	elif [[ $pentesting = "read_teaming" || $pentesting = "4" ]];  then
+		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Read_Teaming"
+	elif [[ $pentesting = "web" || $pentesting = "5" ]];  then
+		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web"
+	else
+		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	fi
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         echo -e "\nUNDER CONSTRUCTION!\nPlease try again." ; exit
 	#Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config"
@@ -105,12 +119,12 @@ else
 	header "installation"
 	read -p "Your Choice: " decision
 	if [[ $decision = "full" || $decision = "1" ]]; then
-		File_Path="${Path_Way}/full_install.txt"
+		File_Path="${Path_Way}/full.txt"
 		if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 			Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 		fi
 	elif [[ $decision = "minimal" || $decision = "2" ]];  then
-		File_Path="${Path_Way}/minimal_install.txt"
+		File_Path="${Path_Way}/minimal.txt"
 	else
 		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	fi
