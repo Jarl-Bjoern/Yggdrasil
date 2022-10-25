@@ -38,6 +38,29 @@ sudo bash install.sh
 Your Choice: pentest
 ```
 
+## Choose between one of the Pentesting categories
+```bash
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|                    Kali Configurator                   |
+|                       Version 0.7                      |
+|             Rainer Christian Bjoern Herold             |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+          Please choose between one category
+----------------------------------------------------------
+|                                                        |
+| [1] infrastructure  :   tools for infra pentesting     |
+| [2] iot             :   tools for iot pentesting       |
+| [3] mobile          :   tools for mobile pentesting    |
+| [4] red_teaming     :   tools for red teaming          |
+| [5] web             :   tools for web pentesting       |
+|                                                        |
+----------------------------------------------------------
+
+Your Choice: infrastructure
+```
+
 ## Choose one of the two installation types
 ```bash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
