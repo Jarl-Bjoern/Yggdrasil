@@ -63,6 +63,7 @@ Your Choice: full
 # Automated Variant without Firewall, Hardening and SSH configuration
 cat <<EOF | sudo bash /opt/Kali_Configurator/install.sh -s
 pentest
+infrastructure
 full
 EOF
 ```
