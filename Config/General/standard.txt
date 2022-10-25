@@ -1,0 +1,17 @@
+# APT
+cargo
+charon-cmd
+docker.io
+git
+htop
+iptables-persistent
+keepassxc
+libcharon-extra-plugins
+libcharon-extauth-plugins
+libstrongswan-extra-plugins
+netfilter-persistent
+tor
+torbrowser-launcher
+
+# Python
+docker-compose
