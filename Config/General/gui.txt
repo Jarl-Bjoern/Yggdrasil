@@ -1,0 +1,9 @@
+# APT
+keepassxc
+i3
+synaptic
+nitrogen
+renderer
+
+# Wget
+https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-setup.tar.bz2 veracrypt Archive
