@@ -12,6 +12,7 @@
 # Vers 0.6c 18.10.2022
 # Vers 0.6d 22.10.2022
 # Vers 0.7 24.10.2022
+# Vers 0.7b 25.10.2022
 
 # Variables
 IP_INT=127.0.0.1
@@ -43,7 +44,7 @@ NOCOLOR='\033[0m'
 function initials {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "|                    Kali Configurator                   |"
-        echo -e "|                       Version ${CYAN}0.7${NOCOLOR}                      |"
+        echo -e "|                       Version ${CYAN}0.7b${NOCOLOR}                     |"
         echo "|             Rainer Christian Bjoern Herold             |"
         echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 }
@@ -78,6 +79,53 @@ function header() {
 	fi
 	echo "|                                                        |"
 	echo -e "----------------------------------------------------------\n"
+}
+
+function File_Installer() {
+	input=$1
+	while IFS= read -r line
+	do
+		if [[ $line = "# APT" ]]; then
+			Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false
+		elif [[ $line = "# Cargo" ]]; then
+			Command="sudo cargo install" ; Skip=true ; Switch_WGET=false
+		elif [[ $line = "# Docker" ]]; then
+			Command="docker pull" ; Skip=true ; Switch_WGET=false
+		elif [[ $line = "# Python" ]]; then
+			Command="pip3 install" ; Skip=true ; Switch_WGET=false
+		elif [[ $line = "# Git" ]]; then
+			Command="git clone" ; Skip=true ; mkdir -p $2 ; cd $2 ; Switch_WGET=false
+		elif [[ $line = "# Wordlists" ]]; then
+			Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
+		elif [[ $line = "# Wget" ]]; then
+			Switch_WGET=true
+		else
+			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
+				echo -e "-------------------------------------------------------------------------------\n\nDownload ${ORANGE}$line${NOCOLOR}"
+				if [ "$Switch_WGET" = false ]; then
+					eval "$Command $line"
+				else
+					FILE_NAME=$(echo "$line" | cut -d" " -f2)
+					FILE=$(echo $line | cut -d" " -f1)
+					MODE=$(echo $line | cut -d" " -f3)
+					if [ "$MODE" = "Executeable" ]; then
+						mkdir -p $2/$FILE_NAME ; cd $2/$FILE_NAME
+						wget $FILE -O $FILE_NAME
+						chmod +x $FILE_NAME ; cd $2
+					elif [ "$MODE" = "Archive" ]; then
+						wget --content-disposition $FILE
+						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
+						if [[ ${#FILE_NAME} -gt 0 ]]; then
+							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME $2
+						else
+							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE $2
+						fi
+					fi
+				fi
+			fi
+		fi
+		Skip=false
+	done < $input
 }
 
 # Category
@@ -175,51 +223,14 @@ if [[ !${#LEN_CRON} -gt 0 ]]; then
 EOF
 fi
 
+# Standard_Installation
+File_Installer() "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/standard.txt" $OPT_Path
+if [[ $decision = "full" || $decision = "1" ]]; then
+	File_Installer() "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/gui.txt" $OPT_Path
+fi
+
 # Tool_Installation
-input=$File_Path
-while IFS= read -r line
-do
-        if [[ $line = "# APT" ]]; then
-                Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false
-	elif [[ $line = "# Cargo" ]]; then
-		Command="sudo cargo install" ; Skip=true ; Switch_WGET=false
-        elif [[ $line = "# Docker" ]]; then
-                Command="docker pull" ; Skip=true ; Switch_WGET=false
-        elif [[ $line = "# Python" ]]; then
-                Command="pip3 install" ; Skip=true ; Switch_WGET=false
-        elif [[ $line = "# Git" ]]; then
-                Command="git clone" ; Skip=true ; mkdir -p $OPT_Path ; cd $OPT_Path ; Switch_WGET=false
-	elif [[ $line = "# Wordlists" ]]; then
-		Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
-	elif [[ $line = "# Wget" ]]; then
-		Switch_WGET=true
-        else
-		if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
-			echo -e "-------------------------------------------------------------------------------\n\nDownload ${ORANGE}$line${NOCOLOR}"
-			if [ "$Switch_WGET" = false ]; then
-				eval "$Command $line"
-			else
-				FILE_NAME=$(echo "$line" | cut -d" " -f2)
-				FILE=$(echo $line | cut -d" " -f1)
-				MODE=$(echo $line | cut -d" " -f3)
-				if [ "$MODE" = "Executeable" ]; then
-					mkdir -p $OPT_Path/$FILE_NAME ; cd $OPT_Path/$FILE_NAME
-					wget $FILE -O $FILE_NAME
-					chmod +x $FILE_NAME ; cd $OPT_Path
-				elif [ "$MODE" = "Archive" ]; then
-					wget --content-disposition $FILE
-					FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-					if [[ ${#FILE_NAME} -gt 0 ]]; then
-						sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME $OPT_Path
-					else
-						sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE $OPT_Path
-					fi
-				fi
-			fi
-		fi
-	fi
-	Skip=false
-done < $input
+File_Installer() $File_Path $OPT_Path
 
 # Screen_Configuration
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
