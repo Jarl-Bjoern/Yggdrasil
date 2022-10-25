@@ -23,6 +23,6 @@ if __name__ == '__main__':
             else: File = argv[1]
         try: unpack_archive(f'{argv[2]}/{File}', f'{argv[2]}/')
         except ReadError:
-            with tfopen(f'{argv[2]/{File}}') as f:
-                f.extractall(f'{argv[2]/}')
+            with tfopen(f'{argv[2]}/{File}') as f:
+                f.extractall(f'{argv[2]}/')
         remove (f'{argv[2]}/{File}')
