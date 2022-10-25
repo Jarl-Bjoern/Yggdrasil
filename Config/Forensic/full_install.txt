@@ -9,6 +9,7 @@ flex
 foremost
 ghidra
 hexedit
+jd-gui
 kpartx
 libtool
 lvm2
