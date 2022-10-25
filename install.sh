@@ -133,6 +133,10 @@ function File_Installer() {
 	done < $input
 }
 
+if [ "$1" = "-s" ]; then
+	echo -e "-s	:	The parameter skips the firewall, hardening and SSH part\n" ; exit
+fi
+
 # Category
 header "category"
 read -p "Your Choice: " category_type
