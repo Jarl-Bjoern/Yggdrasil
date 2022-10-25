@@ -108,6 +108,7 @@ function File_Installer() {
 					FILE_NAME=$(echo "$line" | cut -d" " -f2)
 					FILE=$(echo $line | cut -d" " -f1)
 					MODE=$(echo $line | cut -d" " -f3)
+					cd $2
 					if [ "$MODE" = "Executeable" ]; then
 						mkdir -p $2/$FILE_NAME ; cd $2/$FILE_NAME
 						wget $FILE -O $FILE_NAME
