@@ -42,11 +42,13 @@ NOCOLOR='\033[0m'
 
 # Functions
 function initials {
-        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        echo "|                    Kali Configurator                   |"
-        echo -e "|                       Version ${CYAN}0.7b${NOCOLOR}                     |"
-        echo "|             Rainer Christian Bjoern Herold             |"
-        echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+        echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
+        echo "💀                                                      💀"
+        echo "💀                      Ragnarök                        💀"
+        echo -e "💀                    Version ${CYAN}0.7b${NOCOLOR}                      💀"
+        echo "💀          Rainer Christian Bjoern Herold              💀"
+        echo "💀                                                      💀"
+        echo -e "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n"
 }
 
 function clearing {
@@ -60,7 +62,7 @@ function header() {
 	elif [ $1 = "installation" ]; then
 		echo -e "\n          Please choose between one installation"
 	fi
-	echo "----------------------------------------------------------"
+	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}"
 	echo "|                                                        |"
 	if [ $1 = "category" ]; then
 		echo -e "| [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both toolkits      |"
@@ -78,7 +80,7 @@ function header() {
 		echo -e "| [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting       |"
 	fi
 	echo "|                                                        |"
-	echo -e "----------------------------------------------------------\n"
+	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
 }
 
 function File_Installer() {
@@ -135,9 +137,9 @@ function File_Installer() {
 
 if [[ $1 == "-h" ]]; then
         clear ; initials
-        echo -e "\n----------------------------------------------------------"
+        echo -e "\n${CYAN}----------------------------------------------------------${NOCOLOR}"
         echo -e "\n    ${ORANGE}-s${NOCOLOR}    :   This parameter skips the hardening part      \n"
-        echo -e "----------------------------------------------------------\n"
+        echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
         exit
 fi
 
@@ -199,13 +201,13 @@ if [[ $1 != "-s" ]]; then
 	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
 
 	echo -e "\n           Please select an IP address to be used\n                   for SSH configuration"
-	echo -e "----------------------------------------------------------\n"
+	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
 	n=0
 	while [[ n -le ${#ARRAY_NIC[@]} ]]; do
         	echo -e "                  " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} ${ARRAY_IP[n]}
         	n=$((n + 1))
 	done
-	echo -e "----------------------------------------------------------\n"
+	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
 	read -p "Your Choice: " IP_TEMP
 	if [[ ${#IP_TEMP} -gt 0 ]]; then
 		LEN_CHECK=$(ip a | grep "$IP_TEMP")
