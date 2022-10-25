@@ -4,25 +4,15 @@ automake
 bison
 build-essential
 bulk-extractor
-cargo
-charon-cmd
-docker.io
 ewf-tools
 flex
 foremost
-git
 hexedit
-htop
-iptables-persistent
 kpartx
-libcharon-extra-plugins
-libcharon-extauth-plugins
-libstrongswan-extra-plugins
 libtool
 lvm2
 make
 moreutils
-netfilter-persistent
 ranger
 sleuthkit
 tree
@@ -41,7 +31,6 @@ nt_hive2
 https://github.com/airbus-cert/regrippy
 
 # Python
-docker-compose
 evtxtract
 regrippy
 
