@@ -82,7 +82,11 @@ function header() {
 }
 
 function File_Installer() {
-	input=$1
+	if [ $3 = "0" ]; then
+		input=${FULL_PATH::-${#SCRIPT_NAME}}$1
+	else
+		input=$1
+	fi
 	while IFS= read -r line
 	do
 		if [[ $line = "# APT" ]]; then
@@ -228,9 +232,9 @@ EOF
 fi
 
 # Standard_Installation
-File_Installer() "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/standard.txt" $OPT_Path
+File_Installer() "/Config/General/standard.txt" $OPT_Path
 if [[ $decision = "full" || $decision = "1" ]]; then
-	File_Installer() "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/gui.txt" $OPT_Path
+	File_Installer() "/Config/General/gui.txt" $OPT_Path
 fi
 
 # Tool_Installation
