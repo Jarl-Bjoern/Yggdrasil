@@ -1,7 +1,9 @@
 # APT
+bat
 cargo
 charon-cmd
 docker.io
+fish
 git
 hexedit
 htop
@@ -10,6 +12,8 @@ libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
 netfilter-persistent
+screen
+tmux
 tor
 torbrowser-launcher
 
