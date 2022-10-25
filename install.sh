@@ -133,8 +133,12 @@ function File_Installer() {
 	done < $input
 }
 
-if [ "$1" = "-s" ]; then
-	echo -e "-s	:	The parameter skips the firewall, hardening and SSH part\n" ; exit
+if [[ $1 == "-h" ]]; then
+        clear ; initials
+        echo -e "\n----------------------------------------------------------"
+        echo -e "\n    ${ORANGE}-s${NOCOLOR}    :   This parameter skips the hardening part      \n"
+        echo -e "----------------------------------------------------------\n"
+        exit
 fi
 
 # Category
