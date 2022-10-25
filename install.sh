@@ -82,11 +82,7 @@ function header() {
 }
 
 function File_Installer() {
-	if [ $3 = "0" ]; then
-		input=${FULL_PATH::-${#SCRIPT_NAME}}$1
-	else
-		input=$1
-	fi
+	input=$1
 	while IFS= read -r line
 	do
 		if [[ $line = "# APT" ]]; then
@@ -232,13 +228,13 @@ EOF
 fi
 
 # Standard_Installation
-File_Installer() "/Config/General/standard.txt" $OPT_Path "0"
+File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/standard.txt" $OPT_Path
 if [[ $decision = "full" || $decision = "1" ]]; then
-	File_Installer() "/Config/General/gui.txt" $OPT_Path "0"
+	File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/gui.txt" $OPT_Path
 fi
 
 # Tool_Installation
-File_Installer() $File_Path $OPT_Path "1"
+File_Installer $File_Path $OPT_Path
 
 # Screen_Configuration
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
