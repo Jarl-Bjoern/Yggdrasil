@@ -484,5 +484,5 @@ if [[ $category_type = "pentest" || $category_type = "4"  ]];  then
 		echo -e "\n"; cat $Informational
 	fi
 fi
-for i in $(ls $OPT_Path | grep -E ".sh|.deb|.tar|.bz2|.zip|.rar"); do rm -f $OPT_Path/$i; done
+for i in $(ls $OPT_Path | grep --include -E "*.sh|*.deb|*.tar|*.bz2|*.zip|*.rar"); do rm -f $OPT_Path/$i; done
 echo -e "\n---------------------------------------------------------------------------------\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
