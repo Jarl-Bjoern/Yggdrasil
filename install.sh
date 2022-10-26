@@ -79,7 +79,7 @@ function header() {
 		echo -e "${RED}|${NOCOLOR} [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming          ${RED}|${NOCOLOR}"
 		echo -e "${RED}|${NOCOLOR} [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting       ${RED}|${NOCOLOR}"
 	fi
-	echo "${RED}|${NOCOLOR}                                                        ${RED}|${NOCOLOR}"
+	echo -e "${RED}|${NOCOLOR}                                                        ${RED}|${NOCOLOR}"
 	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
 }
 
