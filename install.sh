@@ -103,7 +103,7 @@ function File_Installer() {
 			Switch_WGET=true
 		else
 			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
-				echo -e "-------------------------------------------------------------------------------\n\nDownload ${ORANGE}$line${NOCOLOR}"
+				echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"
 				if [ "$Switch_WGET" = false ]; then
 					eval "$Command $line"
 				else
