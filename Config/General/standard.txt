@@ -4,8 +4,11 @@ cargo
 charon-cmd
 docker.io
 fish
+g++
+gcc
 git
 gnutls-bin
+golang
 hexedit
 htop
 iptables-persistent
