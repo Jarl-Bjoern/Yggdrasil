@@ -126,11 +126,11 @@ function File_Installer() {
 					elif [ "$MODE" = "Installer" ]; then
 						wget --content-disposition $FILE
 						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-						sudo bash $2/$FILE_Name
+						sudo bash $2/$FILE_NAME
 					elif [ "$MODE" = "DPKG" ]; then
 						wget --content-disposition $FILE
 						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-						sudo dpkg -i $2/$FILE_Name					
+						sudo dpkg -i $2/$FILE_NAME
 					fi
 				fi
 			fi
