@@ -18,6 +18,7 @@ libstrongswan-extra-plugins
 netfilter-persistent
 openconnect
 opensc
+ruby-full
 screen
 tmux
 tor
