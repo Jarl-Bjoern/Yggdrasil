@@ -15,6 +15,7 @@ iptables-persistent
 libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
+mono-complete
 netfilter-persistent
 openconnect
 opensc
