@@ -25,3 +25,6 @@ torbrowser-launcher
 
 # Python
 docker-compose
+
+# Wget
+https://sh.rustup.rs Rust Installer
