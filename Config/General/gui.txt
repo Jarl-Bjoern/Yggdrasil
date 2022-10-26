@@ -5,7 +5,7 @@ kitty
 i3
 meld
 nitrogen
-renderer
+putty
 ranger
 synaptic
 
