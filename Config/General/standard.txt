@@ -5,6 +5,7 @@ charon-cmd
 docker.io
 fish
 git
+gnutls-bin
 hexedit
 htop
 iptables-persistent
@@ -12,6 +13,8 @@ libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
 netfilter-persistent
+openconnect
+opensc
 screen
 tmux
 tor
