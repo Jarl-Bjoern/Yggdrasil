@@ -126,7 +126,11 @@ function File_Installer() {
 					elif [ "$MODE" = "Installer" ]; then
 						wget --content-disposition $FILE
 						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-						sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2)
+						if [[ $FILE_NAME =~ "rustup" ]];
+							sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2) -y
+						else
+							sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2)
+						fi
 					elif [ "$MODE" = "DPKG" ]; then
 						wget --content-disposition $FILE
 						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
