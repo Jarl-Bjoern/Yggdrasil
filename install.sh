@@ -136,6 +136,7 @@ function File_Installer() {
 			fi
 		fi
 		Skip=false
+		sleep 0.15
 	done < $input
 }
 
