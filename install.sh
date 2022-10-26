@@ -124,9 +124,15 @@ function File_Installer() {
 							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE $2
 						fi
 					elif [ "$MODE" = "Installer" ]; then
+						wget --content-disposition $FILE
+						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
 						sudo bash $2/$FILE_Name
 					elif [ "$MODE" = "DPKG" ]; then
-						sudo dpkg -i $2/$FILE_Name
+						wget --content-disposition $FILE
+						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
+						if [[ ${#FILE_NAME} -gt 0 ]]; then
+							sudo dpkg -i $2/$FILE_Name
+						fi						
 					fi
 				fi
 			fi
