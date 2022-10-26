@@ -130,9 +130,7 @@ function File_Installer() {
 					elif [ "$MODE" = "DPKG" ]; then
 						wget --content-disposition $FILE
 						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-						if [[ ${#FILE_NAME} -gt 0 ]]; then
-							sudo dpkg -i $2/$FILE_Name
-						fi						
+						sudo dpkg -i $2/$FILE_Name					
 					fi
 				fi
 			fi
