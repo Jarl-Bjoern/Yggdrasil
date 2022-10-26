@@ -107,11 +107,11 @@ function File_Installer() {
 				if [ "$Switch_WGET" = false ]; then
 					eval "$Command $line"
 				else
-					FILE_NAME=$(echo "$line" | cut -d" " -f2)
 					FILE=$(echo $line | cut -d" " -f1)
 					MODE=$(echo $line | cut -d" " -f3)
 					mkdir -p $2 ; cd $2
 					if [ "$MODE" = "Executeable" ]; then
+						FILE_NAME=$(echo "$line" | cut -d" " -f2)
 						mkdir -p $2/$FILE_NAME ; cd $2/$FILE_NAME
 						wget $FILE -O $FILE_NAME
 						chmod +x $FILE_NAME ; cd $2
@@ -132,9 +132,16 @@ function File_Installer() {
 							sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2)
 						fi
 					elif [ "$MODE" = "DPKG" ]; then
-						wget --content-disposition $FILE
 						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-						sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2)
+						if [[ ${#FILE_NAME} -gt 0 ]]; then
+							wget --content-disposition $FILE
+							sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2)
+						else
+							FILE_NAME=$(echo "$line" | cut -d" " -f2)
+							wget $FILE -O $FILE_NAME.deb
+							sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2).deb
+						fi
+
 					fi
 				fi
 			fi
