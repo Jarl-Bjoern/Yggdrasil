@@ -8,6 +8,7 @@ nitrogen
 putty
 ranger
 synaptic
+texstudio
 
 # Python
 pyautogui
