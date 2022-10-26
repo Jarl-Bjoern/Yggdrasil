@@ -126,7 +126,7 @@ function File_Installer() {
 					elif [ "$MODE" = "Installer" ]; then
 						wget --content-disposition $FILE
 						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-						if [[ $FILE_NAME =~ "rustup" ]];
+						if [[ $FILE_NAME =~ "rustup" ]]; then
 							sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2) -y
 						else
 							sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2)
