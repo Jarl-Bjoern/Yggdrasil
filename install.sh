@@ -119,9 +119,9 @@ function File_Installer() {
 						wget --content-disposition $FILE
 						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
 						if [[ ${#FILE_NAME} -gt 0 ]]; then
-							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE_NAME $2
+							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE_NAME $2
 						else
-							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/zip.py $FILE $2
+							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE $2
 						fi
 					elif [ "$MODE" = "Installer" ]; then
 						wget --content-disposition $FILE
@@ -366,7 +366,7 @@ EOF
 	sudo sysctl --system
 	# Firewall_Configuration
 	if [ -f /etc/iptables/rules.v4 ]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/filter.py
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py
 		sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
 		sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
 		sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
@@ -400,7 +400,7 @@ EOF
 	fi
 
 	if [ -f /etc/iptables/rules.v6 ]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/filter.py
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py
 		sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
 		sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
 		sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
