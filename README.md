@@ -110,7 +110,7 @@ https://github.com/Jarl-Bjoern/Ragnaroek/
 
 For example, when you arrive at the "Wget" section, you need to see that they follow the structure below.
 
-"URL" "Name" "Method
+"URL" "Name" "Method"
 
 ```bash
 # Wget
