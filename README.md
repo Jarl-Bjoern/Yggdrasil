@@ -44,7 +44,7 @@ Your Choice: pentest
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                      💀
-💀                       Ragnarök                       💀
+💀                       Yggdrasil                      💀
 💀                     Version 0.7b                     💀
 💀           Rainer Christian Bjoern Herold             💀
 💀                                                      💀
@@ -69,7 +69,7 @@ Your Choice: infrastructure
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                      💀
-💀                       Ragnarök                       💀
+💀                       Yggdrasil                      💀
 💀                     Version 0.7b                     💀
 💀           Rainer Christian Bjoern Herold             💀
 💀                                                      💀
