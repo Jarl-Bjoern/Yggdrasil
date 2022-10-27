@@ -45,7 +45,7 @@ NOCOLOR='\033[0m'
 function initials {
         echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
         echo "💀                                                      💀"
-        echo "💀                       Ragnarök                       💀"
+        echo "💀                       Yggdrasil                      💀"
         echo -e "💀                     Version ${CYAN}0.7c${NOCOLOR}                     💀"
         echo "💀           Rainer Christian Bjoern Herold             💀"
         echo "💀                                                      💀"
