@@ -292,6 +292,9 @@ if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	if [ -d "/opt/pentest_tools/socketcand" ]; then
 		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; make ; make install
 	fi
+	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)" ]; then
+		cd /opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains) ; sudo bash jetbrains-toolbox
+	fi
 
 	# Metasploit_Configuration
 	sudo systemctl enable --now postgresql
