@@ -289,6 +289,9 @@ if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	if [ -d "/opt/pentest_tools/ssh_scan" ]; then
 		cd /opt/pentest_tools/ssh_scan ; sudo gem install bundler ; sudo bundle install
 	fi
+	if [ -d "/opt/pentest_tools/socketcand" ]; then
+		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; make ; make install
+	fi
 
 	# Metasploit_Configuration
 	sudo systemctl enable --now postgresql
