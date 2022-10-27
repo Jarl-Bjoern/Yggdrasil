@@ -16,6 +16,7 @@ libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
 mono-complete
+neovim
 netfilter-persistent
 openconnect
 opensc
