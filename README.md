@@ -16,6 +16,21 @@ cd Yggdrasil
 sudo chmod +x $(find . -type f | grep -E "install.sh|*.py") ; sudo dos2unix $(find . -type f)
 sudo python3 main.py
 ```
+
+## Using the help section to see which parameters do we have
+```bash
+usage: main.py [-p PATH] [-s [SKIP]] [-h]
+
+optional arguments:
+  -p PATH, --path PATH  This parameter specifies the target path of your custom tools.
+                        -------------------------------------------------------------------------------------
+  -s [SKIP], --skip [SKIP]
+                        This parameter skips the hardening part.
+                        -------------------------------------------------------------------------------------
+  -h, --help            Show this help message and exit.
+                        -------------------------------------------------------------------------------------
+```
+
 ## Choose one of the three category types
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
