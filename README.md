@@ -13,7 +13,7 @@ You have the possibility to customize the config files according to your needs.<
 ```bash
 git clone https://github.com/Jarl-Bjoern/Yggdrasil/
 cd Yggdrasil
-chmod +x *.sh *.py ; dos2unix $(find . -type f)
+chmod +x $(find . -type f | grep -E "install.sh|*.py") ; dos2unix $(find . -type f)
 sudo bash install.sh
 ```
 ## Choose one of the three category types
