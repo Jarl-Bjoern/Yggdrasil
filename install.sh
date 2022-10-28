@@ -168,6 +168,7 @@ if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 	OPT_Path="/opt/forensic_tools"
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	OPT_Path="/opt/pentest_tools"
+	sed -i s/'kali/pentest-kali'/g /etc/hostname
 	header "pentesting_category"
 	read -p "Your Choice: " pentesting
 	if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
