@@ -35,7 +35,7 @@ except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlea
 # main
 if __name__ == '__main__':
     File_Path = dirname(realpath(__file__))
-    Start_Script = join(File_Path, "Bash/install.sh")
+    Start_Script = join(File_Path, "configurator.sh")
     parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter)
     optional = parser.add_argument_group('optional arguments')
 
