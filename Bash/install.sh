@@ -139,14 +139,23 @@ function File_Installer() {
 	done < $input
 }
 
-if [[ $1 == "-s" || $2 == "-s" ]]; then
-	Switch_Skip=true
+if [ $1 ]; then
+	if [[ $1 == "-s" ]]; then
+		Switch_Skip=true
+	elif [[ !${#$1} -gt 2 ]]; then
+		if [[ -d $1 ]]; then
+			PATH_Install_Dir=$1
+		fi
+	fi
 fi
-if [[ !${#$1} -gt 2 || !${#$2} -gt 2]]; then
-	if [[ -d $1 ]]; then
-		PATH_Install_Dir=$1
-	elif [[ -d $2 ]]; then
-		PATH_Install_Dir=$2
+
+if [ $2 ]; then
+	if [[ $2 == "-s" ]]; then
+		Switch_Skip=true
+	elif [[ !${#$2} -gt 2 ]]; then
+		if [[ -d $2 ]]; then
+			PATH_Install_Dir=$2
+		fi
 	fi
 fi
 
