@@ -7,6 +7,8 @@ SCRIPT_NAME=$(basename $BASH_SOURCE)
 PATH_SCREEN=""
 Skip=false
 Switch_WGET=false
+Switch_Skip=false
+PATH_Install_Dir=""
 
 # Arrays
 declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
@@ -137,12 +139,15 @@ function File_Installer() {
 	done < $input
 }
 
-if [[ $1 == "-h" ]]; then
-        clear ; initials
-        echo -e "\n${CYAN}----------------------------------------------------------${NOCOLOR}"
-        echo -e "\n    ${ORANGE}-s${NOCOLOR}    :   This parameter skips the hardening part      \n"
-        echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
-        exit
+if [[ $1 == "-s" || $2 == "-s" ]]; then
+	Switch_Skip=true
+fi
+if [[ !${#$1} -gt 2 || !${#$2} -gt 2]]; then
+	if [[ -d $1 ]]; then
+		PATH_Install_Dir=$1
+	elif [[ -d $2 ]]; then
+		PATH_Install_Dir=$2
+	fi
 fi
 
 # Category
@@ -198,7 +203,7 @@ fi
 
 # SSH_IP_Address
 clearing
-if [[ $1 != "-s" ]]; then
+if [[ $Switch_Skip != true ]]; then
 	NIC=$(ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker|veth")
 	IP=$(ifconfig | grep "inet" | grep -v "inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1" | sort -u)
 	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
@@ -297,7 +302,7 @@ if [[ $decision = "full" || $decision = "1" ]]; then
 	fi
 fi
 
-if [[ $1 != "-s" ]]; then
+if [[ $Switch_Skip != true ]]; then
 	declare -a Array_HARDENING=("#Protecting_against_IP-Spoofing"
 	"net.ipv4.conf.default.rp_filter=1"
 	"net.ipv4.conf.all.rp_filter=1"
