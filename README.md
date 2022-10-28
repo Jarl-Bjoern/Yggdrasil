@@ -11,9 +11,9 @@ You have the possibility to customize the config files according to your needs.<
 # How to download and install the tool
 ## Download and start the tool
 ```bash
-git clone https://github.com/Jarl-Bjoern/Yggdrasil/
+sudo git clone https://github.com/Jarl-Bjoern/Yggdrasil/
 cd Yggdrasil
-chmod +x $(find . -type f | grep -E "install.sh|*.py") ; dos2unix $(find . -type f)
+sudo chmod +x $(find . -type f | grep -E "install.sh|*.py") ; sudo dos2unix $(find . -type f)
 sudo python3 main.py
 ```
 ## Choose one of the three category types
