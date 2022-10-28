@@ -11,8 +11,8 @@ You have the possibility to customize the config files according to your needs.<
 # How to download and install the tool
 ## Download and start the tool
 ```bash
-git clone https://github.com/Jarl-Bjoern/Ragnaroek/
-cd Ragnaroek
+git clone https://github.com/Jarl-Bjoern/Yggdrasil/
+cd Yggdrasil
 chmod +x *.sh *.py ; dos2unix $(find . -type f)
 sudo bash install.sh
 ```
