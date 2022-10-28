@@ -1,19 +1,4 @@
 #!/bin/bash
-# Rainer Christian Bjoern Herold
-# Vers 0.1 03.05.2022
-# Vers 0.2 03.06.2022
-# Vers 0.3 24.09.2022
-# Vers 0.4 30.09.2022
-# Vers 0.5 01.10.2022
-# Vers 0.5c 01.10.2022
-# Vers 0.5d 04.10.2022
-# Vers 0.6 07.10.2022
-# Vers 0.6b 08.10.2022
-# Vers 0.6c 18.10.2022
-# Vers 0.6d 22.10.2022
-# Vers 0.7 24.10.2022
-# Vers 0.7b 25.10.2022
-# Vers 0.7c 27.10.2022
 
 # Variables
 IP_INT=127.0.0.1
