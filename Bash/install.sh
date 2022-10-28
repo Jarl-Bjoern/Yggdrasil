@@ -300,6 +300,9 @@ if [[ $decision = "full" || $decision = "1" ]]; then
 		sudo bash $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
 		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
 	fi
+	if [[ !${#PATH_Install_Dir} -gt 0 ]]; then
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py $PATH_Install_Dir
+	fi
 fi
 
 if [[ $Switch_Skip != true ]]; then
