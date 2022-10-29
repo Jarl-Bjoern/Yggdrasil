@@ -10,10 +10,6 @@ from sys import argv
 from time import sleep
 from threading import Thread
 
-# Arrays
-
-# Variables
-
 # Functions
 def Press_Key(key, seconds): press(key), sleep(seconds)
 
