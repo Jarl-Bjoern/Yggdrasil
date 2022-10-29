@@ -7,8 +7,23 @@
 from pyautogui import hotkey, press, write as autowrite
 from sys import argv
 from time import sleep
-from threading import Thread
+
+# Arrays
+
+# Variables
+
+# Functions
+def Veracrypt_Install():
+  press("1"), sleep(2)
+  press("Enter"), sleep(2)
+  press("Enter"), sleep(2)
+  for i in range(0,8):
+    hotkey("shift", "v")
+    sleep(0.5)
+  autowrite("yes"), sleep(0.5)
+  press("Enter"), sleep(2)
+  press("Enter")
 
 # Main
 if __name__ == '__main__':
-  pass
+  if (argv == "Veracrypt"): Veracrypt_Install()
