@@ -51,4 +51,5 @@ if __name__ == '__main__':
     elif (args.path == None and args.skip != None and args.accept_licenses == None): system(f'sudo bash {Start_Script} -s')
     elif (args.path == None and args.skip != None and args.accept_licenses != None): system(f'sudo bash {Start_Script} -s -aL')
     elif (args.path != None and args.skip != None and args.accept_licenses == None): system(f'sudo bash {Start_Script} -s {args.path}')
+    elif (args.path == None and args.skip == None and args.accept_licenses != None): system(f'sudo bash {Start_Script} -aL')
     else: system(f'sudo bash {Start_Script}')
