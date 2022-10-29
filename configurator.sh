@@ -148,9 +148,10 @@ function File_Installer() {
 }
 
 if [ $1 ]; then
+	LEN_ARGV=$(wc -c <<< "$1")
 	if [[ $1 == "-s" ]]; then
 		Switch_Skip=true
-	elif [[ !${#$1} -gt 2 ]]; then
+	elif [[ $LEN_ARGV -gt 2 ]]; then
 		if [[ -d $1 ]]; then
 			PATH_Install_Dir=$1
 		fi
@@ -158,9 +159,10 @@ if [ $1 ]; then
 fi
 
 if [ $2 ]; then
+	LEN_ARGV=$(wc -c <<< "$2")
 	if [[ $2 == "-s" ]]; then
 		Switch_Skip=true
-	elif [[ !${#$2} -gt 2 ]]; then
+	elif [[ $LEN_ARGV -gt 2 ]]; then
 		if [[ -d $2 ]]; then
 			PATH_Install_Dir=$2
 		fi
