@@ -39,12 +39,15 @@ if __name__ == '__main__':
     parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter)
     optional = parser.add_argument_group('optional arguments')
 
+    optional.add_argument('-aL','--accept-licenses', type=bool, nargs='?', const=True, help='This parameter is required to accept licenses.\n-------------------------------------------------------------------------------------')
     optional.add_argument('-p','--path', type=str, help='This parameter specifies the target path of your custom tools.\n-------------------------------------------------------------------------------------')
     optional.add_argument('-s','--skip', type=bool, nargs='?', const=True, help='This parameter skips the hardening part.\n-------------------------------------------------------------------------------------')
     optional.add_argument('-h','--help', action='help', default=SUPPRESS, help='Show this help message and exit.\n-------------------------------------------------------------------------------------')
     args = parser.parse_args()
 
-    if (args.path != None and args.skip != None): system(f'sudo bash {Start_Script} -s {args.path}')
-    elif (args.path != None and args.skip == None): system(f'sudo bash {Start_Script} {args.path}')
-    elif (args.path == None and args.skip != None): system(f'sudo bash {Start_Script} -s')
+    if (args.path != None and args.skip != None and args.accept_licenses == None): system(f'sudo bash {Start_Script} -s {args.path} -aL')
+    elif (args.path != None and args.skip == None and args.accept_licenses == None): system(f'sudo bash {Start_Script} {args.path}')
+    elif (args.path == None and args.skip != None and args.accept_licenses == None): system(f'sudo bash {Start_Script} -s')
+    elif (args.path == None and args.skip != None and args.accept_licenses != None): system(f'sudo bash {Start_Script} -s -aL')
+    elif (args.path != None and args.skip != None and args.accept_licenses == None): system(f'sudo bash {Start_Script} -s {args.path}')
     else: system(f'sudo bash {Start_Script}')
