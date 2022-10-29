@@ -327,10 +327,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		ln -s $OPT_Path/Postman/app/Postman /usr/local/bin/postman
 	fi
 	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
-		sudo bash $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) &
-		sleep 2
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/auto.py Veracrypt &
-		wait
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/auto.py Veracrypt $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
 		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 0 ]]; then
