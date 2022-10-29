@@ -20,12 +20,12 @@ declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
 "# Message authentication code (MAC) algorithms"
 "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com")
 
-declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Forensic"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Infrastructure"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/IOT"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Mobile"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Red_Teaming"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web")
+declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Forensic/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Infrastructure/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/IOT/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Mobile/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Red_Teaming/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web/full.txt")
 
 # Color
 BLUE='\033[0;34m'
@@ -191,8 +191,7 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	fi
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
-        echo -e "\nUNDER CONSTRUCTION!\nPlease try again." ; exit
-	#Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config"
+	sed -i s/'kali/pentest-kali'/g /etc/hostname
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Custom"
 else
@@ -202,6 +201,8 @@ fi
 # Installation_Type
 if [[ $category_type = "custom" || $category_type = "2" ]]; then
 	File_Path="${Path_Way}/install.txt"
+elif [[ $category_type = "complete" || $category_type = "1" ]]; then
+	decision="0"
 else
 	header "installation"
 	read -p "Your Choice: " decision
@@ -264,12 +265,21 @@ fi
 
 # Standard_Installation
 File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/standard.txt" $OPT_Path
-if [[ $decision = "full" || $decision = "1" ]]; then
+if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
 	File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/gui.txt" $OPT_Path
 fi
 
 # Tool_Installation
-File_Installer $File_Path $OPT_Path
+if [[ $category_type = "complete" || $category_type = "1" ]]; then
+	for i in ${Array_Complete_Install[@]}; do
+		if [[ $i =~ "Forensic" ]]; then
+			File_Installer $i "/opt/forensic_tools"
+		else
+	        	File_Installer $i "/opt/pentest_tools"
+		fi
+else
+	File_Installer $File_Path $OPT_Path
+fi
 
 # Screen_Configuration
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
@@ -285,7 +295,7 @@ hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
 done
 
-if [[ $category_type = "pentest" || $category_type = "4" ]];  then
+if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
 	# Git_Tools_Installation
 	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
 		sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
@@ -308,7 +318,7 @@ if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	sudo msfdb init
 fi
 
-if [[ $decision = "full" || $decision = "1" ]]; then
+if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
 	if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 		ln -s $OPT_Path/Postman/app/Postman /usr/local/bin/postman
 	fi
