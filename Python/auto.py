@@ -25,7 +25,8 @@ def Veracrypt_Install(Path):
       press("return"), sleep(2)
       with hold('ctrl'):
           press(['v','v','v','v','v','v','v','v','v','v'])
-      autowrite("yes"), sleep(0.5)
+      sleep(1)
+      autowrite("yes"), sleep(1)
       press("return"), sleep(2)
       press("return")
 
