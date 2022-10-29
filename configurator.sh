@@ -328,6 +328,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 	fi
 	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
 		sudo bash $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) &
+		sleep 2
 		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/auto.py Veracrypt &
 		wait
 		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
