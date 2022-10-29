@@ -32,7 +32,7 @@ def Veracrypt_Install(Path):
       
   t1 = Thread(target=Installer, args=[Path], daemon=True).start()
   sleep(1.25)
-  t2 = Thread(target=Auto_Install, daemon=True)
+  t2 = Thread(target=Auto_Install).start()
 
 # Main
 if __name__ == '__main__':
