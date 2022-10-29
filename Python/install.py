@@ -10,8 +10,7 @@ from sys import argv
 
 # Main
 if __name__ == '__main__':
-  if (exists(argv[1])):
     for root, _, files in walk(str(argv[1]), topdown=False):
-      for file in files:
-        if (file.endswith('.deb')): system(f'sudo dpkg -i {join(root, file)}')
-        elif (file.endswith('.sh')): system(f'sudo bash {join(root, file)}')
+        for file in files:
+            if (file.endswith('.deb')): system(f'sudo dpkg -i {join(root, file)}')
+            elif (file.endswith('.sh')): system(f'sudo bash {join(root, file)}')
