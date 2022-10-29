@@ -9,6 +9,7 @@ PATH_SCREEN=""
 Skip=false
 Switch_WGET=false
 Switch_Skip=false
+Switch_License=false
 PATH_Install_Dir=""
 
 # Arrays
@@ -151,6 +152,8 @@ if [ $1 ]; then
 	LEN_ARGV=$(wc -c <<< "$1")
 	if [[ $1 == "-s" ]]; then
 		Switch_Skip=true
+	elif [[ $1 == "-aL" ]]; then
+		Switch_License=true
 	elif [[ $LEN_ARGV -gt 2 ]]; then
 		if [[ -d $1 ]]; then
 			PATH_Install_Dir=$1
@@ -162,9 +165,24 @@ if [ $2 ]; then
 	LEN_ARGV=$(wc -c <<< "$2")
 	if [[ $2 == "-s" ]]; then
 		Switch_Skip=true
+	elif [[ $2 == "-aL" ]]; then
+		Switch_License=true
 	elif [[ $LEN_ARGV -gt 2 ]]; then
 		if [[ -d $2 ]]; then
 			PATH_Install_Dir=$2
+		fi
+	fi
+fi
+
+if [ $3 ]; then
+	LEN_ARGV=$(wc -c <<< "$3")
+	if [[ $3 == "-s" ]]; then
+		Switch_Skip=true
+	elif [[ $3 == "-aL" ]]; then
+		Switch_License=true
+	elif [[ $LEN_ARGV -gt 2 ]]; then
+		if [[ -d $3 ]]; then
+			PATH_Install_Dir=$3
 		fi
 	fi
 fi
@@ -327,7 +345,10 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		ln -s $OPT_Path/Postman/app/Postman /usr/local/bin/postman
 	fi
 	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/auto.py Veracrypt $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
+		if [[ $Switch_License ]]; then
+			sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/auto.py Veracrypt $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
+		else
+			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/$OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
 		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 0 ]]; then
