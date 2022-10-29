@@ -20,6 +20,13 @@ declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
 "# Message authentication code (MAC) algorithms"
 "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com")
 
+declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Forensic"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Infrastructure"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/IOT"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Mobile"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Red_Teaming"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web")
+
 # Color
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
