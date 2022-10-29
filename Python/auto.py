@@ -15,14 +15,14 @@ from time import sleep
 # Functions
 def Veracrypt_Install():
   press("1"), sleep(2)
-  press("Enter"), sleep(2)
-  press("Enter"), sleep(2)
+  press("return"), sleep(2)
+  press("return"), sleep(2)
   for i in range(0,8):
     hotkey("shift", "v")
     sleep(0.5)
   autowrite("yes"), sleep(0.5)
-  press("Enter"), sleep(2)
-  press("Enter")
+  press("return"), sleep(2)
+  press("return")
 
 # Main
 if __name__ == '__main__':
