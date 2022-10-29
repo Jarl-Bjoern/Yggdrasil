@@ -26,4 +26,4 @@ def Veracrypt_Install():
 
 # Main
 if __name__ == '__main__':
-  if (argv == "Veracrypt"): Veracrypt_Install()
+  if (argv[1] == "Veracrypt"): Veracrypt_Install()
