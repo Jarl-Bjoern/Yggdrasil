@@ -311,7 +311,7 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 		cd /opt/pentest_tools/ssh_scan ; sudo gem install bundler ; sudo bundle install
 	fi
 	if [ -d "/opt/pentest_tools/socketcand" ]; then
-		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; make ; make install
+		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
 	fi
 	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)" ]; then
 		cd /opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains) ; sudo bash jetbrains-toolbox
@@ -327,7 +327,9 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		ln -s $OPT_Path/Postman/app/Postman /usr/local/bin/postman
 	fi
 	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
-		sudo bash $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
+		sudo bash $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) &
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/auto.py Veracrypt &
+		wait
 		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 0 ]]; then
