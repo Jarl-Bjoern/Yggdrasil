@@ -280,6 +280,7 @@ if [[ $category_type = "complete" || $category_type = "1" ]]; then
 		else
 	        	File_Installer $i "/opt/pentest_tools"
 		fi
+	done
 else
 	File_Installer $File_Path $OPT_Path
 fi
