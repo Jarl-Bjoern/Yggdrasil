@@ -537,5 +537,10 @@ if [[ $category_type = "pentest" || $category_type = "4"  ]];  then
 		echo -e "\n"; cat $Informational
 	fi
 fi
-for i in $(ls $OPT_Path | grep --include -E "*.sh|*.deb|*.tar|*.bz2|*.zip|*.rar"); do rm -f $OPT_Path/$i; done
+if [[ $category_type = "complete" || $category_type = "1" ]]; then
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py /opt/forensic_tools
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py /opt/pentest_tools
+else
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py $OPT_Path
+fi
 echo -e "\n---------------------------------------------------------------------------------\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
