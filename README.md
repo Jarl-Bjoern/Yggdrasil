@@ -104,15 +104,14 @@ Your Choice: full
 
 ## Using the automated variant
 ```bash
-# Automated Variant without Firewall, Hardening and SSH configuration
+# Automated Variant without Firewall, Hardening and SSH configuration with text
 cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -s
 pentest
 infrastructure
 full
+EOF
 
-OR
-
-# Automated Variant without Firewall, Hardening and SSH configuration
+# Automated Variant without Firewall, Hardening and SSH configuration with numbers
 cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -s
 4
 1
