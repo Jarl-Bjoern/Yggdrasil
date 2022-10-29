@@ -1,4 +1,5 @@
 #!/bin/bash
+# Rainer Christian Bjoern Herold
 
 # Variables
 IP_INT=127.0.0.1
