@@ -5,7 +5,7 @@
 
 # Libraries
 from os import system
-from pyautogui import hotkey, press, write as autowrite
+from pyautogui import hold, hotkey, keyDown, press, write as autowrite
 from sys import argv
 from time import sleep
 from threading import Thread
@@ -23,9 +23,8 @@ def Veracrypt_Install(Path):
       press("1"), sleep(2)
       press("return"), sleep(2)
       press("return"), sleep(2)
-      for i in range(0,8):
-        hotkey("shift", "v")
-        sleep(0.5)
+      with hold('ctrl'):
+          press(['v','v','v','v','v','v','v','v','v','v'])
       autowrite("yes"), sleep(0.5)
       press("return"), sleep(2)
       press("return")
