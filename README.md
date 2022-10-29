@@ -130,7 +130,7 @@ feroxbuster
 YOUR_EXAMPLE
 
 # Git
-https://github.com/Jarl-Bjoern/Ragnaroek/
+https://github.com/Jarl-Bjoern/Yggdrasil/
 ```
 
 For example, when you arrive at the "Wget" section, you need to see that they follow the structure below.
