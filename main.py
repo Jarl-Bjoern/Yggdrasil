@@ -39,7 +39,7 @@ if __name__ == '__main__':
     parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter)
     optional = parser.add_argument_group('optional arguments')
 
-    optional.add_argument('-p','--path', help='This parameter specifies the target path of your custom tools.\n-------------------------------------------------------------------------------------')
+    optional.add_argument('-p','--path', type=str, help='This parameter specifies the target path of your custom tools.\n-------------------------------------------------------------------------------------')
     optional.add_argument('-s','--skip', type=bool, nargs='?', const=True, help='This parameter skips the hardening part.\n-------------------------------------------------------------------------------------')
     optional.add_argument('-h','--help', action='help', default=SUPPRESS, help='Show this help message and exit.\n-------------------------------------------------------------------------------------')
     args = parser.parse_args()
