@@ -15,10 +15,10 @@ from threading import Thread
 # Variables
 
 # Functions
+def Press_Key(key, seconds): press(key), sleep(seconds)
+
 def Veracrypt_Install(Path):
   def Installer(Path): system(f'sudo bash {Path}')
-
-  def Press_Key(key, seconds): press(key), sleep(seconds)
 
   def Auto_Install():
       Press_Key('1', 2), Press_Key('return', 2), Press_Key('return', 2)
