@@ -19,9 +19,12 @@ sudo python3 main.py
 
 ## Using the help section to see which parameters do we have
 ```bash
-usage: main.py [-p PATH] [-s [SKIP]] [-h]
+usage: main.py [-aL [ACCEPT_LICENSES]] [-p PATH] [-s [SKIP]] [-h]
 
 optional arguments:
+  -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
+                        This parameter is required to accept licenses.
+                        ---------------------------------------------------------------
   -p PATH, --path PATH  This parameter specifies the target path of your custom tools.
                         ---------------------------------------------------------------
   -s [SKIP], --skip [SKIP]
