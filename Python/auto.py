@@ -16,8 +16,7 @@ from threading import Thread
 
 # Functions
 def Veracrypt_Install(Path):
-  def Installer(Path):
-      system(f'sudo bash {Path}')
+  def Installer(Path): system(f'sudo bash {Path}')
 
   def Auto_Install():
       press("1"), sleep(2)
