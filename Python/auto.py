@@ -18,16 +18,15 @@ from threading import Thread
 def Veracrypt_Install(Path):
   def Installer(Path): system(f'sudo bash {Path}')
 
+  def Press_Key(key, seconds): press(key), sleep(seconds)
+
   def Auto_Install():
-      press("1"), sleep(2)
-      press("return"), sleep(2)
-      press("return"), sleep(2)
+      Press_Key('1', 2), Press_Key('return', 2), Press_Key('return', 2)
       for i in range(0,10):
           hotkey('ctrl', 'v')
           sleep(1)
       autowrite("yes"), sleep(1)
-      press("return"), sleep(2)
-      press("return")
+      Press_Key('return', 2), press("return")
 
   t1 = Thread(target=Installer, args=[Path], daemon=True).start()
   sleep(1.25)
