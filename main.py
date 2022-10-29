@@ -44,7 +44,7 @@ if __name__ == '__main__':
     optional.add_argument('-h','--help', action='help', default=SUPPRESS, help='Show this help message and exit.\n-------------------------------------------------------------------------------------')
     args = parser.parse_args()
 
-    if (args.path != None and args.skip != None): system(f'sudo bash {Start_Script} -s args.path')
-    elif (args.path != None and args.skip == None): system(f'sudo bash {Start_Script} args.path ')
+    if (args.path != None and args.skip != None): system(f'sudo bash {Start_Script} -s {args.path}')
+    elif (args.path != None and args.skip == None): system(f'sudo bash {Start_Script} {args.path}')
     elif (args.path == None and args.skip != None): system(f'sudo bash {Start_Script} -s')
     else: system(f'sudo bash {Start_Script}')
