@@ -13,7 +13,7 @@ You have the possibility to customize the config files according to your needs.<
 ```bash
 sudo git clone https://github.com/Jarl-Bjoern/Yggdrasil/
 cd Yggdrasil
-sudo chmod +x $(find . -type f | grep -E "install.sh|*.py") ; sudo dos2unix $(find . -type f)
+sudo chmod +x $(find . -type f | grep -E "configurator.sh|*.py") ; sudo dos2unix $(find . -type f)
 sudo python3 main.py
 ```
 
