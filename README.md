@@ -14,12 +14,12 @@ You have the possibility to customize the config files according to your needs.<
 sudo git clone https://github.com/Jarl-Bjoern/Yggdrasil/
 cd Yggdrasil
 sudo chmod +x $(find . -type f | grep -E "configurator.sh|*.py") ; sudo dos2unix $(find . -type f)
-sudo python3 main.py
+sudo python3 yggdrasil.py
 ```
 
 ## Using the help section to see which parameters do we have
 ```bash
-usage: main.py [-aL [ACCEPT_LICENSES]] [-p PATH] [-s [SKIP]] [-h]
+usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-p PATH] [-s [SKIP]] [-h]
 
 optional arguments:
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
