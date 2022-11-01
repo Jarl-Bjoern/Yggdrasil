@@ -16,13 +16,14 @@
 # Vers 0.7b 25.10.2022
 # Vers 0.7c 27.10.2022
 # Vers 0.7d 29.10.2022
+# Vers 0.7e 01.11.2022
 
 # Author
 __author__ = "Rainer C. B. Herold"
 __copyright__ = "Copyright 2022, Rainer C. B. Herold"
 __credits__ = "Rainer C. B. Herold"
 __license__ = "MIT license"
-__version__ = "0.7d"
+__version__ = "0.7e"
 __maintainer__ = "Rainer C. B. Herold"
 __status__ = "Production"
 
