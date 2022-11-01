@@ -42,7 +42,7 @@ function initials {
         echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
         echo "💀                                                      💀"
         echo "💀                       Yggdrasil                      💀"
-        echo -e "💀                     Version ${CYAN}0.7d${NOCOLOR}                     💀"
+        echo -e "💀                     Version ${CYAN}0.7e${NOCOLOR}                     💀"
         echo "💀           Rainer Christian Bjoern Herold             💀"
         echo "💀                                                      💀"
         echo -e "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n"
@@ -197,6 +197,7 @@ if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	OPT_Path="/opt/pentest_tools"
 	sed -i s/'kali/pentest-kali'/g /etc/hostname
+	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
 	header "pentesting_category"
 	read -p "Your Choice: " pentesting
 	if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
@@ -214,6 +215,7 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	fi
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
 	sed -i s/'kali/pentest-kali'/g /etc/hostname
+	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Custom"
 else
