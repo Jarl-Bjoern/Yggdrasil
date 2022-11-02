@@ -8,6 +8,7 @@ SCRIPT_NAME=$(basename $BASH_SOURCE)
 PATH_SCREEN=""
 PATH_VIM=""
 PATH_ALIAS=""
+pentesting=""
 Skip=false
 Switch_WGET=false
 Switch_Skip=false
@@ -221,8 +222,8 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/IOT"
 	elif [[ $pentesting = "mobile" || $pentesting = "3" ]];  then
 		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Mobile"
-	elif [[ $pentesting = "read_teaming" || $pentesting = "4" ]];  then
-		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Read_Teaming"
+	elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]];  then
+		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Red_Teaming"
 	elif [[ $pentesting = "web" || $pentesting = "5" ]];  then
 		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web"
 	else
@@ -243,17 +244,21 @@ if [[ $category_type = "custom" || $category_type = "2" ]]; then
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
 	decision="0"
 else
-	header "installation"
-	read -p "Your Choice: " decision
-	if [[ $decision = "full" || $decision = "1" ]]; then
+	if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" ]]; then
 		File_Path="${Path_Way}/full.txt"
-		if [[ $category_type = "pentest" || $category_type = "4" ]];  then
-			Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
-		fi
-	elif [[ $decision = "minimal" || $decision = "2" ]];  then
-		File_Path="${Path_Way}/minimal.txt"
 	else
-		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+		header "installation"
+		read -p "Your Choice: " decision
+		if [[ $decision = "full" || $decision = "1" ]]; then
+			File_Path="${Path_Way}/full.txt"
+			if [[ $category_type = "pentest" || $category_type = "4" ]];  then
+				Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+			fi
+		elif [[ $decision = "minimal" || $decision = "2" ]];  then
+			File_Path="${Path_Way}/minimal.txt"
+		else
+			echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+		fi
 	fi
 fi
 
