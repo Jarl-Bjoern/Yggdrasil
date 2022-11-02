@@ -397,10 +397,6 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [ -d "/opt/pentest_tools/chisel" ]; then
 		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build
 	fi
-	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)" ]; then
-		TEMP_PATH_JET=/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)
-		$TEMP_PATH_JET/jetbrains-toolbox ; sleep 10
-	fi
 	if [ -f "/opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)" ]; then
 		sudo bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)
 	fi
@@ -424,6 +420,10 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/$OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
 		fi
 		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
+	fi
+	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)" ]; then
+		TEMP_PATH_JET=/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)
+		$TEMP_PATH_JET/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 0 ]]; then
 		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py $PATH_Install_Dir
