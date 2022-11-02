@@ -384,6 +384,25 @@ set statusline+=\
 set statusline+=%p%%
 EOF
 
+# Alias_Configuration (Thx to @HomeSen)
+for i in $(ls /home | grep -v "lost+found") $(echo /root); do
+        if [[ !($i = "/root") ]]; then
+                PATH_ALIAS="/home/$i/.bash_aliases"
+        else
+                PATH_ALIAS="/root/.bash_aliases"
+        fi
+	cat <<EOF > $PATH_ALIAS
+alias la='ls -lha --color=auto'
+alias grep='grep --color=auto'
+alias df='df -h'
+alias du='du -h'
+
+alias ffs='sudo $(history -p !!)'
+alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
+
+function b64() { echo $1 | base64 -d | xxd; }
+EOF
+
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
 	# Git_Tools_Installation
 	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
