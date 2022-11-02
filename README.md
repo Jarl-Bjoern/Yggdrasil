@@ -137,6 +137,12 @@ For example, when you arrive at the "Wget" section, you need to see that they fo
 
 "URL" "Name" "Method"
 
+The following methods are available
+ - Archive
+ - DPKG
+ - Executeable
+ - Installer
+
 ```bash
 # Wget
 https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 kerbrute Executeable
