@@ -2,6 +2,7 @@
 # Rainer Christian Bjoern Herold
 
 # Variables
+decision=""
 IP_INT=127.0.0.1
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
@@ -219,6 +220,7 @@ elif [[ $category_type = "complete" || $category_type = "1" ]]; then
 else
 	if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" ]]; then
 		File_Path="${Path_Way}/full.txt"
+		decision="full"
 	else
 		header "installation"
 		read -p "Your Choice: " decision
