@@ -136,8 +136,9 @@ https://github.com/Jarl-Bjoern/Yggdrasil/
 ```
 
 For example, when you arrive at the ***Wget*** section, you need to see that they follow the structure below.
-
+```
 ***URL Name Method***
+```
 
 ## The following methods are available:
  - Archive
