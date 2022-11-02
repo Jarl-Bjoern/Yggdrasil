@@ -149,6 +149,19 @@ function File_Installer() {
 }
 
 # UNDER CONSTRUCTION
+function Check_Parameter() {
+	LEN_ARGV=$(wc -c <<< "$1")
+	if [[ $1 == "-s" ]]; then
+		Switch_Skip=true
+	elif [[ $1 == "-aL" ]]; then
+		Switch_License=true
+	elif [[ $LEN_ARGV -gt 2 ]]; then
+		if [[ -d $1 ]]; then
+			PATH_Install_Dir=$1
+		fi
+	fi
+}
+
 if [ $1 ]; then
 	LEN_ARGV=$(wc -c <<< "$1")
 	if [[ $1 == "-s" ]]; then
