@@ -166,42 +166,15 @@ function Check_Parameter() {
 }
 
 if [ $1 ]; then
-	LEN_ARGV=$(wc -c <<< "$1")
-	if [[ $1 == "-s" ]]; then
-		Switch_Skip=true
-	elif [[ $1 == "-aL" ]]; then
-		Switch_License=true
-	elif [[ $LEN_ARGV -gt 2 ]]; then
-		if [[ -d $1 ]]; then
-			PATH_Install_Dir=$1
-		fi
-	fi
+	Check_Parameter $1
 fi
 
 if [ $2 ]; then
-	LEN_ARGV=$(wc -c <<< "$2")
-	if [[ $2 == "-s" ]]; then
-		Switch_Skip=true
-	elif [[ $2 == "-aL" ]]; then
-		Switch_License=true
-	elif [[ $LEN_ARGV -gt 2 ]]; then
-		if [[ -d $2 ]]; then
-			PATH_Install_Dir=$2
-		fi
-	fi
+	Check_Parameter $2
 fi
 
 if [ $3 ]; then
-	LEN_ARGV=$(wc -c <<< "$3")
-	if [[ $3 == "-s" ]]; then
-		Switch_Skip=true
-	elif [[ $3 == "-aL" ]]; then
-		Switch_License=true
-	elif [[ $LEN_ARGV -gt 2 ]]; then
-		if [[ -d $3 ]]; then
-			PATH_Install_Dir=$3
-		fi
-	fi
+	Check_Parameter $3
 fi
 
 # Category
