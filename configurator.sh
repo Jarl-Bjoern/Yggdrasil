@@ -333,16 +333,16 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 		PATH_VIM="/root/.vimrc"
         fi
 
-# Screen_Configuration (Thx to @HomeSen)
-cat <<EOF > $PATH_SCREEN
+	# Screen_Configuration (Thx to @HomeSen)
+	cat <<EOF > $PATH_SCREEN
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
 done
 
-# Vim_Configuration (Thx to @HomeSen)
-cat <<EOF > $PATH_VIM
+	# Vim_Configuration (Thx to @HomeSen)
+	cat <<EOF > $PATH_VIM
 syntax on
 
 " Uncomment the following to have Vim jump to the last position when
@@ -386,8 +386,8 @@ set statusline+=\
 set statusline+=%p%%
 EOF
 
-# Alias_Configuration (Thx to @HomeSen)
-cat <<EOF > $PATH_ALIAS
+	# Alias_Configuration (Thx to @HomeSen)
+	cat <<EOF > $PATH_ALIAS
 alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
 alias df='df -h'
