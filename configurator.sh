@@ -397,6 +397,9 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)" ]; then
 		cd /opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains) ; sudo bash jetbrains-toolbox
 	fi
+	if [ -f "/opt/pentest_tools/mitmdump" ]; then
+		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
+	fi
 
 	# Metasploit_Configuration
 	sudo systemctl enable --now postgresql
