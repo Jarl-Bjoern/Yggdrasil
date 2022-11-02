@@ -146,7 +146,7 @@ URL Name Method
  - Executeable
  - Installer
 
-## WGET Example
+## Example
 ```bash
 # Wget
 https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 kerbrute Executeable
