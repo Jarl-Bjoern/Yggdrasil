@@ -124,6 +124,8 @@ EOF
 
 # Customize your installation
 You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a #).
+
+You can also build the file from scratch yourself. To do this, navigate to the directory Config/Custom and edit the file install.txt
 ```bash
 # APT
 feroxbuster
