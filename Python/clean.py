@@ -14,5 +14,5 @@ if __name__ == '__main__':
   for File in listdir(str(argv[1])):
      for Filter in Array_Filter:
           try:
-              if (file.endswith(Filter)): remove(join(argv[1], File))
+              if (File.endswith(Filter)): remove(join(argv[1], File))
           except FileNotFoundError: pass
