@@ -139,7 +139,7 @@ For example, when you arrive at the "Wget" section, you need to see that they fo
 
 "URL" "Name" "Method"
 
-The following methods are available:
+## The following methods are available:
  - Archive
  - DPKG
  - Executeable
