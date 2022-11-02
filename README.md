@@ -2,9 +2,9 @@
 
 This repository is used to automate certain processes. 
 
-Since version 0.7 it is now possible to choose between the three categories "Forensic", "Complete" and "Pentest".
+Since version 0.7 it is now possible to choose between the three categories **Complete**, **Forensic** and **Pentest**.
 
-Furthermore, you have the choice between "full_install", which is aimed at a Kali installation with GUI and "minimal_install", which is aimed at the CLI variant.
+Furthermore, you have the choice between **full_install**, which is aimed at a Kali installation with GUI and **minimal_install**, which is aimed at the CLI variant.
 
 You have the possibility to customize the config files according to your needs.<br />
 
@@ -135,9 +135,9 @@ YOUR_EXAMPLE
 https://github.com/Jarl-Bjoern/Yggdrasil/
 ```
 
-For example, when you arrive at the "Wget" section, you need to see that they follow the structure below.
+For example, when you arrive at the **Wget** section, you need to see that they follow the structure below.
 
-***"URL" "Name" "Method"***
+**URL Name Method**
 
 ## The following methods are available:
  - Archive
