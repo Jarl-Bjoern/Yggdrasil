@@ -123,9 +123,8 @@ EOF
 ```
 
 # Customize your installation
-You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a #).
+You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a **#**).
 
-You can also build the file from scratch yourself. To do this, navigate to the directory Config/Custom and edit the file install.txt
 ```bash
 # APT
 feroxbuster
@@ -151,6 +150,17 @@ URL Name Method
 # Wget
 https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 kerbrute Executeable
 https://dl.pstmn.io/download/latest/linux64 Postman Archive
+```
+
+You can also build the file from scratch yourself. To do this, navigate to the directory Config/Custom and edit the file install.txt
+
+In addition, it is also possible that you can place your own scripts or packages in the ***Custom*** directory and use them in the installation script.
+
+For this, you must use the parameter ***-p*** in combination with the absolute path, as in the example below
+
+## Example
+```bash
+python3 /opt/Yggdrasil/yggdrasil.py -p /mnt/MY_DIRECTORY
 ```
 
 # Remark
