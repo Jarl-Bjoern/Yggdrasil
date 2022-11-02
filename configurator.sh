@@ -151,7 +151,6 @@ function File_Installer() {
 	done < $input
 }
 
-# UNDER CONSTRUCTION
 function Check_Parameter() {
 	LEN_ARGV=$(wc -c <<< "$1")
 	if [[ $1 == "-s" ]]; then
@@ -165,6 +164,7 @@ function Check_Parameter() {
 	fi
 }
 
+# Checking_Arguments
 if [ $1 ]; then
 	Check_Parameter $1
 fi
