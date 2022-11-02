@@ -221,6 +221,7 @@ else
 	if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" ]]; then
 		File_Path="${Path_Way}/full.txt"
 		decision="full"
+		Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 	else
 		header "installation"
 		read -p "Your Choice: " decision
