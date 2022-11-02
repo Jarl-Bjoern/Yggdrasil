@@ -5,15 +5,15 @@
 IP_INT=127.0.0.1
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
+PATH_ALIAS=""
+PATH_Install_Dir=""
 PATH_SCREEN=""
 PATH_VIM=""
-PATH_ALIAS=""
 pentesting=""
 Skip=false
-Switch_WGET=false
-Switch_Skip=false
 Switch_License=false
-PATH_Install_Dir=""
+Switch_Skip=false
+Switch_WGET=false
 
 # Arrays
 declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
