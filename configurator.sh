@@ -306,7 +306,7 @@ else
 	File_Installer $File_Path $OPT_Path
 fi
 
-# Screen_Configuration
+# Screen_Configuration (Thx to @HomeSen)
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
         if [[ !($i = "/root") ]]; then
                 PATH_SCREEN="/home/$i/.screenrc"
