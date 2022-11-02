@@ -317,7 +317,6 @@ hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
-done
 
 	# Vim_Configuration (Thx to @HomeSen)
 	cat <<EOF > $PATH_VIM
@@ -376,6 +375,7 @@ alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 
 function b64() { echo $1 | base64 -d | xxd; }
 EOF
+done
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
 	# Git_Tools_Installation
@@ -412,6 +412,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 			sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/auto.py Veracrypt $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
 		else
 			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/$OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
+		fi
 		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 0 ]]; then
