@@ -321,7 +321,7 @@ else
 	File_Installer $File_Path $OPT_Path
 fi
 
-# Screen_Configuration (Thx to @HomeSen)
+# Path_Filtering
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
         if [[ !($i = "/root") ]]; then
                 PATH_SCREEN="/home/$i/.screenrc"
@@ -332,7 +332,9 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 		PATH_ALIAS="/root/.bash_aliases"
 		PATH_VIM="/root/.vimrc"
         fi
-	cat <<EOF > $PATH_SCREEN
+
+# Screen_Configuration (Thx to @HomeSen)
+cat <<EOF > $PATH_SCREEN
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
