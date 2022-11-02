@@ -325,8 +325,12 @@ fi
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
         if [[ !($i = "/root") ]]; then
                 PATH_SCREEN="/home/$i/.screenrc"
+		PATH_ALIAS="/home/$i/.bash_aliases"
+		PATH_VIM="/home/$i/.vimrc"
         else
                 PATH_SCREEN="/root/.screenrc"
+		PATH_ALIAS="/root/.bash_aliases"
+		PATH_VIM="/root/.vimrc"
         fi
 	cat <<EOF > $PATH_SCREEN
 hardstatus on
@@ -336,13 +340,7 @@ EOF
 done
 
 # Vim_Configuration (Thx to @HomeSen)
-for i in $(ls /home | grep -v "lost+found") $(echo /root); do
-        if [[ !($i = "/root") ]]; then
-                PATH_VIM="/home/$i/.vimrc"
-        else
-                PATH_VIM="/root/.vimrc"
-        fi
-	cat <<EOF > $PATH_VIM
+cat <<EOF > $PATH_VIM
 syntax on
 
 " Uncomment the following to have Vim jump to the last position when
@@ -387,13 +385,7 @@ set statusline+=%p%%
 EOF
 
 # Alias_Configuration (Thx to @HomeSen)
-for i in $(ls /home | grep -v "lost+found") $(echo /root); do
-        if [[ !($i = "/root") ]]; then
-                PATH_ALIAS="/home/$i/.bash_aliases"
-        else
-                PATH_ALIAS="/root/.bash_aliases"
-        fi
-	cat <<EOF > $PATH_ALIAS
+cat <<EOF > $PATH_ALIAS
 alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
 alias df='df -h'
