@@ -278,7 +278,6 @@ fi
 # Basic_Configuration
 if [[ $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d '"' -f2) =~ "Kali" ]]; then
 	sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
-	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
 fi
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 export HISTCONTROL=ignoreboth:erasedups
@@ -325,6 +324,7 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
         fi
 
 	# ZSH_Configuration
+	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_ZSH
 	if [[ !$(cat $PATH_ZSH | grep "hist_ignore_all_dups") ]];
 		cat <<EOF >> $PATH_ZSH
 setopt hist_ignore_all_dups
