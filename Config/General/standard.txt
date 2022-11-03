@@ -22,6 +22,7 @@ openconnect
 opensc
 ruby-full
 screen
+squid
 tmux
 tor
 torbrowser-launcher
