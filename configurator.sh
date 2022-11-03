@@ -34,6 +34,8 @@ declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Forens
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Red_Teaming/full.txt"
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web/full.txt")
 
+declare -a Array_Pentesting=()
+
 # Color
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
@@ -191,19 +193,22 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
 	header "pentesting_category"
 	read -p "Your Choice: " pentesting
-	if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
-		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Infrastructure"
-	elif [[ $pentesting = "iot" || $pentesting = "2" ]];  then
-		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/IOT"
-	elif [[ $pentesting = "mobile" || $pentesting = "3" ]];  then
-		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Mobile"
-	elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]];  then
-		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Red_Teaming"
-	elif [[ $pentesting = "web" || $pentesting = "5" ]];  then
-		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web"
+	if [[ $pentesting =~ "," ]]; then
+        	readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
 	else
-		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-	fi
+		if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Infrastructure"
+		elif [[ $pentesting = "iot" || $pentesting = "2" ]];  then
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/IOT"
+		elif [[ $pentesting = "mobile" || $pentesting = "3" ]];  then
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Mobile"
+		elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]];  then
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Red_Teaming"
+		elif [[ $pentesting = "web" || $pentesting = "5" ]];  then
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web"
+		else
+			echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+		fi
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
 	sed -i s/'kali/pentest-kali'/g /etc/hostname
 	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
