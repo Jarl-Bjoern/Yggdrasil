@@ -27,12 +27,12 @@ declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
 "# Message authentication code (MAC) algorithms"
 "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com")
 
-declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Forensic/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Infrastructure/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/IOT/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Mobile/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Red_Teaming/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web/full.txt")
+declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web/full.txt")
 
 declare -a Array_Pentesting=()
 
@@ -185,7 +185,7 @@ fi
 header "category"
 read -p "Your Choice: " category_type
 if [[ $category_type = "forensic" || $category_type = "3" ]]; then
-	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Forensic"
+	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic"
 	OPT_Path="/opt/forensic_tools"
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	OPT_Path="/opt/pentest_tools"
@@ -197,15 +197,15 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
         	readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
 	else
 		if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
-			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Infrastructure"
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure"
 		elif [[ $pentesting = "iot" || $pentesting = "2" ]];  then
-			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/IOT"
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT"
 		elif [[ $pentesting = "mobile" || $pentesting = "3" ]];  then
-			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Mobile"
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile"
 		elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]];  then
-			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Red_Teaming"
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming"
 		elif [[ $pentesting = "web" || $pentesting = "5" ]];  then
-			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Pentest/Web"
+			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web"
 		else
 			echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 		fi
@@ -213,7 +213,7 @@ elif [[ $category_type = "complete" || $category_type = "1" ]]; then
 	sed -i s/'kali/pentest-kali'/g /etc/hostname
 	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
-	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Custom"
+	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Custom"
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
@@ -293,7 +293,7 @@ fi
 # Standard_Installation
 File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/standard.txt" $OPT_Path
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
-	File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/General/gui.txt" $OPT_Path
+	File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/gui.txt" $OPT_Path
 fi
 
 # Tool_Installation
