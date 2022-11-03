@@ -159,7 +159,7 @@ https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64
 https://dl.pstmn.io/download/latest/linux64 Postman Archive
 ```
 
-You can also build the file from scratch yourself. To do this, navigate to the directory Config/Custom and edit the file install.txt
+You can also build the file from scratch yourself. To do this, navigate to the directory ***Config/Linux/Custom*** and edit the file ***install.txt***
 
 In addition, it is also possible that you can place your own scripts or packages in the ***Custom*** directory and use them in the installation script.
 
