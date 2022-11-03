@@ -10,6 +10,7 @@ PATH_ALIAS=""
 PATH_Install_Dir=""
 PATH_SCREEN=""
 PATH_VIM=""
+PATH_ZSH=""
 pentesting=""
 Skip=false
 Switch_License=false
@@ -308,10 +309,12 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
                 PATH_SCREEN="/home/$i/.screenrc"
 		PATH_ALIAS="/home/$i/.bash_aliases"
 		PATH_VIM="/home/$i/.vimrc"
+		PATH_ZSH="home/$i/.zshrc"
         else
                 PATH_SCREEN="/root/.screenrc"
 		PATH_ALIAS="/root/.bash_aliases"
 		PATH_VIM="/root/.vimrc"
+		PATH_ZSH="/root/$i/.zshrc"
         fi
 
 	# Screen_Configuration (Thx to @HomeSen)
