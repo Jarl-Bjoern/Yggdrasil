@@ -248,15 +248,15 @@ fi
 clearing
 if [[ $Switch_Skip != true ]]; then
 	NIC=$(ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker|veth")
-	IP=$(ifconfig | grep "inet" | grep -v "inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1" | sort -u)
+	IP=$(ifconfig | grep -E "inet|inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1|::1" | sort -u)
 	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
 
 	echo -e "\n           Please select an IP address to be used\n                   for SSH configuration"
 	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
 	n=0
 	while [[ n -le ${#ARRAY_NIC[@]} ]]; do
-        	echo -e "                  " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} ${ARRAY_IP[n]}
-        	n=$((n + 1))
+                echo -e "  " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} "\n     - "  ${ARRAY_IP[n]} "(IPv4)\n     - " ${ARRAY_IP[$((n + 1))]} "(IPv6)"
+                n=$((n + 2))
 	done
 	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
 	read -p "Your Choice: " IP_TEMP
@@ -264,10 +264,12 @@ if [[ $Switch_Skip != true ]]; then
 		LEN_CHECK=$(ip a | grep "$IP_TEMP")
 		if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *"."* ]]; then
 			IP_INT=$IP_TEMP
-			clearing
+		elif [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *":"* ]]; then
+			IP_INT="[$IP_TEMP]"
 		else
 			echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 		fi
+		clearing
 	else
 		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	fi
