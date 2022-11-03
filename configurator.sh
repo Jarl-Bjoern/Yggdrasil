@@ -268,7 +268,7 @@ if [[ $Switch_Skip != true ]]; then
 fi
 
 # Basic_Configuration
-if [[ $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d '"' -f2) =~ "Kali GNU/Linux" ]]; then
+if [[ $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d '"' -f2) =~ "Kali" ]]; then
 	sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" ~/.zshrc
 fi
