@@ -317,6 +317,13 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 		PATH_ZSH="/root/$i/.zshrc"
         fi
 
+	# ZSH_Configuration
+	if [[ !$(cat $PATH_ZSH | grep "hist_ignore_all_dups") ]];
+		cat <<EOF >> $PATH_ZSH
+setopt hist_ignore_all_dups
+EOF
+	fi
+	
 	# Screen_Configuration (Thx to @HomeSen)
 	cat <<EOF > $PATH_SCREEN
 hardstatus on
