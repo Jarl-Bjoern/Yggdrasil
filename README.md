@@ -26,14 +26,19 @@ optional arguments:
                         
                         Licenses:
                           - Veracrypt
+                        
                         ---------------------------------------------------------------
   -p PATH, --path PATH  This parameter specifies the target path of your custom tools.
+                        
                         ---------------------------------------------------------------
   -s [SKIP], --skip [SKIP]
                         This parameter skips the hardening part.
+                        
                         ---------------------------------------------------------------
   -h, --help            Show this help message and exit.
+                        
                         ---------------------------------------------------------------
+
 ```
 
 ## Choose one of the three category types
