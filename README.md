@@ -1,13 +1,11 @@
 # General Description
 
-This tool is intended to simplify the setup of various tools and configuration of a Kali machine after a fresh installation and save unnecessary time, so that a predefined list can be used in advance or you can also create your own.
+This tool is intended to simplify the setup of various tools and configuration of a Kali machine after a fresh installation and save unnecessary time, so that a predefined list can be used in advance or you can also create your own.<br />
 
 # News
 Since version 0.7 it is now possible to choose between the three categories ***Complete***, ***Forensic*** and ***Pentest***.
 
-Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.
-
-You have the possibility to customize the config files according to your needs.<br />
+Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
 
 # How to download and install the tool
 ## Download and start the tool
