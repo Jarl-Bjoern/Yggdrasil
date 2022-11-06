@@ -109,7 +109,13 @@ function File_Installer() {
 			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
 				echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"
 				if [ "$Switch_WGET" = false ]; then
-					eval "$Command $line"
+					if [[ $Switch_Skip = true ]]; then
+						if [[ !$line =~ "iptables-persistent" || !$line =~ "netfilter-persistent" || !$line =~ "charon" || !$line =~ "strongswan" || !$line =~ "openconnect" !$line =~ "opensc" ]]; then
+							eval "$Command $line"
+						fi
+					else
+						eval "$Command $line"
+					fi
 				else
 					FILE=$(echo $line | cut -d" " -f1)
 					MODE=$(echo $line | cut -d" " -f3)
@@ -291,6 +297,8 @@ EOF
 fi
 
 # Standard_Installation
+#echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+#echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/standard.txt" $OPT_Path
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
 	File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/gui.txt" $OPT_Path
