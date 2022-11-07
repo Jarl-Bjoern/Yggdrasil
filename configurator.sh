@@ -110,7 +110,9 @@ function File_Installer() {
 				echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"
 				if [ "$Switch_WGET" = false ]; then
 					if [ "$Switch_Skip" = true ]; then
-						if [[ !$line =~ "iptables-persistent" || !$line =~ "netfilter-persistent" || !$line =~ "charon" || !$line =~ "strongswan" || !$line =~ "openconnect" || !$line =~ "opensc" ]]; then
+						if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
+							echo "$line was skipped"
+						else
 							eval "$Command $line"
 						fi
 					else
