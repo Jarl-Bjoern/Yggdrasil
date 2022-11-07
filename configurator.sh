@@ -110,7 +110,7 @@ function File_Installer() {
 				echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"
 				if [ "$Switch_WGET" = false ]; then
 					if [ "$Switch_Skip" = true ]; then
-						if [[ !$line =~ "iptables-persistent" || !$line =~ "netfilter-persistent" || !$line =~ "charon" || !$line =~ "strongswan" || !$line =~ "openconnect" !$line =~ "opensc" ]]; then
+						if [[ !$line =~ "iptables-persistent" || !$line =~ "netfilter-persistent" || !$line =~ "charon" || !$line =~ "strongswan" || !$line =~ "openconnect" || !$line =~ "opensc" ]]; then
 							eval "$Command $line"
 						fi
 					else
@@ -195,7 +195,9 @@ if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 	OPT_Path="/opt/forensic_tools"
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	OPT_Path="/opt/pentest_tools"
-	sed -i s/'kali/pentest-kali'/g /etc/hostname
+	if [[ $(cat /etc/hostname) == "kali" ]]; then
+		sed -i s/'kali/pentest-kali'/g /etc/hostname
+	fi
 	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
 	header "pentesting_category"
 	read -p "Your Choice: " pentesting
@@ -215,8 +217,11 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 		else
 			echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 		fi
+	fi
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
-	sed -i s/'kali/pentest-kali'/g /etc/hostname
+	if [[ $(cat /etc/hostname) == "kali" ]]; then
+		sed -i s/'kali/pentest-kali'/g /etc/hostname
+	fi
 	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Custom"
@@ -335,7 +340,7 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 
 	# ZSH_Configuration
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_ZSH
-	if [[ !$(cat $PATH_ZSH | grep "hist_ignore_all_dups") ]];
+	if [[ !$(cat $PATH_ZSH | grep "hist_ignore_all_dups") ]]; then
 		cat <<EOF >> $PATH_ZSH
 setopt hist_ignore_all_dups
 EOF
