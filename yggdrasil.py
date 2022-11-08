@@ -47,7 +47,7 @@ def Check_Permissions(File_Path):
             if (file.endswith('.py')): Permission_Change(join(root, file))
             elif (file.endswith('.sh')): Permission_Change(join(root, file))
     
-# main
+# Main
 if __name__ == '__main__':
     File_Path = dirname(realpath(__file__))
     Start_Script = join(File_Path, "configurator.sh")
