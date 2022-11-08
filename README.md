@@ -21,7 +21,7 @@ usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-p PATH] [-s [SKIP]] [-h]
 
 optional arguments:
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
-                        This parameter is required to accept licenses.
+                        This parameter is required to accept licenses for PyAutoGUI.
                         
                         Licenses:
                           - Veracrypt
@@ -32,6 +32,11 @@ optional arguments:
                         ---------------------------------------------------------------
   -s [SKIP], --skip [SKIP]
                         This parameter skips the hardening part.
+                        
+                        Hardening:
+                          - Firewall
+                          - Operating System
+                          - SSH
                         
                         ---------------------------------------------------------------
   -h, --help            Show this help message and exit.
