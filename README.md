@@ -21,7 +21,7 @@ usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-p PATH] [-s [SKIP]] [-h]
 
 optional arguments:
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
-                        This parameter is required to accept licenses for PyAutoGUI.
+                        This parameter is required to accept licenses.
                         
                         Licenses:
                           - Veracrypt
