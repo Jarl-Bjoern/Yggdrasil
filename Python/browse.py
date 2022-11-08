@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Rainer Christian Bjoern Herold
+# Vers 0.1 08.11.2022
 
 # Libraries
 from sys import argv
