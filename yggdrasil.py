@@ -24,17 +24,29 @@ __author__ = "Rainer C. B. Herold"
 __copyright__ = "Copyright 2022, Rainer C. B. Herold"
 __credits__ = "Rainer C. B. Herold"
 __license__ = "MIT license"
-__version__ = "0.7f"
+__version__ = "0.7g"
 __maintainer__ = "Rainer C. B. Herold"
 __status__ = "Production"
 
 # Libraries
 try:
     from argparse import ArgumentParser, FileType, RawTextHelpFormatter, SUPPRESS
-    from os import name as osname, system
+    from os import name as osname, system, walk
     from os.path import dirname, join, realpath
+    from subprocess import DEVNULL, run
 except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
 
+# Functions
+def Check_Permissions(File_Path):
+    def Permission_Change(File):
+        run(['sudo','chmod','+x',File], stdin=DEVULL, stdout=DEVNULL, stderr=DEVNULL)
+        run(['dos2unix',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
+
+    for root, _, files in walk(File_Path, topdown=False):
+        for file in files:
+            if (file.endswith('.py')): Permission_Change(join(root, file))
+            elif (file.endswith('.sh')): Permission_Change(join(root, file))
+    
 # main
 if __name__ == '__main__':
     File_Path = dirname(realpath(__file__))
@@ -51,6 +63,7 @@ if __name__ == '__main__':
         optional.add_argument('-h','--help', action='help', default=SUPPRESS, help='Show this help message and exit.\n\n-------------------------------------------------------------------------------------')
         args = parser.parse_args()
 
+        Check_Permissions(File_Path)
         if (args.path != None and args.skip != None and args.accept_licenses != None): system(f'sudo bash {Start_Script} -s {args.path} -aL')
         elif (args.path != None and args.skip == None and args.accept_licenses == None): system(f'sudo bash {Start_Script} {args.path}')
         elif (args.path != None and args.skip == None and args.accept_licenses != None): system(f'sudo bash {Start_Script} {args.path} -aL')
