@@ -7,7 +7,7 @@ from os.path import join
 from sys import argv
 
 # Arrays
-Array_Filter = ['.sh','.deb','.tar','.bz2','.zip','.rar']
+Array_Filter = ['.sh','.deb','.tar.gz','.bz2','.zip','.rar']
 
 # Main
 if __name__ == '__main__':
