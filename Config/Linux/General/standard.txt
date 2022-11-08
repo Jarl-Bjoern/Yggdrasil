@@ -15,6 +15,7 @@ iptables-persistent
 libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
+mc
 mono-complete
 neovim
 netfilter-persistent
