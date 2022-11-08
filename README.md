@@ -12,7 +12,6 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 ```bash
 sudo git clone https://github.com/Jarl-Bjoern/Yggdrasil/
 cd Yggdrasil
-sudo chmod +x $(find . -type f | grep -E "configurator.sh|*.py") ; sudo dos2unix $(find . -type f | grep -v "configurator.ps1")
 sudo python3 yggdrasil.py
 ```
 
