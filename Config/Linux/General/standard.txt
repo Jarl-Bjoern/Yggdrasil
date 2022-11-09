@@ -7,6 +7,7 @@ docker.io
 fish
 g++
 gcc
+gem
 git
 gnutls-bin
 golang
