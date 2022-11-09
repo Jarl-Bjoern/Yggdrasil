@@ -38,14 +38,14 @@ except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlea
 
 # Functions
 def Check_Permissions(File_Path):
-    def Permission_Change(File):
-        run(['sudo','chmod','+x',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
-        run(['sudo','dos2unix',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
+    def Permission_Change(File): run(['sudo','chmod','+x',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
+    def Converter(File): run(['sudo','dos2unix',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
 
     for root, _, files in walk(File_Path, topdown=False):
         for file in files:
             if (file.endswith('.py')): Permission_Change(join(root, file))
             elif (file.endswith('.sh')): Permission_Change(join(root, file))
+            Converter(File)
     
 # Main
 if __name__ == '__main__':
