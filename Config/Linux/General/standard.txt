@@ -2,6 +2,7 @@
 bat
 cargo
 charon-cmd
+curl
 docker.io
 fish
 g++
@@ -19,8 +20,10 @@ mc
 mono-complete
 neovim
 netfilter-persistent
+nmap
 openconnect
 opensc
+python3-pip
 ruby-full
 screen
 squid
