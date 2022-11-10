@@ -8,7 +8,7 @@ Since version 0.7 it is now possible to choose between the three categories ***C
 Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
 
 # How to download and install the tool
-## Check if you have installed the Dos2unix tool
+## Make sure that the dos2unix tool is installed
 ```bash
 sudo apt install -y dos2unix
 ```
