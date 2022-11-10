@@ -434,6 +434,9 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [ -f "/opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)" ]; then
 		sudo bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)
 	fi
+	if [ -d "/opt/pentest_tools/Responder" ]; then
+		pip3 install -r /opt/pentest_tools/Responder/requirements.txt
+	fi
 	if [ -f "/opt/pentest_tools/mitmdump" ]; then
 		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
 	fi
