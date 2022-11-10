@@ -37,6 +37,8 @@ try:
 except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
 
 # Functions
+def Check_dosunix(): run(['sudo','apt','install','-y','dos2unix'], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
+
 def Check_Permissions(File_Path):
     def Permission_Change(File): run(['sudo','chmod','+x',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
     def Converter(File): run(['sudo','dos2unix',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
