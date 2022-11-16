@@ -204,7 +204,11 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	header "pentesting_category"
 	read -p "Your Choice: " pentesting
 	if [[ $pentesting =~ "," ]]; then
+		# UNDER CONSTRUCTION
         	readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
+		for i in ${Array_Pentesting[@]}; do
+                        echo $i
+                done
 	else
 		if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
 			Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure"
