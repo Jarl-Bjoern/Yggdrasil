@@ -47,8 +47,8 @@ def Check_Permissions(File_Path):
         for file in files:
             if (file.endswith('.py')): Permission_Change(join(root, file))
             elif (file.endswith('.sh')): Permission_Change(join(root, file))
-            Converter(File)
-    
+            Converter(join(root, file))
+
 # Main
 if __name__ == '__main__':
     File_Path = dirname(realpath(__file__))
