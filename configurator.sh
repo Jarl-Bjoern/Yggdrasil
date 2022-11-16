@@ -440,6 +440,37 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [ -f "/opt/pentest_tools/mitmdump" ]; then
 		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
 	fi
+	if [[ $(ls /opt/pentest_tools | grep -E "pysap|PyRFC|SAP_GW_RCE_exploit|SAP_RECON") ]]; then
+		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/SAP ; mv pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP
+	fi
+
+	if [[ $(ls /opt/pentest_tools | grep -E "Drupwn|Droopescan|Cmsmap|Ac-drupal") ]]; then
+		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Drupal ; mv Drupwn Droopescan Cmsmap Ac-drupal /opt/pentest_tools/Webscanner/Drupal
+	fi
+
+	if [[ $(ls /opt/pentest_tools | grep -E "typo3scan|t3scan") ]]; then
+		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv typo3scan t3scan /opt/pentest_tools/Webscanner/Typo3
+	fi
+
+	if [[ $(ls /opt/pentest_tools | grep -E "Wpscan|Wp-hunter|Wpseku") ]]; then
+		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Wordpress ; mv Wpscan Wp-hunter Wpseku /opt/pentest_tools/Webscanner/Wordpress
+	fi
+
+	if [[ $(ls /opt/pentest_tools | grep -E "joomscan|joomlavs") ]]; then
+		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla
+	fi
+
+	if [[ $(ls /opt/pentest_tools | grep -E "moodlescan|mooscan") ]]; then
+		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Moodle ; mv moodlescan mooscan /opt/pentest_tools/Webscanner/Moodle
+	fi
+
+	if [[ $(ls /opt/pentest_tools | grep -E "Plown") ]]; then
+		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone
+	fi
+
+	if [[ $(ls /opt/pentest_tools | grep -E "liferayscan") ]]; then
+		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv liferayscan /opt/pentest_tools/Webscanner/Liferay
+	fi
 
 	# Metasploit_Configuration
 	sudo systemctl enable --now postgresql
