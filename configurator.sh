@@ -27,6 +27,11 @@ declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
 "# Message authentication code (MAC) algorithms"
 "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com")
 
+declare -a Array_Filter_Download=("/usr/bin/veracrypt"
+"/usr/bin/cargo"
+"/usr/bin/rustc"
+"/usr/bin/google-chrome")
+
 declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic/full.txt"
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure/full.txt"
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT/full.txt"
