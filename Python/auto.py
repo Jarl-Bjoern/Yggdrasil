@@ -18,8 +18,11 @@ def Veracrypt_Install(Path):
 
   def Auto_Install():
       Press_Key('1', 2), Press_Key('return', 2), Press_Key('return', 2)
-      for i in range(0,10):
+      for i in range(0,20):
           hotkey('ctrl', 'v')
+          sleep(1)
+      for i in range(0,30):
+          Press_Key('backspace', 2)
           sleep(1)
       autowrite("yes"), sleep(1)
       Press_Key('return', 2), press("return")
