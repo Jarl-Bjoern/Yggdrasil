@@ -32,6 +32,8 @@ declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/usr/bin/rustc"
 "/usr/bin/google-chrome")
 
+declare -a Array_Filter_WGET=("/opt/pentest_tools/kerbrute/kerbrute.sh")
+
 declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic/full.txt"
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure/full.txt"
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT/full.txt"
