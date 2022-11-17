@@ -42,6 +42,7 @@ declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web/full.txt")
 
 declare -a Array_Pentesting=()
+declare -a Array_Categories=()
 
 # Color
 BLUE='\033[0;34m'
@@ -220,15 +221,15 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
         	readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
 		for $testing_category in ${Array_Pentesting[@]}; do
                         if [[ $testing_category = "infrastructure" || $testing_category = "1" ]]; then
-				Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure"
+				Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure")
 			elif [[ $testing_category = "iot" || $testing_category = "2" ]];  then
-				Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT"
+				Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT")
 			elif [[ $testing_category = "mobile" || $testing_category = "3" ]];  then
-				Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile"
+				Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile")
 			elif [[ $testing_category = "red_teaming" || $testing_category = "4" ]];  then
-				Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming"
+				Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming")
 			elif [[ $testing_category = "web" || $testing_category = "5" ]];  then
-				Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web"
+				Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web")
 			else
 				echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 			fi
