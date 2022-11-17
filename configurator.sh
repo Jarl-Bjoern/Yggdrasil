@@ -442,31 +442,31 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 		pip3 install -r /opt/pentest_tools/Responder/requirements.txt
 	fi
 	if [ -f "/opt/pentest_tools/mitmdump" ]; then
-		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
+		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "pysap|PyRFC|SAP_GW_RCE_exploit|SAP_RECON") ]]; then
-		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/SAP ; mv pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/SAP ; mv pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "drupwn|droopescan|CMSmap|ac-drupal") ]]; then
-		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Drupal ; mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Drupal ; mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "Typo3Scan|T3Scan") ]]; then
-		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "wpscan|wphunter|WPSeku|Wordpresscan") ]]; then
-		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Wordpress ; mv wpscan wphunter Wordpresscan WPSeku /opt/pentest_tools/Webscanner/Wordpress
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Wordpress ; mv wpscan wphunter Wordpresscan WPSeku /opt/pentest_tools/Webscanner/Wordpress
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "joomscan|joomlavs") ]]; then
-		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "moodlescan|mooscan|badmoodle") ]]; then
-		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Moodle ; mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle ; mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle
 	fi
 	if [[ -d "/opt/pentest_tools/plown" ]]; then
-		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone
 	fi
 	if [[ -d "/opt/pentest_tools/LiferayScan" ]]; then
-		cd /opt/pentest_tools ; mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv LiferayScan /opt/pentest_tools/Webscanner/Liferay
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv LiferayScan /opt/pentest_tools/Webscanner/Liferay
 	fi
 
 	# Metasploit_Configuration
