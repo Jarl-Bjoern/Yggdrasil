@@ -87,6 +87,11 @@ function header() {
 		echo -e "${CYAN}|${NOCOLOR} [${BLUE}3${NOCOLOR}] ${BLUE}mobile${NOCOLOR}          :   tools for mobile pentesting    ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR} [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming          ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR} [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting       ${CYAN}|${NOCOLOR}"
+	elif [ $1 = "hardening" ]; then
+		echo -e "${CYAN}|${NOCOLOR} [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   complete configuration      ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR} [${CYAN}2${NOCOLOR}] ${CYAN}Firewall${NOCOLOR}      :   Firewall hardening       ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR} [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}    :   Sysctl hardening     ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR} [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}     :   SSH hardening      ${CYAN}|${NOCOLOR}"		
 	fi
 	echo -e "${CYAN}|${NOCOLOR}                                                        ${CYAN}|${NOCOLOR}"
 	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
