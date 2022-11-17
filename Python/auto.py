@@ -22,7 +22,7 @@ def Veracrypt_Install(Path):
           hotkey('ctrl', 'v')
           sleep(1)
       for i in range(0,30):
-          Press_Key('backspace', 1)
+          Press_Key('backspace', 0.5)
       autowrite("yes"), sleep(1)
       Press_Key('return', 2), press("return")
 
