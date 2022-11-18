@@ -94,7 +94,7 @@ function header() {
 		echo -e "${CYAN}|${NOCOLOR} [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   complete configuration      ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR} [${CYAN}2${NOCOLOR}] ${CYAN}Firewall${NOCOLOR}      :   firewall hardening       ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR} [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}    :   sysctl hardening     ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}     :   SSH hardening      ${CYAN}|${NOCOLOR}"		
+		echo -e "${CYAN}|${NOCOLOR} [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}     :   SSH hardening      ${CYAN}|${NOCOLOR}"
 	fi
 	echo -e "${CYAN}|${NOCOLOR}                                                        ${CYAN}|${NOCOLOR}"
 	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
