@@ -10,4 +10,8 @@
 
 # Wget
 
+# Go
+
+# Gem
+
 # Wordlists
