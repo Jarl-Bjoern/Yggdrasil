@@ -4,6 +4,7 @@ cargo
 charon-cmd
 curl
 docker.io
+exiftool
 fish
 g++
 gcc
