@@ -114,6 +114,10 @@ function File_Installer() {
 			Command="pip3 install" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Git" ]]; then
 			Command="git clone" ; Skip=true ; mkdir -p $2 ; cd $2 ; Switch_WGET=false
+		elif [[ $line = "# Gem" ]]; then
+			Command="gem install" ; Skip=true ; Switch_WGET=false
+		elif [[ $line = "# Go" ]]; then
+			Command="go get" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Wordlists" ]]; then
 			Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
 		elif [[ $line = "# Wget" ]]; then
