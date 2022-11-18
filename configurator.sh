@@ -361,12 +361,12 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
                 PATH_SCREEN="/home/$i/.screenrc"
 		PATH_ALIAS="/home/$i/.bash_aliases"
 		PATH_VIM="/home/$i/.vimrc"
-		PATH_ZSH="home/$i/.zshrc"
+		PATH_ZSH="/home/$i/.zshrc"
         else
                 PATH_SCREEN="/root/.screenrc"
 		PATH_ALIAS="/root/.bash_aliases"
 		PATH_VIM="/root/.vimrc"
-		PATH_ZSH="/root/$i/.zshrc"
+		PATH_ZSH="/root/.zshrc"
         fi
 
 	# ZSH_Configuration
