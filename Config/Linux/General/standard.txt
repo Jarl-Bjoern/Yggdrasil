@@ -25,6 +25,7 @@ netfilter-persistent
 nmap
 openconnect
 opensc
+python3-dev
 python3-pip
 ruby-full
 screen
