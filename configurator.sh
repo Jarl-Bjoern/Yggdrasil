@@ -380,7 +380,7 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 setopt hist_ignore_all_dups
 EOF
 	fi
-	
+
 	# Screen_Configuration (Thx to @HomeSen)
 	cat <<EOF > $PATH_SCREEN
 hardstatus on
