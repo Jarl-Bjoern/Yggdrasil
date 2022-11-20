@@ -357,7 +357,7 @@ if [[ $category_type = "complete" || $category_type = "1" ]]; then
 		fi
 	done
 else
-	if [[ !${#Array_Categories} -gt 0 ]]; then
+	if [[ ${#Array_Categories} -gt 0 ]]; then
 		for i in ${Array_Categories[@]}; do
 			File_Installer "${i}/full.txt" "/opt/pentest_tools"
 		done
