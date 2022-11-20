@@ -32,10 +32,12 @@ declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/usr/bin/cargo"
 "/usr/bin/rustc"
 "/usr/bin/google-chrome"
-"/opt/SmartBear"
+"/opt/SmartBear/SoapUI"
 "/opt/pentest_tools/jetbrains"
 "/opt/pentest_tools/mitmproxy"
-"/opt/pentest_tools/Webscanner/SAP/pysap"
+"/opt/pentest_tools/kerbrute")
+
+declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Webscanner/SAP/PyRFC"
 "/opt/pentest_tools/Webscanner/SAP/SAP_GW_RCE_exploit"
 "/opt/pentest_tools/Webscanner/SAP/SAP_RECON"
@@ -55,8 +57,7 @@ declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/opt/pentest_tools/Webscanner/Moodle/badmoodle"
 "/opt/pentest_tools/Webscanner/Moodle/mooscan"
 "/opt/pentest_tools/Webscanner/Plone/plown"
-"/opt/pentest_tools/Webscanner/Liferay/LiferayScan"
-"/opt/pentest_tools/kerbrute")
+"/opt/pentest_tools/Webscanner/Liferay/LiferayScan")
 
 declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic/full.txt"
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure/full.txt"
