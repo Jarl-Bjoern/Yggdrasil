@@ -270,6 +270,8 @@ elif [[ $category_type = "complete" || $category_type = "1" ]]; then
 	decision="0"
 else
 	if [[ ${#Array_Categories} -gt 0 ]]; then
+		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure"
+		File_Path="${Path_Way}/full.txt"
 		Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 	else
 		if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" ]]; then
