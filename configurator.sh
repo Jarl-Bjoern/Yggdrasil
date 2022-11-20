@@ -140,8 +140,8 @@ function File_Installer() {
 					FILE=$(echo $line | cut -d" " -f1)
 					FILE_NAME=$(echo "$line" | cut -d" " -f2)
 					for CHECK_FILE in ${Array_Filter_Download[@]}; do
-						if [[ $FILE_NAME =~ $CHECK_FILE ]]; then
-							if [[ -f $CHECK_FILE ]]; then
+						if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
+							if [[ $(ls $CHECK_FILE) ]]; then
 								Switch_IGNORE=true
 							fi
 						fi
