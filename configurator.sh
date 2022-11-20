@@ -154,7 +154,10 @@ function File_Installer() {
 					if [[ $line =~ "github" ]]; then
 						for CHECK_GIT in ${Array_Filter_Git}; do
 							if [[ $CHECK_GIT =~ $(echo $line | cut -d "/" -f5) ]]; then
-								Switch_IGNORE=true
+								if [[ $(ls $CHECK_GIT) ]]; then
+									Switch_IGNORE=true
+									break
+								fi
 							fi
 						done
 					if [ "$Switch_Skip" = true ]; then
@@ -181,6 +184,7 @@ function File_Installer() {
 						if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
 							if [[ $(ls $CHECK_FILE) ]]; then
 								Switch_IGNORE=true
+								break
 							fi
 						fi
 					done
