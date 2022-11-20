@@ -38,4 +38,4 @@ torbrowser-launcher
 docker-compose
 
 # Wget
-https://sh.rustup.rs Rust Installer
+https://sh.rustup.rs rust Installer
