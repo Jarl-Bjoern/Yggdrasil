@@ -35,7 +35,8 @@ declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/opt/SmartBear/SoapUI"
 "/opt/pentest_tools/jetbrains"
 "/opt/pentest_tools/mitmproxy"
-"/opt/pentest_tools/kerbrute")
+"/opt/pentest_tools/kerbrute"
+"/opt/pentest_tools/Postman")
 
 declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Webscanner/SAP/PyRFC"
