@@ -13,6 +13,7 @@ PATH_VIM=""
 PATH_ZSH=""
 pentesting=""
 Skip=false
+Switch_IGNORE=false
 Switch_License=false
 Switch_Skip=false
 Switch_WGET=false
@@ -138,39 +139,47 @@ function File_Installer() {
 				else
 					FILE=$(echo $line | cut -d" " -f1)
 					FILE_NAME=$(echo "$line" | cut -d" " -f2)
-					MODE=$(echo $line | cut -d" " -f3)
-					mkdir -p $2 ; cd $2
-					if [ "$MODE" = "Executeable" ]; then						
-						mkdir -p $2/$FILE_NAME ; cd $2/$FILE_NAME
-						wget $FILE -O $FILE_NAME
-						chmod +x $FILE_NAME ; cd $2
-					elif [ "$MODE" = "Archive" ]; then
-						wget --content-disposition $FILE
-						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-						if [[ ${#FILE_NAME} -gt 0 ]]; then
-							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE_NAME $2
-						else
-							sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE $2
+					for CHECK_FILE in ${Array_Filter_Download[@]}; do
+						if [[ $FILE_NAME =~ $CHECK_FILE ]]; then
+							if [[ -f $CHECK_FILE ]]; then
+								Switch_IGNORE=true
+							fi
 						fi
-					elif [ "$MODE" = "Installer" ]; then
-						wget --content-disposition $FILE
-						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-						if [[ $FILE_NAME =~ "rustup" ]]; then
-							sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2) -y
-						else
-							sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2)
-						fi
-					elif [ "$MODE" = "DPKG" ]; then
-						FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
-						if [[ ${#FILE_NAME} -gt 0 ]]; then
+					if [[ $Switch_IGNORE = false ]]; then
+						MODE=$(echo $line | cut -d" " -f3)
+						mkdir -p $2 ; cd $2
+						if [ "$MODE" = "Executeable" ]; then						
+							mkdir -p $2/$FILE_NAME ; cd $2/$FILE_NAME
+							wget $FILE -O $FILE_NAME
+							chmod +x $FILE_NAME ; cd $2
+						elif [ "$MODE" = "Archive" ]; then
 							wget --content-disposition $FILE
-							sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2)
-						else
-							FILE_NAME=$(echo "$line" | cut -d" " -f2)
-							wget $FILE -O $FILE_NAME.deb
-							sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2).deb
-						fi
+							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
+							if [[ ${#FILE_NAME} -gt 0 ]]; then
+								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE_NAME $2
+							else
+								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE $2
+							fi
+						elif [ "$MODE" = "Installer" ]; then
+							wget --content-disposition $FILE
+							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
+							if [[ $FILE_NAME =~ "rustup" ]]; then
+								sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2) -y
+							else
+								sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2)
+							fi
+						elif [ "$MODE" = "DPKG" ]; then
+							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
+							if [[ ${#FILE_NAME} -gt 0 ]]; then
+								wget --content-disposition $FILE
+								sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2)
+							else
+								FILE_NAME=$(echo "$line" | cut -d" " -f2)
+								wget $FILE -O $FILE_NAME.deb
+								sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2).deb
+							fi
 
+						fi
 					fi
 				fi
 			fi
