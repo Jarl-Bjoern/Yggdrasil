@@ -137,10 +137,10 @@ function File_Installer() {
 					fi
 				else
 					FILE=$(echo $line | cut -d" " -f1)
+					FILE_NAME=$(echo "$line" | cut -d" " -f2)
 					MODE=$(echo $line | cut -d" " -f3)
 					mkdir -p $2 ; cd $2
-					if [ "$MODE" = "Executeable" ]; then
-						FILE_NAME=$(echo "$line" | cut -d" " -f2)
+					if [ "$MODE" = "Executeable" ]; then						
 						mkdir -p $2/$FILE_NAME ; cd $2/$FILE_NAME
 						wget $FILE -O $FILE_NAME
 						chmod +x $FILE_NAME ; cd $2
