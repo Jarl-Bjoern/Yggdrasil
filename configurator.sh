@@ -184,7 +184,6 @@ function File_Installer() {
 						if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
 							if [[ $(ls $CHECK_FILE) ]]; then
 								Switch_IGNORE=true
-								break
 							fi
 						fi
 					done
