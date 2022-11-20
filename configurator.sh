@@ -405,7 +405,7 @@ if [[ $Switch_Skip != true ]]; then
 fi
 if [[ $category_type != "custom" || $category_type != "2" ]]; then
 	File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/standard.txt" $OPT_Path
-	if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
+	if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
 		File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/gui.txt" $OPT_Path
 	fi
 fi
