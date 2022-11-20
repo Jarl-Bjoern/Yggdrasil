@@ -18,4 +18,4 @@ pyautogui
 https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-setup.tar.bz2 veracrypt Archive
 https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.26.3.13353.tar.gz PyCharm Archive
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb chrome DPKG
-https://go.microsoft.com/fwlink/?LinkID=760868 VSCode DPKG
+https://go.microsoft.com/fwlink/?LinkID=760868 code DPKG
