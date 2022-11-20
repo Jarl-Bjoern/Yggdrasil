@@ -222,7 +222,7 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	read -p "Your Choice: " pentesting
 	if [[ $pentesting =~ "," ]]; then
         	readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
-		for $testing_category in ${Array_Pentesting[@]}; do
+		for testing_category in ${Array_Pentesting[@]}; do
                         if [[ $testing_category = "infrastructure" || $testing_category = "1" ]]; then
 				Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure")
 			elif [[ $testing_category = "iot" || $testing_category = "2" ]];  then
