@@ -29,7 +29,7 @@ declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
 "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com")
 
 declare -a Array_Filter_Download=("/usr/bin/veracrypt"
-"/usr/bin/cargo"
+"/usr/bin/code"
 "/usr/bin/rustc"
 "/usr/bin/google-chrome"
 "/opt/SmartBear"
