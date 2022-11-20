@@ -155,7 +155,7 @@ function File_Installer() {
 					if [[ $line =~ "github" ]]; then
 						for CHECK_GIT in ${Array_Filter_Git}; do
 							if [[ $CHECK_GIT =~ $(echo $line | cut -d "/" -f5) ]]; then
-								if [[ $(ls $CHECK_GIT) ]]; then
+								if [[ -d $CHECK_GIT ]]; then
 									Switch_IGNORE=true
 									break
 								fi
