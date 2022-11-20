@@ -157,7 +157,6 @@ function File_Installer() {
 								Switch_IGNORE=true
 							fi
 						done
-					else
 					if [ "$Switch_Skip" = true ]; then
 						if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
 							echo "$line was skipped"
