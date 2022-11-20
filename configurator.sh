@@ -149,16 +149,31 @@ function File_Installer() {
 			Switch_WGET=true
 		else
 			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
-				echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"
+				echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"				
 				if [ "$Switch_WGET" = false ]; then
+					if [[ $line =~ "github" ]]; then
+						for CHECK_GIT in ${Array_Filter_Git}; do
+							if [[ $CHECK_GIT =~ $(echo $line | cut -d "/" -f5) ]]; then
+								Switch_IGNORE=true
+							fi
+						done
+					else
 					if [ "$Switch_Skip" = true ]; then
 						if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
 							echo "$line was skipped"
 						else
-							eval "$Command $line"
+							if [[ $Switch_IGNORE = false ]]; then
+								eval "$Command $line"
+							else
+								echo "$line already exists."
+							fi
 						fi
 					else
-						eval "$Command $line"
+						if [[ $Switch_IGNORE = false ]]; then
+							eval "$Command $line"
+						else
+							echo "$line already exists."
+						fi
 					fi
 				else
 					FILE=$(echo $line | cut -d" " -f1)
@@ -212,6 +227,7 @@ function File_Installer() {
 			fi
 		fi
 		Skip=false
+		Switch_IGNORE=false
 		sleep 0.15
 	done < $input
 }
