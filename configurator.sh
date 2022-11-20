@@ -221,7 +221,6 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	header "pentesting_category"
 	read -p "Your Choice: " pentesting
 	if [[ $pentesting =~ "," ]]; then
-		# UNDER CONSTRUCTION
         	readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
 		for $testing_category in ${Array_Pentesting[@]}; do
                         if [[ $testing_category = "infrastructure" || $testing_category = "1" ]]; then
@@ -358,7 +357,13 @@ if [[ $category_type = "complete" || $category_type = "1" ]]; then
 		fi
 	done
 else
-	File_Installer $File_Path $OPT_Path
+	if [[ !${#Array_Categories} -gt 0 ]];
+		for i in ${Array_Categories[@]}; do
+			File_Installer "${i}/full.txt" "/opt/pentest_tools"
+		fi
+	else
+		File_Installer $File_Path $OPT_Path
+	fi
 fi
 
 # Path_Filtering
