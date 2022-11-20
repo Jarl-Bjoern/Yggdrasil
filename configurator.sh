@@ -269,22 +269,26 @@ if [[ $category_type = "custom" || $category_type = "2" ]]; then
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
 	decision="0"
 else
-	if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" ]]; then
-		File_Path="${Path_Way}/full.txt"
-		decision="full"
+	if [[ ${#Array_Categories} -gt 0 ]]; then
 		Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 	else
-		header "installation"
-		read -p "Your Choice: " decision
-		if [[ $decision = "full" || $decision = "1" ]]; then
+		if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" ]]; then
 			File_Path="${Path_Way}/full.txt"
-			if [[ $category_type = "pentest" || $category_type = "4" ]];  then
-				Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
-			fi
-		elif [[ $decision = "minimal" || $decision = "2" ]];  then
-			File_Path="${Path_Way}/minimal.txt"
+			decision="full"
+			Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 		else
-			echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+			header "installation"
+			read -p "Your Choice: " decision
+			if [[ $decision = "full" || $decision = "1" ]]; then
+				File_Path="${Path_Way}/full.txt"
+				if [[ $category_type = "pentest" || $category_type = "4" ]];  then
+					Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+				fi
+			elif [[ $decision = "minimal" || $decision = "2" ]];  then
+				File_Path="${Path_Way}/minimal.txt"
+			else
+				echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+			fi
 		fi
 	fi
 fi
