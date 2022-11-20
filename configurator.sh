@@ -145,6 +145,7 @@ function File_Installer() {
 								Switch_IGNORE=true
 							fi
 						fi
+					done
 					if [[ $Switch_IGNORE = false ]]; then
 						MODE=$(echo $line | cut -d" " -f3)
 						mkdir -p $2 ; cd $2
