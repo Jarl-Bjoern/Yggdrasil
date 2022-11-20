@@ -180,6 +180,8 @@ function File_Installer() {
 							fi
 
 						fi
+					else
+						echo "$FILE_NAME already exists."
 					fi
 				fi
 			fi
