@@ -360,7 +360,7 @@ else
 	if [[ !${#Array_Categories} -gt 0 ]];
 		for i in ${Array_Categories[@]}; do
 			File_Installer "${i}/full.txt" "/opt/pentest_tools"
-		fi
+		done
 	else
 		File_Installer $File_Path $OPT_Path
 	fi
