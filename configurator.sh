@@ -160,6 +160,7 @@ function File_Installer() {
 								fi
 							fi
 						done
+					fi
 					if [ "$Switch_Skip" = true ]; then
 						if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
 							echo "$line was skipped"
@@ -184,6 +185,7 @@ function File_Installer() {
 						if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
 							if [[ $(ls $CHECK_FILE) ]]; then
 								Switch_IGNORE=true
+								break
 							fi
 						fi
 					done
