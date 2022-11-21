@@ -101,7 +101,7 @@ Your Choice: pentest
 Your Choice: infrastructure
 ```
 
-## Choose between one of the Pentesting categories (Multiple Categories)
+## Choose between multiple Pentesting categories
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
