@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # Rainer Christian Bjoern Herold
 # Version 0.1 07.10.2022
+# Version 0.2 21.11.2022
 
 # Libraries
 from sys import argv
@@ -10,6 +11,16 @@ from sys import argv
 def read_file(path_to_file):
         with open(path_to_file, 'r') as f:
                 return f.read().splitlines()
+
+def Crontab_Configuration(path_to_file):
+        Config_Crontab = """0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
+0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
+0 5     * * *  root pip3 install --upgrade pip setuptools python-debian"""
+
+        Array_Temp = read_file(path_to_file)
+        with open(path_to_file, 'a') as f:
+        for _ in Config_Crontab.splitlines():
+                if (_ not in Array_Temp): f.write(f'{_}\n')
 
 def Firewall_Configuration(path_to_file):
         Array_v4 = [":INPUT DROP [0:0]",":FORWARD ACCEPT [0:0]",":OUTPUT ACCEPT [0:0]",
@@ -75,13 +86,13 @@ function b64() { echo $1 | base64 -d | xxd; }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'"""
 
         Array_Temp = read_file(path_to_file)
-
         with open(path_to_file, 'a') as f:
                 for _ in Config_Alias.splitlines():
                         if (_ not in Array_Temp): f.write(f'{_}\n')
 
 # Main
 if __name__ == '__main__':
-        if ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
+        if ("crontab" in argv[1]): Crontab_Configuration(argv[1])
+        elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
         elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
         elif (".zshrc" in argv[1]): Alias_Configuration(argv[1])
