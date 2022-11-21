@@ -761,9 +761,6 @@ fi
 # Linking_Local_Wordlists
 ln -s /usr/share/wordlists /opt/wordlists/kali_wordlists
 
-# Linking_Shell_Configuration
-source ~/.zshrc
-
 # Docker_Standard_Images
 if [[ $(cat $File_Path | grep nessus) ]]; then
 	if [[ $(docker ps -a | grep nessus) ]]; then
