@@ -15,6 +15,9 @@ def Press_Hotkey(key_One, key_Two, seconds): hotkey(key_One, key_Two), sleep(sec
 
 def Press_Key(key, seconds): press(key), sleep(seconds)
 
+def SoapUI_Install(Path):
+  pass
+  
 def Pycharm_Install(Path):
   def Auto_Install():
       pass
@@ -37,3 +40,4 @@ def Veracrypt_Install(Path):
 if __name__ == '__main__':
   if (argv[1] == "Veracrypt"): Veracrypt_Install(argv[2])
   elif (argv[2] == "Pycharm"): Pycharm_Install(argv[2])
+  elif (argv[2] == "SoapUI"): SoapUI_Install(argv[2])
