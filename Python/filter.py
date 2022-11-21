@@ -55,7 +55,7 @@ def Firewall_Configuration(path_to_file):
         for Text in Array_File:
                 if ("Commit" not in Text): Array_Temp.append(Text)
 
-        with open(Path, 'a') as f:
+        with open(path_to_file, 'a') as f:
                 if ("v4" in path_to_file):
                         for _ in Array_v4: 
                                 if (_ not in Array_Temp): f.write(f'{_}\n')
