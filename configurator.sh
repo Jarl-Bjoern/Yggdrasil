@@ -447,13 +447,10 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 		PATH_ZSH="/root/.zshrc"
         fi
 
-	# ZSH_Configuration
+	# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_ZSH
-	if [[ !$(cat $PATH_ZSH | grep "hist_ignore_all_dups") ]]; then
-		cat <<EOF >> $PATH_ZSH
-setopt hist_ignore_all_dups
-EOF
-	fi
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ALIAS
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ZSH
 
 	# Screen_Configuration (Thx to @HomeSen)
 	cat <<'EOF' > $PATH_SCREEN
@@ -505,19 +502,6 @@ set statusline+=%L
 set statusline+=\ ]
 set statusline+=\ 
 set statusline+=%p%%
-EOF
-
-	# Alias_Configuration (Thx to @HomeSen)
-	cat <<'EOF' > $PATH_ALIAS
-alias la='ls -lha --color=auto'
-alias grep='grep --color=auto'
-alias df='df -h'
-alias du='du -h'
-
-alias ffs='sudo $(history -p !!)'
-alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
-
-function b64() { echo $1 | base64 -d | xxd; }
 EOF
 done
 
