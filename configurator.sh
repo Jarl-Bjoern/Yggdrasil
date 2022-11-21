@@ -153,7 +153,7 @@ function File_Installer() {
 				echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"
 				if [ "$Switch_WGET" = false ]; then
 					if [[ $line =~ "github" ]]; then
-						for CHECK_GIT in ${Array_Filter_Git}; do
+						for CHECK_GIT in ${Array_Filter_Git[@]}; do
 							if [[ $CHECK_GIT =~ $(echo $line | cut -d "/" -f5) ]]; then
 								if [[ -d $CHECK_GIT ]]; then
 									Switch_IGNORE=true
