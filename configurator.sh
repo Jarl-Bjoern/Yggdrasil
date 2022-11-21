@@ -456,14 +456,14 @@ EOF
 	fi
 
 	# Screen_Configuration (Thx to @HomeSen)
-	cat <<EOF > $PATH_SCREEN
+	cat <<'EOF' > $PATH_SCREEN
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
 
 	# Vim_Configuration (Thx to @HomeSen)
-	cat <<EOF > $PATH_VIM
+	cat <<'EOF' > $PATH_VIM
 syntax on
 
 " Uncomment the following to have Vim jump to the last position when
@@ -508,7 +508,7 @@ set statusline+=%p%%
 EOF
 
 	# Alias_Configuration (Thx to @HomeSen)
-	cat <<EOF > $PATH_ALIAS
+	cat <<'EOF' > $PATH_ALIAS
 alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
 alias df='df -h'
@@ -522,7 +522,7 @@ EOF
 done
 
 	# Important nmap alias
-	cat <<EOF >> $PATH_ALIAS
+	cat <<'EOF' >> $PATH_ALIAS
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr '\n' ',' | rev | cut -c2- | rev)'	
 EOF
 
