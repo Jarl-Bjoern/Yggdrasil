@@ -18,6 +18,7 @@
 # Vers 0.7d 29.10.2022
 # Vers 0.7e 01.11.2022
 # Vers 0.7f 02.11.2022
+# Vers 0.7g 21.11.2022
 
 # Author
 __author__ = "Rainer C. B. Herold"
