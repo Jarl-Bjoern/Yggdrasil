@@ -74,9 +74,9 @@ alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 setopt hist_ignore_all_dups
 function b64() { echo $1 | base64 -d | xxd; }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'"""
-        
+
         Array_Temp = read_file(path_to_file)
-        
+
         with open(path_to_file, 'a') as f:
                 for _ in Config_Alias.splitlines():
                         if (_ not in Array_Temp): f.write(f'{_}\n')
