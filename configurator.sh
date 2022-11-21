@@ -83,7 +83,7 @@ function initials {
         echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
         echo "💀                                                      💀"
         echo "💀                       Yggdrasil                      💀"
-        echo -e "💀                     Version ${CYAN}0.7g${NOCOLOR}                     💀"
+        echo -e "💀                     Version ${CYAN}0.8${NOCOLOR}                     💀"
         echo "💀           Rainer Christian Bjoern Herold             💀"
         echo "💀                                                      💀"
         echo -e "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n"
