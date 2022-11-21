@@ -11,7 +11,7 @@ def read_file(path_to_file):
         with open(path_to_file, 'r') as f:
                 return f.read().splitlines()
 
-def Firewall_Configuration(path_to_file, Switch):
+def Firewall_Configuration(path_to_file):
         Array_v4 = [":INPUT DROP [0:0]",":FORWARD ACCEPT [0:0]",":OUTPUT ACCEPT [0:0]",
 "# Allow established, related and localhost traffic",
 "-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT",
@@ -57,10 +57,10 @@ def Firewall_Configuration(path_to_file, Switch):
                         if ("Commit" not in Text): Array_Temp.append(Text)
 
                 with open(Path, 'a') as f:
-                        if (Switch == "v4"):
+                        if ("v4" in path_to_file):
                                 for _ in Array_v4: 
                                         if (_ not in Array_Temp): f.write(f'{_}\n')
-                        elif (Switch == "v6"):
+                        elif ("v6" in path_to_file):
                                 for _ in Array_v6:
                                         if (_ not in Array_Temp): f.write(f'{_}\n')
 
@@ -74,14 +74,14 @@ alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 function b64() { echo $1 | base64 -d | xxd; }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'"""
         
-        Array_File = read_file(path_to_file)
+        Array_Temp = read_file(path_to_file)
         
         with open(path_to_file, 'a') as f:
                 for _ in Alias.splitlines():
-                        if (_ not in Text): f.write(f'{_}\n')
+                        if (_ not in Array_Temp): f.write(f'{_}\n')
 
 # Main
 if __name__ == '__main__':
-        if ("rules.v4" in argv[1]): Firewall_Configuration(argv[1], "v4")
-        elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1], "v6")
+        if ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
+        elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
         elif (".zshrc" in argv[1]): Alias_Configuration(argv[1])
