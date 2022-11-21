@@ -11,18 +11,21 @@ from time import sleep
 from threading import Thread
 
 # Functions
+def Press_Hotkey(key_One, key_Two, seconds): hotkey(key_One, key_Two), sleep(seconds)
+
 def Press_Key(key, seconds): press(key), sleep(seconds)
+
+def Pycharm_Install(Path):
+  def Auto_Install():
+      pass
 
 def Veracrypt_Install(Path):
   def Installer(Path): system(f'sudo bash {Path}')
 
   def Auto_Install():
       Press_Key('1', 2), Press_Key('return', 2), Press_Key('return', 2)
-      for i in range(0,20):
-          hotkey('ctrl', 'v')
-          sleep(1)
-      for i in range(0,30):
-          Press_Key('backspace', 0.5)
+      for i in range(0,20): Press_Hotkey('ctrl','v',1)
+      for i in range(0,30): Press_Key('backspace', 0.5)
       autowrite("yes"), sleep(1)
       Press_Key('return', 2), press("return")
 
@@ -33,3 +36,4 @@ def Veracrypt_Install(Path):
 # Main
 if __name__ == '__main__':
   if (argv[1] == "Veracrypt"): Veracrypt_Install(argv[2])
+  elif (argv[2] == "Pycharm"): Pycharm_Install(argv[2])
