@@ -67,7 +67,7 @@ if __name__ == '__main__':
         optional.add_argument('-h','--help', action='help', default=SUPPRESS, help='Show this help message and exit.\n\n-------------------------------------------------------------------------------------')
         args = parser.parse_args()
 
-        Check_Permissions(File_Path)
+        Check_dosunix(), Check_Permissions(File_Path)
         if (args.path != None and args.skip != None and args.accept_licenses != None and args.host_name != None): system(f'sudo bash {Start_Script} -s {args.path} -aL -hN {args.host_name}')
         elif (args.path != None and args.skip == None and args.accept_licenses == None and args.host_name == None): system(f'sudo bash {Start_Script} {args.path}')
         elif (args.path != None and args.skip == None and args.accept_licenses != None and args.host_name == None): system(f'sudo bash {Start_Script} {args.path} -aL')
