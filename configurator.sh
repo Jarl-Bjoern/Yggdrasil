@@ -522,9 +522,16 @@ EOF
 done
 
 	# Important nmap alias
-	cat <<'EOF' >> $PATH_ALIAS
-alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr '\n' ',' | rev | cut -c2- | rev)'	
+	if [[ !$(cat $PATH_ALIAS) | grep "alias nmap" ]]; then
+		cat <<'EOF' >> $PATH_ALIAS
+alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'	
 EOF
+	fi
+	if [[ !$(cat $PATH_ZSH) | grep "alias nmap" ]]; then
+		cat <<'EOF' >> $PATH_ZSH
+alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
+EOF
+	fi
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
 	# Git_Tools_Installation
