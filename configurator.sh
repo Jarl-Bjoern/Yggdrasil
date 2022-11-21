@@ -150,9 +150,9 @@ function File_Installer() {
 			Switch_WGET=true
 		else
 			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
-				echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"
 				if [ "$Switch_WGET" = false ]; then
 					if [[ $line =~ "github" ]]; then
+						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo $line | cut -d "/" -f5)${NOCOLOR}"
 						for CHECK_GIT in ${Array_Filter_Git[@]}; do
 							if [[ $CHECK_GIT =~ $(echo $line | cut -d "/" -f5) ]]; then
 								if [[ -d $CHECK_GIT ]]; then
@@ -161,6 +161,8 @@ function File_Installer() {
 								fi
 							fi
 						done
+					else
+						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"
 					fi
 					if [ "$Switch_Skip" = true ]; then
 						if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
@@ -182,6 +184,7 @@ function File_Installer() {
 				else
 					FILE=$(echo $line | cut -d" " -f1)
 					FILE_NAME=$(echo "$line" | cut -d" " -f2)
+					echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}"
 					for CHECK_FILE in ${Array_Filter_Download[@]}; do
 						if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
 							if [[ $(ls $CHECK_FILE) ]]; then
