@@ -330,6 +330,7 @@ else
 		Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure"
 		File_Path="${Path_Way}/full.txt"
 		Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+		decision="full"
 	else
 		if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" ]]; then
 			File_Path="${Path_Way}/full.txt"
@@ -779,8 +780,8 @@ if [[ $(cat $File_Path | grep nessus) ]]; then
 	fi
 	sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
-if [[ $category_type = "pentest" || $category_type = "4"  ]];  then
-	if [[ $decision = "full" || $decision = "1"  ]]; then
+if [[ $category_type = "pentest" || $category_type = "4" ]];  then
+	if [[ $decision = "full" || $decision = "1" ]]; then
 		echo -e "\n"; cat $Informational
 	fi
 fi
