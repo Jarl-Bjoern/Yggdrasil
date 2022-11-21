@@ -51,18 +51,17 @@ def Firewall_Configuration(path_to_file):
 "-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 152 -j ACCEPT",
 "-A INPUT -s fe80::/10 -p ipv6-icmp --icmpv6-type 153 -j ACCEPT"]
 
-        for Path in Array_Path:
-                Array_Temp, Array_File = [], read_file(Path)
-                for Text in Array_File:
-                        if ("Commit" not in Text): Array_Temp.append(Text)
+        Array_Temp, Array_File = [], read_file(path_to_file)
+        for Text in Array_File:
+                if ("Commit" not in Text): Array_Temp.append(Text)
 
-                with open(Path, 'a') as f:
-                        if ("v4" in path_to_file):
-                                for _ in Array_v4: 
-                                        if (_ not in Array_Temp): f.write(f'{_}\n')
-                        elif ("v6" in path_to_file):
-                                for _ in Array_v6:
-                                        if (_ not in Array_Temp): f.write(f'{_}\n')
+        with open(Path, 'a') as f:
+                if ("v4" in path_to_file):
+                        for _ in Array_v4: 
+                                if (_ not in Array_Temp): f.write(f'{_}\n')
+                elif ("v6" in path_to_file):
+                        for _ in Array_v6:
+                                if (_ not in Array_Temp): f.write(f'{_}\n')
 
 def Alias_Configuration(path_to_file):
         Config_Alias = r"""alias la='ls -lha --color=auto'
