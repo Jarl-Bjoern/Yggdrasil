@@ -163,6 +163,12 @@ cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -s
 1
 1
 EOF
+
+# Automated Variant with multiple pentesting categories without Firewall, Hardening and SSH configuration with numbers
+cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -s
+4
+1,5
+EOF
 ```
 
 # Customize your installation
