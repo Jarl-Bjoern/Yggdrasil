@@ -5,10 +5,6 @@ This tool is intended to simplify the setup of various tools and configuration o
 # News
 With version ***0.7g*** it is now possible to use multiple categories in pentesting
 
-As an example we can say we want to use Infrastructure and Web, than in that case the following must be selected.
-
-Decision: ***1,5***
-
 Since version ***0.7*** it is now possible to choose between the three categories ***Complete***, ***Forensic*** and ***Pentest***.
 
 Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
@@ -80,7 +76,7 @@ optional arguments:
 Your Choice: pentest
 ```
 
-## Choose between one of the Pentesting categories
+## Choose between one of the Pentesting categories (Single Category)
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -103,6 +99,31 @@ Your Choice: pentest
 ----------------------------------------------------------
 
 Your Choice: infrastructure
+```
+
+## Choose between one of the Pentesting categories (Multiple Categories)
+```bash
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                       💀
+💀                       Yggdrasil                       💀
+💀                     Version 0.7g                      💀
+💀           Rainer Christian Bjoern Herold              💀
+💀                                                       💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+
+
+          Please choose between one category
+----------------------------------------------------------
+|                                                        |
+| [1] infrastructure  :   tools for infra pentesting     |
+| [2] iot             :   tools for iot pentesting       |
+| [3] mobile          :   tools for mobile pentesting    |
+| [4] red_teaming     :   tools for red teaming          |
+| [5] web             :   tools for web pentesting       |
+|                                                        |
+----------------------------------------------------------
+
+Your Choice: 1,5
 ```
 
 ## Choose one of the two installation types
