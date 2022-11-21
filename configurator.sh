@@ -672,7 +672,7 @@ EOF
 	sudo sysctl --system
 	# Firewall_Configuration
 	if [ -f /etc/iptables/rules.v4 ]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/iptables/rules.v4"
 		sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
 		sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
 		sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
@@ -706,7 +706,7 @@ EOF
 	fi
 
 	if [ -f /etc/iptables/rules.v6 ]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/iptables/rules.v6"
 		sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
 		sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
 		sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
