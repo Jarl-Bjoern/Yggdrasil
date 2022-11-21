@@ -394,7 +394,6 @@ fi
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/crontab"
 export HISTCONTROL=ignoreboth:erasedups
-fi
 
 # Standard_Installation
 if [[ $Switch_Skip != true ]]; then
