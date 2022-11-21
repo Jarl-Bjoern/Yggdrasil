@@ -392,14 +392,8 @@ if [[ $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d '"' -f2) =~ "Kali" ]];
 	sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
 fi
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
+sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/crontab"
 export HISTCONTROL=ignoreboth:erasedups
-LEN_CRON=$(cat /etc/crontab | grep -E "apt full-upgrade -y ; apt autoremove -y --purge")
-if [[ !${#LEN_CRON} -gt 0 ]]; then
-	cat <<'EOF' >> /etc/crontab
-0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
-0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
-0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
-EOF
 fi
 
 # Standard_Installation
