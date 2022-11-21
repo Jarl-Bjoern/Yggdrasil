@@ -57,7 +57,7 @@ def Firewall_Configuration(path_to_file):
 
         with open(path_to_file, 'a') as f:
                 if ("v4" in path_to_file):
-                        for _ in Array_v4: 
+                        for _ in Array_v4:
                                 if (_ not in Array_Temp): f.write(f'{_}\n')
                 elif ("v6" in path_to_file):
                         for _ in Array_v6:
