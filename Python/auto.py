@@ -16,7 +16,8 @@ def Press_Hotkey(key_One, key_Two, seconds): hotkey(key_One, key_Two), sleep(sec
 def Press_Key(key, seconds): press(key), sleep(seconds)
 
 def SoapUI_Install(Path):
-  pass
+  def Auto_Install():
+      pass
   
 def Pycharm_Install(Path):
   def Auto_Install():
