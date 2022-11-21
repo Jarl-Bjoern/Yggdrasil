@@ -19,8 +19,8 @@ def Crontab_Configuration(path_to_file):
 
         Array_Temp = read_file(path_to_file)
         with open(path_to_file, 'a') as f:
-        for _ in Config_Crontab.splitlines():
-                if (_ not in Array_Temp): f.write(f'{_}\n')
+                for _ in Config_Crontab.splitlines():
+                        if (_ not in Array_Temp): f.write(f'{_}\n')
 
 def Firewall_Configuration(path_to_file):
         Array_v4 = [":INPUT DROP [0:0]",":FORWARD ACCEPT [0:0]",":OUTPUT ACCEPT [0:0]",
