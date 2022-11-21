@@ -34,11 +34,13 @@ try:
     from argparse import ArgumentParser, FileType, RawTextHelpFormatter, SUPPRESS
     from os import name as osname, system, walk
     from os.path import dirname, join, realpath
-    from subprocess import DEVNULL, run
+    from subprocess import DEVNULL, getoutput, run
 except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
 
 # Functions
-def Check_dosunix(): run(['sudo','apt','install','-y','dos2unix'], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
+def Check_dosunix():
+    if ('Installed: (none)' in getoutput(['sudo','apt-cache','policy','dos2unix'])):
+        print ("Installing dos2unix"), run(['sudo','apt','install','-y','dos2unix'], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL), print ("The install process was successful.")
 
 def Check_Permissions(File_Path):
     def Permission_Change(File): run(['sudo','chmod','+x',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
