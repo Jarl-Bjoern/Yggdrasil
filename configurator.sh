@@ -13,23 +13,23 @@ PATH_VIM=""
 PATH_ZSH=""
 pentesting=""
 Skip=false
-Switch_Firewall=true
-Switch_Hardening=true
+Switch_Firewall=false
+Switch_Hardening=false
 Switch_IGNORE=false
 Switch_License=false
-Switch_SSH=true
+Switch_SSH=false
 Switch_Skip=false
 Switch_WGET=false
 
 # Arrays
-declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
-"KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256"
-"# Host-key algorithms"
-"HostKeyAlgorithms ssh-ed25519"
-"# Encryption algorithms (ciphers)"
-"Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com"
-"# Message authentication code (MAC) algorithms"
-"MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com")
+declare -a Array_Categories=()
+
+declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming/full.txt"
+"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web/full.txt")
 
 declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/usr/bin/code"
@@ -72,15 +72,63 @@ declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Fuzzer/ffuf"
 "/opt/pentest_tools/Fuzzer/wfuzz")
 
-declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web/full.txt")
+declare -a Array_HARDENING=("#Protecting_against_IP-Spoofing"
+"net.ipv4.conf.default.rp_filter=1"
+"net.ipv4.conf.all.rp_filter=1"
+"#Protecting_against_SYN_flood_attacks"
+"net.ipv4.tcp_syncookies=1"
+"#Protecting_against_time-wait-assassination"
+"net.ipv4.tcp_rfc1337=1"
+"#Protecting_against_MITM"
+"net.ipv4.conf.all.accept_redirects=0"
+"net.ipv4.conf.default.accept_redirects=0"
+"net.ipv4.conf.all.secure_redirects=0"
+"net.ipv4.conf.default.secure_redirects=0"
+"net.ipv6.conf.all.accept_redirects=0"
+"net.ipv6.conf.default.accept_redirects=0"
+"net.ipv4.conf.all.send_redirects=0"
+"net.ipv4.conf.default.send_redirects=0"
+"#Protecting_against_MITM"
+"net.ipv4.icmp_echo_ignore_all=1"
+"#Protecting_against_ICMP_Smurf_Attacks"
+"net.ipv4.conf.all.accept_source_route=0"
+"#Protecting_against_MITM_-_Redirecting_network_traffic"
+"net.ipv4.conf.default.accept_source_route=0"
+"net.ipv6.conf.all.accept_source_route=0"
+"net.ipv6.conf.default.accept_source_route=0"
+"net.ipv6.conf.all.accept_ra=0"
+"#Protecting_against_MITM_-_ipv6"
+"net.ipv6.conf.default.accept_ra=0"
+"#Protecting_against_TCP-SACK_Exploits"
+"net.ipv4.tcp_sack=0"
+"net.ipv4.tcp_dsack=0"
+"net.ipv4.tcp_fack=0"
+"#Kernel_self-protection"
+"kernel.kptr_restrict=2"
+"kernel.dmesg_restrict=1"
+"kernel.printk=3 3 3 3"
+"kernel.unprivileged_bpf_disabled=1"
+"vsyscall=none"
+"debugfs=off"
+"oops=panic"
+"net.core.bpf_jit_harden=2"
+"dev.tty.ldisc_autoload=0"
+"vm.unprivileged_userfaultfd=0"
+"kernel.kexec_load_disabled=1"
+"kernel.sysrq=4"
+"kernel.unprivileged_userns_clone=0"
+"kernel.perf_event_paranoid=3")
 
 declare -a Array_Pentesting=()
-declare -a Array_Categories=()
+
+declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
+"KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256"
+"# Host-key algorithms"
+"HostKeyAlgorithms ssh-ed25519"
+"# Encryption algorithms (ciphers)"
+"Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com"
+"# Message authentication code (MAC) algorithms"
+"MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com")
 
 # Color
 BLUE='\033[0;34m'
@@ -368,34 +416,64 @@ else
 	fi
 fi
 
-# SSH_IP_Address
-clearing
+# Hardening_Configuration
 if [[ $Switch_Skip != true ]]; then
-	NIC=$(ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker|veth")
-	IP=$(ifconfig | grep -E "inet|inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1|::1" | sort -u)
-	readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
+        header "hardening"
+        read -p "Your Choice: " hardening
+        if [[ $hardening =~ "," ]]; then
+                readarray -td, Array_Hardening <<< "$hardening", declare -p Array_Hardening
+                for testing_category in ${Array_Hardening[@]}; do
+                        if [[ $testing_category = "firewall" || $testing_category = "2" ]];  then
+                                Switch_Firewall=true                            
+                        elif [[ $testing_category = "sysctl" || $testing_category = "3" ]];  then
+                                Switch_Hardening=true                           
+                        elif [[ $testing_category = "ssh" || $testing_category = "4" ]];  then
+                                Switch_SSH_true                                 
+                        fi
+                done
+        else
+                if [[ $hardening = "complete" || $hardening = "1" ]]; then
+                        Switch_Firewall=true
+                        Switch_Hardening=true
+                        Switch_SSH=true 
+                elif [[ $hardening = "firewall" || $hardening = "2" ]];  then
+                        Switch_Firewall=true
+                elif [[ $hardening = "sysctl" || $hardening = "3" ]];  then
+                        Switch_Hardening=true                           
+                elif [[ $hardening = "ssh" || $hardening = "4" ]];  then
+                        Switch_SSH=true                        
+                else    
+                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+                fi
 
-	echo -e "\n           Please select an IP address to be used\n                   for SSH configuration"
-	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
-	n=0
-	while [[ n -le ${#ARRAY_NIC[@]} ]]; do
-                echo -e "    " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} "\n       - "  ${ARRAY_IP[n]} "(IPv4)\n       - " ${ARRAY_IP[$((n + 1))]} "(IPv6)"
-                n=$((n + 2))
-	done
-	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
-	read -p "Your Choice: " IP_TEMP
-	if [[ ${#IP_TEMP} -gt 0 ]]; then
-		LEN_CHECK=$(ip a | grep "$IP_TEMP")
-		if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *"."* ]]; then
-			IP_INT=$IP_TEMP
-		elif [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *":"* ]]; then
-			IP_INT="[$IP_TEMP]"
-		else
-			echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	# SSH_Configuration
+        if [[ $Switch_SSH != false ]]; then
+                NIC=$(ip a | grep "state UP" | cut -d " " -f2 | grep -v -E "lo|docker|veth")
+                IP=$(ifconfig | grep -E "inet|inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1|::1" | sort -u)
+                readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
+
+                echo -e "\n           Please select an IP address to be used\n                   for SSH configuration"
+                echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
+                n=0
+                while [[ n -le ${#ARRAY_NIC[@]} ]]; do
+                        echo -e "    " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} "\n       - "  ${ARRAY_IP[n]} "(IPv4)\n       - " ${ARRAY_IP[$((n + 1))]} "(IPv6)"
+                        n=$((n + 2))
+                done
+                echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
+                read -p "Your Choice: " IP_TEMP
+                if [[ ${#IP_TEMP} -gt 0 ]]; then
+                        LEN_CHECK=$(ip a | grep "$IP_TEMP")
+                        if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *"."* ]]; then
+                                IP_INT=$IP_TEMP
+                        elif [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *":"* ]]; then
+                                IP_INT="[$IP_TEMP]"
+                        else
+                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+                        fi
+                        clearing
+                else
+                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 		fi
-		clearing
-	else
-		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	fi
 fi
 
@@ -597,78 +675,36 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 fi
 
 if [[ $Switch_Skip != true ]]; then
-	declare -a Array_HARDENING=("#Protecting_against_IP-Spoofing"
-	"net.ipv4.conf.default.rp_filter=1"
-	"net.ipv4.conf.all.rp_filter=1"
-	"#Protecting_against_SYN_flood_attacks"
-	"net.ipv4.tcp_syncookies=1"
-	"#Protecting_against_time-wait-assassination"
-	"net.ipv4.tcp_rfc1337=1"
-	"#Protecting_against_MITM"
-	"net.ipv4.conf.all.accept_redirects=0"
-	"net.ipv4.conf.default.accept_redirects=0"
-	"net.ipv4.conf.all.secure_redirects=0"
-	"net.ipv4.conf.default.secure_redirects=0"
-	"net.ipv6.conf.all.accept_redirects=0"
-	"net.ipv6.conf.default.accept_redirects=0"
-	"net.ipv4.conf.all.send_redirects=0"
-	"net.ipv4.conf.default.send_redirects=0"
-	"#Protecting_against_MITM"
-	"net.ipv4.icmp_echo_ignore_all=1"
-	"#Protecting_against_ICMP_Smurf_Attacks"
-	"net.ipv4.conf.all.accept_source_route=0"
-	"#Protecting_against_MITM_-_Redirecting_network_traffic"
-	"net.ipv4.conf.default.accept_source_route=0"
-	"net.ipv6.conf.all.accept_source_route=0"
-	"net.ipv6.conf.default.accept_source_route=0"
-	"net.ipv6.conf.all.accept_ra=0"
-	"#Protecting_against_MITM_-_ipv6"
-	"net.ipv6.conf.default.accept_ra=0"
-	"#Protecting_against_TCP-SACK_Exploits"
-	"net.ipv4.tcp_sack=0"
-	"net.ipv4.tcp_dsack=0"
-	"net.ipv4.tcp_fack=0"
-	"#Kernel_self-protection"
-	"kernel.kptr_restrict=2"
-	"kernel.dmesg_restrict=1"
-	"kernel.printk=3 3 3 3"
-	"kernel.unprivileged_bpf_disabled=1"
-	"vsyscall=none"
-	"debugfs=off"
-	"oops=panic"
-	"net.core.bpf_jit_harden=2"
-	"dev.tty.ldisc_autoload=0"
-	"vm.unprivileged_userfaultfd=0"
-	"kernel.kexec_load_disabled=1"
-	"kernel.sysrq=4"
-	"kernel.unprivileged_userns_clone=0"
-	"kernel.perf_event_paranoid=3")
-	for i in ${Array_HARDENING[@]}; do
-		if [[ $i =~ "#" ]]; then
-			LEN_SYSCTL=$(cat /etc/sysctl.conf | grep $i)
-		else
-	        	LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep $i)
-		fi
-        	if [[ !${#LEN_SYSCTL} -gt 0 ]]; then
-			cat <<EOF >> /etc/sysctl.conf
+	if [[ $Switch_Hardening = true ]]; then
+		for i in ${Array_HARDENING[@]}; do
+			if [[ $i =~ "#" ]]; then
+				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep $i)
+			else
+				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep $i)
+			fi
+			if [[ !${#LEN_SYSCTL} -gt 0 ]]; then
+				cat <<EOF >> /etc/sysctl.conf
 $i
 EOF
-		fi
-	done
-	sudo sysctl --system
+			fi
+		done
+		sudo sysctl --system
+	fi
+	
 	# Firewall_Configuration
-	if [ -f /etc/iptables/rules.v4 ]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/iptables/rules.v4"
-		sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
-		sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
-		sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
-		cat <<EOF >> /etc/iptables/rules.v4
+	if [[ $Switch_Firewall = true ]]; then
+		if [ -f /etc/iptables/rules.v4 ]; then
+			sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/iptables/rules.v4"
+			sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
+			sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
+			sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
+			cat <<EOF >> /etc/iptables/rules.v4
 # Commit all changes
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
-	else
-		cat <<EOF > /etc/iptables/rules.v4
+		else
+			cat <<EOF > /etc/iptables/rules.v4
 # /etc/iptables/rules.v4:
 # Generated by ip4tables-save on $(date +'%m/%d/%Y %H:%M:%S')
 *filter
@@ -689,20 +725,20 @@ EOF
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
-	fi
+		fi
 
-	if [ -f /etc/iptables/rules.v6 ]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/iptables/rules.v6"
-		sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
-		sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
-		sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
-		cat <<EOF >> /etc/iptables/rules.v6
+		if [ -f /etc/iptables/rules.v6 ]; then
+			sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/iptables/rules.v6"
+			sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
+			sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
+			sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
+			cat <<EOF >> /etc/iptables/rules.v6
 # Commit all changes
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
-	else
-		cat <<EOF > /etc/iptables/rules.v6
+		else
+			cat <<EOF > /etc/iptables/rules.v6
 # /etc/iptables/rules.v6:
 # Generated by ip6tables-save on $(date +'%m/%d/%Y %H:%M:%S')
 *filter
@@ -739,32 +775,35 @@ EOF
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
+		fi
+		sudo chmod 0600 /etc/iptables/*
+		sudo systemctl enable --now netfilter-persistent.service
 	fi
-	sudo chmod 0600 /etc/iptables/*
-	sudo systemctl enable --now netfilter-persistent.service
 
 	# SSH_Configuration
-	sudo sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
-	sudo sed -i "s/#LogLevel INFO/LogLevel VERBOSE/g" /etc/ssh/sshd_config
-	sudo sed -i "s/#MaxAuthTries 6/MaxAuthTries 6/g" /etc/ssh/sshd_config
-	sudo sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
-	sudo sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
-	sudo sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
-	cat <<EOF >> /etc/ssh/sshd_config
+	if [[ $Switch_SSH = true ]]; then
+		sudo sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
+		sudo sed -i "s/#LogLevel INFO/LogLevel VERBOSE/g" /etc/ssh/sshd_config
+		sudo sed -i "s/#MaxAuthTries 6/MaxAuthTries 6/g" /etc/ssh/sshd_config
+		sudo sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
+		sudo sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
+		sudo sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
+		cat <<EOF >> /etc/ssh/sshd_config
 
 # Disable OS-Banner
 DebianBanner no
 
 EOF
-	IFS=""
-	for Cipher in ${Array_SSH_Ciphers[@]}; do
-		if [[ ! $(cat /etc/ssh/sshd_config | grep -e $Cipher) ]]; then
-			cat <<EOF >> /etc/ssh/sshd_config
+		IFS=""
+		for Cipher in ${Array_SSH_Ciphers[@]}; do
+			if [[ ! $(cat /etc/ssh/sshd_config | grep -e $Cipher) ]]; then
+				cat <<EOF >> /etc/ssh/sshd_config
 $Cipher
 EOF
-		fi
-	done
-	sudo systemctl restart ssh.service
+			fi
+		done
+		sudo systemctl restart ssh.service
+	fi
 fi
 
 # Unpacking_Rockyou
