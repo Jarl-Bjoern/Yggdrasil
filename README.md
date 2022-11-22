@@ -1,4 +1,4 @@
-[![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg&left_color=grey&right_color=black)](https://www.python.org/downloads/release/python-3100/)
+[![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg?left_color=grey&right_color=black)](https://www.python.org/downloads/release/python-3100/)
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=jarl-bjoern&left_color=grey&right_color=black)
 
 # General Description
