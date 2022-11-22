@@ -58,7 +58,15 @@ declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Webscanner/Moodle/badmoodle"
 "/opt/pentest_tools/Webscanner/Moodle/mooscan"
 "/opt/pentest_tools/Webscanner/Plone/plown"
-"/opt/pentest_tools/Webscanner/Liferay/LiferayScan")
+"/opt/pentest_tools/Webscanner/Liferay/LiferayScan"
+"/opt/pentest_tools/Proxy/chisel"
+"/opt/pentest_tools/Proxy/mitmproxy"
+"/opt/pentest_tools/Proxy/mitmrelay"
+"/opt/pentest_tools/Proxy/proxychains-ng"
+"/opt/pentest_tools/SIP/viproy-voipkit"
+"/opt/pentest_tools/SIP/SIPTools"
+"/opt/pentest_tools/Fuzzer/ffuf"
+"/opt/pentest_tools/Fuzzer/wfuzz")
 
 declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic/full.txt"
 "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure/full.txt"
