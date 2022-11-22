@@ -1,4 +1,4 @@
-![Visitor Count](https://profile-counter.glitch.me/Jarl-Bjoern/Yggdrasil/count.svg)
+![Visitor Count](https://profile-counter.glitch.me/Jarl-Bjoern/count.svg)
 
 # General Description
 
