@@ -11,9 +11,10 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 
 # Table of Contents
 - [How to download and install the tool](#download_install)
-
+  - [Make sure that the dos2unix tool is installed](#dos2unix_install)
 <a name="download_install"></a>
 # How to download and install the tool
+<a name="dos2unix_install"></a>
 ## Make sure that the dos2unix tool is installed
 ```bash
 sudo apt install -y dos2unix
