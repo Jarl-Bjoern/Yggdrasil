@@ -161,7 +161,7 @@ Your Choice: full
 ----------------------------------------------------------
 |                                                        |
 | [1] complete         :   complete configuration        |
-| [2] Firewall         :   firewall hardening            |
+| [2] Firewall         :   firewall                      |
 | [3] Sysctl (OS)      :   sysctl hardening              |
 | [4] SSH              :   SSH hardening                 |
 |                                                        |
