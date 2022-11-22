@@ -16,6 +16,10 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
   - [Using the help section to see which parameters do we have](#help_install)
   - [Choose one of the three category types](#category_install)
   - [Choose between one of the Pentesting categories](#pentesting_install)
+  - [Choose between multiple Pentesting categories](#pentesting_multiple_install)
+  - [Choose one of the two installation types](#type_install)
+  - [Choose between multiple hardening options](#hardening_install)
+  - [Configurate your SSH IP-Address](#ssh_install)
 
 <a name="download_install"></a>
 # How to download and install the tool
@@ -64,6 +68,7 @@ optional arguments:
                         ---------------------------------------------------------------
 
 ```
+
 <a name="category_install"></a>
 ## Choose one of the three category types
 ```bash
@@ -88,6 +93,7 @@ optional arguments:
 
 Your Choice: pentest
 ```
+
 <a name="pentesting_install"></a>
 ## Choose between one of the Pentesting categories
 ```bash
@@ -114,6 +120,7 @@ Your Choice: pentest
 Your Choice: infrastructure
 ```
 
+<a name="pentesting_multiple_install"></a>
 ## Choose between multiple Pentesting categories
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
@@ -139,6 +146,7 @@ Your Choice: infrastructure
 Your Choice: 1,5
 ```
 
+<a name="type_install"></a>
 ## Choose one of the two installation types
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
@@ -161,6 +169,7 @@ Your Choice: 1,5
 Your Choice: full
 ```
 
+<a name="hardening_install"></a>
 ## Choose between multiple hardening options
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
@@ -183,6 +192,7 @@ Your Choice: full
 Your Choice: 1
 ```
 
+<a name="ssh_install"></a>
 ## Configurate your SSH IP-Address
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
