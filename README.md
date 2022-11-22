@@ -76,7 +76,7 @@ optional arguments:
 Your Choice: pentest
 ```
 
-## Choose between one of the Pentesting categories (Single Category)
+## Choose between one of the Pentesting categories
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
