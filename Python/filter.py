@@ -25,7 +25,7 @@ def Crontab_Configuration(path_to_file):
         write_file(path_to_file, Config_Crontab)
 
 def Firewall_Configuration(path_to_file):
-        Array_v4 = [":INPUT DROP [0:0]",":FORWARD ACCEPT [0:0]",":OUTPUT ACCEPT [0:0]",
+        Array_v4 = ["*filter",":INPUT DROP [0:0]",":FORWARD ACCEPT [0:0]",":OUTPUT ACCEPT [0:0]",
 "# Allow established, related and localhost traffic",
 "-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT",
 "-A INPUT -s 127.0.0.0/8 -j ACCEPT",
@@ -36,7 +36,7 @@ def Firewall_Configuration(path_to_file):
 "-A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --update --seconds 600 --hitcount 10 -j DROP",
 "# Other stuff like reverse-shell access et alii",
 '# -A INPUT -i eth2 -s 123.123.123.123 -p tcp --dport 4444 -j ACCEPT -m comment --comment "Reverse Shell 4444/tcp"']
-        Array_v6 = [":INPUT DROP [0:0]",":FORWARD ACCEPT [0:0]",":OUTPUT ACCEPT [0:0]",
+        Array_v6 = ["*filter",":INPUT DROP [0:0]",":FORWARD ACCEPT [0:0]",":OUTPUT ACCEPT [0:0]",
 "# Accept all established and related connections",
 "-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT",
 "# Accept all connections originating from Link-Local",
