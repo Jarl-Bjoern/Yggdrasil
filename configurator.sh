@@ -445,6 +445,7 @@ if [[ $Switch_Skip != true ]]; then
                 else    
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                 fi
+	fi
 
 	# SSH_Configuration
         if [[ $Switch_SSH != false ]]; then
