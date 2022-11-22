@@ -552,7 +552,7 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle ; mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "chisel|mitmproxy|mitmrelay|proxychains-ng") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Proxy ; mv chisel mitmproxy mitmrelay /opt/pentest_tools/Proxy
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Proxy ; mv chisel mitmproxy mitmrelay proxychains-ng /opt/pentest_tools/Proxy
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "SIPTools|viproy-voipkit") ]]; then
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit SIPTools /opt/pentest_tools/SIP
