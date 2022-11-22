@@ -148,6 +148,52 @@ Your Choice: 1,5
 Your Choice: full
 ```
 
+## Choose between multiple hardening options
+```bash
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                       💀
+💀                       Yggdrasil                       💀
+💀                     Version 0.8                       💀
+💀           Rainer Christian Bjoern Herold              💀
+💀                                                       💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+
+----------------------------------------------------------
+|                                                        |
+| [1] complete         :   complete configuration        |
+| [2] Firewall         :   firewall hardening            |
+| [3] Sysctl (OS)      :   sysctl hardening              |
+| [4] SSH              :   SSH hardening                 |
+|                                                        |
+----------------------------------------------------------
+
+Your Choice: 1
+```
+
+## Configurate your SSH IP-Address
+```bash
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                       💀
+💀                       Yggdrasil                       💀
+💀                     Version 0.8                       💀
+💀           Rainer Christian Bjoern Herold              💀
+💀                                                       💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+
+
+           Please select an IP address to be used
+                   for SSH configuration
+----------------------------------------------------------
+
+     eth0: 
+       -  192.168.56.2 (IPv4)
+       -  fe80::XXX:XXXX:XXXX:XXXX (IPv6)
+----------------------------------------------------------
+
+Your Choice: 192.168.56.2
+
+```
+
 ## Using the automated variant
 ```bash
 # Automated Variant without Firewall, Hardening and SSH configuration with text
