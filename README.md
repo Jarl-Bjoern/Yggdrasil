@@ -1,4 +1,4 @@
-![Visitor Count](https://profile-counter.glitch.me/Jarl-Bjoern/count.svg)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=jarl-bjoern&left_color=grey&right_color=black)
 
 # General Description
 
