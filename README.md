@@ -20,6 +20,10 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
   - [Choose one of the two installation types](#type_install)
   - [Choose between multiple hardening options](#hardening_install)
   - [Configurate your SSH IP-Address](#ssh_install)
+- [Using the automated variant](#automate_install)
+- [Customize your installation](#custom_install)
+  - [Method Example](#method_install)
+  - [Custom Directory Example](#directory_install)
 
 <a name="download_install"></a>
 # How to download and install the tool
@@ -217,6 +221,7 @@ Your Choice: 192.168.56.2
 
 ```
 
+<a name="automated_install"></a>
 ## Using the automated variant
 ```bash
 # Automated Variant without Firewall, Hardening and SSH configuration with text
@@ -240,6 +245,7 @@ cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -s
 EOF
 ```
 
+<a name="custom_install"></a>
 # Customize your installation
 You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a **#**).
 
@@ -263,6 +269,7 @@ URL Name Method
  - Executeable
  - Installer
 
+<a name="method_install"></a>
 ## Example
 ```bash
 # Wget
@@ -276,6 +283,7 @@ In addition, it is also possible that you can place your own scripts or packages
 
 For this, you must use the parameter ***-p*** in combination with the absolute path, as in the example below
 
+<a name="directory_install"></a>
 ## Example
 ```bash
 python3 /opt/Yggdrasil/yggdrasil.py -p /mnt/MY_DIRECTORY
