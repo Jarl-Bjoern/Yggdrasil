@@ -13,8 +13,11 @@ PATH_VIM=""
 PATH_ZSH=""
 pentesting=""
 Skip=false
+Switch_Firewall=true
+Switch_Hardening=true
 Switch_IGNORE=false
 Switch_License=false
+Switch_SSH=true
 Switch_Skip=false
 Switch_WGET=false
 
