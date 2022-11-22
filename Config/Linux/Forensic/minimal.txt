@@ -11,12 +11,14 @@ hexedit
 kpartx
 libtool
 libyara-dev
+libyara9
 lvm2
 make
 moreutils
 ranger
 sleuthkit
 tree
+yara
 
 # Cargo
 evtx
