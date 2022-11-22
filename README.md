@@ -12,14 +12,21 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 # Table of Contents
 - [How to download and install the tool](#download_install)
   - [Make sure that the dos2unix tool is installed](#dos2unix_install)
+  - [Download and start the tool](#start_install)
+  - [Using the help section to see which parameters do we have](#help_install)
+  - [Choose one of the three category types](#category_install)
+  - [Choose between one of the Pentesting categories](#pentesting_install)
+
 <a name="download_install"></a>
 # How to download and install the tool
+
 <a name="dos2unix_install"></a>
 ## Make sure that the dos2unix tool is installed
 ```bash
 sudo apt install -y dos2unix
 ```
 
+<a name="start_install"></a>
 ## Download and start the tool
 ```bash
 sudo git clone https://github.com/Jarl-Bjoern/Yggdrasil/
@@ -27,6 +34,7 @@ cd Yggdrasil
 sudo python3 yggdrasil.py
 ```
 
+<a name="help_install"></a>
 ## Using the help section to see which parameters do we have
 ```bash
 usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-p PATH] [-s [SKIP]] [-h]
@@ -56,7 +64,7 @@ optional arguments:
                         ---------------------------------------------------------------
 
 ```
-
+<a name="category_install"></a>
 ## Choose one of the three category types
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
@@ -80,7 +88,7 @@ optional arguments:
 
 Your Choice: pentest
 ```
-
+<a name="pentesting_install"></a>
 ## Choose between one of the Pentesting categories
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
