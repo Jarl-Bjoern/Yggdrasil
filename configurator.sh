@@ -42,6 +42,7 @@ declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Webscanner/SAP/PyRFC"
 "/opt/pentest_tools/Webscanner/SAP/SAP_GW_RCE_exploit"
 "/opt/pentest_tools/Webscanner/SAP/SAP_RECON"
+"/opt/pentest_tools/Webscanner/SAP/nmap-erpscan"
 "/opt/pentest_tools/Webscanner/Drupal/drupwn"
 "/opt/pentest_tools/Webscanner/Drupal/droopescan"
 "/opt/pentest_tools/Webscanner/Drupal/CMSmap"
@@ -532,8 +533,8 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [ -f "/opt/pentest_tools/mitmdump" ]; then
 		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
 	fi
-	if [[ $(ls /opt/pentest_tools | grep -E "pysap|PyRFC|SAP_GW_RCE_exploit|SAP_RECON") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/SAP ; mv pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP
+	if [[ $(ls /opt/pentest_tools | grep -E "nmap-erpscan|pysap|PyRFC|SAP_GW_RCE_exploit|SAP_RECON") ]]; then
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/SAP ; mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "drupwn|droopescan|CMSmap|ac-drupal") ]]; then
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Drupal ; mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal
