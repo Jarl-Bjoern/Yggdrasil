@@ -550,6 +550,15 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [[ $(ls /opt/pentest_tools | grep -E "moodlescan|mooscan|badmoodle") ]]; then
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle ; mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle
 	fi
+	if [[ $(ls /opt/pentest_tools | grep -E "chisel|mitmproxy|mitmrelay|proxychains-ng") ]]; then
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Proxy ; mv chisel mitmproxy mitmrelay /opt/pentest_tools/Proxy
+	fi
+	if [[ $(ls /opt/pentest_tools | grep -E "SIPTools|viproy-voipkit") ]]; then
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit SIPTools /opt/pentest_tools/SIP
+	fi
+	if [[ $(ls /opt/pentest_tools | grep -E "ffuf|wfuzz") ]]; then
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv chisel ffuf wfuzz /opt/pentest_tools/Fuzzer
+	fi
 	if [[ -d "/opt/pentest_tools/plown" ]]; then
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone
 	fi
