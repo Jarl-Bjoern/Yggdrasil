@@ -10,6 +10,7 @@ foremost
 hexedit
 kpartx
 libtool
+libyara-dev
 lvm2
 make
 moreutils
