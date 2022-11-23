@@ -424,25 +424,25 @@ if [[ $Switch_Skip != true ]]; then
                 readarray -td, Array_Hardening <<< "$hardening", declare -p Array_Hardening
                 for testing_category in ${Array_Hardening[@]}; do
                         if [[ $testing_category = "firewall" || $testing_category = "2" ]];  then
-                                Switch_Firewall=true                            
+                                Switch_Firewall=true
                         elif [[ $testing_category = "sysctl" || $testing_category = "3" ]];  then
-                                Switch_Hardening=true                           
+                                Switch_Hardening=true
                         elif [[ $testing_category = "ssh" || $testing_category = "4" ]];  then
-                                Switch_SSH_true                                 
+                                Switch_SSH_true
                         fi
                 done
         else
                 if [[ $hardening = "complete" || $hardening = "1" ]]; then
                         Switch_Firewall=true
                         Switch_Hardening=true
-                        Switch_SSH=true 
+                        Switch_SSH=true
                 elif [[ $hardening = "firewall" || $hardening = "2" ]];  then
                         Switch_Firewall=true
                 elif [[ $hardening = "sysctl" || $hardening = "3" ]];  then
-                        Switch_Hardening=true                           
+                        Switch_Hardening=true
                 elif [[ $hardening = "ssh" || $hardening = "4" ]];  then
-                        Switch_SSH=true                        
-                else    
+                        Switch_SSH=true
+                else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                 fi
 	fi
@@ -692,7 +692,7 @@ EOF
 		done
 		sudo sysctl --system
 	fi
-	
+
 	# Firewall_Configuration
 	if [[ $Switch_Firewall = true ]]; then
 		if [ -f /etc/iptables/rules.v4 ]; then
