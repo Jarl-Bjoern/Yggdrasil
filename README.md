@@ -26,7 +26,7 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
   - [Choose one of the two installation types](#type_install)
   - [Choose between multiple hardening options](#hardening_install)
   - [Configurate your SSH IP-Address](#ssh_install)
-- [Using the automated variant](#automate_install)
+- [Using the automated variant](#automated_install)
 - [Customize your installation](#custom_install)
   - [Method Example](#method_install)
   - [Custom Directory Example](#directory_install)
