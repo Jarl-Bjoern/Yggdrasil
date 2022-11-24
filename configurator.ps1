@@ -4,6 +4,8 @@
 # Variables
 
 # Arrays
+$Filter_Download = @('C:/Pentest_Tools')
+
 
 # Functions
 function Initials {
@@ -17,7 +19,13 @@ function Initials {
 }
 
 function Downloader {
-        Invoke-WebRequest "" -OutFile ""
+        New-Item "" -ItemType Directory
+
+        foreach($line in Get-Content "") {
+                if ($line -match "") {
+                        Invoke-WebRequest "" -OutFile ""
+                }
+        }
 }
 
 # Main
