@@ -7,4 +7,5 @@ https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/Git-2
 https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64.exe python Installer
 https://download.mozilla.org/?product=thunderbird-102.5.0-SSL&os=win64&lang=de thunderbird Installer
 https://launchpad.net/veracrypt/trunk/1.25.9/+download/VeraCrypt%20Setup%201.25.9.exe veracrypt Installer
+https://az764295.vo.msecnd.net/stable/6261075646f055b99068d3688932416f2346dd3b/VSCodeUserSetup-x64-1.73.1.exe vscode Installer
 https://1.eu.dl.wireshark.org/win64/Wireshark-win64-4.0.1.exe wireshark Installer
