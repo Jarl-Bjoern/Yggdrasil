@@ -18,7 +18,6 @@ Switch_WGET = false
 # Arrays
 $Filter_Download = @('C:/Pentest_Tools')
 
-
 # Functions
 function Header {
         clear ; initials
