@@ -1,3 +1,4 @@
 # Wget
 https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/Git-2.38.1-64-bit.exe git Installer
 https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64.exe python Installer
+https://1.eu.dl.wireshark.org/win64/Wireshark-win64-4.0.1.exe wireshark Installer
