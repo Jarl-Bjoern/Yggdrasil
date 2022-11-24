@@ -300,30 +300,20 @@ function File_Installer() {
 	done < $input
 }
 
-function Check_Parameter() {
-	LEN_ARGV=$(wc -c <<< "$1")
-	if [[ $1 == "-s" ]]; then
-		Switch_Skip=true
-	elif [[ $1 == "-aL" ]]; then
-		Switch_License=true
-	elif [[ $LEN_ARGV -gt 2 ]]; then
-		if [[ -d $1 ]]; then
-			PATH_Install_Dir=$1
+# Checking_Parameters
+if [ arg ]; then
+	for arg; do
+		LEN_ARGV=$(wc -c <<< "$arg")
+		if [[ $arg == "-s" ]]; then
+			Switch_Skip=true
+		elif [[ $arg == "-aL" ]]; then
+			Switch_License=true
+		elif [[ $LEN_ARGV -gt 2 ]]; then
+			if [[ -d $arg ]]; then
+				PATH_Install_Dir=$arg
+			fi
 		fi
-	fi
-}
-
-# Checking_Arguments
-if [ $1 ]; then
-	Check_Parameter $1
-fi
-
-if [ $2 ]; then
-	Check_Parameter $2
-fi
-
-if [ $3 ]; then
-	Check_Parameter $3
+	done
 fi
 
 # Category
