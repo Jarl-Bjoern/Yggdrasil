@@ -3,6 +3,7 @@
 
 # Variables
 decision=""
+HOST_Pentest="pentest-kali"
 IP_INT=127.0.0.1
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename $BASH_SOURCE)
@@ -311,6 +312,8 @@ if [ arg ]; then
 		elif [[ $LEN_ARGV -gt 2 ]]; then
 			if [[ -d $arg ]]; then
 				PATH_Install_Dir=$arg
+			else
+				HOST_Pentest=$arg
 			fi
 		fi
 	done
@@ -325,7 +328,7 @@ if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	OPT_Path="/opt/pentest_tools"
 	if [[ $(cat /etc/hostname) == "kali" ]]; then
-		sed -i s/'kali/pentest-kali'/g /etc/hostname
+		sed -i s/'kali/$HOST_Pentest'/g /etc/hostname
 	fi
 	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
 	header "pentesting_category"
