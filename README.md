@@ -62,7 +62,7 @@ optional arguments:
                         
                         ---------------------------------------------------------------
  -hN HOST_NAME, --host-name HOST_NAME
-                        This parameter specifies your hostname of the kali machine.
+                        This parameter specifies the hostname of the kali machine.
                         
                         Default: pentest-kali
                         
