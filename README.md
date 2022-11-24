@@ -61,6 +61,12 @@ optional arguments:
                           - Veracrypt
                         
                         ---------------------------------------------------------------
+ -hN HOST_NAME, --host-name HOST_NAME
+                        This parameter specifies your hostname of the kali machine.
+                        
+                        Default: pentest-kali
+                        
+                        ---------------------------------------------------------------
   -p PATH, --path PATH  This parameter specifies the target path of your custom tools.
                         
                         ---------------------------------------------------------------
