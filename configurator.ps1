@@ -2,6 +2,18 @@
 # UNDER CONSTRUCTION
 
 # Variables
+decision = ""
+IP_INT=127.0.0.1
+PATH_Install_Dir = ""
+pentesting = ""
+Skip = false
+Switch_Firewall = false
+Switch_Hardening = false
+Switch_IGNORE = false
+Switch_License = false
+Switch_SSH = false
+Switch_Skip = false
+Switch_WGET = false
 
 # Arrays
 $Filter_Download = @('C:/Pentest_Tools')
