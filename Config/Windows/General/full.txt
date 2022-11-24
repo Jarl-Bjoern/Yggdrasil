@@ -1,5 +1,6 @@
 # Wget
 https://laptop-updates.brave.com/latest/winx64 brave Installer
+https://www.cygwin.com/setup-x86_64.exe cygwin Installer
 https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/de/win/3a1554afa1159c66df467305766aac26904c306a183eecf50aea1335fe2d5e8a/Firefox%20Installer.exe firefox Installer
 https://keepassxc.org/download#windows keepassxc Installer
 https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.7/npp.8.4.7.Installer.x64.exe notepad Installer
