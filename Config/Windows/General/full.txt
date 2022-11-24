@@ -1,4 +1,10 @@
 # Wget
+https://laptop-updates.brave.com/latest/winx64 brave Installer
+https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/de/win/3a1554afa1159c66df467305766aac26904c306a183eecf50aea1335fe2d5e8a/Firefox%20Installer.exe firefox Installer
+https://keepassxc.org/download#windows keepassxc Installer
+https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.7/npp.8.4.7.Installer.x64.exe notepad Installer
 https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/Git-2.38.1-64-bit.exe git Installer
 https://www.python.org/ftp/python/3.11.0/python-3.11.0-amd64.exe python Installer
+https://download.mozilla.org/?product=thunderbird-102.5.0-SSL&os=win64&lang=de thunderbird Installer
+https://launchpad.net/veracrypt/trunk/1.25.9/+download/VeraCrypt%20Setup%201.25.9.exe veracrypt Installer
 https://1.eu.dl.wireshark.org/win64/Wireshark-win64-4.0.1.exe wireshark Installer
