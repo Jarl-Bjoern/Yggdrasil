@@ -63,7 +63,7 @@ if __name__ == '__main__':
         print ("UNDER CONSTRUCTION")
     else:
         optional.add_argument('-aL','--accept-licenses', type=bool, nargs='?', const=True, help='This parameter is required to accept licenses.\n\nLicenses:\n  - Veracrypt\n\n-------------------------------------------------------------------------------------')
-        optional.add_argument('-hN','--host-name', type=str, help='This parameter specifies your hostname of the kali machine.\n\nDefault: pentest-kali\n\n-------------------------------------------------------------------------------------')
+        optional.add_argument('-hN','--host-name', type=str, help='This parameter specifies the hostname of the kali machine.\n\nDefault: pentest-kali\n\n-------------------------------------------------------------------------------------')
         optional.add_argument('-p','--path', type=str, help='This parameter specifies the target path of your custom tools.\n\n-------------------------------------------------------------------------------------')
         optional.add_argument('-s','--skip', type=bool, nargs='?', const=True, help='This parameter skips the hardening part.\n\nHardening:\n  - Firewall\n  - Operating System\n  - SSH\n\n-------------------------------------------------------------------------------------')
         optional.add_argument('-h','--help', action='help', default=SUPPRESS, help='Show this help message and exit.\n\n-------------------------------------------------------------------------------------')
