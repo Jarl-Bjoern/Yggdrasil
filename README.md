@@ -1,3 +1,4 @@
+<h1 align="center">Yggdrasil</h1>
 [![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=jarl-bjoern&left_color=grey&right_color=blue)
