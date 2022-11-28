@@ -522,7 +522,7 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 		PATH_VIM="/home/$i/.vimrc"
 		PATH_ZSH="/home/$i/.zshrc"
         else
-		PATH_BSH="/home/$i/.bashrc"
+		PATH_BSH="/root/.bashrc"
                 PATH_SCREEN="/root/.screenrc"
 		PATH_ALIAS="/root/.bash_aliases"
 		PATH_VIM="/root/.vimrc"
