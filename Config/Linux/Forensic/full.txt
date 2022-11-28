@@ -33,7 +33,10 @@ nt_hive2
 # Gem
 
 # Git
+https://github.com/Aorimn/dislocker
 https://github.com/airbus-cert/regrippy
+https://github.com/BurntSushi/ripgrep
+https://github.com/getreu/stringsext
 
 # Go
 
