@@ -516,11 +516,13 @@ fi
 # Path_Filtering
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
         if [[ !($i = "/root") ]]; then
+		PATH_BSH="/home/$i/.bashrc"
                 PATH_SCREEN="/home/$i/.screenrc"
 		PATH_ALIAS="/home/$i/.bash_aliases"
 		PATH_VIM="/home/$i/.vimrc"
 		PATH_ZSH="/home/$i/.zshrc"
         else
+		PATH_BSH="/home/$i/.bashrc"
                 PATH_SCREEN="/root/.screenrc"
 		PATH_ALIAS="/root/.bash_aliases"
 		PATH_VIM="/root/.vimrc"
@@ -528,6 +530,7 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
         fi
 
 	# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
+	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_BSH
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_ZSH
 	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ALIAS
 	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ZSH
