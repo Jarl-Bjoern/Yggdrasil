@@ -590,20 +590,23 @@ done
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
 	# Git_Tools_Installation
-	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
-		sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
+	if [ -d "/opt/pentest_tools/chisel" ]; then
+		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build
+	fi
+	if [ -d "/opt/pentest_tools/enum4linux-ng" ]; then
+		sudo pip3 install -r /opt/pentest_tools/enum4linux-ng/requirements.txt
 	fi
 	if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
 		sudo bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
+	fi
+	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
+		sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 	fi
 	if [ -d "/opt/pentest_tools/ssh_scan" ]; then
 		cd /opt/pentest_tools/ssh_scan ; sudo gem install bundler ; sudo bundle install
 	fi
 	if [ -d "/opt/pentest_tools/socketcand" ]; then
 		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
-	fi
-	if [ -d "/opt/pentest_tools/chisel" ]; then
-		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build
 	fi
 	if [ -f "/opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)" ]; then
 		sudo bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)
@@ -614,6 +617,8 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [ -f "/opt/pentest_tools/mitmdump" ]; then
 		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
 	fi
+	
+	# Categories_Sort
 	if [[ $(ls /opt/pentest_tools | grep -E "nmap-erpscan|pysap|PyRFC|SAP_GW_RCE_exploit|SAP_RECON") ]]; then
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/SAP ; mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP
 	fi
