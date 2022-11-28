@@ -77,18 +77,3 @@ if __name__ == '__main__':
                 elif (Arg_Name == "skip"): Parameters += "-s "
             elif ((Arg_Name == "path" and Arg_Value != None) or (Arg_Name == "host_name" and Arg_Value != None)): Parameters += f"{Arg_Value} "
         system(f'sudo bash {Start_Script} {Parameters}')
-#        if (args.path != None and args.skip != None and args.accept_licenses != None and args.host_name != None): system(f'sudo bash {Start_Script} -s {args.path} -aL -hN {args.host_name}')
-#        elif (args.path != None and args.skip == None and args.accept_licenses == None and args.host_name == None): system(f'sudo bash {Start_Script} {args.path}')
-#        elif (args.path != None and args.skip == None and args.accept_licenses != None and args.host_name == None): system(f'sudo bash {Start_Script} {args.path} -aL')
-#        elif (args.path == None and args.skip != None and args.accept_licenses == None and args.host_name == None): system(f'sudo bash {Start_Script} -s')
-#        elif (args.path == None and args.skip != None and args.accept_licenses != None and args.host_name == None): system(f'sudo bash {Start_Script} -s -aL')
-#        elif (args.path != None and args.skip != None and args.accept_licenses == None and args.host_name == None): system(f'sudo bash {Start_Script} -s {args.path}')
-#        elif (args.path == None and args.skip == None and args.accept_licenses != None and args.host_name == None): system(f'sudo bash {Start_Script} -aL')
-##############################################
-#        elif (args.path != None and args.skip == None and args.accept_licenses == None and args.host_name != None): system(f'sudo bash {Start_Script} {args.path} -hN {args.host_name}')
-#        elif (args.path != None and args.skip == None and args.accept_licenses != None and args.host_name != None): system(f'sudo bash {Start_Script} {args.path} -aL -hN {args.host_name}')
-#        elif (args.path == None and args.skip != None and args.accept_licenses == None and args.host_name != None): system(f'sudo bash {Start_Script} -s -hN {args.host_name}')
-#        elif (args.path == None and args.skip != None and args.accept_licenses != None and args.host_name != None): system(f'sudo bash {Start_Script} -s -aL -hN {args.host_name}')
-#        elif (args.path != None and args.skip != None and args.accept_licenses == None and args.host_name != None): system(f'sudo bash {Start_Script} -s {args.path} -hN {args.host_name}')
-#        elif (args.path == None and args.skip == None and args.accept_licenses != None and args.host_name != None): system(f'sudo bash {Start_Script} -aL -hN {args.host_name}')
-#        else: system(f'sudo bash {Start_Script}')
