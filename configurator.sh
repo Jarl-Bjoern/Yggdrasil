@@ -208,7 +208,7 @@ function File_Installer() {
 		elif [[ $line = "# Go" ]]; then
 			Command="go get" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Wordlists" ]]; then
-			Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
+			Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false 
 		elif [[ $line = "# Wget" ]]; then
 			Switch_WGET=true
 		else
