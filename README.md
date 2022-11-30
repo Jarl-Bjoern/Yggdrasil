@@ -47,7 +47,6 @@ Since version ***0.7*** it is now possible to choose between the three categorie
 Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
 
 # Table of Contents
-- [Settings overview](#tool_settings)
 - [How to download and install the tool](#download_install)
   - [Make sure that the dos2unix tool is installed](#dos2unix_install)
   - [Download and start the tool](#start_install)
