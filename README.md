@@ -35,7 +35,7 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 <a name="tool_settings"></a>
 # Settings overview
 - Abilitiy to configure your own setting
-      - Custom config based on the provided template
+  - Custom config based on the provided template
 - Automation download of tools from the following categories
       - APT
       - Cargo
