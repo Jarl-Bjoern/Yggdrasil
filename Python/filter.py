@@ -89,7 +89,10 @@ alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 
 
 # Main
 if __name__ == '__main__':
-        if ("crontab" in argv[1]): Crontab_Configuration(argv[1])
-        elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
-        elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
-        elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1])
+        try:
+                if ("crontab" in argv[1]): Crontab_Configuration(argv[1])
+                elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
+                elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
+                elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1])
+        except FileNotFoundError:
+                pass
