@@ -480,6 +480,7 @@ fi
 if [[ $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d '"' -f2) =~ "Kali" ]]; then
 	sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
 fi
+echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/crontab"
 export HISTCONTROL=ignoreboth:erasedups
