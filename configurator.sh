@@ -215,7 +215,7 @@ function File_Installer() {
 			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
 				if [ "$Switch_WGET" = false ]; then
 					if [[ $line =~ "github" ]]; then
-						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo $line | cut -d "/" -f5)${NOCOLOR}"
+						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo $line | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						for CHECK_GIT in ${Array_Filter_Git[@]}; do
 							if [[ $CHECK_GIT =~ $(echo $line | cut -d "/" -f5) ]]; then
 								if [[ -d $CHECK_GIT ]]; then
@@ -225,29 +225,29 @@ function File_Installer() {
 							fi
 						done
 					else
-						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}"
+						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 					fi
 					if [ "$Switch_Skip" = true ]; then
 						if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
-							echo "$line was skipped"
+							echo "$line was skipped" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						else
 							if [[ $Switch_IGNORE = false ]]; then
-								eval "$Command $line"
+								eval "$Command $line" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
-								echo "$line already exists."
+								echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						fi
 					else
 						if [[ $Switch_IGNORE = false ]]; then
-							eval "$Command $line"
+							eval "$Command $line" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						else
-							echo "$line already exists."
+							echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						fi
 					fi
 				else
 					FILE=$(echo $line | cut -d" " -f1)
 					FILE_NAME=$(echo "$line" | cut -d" " -f2)
-					echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}"
+					echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 					for CHECK_FILE in ${Array_Filter_Download[@]}; do
 						if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
 							if [[ $(ls $CHECK_FILE) ]]; then
@@ -267,32 +267,32 @@ function File_Installer() {
 							wget --content-disposition $FILE
 							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
 							if [[ ${#FILE_NAME} -gt 0 ]]; then
-								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE_NAME $2
+								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE_NAME $2 | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
-								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE $2
+								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE $2 | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						elif [ "$MODE" = "Installer" ]; then
 							wget --content-disposition $FILE
 							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
 							if [[ $FILE_NAME =~ "rustup" ]]; then
-								sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2) -y
+								sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2) -y | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
-								sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2)
+								sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						elif [ "$MODE" = "DPKG" ]; then
 							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
 							if [[ ${#FILE_NAME} -gt 0 ]]; then
 								wget --content-disposition $FILE
-								sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2)
+								sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
 								FILE_NAME=$(echo "$line" | cut -d" " -f2)
 								wget $FILE -O $FILE_NAME.deb
-								sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2).deb
+								sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2).deb | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 
 						fi
 					else
-						echo "$FILE_NAME already exists."
+						echo "$FILE_NAME already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 					fi
 				fi
 			fi
@@ -534,8 +534,8 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 	# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_BSH
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_ZSH
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ALIAS
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ZSH
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ALIAS | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ZSH | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 
 	# Screen_Configuration (Thx to @HomeSen)
 	cat <<'EOF' > $PATH_SCREEN
@@ -593,28 +593,28 @@ done
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
 	# Git_Tools_Installation
 	if [ -d "/opt/pentest_tools/chisel" ]; then
-		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build
+		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 	fi
 	if [ -d "/opt/pentest_tools/enum4linux-ng" ]; then
-		sudo pip3 install -r /opt/pentest_tools/enum4linux-ng/requirements.txt
+		sudo pip3 install -r /opt/pentest_tools/enum4linux-ng/requirements.txt | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 	fi
 	if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
-		sudo bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
+		sudo bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 	fi
 	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
 		sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 	fi
 	if [ -d "/opt/pentest_tools/ssh_scan" ]; then
-		cd /opt/pentest_tools/ssh_scan ; sudo gem install bundler ; sudo bundle install
+		cd /opt/pentest_tools/ssh_scan ; sudo gem install bundler ; sudo bundle install | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 	fi
 	if [ -d "/opt/pentest_tools/socketcand" ]; then
-		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
+		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 	fi
 	if [ -f "/opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)" ]; then
 		sudo bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)
 	fi
 	if [ -d "/opt/pentest_tools/Responder" ]; then
-		pip3 install -r /opt/pentest_tools/Responder/requirements.txt
+		pip3 install -r /opt/pentest_tools/Responder/requirements.txt | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 	fi
 	if [ -f "/opt/pentest_tools/mitmdump" ]; then
 		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
@@ -766,7 +766,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		$TEMP_PATH_JET/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py $PATH_Install_Dir
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py $PATH_Install_Dir | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 	fi
 fi
 
