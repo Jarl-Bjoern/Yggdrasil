@@ -534,8 +534,8 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 	# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_BSH
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_ZSH
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ALIAS | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ZSH | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ALIAS
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ZSH
 
 	# Screen_Configuration (Thx to @HomeSen)
 	cat <<'EOF' > $PATH_SCREEN
@@ -593,28 +593,28 @@ done
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
 	# Git_Tools_Installation
 	if [ -d "/opt/pentest_tools/chisel" ]; then
-		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build
 	fi
 	if [ -d "/opt/pentest_tools/enum4linux-ng" ]; then
-		sudo pip3 install -r /opt/pentest_tools/enum4linux-ng/requirements.txt | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+		sudo pip3 install -r /opt/pentest_tools/enum4linux-ng/requirements.txt
 	fi
 	if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
-		sudo bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+		sudo bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
 	fi
 	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
 		sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 	fi
 	if [ -d "/opt/pentest_tools/ssh_scan" ]; then
-		cd /opt/pentest_tools/ssh_scan ; sudo gem install bundler ; sudo bundle install | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+		cd /opt/pentest_tools/ssh_scan ; sudo gem install bundler ; sudo bundle install
 	fi
 	if [ -d "/opt/pentest_tools/socketcand" ]; then
-		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
 	fi
 	if [ -f "/opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)" ]; then
 		sudo bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)
 	fi
 	if [ -d "/opt/pentest_tools/Responder" ]; then
-		pip3 install -r /opt/pentest_tools/Responder/requirements.txt | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+		pip3 install -r /opt/pentest_tools/Responder/requirements.txt
 	fi
 	if [ -f "/opt/pentest_tools/mitmdump" ]; then
 		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
@@ -766,7 +766,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		$TEMP_PATH_JET/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py $PATH_Install_Dir | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py $PATH_Install_Dir
 	fi
 fi
 
