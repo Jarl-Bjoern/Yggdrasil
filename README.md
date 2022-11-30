@@ -8,32 +8,7 @@
 
 This tool is intended to simplify the setup of various tools and configuration of a Kali machine after a fresh installation and save unnecessary time, so that a predefined list can be used in advance or you can also create your own.<br />
 
-# News
-With version ***0.7g*** it is now possible to select multiple categories in pentesting for installation.
-
-Since version ***0.7*** it is now possible to choose between the three categories ***Complete***, ***Forensic*** and ***Pentest***.
-
-Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
-
-# Table of Contents
-- [Settings overview](#tool_settings)
-- [How to download and install the tool](#download_install)
-  - [Make sure that the dos2unix tool is installed](#dos2unix_install)
-  - [Download and start the tool](#start_install)
-  - [Using the help section to see which parameters do we have](#help_install)
-  - [Choose one of the three category types](#category_install)
-  - [Choose between one of the Pentesting categories](#pentesting_install)
-  - [Choose between multiple Pentesting categories](#pentesting_multiple_install)
-  - [Choose one of the two installation types](#type_install)
-  - [Choose between multiple hardening options](#hardening_install)
-  - [Configurate your SSH IP-Address](#ssh_install)
-- [Using the automated variant](#automated_install)
-- [Customize your installation](#custom_install)
-  - [Method Example](#method_install)
-  - [Custom Directory Example](#directory_install)
-
-<a name="tool_settings"></a>
-# Settings overview
+## Settings overview
 - Abilitiy to configure your own setting
   - Custom config based on the provided template
   - Include a custom path of your own scripts or dpkg packages
@@ -63,6 +38,30 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
   - Firewall
   - Kernel
   - SSH
+
+# News
+With version ***0.7g*** it is now possible to select multiple categories in pentesting for installation.
+
+Since version ***0.7*** it is now possible to choose between the three categories ***Complete***, ***Forensic*** and ***Pentest***.
+
+Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
+
+# Table of Contents
+- [Settings overview](#tool_settings)
+- [How to download and install the tool](#download_install)
+  - [Make sure that the dos2unix tool is installed](#dos2unix_install)
+  - [Download and start the tool](#start_install)
+  - [Using the help section to see which parameters do we have](#help_install)
+  - [Choose one of the three category types](#category_install)
+  - [Choose between one of the Pentesting categories](#pentesting_install)
+  - [Choose between multiple Pentesting categories](#pentesting_multiple_install)
+  - [Choose one of the two installation types](#type_install)
+  - [Choose between multiple hardening options](#hardening_install)
+  - [Configurate your SSH IP-Address](#ssh_install)
+- [Using the automated variant](#automated_install)
+- [Customize your installation](#custom_install)
+  - [Method Example](#method_install)
+  - [Custom Directory Example](#directory_install)
 
 <a name="download_install"></a>
 # How to download and install the tool
