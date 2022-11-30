@@ -6,6 +6,8 @@ i3
 meld
 nitrogen
 putty
+python-tk
+python3-tk
 ranger
 rofi
 synaptic
