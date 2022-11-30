@@ -24,6 +24,7 @@ This tool is intended to simplify the setup of various tools and configuration o
   - Automated Updater via Crontab
     - Docker Images
     - GIT Tools
+    - Important pip packages
     - OS
   - Changing the default hostname
   - Custom configuration
