@@ -34,6 +34,7 @@ try:
     from argparse import ArgumentParser, FileType, RawTextHelpFormatter, SUPPRESS
     from os import name as osname, system, walk
     from os.path import dirname, join, realpath
+    from Python.logger import *
     from subprocess import DEVNULL, getoutput, run
 except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
 
