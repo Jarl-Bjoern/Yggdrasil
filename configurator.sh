@@ -658,7 +658,10 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	# Metasploit_Configuration
 	sudo systemctl enable --now postgresql
 	sudo msfdb init
-	
+
+	# Linking_Local_Wordlists
+	ln -s /usr/share/wordlists /opt/wordlists/kali_wordlists
+
 	# Custom_Wordlist
 	if [ !$(-f "/opt/wordlists/tomcat-directories.txt") ]; then
 		# Copied from https://gist.github.com/KINGSABRI/277e01a9b03ea7643efef8d5747c8f16/tomcat-directory.list
@@ -903,9 +906,6 @@ fi
 if [ -f "/usr/share/wordlists/rockyou.txt.gz" ]; then
 	sudo gunzip /usr/share/wordlists/rockyou.txt.gz
 fi
-
-# Linking_Local_Wordlists
-ln -s /usr/share/wordlists /opt/wordlists/kali_wordlists
 
 # Docker_Standard_Images
 if [[ $(cat $File_Path | grep nessus) ]]; then
