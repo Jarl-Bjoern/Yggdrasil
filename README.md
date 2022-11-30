@@ -16,6 +16,7 @@ Since version ***0.7*** it is now possible to choose between the three categorie
 Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
 
 # Table of Contents
+- [Settings overview](#tool_settings)
 - [How to download and install the tool](#download_install)
   - [Make sure that the dos2unix tool is installed](#dos2unix_install)
   - [Download and start the tool](#start_install)
@@ -30,6 +31,37 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 - [Customize your installation](#custom_install)
   - [Method Example](#method_install)
   - [Custom Directory Example](#directory_install)
+
+<a name="tool_settings"></a>
+# Settings overview
+- Abilitiy to configure your own setting
+      - Custom config based on the provided template
+- Automation download of tools from the following categories
+      - APT
+      - Cargo
+      - Custom Websites (via wget)
+      - Docker
+      - Gem
+      - Go
+      - pip
+- Best Practice settings
+      - Automation Updater
+            - Docker Images
+            - GIT Tools
+            - OS
+      - Changing the default hostname
+      - Custom configuration
+            - Alias
+            - BASHRC and ZSHRC
+            - Screenrc
+            - VIM
+      - Repository change to last-snapshot
+      - Overview about some useful information after the install
+- GUI automation to accept licenses
+- Hardening
+      - Firewall
+      - Kernel
+      - SSH
 
 <a name="download_install"></a>
 # How to download and install the tool
