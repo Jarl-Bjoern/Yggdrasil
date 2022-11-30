@@ -8,6 +8,13 @@
 
 This tool is intended to simplify the setup of various tools and configuration of a Kali machine after a fresh installation and save unnecessary time, so that a predefined list can be used in advance or you can also create your own.<br />
 
+## News
+With version ***0.7g*** it is now possible to select multiple categories in pentesting for installation.
+
+Since version ***0.7*** it is now possible to choose between the three categories ***Complete***, ***Forensic*** and ***Pentest***.
+
+Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
+
 ## Settings overview
 - Abilitiy to configure your own setting
   - Custom config based on the provided template
@@ -39,13 +46,6 @@ This tool is intended to simplify the setup of various tools and configuration o
   - Firewall
   - Kernel
   - SSH
-
-# News
-With version ***0.7g*** it is now possible to select multiple categories in pentesting for installation.
-
-Since version ***0.7*** it is now possible to choose between the three categories ***Complete***, ***Forensic*** and ***Pentest***.
-
-Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
 
 # Table of Contents
 - [How to download and install the tool](#download_install)
