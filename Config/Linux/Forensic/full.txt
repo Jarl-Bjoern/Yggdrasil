@@ -13,6 +13,10 @@ jadx
 jd-gui
 kpartx
 libtool
+libyara-dev
+libyara9
+libclang-dev
+libncurses-dev
 lvm2
 make
 moreutils
@@ -21,12 +25,19 @@ sleuthkit
 tree
 
 # Cargo
+dionysos
 evtx
+evtxtools
 evtx2bodyfile
 mactime2
-mft2vodyfile
+mft2bodyfile
 ntdsextract2
 nt_hive2
+pol_export
+regview
+stringsext
+usnjrnl
+xsv
 
 # Docker
 
@@ -42,7 +53,6 @@ https://github.com/getreu/stringsext
 
 # Python
 evtxtract
-regrippy
 
 # Wget
 
