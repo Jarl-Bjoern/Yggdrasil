@@ -30,7 +30,6 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 - Best Practice settings
   - Automated Updater via Crontab
     - Docker Images
-    - GIT Tools
     - Important pip packages
     - OS
   - Changing the default hostname
