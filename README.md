@@ -32,7 +32,7 @@ This tool is intended to simplify the setup of various tools and configuration o
     - BASHRC and ZSHRC
     - Screenrc
     - VIM
-  - Repository change to last-snapshot
+  - Repository change from bleeding-edge to last-snapshot
   - Overview about some useful information after the install
 - GUI automation to accept licenses
 - Hardening
