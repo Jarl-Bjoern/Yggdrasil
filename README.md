@@ -37,31 +37,31 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 - Abilitiy to configure your own setting
   - Custom config based on the provided template
 - Automation download of tools from the following categories
-      - APT
-      - Cargo
-      - Custom Websites (via wget)
-      - Docker
-      - Gem
-      - Go
-      - pip
+  - APT
+  - Cargo
+  - Custom Websites (via wget)
+  - Docker
+  - Gem
+  - Go
+  - pip
 - Best Practice settings
-      - Automation Updater
-            - Docker Images
-            - GIT Tools
-            - OS
-      - Changing the default hostname
-      - Custom configuration
-            - Alias
-            - BASHRC and ZSHRC
-            - Screenrc
-            - VIM
-      - Repository change to last-snapshot
-      - Overview about some useful information after the install
+  - Automation Updater
+    - Docker Images
+    - GIT Tools
+    - OS
+  - Changing the default hostname
+  - Custom configuration
+    - Alias
+    - BASHRC and ZSHRC
+    - Screenrc
+    - VIM
+  - Repository change to last-snapshot
+  - Overview about some useful information after the install
 - GUI automation to accept licenses
 - Hardening
-      - Firewall
-      - Kernel
-      - SSH
+  - Firewall
+  - Kernel
+  - SSH
 
 <a name="download_install"></a>
 # How to download and install the tool
