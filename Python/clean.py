@@ -4,6 +4,7 @@
 # Libraries
 from os import listdir, remove
 from os.path import join
+from logger import *
 from sys import argv
 
 # Arrays
