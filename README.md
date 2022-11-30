@@ -36,6 +36,7 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 # Settings overview
 - Abilitiy to configure your own setting
   - Custom config based on the provided template
+  - Include a custom path of your own tools or dpkg packages
 - Automation download of tools from the following categories
   - APT
   - Cargo
