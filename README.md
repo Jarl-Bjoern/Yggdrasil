@@ -21,7 +21,7 @@ This tool is intended to simplify the setup of various tools and configuration o
   - Go
   - pip
 - Best Practice settings
-  - Automation Updater
+  - Automated Updater via Crontab
     - Docker Images
     - GIT Tools
     - OS
