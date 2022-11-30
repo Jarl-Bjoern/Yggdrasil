@@ -759,7 +759,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
 	fi
 	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)" ]; then
-		TEMP_PATH_JET=/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)
+		TEMP_PATH_JET=$OPT_Path/$(ls /opt/pentest_tools | grep jetbrains)
 		$TEMP_PATH_JET/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
