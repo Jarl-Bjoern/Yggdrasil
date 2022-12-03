@@ -16,7 +16,7 @@ Since version ***0.7*** it is now possible to choose between the three categorie
 Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
 
 ## Settings overview
-- Abilitiy to configure your own setting
+- Ability to configure your own setting
   - Custom config based on the provided template
   - Include a custom path of your own scripts or dpkg packages
 - Automation download of tools from the following categories
