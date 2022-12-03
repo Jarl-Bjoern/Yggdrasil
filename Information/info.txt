@@ -51,3 +51,12 @@
 ######################## Change Default Browser ##############################
 # sudo update-alternatives --config x-www-browser
 ##############################################################################
+
+######################## Remove the ssh version ##############################
+# strings /usr/sbin/sshd | grep Debian     <--   check the version and os name
+# sudo cp /usr/sbin/sshd /tmp/sshd.backup
+# sudo cp /tmp/sshd.backup /tmp/sshd
+# hexedit /tmp/sshd      <--    Search for the strings with the version number
+# sudo rm -f /usr/sbin/sshd
+# sudo mv /tmp/sshd /usr/sbin/sshd
+##############################################################################
