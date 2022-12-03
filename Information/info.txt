@@ -57,6 +57,7 @@
 # sudo cp /usr/sbin/sshd /tmp/sshd.backup
 # sudo cp /tmp/sshd.backup /tmp/sshd
 # hexedit /tmp/sshd      <--    Search for the strings with the version number
+#                               and replace it with blanks
 # sudo rm -f /usr/sbin/sshd
 # sudo mv /tmp/sshd /usr/sbin/sshd
 ##############################################################################
