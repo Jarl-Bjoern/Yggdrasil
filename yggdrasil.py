@@ -32,7 +32,7 @@ __status__ = "Production"
 # Libraries
 try:
     from argparse import ArgumentParser, FileType, RawTextHelpFormatter, SUPPRESS
-    from os import name as osname, system, walk
+    from os import makedirs, name as osname, system, walk
     from os.path import dirname, join, realpath
     from subprocess import DEVNULL, getoutput, run
 except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
@@ -66,6 +66,7 @@ if __name__ == '__main__':
         optional.add_argument('-hN','--host-name', type=str, help='This parameter specifies the hostname of the kali machine.\n\nDefault: pentest-kali\n\n-------------------------------------------------------------------------------------')
         optional.add_argument('-p','--path', type=str, help='This parameter specifies the target path of your custom tools.\n\n-------------------------------------------------------------------------------------')
         optional.add_argument('-s','--skip', type=bool, nargs='?', const=True, help='This parameter skips the hardening part.\n\nHardening:\n  - Firewall\n  - Operating System\n  - SSH\n\n-------------------------------------------------------------------------------------')
+        optional.add_argument('-aW','--add-workspace', type=str, help='This parameter specifies your default workspace location.\n\nDefault: /opt/workspace\n\n-------------------------------------------------------------------------------------')
         optional.add_argument('-h','--help', action='help', default=SUPPRESS, help='Show this help message and exit.\n\n-------------------------------------------------------------------------------------')
         args = parser.parse_args()
 
@@ -75,5 +76,6 @@ if __name__ == '__main__':
             if ((Arg_Name != "path" and Arg_Value != None) and (Arg_Name != "host_name" and Arg_Value != None)):
                 if (Arg_Name == "accept_licenses"): Parameters += "-aL "
                 elif (Arg_Name == "skip"): Parameters += "-s "
+                elif (Arg_Name == "add_workspace" and Arg_Value != None): makedirs(args.add_workspace)
             elif ((Arg_Name == "path" and Arg_Value != None) or (Arg_Name == "host_name" and Arg_Value != None)): Parameters += f"{Arg_Value} "
         system(f'sudo bash {Start_Script} {Parameters}')
