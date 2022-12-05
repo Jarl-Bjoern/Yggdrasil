@@ -18,6 +18,7 @@ iptables-persistent
 libcharon-extra-plugins
 libcharon-extauth-plugins
 libstrongswan-extra-plugins
+maven
 mc
 mono-complete
 neovim
