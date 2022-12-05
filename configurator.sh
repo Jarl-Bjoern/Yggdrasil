@@ -73,7 +73,7 @@ declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Fuzzer/ffuf"
 "/opt/pentest_tools/Fuzzer/wfuzz")
 
-declare -a Array_GIT=()
+declare -a Array_GIT_Updater=()
 
 declare -a Array_HARDENING=("#Protecting_against_IP-Spoofing"
 "net.ipv4.conf.default.rp_filter=1"
