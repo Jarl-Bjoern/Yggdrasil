@@ -240,6 +240,9 @@ function File_Installer() {
 					else
 						if [[ $Switch_IGNORE = false ]]; then
 							eval "$Command $line" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+							if [[ $Command =~ "git" ]]; then
+								Array_Git_Updater+=($(echo $line | rev | cut -d '/' -f1 | rev))
+							fi
 						else
 							echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						fi
