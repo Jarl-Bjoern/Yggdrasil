@@ -12,6 +12,7 @@ ranger
 rofi
 synaptic
 texstudio
+thunderbird
 
 # Python
 pyautogui
