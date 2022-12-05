@@ -930,4 +930,4 @@ if [[ $category_type = "complete" || $category_type = "1" ]]; then
 else
 	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py $OPT_Path
 fi
-echo -e "\n---------------------------------------------------------------------------------\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
+echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
