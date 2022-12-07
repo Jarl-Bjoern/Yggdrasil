@@ -194,7 +194,7 @@ function File_Installer() {
 	while IFS= read -r line
 	do
 		if [[ $line = "# APT" ]]; then
-			Command="sudo apt-get install -y" ; Skip=true ; Switch_WGET=false
+			Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Cargo" ]]; then
 			Command="sudo cargo install" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Docker" ]]; then
@@ -232,15 +232,30 @@ function File_Installer() {
 							echo "$line was skipped" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						else
 							if [[ $Switch_IGNORE = false ]]; then
-								eval "$Command $line" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								eval "$Command $line"
+								if [[ $Command =~ "apt" ]]; then
+									if [[ $(apt-cache policy $line) != "(none)" ]]; then
+										echo "$line was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+									else
+										echo "$line was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+									fi
+								elif [[ $Command =~ "git" ]]; then
+									Array_Git_Updater+=($(echo $line | rev | cut -d '/' -f1 | rev))
+								fi
 							else
 								echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						fi
 					else
 						if [[ $Switch_IGNORE = false ]]; then
-							eval "$Command $line" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-							if [[ $Command =~ "git" ]]; then
+							eval "$Command $line"
+							if [[ $Command =~ "apt" ]]; then
+								if [[ $(apt-cache policy $line) != "(none)" ]]; then
+									echo "$line was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								else
+									echo "$line was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								fi
+							elif [[ $Command =~ "git" ]]; then
 								Array_Git_Updater+=($(echo $line | rev | cut -d '/' -f1 | rev))
 							fi
 						else
