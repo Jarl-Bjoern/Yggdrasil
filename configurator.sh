@@ -595,6 +595,10 @@ EOF
 done
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
+	# Apache_Configuration
+	sudo mkdir -p /etc/apache2/ssl ; sudo openssl req -x509 -newkey rsa:4096 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -asubj '/CN=pentest-kali'
+
+
 	# Git_Tools_Installation
 	if [ -d "/opt/pentest_tools/chisel" ]; then
 		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build
