@@ -224,7 +224,7 @@ function File_Installer() {
 		elif [[ $line = "# Wget" ]]; then
 			Switch_WGET=true
 		else
-			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then			
+			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
 				if [ "$Switch_WGET" = false ]; then
 					if [[ $line =~ "github" ]]; then
 						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo $line | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
@@ -245,15 +245,6 @@ function File_Installer() {
 						else
 							if [[ $Switch_IGNORE = false ]]; then
 								eval "$Command $line" ; Logger "$Command" "$line"
-#								if [[ $Command =~ "apt" ]]; then
-#									if [[ ! $(apt-cache policy $line | grep "Installed:") =~ "(none)" ]]; then
-#										echo "$line was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-#									else
-#										echo "$line was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-#									fi
-#								elif [[ $Command =~ "git" ]]; then
-#									Array_Git_Updater+=($(echo $line | rev | cut -d '/' -f1 | rev))
-#								fi
 							else
 								echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
