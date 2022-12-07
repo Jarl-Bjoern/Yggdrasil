@@ -234,7 +234,7 @@ function File_Installer() {
 							if [[ $Switch_IGNORE = false ]]; then
 								eval "$Command $line"
 								if [[ $Command =~ "apt" ]]; then
-									if [[ $(apt-cache policy $line) != "(none)" ]]; then
+									if [[ ! $(apt-cache policy $line | grep "Installed:") =~ "(none)" ]]; then
 										echo "$line was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 									else
 										echo "$line was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
@@ -250,7 +250,7 @@ function File_Installer() {
 						if [[ $Switch_IGNORE = false ]]; then
 							eval "$Command $line"
 							if [[ $Command =~ "apt" ]]; then
-								if [[ $(apt-cache policy $line) != "(none)" ]]; then
+								if [[ ! $(apt-cache policy $line | grep "Installed:") =~ "(none)" ]]; then
 									echo "$line was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 								else
 									echo "$line was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
