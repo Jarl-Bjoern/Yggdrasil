@@ -76,6 +76,8 @@ if __name__ == '__main__':
             if ((Arg_Name != "path" and Arg_Value != None) and (Arg_Name != "host_name" and Arg_Value != None)):
                 if (Arg_Name == "accept_licenses"): Parameters += "-aL "
                 elif (Arg_Name == "skip"): Parameters += "-s "
-                elif (Arg_Name == "add_workspace" and Arg_Value != None): makedirs(args.add_workspace)
+                elif (Arg_Name == "add_workspace" and Arg_Value != None):
+                    try: makedirs(args.add_workspace)
+                    except FileExistsError: pass
             elif ((Arg_Name == "path" and Arg_Value != None) or (Arg_Name == "host_name" and Arg_Value != None)): Parameters += f"{Arg_Value} "
         system(f'sudo bash {Start_Script} {Parameters}')
