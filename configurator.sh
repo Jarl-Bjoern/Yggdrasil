@@ -661,11 +661,11 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [[ $(ls /opt/pentest_tools | grep -E "moodlescan|mooscan|badmoodle") ]]; then
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle ; mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle
 	fi
-	if [[ $(ls /opt/pentest_tools | grep -E "chisel|mitmproxy|mitmrelay|proxychains-ng") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Proxy ; mv chisel mitmproxy mitmrelay proxychains-ng /opt/pentest_tools/Proxy
+	if [[ $(ls /opt/pentest_tools | grep -E "chisel|mitmproxy|mit_mrelay|proxychains-ng") ]]; then
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Proxy ; mv chisel mitmproxy mitm_relay proxychains-ng /opt/pentest_tools/Proxy
 	fi
-	if [[ $(ls /opt/pentest_tools | grep -E "SIPTools|viproy-voipkit") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit SIPTools /opt/pentest_tools/SIP
+	if [[ $(ls /opt/pentest_tools | grep -E "SIPTools|sipvicious|viproy-voipkit") ]]; then
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit sipvicious SIPTools /opt/pentest_tools/SIP
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "ffuf|wfuzz") ]]; then
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv chisel ffuf wfuzz /opt/pentest_tools/Fuzzer
