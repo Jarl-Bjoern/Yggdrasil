@@ -189,6 +189,18 @@ function header() {
 	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
 }
 
+function Logger() {
+	if [[ $1 =~ "apt" ]]; then
+		if [[ ! $(apt-cache policy $line | grep "Installed:") =~ "(none)" ]]; then
+			echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+		else
+			echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+		fi
+	elif [[ $1 =~ "git" ]]; then
+		Array_Git_Updater+=($(echo $2 | rev | cut -d '/' -f1 | rev))
+	fi
+}
+
 function File_Installer() {
 	input=$1
 	while IFS= read -r line
@@ -232,32 +244,23 @@ function File_Installer() {
 							echo "$line was skipped" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						else
 							if [[ $Switch_IGNORE = false ]]; then
-								eval "$Command $line"
-								if [[ $Command =~ "apt" ]]; then
-									if [[ ! $(apt-cache policy $line | grep "Installed:") =~ "(none)" ]]; then
-										echo "$line was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-									else
-										echo "$line was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-									fi
-								elif [[ $Command =~ "git" ]]; then
-									Array_Git_Updater+=($(echo $line | rev | cut -d '/' -f1 | rev))
-								fi
+								eval "$Command $line" ; Logger $Command $line
+#								if [[ $Command =~ "apt" ]]; then
+#									if [[ ! $(apt-cache policy $line | grep "Installed:") =~ "(none)" ]]; then
+#										echo "$line was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+#									else
+#										echo "$line was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+#									fi
+#								elif [[ $Command =~ "git" ]]; then
+#									Array_Git_Updater+=($(echo $line | rev | cut -d '/' -f1 | rev))
+#								fi
 							else
 								echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						fi
 					else
 						if [[ $Switch_IGNORE = false ]]; then
-							eval "$Command $line"
-							if [[ $Command =~ "apt" ]]; then
-								if [[ ! $(apt-cache policy $line | grep "Installed:") =~ "(none)" ]]; then
-									echo "$line was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-								else
-									echo "$line was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-								fi
-							elif [[ $Command =~ "git" ]]; then
-								Array_Git_Updater+=($(echo $line | rev | cut -d '/' -f1 | rev))
-							fi
+							eval "$Command $line" ; Logger $Command $line
 						else
 							echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						fi
