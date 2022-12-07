@@ -244,7 +244,7 @@ function File_Installer() {
 							echo "$line was skipped" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						else
 							if [[ $Switch_IGNORE = false ]]; then
-								eval "$Command $line" ; Logger "$Command" $line"
+								eval "$Command $line" ; Logger "$Command" "$line"
 #								if [[ $Command =~ "apt" ]]; then
 #									if [[ ! $(apt-cache policy $line | grep "Installed:") =~ "(none)" ]]; then
 #										echo "$line was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
