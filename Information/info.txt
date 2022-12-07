@@ -1,5 +1,4 @@
 ##################### BURP PLUGINS & Configuration ###########################
-# apt install -y jython
 # /usr/bin/jython
 #
 # EsPReSSO
