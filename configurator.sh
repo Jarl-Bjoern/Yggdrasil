@@ -888,12 +888,14 @@ EOF
 		sudo sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
 		sudo sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
 		sudo sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
-		cat <<EOF >> /etc/ssh/sshd_config
+		if [[ ! $(cat /etc/ssh/sshd_config | grep "DebianBanner no") ]]; then
+			cat <<EOF >> /etc/ssh/sshd_config
 
 # Disable OS-Banner
 DebianBanner no
 
 EOF
+		fi
 		IFS=""
 		for Cipher in ${Array_SSH_Ciphers[@]}; do
 			if [[ ! $(cat /etc/ssh/sshd_config | grep -e $Cipher) ]]; then
