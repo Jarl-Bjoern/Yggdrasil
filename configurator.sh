@@ -189,19 +189,19 @@ function header() {
 	echo -e "${CYAN}----------------------------------------------------------${NOCOLOR}\n"
 }
 
-function Logger() {
-	if [[ $1 =~ "apt" ]]; then
-		if [[ ! $(apt-cache policy $2 | grep "Installed:") =~ "(none)" ]]; then
-			echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-		else
-			echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-		fi
-	elif [[ $1 =~ "git" ]]; then
-		Array_Git_Updater+=($(echo $2 | rev | cut -d '/' -f1 | rev))
-	fi
-}
-
 function File_Installer() {
+	function Logger() {
+		if [[ $1 =~ "apt" ]]; then
+			if [[ ! $(apt-cache policy $2 | grep "Installed:") =~ "(none)" ]]; then
+				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+			else
+				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+			fi
+		elif [[ $1 =~ "git" ]]; then
+			Array_Git_Updater+=($(echo $2 | rev | cut -d '/' -f1 | rev))
+		fi
+	}
+
 	input=$1
 	while IFS= read -r line
 	do
