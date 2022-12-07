@@ -446,9 +446,7 @@ if [[ $Switch_Skip != true ]]; then
                 done
         else
                 if [[ $hardening = "complete" || $hardening = "1" ]]; then
-                        Switch_Firewall=true
-                        Switch_Hardening=true
-                        Switch_SSH=true
+                        Switch_Firewall=true ; Switch_Hardening=true ; Switch_SSH=true
                 elif [[ $hardening = "firewall" || $hardening = "2" ]];  then
                         Switch_Firewall=true
                 elif [[ $hardening = "sysctl" || $hardening = "3" ]];  then
