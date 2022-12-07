@@ -462,7 +462,7 @@ if [[ $Switch_Skip != true ]]; then
 	# SSH_Configuration
         if [[ $Switch_SSH != false ]]; then
                 NIC=$(ip --brief a | grep "UP" | grep -v -E "lo|docker|veth" | awk '{print $1}')
-                IP=$(ifconfig | grep -E "inet|inet6" | cut -d " " -f10 | grep -v -E "127.0.0.1|172.17.0.1|::1" | sort -u)
+                IP=$(ip --brief a | grep "UP" | grep -v -E "lo|docker|veth" | awk '{print $3 "\n" $4}')
                 readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
 
                 echo -e "\n           Please select an IP address to be used\n                   for SSH configuration"
