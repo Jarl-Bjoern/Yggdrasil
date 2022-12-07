@@ -82,7 +82,7 @@ sudo python3 yggdrasil.py
 <a name="help_install"></a>
 ## Using the help section to see which parameters do we have
 ```bash
-usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-p PATH] [-s [SKIP]] [-h]
+usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] [-p PATH] [-s [SKIP]] [-h]
 
 optional arguments:
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
@@ -91,6 +91,12 @@ optional arguments:
                         Licenses:
                           - Veracrypt
                         
+                        ---------------------------------------------------------------
+  -aW ADD_WORKSPACE, --add-workspace ADD_WORKSPACE
+                        This parameter specifies your default workspace location.
+                        
+                        Default: /opt/workspace
+
                         ---------------------------------------------------------------
  -hN HOST_NAME, --host-name HOST_NAME
                         This parameter specifies the hostname of the kali machine.
