@@ -197,6 +197,12 @@ function File_Installer() {
 			else
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			fi
+		elif [[ $1 =~ "pip3" ]]; then
+			if [[ pip3 freeze | grep "$2" ]]; then
+				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+			else
+				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+			fi
 		elif [[ $1 =~ "git" ]]; then
 			Array_Git_Updater+=($(echo $2 | rev | cut -d '/' -f1 | rev))
 		fi
