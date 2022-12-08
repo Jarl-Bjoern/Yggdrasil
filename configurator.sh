@@ -652,38 +652,44 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	fi
 	
 	# Categories_Sort
+	cd /opt/pentest_tools
 	if [[ $(ls /opt/pentest_tools | grep -E "nmap-erpscan|pysap|PyRFC|SAP_GW_RCE_exploit|SAP_RECON") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/SAP ; mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP
+		sudo mkdir -p /opt/pentest_tools/Webscanner/SAP
+		mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP || rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "drupwn|droopescan|CMSmap|ac-drupal") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Drupal ; mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Drupal
+		mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal || rm -rf drupwn droopescan CMSmap ac-drupal
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "Typo3Scan|T3Scan") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3 || rm -rf Typo3Scan T3Scan
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "wpscan|wphunter|WPSeku|Wordpresscan") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Wordpress ; mv wpscan wphunter Wordpresscan WPSeku /opt/pentest_tools/Webscanner/Wordpress
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Wordpress
+		mv wpscan wphunter Wordpresscan WPSeku /opt/pentest_tools/Webscanner/Wordpress || rm -rf wpscan wphunter Wordpresscan WPSeku
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "joomscan|joomlavs") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla || rm -rf joomscan joomlavs
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "moodlescan|mooscan|badmoodle") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle ; mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle
+		mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle || rm -rf moodlescan badmoodle mooscan
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "chisel|mitmproxy|mit_mrelay|proxychains-ng") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Proxy ; mv chisel mitmproxy mitm_relay proxychains-ng /opt/pentest_tools/Proxy
+		sudo mkdir -p /opt/pentest_tools/Proxy
+		mv chisel mitmproxy mitm_relay proxychains-ng /opt/pentest_tools/Proxy || rm -rf chisel mitmproxy mitm_relay proxychains-ng
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "SIPTools|sipvicious|viproy-voipkit") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit sipvicious SIPTools /opt/pentest_tools/SIP
+		sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit sipvicious SIPTools /opt/pentest_tools/SIP || rm -rf viproy-voipkit sipvicious SIPTools
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "ffuf|wfuzz") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv ffuf wfuzz /opt/pentest_tools/Fuzzer
+		sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv ffuf wfuzz /opt/pentest_tools/Fuzzer || rm -rf ffuf wfuzz
 	fi
 	if [[ -d "/opt/pentest_tools/plown" ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone || rm -rf plown
 	fi
 	if [[ -d "/opt/pentest_tools/LiferayScan" ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv LiferayScan /opt/pentest_tools/Webscanner/Liferay
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv LiferayScan /opt/pentest_tools/Webscanner/Liferay || rm -rf LiferayScan
 	fi
 
 	# Metasploit_Configuration
