@@ -18,7 +18,6 @@ htop
 iptables-persistent
 libcharon-extra-plugins
 libcharon-extauth-plugins
-libgit2-dev
 libstrongswan-extra-plugins
 maven
 mc
