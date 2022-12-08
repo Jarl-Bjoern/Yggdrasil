@@ -628,8 +628,8 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 ServerSignature Off
 ServerTokens Prod
 EOF
-	fi
-#	cat <<EOF > /etc/apache2/sites-available/001-pentest.conf
+		fi
+#		cat <<EOF > /etc/apache2/sites-available/001-pentest.conf
 #<VirtualHost $IP_INT:443>
 #	DocumentRoot /var/www/html
 #
