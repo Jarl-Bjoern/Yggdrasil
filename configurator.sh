@@ -956,7 +956,7 @@ if [[ $(cat $File_Path | grep nessus) ]]; then
 fi
 if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	if [[ $decision = "full" || $decision = "1" ]]; then
-		echo -e "\n"; cat $Informational
+		echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; cat $Informational
 	fi
 fi
 if [[ $category_type = "complete" || $category_type = "1" ]]; then
