@@ -647,8 +647,7 @@ EOF
 	
 	# nginx_Configuration
 	if [[ $(apt-cache policy nginx | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
-		sudo rm -f /usr/share/nginx/html/index.html
-		sudo sed -i "s/# server_tokens off;/server_tokens off;/g" /etc/nginx/nginx.conf
+		sudo rm -f /usr/share/nginx/html/index.html ; sudo sed -i "s/# server_tokens off;/server_tokens off;/g" /etc/nginx/nginx.conf
 		sudo sed -i "s/ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/ssl_protocols TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/g" /etc/nginx/nginx.conf
 	fi
 	
