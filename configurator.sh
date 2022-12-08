@@ -684,7 +684,7 @@ EOF
 		mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal || sudo rm -rf drupwn droopescan CMSmap ac-drupal
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "Typo3Scan|T3Scan") ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3 || rm -rf Typo3Scan T3Scan
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3 || sudo rm -rf Typo3Scan T3Scan
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "wpscan|wphunter|WPSeku|Wordpresscan") ]]; then
 		sudo mkdir -p /opt/pentest_tools/Webscanner/Wordpress
