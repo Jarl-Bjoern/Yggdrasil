@@ -37,6 +37,9 @@ tmux
 tor
 torbrowser-launcher
 
+# Cargo
+cargo-update
+
 # Python
 docker-compose
 
