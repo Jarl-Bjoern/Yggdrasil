@@ -677,41 +677,41 @@ EOF
 	cd /opt/pentest_tools
 	if [[ $(ls /opt/pentest_tools | grep -E "nmap-erpscan|pysap|PyRFC|SAP_GW_RCE_exploit|SAP_RECON") ]]; then
 		sudo mkdir -p /opt/pentest_tools/Webscanner/SAP
-		mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP || rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
+		mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP || sudo rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "drupwn|droopescan|CMSmap|ac-drupal") ]]; then
 		sudo mkdir -p /opt/pentest_tools/Webscanner/Drupal
-		mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal || rm -rf drupwn droopescan CMSmap ac-drupal
+		mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal || sudo rm -rf drupwn droopescan CMSmap ac-drupal
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "Typo3Scan|T3Scan") ]]; then
 		sudo mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3 || rm -rf Typo3Scan T3Scan
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "wpscan|wphunter|WPSeku|Wordpresscan") ]]; then
 		sudo mkdir -p /opt/pentest_tools/Webscanner/Wordpress
-		mv wpscan wphunter Wordpresscan WPSeku /opt/pentest_tools/Webscanner/Wordpress || rm -rf wpscan wphunter Wordpresscan WPSeku
+		mv wpscan wphunter Wordpresscan WPSeku /opt/pentest_tools/Webscanner/Wordpress || sudo rm -rf wpscan wphunter Wordpresscan WPSeku
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "joomscan|joomlavs") ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla || rm -rf joomscan joomlavs
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla || sudo rm -rf joomscan joomlavs
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "moodlescan|mooscan|badmoodle") ]]; then
 		sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle
-		mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle || rm -rf moodlescan badmoodle mooscan
+		mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle || sudo rm -rf moodlescan badmoodle mooscan
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "chisel|mitmproxy|mit_mrelay|proxychains-ng") ]]; then
 		sudo mkdir -p /opt/pentest_tools/Proxy
-		mv chisel mitmproxy mitm_relay proxychains-ng /opt/pentest_tools/Proxy || rm -rf chisel mitmproxy mitm_relay proxychains-ng
+		mv chisel mitmproxy mitm_relay proxychains-ng /opt/pentest_tools/Proxy || sudo rm -rf chisel mitmproxy mitm_relay proxychains-ng
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "SIPTools|sipvicious|viproy-voipkit") ]]; then
-		sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit sipvicious SIPTools /opt/pentest_tools/SIP || rm -rf viproy-voipkit sipvicious SIPTools
+		sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit sipvicious SIPTools /opt/pentest_tools/SIP || sudo rm -rf viproy-voipkit sipvicious SIPTools
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "ffuf|wfuzz") ]]; then
-		sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv ffuf wfuzz /opt/pentest_tools/Fuzzer || rm -rf ffuf wfuzz
+		sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv ffuf wfuzz /opt/pentest_tools/Fuzzer || sudo rm -rf ffuf wfuzz
 	fi
 	if [[ -d "/opt/pentest_tools/plown" ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone || rm -rf plown
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone || sudo rm -rf plown
 	fi
 	if [[ -d "/opt/pentest_tools/LiferayScan" ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv LiferayScan /opt/pentest_tools/Webscanner/Liferay || rm -rf LiferayScan
+		sudo mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv LiferayScan /opt/pentest_tools/Webscanner/Liferay || sudo rm -rf LiferayScan
 	fi
 
 	# Metasploit_Configuration
