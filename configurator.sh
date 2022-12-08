@@ -677,7 +677,7 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit sipvicious SIPTools /opt/pentest_tools/SIP
 	fi
 	if [[ $(ls /opt/pentest_tools | grep -E "ffuf|wfuzz") ]]; then
-		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv chisel ffuf wfuzz /opt/pentest_tools/Fuzzer
+		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv ffuf wfuzz /opt/pentest_tools/Fuzzer
 	fi
 	if [[ -d "/opt/pentest_tools/plown" ]]; then
 		cd /opt/pentest_tools ; sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone
