@@ -644,7 +644,12 @@ EOF
 #<VirtualHost>
 #EOF
 	fi
-
+	
+	# nginx_Configuration
+	if [[ $(apt-cache policy nginx | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
+		sudo rm -f /usr/share/nginx/html/index.html
+	fi
+	
 	# Git_Tools_Installation
 	if [ -d "/opt/pentest_tools/chisel" ]; then
 		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build
