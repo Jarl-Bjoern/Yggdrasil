@@ -619,8 +619,29 @@ EOF
 done
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
-	# Apache_Configuration
+	# Apache_Configuration (UNDER CONSTRUCTION)
 	sudo mkdir -p /etc/apache2/ssl ; sudo openssl req -x509 -newkey rsa:4096 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -asubj '/CN=pentest-kali'
+	rm -f /var/www/html/index.html
+	if [[ ! $(cat /etc/apache2/apache2.conf | grep -E "ServerSignature Off|ServerTokens Prod")]]; then
+		cat <<EOF >> /etc/apache2/apache2.conf
+ServerSignature Off
+ServerTokens Prod
+EOF
+	fi
+#	cat <<EOF > /etc/apache2/sites-available/001-pentest.conf
+#<VirtualHost $IP_INT:443>
+#	DocumentRoot /var/www/html
+#
+#	SSLEngine on
+#	SSLCertificateFile /etc/apache2/ssl
+#	SSLCertificateKeyFile /etc/apache2/ssl
+#
+#	ErrorLog ${APACHE_LOG_DIR}/error.log
+#	CustomLog ${APACHE_LOG_DIR}/access.log combined
+#
+#
+#<VirtualHost>
+#EOF
 
 	# Git_Tools_Installation
 	if [ -d "/opt/pentest_tools/chisel" ]; then
