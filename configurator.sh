@@ -620,8 +620,9 @@ done
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
 	# Apache_Configuration (UNDER CONSTRUCTION)
+	sudo sed -i "s/Listen 80/#Listen 80/g" /etc/apache2/ports.conf
 	sudo mkdir -p /etc/apache2/ssl ; sudo openssl req -x509 -newkey rsa:4096 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -asubj '/CN=pentest-kali'
-	rm -f /var/www/html/index.html
+	sudo rm -f /var/www/html/index.html
 	if [[ ! $(cat /etc/apache2/apache2.conf | grep -E "ServerSignature Off|ServerTokens Prod")]]; then
 		cat <<EOF >> /etc/apache2/apache2.conf
 ServerSignature Off
