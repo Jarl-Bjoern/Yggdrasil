@@ -36,6 +36,7 @@ try:
     from os.path import dirname, join, realpath
     from subprocess import DEVNULL, getoutput, run
     from sys import stdout
+    from time import sleep
 except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
 
 # Variables
@@ -72,9 +73,9 @@ def Initials():
     Header = """
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀\t\t\t\t\t\t\t\t💀
-💀\t\t             """+Colors.UNDERLINE+"Yggdrasil"+Colors.RESET+"""\t\t\t\t💀
+💀\t\t           """+Colors.UNDERLINE+"Yggdrasil"+Colors.RESET+"""\t\t\t\t💀
 💀\t\t\t  """+Colors.ORANGE+"Version "+Colors.CYAN+"0.8"+Colors.RESET+"""\t\t\t\t💀
-💀\t\t\tRainer Christian Bjoern Herold\t\t\t💀
+💀\t\tRainer Christian Bjoern Herold\t\t\t💀
 💀\t\t\t\t\t\t\t\t💀
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n
 """
