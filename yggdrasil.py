@@ -100,7 +100,7 @@ def Check_Permissions(File_Path):
 if __name__ == '__main__':
     File_Path = dirname(realpath(__file__))
     Start_Script = join(File_Path, "configurator.sh")
-    parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter, description=Program_Description)
+    parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter, description=Colors.ORANGE+Program_Description+Colors.RESET)
     optional = parser.add_argument_group(Colors.ORANGE+'optional arguments'+Colors.RESET)
 
     if (osname == 'nt'):
