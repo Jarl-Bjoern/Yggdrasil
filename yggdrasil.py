@@ -77,17 +77,17 @@ if __name__ == '__main__':
     File_Path = dirname(realpath(__file__))
     Start_Script = join(File_Path, "configurator.sh")
     parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter)
-    optional = parser.add_argument_group('optional arguments')
+    optional = parser.add_argument_group(Colors.ORANGE+'optional arguments'+Colors.RESET)
 
     if (osname == 'nt'):
         print ("UNDER CONSTRUCTION")
     else:
-        optional.add_argument('-aL','--accept-licenses', type=bool, nargs='?', const=True, help='This parameter is required to accept licenses.\n\nLicenses:\n  - Veracrypt\n\n-------------------------------------------------------------------------------------')
-        optional.add_argument('-aW','--add-workspace', type=str, default="/opt/workspace", help='This parameter specifies your default workspace location.\n\nDefault: /opt/workspace\n\n-------------------------------------------------------------------------------------')
-        optional.add_argument('-hN','--host-name', type=str, help='This parameter specifies the hostname of the kali machine.\n\nDefault: pentest-kali\n\n-------------------------------------------------------------------------------------')
-        optional.add_argument('-p','--path', type=str, help='This parameter specifies the target path of your custom tools.\n\n-------------------------------------------------------------------------------------')
-        optional.add_argument('-s','--skip', type=bool, nargs='?', const=True, help='This parameter skips the hardening part.\n\nHardening:\n  - Firewall\n  - Operating System\n  - SSH\n\n-------------------------------------------------------------------------------------')
-        optional.add_argument('-h','--help', action='help', default=SUPPRESS, help='Show this help message and exit.\n\n-------------------------------------------------------------------------------------')
+        optional.add_argument('-aL','--accept-licenses', type=bool, nargs='?', const=True, help=Colors.GREEN+'This parameter is required to accept licenses.'+Colors.RESET+'\n\nLicenses:\n  - Veracrypt\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
+        optional.add_argument('-aW','--add-workspace', type=str, default="/opt/workspace", help=Colors.GREEN+'This parameter specifies your default workspace location.\n\n'+Colors.RESET+'Default: /opt/workspace\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
+        optional.add_argument('-hN','--host-name', type=str, help=Colors.GREEN+'This parameter specifies the hostname of the kali machine.\n\nDefault: pentest-kali\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
+        optional.add_argument('-p','--path', type=str, help=Colors.GREEN+'This parameter specifies the target path of your custom tools.\n\n'+Colors.RESET+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
+        optional.add_argument('-s','--skip', type=bool, nargs='?', const=True, help=Colors.GREEN+'This parameter skips the hardening part.'+Colors.RESET+'\n\nHardening:\n  - Firewall\n  - Operating System\n  - SSH\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
+        optional.add_argument('-h','--help', action='help', default=SUPPRESS, help=Colors.GREEN+'Show this help message and exit.\n\n'+Colors.RESET+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
         args = parser.parse_args()
 
         Check_dosunix(), Check_Permissions(File_Path)
