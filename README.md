@@ -9,6 +9,15 @@
 This tool is intended to simplify the setup of various tools and configuration of a Kali machine after a fresh installation and save unnecessary time, so that a predefined list can be used in advance or you can also create your own.<br />
 
 ## News
+Features of version ***0.8***
+  - custom workspace place via argument
+  - overview about hardening options
+  - colorized help menu
+  - animated header
+  - some new tools inside the config files
+  - bug and logical fixes
+  - filter option for webscanner
+
 With version ***0.7g*** it is now possible to select multiple categories in pentesting for installation.
 
 Since version ***0.7*** it is now possible to choose between the three categories ***Complete***, ***Forensic*** and ***Pentest***.
