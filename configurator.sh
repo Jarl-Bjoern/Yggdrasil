@@ -164,8 +164,8 @@ function header() {
 	elif [ $1 = "installation" ]; then
 		echo -e "\n          Please choose between one installation"
 	fi
-	echo -e "${CYAN}--------------------------------------------------------------------${NOCOLOR}"
-	echo -e "${CYAN}|${NOCOLOR}                                                             ${CYAN}|${NOCOLOR}"
+	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}"
+	echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
 	if [ $1 = "category" ]; then
 		echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both toolkits           ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :   installation of custom tools            ${CYAN}|${NOCOLOR}"
@@ -186,8 +186,8 @@ function header() {
 		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}      :   sysctl hardening                   ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}              :   SSH hardening                      ${CYAN}|${NOCOLOR}"
 	fi
-	echo -e "${CYAN}|${NOCOLOR}                                                             ${CYAN}|${NOCOLOR}"
-	echo -e "${CYAN}--------------------------------------------------------------------${NOCOLOR}\n"
+	echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
+	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
 }
 
 function File_Installer() {
