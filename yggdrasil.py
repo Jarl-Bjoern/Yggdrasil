@@ -35,6 +35,7 @@ try:
     from os import makedirs, name as osname, system, walk
     from os.path import dirname, join, realpath
     from subprocess import DEVNULL, getoutput, run
+    from sys import stdout
 except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
 
 # Variables
