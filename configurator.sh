@@ -139,18 +139,20 @@ CYAN='\033[0;36m'
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 ORANGE='\033[1;33m'
+UNDERLINE='\033[0;4m'
 NOCOLOR='\033[0m'
 
 # Functions
 function initials {
-        echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
-        echo "💀                                                      💀"
-        echo "💀                       Yggdrasil                      💀"
-        echo -e "💀                     ${ORANGE}Version${NOCOLOR} ${CYAN}0.8${NOCOLOR}                      💀"
-        echo "💀           Rainer Christian Bjoern Herold             💀"
-        echo "💀                                                      💀"
-        echo -e "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n"
+        echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
+        echo -e "💀\t\t\t\t\t\t\t\t💀"
+        echo -e "💀\t\t           ${UNDERLINE}Yggdrasil${NOCOLOR}\t\t\t\t💀"
+        echo -e "💀\t\t\t  ${ORANGE}Version ${CYAN}0.8${NOCOLOR}\t\t\t\t💀"
+        echo -e "💀\t\tRainer Christian Bjoern Herold\t\t\t💀"
+        echo -e "💀\t\t\t\t\t\t\t\t💀"
+        echo -e "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n"
 }
+
 
 function clearing {
 	sleep 2 ; clear ; initials
