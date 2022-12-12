@@ -17,6 +17,7 @@ Changes of version ***0.8***
   - some new tools inside the config files
   - bug and logical fixes
   - filter option for webscanner tools
+  - download logging function
 
 With version ***0.7g*** it is now possible to select multiple categories in pentesting for installation.
 
