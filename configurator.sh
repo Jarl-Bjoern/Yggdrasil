@@ -164,30 +164,30 @@ function header() {
 	elif [ $1 = "installation" ]; then
 		echo -e "\n          Please choose between one installation"
 	fi
-	echo -e "${CYAN}---------------------------------------------------------------${NOCOLOR}"
+	echo -e "${CYAN}--------------------------------------------------------------------${NOCOLOR}"
 	echo -e "${CYAN}|${NOCOLOR}                                                             ${CYAN}|${NOCOLOR}"
 	if [ $1 = "category" ]; then
-		echo -e "${CYAN}|${NOCOLOR} [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both toolkits           ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :   installation of custom tools            ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools          ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools           ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both toolkits           ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :   installation of custom tools            ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools          ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools           ${CYAN}|${NOCOLOR}"
 	elif [ $1 = "installation" ]; then
-		echo -e "${CYAN}|${NOCOLOR} [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full installation (GUI)                ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)             ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full installation (GUI)                ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)             ${CYAN}|${NOCOLOR}"
 	elif [ $1 = "pentesting_category" ]; then
-		echo -e "${CYAN}|${NOCOLOR} [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting          ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting            ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${BLUE}3${NOCOLOR}] ${BLUE}mobile${NOCOLOR}          :   tools for mobile pentesting         ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming               ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting            ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting          ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting            ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${BLUE}3${NOCOLOR}] ${BLUE}mobile${NOCOLOR}          :   tools for mobile pentesting         ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming               ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting            ${CYAN}|${NOCOLOR}"
 	elif [ $1 = "hardening" ]; then
-		echo -e "${CYAN}|${NOCOLOR} [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration             ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${CYAN}2${NOCOLOR}] ${CYAN}Firewall${NOCOLOR}         :   firewall                           ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}      :   sysctl hardening                   ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR} [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}              :   SSH hardening                      ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration             ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}Firewall${NOCOLOR}         :   firewall                           ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}      :   sysctl hardening                   ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}              :   SSH hardening                      ${CYAN}|${NOCOLOR}"
 	fi
 	echo -e "${CYAN}|${NOCOLOR}                                                             ${CYAN}|${NOCOLOR}"
-	echo -e "${CYAN}---------------------------------------------------------------${NOCOLOR}\n"
+	echo -e "${CYAN}--------------------------------------------------------------------${NOCOLOR}\n"
 }
 
 function File_Installer() {
