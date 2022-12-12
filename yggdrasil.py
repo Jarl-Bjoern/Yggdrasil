@@ -37,6 +37,26 @@ try:
     from subprocess import DEVNULL, getoutput, run
 except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
 
+# Variables
+Program_Description = """-------------------------------------------------------------------------------------
+|  Created by Rainer Christian Bjoern Herold                                        |
+|  Copyright 2022. All rights reserved.                                             |
+|                                                                                   |
+|  Please do not use the program for illegal activities.                            |
+|                                                                                   |
+|  If you got any problems don't hesitate to contact me so I can try to fix them.   |
+-------------------------------------------------------------------------------------
+"""
+
+# Classes
+class Colors:
+    GREEN = '\033[32m'
+    ORANGE = '\033[33m'
+    BLUE = '\033[34m'
+    RED = '\033[31m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
+
 # Functions
 def Check_dosunix():
     if ('Installed: (none)' in getoutput(['sudo apt-cache policy dos2unix']) or 'Installiert: (nein)' in getoutput(['sudo apt-cache policy dos2unix'])):
