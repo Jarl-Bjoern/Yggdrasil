@@ -481,7 +481,7 @@ if [[ $Switch_Skip != true ]]; then
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
                 n=0
                 while [[ n -le ${#ARRAY_NIC[@]} ]]; do
-                        echo -e "    " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} "\n       - "  ${ARRAY_IP[n]} "(IPv4)\n       - " ${ARRAY_IP[$((n + 1))]} "(IPv6)"
+                        echo -e "      " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} "\n         - "  ${ARRAY_IP[n]} "(IPv4)\n         - " ${ARRAY_IP[$((n + 1))]} "(IPv6)"
                         n=$((n + 2))
                 done
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
