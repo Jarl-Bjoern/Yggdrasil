@@ -124,4 +124,4 @@ if __name__ == '__main__':
                     try: makedirs(args.add_workspace)
                     except FileExistsError: pass
             elif ((Arg_Name == "path" and Arg_Value != None) or (Arg_Name == "host_name" and Arg_Value != None)): Parameters += f"{Arg_Value} "
-        system(f'sudo bash {Start_Script} {Parameters}')
+        Initials(), system(f'sudo bash {Start_Script} {Parameters}')
