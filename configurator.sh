@@ -478,13 +478,13 @@ if [[ $Switch_Skip != true ]]; then
                 readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
 
                 echo -e "\n             Please select an IP address to be used\n                     for SSH configuration"
-                echo -e "${CYAN}---------------------------------------------------------------${NOCOLOR}\n"
+                echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
                 n=0
                 while [[ n -le ${#ARRAY_NIC[@]} ]]; do
                         echo -e "    " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} "\n       - "  ${ARRAY_IP[n]} "(IPv4)\n       - " ${ARRAY_IP[$((n + 1))]} "(IPv6)"
                         n=$((n + 2))
                 done
-                echo -e "${CYAN}---------------------------------------------------------------${NOCOLOR}\n"
+                echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
                 read -p "Your Choice: " IP_TEMP
                 if [[ ${#IP_TEMP} -gt 0 ]]; then
                         LEN_CHECK=$(ip a | grep "$IP_TEMP")
