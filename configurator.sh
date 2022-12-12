@@ -160,9 +160,9 @@ function clearing {
 function header() {
 	clear ; initials
 	if [ $1 = "category" ]; then
-		echo -e "\n          Please choose between one category"
+		echo -e "\n              Please choose between one category"
 	elif [ $1 = "installation" ]; then
-		echo -e "\n          Please choose between one installation"
+		echo -e "\n              Please choose between one installation"
 	fi
 	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}"
 	echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
