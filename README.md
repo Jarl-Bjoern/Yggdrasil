@@ -16,7 +16,7 @@ Features of version ***0.8***
   - animated header
   - some new tools inside the config files
   - bug and logical fixes
-  - filter option for webscanner
+  - filter option for webscanner tools
 
 With version ***0.7g*** it is now possible to select multiple categories in pentesting for installation.
 
