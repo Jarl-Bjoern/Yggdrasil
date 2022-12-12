@@ -9,7 +9,7 @@
 This tool is intended to simplify the setup of various tools and configuration of a Kali machine after a fresh installation and save unnecessary time, so that a predefined list can be used in advance or you can also create your own.<br />
 
 ## News
-Features of version ***0.8***
+Changes of version ***0.8***
   - custom workspace place via argument
   - overview about hardening options
   - colorized help menu
