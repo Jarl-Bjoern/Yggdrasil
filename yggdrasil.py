@@ -50,6 +50,7 @@ Program_Description = """-------------------------------------------------------
 
 # Classes
 class Colors:
+    CYAN = '\033[36m'
     GREEN = '\033[32m'
     ORANGE = '\033[33m'
     BLUE = '\033[34m'
@@ -58,6 +59,26 @@ class Colors:
     RESET = '\033[0m'
 
 # Functions
+def Stdout_Output(Text_Array):
+    for char in Text_Array:
+        stdout.write(char)
+        stdout.flush()
+        sleep(0.01)
+
+def Initials():
+    if (osname == 'nt'): system('cls')
+    else: system('clear')
+    Header = """
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀\t\t\t\t\t\t\t\t💀
+💀\t\t             """+Colors.UNDERLINE+"Yggdrasil"+Colors.RESET+"""\t\t\t\t💀
+💀\t\t\t  """+Colors.ORANGE+"Version "+Colors.CYAN+"0.8"+Colors.RESET+"""\t\t\t\t💀
+💀\t\t\tRainer Christian Bjoern Herold\t\t\t💀
+💀\t\t\t\t\t\t\t\t💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n
+"""
+    Stdout_Output(Header)
+
 def Check_dosunix():
     if ('Installed: (none)' in getoutput(['sudo apt-cache policy dos2unix']) or 'Installiert: (nein)' in getoutput(['sudo apt-cache policy dos2unix'])):
         print ("Installing dos2unix"), run(['sudo','apt','install','-y','dos2unix'], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL), print ("The installing process was successful.")
