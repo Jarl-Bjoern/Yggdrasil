@@ -193,7 +193,7 @@ function header() {
 function File_Installer() {
 	function Logger() {
 		if [[ $1 =~ "apt" ]]; then
-			if [[ ! $(apt-cache policy $2 | grep "Installed:") =~ "(none)" ]]; then
+			if [[ ! $(apt-cache policy $2 | grep "Installed:") =~ "(none)" || ! $(apt-cache policy $2 grep "Installiert:") =~ "(keine)" ]]; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			else
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
