@@ -83,7 +83,7 @@ def Initials():
     Stdout_Output(Header)
 
 def Check_dosunix():
-    if ('Installed: (none)' in getoutput(['sudo apt-cache policy dos2unix']) or 'Installiert: (nein)' in getoutput(['sudo apt-cache policy dos2unix'])):
+    if ('Installed: (none)' in getoutput(['sudo apt-cache policy dos2unix']) or 'Installiert: (keine)' in getoutput(['sudo apt-cache policy dos2unix'])):
         print ("Installing dos2unix"), run(['sudo','apt','install','-y','dos2unix'], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL), print ("The installing process was successful.")
 
 def Check_Permissions(File_Path):
