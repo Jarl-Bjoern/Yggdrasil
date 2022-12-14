@@ -157,6 +157,13 @@ function clearing {
 	sleep 2 ; clear ; initials
 }
 
+function Change_Hostname {
+	if [[ $(cat /etc/hostname) == "kali" ]]; then
+		sed -i s/"kali/$1"/g /etc/hostname
+	fi
+	sed -i s/"127.0.1.1	kali/127.0.1.1	$1"/g /etc/hosts
+}
+
 function header() {
 	clear ; initials
 	if [ $1 = "category" ]; then
@@ -357,12 +364,10 @@ read -p "Your Choice: " category_type
 if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic"
 	OPT_Path="/opt/forensic_tools"
+	Change_Hostname "forensic-machine"
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	OPT_Path="/opt/pentest_tools"
-	if [[ $(cat /etc/hostname) == "kali" ]]; then
-		sed -i s/"kali/$HOST_Pentest"/g /etc/hostname
-	fi
-	sed -i s/"127.0.1.1	kali/127.0.1.1	$HOST_Pentest"/g /etc/hosts
+	Change_Hostname "$HOST_Pentest"
 	header "pentesting_category"
 	read -p "Your Choice: " pentesting
 	if [[ $pentesting =~ "," ]]; then
@@ -398,10 +403,7 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 		fi
 	fi
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
-	if [[ $(cat /etc/hostname) == "kali" ]]; then
-		sed -i s/'kali/pentest-kali'/g /etc/hostname
-	fi
-	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
+	Change_Hostname "$HOST_Pentest"
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Custom"
 else
