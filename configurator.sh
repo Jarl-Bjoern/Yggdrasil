@@ -147,7 +147,7 @@ function initials {
         echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
         echo -e "💀\t\t\t\t\t\t\t\t💀"
         echo -e "💀\t\t           ${UNDERLINE}Yggdrasil${NOCOLOR}\t\t\t\t💀"
-        echo -e "💀\t\t\t  ${ORANGE}Version ${CYAN}0.8${NOCOLOR}\t\t\t\t💀"
+        echo -e "💀\t\t\t  ${ORANGE}Version ${CYAN}0.9${NOCOLOR}\t\t\t\t💀"
         echo -e "💀\t\tRainer Christian Bjoern Herold\t\t\t💀"
         echo -e "💀\t\t\t\t\t\t\t\t💀"
         echo -e "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n"
