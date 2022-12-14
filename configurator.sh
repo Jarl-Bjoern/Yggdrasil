@@ -647,13 +647,13 @@ EOF
 #<VirtualHost>
 #EOF
 	fi
-	
+
 	# nginx_Configuration
 	if [[ $(apt-cache policy nginx | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
 		sudo rm -f /usr/share/nginx/html/index.html ; sudo sed -i "s/# server_tokens off;/server_tokens off;/g" /etc/nginx/nginx.conf
 		sudo sed -i "s/ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/ssl_protocols TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/g" /etc/nginx/nginx.conf
 	fi
-	
+
 	# Git_Tools_Installation
 	if [ -d "/opt/pentest_tools/chisel" ]; then
 		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build
@@ -682,7 +682,7 @@ EOF
 	if [ -f "/opt/pentest_tools/mitmdump" ]; then
 		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
 	fi
-	
+
 	# Categories_Sort
 	cd /opt/pentest_tools
 	if [[ $(ls /opt/pentest_tools | grep -E "nmap-erpscan|pysap|PyRFC|SAP_GW_RCE_exploit|SAP_RECON") ]]; then
@@ -813,7 +813,7 @@ EOF
 /webdav
 /webdav/index.html
 /webdav/servlet/org.apache.catalina.servlets.WebdavServlet/
-/webdav/servlet/webdav/		
+/webdav/servlet/webdav/
 EOF
 	fi
 fi
@@ -823,7 +823,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		ln -s $OPT_Path/Postman/app/Postman /usr/local/bin/postman
 	fi
 	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
-		if [[ $Switch_License ]]; then
+		if [[ $Switch_License == true ]]; then
 			sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/auto.py Veracrypt $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
 		else
 			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/$OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
