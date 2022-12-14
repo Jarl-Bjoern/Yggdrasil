@@ -27,7 +27,7 @@ __author__ = "Rainer C. B. Herold"
 __copyright__ = "Copyright 2022, Rainer C. B. Herold"
 __credits__ = "Rainer C. B. Herold"
 __license__ = "MIT license"
-__version__ = "0.8"
+__version__ = "0.9"
 __maintainer__ = "Rainer C. B. Herold"
 __status__ = "Production"
 
