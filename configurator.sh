@@ -360,9 +360,9 @@ if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	OPT_Path="/opt/pentest_tools"
 	if [[ $(cat /etc/hostname) == "kali" ]]; then
-		sed -i s/'kali/$HOST_Pentest'/g /etc/hostname
+		sed -i s/"kali/$HOST_Pentest"/g /etc/hostname
 	fi
-	sed -i s/'127.0.1.1	kali/127.0.1.1	pentest-kali'/g /etc/hosts
+	sed -i s/"127.0.1.1	kali/127.0.1.1	$HOST_Pentest"/g /etc/hosts
 	header "pentesting_category"
 	read -p "Your Choice: " pentesting
 	if [[ $pentesting =~ "," ]]; then
