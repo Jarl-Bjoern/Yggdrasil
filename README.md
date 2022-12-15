@@ -9,6 +9,9 @@
 This tool is intended to simplify the setup of various tools and configuration of a Kali machine after a fresh installation and save unnecessary time, so that a predefined list can be used in advance or you can also create your own.<br />
 
 ## News
+Hotfix ***0.8b***
+  - the hostname changing function was now set to the end of the script
+
 Hotfix ***0.8a***
   - bug and logical fixes
 
