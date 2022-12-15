@@ -84,7 +84,8 @@ alias ffs='sudo $(history -p !!)'
 alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 setopt hist_ignore_all_dups
 function b64() { echo $1 | base64 -d | xxd; }
-alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'"""
+alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
+alias microcode-update='sudo sed -i "s#deb http://http.kali.org/kali last-snapshot main contrib non-free#deb https://http.kali.org/kali kali-rolling main contrib non-free#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list'"""
         write_file(path_to_file, Config_Alias)
 
 # Main
