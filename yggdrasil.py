@@ -21,6 +21,7 @@
 # Vers 0.7g 21.11.2022
 # Vers 0.8 12.12.2022
 # Vers 0.8a 14.12.2022
+# Vers 0.8b 15.12.2022
 
 # Author
 __author__ = "Rainer C. B. Herold"
@@ -72,11 +73,10 @@ def Stdout_Output(Text_Array):
 def Initials():
     if (osname == 'nt'): system('cls')
     else: system('clear')
-    Header = """
-💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+    Header = """💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀\t\t\t\t\t\t\t\t💀
 💀\t\t           """+Colors.UNDERLINE+"Yggdrasil"+Colors.RESET+"""\t\t\t\t💀
-💀\t\t\t  """+Colors.ORANGE+"Version "+Colors.CYAN+"0.9"+Colors.RESET+"""\t\t\t\t💀
+💀\t\t\t  """+Colors.ORANGE+"Version "+Colors.CYAN+"0.8"+Colors.RESET+"""\t\t\t\t💀
 💀\t\tRainer Christian Bjoern Herold\t\t\t💀
 💀\t\t\t\t\t\t\t\t💀
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n
