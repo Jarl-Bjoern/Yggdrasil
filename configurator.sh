@@ -364,10 +364,11 @@ read -p "Your Choice: " category_type
 if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic"
 	OPT_Path="/opt/forensic_tools"
-	Change_Hostname "forensic-machine"
+	if [[ $HOST_Pentest == "pentest-kali" ]]; then
+		HOST_Pentest="forensic-kali"
+	fi
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	OPT_Path="/opt/pentest_tools"
-	Change_Hostname "$HOST_Pentest"
 	header "pentesting_category"
 	read -p "Your Choice: " pentesting
 	if [[ $pentesting =~ "," ]]; then
@@ -402,8 +403,6 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 			echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 		fi
 	fi
-elif [[ $category_type = "complete" || $category_type = "1" ]]; then
-	Change_Hostname "$HOST_Pentest"
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Custom"
 else
@@ -997,4 +996,5 @@ if [[ $category_type = "complete" || $category_type = "1" ]]; then
 else
 	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py $OPT_Path
 fi
+Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
