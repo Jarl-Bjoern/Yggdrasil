@@ -97,7 +97,7 @@ sudo python3 yggdrasil.py
 
 <a name="help_install"></a>
 ## Using the help section to see which parameters do we have
-```bash
+```python
 usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] [-p PATH] [-s [SKIP]] [-h]
 
 optional arguments:
