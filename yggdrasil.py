@@ -25,7 +25,7 @@
 
 # Author
 __author__ = "Rainer C. B. Herold"
-__copyright__ = "Copyright 2022, Rainer C. B. Herold"
+__copyright__ = "Copyright 2022-2023, Rainer C. B. Herold"
 __credits__ = "Rainer C. B. Herold"
 __license__ = "MIT license"
 __version__ = "0.9"
@@ -45,7 +45,7 @@ except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlea
 # Variables
 Program_Description = """-------------------------------------------------------------------------------------
 |  Created by Rainer Christian Bjoern Herold                                        |
-|  Copyright 2022. All rights reserved.                                             |
+|  Copyright 2022-2023. All rights reserved.                                        |
 |                                                                                   |
 |  Please do not use the program for illegal activities.                            |
 |                                                                                   |
