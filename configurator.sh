@@ -565,6 +565,7 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_BSH
 	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_ZSH
 	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ALIAS
+	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_BSH
 	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ZSH
 
 	# Screen_Configuration (Thx to @HomeSen)
