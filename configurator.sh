@@ -21,6 +21,8 @@ Switch_License=false
 Switch_SSH=false
 Switch_Skip=false
 Switch_WGET=false
+Switch_APACHE=false
+Switch_NGINX=false
 
 # Arrays
 declare -a Array_Categories=()
