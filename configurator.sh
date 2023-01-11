@@ -911,7 +911,37 @@ EOF
 	if [[ $Switch_NGINX = true ]]; then
 		if [[ $(apt-cache policy nginx | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
 			sudo rm -f /usr/share/nginx/html/index.html /var/www/html/index.nginx-debian.html ; sudo sed -i "s/# server_tokens off;/server_tokens off;/g" /etc/nginx/nginx.conf
+			sudo mkdir -p /etc/nginx/ssl
+			sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/nginx/ssl/pentest-key.pem -out /etc/nginx/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
 			sudo sed -i "s/ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/ssl_protocols TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/g" /etc/nginx/nginx.conf
+			cat <<EOF > /etc/nginx/conf.d/001-pentest.conf
+server {
+    listen $IP_INT:443 ssl http2;
+
+EOF
+			cat <<'EOF' >> /etc/nginx/conf.d/001-pentest.conf
+    # SSL_Options
+    ssl_certificate /etc/nginx/ssl/pentest-cert.pem;
+    ssl_certificate_key /etc/nginx/ssl/pentest-key.pem;
+    ssl_stapling on;
+
+    # Root_Directory
+    root /var/www/html;
+
+    # Header_Configuration
+    add_header Content-Security-Policy "default-src 'self'";
+    add_header Referrer-Policy "strict-origin";
+    add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+    add_header X-Content-Type-Options "nosniff";
+    add_header X-Frame-Options "DENY";
+    add_header X-XSS-Protection "0";
+
+    # Directories
+    location / {
+        try_files $uri /index.php?$args;
+    }
+}
+EOF
 		fi
 	fi
 
