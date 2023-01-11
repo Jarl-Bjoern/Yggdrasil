@@ -37,11 +37,11 @@ function Header {
                 Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "1" -f Green -NoNewLine ; Write-Host "]        " -NoNewLine ; Write-Host "full" -f Green -NoNewLine ; Write-Host "    : full installation (GUI)           " -NoNewLine ; Write-Host "|" -f Cyan
                 Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "2" -f DarkYellow -NoNewLine ; Write-Host "]        " -NoNewLine ; Write-Host "minimal" -f DarkYellow -NoNewLine ; Write-Host " : minimal installation (CLI)        " -NoNewLine ; Write-Host "|" -f Cyan
         } elif ($1 = "pentesting_category") {
-                echo "${CYAN}|${NOCOLOR} [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting     ${CYAN}|${NOCOLOR}"
-                echo "${CYAN}|${NOCOLOR} [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting       ${CYAN}|${NOCOLOR}"
-                echo "${CYAN}|${NOCOLOR} [${BLUE}3${NOCOLOR}] ${BLUE}mobile${NOCOLOR}          :   tools for mobile pentesting    ${CYAN}|${NOCOLOR}"
-                echo "${CYAN}|${NOCOLOR} [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming          ${CYAN}|${NOCOLOR}"
-                echo "${CYAN}|${NOCOLOR} [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting       ${CYAN}|${NOCOLOR}"
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "1" -f Green -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "infrastructure" -f Green -NoNewLine ; Write-Host "  :   tools for infra pentesting     " -NoNewLine ; Write-Host "|" -f Cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "2" -f DarkYellow -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "custom" -f DarkYellow -NoNewLine ; Write-Host "             :   tools for iot pentesting       " -NoNewLine ; Write-Host "|" -f Cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "3" -f Blue -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "forensic" -f Blue -NoNewLine ; Write-Host "          :   tools for mobile pentesting    " -NoNewLine ; Write-Host "|" -f Cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "4" -f Red -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "pentest" -f Red -NoNewLine ; Write-Host "     :   tools for red teaming          " -NoNewLine ; Write-Host "|" -f Cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "2" -f Cyan -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "custom" -f Cyan -NoNewLine ; Write-Host "             :   tools for web pentesting       " -NoNewLine ; Write-Host "|" -f Cyan
         } elif ($1 = "hardening") {
                 echo "${CYAN}|${NOCOLOR} [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration        ${CYAN}|${NOCOLOR}"
                 echo "${CYAN}|${NOCOLOR} [${CYAN}2${NOCOLOR}] ${CYAN}Firewall${NOCOLOR}         :   firewall                      ${CYAN}|${NOCOLOR}"
