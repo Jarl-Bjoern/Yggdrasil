@@ -26,16 +26,16 @@ function Header {
         } elif ($1 = "installation") {
                 echo "`n          Please choose between one installation"
         }
-        Write-Host "----------------------------------------------------------" -f cyan
-        Write-Host "|                                                        |" -f cyan
+        Write-Host "----------------------------------------------------------" -f Cyan
+        Write-Host "|                                                        |" -f Cyan
         if ($1 = "category") {
-                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "1" -f red -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "complete" -f red -NoNewLine ; Write-Host "    :   installation of both toolkits      " -NoNewLine ; Write-Host "|" -f cyan
-                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "2" -f cyan -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "custom" -f cyan -NoNewLine ; Write-Host "      :   installation of custom tools       " -NoNewLine ; Write-Host "|" -f cyan
-                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "3" -f green -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "forensic" -f green -NoNewLine ; Write-Host "    :   installation of forensic tools     " -NoNewLine ; Write-Host "|" -f cyan
-                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "4" -f orange -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "pentest" -f orange -NoNewLine ; Write-Host "     :   installation of pentest tools      " -NoNewLine ; Write-Host "|" -f cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "1" -f Red -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "complete" -f Red -NoNewLine ; Write-Host "    :   installation of both toolkits      " -NoNewLine ; Write-Host "|" -f Cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "2" -f Cyan -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "custom" -f Cyan -NoNewLine ; Write-Host "      :   installation of custom tools       " -NoNewLine ; Write-Host "|" -f Cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "3" -f Green -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "forensic" -f Green -NoNewLine ; Write-Host "    :   installation of forensic tools     " -NoNewLine ; Write-Host "|" -f Cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "4" -f DarkYellow -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "pentest" -f DarkYellow -NoNewLine ; Write-Host "     :   installation of pentest tools      " -NoNewLine ; Write-Host "|" -f Cyan
         } elif ($1 = "installation") {
-                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "1" -f green -NoNewLine ; Write-Host "]        " -NoNewLine ; Write-Host "full" -f green -NoNewLine ; Write-Host "    : full installation (GUI)           " -NoNewLine ; Write-Host "|" -f cyan
-                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "2" -f orange -NoNewLine ; Write-Host "]        " -NoNewLine ; Write-Host "minimal" -f orange -NoNewLine ; Write-Host " : minimal installation (CLI)        " -NoNewLine ; Write-Host "|" -f cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "1" -f Green -NoNewLine ; Write-Host "]        " -NoNewLine ; Write-Host "full" -f Green -NoNewLine ; Write-Host "    : full installation (GUI)           " -NoNewLine ; Write-Host "|" -f Cyan
+                Write-Host "| " -f Cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "2" -f DarkYellow -NoNewLine ; Write-Host "]        " -NoNewLine ; Write-Host "minimal" -f DarkYellow -NoNewLine ; Write-Host " : minimal installation (CLI)        " -NoNewLine ; Write-Host "|" -f Cyan
         } elif ($1 = "pentesting_category") {
                 echo "${CYAN}|${NOCOLOR} [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting     ${CYAN}|${NOCOLOR}"
                 echo "${CYAN}|${NOCOLOR} [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting       ${CYAN}|${NOCOLOR}"
@@ -48,15 +48,15 @@ function Header {
                 echo "${CYAN}|${NOCOLOR} [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}      :   sysctl hardening              ${CYAN}|${NOCOLOR}"
                 echo "${CYAN}|${NOCOLOR} [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}              :   SSH hardening                 ${CYAN}|${NOCOLOR}"
         }
-        Write-Host "|                                                        |" -f cyan
-        Write-Host "----------------------------------------------------------`n" -f cyan
+        Write-Host "|                                                        |" -f Cyan
+        Write-Host "----------------------------------------------------------`n" -f Cyan
 }
 
 function Initials {
         echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
         echo "💀                                                     💀"
         echo "💀                       Yggdrasil                     💀"
-        echo "💀                     Version 0.8                     💀"
+        Write-Host "💀                     " -NoNewLine ; Write-Host "Version " -f DarkYellow -NoNewLine ; Write-Host "0.8" -f Blue -NoNewLine ; Write-Host "                     💀"
         echo "💀           Rainer Christian Bjoern Herold            💀"
         echo "💀                                                     💀"
         echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀`n"
