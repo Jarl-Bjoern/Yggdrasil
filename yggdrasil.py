@@ -97,8 +97,7 @@ def Check_Permissions(File_Path):
             elif (file.endswith('.sh')): Permission_Change(join(root, file))
             Converter(join(root, file))
 
-# Main
-if __name__ == '__main__':
+def main():
     File_Path = dirname(realpath(__file__))
     Start_Script = join(File_Path, "configurator.sh")
     parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter, description=Colors.ORANGE+Program_Description+Colors.RESET)
@@ -126,3 +125,7 @@ if __name__ == '__main__':
                     except FileExistsError: pass
             elif ((Arg_Name == "path" and Arg_Value != None) or (Arg_Name == "host_name" and Arg_Value != None)): Parameters += f"{Arg_Value} "
         Initials(), system(f'sudo bash {Start_Script} {Parameters}')
+# Main
+if __name__ == '__main__':
+    try: main()
+    except KeyboardInterrupt: exit()
