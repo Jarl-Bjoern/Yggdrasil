@@ -192,8 +192,8 @@ function header() {
 		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}Firewall${NOCOLOR}         :   firewall                           ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}      :   sysctl hardening                   ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}              :   SSH hardening                      ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${RED}5${NOCOLOR}] ${RED}Apache${NOCOLOR}           :   Apache hardening                     ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${BLUE}6${NOCOLOR}] ${BLUE}nginx${NOCOLOR}            :   nginx hardening                      ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}Apache${NOCOLOR}           :   Apache hardening                   ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${RED}6${NOCOLOR}] ${RED}nginx${NOCOLOR}            :   nginx hardening                    ${CYAN}|${NOCOLOR}"
 	fi
 	echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
 	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
