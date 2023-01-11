@@ -874,12 +874,12 @@ EOF
 
 	# Header_Settings
         Header edit Set-Cookie ^(.*)$ "$1; HttpOnly; Secure; SameSite=Lax"
-        Header setifempty X-Frame-Options "DENY"
-        Header setifempty X-XSS-Protection "0"
-	#Header setifempty Content-Security-Policy "0"
-	#Header setifempty X-Content-Type-Options "0"
-	#Header setifempty Referrer-Policy "0"
-	Header setifempty Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Header always set X-Frame-Options "DENY"
+        Header always set X-XSS-Protection "0"
+	Header always set Content-Security-Policy "default-src 'self'"
+	Header always set X-Content-Type-Options "nosniff"
+	Header always set Referrer-Policy "strict-origin"
+	Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
 	# HTTP_1.0_Rewrite
 	RewriteEngine On
