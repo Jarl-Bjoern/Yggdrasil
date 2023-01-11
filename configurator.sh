@@ -854,20 +854,19 @@ ServerSignature Off
 ServerTokens Prod
 EOF
 			fi
-#			cat <<EOF > /etc/apache2/sites-available/001-pentest.conf
-#<VirtualHost $IP_INT:443>
-#	DocumentRoot /var/www/html
-#
-#	SSLEngine on
-#	SSLCertificateFile /etc/apache2/ssl
-#	SSLCertificateKeyFile /etc/apache2/ssl
-#
-#	ErrorLog ${APACHE_LOG_DIR}/error.log
-#	CustomLog ${APACHE_LOG_DIR}/access.log combined
-#
-#
-#<VirtualHost>
-#EOF
+			cat <<EOF > /etc/apache2/sites-available/001-pentest.conf
+<VirtualHost $IP_INT:443>
+	DocumentRoot /var/www/html
+
+	SSLEngine on
+	SSLCertificateFile /etc/apache2/ssl
+	SSLCertificateKeyFile /etc/apache2/ssl
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+<VirtualHost>
+EOF
 		fi
 	fi
 
