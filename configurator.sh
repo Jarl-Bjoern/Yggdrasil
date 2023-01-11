@@ -222,7 +222,6 @@ function File_Installer() {
 			else
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			fi
-		fi
 		elif [[ $1 =~ "git" ]]; then
 			if [[ $(ls $OPT_Path | grep $(echo "$2" | rev | cut -d '/' -f1 | rev)) ]]; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
