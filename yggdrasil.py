@@ -33,14 +33,9 @@ __maintainer__ = "Rainer C. B. Herold"
 __status__ = "Production"
 
 # Libraries
-try:
-    from argparse import ArgumentParser, FileType, RawTextHelpFormatter, SUPPRESS
-    from os import makedirs, name as osname, system, walk
-    from os.path import dirname, join, realpath
-    from subprocess import DEVNULL, getoutput, run
-    from sys import stdout
-    from time import sleep
-except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
+from Python.Resources.Libraries import *
+from Python.Resources.Standard import Standard
+from Python.Resources.Colors import Colors
 
 # Variables
 Program_Description = """-------------------------------------------------------------------------------------
@@ -53,36 +48,7 @@ Program_Description = """-------------------------------------------------------
 -------------------------------------------------------------------------------------
 """
 
-# Classes
-class Colors:
-    CYAN = '\033[36m'
-    GREEN = '\033[32m'
-    ORANGE = '\033[33m'
-    BLUE = '\033[34m'
-    RED = '\033[31m'
-    UNDERLINE = '\033[4m'
-    RESET = '\033[0m'
-
 # Functions
-def Stdout_Output(Text_Array):
-    for char in Text_Array:
-        stdout.write(char)
-        stdout.flush()
-        sleep(0.008)
-
-def Initials():
-    if (osname == 'nt'): system('cls')
-    else: system('clear')
-    Header = """💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
-💀\t\t\t\t\t\t\t\t💀
-💀\t\t           """+Colors.UNDERLINE+"Yggdrasil"+Colors.RESET+"""\t\t\t\t💀
-💀\t\t\t  """+Colors.ORANGE+"Version "+Colors.CYAN+"0.8"+Colors.RESET+"""\t\t\t\t💀
-💀\t\tRainer Christian Bjoern Herold\t\t\t💀
-💀\t\t\t\t\t\t\t\t💀
-💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n
-"""
-    Stdout_Output(Header)
-
 def Check_dosunix():
     if ('Installed: (none)' in getoutput(['sudo apt-cache policy dos2unix']) or 'Installiert: (keine)' in getoutput(['sudo apt-cache policy dos2unix'])):
         print ("Installing dos2unix"), run(['sudo','apt','install','-y','dos2unix'], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL), print ("The installing process was successful.")
@@ -124,7 +90,7 @@ def main():
                     try: makedirs(args.add_workspace)
                     except FileExistsError: pass
             elif ((Arg_Name == "path" and Arg_Value != None) or (Arg_Name == "host_name" and Arg_Value != None)): Parameters += f"{Arg_Value} "
-        Initials(), system(f'sudo bash {Start_Script} {Parameters}')
+        Standard.Initials(), system(f'sudo bash {Start_Script} {Parameters}')
 # Main
 if __name__ == '__main__':
     try: main()
