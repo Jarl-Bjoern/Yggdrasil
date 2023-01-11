@@ -338,8 +338,8 @@ function File_Installer() {
 								wget $FILE -O $FILE_NAME.deb
 								sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2).deb | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
-
 						fi
+						Logger "$FILE" "$FILE_NAME"
 					else
 						echo "$FILE_NAME already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 					fi
