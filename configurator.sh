@@ -864,9 +864,34 @@ EOF
 	SSLCertificateFile /etc/apache2/ssl
 	SSLCertificateKeyFile /etc/apache2/ssl
 
+	TraceEnable off
+	
+
+	Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure,SameSite=Lax
+	Header always append X-Frame-Options DENY
+	Header set X-XSS-Protection "0"
+	#Header set Content-Security-Policy "0"
+	#Header set X-Frame-Options "0"
+	#Header set Referrer-Policy "0"
+	#Header set Strict-Transport-Security "0"
+
+	RewriteEngine On
+	RewriteCond %{THE_REQUEST} !HTTP/1.1$
+	RewriteRule .* - [F]
+
+	SSLCipherSuite HIGH:!MEDIUM:!aNULL:!MD5:!RC4
+	SSLProtocol –ALL +TLSv1.2
+
+	<Directory />
+		Options None
+	</Directory>
+
+	<LimitExcept GET POST HEAD>
+		deny from all
+	</LimitExcept>
+
 	ErrorLog ${APACHE_LOG_DIR}/error.log
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
-
 <VirtualHost>
 EOF
 		fi
