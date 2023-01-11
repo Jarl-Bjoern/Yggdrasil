@@ -856,6 +856,8 @@ EOF
 			fi
 			cat <<EOF > /etc/apache2/sites-available/001-pentest.conf
 <VirtualHost $IP_INT:443>
+EOF
+			cat <<'EOF' >> /etc/apache2/sites-available/001-pentest.conf
 	DocumentRoot /var/www/html
 
 	SSLEngine on
