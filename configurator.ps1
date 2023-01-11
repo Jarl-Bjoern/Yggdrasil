@@ -29,11 +29,10 @@ function Header {
         Write-Host "----------------------------------------------------------" -f cyan
         Write-Host "|                                                        |" -f cyan
         if ($1 = "category") {
-                Write-Host "| " -f cyan -nonewline ; echo "["; Write-Host "1" -f red -nonewline ; echo "] " ; Write-Host "complete" -f red -nonewline ; echo "    :   installation of both toolkits      " ; Write-Host "|" -f cyan
-                echo "${CYAN}|${NOCOLOR} [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both toolkits      ${CYAN}|${NOCOLOR}"
-                echo "${CYAN}|${NOCOLOR} [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :   installation of custom tools       ${CYAN}|${NOCOLOR}"
-                echo "${CYAN}|${NOCOLOR} [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools     ${CYAN}|${NOCOLOR}"
-                echo "${CYAN}|${NOCOLOR} [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools      ${CYAN}|${NOCOLOR}"
+                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "1" -f red -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "complete" -f red -NoNewLine ; Write-Host "    :   installation of both toolkits      " -NoNewLine ; Write-Host "|" -f cyan
+                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "2" -f cyan -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "custom" -f cyan -NoNewLine ; Write-Host "      :   installation of custom tools       " -NoNewLine ; Write-Host "|" -f cyan
+                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "3" -f green -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "forensic" -f green -NoNewLine ; Write-Host "    :   installation of forensic tools     " -NoNewLine ; Write-Host "|" -f cyan
+                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "4" -f orange -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "pentest" -f orange -NoNewLine ; Write-Host "     :   installation of pentest tools      " -NoNewLine ; Write-Host "|" -f cyan
         } elif ($1 = "installation") {
                 echo "${CYAN}|${NOCOLOR} [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full installation (GUI)           ${CYAN}|${NOCOLOR}"
                 echo "${CYAN}|${NOCOLOR} [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)        ${CYAN}|${NOCOLOR}"
