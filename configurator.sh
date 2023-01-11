@@ -805,7 +805,9 @@ EOF
 	fi
 	# GIT_Updater_Configuration
 	for git_tool in ${Array_GIT_Updater[@]}; do
-		find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
+		if [[ ! $(cat $OPT_Path/update.info | grep $git_tool) ]]; then
+			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
+		fi
 	done
 fi
 
