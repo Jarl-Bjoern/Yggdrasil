@@ -37,17 +37,6 @@ from Python.Resources.Libraries import *
 from Python.Resources.Standard import Standard
 from Python.Resources.Colors import Colors
 
-# Variables
-Program_Description = """-------------------------------------------------------------------------------------
-|  Created by Rainer Christian Bjoern Herold                                        |
-|  Copyright 2022-2023. All rights reserved.                                        |
-|                                                                                   |
-|  Please do not use the program for illegal activities.                            |
-|                                                                                   |
-|  If you got any problems don't hesitate to contact me so I can try to fix them.   |
--------------------------------------------------------------------------------------
-"""
-
 # Functions
 def Check_dosunix():
     if ('Installed: (none)' in getoutput(['sudo apt-cache policy dos2unix']) or 'Installiert: (keine)' in getoutput(['sudo apt-cache policy dos2unix'])):
@@ -66,31 +55,22 @@ def Check_Permissions(File_Path):
 def main():
     File_Path = dirname(realpath(__file__))
     Start_Script = join(File_Path, "configurator.sh")
-    parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter, description=Colors.ORANGE+Program_Description+Colors.RESET)
-    optional = parser.add_argument_group(Colors.ORANGE+'optional arguments'+Colors.RESET)
 
-    if (osname == 'nt'):
-        print ("UNDER CONSTRUCTION")
-    else:
-        optional.add_argument('-aL','--accept-licenses', type=bool, nargs='?', const=True, help=Colors.GREEN+'This parameter is required to accept licenses.'+Colors.RESET+'\n\nLicenses:\n  - Veracrypt\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
-        optional.add_argument('-aW','--add-workspace', type=str, default="/opt/workspace", help=Colors.GREEN+'This parameter specifies your default workspace location.\n\n'+Colors.RESET+'Default: /opt/workspace\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
-        optional.add_argument('-hN','--host-name', type=str, help=Colors.GREEN+'This parameter specifies the hostname of the kali machine.\n\n'+Colors.RESET+'Default: pentest-kali\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
-        optional.add_argument('-p','--path', type=str, help=Colors.GREEN+'This parameter specifies the target path of your custom tools.\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
-        optional.add_argument('-s','--skip', type=bool, nargs='?', const=True, help=Colors.GREEN+'This parameter skips the hardening part.'+Colors.RESET+'\n\nHardening:\n  - Firewall\n  - Operating System\n  - SSH\n  - Apache\n  - nginx\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
-        optional.add_argument('-h','--help', action='help', default=SUPPRESS, help=Colors.GREEN+'Show this help message and exit.\n\n'+Colors.BLUE+'-------------------------------------------------------------------------------------'+Colors.RESET)
-        args = parser.parse_args()
+    from Python.Resources.Argparser import Argument_Parser
+    args = Argument_Parser()
+    del Argument_Parser
 
-        Check_dosunix(), Check_Permissions(File_Path)
-        Parameters = ""
-        for Arg_Name, Arg_Value in vars(args).items():
-            if ((Arg_Name != "path" and Arg_Value != None) and (Arg_Name != "host_name" and Arg_Value != None)):
-                if (Arg_Name == "accept_licenses"): Parameters += "-aL "
-                elif (Arg_Name == "skip"): Parameters += "-s "
-                elif (Arg_Name == "add_workspace" and Arg_Value != None):
-                    try: makedirs(args.add_workspace)
-                    except FileExistsError: pass
-            elif ((Arg_Name == "path" and Arg_Value != None) or (Arg_Name == "host_name" and Arg_Value != None)): Parameters += f"{Arg_Value} "
-        Standard.Initials(), system(f'sudo bash {Start_Script} {Parameters}')
+    Check_dosunix(), Check_Permissions(File_Path)
+    Parameters = ""
+    for Arg_Name, Arg_Value in vars(args).items():
+        if ((Arg_Name != "path" and Arg_Value != None) and (Arg_Name != "host_name" and Arg_Value != None)):
+            if (Arg_Name == "accept_licenses"): Parameters += "-aL "
+            elif (Arg_Name == "skip"): Parameters += "-s "
+            elif (Arg_Name == "add_workspace" and Arg_Value != None):
+                try: makedirs(args.add_workspace)
+                except FileExistsError: pass
+        elif ((Arg_Name == "path" and Arg_Value != None) or (Arg_Name == "host_name" and Arg_Value != None)): Parameters += f"{Arg_Value} "
+    Standard.Initials(), system(f'sudo bash {Start_Script} {Parameters}')
 # Main
 if __name__ == '__main__':
     try: main()
