@@ -802,12 +802,11 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 /webdav/servlet/org.apache.catalina.servlets.WebdavServlet/
 /webdav/servlet/webdav/
 EOF
-
+	fi
 	# GIT_Updater_Configuration
 	for git_tool in ${Array_GIT_Updater[@]}; do
 		find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
 	done
-	fi
 fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
