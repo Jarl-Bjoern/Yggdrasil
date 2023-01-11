@@ -18,11 +18,11 @@ class Standard:
       if (osname == 'nt'): system('cls')
       else: system('clear')
       Header = """💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
-  💀\t\t\t\t\t\t\t\t💀
-  💀\t\t           """+Colors.UNDERLINE+"Yggdrasil"+Colors.RESET+"""\t\t\t\t💀
-  💀\t\t\t  """+Colors.ORANGE+"Version "+Colors.CYAN+"0.8"+Colors.RESET+"""\t\t\t\t💀
-  💀\t\tRainer Christian Bjoern Herold\t\t\t💀
-  💀\t\t\t\t\t\t\t\t💀
-  💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n
-  """
+💀\t\t\t\t\t\t\t\t💀
+💀\t\t           """+Colors.UNDERLINE+"Yggdrasil"+Colors.RESET+"""\t\t\t\t💀
+💀\t\t\t  """+Colors.ORANGE+"Version "+Colors.CYAN+"0.8"+Colors.RESET+"""\t\t\t\t💀
+💀\t\tRainer Christian Bjoern Herold\t\t\t💀
+💀\t\t\t\t\t\t\t\t💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n
+"""
       Standard.Stdout_Output(Header)
