@@ -860,36 +860,44 @@ EOF
 			cat <<'EOF' >> /etc/apache2/sites-available/001-pentest.conf
 	DocumentRoot /var/www/html
 
+	# SSL_Config
 	SSLEngine on
 	SSLCertificateFile /etc/apache2/ssl
 	SSLCertificateKeyFile /etc/apache2/ssl
 
+	# Method_Options
 	TraceEnable off
-	
-
-	Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure,SameSite=Lax
-	Header always append X-Frame-Options DENY
-	Header set X-XSS-Protection "0"
-	#Header set Content-Security-Policy "0"
-	#Header set X-Frame-Options "0"
-	#Header set Referrer-Policy "0"
-	#Header set Strict-Transport-Security "0"
-
-	RewriteEngine On
-	RewriteCond %{THE_REQUEST} !HTTP/1.1$
-	RewriteRule .* - [F]
-
-	SSLCipherSuite HIGH:!MEDIUM:!aNULL:!MD5:!RC4
-	SSLProtocol –ALL +TLSv1.2
-
-	<Directory />
-		Options None
-	</Directory>
-
 	<LimitExcept GET POST HEAD>
 		deny from all
 	</LimitExcept>
 
+	# Information_Options
+	FileETag None
+
+	# Header_Settings
+	Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure,SameSite=Lax
+	Header always append X-Frame-Options DENY
+	Header always append X-XSS-Protection "0"
+	#Header always append Content-Security-Policy "0"
+	#Header always append X-Content-Type-Options "0"
+	#Header always append Referrer-Policy "0"
+	#Header always append Strict-Transport-Security "0"
+
+	# HTTP_1.0_Rewrite
+	RewriteEngine On
+	RewriteCond %{THE_REQUEST} !HTTP/1.1$
+	RewriteRule .* - [F]
+
+	# Cipher_Settings
+	SSLCipherSuite HIGH:!MEDIUM:!aNULL:!MD5:!RC4
+	SSLProtocol –ALL +TLSv1.2 +TLSv1.3
+
+	# Directories
+	<Directory />
+		Options None
+	</Directory>
+
+	# Logging_Options
 	ErrorLog ${APACHE_LOG_DIR}/error.log
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 <VirtualHost>
