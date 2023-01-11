@@ -899,7 +899,7 @@ EOF
 	# Logging_Options
 	ErrorLog ${APACHE_LOG_DIR}/error.log
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
-<VirtualHost>
+</VirtualHost>
 EOF
 		fi
 	fi
