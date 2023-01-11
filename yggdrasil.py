@@ -68,7 +68,7 @@ def Stdout_Output(Text_Array):
     for char in Text_Array:
         stdout.write(char)
         stdout.flush()
-        sleep(0.004)
+        sleep(0.008)
 
 def Initials():
     if (osname == 'nt'): system('cls')
