@@ -34,8 +34,8 @@ function Header {
                 Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "3" -f green -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "forensic" -f green -NoNewLine ; Write-Host "    :   installation of forensic tools     " -NoNewLine ; Write-Host "|" -f cyan
                 Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "4" -f orange -NoNewLine ; Write-Host "] " -NoNewLine ; Write-Host "pentest" -f orange -NoNewLine ; Write-Host "     :   installation of pentest tools      " -NoNewLine ; Write-Host "|" -f cyan
         } elif ($1 = "installation") {
-                echo "${CYAN}|${NOCOLOR} [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full installation (GUI)           ${CYAN}|${NOCOLOR}"
-                echo "${CYAN}|${NOCOLOR} [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)        ${CYAN}|${NOCOLOR}"
+                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "1" -f green -NoNewLine ; Write-Host "]        " -NoNewLine ; Write-Host "full" -f green -NoNewLine ; Write-Host "    : full installation (GUI)           " -NoNewLine ; Write-Host "|" -f cyan
+                Write-Host "| " -f cyan -NoNewLine ; Write-Host "[" -NoNewLine ; Write-Host "2" -f orange -NoNewLine ; Write-Host "]        " -NoNewLine ; Write-Host "minimal" -f orange -NoNewLine ; Write-Host " : minimal installation (CLI)        " -NoNewLine ; Write-Host "|" -f cyan
         } elif ($1 = "pentesting_category") {
                 echo "${CYAN}|${NOCOLOR} [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting     ${CYAN}|${NOCOLOR}"
                 echo "${CYAN}|${NOCOLOR} [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting       ${CYAN}|${NOCOLOR}"
