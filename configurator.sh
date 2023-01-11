@@ -814,7 +814,7 @@ EOF
 	else
 		for git_tool in ${Array_GIT_Updater[@]}; do
 			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
-		done	
+		done
 	fi
 fi
 
