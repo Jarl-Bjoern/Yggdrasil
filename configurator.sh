@@ -846,7 +846,7 @@ EOF
 	# Apache_Configuration (UNDER CONSTRUCTION)
 	if [[ $Switch_APACHE = true ]]; then
 		if [[ $(apt-cache policy apache2 | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
-			sudo a2enmod ssl ; sudo sed -i "s/Listen 80/#Listen 80/g" /etc/apache2/ports.conf ; sudo rm -f /var/www/html/index.html ; sudo mkdir -p /etc/apache2/ssl
+			sudo a2enmod headers ssl ; sudo sed -i "s/Listen 80/#Listen 80/g" /etc/apache2/ports.conf ; sudo rm -f /var/www/html/index.html ; sudo mkdir -p /etc/apache2/ssl
 			sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
 			if [[ ! $(cat /etc/apache2/apache2.conf | grep -E "ServerSignature Off|ServerTokens Prod|TraceEnable off|FileETag None") ]]; then
 				cat <<EOF >> /etc/apache2/apache2.conf
@@ -871,18 +871,18 @@ EOF
 	SSLCertificateKeyFile /etc/apache2/ssl/pentest-key.pem
 
 	# Header_Settings
-	Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure,SameSite=Lax
-	Header always append X-Frame-Options DENY
-	Header always append X-XSS-Protection "0"
-	#Header always append Content-Security-Policy "0"
-	#Header always append X-Content-Type-Options "0"
-	#Header always append Referrer-Policy "0"
-	#Header always append Strict-Transport-Security "0"
+        Header edit Set-Cookie ^(.*)$ "$1; HttpOnly; Secure; SameSite=Lax"
+        Header setifempty X-Frame-Options "DENY"
+        Header setifempty X-XSS-Protection "0"
+	#Header setifempty Content-Security-Policy "0"
+	#Header setifempty X-Content-Type-Options "0"
+	#Header setifempty Referrer-Policy "0"
+	#Header setifempty Strict-Transport-Security "0"
 
 	# HTTP_1.0_Rewrite
-	RewriteEngine On
-	RewriteCond %{THE_REQUEST} !HTTP/1.1$
-	RewriteRule .* - [F]
+	#RewriteEngine On
+	#RewriteCond %{THE_REQUEST} !HTTP/1.1$
+	#RewriteRule .* - [F]
 
 	# Cipher_Settings
 	SSLCipherSuite HIGH:!MEDIUM:!aNULL:!MD5:!RC4
