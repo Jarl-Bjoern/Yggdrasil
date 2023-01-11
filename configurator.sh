@@ -879,7 +879,7 @@ EOF
 	#Header setifempty Content-Security-Policy "0"
 	#Header setifempty X-Content-Type-Options "0"
 	#Header setifempty Referrer-Policy "0"
-	#Header setifempty Strict-Transport-Security "0"
+	Header setifempty Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
 	# HTTP_1.0_Rewrite
 	RewriteEngine On
