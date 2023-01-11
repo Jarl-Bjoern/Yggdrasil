@@ -903,7 +903,7 @@ EOF
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF
-			a2ensite /etc/apache2/sites-available/001-pentest.conf
+			cd /etc/apache2/sites-available ; a2ensite 001-pentest.conf
 		fi
 	fi
 
