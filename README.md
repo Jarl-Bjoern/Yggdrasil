@@ -354,5 +354,9 @@ For this, you must use the parameter ***-p*** in combination with the absolute p
 python3 /opt/Yggdrasil/yggdrasil.py -p /mnt/MY_DIRECTORY
 ```
 
+# Acknowledgement
+In the context of the development of the tool, I would like to thank the following people for their contribution:
+  - UNDER CONSTRUCTION
+
 # Remark
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester or digital forensics, certain pre-settings.
