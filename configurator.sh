@@ -142,6 +142,7 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 ORANGE='\033[1;33m'
 NORANGE='\033[0;33m'
+PURPLE='\033[0;35m'
 UNDERLINE='\033[0;4m'
 NOCOLOR='\033[0m'
 
@@ -150,7 +151,7 @@ function initials {
         echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
         echo -e "💀\t\t\t\t\t\t\t\t💀"
         echo -e "💀\t\t           ${UNDERLINE}Yggdrasil${NOCOLOR}\t\t\t\t💀"
-        echo -e "💀\t\t\t  ${NORANGE}Version ${CYAN}0.8${NOCOLOR}\t\t\t\t💀"
+        echo -e "💀\t\t\t  ${NORANGE}Version ${CYAN}0.9${NOCOLOR}\t\t\t\t💀"
         echo -e "💀\t\tRainer Christian Bjoern Herold\t\t\t💀"
         echo -e "💀\t\t\t\t\t\t\t\t💀"
         echo -e "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n"
@@ -196,7 +197,7 @@ function header() {
 		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}      :   sysctl hardening                   ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}              :   SSH hardening                      ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}Apache${NOCOLOR}           :   Apache hardening                   ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${RED}6${NOCOLOR}] ${RED}nginx${NOCOLOR}            :   nginx hardening                    ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx hardening                    ${CYAN}|${NOCOLOR}"
 	fi
 	echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
 	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
