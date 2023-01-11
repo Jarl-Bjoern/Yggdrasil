@@ -848,8 +848,13 @@ EOF
 		if [[ $(apt-cache policy apache2 | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
 			sudo a2enmod ssl ; sudo sed -i "s/Listen 80/#Listen 80/g" /etc/apache2/ports.conf ; sudo rm -f /var/www/html/index.html ; sudo mkdir -p /etc/apache2/ssl
 			sudo openssl req -x509 -newkey rsa:4096 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -asubj '/CN=pentest-kali'
-			if [[ ! $(cat /etc/apache2/apache2.conf | grep -E "ServerSignature Off|ServerTokens Prod") ]]; then
+			if [[ ! $(cat /etc/apache2/apache2.conf | grep -E "ServerSignature Off|ServerTokens Prod|TraceEnable off|FileETag None") ]]; then
 				cat <<EOF >> /etc/apache2/apache2.conf
+# Method_Options
+TraceEnable off
+
+# Information_Options
+FileETag None
 ServerSignature Off
 ServerTokens Prod
 EOF
@@ -864,12 +869,6 @@ EOF
 	SSLEngine on
 	SSLCertificateFile /etc/apache2/ssl
 	SSLCertificateKeyFile /etc/apache2/ssl
-
-	# Method_Options
-	TraceEnable off
-
-	# Information_Options
-	FileETag None
 
 	# Header_Settings
 	Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure,SameSite=Lax
