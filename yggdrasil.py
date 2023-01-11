@@ -36,6 +36,7 @@ __status__ = "Production"
 from Python.Resources.Libraries import *
 from Python.Resources.Standard import Standard
 from Python.Resources.Colors import Colors
+from Python.Resources.ArgParser import Argument_Parser
 
 # Functions
 def Check_dosunix():
@@ -56,7 +57,6 @@ def main():
     File_Path = dirname(realpath(__file__))
     Start_Script = join(File_Path, "configurator.sh")
 
-    from Python.Resources.Argparser import Argument_Parser
     args = Argument_Parser()
     del Argument_Parser
 
