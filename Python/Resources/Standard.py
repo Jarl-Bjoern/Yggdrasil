@@ -3,7 +3,7 @@
 # Rainer Christian Bjoern Herold
 
 # Libraries
-from Python.Resources.Libraries import stdout, system
+from Python.Resources.Libraries import osname, stdout, system
 from Python.Resources.Colors import Colors
 
 # Classes
