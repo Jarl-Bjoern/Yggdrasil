@@ -867,9 +867,6 @@ EOF
 
 	# Method_Options
 	TraceEnable off
-	<LimitExcept GET POST HEAD>
-		deny from all
-	</LimitExcept>
 
 	# Information_Options
 	FileETag None
@@ -894,6 +891,9 @@ EOF
 
 	# Directories
 	<Directory />
+		<LimitExcept GET POST HEAD>
+			deny from all
+		</LimitExcept>
 		Options None
 	</Directory>
 
