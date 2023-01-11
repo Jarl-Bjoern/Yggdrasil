@@ -217,7 +217,7 @@ function File_Installer() {
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			fi
 		elif [[ $1 =~ "git" ]]; then
-			if [[ $(ls $OPT_Path | grep "$2") ]]; then
+			if [[ $(ls $OPT_Path | grep $(echo "$2" | rev | cut -d '/' -f1 | rev)) ]]; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 				Array_Git_Updater+=($(echo $2 | rev | cut -d '/' -f1 | rev))
 			else
