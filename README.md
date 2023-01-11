@@ -130,6 +130,8 @@ optional arguments:
                           - Firewall
                           - Operating System
                           - SSH
+                          - Apache
+                          - nginx
                         
                         ---------------------------------------------------------------
   -h, --help            Show this help message and exit.
