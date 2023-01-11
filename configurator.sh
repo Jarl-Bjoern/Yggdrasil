@@ -867,8 +867,8 @@ EOF
 
 	# SSL_Config
 	SSLEngine on
-	SSLCertificateFile /etc/apache2/ssl
-	SSLCertificateKeyFile /etc/apache2/ssl
+	SSLCertificateFile /etc/apache2/ssl/pentest-cert.pem
+	SSLCertificateKeyFile /etc/apache2/ssl/pentest-key.pem
 
 	# Header_Settings
 	Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure,SameSite=Lax
@@ -886,7 +886,7 @@ EOF
 
 	# Cipher_Settings
 	SSLCipherSuite HIGH:!MEDIUM:!aNULL:!MD5:!RC4
-	SSLProtocol –ALL +TLSv1.2 +TLSv1.3
+	SSLProtocol +TLSv1.2 +TLSv1.3
 
 	# Directories
 	<Directory />
@@ -901,6 +901,7 @@ EOF
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF
+			a2ensite /etc/apache2/sites-available/001-pentest.conf
 		fi
 	fi
 
