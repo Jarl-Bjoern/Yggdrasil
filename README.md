@@ -9,6 +9,16 @@
 This tool is intended to simplify the setup of various tools and configuration of a Kali machine after a fresh installation and save unnecessary time, so that a predefined list can be used in advance or you can also create your own.<br />
 
 ## News
+Upcoming changes for version ***0.9***
+  - automated updater for the git tools
+  - manual update alias for the installed git tools and microcode update
+  - updated README
+  - added hardening options for apache and nginx
+  - new colors was added
+  - the python files have been split up
+  - logging bug fixes
+  - bug and logical fixes
+
 Hotfix ***0.8b***
   - the hostname changing function was now set to the end of the script
 
