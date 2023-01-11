@@ -26,9 +26,10 @@ function Header {
         } elif ($1 = "installation") {
                 echo "`n          Please choose between one installation"
         }
-        echo "${CYAN}----------------------------------------------------------${NOCOLOR}"
-        echo "${CYAN}|${NOCOLOR}                                                        ${CYAN}|${NOCOLOR}"
+        Write-Host "----------------------------------------------------------" -f cyan
+        Write-Host "|                                                        |" -f cyan
         if ($1 = "category") {
+                Write-Host "| " -f cyan -nonewline ; echo "["; Write-Host "1" -f red -nonewline ; echo "] " ; Write-Host "complete" -f red -nonewline ; echo "    :   installation of both toolkits      " ; Write-Host "|" -f cyan
                 echo "${CYAN}|${NOCOLOR} [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both toolkits      ${CYAN}|${NOCOLOR}"
                 echo "${CYAN}|${NOCOLOR} [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :   installation of custom tools       ${CYAN}|${NOCOLOR}"
                 echo "${CYAN}|${NOCOLOR} [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools     ${CYAN}|${NOCOLOR}"
@@ -48,8 +49,8 @@ function Header {
                 echo "${CYAN}|${NOCOLOR} [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}      :   sysctl hardening              ${CYAN}|${NOCOLOR}"
                 echo "${CYAN}|${NOCOLOR} [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}              :   SSH hardening                 ${CYAN}|${NOCOLOR}"
         }
-        echo "${CYAN}|${NOCOLOR}                                                        ${CYAN}|${NOCOLOR}"
-        echo "${CYAN}----------------------------------------------------------${NOCOLOR}`n"
+        Write-Host "|                                                        |" -f cyan
+        Write-Host "----------------------------------------------------------`n" -f cyan
 }
 
 function Initials {
