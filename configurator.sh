@@ -481,9 +481,9 @@ if [[ $Switch_Skip != true ]]; then
                         Switch_Hardening=true
                 elif [[ $hardening = "ssh" || $hardening = "4" ]];  then
                         Switch_SSH=true
-		elif [[ $testing_category = "apache" || $testing_category = "5" ]];  then
+		elif [[ $hardening = "apache" || $hardening = "5" ]];  then
 			Switch_APACHE=true
-		elif [[ $testing_category = "nginx" || $testing_category = "6" ]];  then
+		elif [[ $hardening = "nginx" || $hardening = "6" ]];  then
 			Switch_NGINX=true
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
