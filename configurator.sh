@@ -803,12 +803,19 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 /webdav/servlet/webdav/
 EOF
 	fi
+
 	# GIT_Updater_Configuration
-	for git_tool in ${Array_GIT_Updater[@]}; do
-		if [[ ! $(cat $OPT_Path/update.info | grep $git_tool) ]]; then
+	if [[ -f $OPT_Path/update.info ]]; then
+		for git_tool in ${Array_GIT_Updater[@]}; do
+			if [[ ! $(cat $OPT_Path/update.info | grep $git_tool) ]]; then
+				find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
+			fi
+		done
+	else
+		for git_tool in ${Array_GIT_Updater[@]}; do
 			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
-		fi
-	done
+		done	
+	fi
 fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
