@@ -18,7 +18,7 @@ def write_file(path_to_file, config_var):
                 for _ in config_var.splitlines():
                         if (_ not in Array_Temp): f.write(f'{_}\n')
 
-def Crontab_Configuration(path_to_file, opt_path, opt_workspace):
+def Crontab_Configuration(path_to_file, opt_path):
         Config_Crontab = f"""0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
 0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
 0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
