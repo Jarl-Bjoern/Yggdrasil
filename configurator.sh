@@ -950,7 +950,12 @@ EOF
     # SSL_Options
     ssl_certificate /etc/nginx/ssl/pentest-cert.pem;
     ssl_certificate_key /etc/nginx/ssl/pentest-key.pem;
-    ssl_stapling on;
+    ssl_session_timeout 10m;
+    ssl_session_cache off;
+    
+    # Cipher_Suites
+    ssl_ciphers ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256;
+    ssl_prefer_server_ciphers on;
 
     # Root_Directory
     root /var/www/html;
