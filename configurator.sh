@@ -816,7 +816,7 @@ EOF
 				find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
 			fi
 		done
-		for git_wordlist in $(ls /opt/wordlists | grep -v "kali_wordlists|*.txt"); do
+		for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
 			if [[ ! $(cat $OPT_Path/update.info | grep $git_wordlist) =~ $git_wordlist ]]; then
 				echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
 			fi
@@ -825,7 +825,7 @@ EOF
 		for git_tool in ${Array_GIT_Updater[@]}; do
 			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
 		done
-		for git_wordlist in $(ls /opt/wordlists | grep -v "kali_wordlists|*.txt"); do
+		for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
 			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
 		done
 	fi
