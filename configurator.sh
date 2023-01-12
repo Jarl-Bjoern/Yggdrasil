@@ -823,14 +823,6 @@ EOF
 			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
 		fi
 	done
-#	else
-#		for git_tool in ${Array_GIT_Updater[@]}; do
-#			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
-#		done
-#		for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
-#			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
-#		done
-#	fi
 fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
