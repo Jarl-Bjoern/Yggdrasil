@@ -23,7 +23,6 @@ def Crontab_Configuration(path_to_file, opt_path, opt_workspace):
 0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
 0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
 0 3     * * *  root for GIT_TOOL in $(cat {opt_path}/update.info); do cd $GIT_TOOL; git pull; done
-0 4     * * *  root for i in $(ls {opt_workspace}); do if [[ $(expr $(expr $(date +%s) - $(date -d $(ls -l --time-style=long-iso $i | awk """+"""'{print $6}') +%s)) / 86400) -gt 90 ]]; then find """+f"""{opt_workspace}"""+"""/$i -type f -exec shred {} \; -exec sleep 1.15 \; rm -rf $i; fi; done"""
         write_file(path_to_file, Config_Crontab)
 
 def Firewall_Configuration(path_to_file):
