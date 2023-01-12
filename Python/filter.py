@@ -18,11 +18,12 @@ def write_file(path_to_file, config_var):
                 for _ in config_var.splitlines():
                         if (_ not in Array_Temp): f.write(f'{_}\n')
 
-def Crontab_Configuration(path_to_file, opt_path):
+def Crontab_Configuration(path_to_file, opt_path, opt_workspace):
         Config_Crontab = f"""0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
 0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
 0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
-0 3     * * *  root for GIT_TOOL in $(cat {opt_path}/update.info); do cd $GIT_TOOL; git pull; done"""
+0 3     * * *  root for GIT_TOOL in $(cat {opt_path}/update.info); do cd $GIT_TOOL; git pull; done
+0 4     * * *  root for i in $(ls {opt_workspace}); do if [[ $(expr $(expr $(date +%s) - $(date -d $(ls -l --time-style=long-iso $i | awk """+"""'{print $6}') +%s)) / 86400) -gt 90 ]]; then find """+f"""{opt_workspace}"""+"""/$i -type f -exec shred {} \; -exec sleep 1.15 \; rm -rf $i; fi; done"""
         write_file(path_to_file, Config_Crontab)
 
 def Firewall_Configuration(path_to_file):
@@ -104,7 +105,7 @@ alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo 
 # Main
 if __name__ == '__main__':
         try:
-                if ("crontab" in argv[1]): Crontab_Configuration(argv[1], argv[2])
+                if ("crontab" in argv[1]): Crontab_Configuration(argv[1], argv[2], argv[3])
                 elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
                 elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1])
