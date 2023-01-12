@@ -104,7 +104,7 @@ alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo 
 # Main
 if __name__ == '__main__':
         try:
-                if ("crontab" in argv[1]): Crontab_Configuration(argv[1], argv[2], argv[3])
+                if ("crontab" in argv[1]): Crontab_Configuration(argv[1], argv[2])
                 elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
                 elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1])
