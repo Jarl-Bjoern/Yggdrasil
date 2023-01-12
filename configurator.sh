@@ -72,6 +72,7 @@ declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Proxy/proxychains-ng"
 "/opt/pentest_tools/SIP/viproy-voipkit"
 "/opt/pentest_tools/SIP/SIPTools"
+"/opt/pentest_tools/SIP/sipvicious"
 "/opt/pentest_tools/Fuzzer/ffuf"
 "/opt/pentest_tools/Fuzzer/wfuzz")
 
