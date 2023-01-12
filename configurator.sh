@@ -531,7 +531,7 @@ if [[ $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d '"' -f2) =~ "Kali" ]];
 fi
 echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
-sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/crontab"
+sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/crontab" $OPT_Path
 export HISTCONTROL=ignoreboth:erasedups
 
 # Standard_Installation
