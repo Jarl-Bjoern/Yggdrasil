@@ -67,7 +67,13 @@ def main():
             if (Arg_Name == "accept_licenses"): Parameters += "-aL "
             elif (Arg_Name == "skip"): Parameters += "-s "
             elif (Arg_Name == "add_workspace" and Arg_Value != None):
-                try: makedirs(args.add_workspace)
+                try:
+                    Shredder = f"""0 4     * * *  root for i in $(ls {args.add_workspace}); do if [[ $(expr $(expr $(date +%s) - $(date -d $(ls -l --time-style=long-iso $i | awk """+"""'{print $6}') +%s)) / 86400) -gt 90 ]]; then find """+f"""{args.add_workspace}"""+"""/$i -type f -exec shred {} \; -exec sleep 1.15 \; rm -rf $i; fi; done"""
+                    makedirs(args.add_workspace)
+                    with open('/etc/crontab', 'r') as f:
+                        Temp_Array = f.read().splitlines()
+                    with open('/etc/crontab', 'a') as f:
+                        if (Shredder not in Temp_Array): f.write(f'{Shredder}\n')
                 except FileExistsError: pass
         elif ((Arg_Name == "path" and Arg_Value != None) or (Arg_Name == "host_name" and Arg_Value != None)): Parameters += f"{Arg_Value} "
     Standard.Initials(), system(f'sudo bash {Start_Script} {Parameters}')
