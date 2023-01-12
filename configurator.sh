@@ -229,7 +229,7 @@ function File_Installer() {
 			if [[ $(ls $OPT_Path | grep $(echo "$2" | rev | cut -d '/' -f1 | rev)) ]]; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 				if [[ ! $(echo ${Array_GIT_Updater[@]} | grep $(echo $2 | rev | cut -d '/' -f1 | rev)) ]]; then
-				    Array_GIT_Updater+=($(echo $2 | rev | cut -d '/' -f1 | rev))
+					Array_GIT_Updater+=($(echo $2 | rev | cut -d '/' -f1 | rev))
 				fi
 			else
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
@@ -817,7 +817,7 @@ EOF
 			fi
 		done
 		for git_wordlist in $(ls /opt/wordlists | grep -v "kali_wordlists|*.txt"); do
-			if [[ ! $(cat $OPT_Path/update.info | grep $git_wordlist) =~ git_wordlist ]]; then
+			if [[ ! $(cat $OPT_Path/update.info | grep $git_wordlist) =~ $git_wordlist ]]; then
 				find "/opt/wordlists" -name $git_wordlist | head -n 1 >> $OPT_Path/update.info
 			fi
 		done
