@@ -810,25 +810,27 @@ EOF
 	fi
 
 	# GIT_Updater_Configuration
-	if [[ -f $OPT_Path/update.info ]]; then
-		for git_tool in ${Array_GIT_Updater[@]}; do
-			if [[ ! $(cat $OPT_Path/update.info | grep $git_tool) =~ $git_tool ]]; then
-				find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
-			fi
-		done
-		for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
-			if [[ ! $(cat $OPT_Path/update.info | grep $git_wordlist) =~ $git_wordlist ]]; then
-				echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
-			fi
-		done
-	else
-		for git_tool in ${Array_GIT_Updater[@]}; do
-			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
-		done
-		for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
-			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
-		done
+	if [[ ! $(ls $OPT_Path | grep update.info) ]]; then
+		echo "" > $OPT_Path/update.info
 	fi
+	for git_tool in ${Array_GIT_Updater[@]}; do
+		if [[ ! $(cat $OPT_Path/update.info | grep $git_tool) =~ $git_tool ]]; then
+			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
+		fi
+	done
+	for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
+		if [[ ! $(cat $OPT_Path/update.info | grep $git_wordlist) =~ $git_wordlist ]]; then
+			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
+		fi
+	done
+#	else
+#		for git_tool in ${Array_GIT_Updater[@]}; do
+#			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
+#		done
+#		for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
+#			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
+#		done
+#	fi
 fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
