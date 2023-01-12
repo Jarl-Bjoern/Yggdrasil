@@ -908,9 +908,10 @@ EOF
         Header always set X-Frame-Options "DENY"
         Header always set X-XSS-Protection "0"
 
-	# HTTP_1.0_Rewrite
+	# Rewrite_Rules
 	RewriteEngine On
 	RewriteCond %{THE_REQUEST} !HTTP/1.1$
+	RewriteCond %{REQUEST_METHOD} ^(POST|TRACE|TRACK|OPTIONS)
 	RewriteRule .* - [F]
 
 	# Cipher_Settings
@@ -921,7 +922,7 @@ EOF
 
 	# Directories
 	<Directory />
-		<LimitExcept GET POST HEAD>
+		<LimitExcept GET HEAD>
 			deny from all
 		</LimitExcept>
 		Options None
@@ -972,7 +973,7 @@ EOF
     add_header X-XSS-Protection "0";
 
     # Security_Options
-    if ($request_method ~ ^(PATCH|TRACE)$) { 
+    if ($request_method ~ ^(OPTIONS|POST|PATCH|TRACE)$) { 
 	return 405; 
     }
 
