@@ -12,6 +12,7 @@ This tool is intended to simplify the setup of various tools and configuration o
 Upcoming changes for version ***0.9***
   - automated updater for the git tools
   - manual update alias for the installed git tools and microcode update
+  - added automated shredding task after 90 days for data privacy
   - updated README
   - added hardening options for apache and nginx
   - new colors was added
