@@ -812,9 +812,21 @@ EOF
 				find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
 			fi
 		done
+		for git_wordlist in $(ls /opt/wordlists | grep -v "kali_wordlists"); do
+			if [[ -d $git_wordlist ]]; then
+				if [[ ! $(cat $OPT_Path/update.info | grep $git_wordlist) ]]; then
+					find $OPT_Path -name $git_wordlist | head -n 1 >> $OPT_Path/update.info
+				fi
+			fi
+		done
 	else
 		for git_tool in ${Array_GIT_Updater[@]}; do
 			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
+		done
+		for git_wordlist in $(ls /opt/wordlists | grep -v "kali_wordlists"); do
+			if [[ -d $git_wordlist ]]; then
+				find $OPT_Path -name $git_wordlist | head -n 1 >> $OPT_Path/update.info
+			fi
 		done
 	fi
 fi
