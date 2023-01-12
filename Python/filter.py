@@ -22,7 +22,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         Config_Crontab = f"""0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
 0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
 0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
-0 3     * * *  root for GIT_TOOL in $(cat {opt_path}/update.info); do cd $GIT_TOOL; git pull; done
+0 3     * * *  root for GIT_TOOL in $(cat {opt_path}/update.info); do cd $GIT_TOOL; git pull; done"""
         write_file(path_to_file, Config_Crontab)
 
 def Firewall_Configuration(path_to_file):
