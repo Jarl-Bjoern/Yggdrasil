@@ -23,6 +23,7 @@ Switch_Skip=false
 Switch_WGET=false
 Switch_APACHE=false
 Switch_NGINX=false
+Switch_SQUID=false
 
 # Arrays
 declare -a Array_Categories=()
