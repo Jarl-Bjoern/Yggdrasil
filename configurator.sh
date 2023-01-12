@@ -911,7 +911,7 @@ EOF
 	# Rewrite_Rules
 	RewriteEngine On
 	RewriteCond %{THE_REQUEST} !HTTP/1.1$
-	RewriteCond %{REQUEST_METHOD} ^(POST|TRACE|TRACK|OPTIONS)
+	RewriteCond %{REQUEST_METHOD} ^(HEAD|POST|TRACE|TRACK|OPTIONS|PUT)
 	RewriteRule .* - [F]
 
 	# Cipher_Settings
@@ -922,7 +922,7 @@ EOF
 
 	# Directories
 	<Directory />
-		<LimitExcept GET HEAD>
+		<LimitExcept POST OPTIONS TRACE TRACK HEAD PUT>
 			deny from all
 		</LimitExcept>
 		Options None
@@ -973,7 +973,7 @@ EOF
     add_header X-XSS-Protection "0";
 
     # Security_Options
-    if ($request_method ~ ^(OPTIONS|POST|PATCH|TRACE)$) { 
+    if ($request_method ~ ^(HEAD|POST|TRACE|TRACK|OPTIONS|PUT)$) { 
 	return 405; 
     }
 
