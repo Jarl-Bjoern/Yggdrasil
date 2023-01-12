@@ -971,6 +971,11 @@ EOF
     add_header X-Frame-Options "DENY";
     add_header X-XSS-Protection "0";
 
+    # Security_Options
+    if ($request_method ~ ^(PATCH|TRACE)$) { 
+	return 405; 
+    }
+
     # Directories
     location / {
         try_files $uri /index.php?$args;
