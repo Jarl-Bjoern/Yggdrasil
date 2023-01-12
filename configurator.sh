@@ -963,6 +963,7 @@ EOF
     root /var/www/html;
 
     # Header_Configuration
+    add_header Set-Cookie "Path=/; HttpOnly; Secure; SameSite=Lax";
     add_header Content-Security-Policy "default-src 'self'";
     add_header Referrer-Policy "strict-origin";
     add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
