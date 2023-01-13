@@ -70,11 +70,11 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
   - Overview about some useful information after the install
 - GUI automation to accept licenses
 - Hardening
+  - Apache
   - Firewall
   - Kernel
-  - SSH
-  - Apache
   - nginx
+  - SSH
 
 # Table of Contents
 - [How to download and install the tool](#download_install)
