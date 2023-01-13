@@ -73,6 +73,8 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
   - Firewall
   - Kernel
   - SSH
+  - Apache
+  - nginx
 
 # Table of Contents
 - [How to download and install the tool](#download_install)
@@ -375,9 +377,9 @@ In the context of the development of the tool, I would like to thank the followi
   - GhostActive
   - HomeSen
   - janstarke
+  - julion-m
   - pyxon73
   - SandySchoene
-  - ...
 
 # Remark
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester or digital forensics, certain pre-settings.
