@@ -863,7 +863,7 @@ EOF
 		sudo sysctl --system
 	fi
 
-	# Apache_Configuration (UNDER CONSTRUCTION)
+	# Apache_Configuration
 	if [[ $Switch_APACHE = true ]]; then
 		if [[ $(apt-cache policy apache2 | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
 			sudo a2enmod headers rewrite ssl ; sudo sed -i "s/Listen 80/#Listen 80/g" /etc/apache2/ports.conf ; sudo rm -f /var/www/html/index.html ; sudo mkdir -p /etc/apache2/ssl
