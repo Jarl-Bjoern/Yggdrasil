@@ -8,7 +8,7 @@ from Resources.Colors import Colors
 
 Array_NIC = getoutput('ip --brief a | grep "UP" | grep -v "lo|docker|veth"').splitlines()
 
-for Network_Adapter in range(0, Array_NIC):
+for Network_Adapter in range(0, len(Array_NIC)):
         NIC = Array_NIC[Network_Adapter].split()
         if (IP_Address == len(Array_NIC)-1): print(Colors.CYAN+'-----------------------------------------------------------------'+Colors.RESET)
         for IP_Address in range(0, len(NIC)):
