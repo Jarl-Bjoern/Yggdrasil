@@ -498,17 +498,18 @@ if [[ $Switch_Skip != true ]]; then
 
 	# SSH_Configuration
         if [[ $Switch_SSH != false ]]; then
-                NIC=$(ip --brief a | grep "UP" | grep -v -E "lo|docker|veth" | awk '{print $1}')
-                IP=$(ip --brief a | grep "UP" | grep -v -E "lo|docker|veth" | awk '{print $3 "\n" $4}' | cut -d "/" -f1)
-                readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
+                #NIC=$(ip --brief a | grep "UP" | grep -v -E "lo|docker|veth" | awk '{print $1}')
+                #IP=$(ip --brief a | grep "UP" | grep -v -E "lo|docker|veth" | awk '{print $3 "\n" $4}' | cut -d "/" -f1)
+                #readarray -t ARRAY_NIC <<< "$NIC" ; readarray -t ARRAY_IP <<< "$IP"
 
                 echo -e "\n             Please select an IP address to be used\n                     for SSH configuration"
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-                n=0
-                while [[ n -le ${#ARRAY_NIC[@]} ]]; do
-                        echo -e "      " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} "\n         - "  ${ARRAY_IP[n]} "${GREEN}(IPv4)${NOCOLOR}\n         - " ${ARRAY_IP[$((n + 1))]} "${CYAN}(IPv6)${NOCOLOR}"
-                        n=$((n + 2))
-                done
+		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/nic.py
+#                n=0
+#                while [[ n -le ${#ARRAY_NIC[@]} ]]; do
+#                        echo -e "      " ${ORANGE}${ARRAY_NIC[n]}${NOCOLOR} "\n         - "  ${ARRAY_IP[n]} "${GREEN}(IPv4)${NOCOLOR}\n         - " ${ARRAY_IP[$((n + 1))]} "${CYAN}(IPv6)${NOCOLOR}"
+#                        n=$((n + 2))
+#                done
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
                 read -p "Your Choice: " IP_TEMP
                 if [[ ${#IP_TEMP} -gt 0 ]]; then
