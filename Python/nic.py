@@ -4,7 +4,7 @@
 
 # Libraries
 from subprocess import getoutput
-from Python.Resources.Colors import Colors
+from Resources.Colors import Colors
 
 NIC = getoutput('ip --brief a | grep "UP" | grep -v "lo|docker|veth"').split(' ')
 for IP_Address in range(0, len(NIC)):
