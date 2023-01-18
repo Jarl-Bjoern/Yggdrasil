@@ -6,8 +6,6 @@
 from subprocess import getoutput
 from Python.Resources.Colors import Colors
 
-echo -e "\n             Please select an IP address to be used\n                     for SSH configuration"
-echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
 NIC = getoutput('ip --brief a | grep "UP" | grep -v "lo|docker|veth"').split(' ')
 for IP_Address in range(0, len(NIC)):
         if (IP_Address == len(NIC)-1): print(Colors.CYAN+'-----------------------------------------------------------------')
