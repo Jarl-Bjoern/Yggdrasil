@@ -6,7 +6,7 @@
 from subprocess import getoutput
 from Resources.Colors import Colors
 
-Array_NIC = getoutput('ip --brief a | grep "UP" | grep -v "lo|docker|veth"').splitlines()
+Array_NIC = getoutput('ip --brief a | grep "UP" | grep -v -E "lo|docker|veth"').splitlines()
 
 for Network_Adapter in range(0, len(Array_NIC)):
         NIC = Array_NIC[Network_Adapter].split()
