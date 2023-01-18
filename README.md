@@ -349,7 +349,7 @@ URL Name Method
 
 ## The following methods are available:
  - Archive
-   - With the ***Archive*** argument, you tell the tool that you are downloading an archive, which will be loaded into the attached unpacking script and then unpacked.
+   - With the ***Archive*** argument, you tell the tool that you are downloading an archive, which will be loaded into the attached python unpacking script and then unpacked.
  - DPKG
    - The argument ***DPKG*** is used to download a package, which will be imported or installed afterwards.
  - Executeable
