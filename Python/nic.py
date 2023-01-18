@@ -8,10 +8,10 @@ from Resources.Colors import Colors
 
 NIC = getoutput('ip --brief a | grep "UP" | grep -v "lo|docker|veth"').split(' ')
 for IP_Address in range(0, len(NIC)):
-        if (IP_Address == len(NIC)-1): print(Colors.CYAN+'-----------------------------------------------------------------')
+        if (IP_Address == len(NIC)-1): print(Colors.CYAN+'-----------------------------------------------------------------'+Colors.RESET)
         if (NIC[IP_Address] != "" and NIC[IP_Address] != "UP"):
                 if ("/" in NIC[IP_Address]):
-                        if (NIC[IP_Address].count(':') > 1): print (f'  - {NIC[IP_Address].split("/")[0]} '+Colors.CYAN+'(IPv6)')
-                        else: print(f'  - {NIC[IP_Address].split("/")[0]} '+Colors.GREEN+'(IPv4)')
+                        if (NIC[IP_Address].count(':') > 1): print (f'  - {NIC[IP_Address].split("/")[0]} '+Colors.CYAN+'(IPv6)'+Colors.RESET)
+                        else: print(f'  - {NIC[IP_Address].split("/")[0]} '+Colors.GREEN+'(IPv4)'+Colors.RESET)
                 else:
-                        print (Colors.ORANGE+f'{NIC[IP_Address]}:')
+                        print (Colors.ORANGE+f'{NIC[IP_Address]}:'+Colors.RESET)
