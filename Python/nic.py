@@ -10,7 +10,7 @@ Array_NIC = getoutput('ip --brief a | grep "UP" | grep -v "lo|docker|veth"').spl
 
 for Network_Adapter in range(0, len(Array_NIC)):
         NIC = Array_NIC[Network_Adapter].split()
-        if (IP_Address == len(Array_NIC)-1): print(Colors.CYAN+'-----------------------------------------------------------------'+Colors.RESET)
+        if (Network_Adapter == len(Array_NIC)-1): print(Colors.CYAN+'-----------------------------------------------------------------'+Colors.RESET)
         for IP_Address in range(0, len(NIC)):
                 if (NIC[IP_Address] != "" and NIC[IP_Address] != "UP"):
                         if ("/" in NIC[IP_Address]):
