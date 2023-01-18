@@ -137,7 +137,7 @@ optional arguments:
   -p PATH, --path PATH  This parameter specifies the target path of your custom tools.
                         
                         Example:
-                          -  python3 yggdrasil.py -p /opt/yggdrasil/custom
+                          -  python3 yggdrasil.py -p /opt/yggdrasil/Custom
                           
                         ---------------------------------------------------------------
   -s [SKIP], --skip [SKIP]
