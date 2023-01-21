@@ -351,11 +351,11 @@ URL Name Method
  - Archive
    - With the ***Archive*** argument, you tell the tool that you are downloading an archive, which will be loaded into the attached python unpacking script and then unpacked.
  - DPKG
-   - The argument ***DPKG*** is used to download a package, which will be imported or installed afterwards.
+   - The argument ***DPKG*** is used to download a package, which will be imported/installed afterwards.
  - Executeable
-   - With ***Executeable***, you specify that you are downloading, as the name implies, an executable file that is downloadable via Github, for example.
+   - With ***Executeable***, you specify that you are downloading an executable file that is for example downloadable via Github like kerbrute.
  - Installer
-   - The ***Installer*** argument specifies that you download an installation package, which is subsequently launched, as is done with the Soap UI ready, for example, if you use the template for web penetration testing.
+   - The ***Installer*** argument specifies that you download an installation package like .msi, which is subsequently launched, as is done with the Soap UI ready, for example, if you use the template for web penetration testing.
 
 <a name="method_install"></a>
 ## Example
