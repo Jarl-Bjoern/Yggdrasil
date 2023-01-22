@@ -381,6 +381,7 @@ python3 /opt/Yggdrasil/yggdrasil.py -p /mnt/MY_DIRECTORY
 # Special thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
+  - cddmp
   - Explie
   - GhostActive
   - HomeSen
