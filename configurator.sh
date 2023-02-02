@@ -14,16 +14,17 @@ PATH_VIM=""
 PATH_ZSH=""
 pentesting=""
 Skip=false
+Switch_APACHE=false
 Switch_Firewall=false
+Switch_FTP=false
 Switch_Hardening=false
 Switch_IGNORE=false
 Switch_License=false
-Switch_SSH=false
-Switch_Skip=false
-Switch_WGET=false
-Switch_APACHE=false
 Switch_NGINX=false
+Switch_Skip=false
 Switch_SQUID=false
+Switch_SSH=false
+Switch_WGET=false
 
 # Arrays
 declare -a Array_Categories=()
