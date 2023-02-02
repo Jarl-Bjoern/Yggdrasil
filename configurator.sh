@@ -807,7 +807,7 @@ EOF
 	fi
 
 	# GIT_Updater_Configuration
-	if [[ ! $(ls $OPT_Path/{"update.info"}) ]]; then
+	if [[ ! $(ls $OPT_Path/"update.info") ]]; then
 		echo "" > $OPT_Path/update.info
 	fi
 	for git_tool in "${Array_GIT_Updater[@]}"; do
@@ -826,17 +826,17 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 	if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 		ln -s "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
 	fi
-	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
+	if [[ -f $OPT_Path/$(ls $OPT_Path/setup-gui-x64*) ]]; then
 		if [[ $Switch_License == true ]]; then
-			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$OPT_Path"/"$(ls $OPT_Path/{setup-gui-x64*})"
+			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$OPT_Path"/"$(ls $OPT_Path/setup-gui-x64*)"
 		else
-			sudo bash "$OPT_Path"/$(ls "$OPT_Path"/{setup-gui-x64*})
+			sudo bash "$OPT_Path"/$(ls "$OPT_Path/setup-gui-x64*")
 #			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/"$OPT_Path"/$(ls "$OPT_Path" | grep setup-gui-x64)
 		fi
-		for veracrypt_file in $(ls "$OPT_Path"/{setup*}); do sudo rm -f "$OPT_Path"/"$veracrypt_file"; done
+		for veracrypt_file in $(ls "$OPT_Path"/setup*); do sudo rm -f "$OPT_Path"/"$veracrypt_file"; done
 	fi
-	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools/{jetbrains*})" ]; then
-		TEMP_PATH_JET="$OPT_Path/$(ls /opt/pentest_tools/{jetbrains*})"
+	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools/jetbrains*)" ]; then
+		TEMP_PATH_JET="$OPT_Path/$(ls /opt/pentest_tools/jetbrains*)"
 		"$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
@@ -848,9 +848,9 @@ if [[ $Switch_Skip != true ]]; then
 	if [[ $Switch_Hardening = true ]]; then
 		for i in "${Array_HARDENING[@]}"; do
 			if [[ $i =~ "#" ]]; then
-				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep $i)
+				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep "$i")
 			else
-				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep $i)
+				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep "$i")
 			fi
 			if [[ ! ${#LEN_SYSCTL} -gt 0 ]]; then
 				cat <<EOF >> /etc/sysctl.conf
@@ -924,7 +924,7 @@ EOF
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF
-			cd /etc/apache2/sites-available ; a2ensite 001-pentest.conf
+			cd /etc/apache2/sites-available || return 0 ; a2ensite 001-pentest.conf
 		fi
 	fi
 
@@ -1084,7 +1084,7 @@ EOF
 		fi
 		IFS=""
 		for Cipher in "${Array_SSH_Ciphers[@]}"; do
-			if [[ ! $(cat /etc/ssh/sshd_config | grep -e $Cipher) ]]; then
+			if [[ ! $(grep -e "$Cipher" /etc/ssh/sshd_config) ]]; then
 				cat <<EOF >> /etc/ssh/sshd_config
 $Cipher
 EOF
