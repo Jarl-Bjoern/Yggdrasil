@@ -527,7 +527,7 @@ else
 fi
 
 # Basic_Configuration
-if [[ $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d '"' -f2) =~ "Kali" ]]; then
+if [[ $(grep "PRETTY_NAME" /etc/os-release | cut -d '"' -f2) =~ "Kali" ]]; then
 	sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
 fi
 echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
@@ -662,8 +662,8 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [ -d "/opt/pentest_tools/socketcand" ]; then
 		cd /opt/pentest_tools/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
 	fi
-	if [ -f "/opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)" ]; then
-		sudo bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)
+	if [ -f "/opt/pentest_tools/$(grep "SoapUI" /opt/pentest_tools)" ]; then
+		sudo bash /opt/pentest_tools/$(grep "SoapUI" /opt/pentest_tools)
 	fi
 	if [ -d "/opt/pentest_tools/Responder" ]; then
 		pip3 install -r /opt/pentest_tools/Responder/requirements.txt
@@ -807,7 +807,7 @@ EOF
 	fi
 
 	# GIT_Updater_Configuration
-	if [[ ! $(ls $OPT_Path | grep update.info) ]]; then
+	if [[ ! $(ls $OPT_Path/{"update.info"}) ]]; then
 		echo "" > $OPT_Path/update.info
 	fi
 	for git_tool in "${Array_GIT_Updater[@]}"; do
@@ -1074,7 +1074,7 @@ EOF
 		sudo sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
 		sudo sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
 		sudo sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
-		if [[ ! $(cat /etc/ssh/sshd_config | grep "DebianBanner no") ]]; then
+		if [[ ! $(grep "DebianBanner no" /etc/ssh/sshd_config) ]]; then
 			cat <<EOF >> /etc/ssh/sshd_config
 
 # Disable OS-Banner
@@ -1100,7 +1100,7 @@ if [ -f "/usr/share/wordlists/rockyou.txt.gz" ]; then
 fi
 
 # Docker_Standard_Images
-if [[ $(cat $File_Path | grep nessus) ]]; then
+if [[ $(grep nessus "$File_Path") ]]; then
 	if [[ $(docker ps -a | grep nessus) ]]; then
 		NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
 		docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; docker rm "$NESSUS_DOCKER_TEMP"
