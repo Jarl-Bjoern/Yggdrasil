@@ -375,6 +375,7 @@ https://sh.rustup.rs rust Installer
 ```
 
 <a name="method_install"></a>
+## Custom Install
 You can also build the file from scratch yourself. To do this, navigate to the directory ***Config/Linux/Custom*** and edit the file ***install.txt***
 ```bash
 # APT
@@ -396,6 +397,7 @@ You can also build the file from scratch yourself. To do this, navigate to the d
 # Wordlists
 ```
 
+## Include Customized Scripts
 In addition, it is also possible that you can place your own scripts or packages in the ***Custom*** directory and use them in the installation script.
 
 For this, you must use the parameter ***-p*** in combination with the absolute path, as in the example below
