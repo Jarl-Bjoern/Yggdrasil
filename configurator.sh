@@ -220,19 +220,19 @@ function File_Installer() {
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			fi
 		elif [[ $1 =~ "docker" ]]; then
-			if [[ $(docker images | grep "$2") ]]; then
+			if docker images | grep -q "$2"; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			else
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			fi
 		elif [[ $1 =~ "gem" ]]; then
-			if [[ $(gem list | grep "$2") ]]; then
+			if gem list | grep -q "$2"; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			else
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			fi
 		elif [[ $1 =~ "git" ]]; then
-			if [[ $(ls $OPT_Path | grep $(echo "$2" | rev | cut -d '/' -f1 | rev)) ]]; then
+			if [[ $(ls $OPT_Path | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)") ]]; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 				if [[ ${Array_GIT_Updater[*]} != $(echo "$2" | rev | cut -d '/' -f1 | rev) ]]; then
 					Array_GIT_Updater+=($(echo "$2" | rev | cut -d '/' -f1 | rev))
@@ -241,7 +241,7 @@ function File_Installer() {
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			fi
 		elif [[ $1 =~ "pip3" ]]; then
-			if [[ $(pip3 freeze | grep "$2") ]]; then
+			if pip3 freeze | grep -q "$2"; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			else
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
@@ -868,7 +868,7 @@ EOF
 			sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
 			sudo sed -i "s/Options FollowSymLinks/Options None/g" /etc/apache2/apache2.conf
 			sudo sed -i "s/Options Indexes FollowSymLinks/Options None/g" /etc/apache2/apache2.conf
-			if [[ ! $(cat /etc/apache2/apache2.conf | grep -E "ServerSignature Off|ServerTokens Prod|TraceEnable off|FileETag None") ]]; then
+			if ! grep -qE "ServerSignature Off|ServerTokens Prod|TraceEnable off|FileETag None" /etc/apache2/apache2.conf; then
 				cat <<EOF >> /etc/apache2/apache2.conf
 # Method_Options
 TraceEnable off
@@ -1074,7 +1074,7 @@ EOF
 		sudo sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
 		sudo sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
 		sudo sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
-		if [[ ! $(grep "DebianBanner no" /etc/ssh/sshd_config) ]]; then
+		if ! grep "DebianBanner no" /etc/ssh/sshd_config; then
 			cat <<EOF >> /etc/ssh/sshd_config
 
 # Disable OS-Banner
@@ -1084,7 +1084,7 @@ EOF
 		fi
 		IFS=""
 		for Cipher in "${Array_SSH_Ciphers[@]}"; do
-			if [[ ! $(grep -e "$Cipher" /etc/ssh/sshd_config) ]]; then
+			if ! grep -e "$Cipher" /etc/ssh/sshd_config; then
 				cat <<EOF >> /etc/ssh/sshd_config
 $Cipher
 EOF
@@ -1100,8 +1100,8 @@ if [ -f "/usr/share/wordlists/rockyou.txt.gz" ]; then
 fi
 
 # Docker_Standard_Images
-if [[ $(grep nessus "$File_Path") ]]; then
-	if [[ $(docker ps -a | grep nessus) ]]; then
+if grep -q nessus "$File_Path"; then
+	if docker ps -a | grep -q nessus; then
 		NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
 		sudo docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; sudo docker rm "$NESSUS_DOCKER_TEMP"
 	fi
