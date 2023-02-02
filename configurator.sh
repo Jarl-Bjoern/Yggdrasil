@@ -261,7 +261,7 @@ function File_Installer() {
 		elif [[ $line = "# Python" ]]; then
 			Command="pip3 install" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Git" ]]; then
-			Command="git clone" ; Skip=true ; mkdir -p $2 ; cd $2 ; Switch_WGET=false
+			Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" ; Switch_WGET=false
 		elif [[ $line = "# Gem" ]]; then
 			Command="gem install" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Go" ]]; then
@@ -324,29 +324,29 @@ function File_Installer() {
 							chmod +x "$FILE_NAME" ; cd "$2"
 						elif [ "$MODE" = "Archive" ]; then
 							wget --content-disposition "$FILE"
-							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
+							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
 							if [[ ${#FILE_NAME} -gt 0 ]]; then
-								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE_NAME $2 | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py "$FILE_NAME" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
-								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE $2 | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py "$FILE" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						elif [ "$MODE" = "Installer" ]; then
-							wget --content-disposition $FILE
-							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
+							wget --content-disposition "$FILE"
+							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
 							if [[ $FILE_NAME =~ "rustup" ]]; then
-								sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2) -y | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo bash "$2"/$(echo "$FILE_NAME" | cut -d '"' -f2) -y | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
-								sudo bash $2/$(echo $FILE_NAME | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo bash "$2"/$(echo "$FILE_NAME" | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						elif [ "$MODE" = "DPKG" ]; then
-							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
+							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
 							if [[ ${#FILE_NAME} -gt 0 ]]; then
-								wget --content-disposition $FILE
-								sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								wget --content-disposition "$FILE"
+								sudo dpkg -i $2/$(echo "$FILE_NAME" | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
 								FILE_NAME=$(echo "$line" | cut -d" " -f2)
-								wget $FILE -O $FILE_NAME.deb
-								sudo dpkg -i $2/$(echo $FILE_NAME | cut -d '"' -f2).deb | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								wget $FILE -O "$FILE_NAME".deb
+								sudo dpkg -i "$2"/$(echo "$FILE_NAME" | cut -d '"' -f2).deb | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						fi
 						Logger "$FILE" "$FILE_NAME"
