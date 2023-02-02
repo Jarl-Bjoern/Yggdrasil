@@ -261,13 +261,13 @@ function File_Installer() {
 		elif [[ $line = "# Python" ]]; then
 			Command="pip3 install" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Git" ]]; then
-			Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" ; Switch_WGET=false
+			Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
 		elif [[ $line = "# Gem" ]]; then
 			Command="gem install" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Go" ]]; then
 			Command="go get" ; Skip=true ; Switch_WGET=false
 		elif [[ $line = "# Wordlists" ]]; then
-			Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists ; Switch_WGET=false
+			Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists || return 0 ; Switch_WGET=false
 		elif [[ $line = "# Wget" ]]; then
 			Switch_WGET=true
 		else
@@ -317,11 +317,11 @@ function File_Installer() {
 					done
 					if [[ $Switch_IGNORE = false ]]; then
 						MODE=$(echo "$line" | cut -d" " -f3)
-						mkdir -p "$2" ; cd "$2"
+						mkdir -p "$2" ; cd "$2" || return 0
 						if [ "$MODE" = "Executeable" ]; then
-							mkdir -p "$2"/"$FILE_NAME" ; cd "$2"/"$FILE_NAME"
+							mkdir -p "$2"/"$FILE_NAME" ; cd "$2"/"$FILE_NAME" || return 0
 							wget "$FILE" -O "$FILE_NAME"
-							chmod +x "$FILE_NAME" ; cd "$2"
+							chmod +x "$FILE_NAME" ; cd "$2" || return 0
 						elif [ "$MODE" = "Archive" ]; then
 							wget --content-disposition "$FILE"
 							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
@@ -645,7 +645,7 @@ done
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
 	# Git_Tools_Installation
 	if [ -d "/opt/pentest_tools/chisel" ]; then
-		cd /opt/pentest_tools/chisel ; sudo go get ; sudo go build
+		cd /opt/pentest_tools/chisel || return 0 ; sudo go get ; sudo go build
 	fi
 	if [ -d "/opt/pentest_tools/enum4linux-ng" ]; then
 		sudo pip3 install -r /opt/pentest_tools/enum4linux-ng/requirements.txt
@@ -657,10 +657,10 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 		sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
 	fi
 	if [ -d "/opt/pentest_tools/ssh_scan" ]; then
-		cd /opt/pentest_tools/ssh_scan ; sudo gem install bundler ; sudo bundle install
+		cd /opt/pentest_tools/ssh_scan || return 0 ; sudo gem install bundler ; sudo bundle install
 	fi
 	if [ -d "/opt/pentest_tools/socketcand" ]; then
-		cd /opt/pentest_tools/socketcand ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
+		cd /opt/pentest_tools/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
 	fi
 	if [ -f "/opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)" ]; then
 		sudo bash /opt/pentest_tools/$(ls /opt/pentest_tools | grep SoapUI)
@@ -669,11 +669,11 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 		pip3 install -r /opt/pentest_tools/Responder/requirements.txt
 	fi
 	if [ -f "/opt/pentest_tools/mitmdump" ]; then
-		cd /opt/pentest_tools ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ ; mv mitmproxy.sh mitmproxy
+		cd /opt/pentest_tools || return 0 ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ || return 0 ; mv mitmproxy.sh mitmproxy
 	fi
 
 	# Categories_Sort
-	cd /opt/pentest_tools
+	cd /opt/pentest_tools || return 0
 	if [[ $(ls /opt/pentest_tools/{"nmap-erpscan","pysap","PyRFC","SAP_GW_RCE_exploit","SAP_RECON"}) ]]; then
 		sudo mkdir -p /opt/pentest_tools/Webscanner/SAP
 		mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP || sudo rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
