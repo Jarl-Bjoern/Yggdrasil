@@ -534,6 +534,7 @@ else
 	clearing
 fi
 
+# Settings_Configuration
 header "settings"
 read -rp "Your Choice: " custom_settings
 if [[ $custom_settings =~ "," ]]; then
@@ -552,17 +553,17 @@ if [[ $custom_settings =~ "," ]]; then
 		fi
 	done
 else
-	if [[ $Cust_Setting = "complete" || $Cust_Setting = "1" ]]; then
+	if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
 		Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true
-	elif [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]];  then
+	elif [[ $custom_settings = "updates" || $custom_settings = "2" ]];  then
 		Switch_UPDATES=true
-	elif [[ $Cust_Setting = "alias" || $Cust_Setting = "3" ]];  then
+	elif [[ $custom_settings = "alias" || $custom_settings = "3" ]];  then
 		Switch_CUSTOM_CONFIGS=true
-	elif [[ $Cust_Setting = "screenrc" || $Cust_Setting = "4" ]];  then
+	elif [[ $custom_settings = "screenrc" || $custom_settings = "4" ]];  then
 		Switch_SCREENRC=true
-	elif [[ $Cust_Setting = "vim" || $Cust_Setting = "5" ]];  then
+	elif [[ $custom_settings = "vim" || $custom_settings = "5" ]];  then
 		Switch_VIM_CONFIG=true
-	elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]];  then
+	elif [[ $custom_settings = "repo" || $custom_settings = "6" ]];  then
 		Switch_REPO=true
 	else
 		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
