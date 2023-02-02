@@ -363,22 +363,20 @@ function File_Installer() {
 }
 
 # Checking_Parameters
-if [ arg ]; then
-	for arg; do
-		LEN_ARGV=$(wc -c <<< "$arg")
-		if [[ $arg == "-s" ]]; then
-			Switch_Skip=true
-		elif [[ $arg == "-aL" ]]; then
-			Switch_License=true
-		elif [[ $LEN_ARGV -gt 2 ]]; then
-			if [[ -d $arg ]]; then
-				PATH_Install_Dir=$arg
-			else
-				HOST_Pentest=$arg
-			fi
+for arg; do
+	LEN_ARGV=$(wc -c <<< "$arg")
+	if [[ $arg == "-s" ]]; then
+		Switch_Skip=true
+	elif [[ $arg == "-aL" ]]; then
+		Switch_License=true
+	elif [[ $LEN_ARGV -gt 2 ]]; then
+		if [[ -d $arg ]]; then
+			PATH_Install_Dir=$arg
+		else
+			HOST_Pentest=$arg
 		fi
-	done
-fi
+	fi
+done
 
 # Category
 header "category"
