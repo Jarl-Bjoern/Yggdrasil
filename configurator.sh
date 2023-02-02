@@ -222,7 +222,7 @@ function header() {
 function File_Installer() {
 	function Logger() {
 		if [[ $1 =~ "apt" ]]; then
-			if [[ ! $(apt-cache policy "$2" | grep "Installed:") =~ "(none)" || ! $(apt-cache policy "$2" | grep "Installiert:") =~ "(keine)" ]]; then
+			if [[ ! $(apt-cache policy "$2" | grep "Installed:") =~ (none) || ! $(apt-cache policy "$2" | grep "Installiert:") =~ (keine) ]]; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			else
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
@@ -240,7 +240,7 @@ function File_Installer() {
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			fi
 		elif [[ $1 =~ "git" ]]; then
-			if [[ $(ls $OPT_Path | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)") ]]; then
+			if find $OPT_Path -maxdepth 1 ! -path $OPT_Path | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)"; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 				if [[ ${Array_GIT_Updater[*]} != $(echo "$2" | rev | cut -d '/' -f1 | rev) ]]; then
 					Array_GIT_Updater+=($(echo "$2" | rev | cut -d '/' -f1 | rev))
@@ -618,13 +618,13 @@ else
 fi
 
 # Path_Filtering
-for i in $(ls /home | grep -v "lost+found") "/root"; do
+for i in $(find /home -maxdepth 1 | grep -v -E "/home|lost+found") "/root"; do
         if [[ ! ($i = "/root") ]]; then
-		PATH_BSH="/home/$i/.bashrc"
-                PATH_SCREEN="/home/$i/.screenrc"
-		PATH_ALIAS="/home/$i/.bash_aliases"
-		PATH_VIM="/home/$i/.vimrc"
-		PATH_ZSH="/home/$i/.zshrc"
+		PATH_BSH="$i/.bashrc"
+                PATH_SCREEN="$i/.screenrc"
+		PATH_ALIAS="$i/.bash_aliases"
+		PATH_VIM="$i/.vimrc"
+		PATH_ZSH="$i/.zshrc"
         else
 		PATH_BSH="/root/.bashrc"
                 PATH_SCREEN="/root/.screenrc"
@@ -872,7 +872,7 @@ EOF
 			find $OPT_Path -name "$git_tool" | head -n 1 >> $OPT_Path/update.info
 		fi
 	done
-	for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
+	for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
 		if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
 			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
 		fi
@@ -882,18 +882,19 @@ fi
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
 	if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 		ln -s "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
-	fi
-	if [[ -f $OPT_Path/$(ls $OPT_Path | grep "setup-gui-x64") ]]; then
+	fi 
+	if [[ -f $OPT_Path/$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
 		if [[ $Switch_License == true ]]; then
-			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$OPT_Path"/"$(ls $OPT_Path | grep "setup-gui-x64")"
+			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
 		else
-			sudo bash "$OPT_Path"/"$(ls $OPT_Path | grep "setup-gui-x64")"
+			sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
 #			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/"$OPT_Path"/$(ls "$OPT_Path" | grep setup-gui-x64)
 		fi
-		for veracrypt_file in $(ls "$OPT_Path/setup*"); do sudo rm -f "$OPT_Path"/"$veracrypt_file"; done
+		for veracrypt_file in $(find $OPT_Path -maxdepth 1 ! -path $OPT_Path | grep "^setup"); do sudo rm -f "$veracrypt_file"; done
 	fi
-	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep "jetbrains*")" ]; then
-		TEMP_PATH_JET="$OPT_Path/$(ls /opt/pentest_tools | grep "jetbrains*")"
+	
+	if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "^jetbrains")" ]; then
+		TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "^jetbrains")
 		"$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
