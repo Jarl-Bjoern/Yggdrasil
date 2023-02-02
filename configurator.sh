@@ -334,19 +334,19 @@ function File_Installer() {
 							wget --content-disposition "$FILE"
 							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
 							if [[ $FILE_NAME =~ "rustup" ]]; then
-								sudo bash "$2"/$(echo "$FILE_NAME" | cut -d '"' -f2) -y | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
-								sudo bash "$2"/$(echo "$FILE_NAME" | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						elif [ "$MODE" = "DPKG" ]; then
 							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
 							if [[ ${#FILE_NAME} -gt 0 ]]; then
 								wget --content-disposition "$FILE"
-								sudo dpkg -i "$2"/$(echo "$FILE_NAME" | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
 								FILE_NAME=$(echo "$line" | cut -d" " -f2)
 								wget "$FILE" -O "$FILE_NAME".deb
-								sudo dpkg -i "$2"/$(echo "$FILE_NAME" | cut -d '"' -f2).deb | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2).deb" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						fi
 						Logger "$FILE" "$FILE_NAME"
