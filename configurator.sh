@@ -840,7 +840,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		"$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
-		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py $PATH_Install_Dir
+		sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py" "$PATH_Install_Dir"
 	fi
 fi
 
