@@ -828,15 +828,15 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 	fi
 	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
 		if [[ $Switch_License == true ]]; then
-			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$OPT_Path"/"$(ls $OPT_Path | grep setup-gui-x64)"
+			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$OPT_Path"/"$(ls $OPT_Path/{setup-gui-x64*})"
 		else
-			sudo bash "$OPT_Path"/$(ls "$OPT_Path" | grep setup-gui-x64)
+			sudo bash "$OPT_Path"/$(ls "$OPT_Path"/{setup-gui-x64*})
 #			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/"$OPT_Path"/$(ls "$OPT_Path" | grep setup-gui-x64)
 		fi
-		for veracrypt_file in $(ls "$OPT_Path" | grep setup); do sudo rm -f "$OPT_Path"/"$veracrypt_file"; done
+		for veracrypt_file in $(ls "$OPT_Path"/{setup*}); do sudo rm -f "$OPT_Path"/"$veracrypt_file"; done
 	fi
-	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)" ]; then
-		TEMP_PATH_JET="$OPT_Path/$(ls /opt/pentest_tools | grep jetbrains)"
+	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools/{jetbrains*})" ]; then
+		TEMP_PATH_JET="$OPT_Path/$(ls /opt/pentest_tools/{jetbrains*})"
 		"$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
