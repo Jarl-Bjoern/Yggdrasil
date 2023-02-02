@@ -234,7 +234,7 @@ function File_Installer() {
 		elif [[ $1 =~ "git" ]]; then
 			if [[ $(ls $OPT_Path | grep $(echo "$2" | rev | cut -d '/' -f1 | rev)) ]]; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-				if [[ ${Array_GIT_Updater[@]} != $(echo "$2" | rev | cut -d '/' -f1 | rev) ]]; then
+				if [[ ${Array_GIT_Updater[*]} != $(echo "$2" | rev | cut -d '/' -f1 | rev) ]]; then
 					Array_GIT_Updater+=($(echo "$2" | rev | cut -d '/' -f1 | rev))
 				fi
 			else
@@ -567,7 +567,7 @@ else
 fi
 
 # Path_Filtering
-for i in $(ls /home | grep -v "lost+found") $(echo /root); do
+for i in $(ls /home | grep -v "lost+found") "/root"; do
         if [[ ! ($i = "/root") ]]; then
 		PATH_BSH="/home/$i/.bashrc"
                 PATH_SCREEN="/home/$i/.screenrc"
@@ -663,7 +663,7 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 		cd /opt/pentest_tools/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
 	fi
 	if [ -f "/opt/pentest_tools/$(grep "SoapUI" /opt/pentest_tools)" ]; then
-		sudo bash /opt/pentest_tools/$(grep "SoapUI" /opt/pentest_tools)
+		sudo bash "/opt/pentest_tools/$(grep SoapUI /opt/pentest_tools)"
 	fi
 	if [ -d "/opt/pentest_tools/Responder" ]; then
 		pip3 install -r /opt/pentest_tools/Responder/requirements.txt
@@ -830,10 +830,10 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		if [[ $Switch_License == true ]]; then
 			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$OPT_Path"/"$(ls $OPT_Path/setup-gui-x64*)"
 		else
-			sudo bash "$OPT_Path"/$(ls "$OPT_Path/setup-gui-x64*")
+			sudo bash "$OPT_Path"/"$(ls $OPT_Path/setup-gui-x64*)"
 #			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/"$OPT_Path"/$(ls "$OPT_Path" | grep setup-gui-x64)
 		fi
-		for veracrypt_file in $(ls "$OPT_Path"/setup*); do sudo rm -f "$OPT_Path"/"$veracrypt_file"; done
+		for veracrypt_file in $(ls "$OPT_Path/setup*"); do sudo rm -f "$OPT_Path"/"$veracrypt_file"; done
 	fi
 	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools/jetbrains*)" ]; then
 		TEMP_PATH_JET="$OPT_Path/$(ls /opt/pentest_tools/jetbrains*)"
@@ -848,9 +848,9 @@ if [[ $Switch_Skip != true ]]; then
 	if [[ $Switch_Hardening = true ]]; then
 		for i in "${Array_HARDENING[@]}"; do
 			if [[ $i =~ "#" ]]; then
-				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep "$i")
+				LEN_SYSCTL=$(grep "$i" /etc/sysctl.conf)
 			else
-				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep "$i")
+				LEN_SYSCTL=$(grep "$i" /etc/sysctl.conf | grep -v '#')
 			fi
 			if [[ ! ${#LEN_SYSCTL} -gt 0 ]]; then
 				cat <<EOF >> /etc/sysctl.conf
