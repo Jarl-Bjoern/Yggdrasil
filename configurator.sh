@@ -811,12 +811,12 @@ EOF
 		echo "" > $OPT_Path/update.info
 	fi
 	for git_tool in "${Array_GIT_Updater[@]}"; do
-		if [[ ! $(cat $OPT_Path/update.info | grep "$git_tool") =~ $git_tool ]]; then
+		if [[ ! $(grep "$git_tool" "$OPT_Path/update.info") =~ $git_tool ]]; then
 			find $OPT_Path -name "$git_tool" | head -n 1 >> $OPT_Path/update.info
 		fi
 	done
 	for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
-		if [[ ! $(cat $OPT_Path/update.info | grep "$git_wordlist") =~ $git_wordlist ]]; then
+		if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
 			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
 		fi
 	done
