@@ -275,7 +275,7 @@ function File_Installer() {
 				if [ "$Switch_WGET" = false ]; then
 					if [[ $line =~ "github" ]]; then
 						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo $line | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-						for CHECK_GIT in ${Array_Filter_Git[@]}; do
+						for CHECK_GIT in "${Array_Filter_Git[@]}"; do
 							if [[ $CHECK_GIT =~ $(echo $line | cut -d "/" -f5) ]]; then
 								if [[ -d $CHECK_GIT ]]; then
 									Switch_IGNORE=true
@@ -304,26 +304,26 @@ function File_Installer() {
 						fi
 					fi
 				else
-					FILE=$(echo $line | cut -d" " -f1)
+					FILE=$(echo "$line" | cut -d" " -f1)
 					FILE_NAME=$(echo "$line" | cut -d" " -f2)
 					echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-					for CHECK_FILE in ${Array_Filter_Download[@]}; do
+					for CHECK_FILE in "${Array_Filter_Download[@]}"; do
 						if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
-							if [[ $(ls $CHECK_FILE) ]]; then
+							if [[ $(ls "$CHECK_FILE") ]]; then
 								Switch_IGNORE=true
 								break
 							fi
 						fi
 					done
 					if [[ $Switch_IGNORE = false ]]; then
-						MODE=$(echo $line | cut -d" " -f3)
-						mkdir -p $2 ; cd $2
+						MODE=$(echo "$line" | cut -d" " -f3)
+						mkdir -p "$2" ; cd "$2"
 						if [ "$MODE" = "Executeable" ]; then
-							mkdir -p $2/$FILE_NAME ; cd $2/$FILE_NAME
-							wget $FILE -O $FILE_NAME
-							chmod +x $FILE_NAME ; cd $2
+							mkdir -p "$2"/"$FILE_NAME" ; cd "$2"/"$FILE_NAME"
+							wget "$FILE" -O "$FILE_NAME"
+							chmod +x "$FILE_NAME" ; cd "$2"
 						elif [ "$MODE" = "Archive" ]; then
-							wget --content-disposition $FILE
+							wget --content-disposition "$FILE"
 							FILE_NAME=$(curl -L --head -s $FILE | grep filename | cut -d "=" -f2)
 							if [[ ${#FILE_NAME} -gt 0 ]]; then
 								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py $FILE_NAME $2 | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
