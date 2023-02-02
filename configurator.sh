@@ -633,8 +633,6 @@ for i in $(ls /home | grep -v "lost+found") "/root"; do
 		PATH_ZSH="/root/.zshrc"
         fi
 
-	if 
-
 	if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
 		# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
 		sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH"
