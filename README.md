@@ -351,21 +351,30 @@ URL Name Method
 ## The following methods are available:
  - Archive
    - With the ***Archive*** argument you specify that you are downloading an archive, which is then loaded into the provided Python script and unpacked.
+```bash
+# Wget
+https://dl.pstmn.io/download/latest/linux64 Postman Archive
+```
  - DPKG
    - The argument ***DPKG*** is used to download a package, which will be imported/installed afterwards.
+```bash
+# Wget
+https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb chrome DPKG
+```
  - Executeable
    - With ***Executeable***, you specify that you are downloading an executable file that is for example downloadable via Github like kerbrute.
- - Installer
-   - The ***Installer*** argument specifies that you download an installation package like .msi, which is subsequently launched, as is done with the Soap UI ready, for example, if you use the template for web penetration testing.
-
-<a name="method_install"></a>
-## Example
 ```bash
 # Wget
 https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 kerbrute Executeable
-https://dl.pstmn.io/download/latest/linux64 Postman Archive
+```
+ - Installer
+   - The ***Installer*** argument specifies that you download an installation package like .msi, which is subsequently launched, as is done with the Soap UI ready, for example, if you use the template for web penetration testing.
+```bash
+# Wget
+https://sh.rustup.rs rust Installer
 ```
 
+<a name="method_install"></a>
 You can also build the file from scratch yourself. To do this, navigate to the directory ***Config/Linux/Custom*** and edit the file ***install.txt***
 
 In addition, it is also possible that you can place your own scripts or packages in the ***Custom*** directory and use them in the installation script.
