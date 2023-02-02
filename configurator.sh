@@ -1103,7 +1103,7 @@ fi
 if [[ $(grep nessus "$File_Path") ]]; then
 	if [[ $(docker ps -a | grep nessus) ]]; then
 		NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
-		docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; docker rm "$NESSUS_DOCKER_TEMP"
+		sudo docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; sudo docker rm "$NESSUS_DOCKER_TEMP"
 	fi
 	sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
