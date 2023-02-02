@@ -4,7 +4,7 @@
 # Variables
 decision=""
 HOST_Pentest="pentest-kali"
-IP_INT=127.0.0.1
+IP_INT="127.0.0.1"
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename "$BASH_SOURCE")
 PATH_ALIAS=""
@@ -274,9 +274,9 @@ function File_Installer() {
 			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
 				if [ "$Switch_WGET" = false ]; then
 					if [[ $line =~ "github" ]]; then
-						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo $line | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 						for CHECK_GIT in "${Array_Filter_Git[@]}"; do
-							if [[ $CHECK_GIT =~ $(echo $line | cut -d "/" -f5) ]]; then
+							if [[ $CHECK_GIT =~ $(echo "$line" | cut -d "/" -f5) ]]; then
 								if [[ -d $CHECK_GIT ]]; then
 									Switch_IGNORE=true
 									break
@@ -326,9 +326,9 @@ function File_Installer() {
 							wget --content-disposition "$FILE"
 							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
 							if [[ ${#FILE_NAME} -gt 0 ]]; then
-								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py "$FILE_NAME" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py" "$FILE_NAME" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
-								sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py "$FILE" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py" "$FILE" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						elif [ "$MODE" = "Installer" ]; then
 							wget --content-disposition "$FILE"
@@ -342,10 +342,10 @@ function File_Installer() {
 							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
 							if [[ ${#FILE_NAME} -gt 0 ]]; then
 								wget --content-disposition "$FILE"
-								sudo dpkg -i $2/$(echo "$FILE_NAME" | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+								sudo dpkg -i "$2"/$(echo "$FILE_NAME" | cut -d '"' -f2) | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							else
 								FILE_NAME=$(echo "$line" | cut -d" " -f2)
-								wget $FILE -O "$FILE_NAME".deb
+								wget "$FILE" -O "$FILE_NAME".deb
 								sudo dpkg -i "$2"/$(echo "$FILE_NAME" | cut -d '"' -f2).deb | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 							fi
 						fi
@@ -359,7 +359,7 @@ function File_Installer() {
 		Skip=false
 		Switch_IGNORE=false
 		sleep 0.15
-	done < $input
+	done < "$input"
 }
 
 # Checking_Parameters
@@ -395,7 +395,7 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	read -p "Your Choice: " pentesting
 	if [[ $pentesting =~ "," ]]; then
         	readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
-		for testing_category in ${Array_Pentesting[@]}; do
+		for testing_category in "${Array_Pentesting[@]}"; do
                         if [[ $testing_category = "infrastructure" || $testing_category = "1" ]]; then
 				Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure")
 			elif [[ $testing_category = "iot" || $testing_category = "2" ]];  then
@@ -471,7 +471,7 @@ if [[ $Switch_Skip != true ]]; then
         read -p "Your Choice: " hardening
         if [[ $hardening =~ "," ]]; then
                 readarray -td, Array_Hardening <<< "$hardening", declare -p Array_Hardening
-                for testing_category in ${Array_Hardening[@]}; do
+                for testing_category in "${Array_Hardening[@]}"; do
                         if [[ $testing_category = "firewall" || $testing_category = "2" ]];  then
                                 Switch_Firewall=true
                         elif [[ $testing_category = "sysctl" || $testing_category = "3" ]];  then
