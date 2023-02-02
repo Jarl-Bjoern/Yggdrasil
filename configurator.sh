@@ -839,7 +839,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 	fi
 	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)" ]; then
 		TEMP_PATH_JET="$OPT_Path/$(ls /opt/pentest_tools | grep jetbrains)"
-		$TEMP_PATH_JET/jetbrains-toolbox ; sleep 10
+		"$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
 		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py $PATH_Install_Dir
@@ -848,13 +848,13 @@ fi
 
 if [[ $Switch_Skip != true ]]; then
 	if [[ $Switch_Hardening = true ]]; then
-		for i in ${Array_HARDENING[@]}; do
+		for i in "${Array_HARDENING[@]}"; do
 			if [[ $i =~ "#" ]]; then
 				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep $i)
 			else
 				LEN_SYSCTL=$(cat /etc/sysctl.conf | grep -v '#' | grep $i)
 			fi
-			if [[ !${#LEN_SYSCTL} -gt 0 ]]; then
+			if [[ ! ${#LEN_SYSCTL} -gt 0 ]]; then
 				cat <<EOF >> /etc/sysctl.conf
 $i
 EOF
@@ -982,7 +982,7 @@ EOF
 	# Firewall_Configuration
 	if [[ $Switch_Firewall = true ]]; then
 		if [ -f /etc/iptables/rules.v4 ]; then
-			sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/iptables/rules.v4"
+			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/iptables/rules.v4"
 			sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
 			sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
 			sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
@@ -1016,7 +1016,7 @@ EOF
 		fi
 
 		if [ -f /etc/iptables/rules.v6 ]; then
-			sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/iptables/rules.v6"
+			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/iptables/rules.v6"
 			sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
 			sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
 			sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
@@ -1085,7 +1085,7 @@ DebianBanner no
 EOF
 		fi
 		IFS=""
-		for Cipher in ${Array_SSH_Ciphers[@]}; do
+		for Cipher in "${Array_SSH_Ciphers[@]}"; do
 			if [[ ! $(cat /etc/ssh/sshd_config | grep -e $Cipher) ]]; then
 				cat <<EOF >> /etc/ssh/sshd_config
 $Cipher
@@ -1105,20 +1105,20 @@ fi
 if [[ $(cat $File_Path | grep nessus) ]]; then
 	if [[ $(docker ps -a | grep nessus) ]]; then
 		NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
-		docker stop $NESSUS_DOCKER_TEMP ; sleep 1 ; docker rm $NESSUS_DOCKER_TEMP
+		docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; docker rm "$NESSUS_DOCKER_TEMP"
 	fi
 	sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
 if [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	if [[ $decision = "full" || $decision = "1" ]]; then
-		echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; cat $Informational
+		echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; cat "$Informational"
 	fi
 fi
 if [[ $category_type = "complete" || $category_type = "1" ]]; then
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py /opt/forensic_tools
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py /opt/pentest_tools
+	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/forensic_tools
+	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/pentest_tools
 else
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py $OPT_Path
+	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" "$OPT_Path"
 fi
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
