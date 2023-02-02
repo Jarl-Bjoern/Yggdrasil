@@ -15,15 +15,20 @@ PATH_ZSH=""
 pentesting=""
 Skip=false
 Switch_APACHE=false
+Switch_CUSTOM_CONFIGS=false
 Switch_Firewall=false
 Switch_FTP=false
 Switch_Hardening=false
 Switch_IGNORE=false
 Switch_License=false
 Switch_NGINX=false
+Switch_REPO=false
+Switch_SCREENRC=false
 Switch_Skip=false
 Switch_SQUID=false
 Switch_SSH=false
+Switch_UPDATES=false
+Switch_VIM_CONFIG=false
 Switch_WGET=false
 
 # Arrays
@@ -208,6 +213,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}alias${NOCOLOR}         :   custom configs (${GREEN}alias${RED}|${GREEN}.bashrc${RED}|${GREEN}.zshrc${NOCOLOR})  ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}screenrc${NOCOLOR}      :   custom screenrc config                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}vim${NOCOLOR}           :   custom vim config                      ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}  [${PURPLE}6${NOCOLOR}] ${PURPLE}repo${NOCOLOR}          :   kali repository change                 ${CYAN}|${NOCOLOR}"
 	fi
 	echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
 	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
@@ -528,14 +534,56 @@ else
 	clearing
 fi
 
+header "settings"
+read -rp "Your Choice: " custom_settings
+if [[ $custom_settings =~ "," ]]; then
+	readarray -td, Array_Custom_Settings <<< "$custom_settings", declare -p Array_Custom_settings
+	for Cust_Setting in "${Array_Custom_Settings[@]}"; do
+		if [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]];  then
+			Switch_UPDATES=true
+		elif [[ $Cust_Setting = "alias" || $Cust_Setting = "3" ]];  then
+			Switch_CUSTOM_CONFIGS=true
+		elif [[ $Cust_Setting = "screenrc" || $Cust_Setting = "4" ]];  then
+			Switch_SCREENRC=true
+		elif [[ $Cust_Setting = "vim" || $Cust_Setting = "5" ]];  then
+			Switch_VIM_CONFIG=true
+		elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]];  then
+			Switch_REPO=true
+		fi
+	done
+else
+	if [[ $Cust_Setting = "complete" || $Cust_Setting = "1" ]]; then
+		Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true
+	elif [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]];  then
+		Switch_UPDATES=true
+	elif [[ $Cust_Setting = "alias" || $Cust_Setting = "3" ]];  then
+		Switch_CUSTOM_CONFIGS=true
+	elif [[ $Cust_Setting = "screenrc" || $Cust_Setting = "4" ]];  then
+		Switch_SCREENRC=true
+	elif [[ $Cust_Setting = "vim" || $Cust_Setting = "5" ]];  then
+		Switch_VIM_CONFIG=true
+	elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]];  then
+		Switch_REPO=true
+	else
+		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	fi
+fi
+clearing
+
 # Basic_Configuration
 if [[ $(grep "PRETTY_NAME" /etc/os-release | cut -d '"' -f2) =~ "Kali" ]]; then
-	sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
+	if [[ $Switch_REPO == true ]]; then
+		sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
+	fi
+fi
+if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
+	export HISTCONTROL=ignoreboth:erasedups
 fi
 echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
-sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path"
-export HISTCONTROL=ignoreboth:erasedups
+if [[ $Switch_UPDATES == true ]]; then
+	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path"
+fi
 
 # Standard_Installation
 if [[ $Switch_Skip != true ]]; then
@@ -584,22 +632,29 @@ for i in $(ls /home | grep -v "lost+found") "/root"; do
 		PATH_ZSH="/root/.zshrc"
         fi
 
-	# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
-	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH"
-	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_ZSH"
-	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ALIAS"
-	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_BSH"
-	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ZSH"
+	if 
 
-	# Screen_Configuration (Thx to @HomeSen)
-	cat <<'EOF' > "$PATH_SCREEN"
+	if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
+		# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
+		sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH"
+		sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_ZSH"
+		sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ALIAS"
+		sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_BSH"
+		sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ZSH"
+	fi
+
+	if [[ $Switch_SCREENRC == true ]]; then
+		# Screen_Configuration (Thx to @HomeSen)
+		cat <<'EOF' > "$PATH_SCREEN"
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
+	fi
 
-	# Vim_Configuration (Thx to @HomeSen)
-	cat <<'EOF' > "$PATH_VIM"
+	if [[ $Switch_VIM_CONFIG == true ]]; then
+		# Vim_Configuration (Thx to @HomeSen)
+		cat <<'EOF' > "$PATH_VIM"
 syntax on
 
 " Uncomment the following to have Vim jump to the last position when
@@ -642,6 +697,7 @@ set statusline+=\ ]
 set statusline+=\ 
 set statusline+=%p%%
 EOF
+	fi
 done
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
