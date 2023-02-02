@@ -380,7 +380,7 @@ done
 
 # Category
 header "category"
-read -p "Your Choice: " category_type
+read -rp "Your Choice: " category_type
 if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 	Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic"
 	OPT_Path="/opt/forensic_tools"
@@ -390,7 +390,7 @@ if [[ $category_type = "forensic" || $category_type = "3" ]]; then
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 	OPT_Path="/opt/pentest_tools"
 	header "pentesting_category"
-	read -p "Your Choice: " pentesting
+	read -rp "Your Choice: " pentesting
 	if [[ $pentesting =~ "," ]]; then
         	readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
 		for testing_category in "${Array_Pentesting[@]}"; do
@@ -448,7 +448,7 @@ else
 			Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 		else
 			header "installation"
-			read -p "Your Choice: " decision
+			read -rp "Your Choice: " decision
 			if [[ $decision = "full" || $decision = "1" ]]; then
 				File_Path="${Path_Way}/full.txt"
 				if [[ $category_type = "pentest" || $category_type = "4" ]];  then
@@ -466,7 +466,7 @@ fi
 # Hardening_Configuration
 if [[ $Switch_Skip != true ]]; then
         header "hardening"
-        read -p "Your Choice: " hardening
+        read -rp "Your Choice: " hardening
         if [[ $hardening =~ "," ]]; then
                 readarray -td, Array_Hardening <<< "$hardening", declare -p Array_Hardening
                 for testing_category in "${Array_Hardening[@]}"; do
@@ -507,7 +507,7 @@ if [[ $Switch_Skip != true ]]; then
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
 		sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/nic.py
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-                read -p "Your Choice: " IP_TEMP
+                read -rp "Your Choice: " IP_TEMP
                 if [[ ${#IP_TEMP} -gt 0 ]]; then
                         LEN_CHECK=$(ip a | grep "$IP_TEMP")
                         if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *"."* ]]; then
