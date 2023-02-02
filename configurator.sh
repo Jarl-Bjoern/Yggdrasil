@@ -538,7 +538,7 @@ fi
 header "settings"
 read -rp "Your Choice: " custom_settings
 if [[ $custom_settings =~ "," ]]; then
-	readarray -td, Array_Custom_Settings <<< "$custom_settings", declare -p Array_Custom_settings
+	readarray -td, Array_Custom_Settings <<< "$custom_settings", declare -p Array_Custom_Settings
 	for Cust_Setting in "${Array_Custom_Settings[@]}"; do
 		if [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]];  then
 			Switch_UPDATES=true
