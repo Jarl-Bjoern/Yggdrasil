@@ -534,7 +534,7 @@ if [[ $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d '"' -f2) =~ "Kali" ]];
 fi
 echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
-sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py "/etc/crontab" $OPT_Path
+sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path"
 export HISTCONTROL=ignoreboth:erasedups
 
 # Standard_Installation
@@ -551,16 +551,16 @@ fi
 
 # Tool_Installation
 if [[ $category_type = "complete" || $category_type = "1" ]]; then
-	for i in ${Array_Complete_Install[@]}; do
+	for i in "${Array_Complete_Install[@]}"; do
 		if [[ $i =~ "Forensic" ]]; then
-			File_Installer $i "/opt/forensic_tools"
+			File_Installer "$i" "/opt/forensic_tools"
 		else
-	        	File_Installer $i "/opt/pentest_tools"
+	        	File_Installer "$i" "/opt/pentest_tools"
 		fi
 	done
 else
 	if [[ ${#Array_Categories} -gt 0 ]]; then
-		for i in ${Array_Categories[@]}; do
+		for i in "${Array_Categories[@]}"; do
 			File_Installer "${i}/full.txt" "/opt/pentest_tools"
 		done
 	else
@@ -570,7 +570,7 @@ fi
 
 # Path_Filtering
 for i in $(ls /home | grep -v "lost+found") $(echo /root); do
-        if [[ !($i = "/root") ]]; then
+        if [[ ! ($i = "/root") ]]; then
 		PATH_BSH="/home/$i/.bashrc"
                 PATH_SCREEN="/home/$i/.screenrc"
 		PATH_ALIAS="/home/$i/.bash_aliases"
@@ -585,21 +585,21 @@ for i in $(ls /home | grep -v "lost+found") $(echo /root); do
         fi
 
 	# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
-	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_BSH
-	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" $PATH_ZSH
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ALIAS
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_BSH
-	sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py $PATH_ZSH
+	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH"
+	sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_ZSH"
+	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ALIAS"
+	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_BSH"
+	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ZSH"
 
 	# Screen_Configuration (Thx to @HomeSen)
-	cat <<'EOF' > $PATH_SCREEN
+	cat <<'EOF' > "$PATH_SCREEN"
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
 
 	# Vim_Configuration (Thx to @HomeSen)
-	cat <<'EOF' > $PATH_VIM
+	cat <<'EOF' > "$PATH_VIM"
 syntax on
 
 " Uncomment the following to have Vim jump to the last position when
@@ -812,13 +812,13 @@ EOF
 	if [[ ! $(ls $OPT_Path | grep update.info) ]]; then
 		echo "" > $OPT_Path/update.info
 	fi
-	for git_tool in ${Array_GIT_Updater[@]}; do
-		if [[ ! $(cat $OPT_Path/update.info | grep $git_tool) =~ $git_tool ]]; then
-			find $OPT_Path -name $git_tool | head -n 1 >> $OPT_Path/update.info
+	for git_tool in "${Array_GIT_Updater[@]}"; do
+		if [[ ! $(cat $OPT_Path/update.info | grep "$git_tool") =~ $git_tool ]]; then
+			find $OPT_Path -name "$git_tool" | head -n 1 >> $OPT_Path/update.info
 		fi
 	done
 	for git_wordlist in $(ls /opt/wordlists | grep -v -E "kali_wordlists|*.txt"); do
-		if [[ ! $(cat $OPT_Path/update.info | grep $git_wordlist) =~ $git_wordlist ]]; then
+		if [[ ! $(cat $OPT_Path/update.info | grep "$git_wordlist") =~ $git_wordlist ]]; then
 			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
 		fi
 	done
@@ -826,18 +826,19 @@ fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
 	if [[ $category_type = "pentest" || $category_type = "4" ]];  then
-		ln -s $OPT_Path/Postman/app/Postman /usr/local/bin/postman
+		ln -s "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
 	fi
 	if [[ -f $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64) ]]; then
 		if [[ $Switch_License == true ]]; then
-			sudo python3 ${FULL_PATH::-${#SCRIPT_NAME}}/Python/auto.py Veracrypt $OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
+			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$OPT_Path"/"$(ls $OPT_Path | grep setup-gui-x64)"
 		else
-			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/$OPT_Path/$(ls $OPT_Path | grep setup-gui-x64)
+			sudo bash "$OPT_Path"/$(ls "$OPT_Path" | grep setup-gui-x64)
+#			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/"$OPT_Path"/$(ls "$OPT_Path" | grep setup-gui-x64)
 		fi
-		for veracrypt_file in $(ls $OPT_Path | grep setup); do sudo rm -f $OPT_Path/$veracrypt_file; done
+		for veracrypt_file in $(ls "$OPT_Path" | grep setup); do sudo rm -f "$OPT_Path"/"$veracrypt_file"; done
 	fi
 	if [ -d "/opt/pentest_tools/$(ls /opt/pentest_tools | grep jetbrains)" ]; then
-		TEMP_PATH_JET=$OPT_Path/$(ls /opt/pentest_tools | grep jetbrains)
+		TEMP_PATH_JET="$OPT_Path/$(ls /opt/pentest_tools | grep jetbrains)"
 		$TEMP_PATH_JET/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
