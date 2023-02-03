@@ -354,21 +354,21 @@ Your Choice: 1
 ## Using the automated variant
 ```bash
 # Automated Variant without Firewall, Hardening and SSH configuration with text
-cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -s
+cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 pentest
 infrastructure
 full
 EOF
 
 # Automated Variant without Firewall, Hardening and SSH configuration with numbers
-cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -s
+cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 4
 1
 1
 EOF
 
 # Automated Variant with multiple pentesting categories without Firewall, Hardening and SSH configuration with numbers
-cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -s
+cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 4
 1,5
 EOF
