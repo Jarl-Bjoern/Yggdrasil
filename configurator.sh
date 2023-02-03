@@ -171,9 +171,9 @@ function clearing {
 
 function Change_Hostname {
 	if [[ $(cat /etc/hostname) == "kali" ]]; then
-		sed -i s/"kali/$1"/g /etc/hostname
+		sudo sed -i s/"kali/$1"/g /etc/hostname
 	fi
-	sed -i s/"127.0.1.1	kali/127.0.1.1	$1"/g /etc/hosts
+	sudo sed -i s/"127.0.1.1	kali/127.0.1.1	$1"/g /etc/hosts
 }
 
 function header() {
@@ -619,19 +619,19 @@ fi
 
 # Path_Filtering
 for i in $(find /home -maxdepth 1 | grep -v -E "/home|lost+found") "/root"; do
-        if [[ ! ($i = "/root") ]]; then
-		PATH_BSH="$i/.bashrc"
-                PATH_SCREEN="$i/.screenrc"
-		PATH_ALIAS="$i/.bash_aliases"
-		PATH_VIM="$i/.vimrc"
-		PATH_ZSH="$i/.zshrc"
-        else
-		PATH_BSH="/root/.bashrc"
-                PATH_SCREEN="/root/.screenrc"
-		PATH_ALIAS="/root/.bash_aliases"
-		PATH_VIM="/root/.vimrc"
-		PATH_ZSH="/root/.zshrc"
-        fi
+#        if [[ ! ($i = "/root") ]]; then
+	PATH_BSH="$i/.bashrc"
+        PATH_SCREEN="$i/.screenrc"
+	PATH_ALIAS="$i/.bash_aliases"
+	PATH_VIM="$i/.vimrc"
+	PATH_ZSH="$i/.zshrc"
+#        else
+#		PATH_BSH="/root/.bashrc"
+ #               PATH_SCREEN="/root/.screenrc"
+#		PATH_ALIAS="/root/.bash_aliases"
+#		PATH_VIM="/root/.vimrc"
+#		PATH_ZSH="/root/.zshrc"
+#        fi
 
 	if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
 		# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
@@ -679,21 +679,21 @@ set background=dark
 " Custom status line
 set laststatus=2
 set statusline=%F
-set statusline+=\ 
+set statusline+=\
 set statusline+=%r
-set statusline+=\ 
+set statusline+=\
 set statusline+=%y
 set statusline+=%=
 set statusline+=pos:
-set statusline+=\ 
+set statusline+=\
 set statusline+=%c
-set statusline+=\ 
-set statusline+=[\ 
+set statusline+=\
+set statusline+=[\
 set statusline+=%l
-set statusline+=\ /\ 
+set statusline+=\ /\
 set statusline+=%L
 set statusline+=\ ]
-set statusline+=\ 
+set statusline+=\
 set statusline+=%p%%
 EOF
 	fi
@@ -719,8 +719,9 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 	if [ -d "/opt/pentest_tools/socketcand" ]; then
 		cd /opt/pentest_tools/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
 	fi
-	if [ -f "/opt/pentest_tools/$(grep "SoapUI" /opt/pentest_tools)" ]; then
-		sudo bash "/opt/pentest_tools/$(grep SoapUI /opt/pentest_tools)"
+	
+	if [ -f "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")" ]; then
+		sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")"
 	fi
 	if [ -d "/opt/pentest_tools/Responder" ]; then
 		pip3 install -r /opt/pentest_tools/Responder/requirements.txt
@@ -753,7 +754,7 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 		sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle
 		mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle || sudo rm -rf moodlescan badmoodle mooscan
 	fi
-	if [[ $(ls /opt/pentest_tools/{"chisel","mitmproxy","mit_mrelay","proxychains-ng"}) ]]; then
+	if [[ $(ls /opt/pentest_tools/{"chisel","mitmproxy","mitm_relay","proxychains-ng"}) ]]; then
 		sudo mkdir -p /opt/pentest_tools/Proxy
 		mv chisel mitmproxy mitm_relay proxychains-ng /opt/pentest_tools/Proxy || sudo rm -rf chisel mitmproxy mitm_relay proxychains-ng
 	fi
@@ -893,8 +894,8 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
 		for veracrypt_file in $(find $OPT_Path -maxdepth 1 ! -path $OPT_Path | grep "^setup"); do sudo rm -f "$veracrypt_file"; done
 	fi
 	
-	if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "^jetbrains")" ]; then
-		TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "^jetbrains")
+	if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")" ]; then
+		TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")
 		"$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
 	fi
 	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
@@ -941,45 +942,45 @@ EOF
 <VirtualHost $IP_INT:443>
 EOF
 			cat <<'EOF' >> /etc/apache2/sites-available/001-pentest.conf
-	DocumentRoot /var/www/html
+        DocumentRoot /var/www/html
 
-	# SSL_Config
-	SSLEngine on
-	SSLCertificateFile /etc/apache2/ssl/pentest-cert.pem
-	SSLCertificateKeyFile /etc/apache2/ssl/pentest-key.pem
+        # SSL_Config
+        SSLEngine on
+        SSLCertificateFile /etc/apache2/ssl/pentest-cert.pem
+        SSLCertificateKeyFile /etc/apache2/ssl/pentest-key.pem
 
-	# Header_Settings
+        # Header_Settings
         Header edit Set-Cookie ^(.*)$ "$1; HttpOnly; Secure; SameSite=Lax"
-	Header always set Content-Security-Policy "default-src 'self'"
-	Header always set Referrer-Policy "strict-origin"
-	Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-	Header always set X-Content-Type-Options "nosniff"
+        Header always set Content-Security-Policy "default-src 'self'"
+        Header always set Referrer-Policy "strict-origin"
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Header always set X-Content-Type-Options "nosniff"
         Header always set X-Frame-Options "DENY"
         Header always set X-XSS-Protection "0"
 
-	# Rewrite_Rules
-	RewriteEngine On
-	RewriteCond %{THE_REQUEST} !HTTP/1.1$
-	RewriteCond %{REQUEST_METHOD} ^(HEAD|POST|TRACE|TRACK|OPTIONS|PUT)
-	RewriteRule .* - [F]
+        # Rewrite_Rules
+        RewriteEngine On
+        RewriteCond %{THE_REQUEST} !HTTP/1.1$
+        RewriteCond %{REQUEST_METHOD} ^(HEAD|POST|TRACE|TRACK|OPTIONS|PUT)
+        RewriteRule .* - [F]
 
-	# Cipher_Settings
-	#SSLCipherSuite HIGH:!MEDIUM:!aNULL:!MD5:!RC4
+        # Cipher_Settings
+        #SSLCipherSuite HIGH:!MEDIUM:!aNULL:!MD5:!RC4
         SSLCipherSuite ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384
         SSLHonorCipherOrder on
-	SSLProtocol +TLSv1.2 +TLSv1.3
+        SSLProtocol +TLSv1.2 +TLSv1.3
 
-	# Directories
-	<Directory />
-		<LimitExcept POST OPTIONS TRACE TRACK HEAD PUT>
-			deny from all
-		</LimitExcept>
-		Options None
-	</Directory>
+        # Directories
+        <Directory />
+            <LimitExcept POST OPTIONS TRACE TRACK HEAD PUT>
+                deny from all
+            </LimitExcept>
+            Options None
+        </Directory>
 
-	# Logging_Options
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
+        # Logging_Options
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF
 			cd /etc/apache2/sites-available || return 0 ; a2ensite 001-pentest.conf
@@ -1023,7 +1024,7 @@ EOF
 
     # Security_Options
     if ($request_method ~ ^(HEAD|POST|TRACE|TRACK|OPTIONS|PUT)$) { 
-	return 405; 
+        return 405; 
     }
 
     # Directories
