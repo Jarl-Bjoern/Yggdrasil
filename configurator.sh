@@ -528,7 +528,7 @@ if [[ $Switch_Skip_Hardening != true ]]; then
                 echo -e "\n             Please select an IP address to be used\n                     for SSH configuration"
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
                 sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/nic.py"
-                echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
+                echo -e "\n${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
                 read -rp "Your Choice: " IP_TEMP
                 if [[ ${#IP_TEMP} -gt 0 ]]; then
                         LEN_CHECK=$(ip a | grep "$IP_TEMP")
