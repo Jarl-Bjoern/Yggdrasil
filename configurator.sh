@@ -870,7 +870,7 @@ EOF
         fi
 
         # GIT_Updater_Configuration
-        if [[ ! $(ls $OPT_Path/"update.info") ]]; then
+        if [[ ! $(ls $OPT_Path/"update.info" 2>/dev/null) ]]; then
                 echo "" > $OPT_Path/update.info
         fi
         for git_tool in "${Array_GIT_Updater[@]}"; do
