@@ -538,41 +538,43 @@ else
 fi
 
 # Settings_Configuration
-header "settings"
-read -rp "Your Choice: " custom_settings
-if [[ $custom_settings =~ "," ]]; then
-        readarray -td, Array_Custom_Settings <<< "$custom_settings", declare -p Array_Custom_Settings
-        for Cust_Setting in "${Array_Custom_Settings[@]}"; do
-                if [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]];  then
-                        Switch_UPDATES=true
-                elif [[ $Cust_Setting = "alias" || $Cust_Setting = "3" ]];  then
-                        Switch_CUSTOM_CONFIGS=true
-                elif [[ $Cust_Setting = "screenrc" || $Cust_Setting = "4" ]];  then
-                        Switch_SCREENRC=true
-                elif [[ $Cust_Setting = "vim" || $Cust_Setting = "5" ]];  then
-                        Switch_VIM_CONFIG=true
-                elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]];  then
-                        Switch_REPO=true
-                fi
-        done
-else
-        if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
-                Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true
-        elif [[ $custom_settings = "updates" || $custom_settings = "2" ]];  then
-                Switch_UPDATES=true
-        elif [[ $custom_settings = "alias" || $custom_settings = "3" ]];  then
-                Switch_CUSTOM_CONFIGS=true
-        elif [[ $custom_settings = "screenrc" || $custom_settings = "4" ]];  then
-                Switch_SCREENRC=true
-        elif [[ $custom_settings = "vim" || $custom_settings = "5" ]];  then
-                Switch_VIM_CONFIG=true
-        elif [[ $custom_settings = "repo" || $custom_settings = "6" ]];  then
-                Switch_REPO=true
+if [[ $Switch_Skip_Configs != true ]]; then
+        header "settings"
+        read -rp "Your Choice: " custom_settings
+        if [[ $custom_settings =~ "," ]]; then
+                readarray -td, Array_Custom_Settings <<< "$custom_settings", declare -p Array_Custom_Settings
+                for Cust_Setting in "${Array_Custom_Settings[@]}"; do
+                        if [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]];  then
+                                Switch_UPDATES=true
+                        elif [[ $Cust_Setting = "alias" || $Cust_Setting = "3" ]];  then
+                                Switch_CUSTOM_CONFIGS=true
+                        elif [[ $Cust_Setting = "screenrc" || $Cust_Setting = "4" ]];  then
+                                Switch_SCREENRC=true
+                        elif [[ $Cust_Setting = "vim" || $Cust_Setting = "5" ]];  then
+                                Switch_VIM_CONFIG=true
+                        elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]];  then
+                                Switch_REPO=true
+                        fi
+                done
         else
-                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+                if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
+                        Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true
+                elif [[ $custom_settings = "updates" || $custom_settings = "2" ]];  then
+                        Switch_UPDATES=true
+                elif [[ $custom_settings = "alias" || $custom_settings = "3" ]];  then
+                        Switch_CUSTOM_CONFIGS=true
+                elif [[ $custom_settings = "screenrc" || $custom_settings = "4" ]];  then
+                        Switch_SCREENRC=true
+                elif [[ $custom_settings = "vim" || $custom_settings = "5" ]];  then
+                        Switch_VIM_CONFIG=true
+                elif [[ $custom_settings = "repo" || $custom_settings = "6" ]];  then
+                        Switch_REPO=true
+                else
+                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+                fi
         fi
+        clearing
 fi
-clearing
 
 # Basic_Configuration
 if [[ $(grep "PRETTY_NAME" /etc/os-release | cut -d '"' -f2) =~ "Kali" ]]; then
