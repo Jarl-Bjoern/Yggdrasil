@@ -92,6 +92,7 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 - [Using the automated variant](#automated_install)
 - [Customize your installation](#custom_install)
   - [Method Example](#method_install)
+  - [Build from scratch](#custom_install_II)
   - [Custom Directory Example](#directory_install)
 
 <a name="download_install"></a>
@@ -349,6 +350,7 @@ For example, when you arrive at the ***Wget*** section, you need to see that the
 URL Name Method
 ```
 
+<a name="method_install"></a>
 ## The following methods are available:
 ### Archive
 With the ***Archive*** argument you specify that you are downloading an archive, which is then loaded into the provided Python script and unpacked.
@@ -375,8 +377,8 @@ The ***Installer*** argument specifies that you download an installation package
 https://sh.rustup.rs rust Installer
 ```
 
-<a name="method_install"></a>
-## Custom Install
+<a name="custom_install_II"></a>
+## Build from scratch
 You can also build the file from scratch yourself. To do this, navigate to the directory ***Config/Linux/Custom*** and edit the file ***install.txt***
 ```bash
 # APT
@@ -398,6 +400,7 @@ You can also build the file from scratch yourself. To do this, navigate to the d
 # Wordlists
 ```
 
+<a name="customized_scripts"></a>
 ## Include Customized Scripts
 In addition, it is also possible that you can place your own scripts or packages in the ***Custom*** directory and use them in the installation script.
 
