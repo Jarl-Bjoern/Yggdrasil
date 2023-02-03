@@ -891,7 +891,7 @@ fi
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
         if [[ $category_type = "pentest" || $category_type = "4" ]];  then
                 ln -sf "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
-        fi 
+        fi
         if [[ -f $OPT_Path/$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
                 if [[ $Switch_License == true ]]; then
                         sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
@@ -901,7 +901,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
                 fi
                 for veracrypt_file in $(find $OPT_Path -maxdepth 1 ! -path $OPT_Path | grep "^setup"); do sudo rm -f "$veracrypt_file"; done
         fi
-	
+
         if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")" ]; then
                 TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")
                 "$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
@@ -1013,7 +1013,7 @@ EOF
     ssl_certificate_key /etc/nginx/ssl/pentest-key.pem;
     ssl_session_timeout 10m;
     ssl_session_cache off;
-    
+
     # Cipher_Suites
     ssl_ciphers ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384;
     ssl_prefer_server_ciphers on;
@@ -1031,8 +1031,8 @@ EOF
     add_header X-XSS-Protection "0";
 
     # Security_Options
-    if ($request_method ~ ^(HEAD|POST|TRACE|TRACK|OPTIONS|PUT)$) { 
-        return 405; 
+    if ($request_method ~ ^(HEAD|POST|TRACE|TRACK|OPTIONS|PUT)$) {
+        return 405;
     }
 
     # Directories
