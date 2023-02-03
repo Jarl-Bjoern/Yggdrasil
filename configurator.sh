@@ -323,7 +323,7 @@ function File_Installer() {
                                                                 REST_OF_FILE="$(echo "$CHECK_FILE" | tr '/' ' ')"
                                                                 TEMP_DIRECTORY=""
                                                                 for i in $REST_OF_FILE; do if [[ "$i" != "$SEARCH_PATTERN" ]]; then TEMP_DIRECTORY+="/$i"; fi; done
-                                                                if find "$TEMP_DIRECTORY" -maxdepth 1 ! -path "$TEMP_DIRECTORY" | grep "$SEARCH_PATTERN"; then
+                                                                if find "$TEMP_DIRECTORY" -maxdepth 1 ! -path "$TEMP_DIRECTORY" | grep -q "$SEARCH_PATTERN"; then
                                                                         Switch_IGNORE=true
                                                                         break
                                                                 fi
