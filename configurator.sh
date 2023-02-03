@@ -318,9 +318,20 @@ function File_Installer() {
                                         echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
                                         for CHECK_FILE in "${Array_Filter_Download[@]}"; do
                                                 if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
-                                                        if [[ $(ls "$CHECK_FILE") ]]; then
-                                                                Switch_IGNORE=true
-                                                                break
+                                                        if [[ "$CHECK_FILE" =~ "*" ]]; then
+                                                                SEARCH_PATTERN="$(echo "$CHECK_FILE" | rev | cut -d '/' -f1 | rev)"
+                                                                REST_OF_FILE="$(echo "$CHECK_FILE" | tr '/' ' ')"
+                                                                TEMP_DIRECTORY=""
+                                                                for i in $REST_OF_FILE; do if [[ "$i" != "$SEARCH_PATTERN" ]]; then TEMP_DIRECTORY+="/$i"; fi; done
+                                                                if find "$TEMP_DIRECTORY" -maxdepth 1 ! -path "$TEMP_DIRECTORY" | grep "$SEARCH_PATTERN"; then
+                                                                        Switch_IGNORE=true
+                                                                        break
+                                                                fi
+                                                        else
+                                                                if [[ $(ls "$CHECK_FILE") ]]; then
+                                                                        Switch_IGNORE=true
+                                                                        break
+                                                                fi
                                                         fi
                                                 fi
                                         done
