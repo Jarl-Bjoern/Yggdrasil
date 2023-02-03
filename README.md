@@ -121,44 +121,54 @@ usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] 
 optional arguments:
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
                         This parameter is required to accept licenses.
-                        
+
                         Licenses:
                           - Veracrypt
-                        
+
                         ---------------------------------------------------------------
   -aW ADD_WORKSPACE, --add-workspace ADD_WORKSPACE
                         This parameter specifies your default workspace location.
-                        
+
                         Default: /opt/workspace
 
                         ---------------------------------------------------------------
  -hN HOST_NAME, --host-name HOST_NAME
                         This parameter specifies the hostname of the kali machine.
-                        
+
                         Default: pentest-kali
-                        
+
                         ---------------------------------------------------------------
   -p PATH, --path PATH  This parameter specifies the target path of your custom tools.
-                        
+
                         Example:
                           -  python3 yggdrasil.py -p /opt/yggdrasil/Custom
-                          
+
                         ---------------------------------------------------------------
-  -s [SKIP], --skip [SKIP]
+  -sH [SKIP__HARDENING], --skip--hardening [SKIP__HARDENING]
                         This parameter skips the hardening part.
-                        
+
                         Hardening:
                           - Firewall
                           - Operating System
                           - SSH
                           - Apache
                           - nginx
-                        
-                        ---------------------------------------------------------------
-  -h, --help            Show this help message and exit.
-                        
-                        ---------------------------------------------------------------
 
+                        -------------------------------------------------------------------------------------
+
+  -sC [SKIP__CONFIG], --skip--config [SKIP__CONFIG]
+                        This parameter skips the configs part.
+
+                        Best practice settings:
+                          - Automated Updates (APT|Docker|Git Packages|Pip)
+                          - Custom Configs (alias|bashrc|zshrc)
+                          - screenrc
+                          - vim
+                          - repo-change (rolling-release to last-snapshot)
+
+  -h, --help            Show this help message and exit.
+
+                        ---------------------------------------------------------------
 ```
 
 <a name="category_install"></a>
