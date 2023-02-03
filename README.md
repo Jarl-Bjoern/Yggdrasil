@@ -13,6 +13,7 @@ This tool is intended to simplify the setup of various tools and configuration o
 Upcoming changes for version ***0.9***
   - new menu for the best practice settings like vim configuration, crontab etc.
   - automated updater for the git tools
+  - colorized information after the installation
   - manual update alias for the installed git tools and microcode update
   - added automated shredding task after 90 days for data privacy
   - updated README
