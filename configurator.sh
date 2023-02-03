@@ -624,19 +624,11 @@ fi
 
 # Path_Filtering
 for i in $(find /home -maxdepth 1 | grep -v -E "/home|lost+found") "/root"; do
-#        if [[ ! ($i = "/root") ]]; then
         PATH_BSH="$i/.bashrc"
         PATH_SCREEN="$i/.screenrc"
         PATH_ALIAS="$i/.bash_aliases"
         PATH_VIM="$i/.vimrc"
         PATH_ZSH="$i/.zshrc"
-#        else
-#		PATH_BSH="/root/.bashrc"
- #               PATH_SCREEN="/root/.screenrc"
-#		PATH_ALIAS="/root/.bash_aliases"
-#		PATH_VIM="/root/.vimrc"
-#		PATH_ZSH="/root/.zshrc"
-#        fi
 
         if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
                 # ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
