@@ -257,72 +257,72 @@ function File_Installer() {
                 fi
         }
 
-	input=$1
-	while IFS= read -r line
-	do
-		if [[ $line = "# APT" ]]; then
-			Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false
-		elif [[ $line = "# Cargo" ]]; then
-			Command="sudo cargo install" ; Skip=true ; Switch_WGET=false
-		elif [[ $line = "# Docker" ]]; then
-			Command="docker pull" ; Skip=true ; Switch_WGET=false
-		elif [[ $line = "# Python" ]]; then
-			Command="pip3 install" ; Skip=true ; Switch_WGET=false
-		elif [[ $line = "# Git" ]]; then
-			Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
-		elif [[ $line = "# Gem" ]]; then
-			Command="gem install" ; Skip=true ; Switch_WGET=false
-		elif [[ $line = "# Go" ]]; then
-			Command="go get" ; Skip=true ; Switch_WGET=false
-		elif [[ $line = "# Wordlists" ]]; then
-			Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists || return 0 ; Switch_WGET=false
-		elif [[ $line = "# Wget" ]]; then
-			Switch_WGET=true
-		else
-			if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
-				if [ "$Switch_WGET" = false ]; then
-					if [[ $line =~ "github" ]]; then
-						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-						for CHECK_GIT in "${Array_Filter_Git[@]}"; do
-							if [[ $CHECK_GIT =~ $(echo "$line" | cut -d "/" -f5) ]]; then
-								if [[ -d $CHECK_GIT ]]; then
-									Switch_IGNORE=true
-									break
-								fi
-							fi
-						done
-					else
-						echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-					fi
-					if [ "$Switch_Skip" = true ]; then
-						if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
-							echo "$line was skipped" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-						else
-							if [[ $Switch_IGNORE = false ]]; then
-								eval "$Command $line" ; Logger "$Command" "$line"
-							else
-								echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-							fi
-						fi
-					else
-						if [[ $Switch_IGNORE = false ]]; then
-							eval "$Command $line" ; Logger "$Command" "$line"
-						else
-							echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-						fi
-					fi
-				else
-					FILE=$(echo "$line" | cut -d" " -f1)
-					FILE_NAME=$(echo "$line" | cut -d" " -f2)
-					echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-					for CHECK_FILE in "${Array_Filter_Download[@]}"; do
-						if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
-							if [[ $(ls "$CHECK_FILE") ]]; then
-								Switch_IGNORE=true
-								break
-							fi
-						fi
-					done
+        input=$1
+        while IFS= read -r line
+        do
+                if [[ $line = "# APT" ]]; then
+                        Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false
+                elif [[ $line = "# Cargo" ]]; then
+                        Command="sudo cargo install" ; Skip=true ; Switch_WGET=false
+                elif [[ $line = "# Docker" ]]; then
+                        Command="docker pull" ; Skip=true ; Switch_WGET=false
+                elif [[ $line = "# Python" ]]; then
+                        Command="pip3 install" ; Skip=true ; Switch_WGET=false
+                elif [[ $line = "# Git" ]]; then
+                        Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
+                elif [[ $line = "# Gem" ]]; then
+                        Command="gem install" ; Skip=true ; Switch_WGET=false
+                elif [[ $line = "# Go" ]]; then
+                        Command="go get" ; Skip=true ; Switch_WGET=false
+                elif [[ $line = "# Wordlists" ]]; then
+                        Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists || return 0 ; Switch_WGET=false
+                elif [[ $line = "# Wget" ]]; then
+                        Switch_WGET=true
+                else
+                        if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
+                                if [ "$Switch_WGET" = false ]; then
+                                        if [[ $line =~ "github" ]]; then
+                                                echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                for CHECK_GIT in "${Array_Filter_Git[@]}"; do
+                                                        if [[ $CHECK_GIT =~ $(echo "$line" | cut -d "/" -f5) ]]; then
+                                                                if [[ -d $CHECK_GIT ]]; then
+                                                                        Switch_IGNORE=true
+                                                                        break
+                                                                fi
+                                                        fi
+                                                done
+                                        else
+                                                echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                        fi
+                                        if [ "$Switch_Skip" = true ]; then
+                                                if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
+                                                        echo "$line was skipped" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                else
+                                                        if [[ $Switch_IGNORE = false ]]; then
+                                                                eval "$Command $line" ; Logger "$Command" "$line"
+                                                        else
+                                                                echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                        fi
+                                                fi
+                                        else
+                                                if [[ $Switch_IGNORE = false ]]; then
+                                                        eval "$Command $line" ; Logger "$Command" "$line"
+                                                else
+                                                        echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                fi
+                                        fi
+                                else
+                                        FILE=$(echo "$line" | cut -d" " -f1)
+                                        FILE_NAME=$(echo "$line" | cut -d" " -f2)
+                                        echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                        for CHECK_FILE in "${Array_Filter_Download[@]}"; do
+                                                if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
+                                                        if [[ $(ls "$CHECK_FILE") ]]; then
+                                                                Switch_IGNORE=true
+                                                                break
+                                                        fi
+                                                fi
+                                        done
 					if [[ $Switch_IGNORE = false ]]; then
 						MODE=$(echo "$line" | cut -d" " -f3)
 						mkdir -p "$2" ; cd "$2" || return 0
