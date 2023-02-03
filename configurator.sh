@@ -323,67 +323,67 @@ function File_Installer() {
                                                         fi
                                                 fi
                                         done
-					if [[ $Switch_IGNORE = false ]]; then
-						MODE=$(echo "$line" | cut -d" " -f3)
-						mkdir -p "$2" ; cd "$2" || return 0
-						if [ "$MODE" = "Executeable" ]; then
-							mkdir -p "$2"/"$FILE_NAME" ; cd "$2"/"$FILE_NAME" || return 0
-							wget "$FILE" -O "$FILE_NAME"
-							chmod +x "$FILE_NAME" ; cd "$2" || return 0
-						elif [ "$MODE" = "Archive" ]; then
-							wget --content-disposition "$FILE"
-							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
-							if [[ ${#FILE_NAME} -gt 0 ]]; then
-								sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py" "$FILE_NAME" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-							else
-								sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py" "$FILE" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-							fi
-						elif [ "$MODE" = "Installer" ]; then
-							wget --content-disposition "$FILE"
-							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
-							if [[ $FILE_NAME =~ "rustup" ]]; then
-								sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-							else
-								sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-							fi
-						elif [ "$MODE" = "DPKG" ]; then
-							FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
-							if [[ ${#FILE_NAME} -gt 0 ]]; then
-								wget --content-disposition "$FILE"
-								sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-							else
-								FILE_NAME=$(echo "$line" | cut -d" " -f2)
-								wget "$FILE" -O "$FILE_NAME".deb
-								sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2).deb" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-							fi
-						fi
-						Logger "$FILE" "$FILE_NAME"
-					else
-						echo "$FILE_NAME already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-					fi
-				fi
-			fi
-		fi
-		Skip=false
-		Switch_IGNORE=false
-		sleep 0.15
-	done < "$input"
+                                        if [[ $Switch_IGNORE = false ]]; then
+                                                MODE=$(echo "$line" | cut -d" " -f3)
+                                                mkdir -p "$2" ; cd "$2" || return 0
+                                                if [ "$MODE" = "Executeable" ]; then
+                                                        mkdir -p "$2"/"$FILE_NAME" ; cd "$2"/"$FILE_NAME" || return 0
+                                                        wget "$FILE" -O "$FILE_NAME"
+                                                        chmod +x "$FILE_NAME" ; cd "$2" || return 0
+                                                elif [ "$MODE" = "Archive" ]; then
+                                                        wget --content-disposition "$FILE"
+                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
+                                                        if [[ ${#FILE_NAME} -gt 0 ]]; then
+                                                                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py" "$FILE_NAME" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                        else
+                                                                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py" "$FILE" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                        fi
+                                                elif [ "$MODE" = "Installer" ]; then
+                                                        wget --content-disposition "$FILE"
+                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
+                                                        if [[ $FILE_NAME =~ "rustup" ]]; then
+                                                                sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                        else
+                                                                sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                        fi
+                                                elif [ "$MODE" = "DPKG" ]; then
+                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
+                                                        if [[ ${#FILE_NAME} -gt 0 ]]; then
+                                                                wget --content-disposition "$FILE"
+                                                                sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                        else
+                                                                FILE_NAME=$(echo "$line" | cut -d" " -f2)
+                                                                wget "$FILE" -O "$FILE_NAME".deb
+                                                                sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2).deb" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                        fi
+                                        fi
+                                                Logger "$FILE" "$FILE_NAME"
+                                        else
+                                                echo "$FILE_NAME already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                        fi
+                                fi
+                        fi
+                fi
+                Skip=false
+                Switch_IGNORE=false
+                sleep 0.15
+        done < "$input"
 }
 
 # Checking_Parameters
 for arg; do
-	LEN_ARGV=$(wc -c <<< "$arg")
-	if [[ $arg == "-s" ]]; then
-		Switch_Skip=true
-	elif [[ $arg == "-aL" ]]; then
-		Switch_License=true
-	elif [[ $LEN_ARGV -gt 2 ]]; then
-		if [[ -d $arg ]]; then
-			PATH_Install_Dir=$arg
-		else
-			HOST_Pentest=$arg
-		fi
-	fi
+        LEN_ARGV=$(wc -c <<< "$arg")
+        if [[ $arg == "-s" ]]; then
+                Switch_Skip=true
+        elif [[ $arg == "-aL" ]]; then
+                Switch_License=true
+        elif [[ $LEN_ARGV -gt 2 ]]; then
+                if [[ -d $arg ]]; then
+                        PATH_Install_Dir=$arg
+                else
+                        HOST_Pentest=$arg
+                fi
+        fi
 done
 
 # Category
