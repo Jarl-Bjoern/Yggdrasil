@@ -116,7 +116,7 @@ sudo python3 yggdrasil.py
 <a name="help_install"></a>
 ## Using the help section to see which parameters do we have
 ```python
-usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] [-p PATH] [-s [SKIP]] [-h]
+usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] [-p PATH] [-sH [SKIP_HARDENING]] [-sC [SKIP_CONFIG]] [-h]
 
 optional arguments:
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
@@ -143,8 +143,21 @@ optional arguments:
                         Example:
                           -  python3 yggdrasil.py -p /opt/yggdrasil/Custom
 
+                        -------------------------------------------------------------------------------------
+
+  -sC [SKIP_CONFIG], --skip--config [SKIP__CONFIG]
+                        This parameter skips the configs part.
+
+                        Best practice settings:
+                          - Automated Updates (APT|Docker|Git Packages|Pip)
+                          - Custom Configs (alias|bashrc|zshrc)
+                          - screenrc
+                          - vim
+                          - repo-change (rolling-release to last-snapshot)
+
                         ---------------------------------------------------------------
-  -sH [SKIP__HARDENING], --skip--hardening [SKIP__HARDENING]
+
+  -sH [SKIP_HARDENING], --skip--hardening [SKIP__HARDENING]
                         This parameter skips the hardening part.
 
                         Hardening:
@@ -154,17 +167,7 @@ optional arguments:
                           - Apache
                           - nginx
 
-                        -------------------------------------------------------------------------------------
-
-  -sC [SKIP__CONFIG], --skip--config [SKIP__CONFIG]
-                        This parameter skips the configs part.
-
-                        Best practice settings:
-                          - Automated Updates (APT|Docker|Git Packages|Pip)
-                          - Custom Configs (alias|bashrc|zshrc)
-                          - screenrc
-                          - vim
-                          - repo-change (rolling-release to last-snapshot)
+                        ---------------------------------------------------------------
 
   -h, --help            Show this help message and exit.
 
