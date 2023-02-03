@@ -215,8 +215,8 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}screenrc${NOCOLOR}      :   custom screenrc config                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}vim${NOCOLOR}           :   custom vim config                      ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${PURPLE}6${NOCOLOR}] ${PURPLE}repo${NOCOLOR}          :   kali repository change                 ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}  [${RED}7${NOCOLOR}] ${RED}shredder${NOCOLOR}      :   workspace shredding script             ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}                        (${RED}after 90 days${NOCOLOR})             ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${RED}7${NOCOLOR}] ${RED}shredder${NOCOLOR}      :   workspace file shredding script        ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}                        (${RED}after 90 days${NOCOLOR})                      ${CYAN}|${NOCOLOR}"
         fi
         echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
         echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
