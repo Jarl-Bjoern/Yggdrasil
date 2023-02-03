@@ -156,67 +156,67 @@ NOCOLOR='\033[0m'
 
 # Functions
 function initials {
-        echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
-        echo -e "💀\t\t\t\t\t\t\t\t💀"
-        echo -e "💀\t\t           ${UNDERLINE}Yggdrasil${NOCOLOR}\t\t\t\t💀"
-        echo -e "💀\t\t\t  ${NORANGE}Version ${CYAN}0.9${NOCOLOR}\t\t\t\t💀"
-        echo -e "💀\t\tRainer Christian Bjoern Herold\t\t\t💀"
-        echo -e "💀\t\t\t\t\t\t\t\t💀"
-        echo -e "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n"
+    echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
+    echo -e "💀\t\t\t\t\t\t\t\t💀"
+    echo -e "💀\t\t           ${UNDERLINE}Yggdrasil${NOCOLOR}\t\t\t\t💀"
+    echo -e "💀\t\t\t  ${NORANGE}Version ${CYAN}0.9${NOCOLOR}\t\t\t\t💀"
+    echo -e "💀\t\tRainer Christian Bjoern Herold\t\t\t💀"
+    echo -e "💀\t\t\t\t\t\t\t\t💀"
+    echo -e "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n\n"
 }
 
 function clearing {
-	sleep 2 ; clear ; initials
+    sleep 2 ; clear ; initials
 }
 
 function Change_Hostname {
-	if [[ $(cat /etc/hostname) == "kali" ]]; then
-		sudo sed -i s/"kali/$1"/g /etc/hostname
-	fi
-	sudo sed -i s/"127.0.1.1	kali/127.0.1.1	$1"/g /etc/hosts
+    if [[ $(cat /etc/hostname) == "kali" ]]; then
+        sudo sed -i s/"kali/$1"/g /etc/hostname
+    fi
+    sudo sed -i s/"127.0.1.1	kali/127.0.1.1	$1"/g /etc/hosts
 }
 
 function header() {
-	clear ; initials
-	if [ "$1" = "category" ]; then
-		echo -e "\n              Please choose between one category"
-	elif [ "$1" = "installation" ]; then
-		echo -e "\n              Please choose between one installation"
-	fi
-	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}"
-	echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
-	if [ "$1" = "category" ]; then
-		echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both toolkits           ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :   installation of custom tools            ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools          ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools           ${CYAN}|${NOCOLOR}"
-	elif [ "$1" = "installation" ]; then
-		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full installation (GUI)                ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)             ${CYAN}|${NOCOLOR}"
-	elif [ "$1" = "pentesting_category" ]; then
-		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting          ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting            ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${BLUE}3${NOCOLOR}] ${BLUE}mobile${NOCOLOR}          :   tools for mobile pentesting         ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming               ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting            ${CYAN}|${NOCOLOR}"
-	elif [ "$1" = "hardening" ]; then
-		echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration             ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}Firewall${NOCOLOR}         :   firewall                           ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}      :   sysctl hardening                   ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}              :   SSH hardening                      ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}Apache${NOCOLOR}           :   Apache hardening                   ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx hardening                    ${CYAN}|${NOCOLOR}"
-	elif [ "$1" = "settings" ]; then
-                echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}      :   complete configuration                 ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}updates${NOCOLOR}       :   automated updates                      ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}                        (${CYAN}APT${RED}|${CYAN}Docker${RED}|${CYAN}Git Packages${RED}|${CYAN}Pip${NOCOLOR})          ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}alias${NOCOLOR}         :   custom configs (${GREEN}alias${RED}|${GREEN}.bashrc${RED}|${GREEN}.zshrc${NOCOLOR})  ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}screenrc${NOCOLOR}      :   custom screenrc config                 ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}vim${NOCOLOR}           :   custom vim config                      ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}  [${PURPLE}6${NOCOLOR}] ${PURPLE}repo${NOCOLOR}          :   kali repository change                 ${CYAN}|${NOCOLOR}"
-	fi
-	echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
-	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
+    clear ; initials
+    if [ "$1" = "category" ]; then
+        echo -e "\n              Please choose between one category"
+    elif [ "$1" = "installation" ]; then
+        echo -e "\n              Please choose between one installation"
+    fi
+    echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}"
+    echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
+    if [ "$1" = "category" ]; then
+        echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both toolkits           ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :   installation of custom tools            ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools          ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools           ${CYAN}|${NOCOLOR}"
+    elif [ "$1" = "installation" ]; then
+        echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full installation (GUI)                ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)             ${CYAN}|${NOCOLOR}"
+    elif [ "$1" = "pentesting_category" ]; then
+        echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra pentesting          ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot pentesting            ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${BLUE}3${NOCOLOR}] ${BLUE}mobile${NOCOLOR}          :   tools for mobile pentesting         ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming               ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting            ${CYAN}|${NOCOLOR}"
+    elif [ "$1" = "hardening" ]; then
+        echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration             ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}Firewall${NOCOLOR}         :   firewall                           ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}Sysctl (OS)${NOCOLOR}      :   sysctl hardening                   ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}SSH${NOCOLOR}              :   SSH hardening                      ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}Apache${NOCOLOR}           :   Apache hardening                   ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx hardening                    ${CYAN}|${NOCOLOR}"
+    elif [ "$1" = "settings" ]; then
+        echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}      :   complete configuration                 ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}updates${NOCOLOR}       :   automated updates                      ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}                        (${CYAN}APT${RED}|${CYAN}Docker${RED}|${CYAN}Git Packages${RED}|${CYAN}Pip${NOCOLOR})          ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}alias${NOCOLOR}         :   custom configs (${GREEN}alias${RED}|${GREEN}.bashrc${RED}|${GREEN}.zshrc${NOCOLOR})  ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}screenrc${NOCOLOR}      :   custom screenrc config                 ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}vim${NOCOLOR}           :   custom vim config                      ${CYAN}|${NOCOLOR}"
+        echo -e "${CYAN}|${NOCOLOR}  [${PURPLE}6${NOCOLOR}] ${PURPLE}repo${NOCOLOR}          :   kali repository change                 ${CYAN}|${NOCOLOR}"
+    fi
+    echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
+    echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
 }
 
 function File_Installer() {
