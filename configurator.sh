@@ -462,6 +462,8 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
         Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Custom"
         OPT_Path="/opt/pentest_tools"
+elif [[ $category_type = "complete" || $category_type = "1" ]]; then
+        OPT_Path="/opt/pentest_tools"
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
