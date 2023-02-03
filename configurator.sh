@@ -390,6 +390,7 @@ function File_Reader() {
                         echo -e "{GREEN}$line{NOCOLOR}"
                 else
                         echo -e "{ORANGE}$line{NOCOLOR}"
+                fi
         done < "$input"
 }
 
