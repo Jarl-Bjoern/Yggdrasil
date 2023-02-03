@@ -553,78 +553,78 @@ if [[ $custom_settings =~ "," ]]; then
                 fi
         done
 else
-	if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
-		Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true
-	elif [[ $custom_settings = "updates" || $custom_settings = "2" ]];  then
-		Switch_UPDATES=true
-	elif [[ $custom_settings = "alias" || $custom_settings = "3" ]];  then
-		Switch_CUSTOM_CONFIGS=true
-	elif [[ $custom_settings = "screenrc" || $custom_settings = "4" ]];  then
-		Switch_SCREENRC=true
-	elif [[ $custom_settings = "vim" || $custom_settings = "5" ]];  then
-		Switch_VIM_CONFIG=true
-	elif [[ $custom_settings = "repo" || $custom_settings = "6" ]];  then
-		Switch_REPO=true
-	else
-		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-	fi
+        if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
+                Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true
+        elif [[ $custom_settings = "updates" || $custom_settings = "2" ]];  then
+                Switch_UPDATES=true
+        elif [[ $custom_settings = "alias" || $custom_settings = "3" ]];  then
+                Switch_CUSTOM_CONFIGS=true
+        elif [[ $custom_settings = "screenrc" || $custom_settings = "4" ]];  then
+                Switch_SCREENRC=true
+        elif [[ $custom_settings = "vim" || $custom_settings = "5" ]];  then
+                Switch_VIM_CONFIG=true
+        elif [[ $custom_settings = "repo" || $custom_settings = "6" ]];  then
+                Switch_REPO=true
+        else
+                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+        fi
 fi
 clearing
 
 # Basic_Configuration
 if [[ $(grep "PRETTY_NAME" /etc/os-release | cut -d '"' -f2) =~ "Kali" ]]; then
-	if [[ $Switch_REPO == true ]]; then
-		sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
-	fi
+        if [[ $Switch_REPO == true ]]; then
+                sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
+        fi
 fi
 if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
-	export HISTCONTROL=ignoreboth:erasedups
+        export HISTCONTROL=ignoreboth:erasedups
 fi
 echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 if [[ $Switch_UPDATES == true ]]; then
-	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path"
+        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path"
 fi
 
 # Standard_Installation
 if [[ $Switch_Skip != true ]]; then
-	echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
-	echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
+        echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+        echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 fi
 if [[ $category_type != "custom" && $category_type != "2" ]]; then
-	File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/standard.txt" $OPT_Path
-	if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
-		File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/gui.txt" $OPT_Path
-	fi
+        File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/standard.txt" $OPT_Path
+        if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
+                File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/gui.txt" $OPT_Path
+        fi
 fi
 
 # Tool_Installation
 if [[ $category_type = "complete" || $category_type = "1" ]]; then
-	for i in "${Array_Complete_Install[@]}"; do
-		if [[ $i =~ "Forensic" ]]; then
-			File_Installer "$i" "/opt/forensic_tools"
-		else
-	        	File_Installer "$i" "/opt/pentest_tools"
-		fi
-	done
+        for i in "${Array_Complete_Install[@]}"; do
+                if [[ $i =~ "Forensic" ]]; then
+                        File_Installer "$i" "/opt/forensic_tools"
+                else
+	                File_Installer "$i" "/opt/pentest_tools"
+                fi
+        done
 else
-	if [[ ${#Array_Categories} -gt 0 ]]; then
-		for i in "${Array_Categories[@]}"; do
-			File_Installer "${i}/full.txt" "/opt/pentest_tools"
-		done
-	else
-		File_Installer "$File_Path" "$OPT_Path"
-	fi
+        if [[ ${#Array_Categories} -gt 0 ]]; then
+                for i in "${Array_Categories[@]}"; do
+                        File_Installer "${i}/full.txt" "/opt/pentest_tools"
+                done
+        else
+                File_Installer "$File_Path" "$OPT_Path"
+        fi
 fi
 
 # Path_Filtering
 for i in $(find /home -maxdepth 1 | grep -v -E "/home|lost+found") "/root"; do
 #        if [[ ! ($i = "/root") ]]; then
-	PATH_BSH="$i/.bashrc"
+        PATH_BSH="$i/.bashrc"
         PATH_SCREEN="$i/.screenrc"
-	PATH_ALIAS="$i/.bash_aliases"
-	PATH_VIM="$i/.vimrc"
-	PATH_ZSH="$i/.zshrc"
+        PATH_ALIAS="$i/.bash_aliases"
+        PATH_VIM="$i/.vimrc"
+        PATH_ZSH="$i/.zshrc"
 #        else
 #		PATH_BSH="/root/.bashrc"
  #               PATH_SCREEN="/root/.screenrc"
@@ -633,27 +633,27 @@ for i in $(find /home -maxdepth 1 | grep -v -E "/home|lost+found") "/root"; do
 #		PATH_ZSH="/root/.zshrc"
 #        fi
 
-	if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
-		# ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
-		sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH"
-		sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_ZSH"
-		sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ALIAS"
-		sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_BSH"
-		sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ZSH"
-	fi
+        if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
+                # ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
+                sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH"
+                sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_ZSH"
+                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ALIAS"
+                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_BSH"
+                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ZSH"
+        fi
 
-	if [[ $Switch_SCREENRC == true ]]; then
-		# Screen_Configuration (Thx to @HomeSen)
-		cat <<'EOF' > "$PATH_SCREEN"
+        if [[ $Switch_SCREENRC == true ]]; then
+                # Screen_Configuration (Thx to @HomeSen)
+                cat <<'EOF' > "$PATH_SCREEN"
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
-	fi
+        fi
 
-	if [[ $Switch_VIM_CONFIG == true ]]; then
-		# Vim_Configuration (Thx to @HomeSen)
-		cat <<'EOF' > "$PATH_VIM"
+        if [[ $Switch_VIM_CONFIG == true ]]; then
+                # Vim_Configuration (Thx to @HomeSen)
+                cat <<'EOF' > "$PATH_VIM"
 syntax on
 
 " Uncomment the following to have Vim jump to the last position when
@@ -696,92 +696,92 @@ set statusline+=\ ]
 set statusline+=\
 set statusline+=%p%%
 EOF
-	fi
+        fi
 done
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
-	# Git_Tools_Installation
-	if [ -d "/opt/pentest_tools/chisel" ]; then
-		cd /opt/pentest_tools/chisel || return 0 ; sudo go get ; sudo go build
-	fi
-	if [ -d "/opt/pentest_tools/enum4linux-ng" ]; then
-		sudo pip3 install -r /opt/pentest_tools/enum4linux-ng/requirements.txt
-	fi
-	if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
-		sudo bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
-	fi
-	if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
-		sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
-	fi
-	if [ -d "/opt/pentest_tools/ssh_scan" ]; then
-		cd /opt/pentest_tools/ssh_scan || return 0 ; sudo gem install bundler ; sudo bundle install
-	fi
-	if [ -d "/opt/pentest_tools/socketcand" ]; then
-		cd /opt/pentest_tools/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
-	fi
-	
-	if [ -f "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")" ]; then
-		sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")"
-	fi
-	if [ -d "/opt/pentest_tools/Responder" ]; then
-		pip3 install -r /opt/pentest_tools/Responder/requirements.txt
-	fi
-	if [ -f "/opt/pentest_tools/mitmdump" ]; then
-		cd /opt/pentest_tools || return 0 ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ || return 0 ; mv mitmproxy.sh mitmproxy
-	fi
+        # Git_Tools_Installation
+        if [ -d "/opt/pentest_tools/chisel" ]; then
+                cd /opt/pentest_tools/chisel || return 0 ; sudo go get ; sudo go build
+        fi
+        if [ -d "/opt/pentest_tools/enum4linux-ng" ]; then
+                sudo pip3 install -r /opt/pentest_tools/enum4linux-ng/requirements.txt
+        fi
+        if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
+                sudo bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
+        fi
+        if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
+                sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
+        fi
+        if [ -d "/opt/pentest_tools/ssh_scan" ]; then
+                cd /opt/pentest_tools/ssh_scan || return 0 ; sudo gem install bundler ; sudo bundle install
+        fi
+        if [ -d "/opt/pentest_tools/socketcand" ]; then
+                cd /opt/pentest_tools/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
+        fi
 
-	# Categories_Sort
-	cd /opt/pentest_tools || return 0
-	if [[ $(ls /opt/pentest_tools/{"nmap-erpscan","pysap","PyRFC","SAP_GW_RCE_exploit","SAP_RECON"}) ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/SAP
-		mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP || sudo rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
-	fi
-	if [[ $(ls /opt/pentest_tools/{"drupwn","droopescan","CMSmap","ac-drupal"}) ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Drupal
-		mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal || sudo rm -rf drupwn droopescan CMSmap ac-drupal
-	fi
-	if [[ $(ls /opt/pentest_tools/{"Typo3Scan","T3Scan"}) ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3 || sudo rm -rf Typo3Scan T3Scan
-	fi
-	if [[ $(ls /opt/pentest_tools/{"wpscan","wphunter","WPSeku","Wordpresscan"}) ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Wordpress
-		mv wpscan wphunter Wordpresscan WPSeku /opt/pentest_tools/Webscanner/Wordpress || sudo rm -rf wpscan wphunter Wordpresscan WPSeku
-	fi
-	if [[ $(ls /opt/pentest_tools/{"joomscan","joomlavs"}) ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla || sudo rm -rf joomscan joomlavs
-	fi
-	if [[ $(ls /opt/pentest_tools/{"moodlescan","mooscan","badmoodle"}) ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle
-		mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle || sudo rm -rf moodlescan badmoodle mooscan
-	fi
-	if [[ $(ls /opt/pentest_tools/{"chisel","mitmproxy","mitm_relay","proxychains-ng"}) ]]; then
-		sudo mkdir -p /opt/pentest_tools/Proxy
-		mv chisel mitmproxy mitm_relay proxychains-ng /opt/pentest_tools/Proxy || sudo rm -rf chisel mitmproxy mitm_relay proxychains-ng
-	fi
-	if [[ $(ls /opt/pentest_tools/{"SIPTools","sipvicious","viproy-voipkit"}) ]]; then
-		sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit sipvicious SIPTools /opt/pentest_tools/SIP || sudo rm -rf viproy-voipkit sipvicious SIPTools
-	fi
-	if [[ $(ls /opt/pentest_tools/{"ffuf","wfuzz"}) ]]; then
-		sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv ffuf wfuzz /opt/pentest_tools/Fuzzer || sudo rm -rf ffuf wfuzz
-	fi
-	if [[ -d "/opt/pentest_tools/plown" ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone || sudo rm -rf plown
-	fi
-	if [[ -d "/opt/pentest_tools/LiferayScan" ]]; then
-		sudo mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv LiferayScan /opt/pentest_tools/Webscanner/Liferay || sudo rm -rf LiferayScan
-	fi
+        if [ -f "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")" ]; then
+                sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")"
+        fi
+        if [ -d "/opt/pentest_tools/Responder" ]; then
+                pip3 install -r /opt/pentest_tools/Responder/requirements.txt
+        fi
+        if [ -f "/opt/pentest_tools/mitmdump" ]; then
+                cd /opt/pentest_tools || return 0 ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ || return 0 ; mv mitmproxy.sh mitmproxy
+        fi
 
-	# Metasploit_Configuration
-	sudo systemctl enable --now postgresql
-	sudo msfdb init
+        # Categories_Sort
+        cd /opt/pentest_tools || return 0
+        if [[ $(ls /opt/pentest_tools/{"nmap-erpscan","pysap","PyRFC","SAP_GW_RCE_exploit","SAP_RECON"}) ]]; then
+                sudo mkdir -p /opt/pentest_tools/Webscanner/SAP
+                mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP || sudo rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
+        fi
+        if [[ $(ls /opt/pentest_tools/{"drupwn","droopescan","CMSmap","ac-drupal"}) ]]; then
+                sudo mkdir -p /opt/pentest_tools/Webscanner/Drupal
+                mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal || sudo rm -rf drupwn droopescan CMSmap ac-drupal
+        fi
+        if [[ $(ls /opt/pentest_tools/{"Typo3Scan","T3Scan"}) ]]; then
+                sudo mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3 || sudo rm -rf Typo3Scan T3Scan
+        fi
+        if [[ $(ls /opt/pentest_tools/{"wpscan","wphunter","WPSeku","Wordpresscan"}) ]]; then
+                sudo mkdir -p /opt/pentest_tools/Webscanner/Wordpress
+                mv wpscan wphunter Wordpresscan WPSeku /opt/pentest_tools/Webscanner/Wordpress || sudo rm -rf wpscan wphunter Wordpresscan WPSeku
+        fi
+        if [[ $(ls /opt/pentest_tools/{"joomscan","joomlavs"}) ]]; then
+                sudo mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla || sudo rm -rf joomscan joomlavs
+        fi
+        if [[ $(ls /opt/pentest_tools/{"moodlescan","mooscan","badmoodle"}) ]]; then
+                sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle
+                mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle || sudo rm -rf moodlescan badmoodle mooscan
+        fi
+        if [[ $(ls /opt/pentest_tools/{"chisel","mitmproxy","mitm_relay","proxychains-ng"}) ]]; then
+                sudo mkdir -p /opt/pentest_tools/Proxy
+                mv chisel mitmproxy mitm_relay proxychains-ng /opt/pentest_tools/Proxy || sudo rm -rf chisel mitmproxy mitm_relay proxychains-ng
+        fi
+        if [[ $(ls /opt/pentest_tools/{"SIPTools","sipvicious","viproy-voipkit"}) ]]; then
+                sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit sipvicious SIPTools /opt/pentest_tools/SIP || sudo rm -rf viproy-voipkit sipvicious SIPTools
+        fi
+        if [[ $(ls /opt/pentest_tools/{"ffuf","wfuzz"}) ]]; then
+                sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv ffuf wfuzz /opt/pentest_tools/Fuzzer || sudo rm -rf ffuf wfuzz
+        fi
+        if [[ -d "/opt/pentest_tools/plown" ]]; then
+                sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone || sudo rm -rf plown
+        fi
+        if [[ -d "/opt/pentest_tools/LiferayScan" ]]; then
+                sudo mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv LiferayScan /opt/pentest_tools/Webscanner/Liferay || sudo rm -rf LiferayScan
+        fi
 
-	# Linking_Local_Wordlists
-	ln -s /usr/share/wordlists /opt/wordlists/kali_wordlists
+        # Metasploit_Configuration
+        sudo systemctl enable --now postgresql
+        sudo msfdb init
 
-	# Custom_Wordlist
-	if [[ ! -f "/opt/wordlists/tomcat-directories.txt" ]]; then
-		# Copied from https://gist.github.com/KINGSABRI/277e01a9b03ea7643efef8d5747c8f16/tomcat-directory.list
-		cat <<'EOF' > /opt/wordlists/tomcat-directories.txt
+        # Linking_Local_Wordlists
+        ln -s /usr/share/wordlists /opt/wordlists/kali_wordlists
+
+        # Custom_Wordlist
+        if [[ ! -f "/opt/wordlists/tomcat-directories.txt" ]]; then
+                # Copied from https://gist.github.com/KINGSABRI/277e01a9b03ea7643efef8d5747c8f16/tomcat-directory.list
+                cat <<'EOF' > /opt/wordlists/tomcat-directories.txt
 /admin
 /admin-console
 /docs/
@@ -862,73 +862,73 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 /webdav/servlet/org.apache.catalina.servlets.WebdavServlet/
 /webdav/servlet/webdav/
 EOF
-	fi
+        fi
 
-	# GIT_Updater_Configuration
-	if [[ ! $(ls $OPT_Path/"update.info") ]]; then
-		echo "" > $OPT_Path/update.info
-	fi
-	for git_tool in "${Array_GIT_Updater[@]}"; do
-		if [[ ! $(grep "$git_tool" "$OPT_Path/update.info") =~ $git_tool ]]; then
-			find $OPT_Path -name "$git_tool" | head -n 1 >> $OPT_Path/update.info
-		fi
-	done
-	for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
-		if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
-			echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
-		fi
-	done
+        # GIT_Updater_Configuration
+        if [[ ! $(ls $OPT_Path/"update.info") ]]; then
+                echo "" > $OPT_Path/update.info
+        fi
+        for git_tool in "${Array_GIT_Updater[@]}"; do
+                if [[ ! $(grep "$git_tool" "$OPT_Path/update.info") =~ $git_tool ]]; then
+                        find $OPT_Path -name "$git_tool" | head -n 1 >> $OPT_Path/update.info
+                fi
+        done
+        for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
+                if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
+                        echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
+                fi
+        done
 fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
-	if [[ $category_type = "pentest" || $category_type = "4" ]];  then
-		ln -s "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
-	fi 
-	if [[ -f $OPT_Path/$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
-		if [[ $Switch_License == true ]]; then
-			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
-		else
-			sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
+        if [[ $category_type = "pentest" || $category_type = "4" ]];  then
+                ln -s "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
+        fi 
+        if [[ -f $OPT_Path/$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
+                if [[ $Switch_License == true ]]; then
+                        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
+                else
+                        sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
 #			sudo bash ${FULL_PATH::-${#SCRIPT_NAME}}/"$OPT_Path"/$(ls "$OPT_Path" | grep setup-gui-x64)
-		fi
-		for veracrypt_file in $(find $OPT_Path -maxdepth 1 ! -path $OPT_Path | grep "^setup"); do sudo rm -f "$veracrypt_file"; done
-	fi
+                fi
+                for veracrypt_file in $(find $OPT_Path -maxdepth 1 ! -path $OPT_Path | grep "^setup"); do sudo rm -f "$veracrypt_file"; done
+        fi
 	
-	if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")" ]; then
-		TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")
-		"$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
-	fi
-	if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
-		sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py" "$PATH_Install_Dir"
-	fi
+        if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")" ]; then
+                TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")
+                "$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
+        fi
+        if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
+                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py" "$PATH_Install_Dir"
+        fi
 fi
 
 if [[ $Switch_Skip != true ]]; then
-	if [[ $Switch_Hardening = true ]]; then
-		for i in "${Array_HARDENING[@]}"; do
-			if [[ $i =~ "#" ]]; then
-				LEN_SYSCTL=$(grep "$i" /etc/sysctl.conf)
-			else
-				LEN_SYSCTL=$(grep "$i" /etc/sysctl.conf | grep -v '#')
-			fi
-			if [[ ! ${#LEN_SYSCTL} -gt 0 ]]; then
-				cat <<EOF >> /etc/sysctl.conf
+        if [[ $Switch_Hardening = true ]]; then
+                for i in "${Array_HARDENING[@]}"; do
+                        if [[ $i =~ "#" ]]; then
+                                LEN_SYSCTL=$(grep "$i" /etc/sysctl.conf)
+                        else
+                                LEN_SYSCTL=$(grep "$i" /etc/sysctl.conf | grep -v '#')
+                        fi
+                        if [[ ! ${#LEN_SYSCTL} -gt 0 ]]; then
+                                cat <<EOF >> /etc/sysctl.conf
 $i
 EOF
-			fi
-		done
-		sudo sysctl --system
-	fi
+                        fi
+                done
+                sudo sysctl --system
+        fi
 
-	# Apache_Configuration
-	if [[ $Switch_APACHE = true ]]; then
-		if [[ $(apt-cache policy apache2 | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
-			sudo a2enmod headers rewrite ssl ; sudo sed -i "s/Listen 80/#Listen 80/g" /etc/apache2/ports.conf ; sudo rm -f /var/www/html/index.html ; sudo mkdir -p /etc/apache2/ssl
-			sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
-			sudo sed -i "s/Options FollowSymLinks/Options None/g" /etc/apache2/apache2.conf
-			sudo sed -i "s/Options Indexes FollowSymLinks/Options None/g" /etc/apache2/apache2.conf
-			if ! grep -qE "ServerSignature Off|ServerTokens Prod|TraceEnable off|FileETag None" /etc/apache2/apache2.conf; then
-				cat <<EOF >> /etc/apache2/apache2.conf
+        # Apache_Configuration
+        if [[ $Switch_APACHE = true ]]; then
+                if [[ $(apt-cache policy apache2 | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
+                        sudo a2enmod headers rewrite ssl ; sudo sed -i "s/Listen 80/#Listen 80/g" /etc/apache2/ports.conf ; sudo rm -f /var/www/html/index.html ; sudo mkdir -p /etc/apache2/ssl
+                        sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
+                        sudo sed -i "s/Options FollowSymLinks/Options None/g" /etc/apache2/apache2.conf
+                        sudo sed -i "s/Options Indexes FollowSymLinks/Options None/g" /etc/apache2/apache2.conf
+                        if ! grep -qE "ServerSignature Off|ServerTokens Prod|TraceEnable off|FileETag None" /etc/apache2/apache2.conf; then
+                                cat <<EOF >> /etc/apache2/apache2.conf
 # Method_Options
 TraceEnable off
 
@@ -937,11 +937,11 @@ FileETag None
 ServerSignature Off
 ServerTokens Prod
 EOF
-			fi
-			cat <<EOF > /etc/apache2/sites-available/001-pentest.conf
+                        fi
+                        cat <<EOF > /etc/apache2/sites-available/001-pentest.conf
 <VirtualHost $IP_INT:443>
 EOF
-			cat <<'EOF' >> /etc/apache2/sites-available/001-pentest.conf
+                        cat <<'EOF' >> /etc/apache2/sites-available/001-pentest.conf
         DocumentRoot /var/www/html
 
         # SSL_Config
@@ -983,23 +983,23 @@ EOF
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF
-			cd /etc/apache2/sites-available || return 0 ; a2ensite 001-pentest.conf
-		fi
-	fi
+                        cd /etc/apache2/sites-available || return 0 ; a2ensite 001-pentest.conf
+                fi
+        fi
 
 	# nginx_Configuration
-	if [[ $Switch_NGINX = true ]]; then
-		if [[ $(apt-cache policy nginx | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
-			sudo rm -f /usr/share/nginx/html/index.html /var/www/html/index.nginx-debian.html ; sudo sed -i "s/# server_tokens off;/server_tokens off;/g" /etc/nginx/nginx.conf
-			sudo mkdir -p /etc/nginx/ssl
-			sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/nginx/ssl/pentest-key.pem -out /etc/nginx/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
-			sudo sed -i "s/ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/ssl_protocols TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/g" /etc/nginx/nginx.conf
-			cat <<EOF > /etc/nginx/conf.d/001-pentest.conf
+        if [[ $Switch_NGINX = true ]]; then
+                if [[ $(apt-cache policy nginx | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
+                        sudo rm -f /usr/share/nginx/html/index.html /var/www/html/index.nginx-debian.html ; sudo sed -i "s/# server_tokens off;/server_tokens off;/g" /etc/nginx/nginx.conf
+                        sudo mkdir -p /etc/nginx/ssl
+                        sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/nginx/ssl/pentest-key.pem -out /etc/nginx/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
+                        sudo sed -i "s/ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/ssl_protocols TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE/g" /etc/nginx/nginx.conf
+                        cat <<EOF > /etc/nginx/conf.d/001-pentest.conf
 server {
     listen $IP_INT:443 ssl http2;
 
 EOF
-			cat <<'EOF' >> /etc/nginx/conf.d/001-pentest.conf
+                        cat <<'EOF' >> /etc/nginx/conf.d/001-pentest.conf
     # SSL_Options
     ssl_certificate /etc/nginx/ssl/pentest-cert.pem;
     ssl_certificate_key /etc/nginx/ssl/pentest-key.pem;
@@ -1033,23 +1033,23 @@ EOF
     }
 }
 EOF
-		fi
-	fi
+                fi
+        fi
 
-	# Firewall_Configuration
-	if [[ $Switch_Firewall = true ]]; then
-		if [ -f /etc/iptables/rules.v4 ]; then
-			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/iptables/rules.v4"
-			sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
-			sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
-			sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
-			cat <<EOF >> /etc/iptables/rules.v4
+        # Firewall_Configuration
+        if [[ $Switch_Firewall = true ]]; then
+                if [ -f /etc/iptables/rules.v4 ]; then
+                        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/iptables/rules.v4"
+                        sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
+                        sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
+                        sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
+                        cat <<EOF >> /etc/iptables/rules.v4
 # Commit all changes
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
-		else
-			cat <<EOF > /etc/iptables/rules.v4
+                else
+                        cat <<EOF > /etc/iptables/rules.v4
 # /etc/iptables/rules.v4:
 # Generated by ip4tables-save on $(date +'%m/%d/%Y %H:%M:%S')
 *filter
@@ -1070,20 +1070,20 @@ EOF
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
-		fi
+                fi
 
-		if [ -f /etc/iptables/rules.v6 ]; then
-			sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/iptables/rules.v6"
-			sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
-			sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
-			sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
-			cat <<EOF >> /etc/iptables/rules.v6
+                if [ -f /etc/iptables/rules.v6 ]; then
+                        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/iptables/rules.v6"
+                        sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
+                        sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
+                        sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
+                        cat <<EOF >> /etc/iptables/rules.v6
 # Commit all changes
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
-		else
-			cat <<EOF > /etc/iptables/rules.v6
+                else
+                        cat <<EOF > /etc/iptables/rules.v6
 # /etc/iptables/rules.v6:
 # Generated by ip6tables-save on $(date +'%m/%d/%Y %H:%M:%S')
 *filter
@@ -1120,62 +1120,62 @@ EOF
 COMMIT
 # Completed on $(date +'%m/%d/%Y %H:%M:%S')
 EOF
-		fi
-		sudo chmod 0600 /etc/iptables/*
-		sudo systemctl enable --now netfilter-persistent.service
-	fi
+                fi
+                sudo chmod 0600 /etc/iptables/*
+                sudo systemctl enable --now netfilter-persistent.service
+        fi
 
-	# SSH_Configuration
-	if [[ $Switch_SSH = true ]]; then
-		sudo sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
-		sudo sed -i "s/#LogLevel INFO/LogLevel VERBOSE/g" /etc/ssh/sshd_config
-		sudo sed -i "s/#MaxAuthTries 6/MaxAuthTries 6/g" /etc/ssh/sshd_config
-		sudo sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
-		sudo sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
-		sudo sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
-		if ! grep -q "DebianBanner no" /etc/ssh/sshd_config; then
-			cat <<EOF >> /etc/ssh/sshd_config
+        # SSH_Configuration
+        if [[ $Switch_SSH = true ]]; then
+                sudo sed -i "s/#ListenAddress 0.0.0.0/ListenAddress $IP_INT:22/g" /etc/ssh/sshd_config
+                sudo sed -i "s/#LogLevel INFO/LogLevel VERBOSE/g" /etc/ssh/sshd_config
+                sudo sed -i "s/#MaxAuthTries 6/MaxAuthTries 6/g" /etc/ssh/sshd_config
+                sudo sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
+                sudo sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
+                sudo sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
+                if ! grep -q "DebianBanner no" /etc/ssh/sshd_config; then
+                        cat <<EOF >> /etc/ssh/sshd_config
 
 # Disable OS-Banner
 DebianBanner no
 
 EOF
-		fi
-		IFS=""
-		for Cipher in "${Array_SSH_Ciphers[@]}"; do
-			if ! grep -qe "$Cipher" /etc/ssh/sshd_config; then
-				cat <<EOF >> /etc/ssh/sshd_config
+                fi
+                IFS=""
+                for Cipher in "${Array_SSH_Ciphers[@]}"; do
+                        if ! grep -qe "$Cipher" /etc/ssh/sshd_config; then
+                                cat <<EOF >> /etc/ssh/sshd_config
 $Cipher
 EOF
-			fi
-		done
-		sudo systemctl restart ssh.service
-	fi
+                        fi
+                done
+                sudo systemctl restart ssh.service
+        fi
 fi
 
 # Unpacking_Rockyou
 if [ -f "/usr/share/wordlists/rockyou.txt.gz" ]; then
-	sudo gunzip /usr/share/wordlists/rockyou.txt.gz
+        sudo gunzip /usr/share/wordlists/rockyou.txt.gz
 fi
 
 # Docker_Standard_Images
 if grep -q nessus "$File_Path"; then
-	if docker ps -a | grep -q nessus; then
-		NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
-		sudo docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; sudo docker rm "$NESSUS_DOCKER_TEMP"
-	fi
-	sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
+        if docker ps -a | grep -q nessus; then
+                NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
+                sudo docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; sudo docker rm "$NESSUS_DOCKER_TEMP"
+        fi
+        sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
 if [[ $category_type = "pentest" || $category_type = "4" ]];  then
-	if [[ $decision = "full" || $decision = "1" ]]; then
-		echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; cat "$Informational"
-	fi
+        if [[ $decision = "full" || $decision = "1" ]]; then
+                echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; cat "$Informational"
+        fi
 fi
 if [[ $category_type = "complete" || $category_type = "1" ]]; then
-	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/forensic_tools
-	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/pentest_tools
+        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/forensic_tools
+        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/pentest_tools
 else
-	sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" "$OPT_Path"
+        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" "$OPT_Path"
 fi
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
