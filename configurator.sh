@@ -404,13 +404,13 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
                 for testing_category in "${Array_Pentesting[@]}"; do
                         if [[ $testing_category = "infrastructure" || $testing_category = "1" ]]; then
                                 Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure")
-                        elif [[ $testing_category = "iot" || $testing_category = "2" ]];  then
+                        elif [[ $testing_category = "iot" || $testing_category = "2" ]]; then
                                 Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT")
-                        elif [[ $testing_category = "mobile" || $testing_category = "3" ]];  then
+                        elif [[ $testing_category = "mobile" || $testing_category = "3" ]]; then
                                 Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile")
-                        elif [[ $testing_category = "red_teaming" || $testing_category = "4" ]];  then
+                        elif [[ $testing_category = "red_teaming" || $testing_category = "4" ]]; then
                                 Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming")
-                        elif [[ $testing_category = "web" || $testing_category = "5" ]];  then
+                        elif [[ $testing_category = "web" || $testing_category = "5" ]]; then
                                 Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web")
                         else
                                 echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
@@ -419,13 +419,13 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
         else
                 if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
                         Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure"
-                elif [[ $pentesting = "iot" || $pentesting = "2" ]];  then
+                elif [[ $pentesting = "iot" || $pentesting = "2" ]]; then
                         Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT"
-                elif [[ $pentesting = "mobile" || $pentesting = "3" ]];  then
+                elif [[ $pentesting = "mobile" || $pentesting = "3" ]]; then
                         Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile"
-                elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]];  then
+                elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
                         Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming"
-                elif [[ $pentesting = "web" || $pentesting = "5" ]];  then
+                elif [[ $pentesting = "web" || $pentesting = "5" ]]; then
                         Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web"
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
@@ -459,10 +459,10 @@ else
                         read -rp "Your Choice: " decision
                         if [[ $decision = "full" || $decision = "1" ]]; then
                                 File_Path="${Path_Way}/full.txt"
-                                if [[ $category_type = "pentest" || $category_type = "4" ]];  then
+                                if [[ $category_type = "pentest" || $category_type = "4" ]]; then
                                        Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
                                 fi
-                        elif [[ $decision = "minimal" || $decision = "2" ]];  then
+                        elif [[ $decision = "minimal" || $decision = "2" ]]; then
                                 File_Path="${Path_Way}/minimal.txt"
                         else
                                 echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
@@ -478,42 +478,42 @@ if [[ $Switch_Skip != true ]]; then
         if [[ $hardening =~ "," ]]; then
                 readarray -td, Array_Hardening <<< "$hardening", declare -p Array_Hardening
                 for testing_category in "${Array_Hardening[@]}"; do
-                        if [[ $testing_category = "firewall" || $testing_category = "2" ]];  then
+                        if [[ $testing_category = "firewall" || $testing_category = "2" ]]; then
                                 Switch_Firewall=true
-                        elif [[ $testing_category = "sysctl" || $testing_category = "3" ]];  then
+                        elif [[ $testing_category = "sysctl" || $testing_category = "3" ]]; then
                                 Switch_Hardening=true
-                        elif [[ $testing_category = "ssh" || $testing_category = "4" ]];  then
+                        elif [[ $testing_category = "ssh" || $testing_category = "4" ]]; then
                                 Switch_SSH=true
-                        elif [[ $testing_category = "apache" || $testing_category = "5" ]];  then
+                        elif [[ $testing_category = "apache" || $testing_category = "5" ]]; then
                                 Switch_APACHE=true
-                        elif [[ $testing_category = "nginx" || $testing_category = "6" ]];  then
+                        elif [[ $testing_category = "nginx" || $testing_category = "6" ]]; then
                                 Switch_NGINX=true
                         fi
                 done
         else
                 if [[ $hardening = "complete" || $hardening = "1" ]]; then
                         Switch_Firewall=true ; Switch_Hardening=true ; Switch_SSH=true ; Switch_APACHE=true ; Switch_NGINX=true ; Switch_FTP=true ; Switch_SQUID=true
-                elif [[ $hardening = "firewall" || $hardening = "2" ]];  then
+                elif [[ $hardening = "firewall" || $hardening = "2" ]]; then
                         Switch_Firewall=true
-                elif [[ $hardening = "sysctl" || $hardening = "3" ]];  then
+                elif [[ $hardening = "sysctl" || $hardening = "3" ]]; then
                         Switch_Hardening=true
-                elif [[ $hardening = "ssh" || $hardening = "4" ]];  then
+                elif [[ $hardening = "ssh" || $hardening = "4" ]]; then
                         Switch_SSH=true
-		elif [[ $hardening = "apache" || $hardening = "5" ]];  then
-			Switch_APACHE=true
-		elif [[ $hardening = "nginx" || $hardening = "6" ]];  then
-			Switch_NGINX=true
+                elif [[ $hardening = "apache" || $hardening = "5" ]]; then
+                        Switch_APACHE=true
+                elif [[ $hardening = "nginx" || $hardening = "6" ]]; then
+                        Switch_NGINX=true
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                 fi
-	fi
-	clearing
+        fi
+        clearing
 
-	# SSH_Configuration
+        # SSH_Configuration
         if [[ $Switch_SSH != false ]]; then
                 echo -e "\n             Please select an IP address to be used\n                     for SSH configuration"
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-		sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/nic.py"
+                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/nic.py"
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
                 read -rp "Your Choice: " IP_TEMP
                 if [[ ${#IP_TEMP} -gt 0 ]]; then
@@ -528,30 +528,30 @@ if [[ $Switch_Skip != true ]]; then
                         clearing
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-		fi
-	fi
+                fi
+        fi
 else
-	clearing
+        clearing
 fi
 
 # Settings_Configuration
 header "settings"
 read -rp "Your Choice: " custom_settings
 if [[ $custom_settings =~ "," ]]; then
-	readarray -td, Array_Custom_Settings <<< "$custom_settings", declare -p Array_Custom_Settings
-	for Cust_Setting in "${Array_Custom_Settings[@]}"; do
-		if [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]];  then
-			Switch_UPDATES=true
-		elif [[ $Cust_Setting = "alias" || $Cust_Setting = "3" ]];  then
-			Switch_CUSTOM_CONFIGS=true
-		elif [[ $Cust_Setting = "screenrc" || $Cust_Setting = "4" ]];  then
-			Switch_SCREENRC=true
-		elif [[ $Cust_Setting = "vim" || $Cust_Setting = "5" ]];  then
-			Switch_VIM_CONFIG=true
-		elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]];  then
-			Switch_REPO=true
-		fi
-	done
+        readarray -td, Array_Custom_Settings <<< "$custom_settings", declare -p Array_Custom_Settings
+        for Cust_Setting in "${Array_Custom_Settings[@]}"; do
+                if [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]];  then
+                        Switch_UPDATES=true
+                elif [[ $Cust_Setting = "alias" || $Cust_Setting = "3" ]];  then
+                        Switch_CUSTOM_CONFIGS=true
+                elif [[ $Cust_Setting = "screenrc" || $Cust_Setting = "4" ]];  then
+                        Switch_SCREENRC=true
+                elif [[ $Cust_Setting = "vim" || $Cust_Setting = "5" ]];  then
+                        Switch_VIM_CONFIG=true
+                elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]];  then
+                        Switch_REPO=true
+                fi
+        done
 else
 	if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
 		Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true
