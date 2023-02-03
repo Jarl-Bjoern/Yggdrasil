@@ -24,7 +24,8 @@ Switch_License=false
 Switch_NGINX=false
 Switch_REPO=false
 Switch_SCREENRC=false
-Switch_Skip=false
+Switch_Skip_Configs=false
+Switch_Skip_Hardening=false
 Switch_SQUID=false
 Switch_SSH=false
 Switch_UPDATES=false
@@ -294,7 +295,7 @@ function File_Installer() {
                                         else
                                                 echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
                                         fi
-                                        if [ "$Switch_Skip" = true ]; then
+                                        if [ "$Switch_Skip_Hardening" = true ]; then
                                                 if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
                                                         echo "$line was skipped" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
                                                 else
@@ -373,8 +374,10 @@ function File_Installer() {
 # Checking_Parameters
 for arg; do
         LEN_ARGV=$(wc -c <<< "$arg")
-        if [[ $arg == "-s" ]]; then
-                Switch_Skip=true
+        if [[ $arg == "-sH" ]]; then
+                Switch_Skip_Hardening=true
+        elif [[ $arg == "-sC" ]]; then
+                Switch_Skip_Configs=true
         elif [[ $arg == "-aL" ]]; then
                 Switch_License=true
         elif [[ $LEN_ARGV -gt 2 ]]; then
@@ -472,7 +475,7 @@ else
 fi
 
 # Hardening_Configuration
-if [[ $Switch_Skip != true ]]; then
+if [[ $Switch_Skip_Hardening != true ]]; then
         header "hardening"
         read -rp "Your Choice: " hardening
         if [[ $hardening =~ "," ]]; then
@@ -587,7 +590,7 @@ if [[ $Switch_UPDATES == true ]]; then
 fi
 
 # Standard_Installation
-if [[ $Switch_Skip != true ]]; then
+if [[ $Switch_Skip_Hardening != true ]]; then
         echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
         echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 fi
@@ -903,7 +906,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
         fi
 fi
 
-if [[ $Switch_Skip != true ]]; then
+if [[ $Switch_Skip_Hardening != true ]]; then
         if [[ $Switch_Hardening = true ]]; then
                 for i in "${Array_HARDENING[@]}"; do
                         if [[ $i =~ "#" ]]; then
