@@ -71,7 +71,7 @@ def main():
                 try: makedirs(args.add_workspace)
                 except FileExistsError: pass
 
-                Shredder = f"""0 4     * * *  root for data in $(find "{args.add_workspace}" -maxdepth 1 ! -path "{args.add_workspace}"); do if [[ $(expr $(expr $(date +%s) - $(date -d $(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)) / 86400) -gt 90 ]]; then find """+f"""{args.add_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{args.add_workspace}"""+"""; fi; done"""
+                Shredder = f"""0 4     * * *  root for data in $(find "{args.add_workspace}" -maxdepth 1 ! -path "{args.add_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)")" / 86400) -gt 90 ]]; then find """+f"""{args.add_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{args.add_workspace}"""+"""; fi; done"""
                 with open('/etc/crontab', 'r') as f: Temp_Array = f.read().splitlines()
                 with open('/etc/crontab', 'a') as f:
                     if (Shredder not in Temp_Array): f.write(f'{Shredder}\n')
