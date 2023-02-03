@@ -89,6 +89,7 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
   - [Choose one of the two installation types](#type_install)
   - [Choose between multiple hardening options](#hardening_install)
   - [Configurate your SSH IP-Address](#ssh_install)
+  - [Choose between the provided best practice settings](#best_practice_settings)
 - [Using the automated variant](#automated_install)
 - [Customize your installation](#custom_install)
   - [Method Example](#method_install)
@@ -306,6 +307,34 @@ Your Choice: 1
 
 Your Choice: 192.168.56.2
 
+```
+
+<a name="best_practice_settings"></a>
+## Choose between the provided best practice settings
+```bash
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                       💀
+💀                         Yggdrasil                     💀
+💀                        Version 0.9                    💀
+💀              Rainer Christian Bjoern Herold           💀
+💀                                                       💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+
+
+-----------------------------------------------------------
+|                                                         |
+|  [1] complete      :   complete configuration           |
+|  [2] updates       :   automated updates                |
+|                        (APT|Docker|Git Packages|Pip)    |
+|  [3] alias         :   custom configs                   |
+|                        (alias|.bashrc|.zshrc)           |
+|  [4] screenrc      :   custom screenrc config           |
+|  [5] vim           :   custom vim config                |
+|  [6] repo          :   kali repository change           |
+|                                                         |
+-----------------------------------------------------------
+
+Your Choice: 1
 ```
 
 <a name="automated_install"></a>
