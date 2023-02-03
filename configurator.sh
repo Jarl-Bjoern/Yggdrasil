@@ -387,9 +387,9 @@ function File_Reader() {
         while IFS= read -r line
         do
                 if [[ $line =~ "##" ]]; then
-                        echo -e "{GREEN}$line{NOCOLOR}"
+                        echo -e "${GREEN}$line${NOCOLOR}"
                 else
-                        echo -e "{ORANGE}$line{NOCOLOR}"
+                        echo -e "${ORANGE}$line${NOCOLOR}"
                 fi
         done < "$input"
 }
