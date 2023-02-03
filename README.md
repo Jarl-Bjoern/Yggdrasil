@@ -93,7 +93,7 @@ Furthermore, you have the choice between ***full_install***, which is aimed at a
 - [Customize your installation](#custom_install)
   - [Method Example](#method_install)
   - [Build from scratch](#custom_install_II)
-  - [Include customized scripts](#directory_install)
+  - [Include Customized Scripts](#directory_install)
 
 <a name="download_install"></a>
 # How to download and install the tool
