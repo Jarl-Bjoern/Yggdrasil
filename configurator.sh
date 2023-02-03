@@ -776,7 +776,7 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
         sudo msfdb init
 
         # Linking_Local_Wordlists
-        ln -s /usr/share/wordlists /opt/wordlists/kali_wordlists
+        ln -sf /usr/share/wordlists /opt/wordlists/kali_wordlists
 
         # Custom_Wordlist
         if [[ ! -f "/opt/wordlists/tomcat-directories.txt" ]]; then
@@ -882,7 +882,7 @@ fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
         if [[ $category_type = "pentest" || $category_type = "4" ]];  then
-                ln -s "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
+                ln -sf "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
         fi 
         if [[ -f $OPT_Path/$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
                 if [[ $Switch_License == true ]]; then
