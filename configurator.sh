@@ -382,6 +382,17 @@ function File_Installer() {
         done < "$input"
 }
 
+function File_Reader() {
+        input=$1
+        while IFS= read -r line
+        do
+                if [[ $line =~ "#" ]]; then
+                        echo -e "{GREEN}$line{NOCOLOR}"
+                else
+                        echo -e "{ORANGE}$line{NOCOLOR}"
+        done < "$input"
+}
+
 # Checking_Parameters
 for arg; do
         LEN_ARGV=$(wc -c <<< "$arg")
@@ -1175,7 +1186,7 @@ if grep -q nessus "$File_Path"; then
 fi
 if [[ $category_type = "pentest" || $category_type = "4" ]];  then
         if [[ $decision = "full" || $decision = "1" ]]; then
-                echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; cat "$Informational"
+                echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
         fi
 fi
 if [[ $category_type = "complete" || $category_type = "1" ]]; then
