@@ -43,6 +43,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 
 ## 📃 Settings overview
 - Ability to configure your own setting
+  - Changing the default installation path to your own
   - Custom config based on the provided template
   - Include a custom path of your own scripts or dpkg packages
 - Automation download of tools from the following categories
@@ -59,6 +60,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
     - GIT Tools
     - Important pip packages
     - OS
+  - Automated shredding script to remove your penetration test results after 90 days for privacy reasons
   - Changing the default hostname
   - Custom configuration
     - Alias
