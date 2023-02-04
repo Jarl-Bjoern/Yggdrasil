@@ -47,5 +47,6 @@ def Veracrypt_Install(Path):
 # Main
 if __name__ == '__main__':
   if (argv[1] == "Veracrypt"): Veracrypt_Install(argv[2])
-  elif (argv[2] == "Pycharm"): Pycharm_Install(argv[2])
-  elif (argv[2] == "SoapUI"): SoapUI_Install(argv[2])
+  elif (argv[1] == "Pycharm"): Pycharm_Install(argv[2])
+  elif (argv[1] == "SoapUI"): SoapUI_Install(argv[2])
+  elif (argv[1] == "Firefox"): Firefox_Addons(argv[2])
