@@ -496,7 +496,7 @@ For this, you must use the parameter `-p` in combination with the absolute path,
 python3 /opt/Yggdrasil/yggdrasil.py -p /mnt/MY_DIRECTORY
 ```
 
-# Special thanks
+# 🙏 Special thanks 🙏
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
   - cddmp
@@ -509,5 +509,5 @@ In the context of the development of the tool, I would like to thank the followi
   - pyxon73
   - SandySchoene
 
-# Remark
+# ⚠️ Remark ⚠️
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester or digital forensics, certain pre-settings.
