@@ -131,9 +131,17 @@ sudo python3 yggdrasil.py
 <a name="help_install"></a>
 ## Using the help section to see which parameters do we have
 ```python
-usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] [-p PATH] [-sH [SKIP_HARDENING]] [-sC [SKIP_CONFIG]] [-h]
+usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] [-p PATH] [-sC [SKIP_CONFIG]]
+                    [-sH [SKIP_HARDENING]] [-tP TOOL_PATH] [-v [VERBOSE]] [-h]
 
 optional arguments:
+  -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
+                        This parameter is required to accept licenses.
+
+                        Licenses:
+                          - Veracrypt
+
+                        ---------------------------------------------------------------
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
                         This parameter is required to accept licenses.
 
@@ -147,20 +155,21 @@ optional arguments:
                         Default: /opt/workspace
 
                         ---------------------------------------------------------------
- -hN HOST_NAME, --host-name HOST_NAME
+  -hN HOST_NAME, --host-name HOST_NAME
                         This parameter specifies the hostname of the kali machine.
 
-                        Default: pentest-kali
+                        Default:
+                          - pentest-kali
+                          - forensic-kali
 
                         ---------------------------------------------------------------
   -p PATH, --path PATH  This parameter specifies the target path of your custom tools.
-
+                                                                                                                                                                                                                                            
                         Example:
-                          -  python3 yggdrasil.py -p /opt/yggdrasil/Custom
+                          - python3 yggdrasil.py -p /opt/yggdrasil/Custom
 
                         ---------------------------------------------------------------
-
-  -sC [SKIP_CONFIG], --skip--config [SKIP__CONFIG]
+  -sC [SKIP_CONFIG], --skip-config [SKIP_CONFIG]
                         This parameter skips the configs part.
 
                         Best practice settings:
@@ -171,8 +180,7 @@ optional arguments:
                           - repo-change (rolling-release to last-snapshot)
 
                         ---------------------------------------------------------------
-
-  -sH [SKIP_HARDENING], --skip--hardening [SKIP__HARDENING]
+  -sH [SKIP_HARDENING], --skip-hardening [SKIP_HARDENING]
                         This parameter skips the hardening part.
 
                         Hardening:
@@ -183,8 +191,17 @@ optional arguments:
                           - nginx
 
                         ---------------------------------------------------------------
+  -tP TOOL_PATH, --tool-path TOOL_PATH
+                        This parameter specifies your default tools location.
 
-  -h, --help            Show this help message and exit.
+                        Default:
+                          - /opt/pentest_tools
+                          - /opt/forensic_tools
+
+                        ---------------------------------------------------------------
+  -v [VERBOSE], --verbose [VERBOSE]
+                        This parameter shows all messages during the apt package manager
+                        installation process.
 
                         ---------------------------------------------------------------
 ```
