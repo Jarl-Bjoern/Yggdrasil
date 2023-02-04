@@ -67,6 +67,7 @@ def main():
             if (Arg_Name == "accept_licenses"): Parameters += "-aL "
             elif (Arg_Name == "skip_hardening"): Parameters += "-sH "
             elif (Arg_Name == "skip_config"): Parameters += "-sC "
+            elif (Arg_Name == "verbose"): Parameters += "-v "
             elif (Arg_Name == "add_workspace" and Arg_Value != None):
                 try: makedirs(args.add_workspace)
                 except FileExistsError: pass
