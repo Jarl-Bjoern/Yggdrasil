@@ -22,7 +22,7 @@ This tool is intended to simplify the setup of various tools and configuration o
 The name `Yggdrasil` comes from Norse mythology and is the tree of life or world tree, here the name is quite appropriate for the concept of the program, as it is geared for several pentetration test areas or even for digital forensics.<br />
 
 ## ❗ News
-<bold>Upcoming changes for version</bold> `0.9`:
+<strong>Upcoming changes for version</strong> `0.9`:
   - new parameter was added to show interaction messages during the apt installation
   - new menu for the best practice settings like vim configuration, crontab etc.
   - automated updater for the git tools
@@ -37,13 +37,13 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - logging bug fixes
   - bug and logical fixes
 
-Hotfix `0.8b`
+<strong>Hotfix</strong> `0.8b`:
   - the hostname changing function was now set to the end of the script
 
-Hotfix `0.8a`
+<strong>Hotfix</strong> `0.8a`:
   - bug and logical fixes
 
-Changes of version `0.8`
+<strong>Changes of version</strong> `0.8`:
   - custom workspace place via argument
   - overview about hardening options
   - colorized help menu
