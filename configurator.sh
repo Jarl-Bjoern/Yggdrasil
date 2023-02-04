@@ -499,8 +499,10 @@ fi
 # Installation_Type
 if [[ $category_type = "custom" || $category_type = "2" ]]; then
         File_Path="${Path_Way}/install.txt"
+        Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         decision="0"
+        Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
 else
         if [[ ${#Array_Categories} -gt 0 ]]; then
                 Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure"
@@ -1224,8 +1226,8 @@ if grep -q nessus "$File_Path"; then
         fi
         sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
-if [[ $category_type = "pentest" || $category_type = "4" ]];  then
-        if [[ $decision = "full" || $decision = "1" ]]; then
+if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
+        if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
                 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
         fi
 fi
