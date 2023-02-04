@@ -354,7 +354,7 @@ Your Choice: 1
 <a name="automated_install"></a>
 ## Using the automated variant
 ```bash
-# Automated Variant without Firewall, Hardening and SSH configuration with text
+# Automated Variant without Firewall, Hardening with text
 cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 pentest
 infrastructure
@@ -362,7 +362,7 @@ full
 complete
 EOF
 
-# Automated Variant without Firewall, Hardening and SSH configuration with numbers
+# Automated Variant without Firewall, Hardening with numbers
 cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 4
 1
@@ -370,7 +370,7 @@ cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 1
 EOF
 
-# Automated Variant with multiple pentesting categories without Firewall, Hardening and SSH configuration with numbers
+# Automated Variant with multiple pentesting categories without Hardening with numbers
 cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 4
 1,5
