@@ -115,7 +115,7 @@ Furthermore, you have the choice between `full_install`, which is aimed at a Kal
 # How to download and install the tool
 
 <a name="dos2unix_install"></a>
-## Make sure that the dos2unix tool is installed
+## ⚔ Make sure that the dos2unix tool is installed ⚔
 ```bash
 sudo apt install -y dos2unix
 ```
