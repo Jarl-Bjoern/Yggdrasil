@@ -360,6 +360,10 @@ function File_Installer() {
                                                         else
                                                                 sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
                                                         fi
+                                                elif [ "$MODE" = "Extension" ]; then
+                                                        wget --content-disposition "$FILE"
+                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
+                                                        
                                                 elif [ "$MODE" = "DPKG" ]; then
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
