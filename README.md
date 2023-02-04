@@ -1,4 +1,4 @@
-[![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://GitHub.com/jarl-bjoern/yggdrasil/releases/)
+
 <div align="center">
   <a href="https://svgshare.com/i/Zhy.svg">
     <img alt="linux" src="https://svgshare.com/i/Zhy.svg" />
