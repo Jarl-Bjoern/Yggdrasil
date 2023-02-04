@@ -662,15 +662,15 @@ fi
 if [[ $category_type = "complete" || $category_type = "1" ]]; then
         for i in "${Array_Complete_Install[@]}"; do
                 if [[ $i =~ "Forensic" ]]; then
-                        File_Installer "$i" "/opt/forensic_tools"
+                        File_Installer "$i" "$OPT_Path"
                 else
-	                File_Installer "$i" "/opt/pentest_tools"
+	                File_Installer "$i" "$OPT_Path"
                 fi
         done
 else
         if [[ ${#Array_Categories} -gt 0 ]]; then
                 for i in "${Array_Categories[@]}"; do
-                        File_Installer "${i}/full.txt" "/opt/pentest_tools"
+                        File_Installer "${i}/full.txt" "$OPT_Path"
                 done
         else
                 File_Installer "$File_Path" "$OPT_Path"
@@ -753,74 +753,74 @@ done
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
         # Git_Tools_Installation
-        if [ -d "/opt/pentest_tools/chisel" ]; then
-                cd /opt/pentest_tools/chisel || return 0 ; sudo go get ; sudo go build
+        if [ -d "$OPT_Path/chisel" ]; then
+                cd "$OPT_Path"/chisel || return 0 ; sudo go get ; sudo go build
         fi
-        if [ -d "/opt/pentest_tools/enum4linux-ng" ]; then
-                sudo pip3 install -r /opt/pentest_tools/enum4linux-ng/requirements.txt
+        if [ -d "$OPT_Path/enum4linux-ng" ]; then
+                sudo pip3 install -r "$OPT_Path"/enum4linux-ng/requirements.txt
         fi
-        if [ -f "/opt/pentest_tools/EyeWitness/Python/setup/setup.sh" ]; then
-                sudo bash /opt/pentest_tools/EyeWitness/Python/setup/setup.sh
+        if [ -f "$OPT_Path/EyeWitness/Python/setup/setup.sh" ]; then
+                sudo bash "$OPT_Path"/EyeWitness/Python/setup/setup.sh
         fi
-        if [ -f "/opt/pentest_tools/PEASS-ng/metasploit/peass.rb" ]; then
-                sudo cp /opt/pentest_tools/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
+        if [ -f "$OPT_Path/PEASS-ng/metasploit/peass.rb" ]; then
+                sudo cp "$OPT_Path"/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
         fi
-        if [ -d "/opt/pentest_tools/ssh_scan" ]; then
-                cd /opt/pentest_tools/ssh_scan || return 0 ; sudo gem install bundler ; sudo bundle install
+        if [ -d "$OPT_Path/ssh_scan" ]; then
+                cd "$OPT_Path"/ssh_scan || return 0 ; sudo gem install bundler ; sudo bundle install
         fi
-        if [ -d "/opt/pentest_tools/socketcand" ]; then
-                cd /opt/pentest_tools/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
+        if [ -d "$OPT_Path/socketcand" ]; then
+                cd "$OPT_Path"/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
         fi
 
         if [ -f "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")" ]; then
                 sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")"
         fi
-        if [ -d "/opt/pentest_tools/Responder" ]; then
-                pip3 install -r /opt/pentest_tools/Responder/requirements.txt
+        if [ -d "$OPT_Path/Responder" ]; then
+                pip3 install -r "$OPT_Path"/Responder/requirements.txt
         fi
-        if [ -f "/opt/pentest_tools/mitmdump" ]; then
-                cd /opt/pentest_tools || return 0 ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p /opt/pentest_tools/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ || return 0 ; mv mitmproxy.sh mitmproxy
+        if [ -f "$OPT_Path/mitmdump" ]; then
+                cd "$OPT_Path" || return 0 ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p "$OPT_Path"/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ || return 0 ; mv mitmproxy.sh mitmproxy
         fi
 
         # Categories_Sort
-        cd /opt/pentest_tools || return 0
-        if [[ $(ls /opt/pentest_tools/{"nmap-erpscan","pysap","PyRFC","SAP_GW_RCE_exploit","SAP_RECON"} 2>/dev/null) ]]; then
-                sudo mkdir -p /opt/pentest_tools/Webscanner/SAP
-                mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON /opt/pentest_tools/Webscanner/SAP || sudo rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
+        cd "$OPT_Path" || return 0
+        if [[ $(ls "$OPT_Path"/{"nmap-erpscan","pysap","PyRFC","SAP_GW_RCE_exploit","SAP_RECON"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/Webscanner/SAP
+                mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON "$OPT_Path"/Webscanner/SAP || sudo rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
         fi
-        if [[ $(ls /opt/pentest_tools/{"drupwn","droopescan","CMSmap","ac-drupal"} 2>/dev/null) ]]; then
-                sudo mkdir -p /opt/pentest_tools/Webscanner/Drupal
-                mv drupwn droopescan CMSmap ac-drupal /opt/pentest_tools/Webscanner/Drupal || sudo rm -rf drupwn droopescan CMSmap ac-drupal
+        if [[ $(ls "$OPT_Path"/{"drupwn","droopescan","CMSmap","ac-drupal"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/Webscanner/Drupal
+                mv drupwn droopescan CMSmap ac-drupal "$OPT_Path"/Webscanner/Drupal || sudo rm -rf drupwn droopescan CMSmap ac-drupal
         fi
-        if [[ $(ls /opt/pentest_tools/{"Typo3Scan","T3Scan"} 2>/dev/null) ]]; then
-                sudo mkdir -p /opt/pentest_tools/Webscanner/Typo3 ; mv Typo3Scan T3Scan /opt/pentest_tools/Webscanner/Typo3 || sudo rm -rf Typo3Scan T3Scan
+        if [[ $(ls "$OPT_Path"/{"Typo3Scan","T3Scan"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/Webscanner/Typo3 ; mv Typo3Scan T3Scan "$OPT_Path"/Webscanner/Typo3 || sudo rm -rf Typo3Scan T3Scan
         fi
-        if [[ $(ls /opt/pentest_tools/{"wpscan","wphunter","WPSeku","Wordpresscan"} 2>/dev/null) ]]; then
-                sudo mkdir -p /opt/pentest_tools/Webscanner/Wordpress
-                mv wpscan wphunter Wordpresscan WPSeku /opt/pentest_tools/Webscanner/Wordpress || sudo rm -rf wpscan wphunter Wordpresscan WPSeku
+        if [[ $(ls "$OPT_Path"/{"wpscan","wphunter","WPSeku","Wordpresscan"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/Webscanner/Wordpress
+                mv wpscan wphunter Wordpresscan WPSeku "$OPT_Path"/Webscanner/Wordpress || sudo rm -rf wpscan wphunter Wordpresscan WPSeku
         fi
-        if [[ $(ls /opt/pentest_tools/{"joomscan","joomlavs"} 2>/dev/null) ]]; then
-                sudo mkdir -p /opt/pentest_tools/Webscanner/Joomla ; mv joomscan joomlavs /opt/pentest_tools/Webscanner/Joomla || sudo rm -rf joomscan joomlavs
+        if [[ $(ls "$OPT_Path"/{"joomscan","joomlavs"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/Webscanner/Joomla ; mv joomscan joomlavs "$OPT_Path"/Webscanner/Joomla || sudo rm -rf joomscan joomlavs
         fi
-        if [[ $(ls /opt/pentest_tools/{"moodlescan","mooscan","badmoodle"} 2>/dev/null) ]]; then
-                sudo mkdir -p /opt/pentest_tools/Webscanner/Moodle
-                mv moodlescan badmoodle mooscan /opt/pentest_tools/Webscanner/Moodle || sudo rm -rf moodlescan badmoodle mooscan
+        if [[ $(ls "$OPT_Path"/{"moodlescan","mooscan","badmoodle"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/Webscanner/Moodle
+                mv moodlescan badmoodle mooscan "$OPT_Path"/Webscanner/Moodle || sudo rm -rf moodlescan badmoodle mooscan
         fi
-        if [[ $(ls /opt/pentest_tools/{"chisel","mitmproxy","mitm_relay","proxychains-ng"} 2>/dev/null) ]]; then
-                sudo mkdir -p /opt/pentest_tools/Proxy
-                mv chisel mitmproxy mitm_relay proxychains-ng /opt/pentest_tools/Proxy || sudo rm -rf chisel mitmproxy mitm_relay proxychains-ng
+        if [[ $(ls "$OPT_Path"/{"chisel","mitmproxy","mitm_relay","proxychains-ng"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/Proxy
+                mv chisel mitmproxy mitm_relay proxychains-ng "$OPT_Path"/Proxy || sudo rm -rf chisel mitmproxy mitm_relay proxychains-ng
         fi
-        if [[ $(ls /opt/pentest_tools/{"SIPTools","sipvicious","viproy-voipkit"} 2>/dev/null) ]]; then
-                sudo mkdir -p /opt/pentest_tools/SIP ; mv viproy-voipkit sipvicious SIPTools /opt/pentest_tools/SIP || sudo rm -rf viproy-voipkit sipvicious SIPTools
+        if [[ $(ls "$OPT_Path"/{"SIPTools","sipvicious","viproy-voipkit"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/SIP ; mv viproy-voipkit sipvicious SIPTools "$OPT_Path"/SIP || sudo rm -rf viproy-voipkit sipvicious SIPTools
         fi
-        if [[ $(ls /opt/pentest_tools/{"ffuf","wfuzz"} 2>/dev/null) ]]; then
-                sudo mkdir -p /opt/pentest_tools/Fuzzer ; mv ffuf wfuzz /opt/pentest_tools/Fuzzer || sudo rm -rf ffuf wfuzz
+        if [[ $(ls "$OPT_Path"/{"ffuf","wfuzz"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/Fuzzer ; mv ffuf wfuzz "$OPT_Path"/Fuzzer || sudo rm -rf ffuf wfuzz
         fi
-        if [[ -d "/opt/pentest_tools/plown" ]]; then
-                sudo mkdir -p /opt/pentest_tools/Webscanner/Plone ; mv plown /opt/pentest_tools/Webscanner/Plone || sudo rm -rf plown
+        if [[ -d "$OPT_Path/plown" ]]; then
+                sudo mkdir -p "$OPT_Path"/Webscanner/Plone ; mv plown "$OPT_Path"/Webscanner/Plone || sudo rm -rf plown
         fi
-        if [[ -d "/opt/pentest_tools/LiferayScan" ]]; then
-                sudo mkdir -p /opt/pentest_tools/Webscanner/Liferay ; mv LiferayScan /opt/pentest_tools/Webscanner/Liferay || sudo rm -rf LiferayScan
+        if [[ -d "$OPT_Path/LiferayScan" ]]; then
+                sudo mkdir -p "$OPT_Path"/Webscanner/Liferay ; mv LiferayScan "$OPT_Path"/Webscanner/Liferay || sudo rm -rf LiferayScan
         fi
 
         # Metasploit_Configuration
@@ -1222,11 +1222,11 @@ if [[ $category_type = "pentest" || $category_type = "4" ]];  then
                 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
         fi
 fi
-if [[ $category_type = "complete" || $category_type = "1" ]]; then
-        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/forensic_tools
-        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/pentest_tools
-else
-        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" "$OPT_Path"
-fi
+#if [[ $category_type = "complete" || $category_type = "1" ]]; then
+#        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/forensic_tools
+#        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/pentest_tools
+#else
+sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" "$OPT_Path"
+#fi
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
