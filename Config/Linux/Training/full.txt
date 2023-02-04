@@ -4,6 +4,7 @@
 
 # Docker
 bkimminich/juice-shop
+tleemcjr/metasploitable2
 
 # Gem
 
