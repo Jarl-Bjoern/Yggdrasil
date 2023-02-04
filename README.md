@@ -398,7 +398,7 @@ You can open up one of the configuration files and add your own tools to the lis
 
 In this example we take the configuration file for `infrastructure penetration testing`, which can be found under the following path `Config/Linux/Pentest/Infrastructure/minimal.txt`
 
-The minimal.txt is set for special installation, e.g. if you are designing internal penetration tests remotely and can only connect to your target system via SSH and have no way to use GUI-based applications unless X11 forwarding is available.
+Notice: The `minimal.txt` is set for special installation, e.g. if you are designing internal penetration tests remotely and can only connect to your target system via SSH and have no way to use GUI-based applications unless X11 forwarding is available.
 
 ```bash
 # APT
