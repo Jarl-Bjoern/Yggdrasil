@@ -37,11 +37,10 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - logging bug fixes
   - bug and logical fixes
 
+<br />
 <a href="https://github.com/jarl-bjoern/yggdrasil/changelog/full.log">
   Full Changelog
-</a>
-
-Furthermore, you have the choice between `full_install`, which is aimed at a Kali installation with GUI and `minimal_install`, which is aimed at the CLI variant.<br />
+</a><br />
 
 ## 📃 Settings overview
 - Ability to configure your own setting
