@@ -299,9 +299,9 @@ function File_Installer() {
                                                 for CHECK_GIT in "${Array_Filter_Git[@]}"; do
                                                         if [[ $CHECK_GIT =~ $(echo "$line" | cut -d "/" -f5) ]]; then
                                                                 if [[ $CHECK_GIT =~ "/opt/pentest_tools" ]]; then
-                                                                        TEMP_GIT_PATH="$(echo "$CHECK_GIT" | tr '/opt/pentest_tools' "$OPT_Path/")"
+                                                                        TEMP_GIT_PATH="$(echo "$CHECK_GIT" | sed "s#/opt/pentest_tools#$OPT_Path#g")"
                                                                 elif [[ $CHECK_GIT =~ "/opt/forensic_tools" ]]; then
-                                                                        TEMP_GIT_PATH="$(echo "$CHECK_GIT" | tr '/opt/forensic_tools' "$OPT_Path/")"
+                                                                        TEMP_GIT_PATH="$(echo "$CHECK_GIT" | sed "s#/opt/forensic_tools#$OPT_Path#g")"
                                                                 else
                                                                         TEMP_GIT_PATH="$CHECK_GIT"
                                                                 fi
@@ -342,9 +342,9 @@ function File_Installer() {
                                         for CHECK_FILE in "${Array_Filter_Download[@]}"; do
                                                 if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
 							if [[ $CHECK_FILE =~ "/opt/pentest_tools" ]]; then
-								TEMP_WGET_PATH="$(echo "$CHECK_FILE" | tr '/opt/pentest_tools' "$OPT_FILE/")"
+								TEMP_WGET_PATH="$(echo "$CHECK_FILE" | sed "s#/opt/pentest_tools#$OPT_FILE#g")"
 							elif [[ $CHECK_FILE =~ "/opt/forensic_tools" ]]; then
-								TEMP_WGET_PATH="$(echo "$CHECK_FILE" | tr '/opt/forensic_tools' "$OPT_FILE/")"
+								TEMP_WGET_PATH="$(echo "$CHECK_FILE" | sed "s#/opt/forensic_tools#$OPT_FILE#g")"
 							else
 								TEMP_WGET_PATH="$CHECK_FILE"
 							fi
