@@ -93,7 +93,7 @@ Furthermore, you have the choice between `full_install`, which is aimed at a Kal
   - nginx
   - SSH
 
-# Table of Contents
+# 📖 Table of Contents
 - [How to download and install the tool](#download_install)
   - [Make sure that the dos2unix tool is installed](#dos2unix_install)
   - [Download and start the tool](#start_install)
