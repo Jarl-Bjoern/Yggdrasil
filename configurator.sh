@@ -297,10 +297,21 @@ function File_Installer() {
                                                 echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
                                                 for CHECK_GIT in "${Array_Filter_Git[@]}"; do
                                                         if [[ $CHECK_GIT =~ $(echo "$line" | cut -d "/" -f5) ]]; then
-                                                                if [[ -d $CHECK_GIT ]]; then
+                                                                if [[ $CHECK_GIT =~ "/opt/pentest_tools" ]]; then
+                                                                        TEMP_GIT_PATH="$(echo "$CHECK_GIT" | tr '/opt/pentest_tools' "$OPT_Path/")"
+                                                                elif [[ $CHECK_GIT =~ "/opt/forensic_tools" ]]; then
+                                                                        TEMP_GIT_PATH="$(echo "$CHECK_GIT" | tr '/opt/forensic_tools' "$OPT_Path/")"
+                                                                else
+                                                                        TEMP_GIT_PATH="$CHECK_GIT"
+                                                                fi
+                                                                if [[ -d $TEMP_GIT_PATH ]]; then
                                                                         Switch_IGNORE=true
                                                                         break
                                                                 fi
+#                                                                if [[ -d $CHECK_GIT ]]; then
+#                                                                        Switch_IGNORE=true
+#                                                                        break
+#                                                                fi
                                                         fi
                                                 done
                                         else
@@ -329,9 +340,16 @@ function File_Installer() {
                                         echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
                                         for CHECK_FILE in "${Array_Filter_Download[@]}"; do
                                                 if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
-                                                        if [[ "$(echo "$CHECK_FILE" | awk -F "$(echo "$CHECK_FILE" | rev | cut -c2- | rev)" '{print $2}')" == "*" ]]; then
-                                                                SEARCH_PATTERN="$(echo "$CHECK_FILE" | rev | cut -d '/' -f1 | rev)"
-                                                                REST_OF_FILE="$(echo "$CHECK_FILE" | tr '/' ' ')"
+							if [[ $CHECK_FILE =~ "/opt/pentest_tools" ]]; then
+								TEMP_WGET_PATH="$(echo "$CHECK_FILE" | tr '/opt/pentest_tools' "$OPT_FILE/")"
+							elif [[ $CHECK_FILE =~ "/opt/forensic_tools" ]]; then
+								TEMP_WGET_PATH="$(echo "$CHECK_FILE" | tr '/opt/forensic_tools' "$OPT_FILE/")"
+							else
+								TEMP_WGET_PATH="$CHECK_FILE"
+							fi
+                                                        if [[ "$(echo "$TEMP_WGET_PATH" | awk -F "$(echo "$TEMP_WGET_PATH" | rev | cut -c2- | rev)" '{print $2}')" == "*" ]]; then
+                                                                SEARCH_PATTERN="$(echo "$TEMP_WGET_PATH" | rev | cut -d '/' -f1 | rev)"
+                                                                REST_OF_FILE="$(echo "$TEMP_WGET_PATH" | tr '/' ' ')"
                                                                 TEMP_DIRECTORY=""
                                                                 for i in $REST_OF_FILE; do if [[ "$i" != "$SEARCH_PATTERN" ]]; then TEMP_DIRECTORY+="/$i"; fi; done
                                                                 if find "$TEMP_DIRECTORY" -maxdepth 1 ! -path "$TEMP_DIRECTORY" | grep -q "$SEARCH_PATTERN"; then
@@ -339,11 +357,26 @@ function File_Installer() {
                                                                         break
                                                                 fi
                                                         else
-                                                                if [[ $(ls "$CHECK_FILE") ]]; then
+                                                                if [[ $(ls "$TEMP_WGET_PATH") 2>/dev/null ]]; then
                                                                         Switch_IGNORE=true
                                                                         break
                                                                 fi
                                                         fi
+#                                                       if [[ "$(echo "$CHECK_FILE" | awk -F "$(echo "$CHECK_FILE" | rev | cut -c2- | rev)" '{print $2}')" == "*" ]]; then
+#                                                               SEARCH_PATTERN="$(echo "$CHECK_FILE" | rev | cut -d '/' -f1 | rev)"
+#                                                               REST_OF_FILE="$(echo "$CHECK_FILE" | tr '/' ' ')"
+#                                                               TEMP_DIRECTORY=""
+#                                                               for i in $REST_OF_FILE; do if [[ "$i" != "$SEARCH_PATTERN" ]]; then TEMP_DIRECTORY+="/$i"; fi; done
+#                                                               if find "$TEMP_DIRECTORY" -maxdepth 1 ! -path "$TEMP_DIRECTORY" | grep -q "$SEARCH_PATTERN"; then
+#                                                                       Switch_IGNORE=true
+#                                                                       break
+#                                                               fi
+#                                                       else
+#                                                               if [[ $(ls "$CHECK_FILE") 2>/dev/null ]]; then
+#                                                                       Switch_IGNORE=true
+#                                                                       break
+#                                                               fi
+#                                                       fi
                                                 fi
                                         done
                                         if [[ $Switch_IGNORE = false ]]; then
