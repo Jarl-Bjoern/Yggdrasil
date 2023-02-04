@@ -90,7 +90,7 @@ setopt hist_ignore_all_dups
 function b64() { echo $1 | base64 -d | xxd; }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo "Update:" $i ; cd $i ; git pull ; echo "------------------------------------------------"; done'"""
+alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
 alias df='df -h'
@@ -100,7 +100,7 @@ alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 function b64() { echo $1 | base64 -d | xxd; }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo "Update:" $i ; cd $i ; git pull ; echo "------------------------------------------------"; done'"""
+alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
 
         if ('.zshrc' in path_to_file): write_file(path_to_file, Config_Alias_ZSH)
         else: write_file(path_to_file, Config_Alias_BSH)
