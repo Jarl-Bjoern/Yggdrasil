@@ -16,15 +16,11 @@ def Press_Hotkey(key_One, key_Two, seconds): hotkey(key_One, key_Two), sleep(sec
 def Press_Key(key, seconds): press(key), sleep(seconds)
 
 def Firefox_Addons(Path):
-  Press_Key('win', 2)
-  autowrite('firefox'), sleep(2)
-  Press_Key('return', 5)
+  Press_Key('win', 2), autowrite('firefox'), sleep(2), Press_Key('return', 5)
   Press_Hotkey('ctrl', 'k', 2), Press_Key('backspace', 1)
-  autowrite('file:')
-  Press_Hotkey('shift','7', 0.15)
+  autowrite('file:'), Press_Hotkey('shift','7', 0.15)
   for _ in Path.split('/'):
-      Press_Hotkey('shift','7', 0.5)
-      autowrite(_)
+      Press_Hotkey('shift','7', 0.5), autowrite(_)
   Press_Key('return', 2.5)
 
 def SoapUI_Install(Path):
