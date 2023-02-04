@@ -404,21 +404,25 @@ function File_Reader() {
 
 # Checking_Parameters
 for arg; do
-        LEN_ARGV=$(wc -c <<< "$arg")
+#        LEN_ARGV=$(wc -c <<< "$arg")
         if [[ $arg == "-sH" ]]; then
                 Switch_Skip_Hardening=true
         elif [[ $arg == "-sC" ]]; then
                 Switch_Skip_Configs=true
         elif [[ $arg == "-aL" ]]; then
                 Switch_License=true
-        elif [[ $arg =~ ".-aW" ]]; then
-                PATH_WORKSPACE=$(echo $arg | tr '.-aW' ' ')
-        elif [[ $LEN_ARGV -gt 2 ]]; then
-                if [[ -d $arg ]]; then
-                        PATH_Install_Dir=$arg
-                else
-                        HOST_Pentest=$arg
-                fi
+        elif [[ "$(echo $arg | awk -F "$(echo $arg | rev | cut -c5- | rev)" '{print $2}')" == ".-aW" ]]; then
+                PATH_WORKSPACE="$(echo $arg | rev | cut -c5- | rev)"
+        elif [[ "$(echo $arg | awk -F "$(echo $arg | rev | cut -c4- | rev)" '{print $2}')" == ".-p" ]]; then
+                PATH_Install_Dir="$(echo $arg | rev | cut -c4- | rev)"
+        elif [[ "$(echo $arg | awk -F "$(echo $arg | rev | cut -c5- | rev)" '{print $2}')" == ".-hN" ]]; then
+                HOST_Pentest="$(echo $arg | rev | cut -c5- | rev)"
+#        elif [[ $LEN_ARGV -gt 2 ]]; then
+#                if [[ -d $arg ]]; then
+#                        PATH_Install_Dir=$arg
+#                else
+#                        HOST_Pentest=$arg
+#                fi
         fi
 done
 
