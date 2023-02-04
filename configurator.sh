@@ -627,7 +627,7 @@ fi
 echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 if [[ $Switch_UPDATES == true ]]; then
-        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path"
+        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
 fi
 
 # Standard_Installation
