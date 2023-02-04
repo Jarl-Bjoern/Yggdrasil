@@ -475,6 +475,10 @@ In addition, it is also possible that you can place your own scripts or packages
 
 For this, you must use the parameter `-p` in combination with the absolute path, as in the example below
 
+Currently the following formats are available to install external scripts or packages:
+  - Bash/Shell
+  - DPKG
+
 <a name="directory_install"></a>
 ## Example
 ```bash
