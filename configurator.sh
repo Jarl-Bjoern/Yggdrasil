@@ -444,12 +444,6 @@ for arg; do
                 HOST_Pentest="$(echo "$arg" | rev | cut -c5- | rev)"
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-tP" ]]; then
                 OPT_Path="$(echo "$arg" | rev | cut -c5- | rev)"
-#        elif [[ $LEN_ARGV -gt 2 ]]; then
-#                if [[ -d $arg ]]; then
-#                        PATH_Install_Dir=$arg
-#                else
-#                        HOST_Pentest=$arg
-#                fi
         fi
 done
 
