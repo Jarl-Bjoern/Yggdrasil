@@ -71,6 +71,10 @@ def main():
                 try: makedirs(args.add_workspace)
                 except FileExistsError: pass
                 Parameters += f"{args.add_workspace}.-aW "
+            elif (Arg_Name == "tool_path" and Arg_Value != None):
+                try: makedirs(Arg_Value)
+                except FileExistsError: pass
+                Parameter += f"{Arg_Value}.-tP "
         elif (Arg_Name == "path" and Arg_Value != None): Parameters += f"{Arg_Value}.-p "
         elif (Arg_Name == "host_name" and Arg_Value != None): Parameters += f"{Arg_Value}.-hN "
     Standard.Initials(), system(f'sudo bash {Start_Script} {Parameters}')
