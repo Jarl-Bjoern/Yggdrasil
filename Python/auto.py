@@ -15,7 +15,7 @@ def Press_Hotkey(key_One, key_Two, seconds): hotkey(key_One, key_Two), sleep(sec
 
 def Press_Key(key, seconds): press(key), sleep(seconds)
 
-def Firefox_Addons(Path)
+def Firefox_Addons(Path):
   Press_Key('win', 2)
   autowrite('firefox'),sleep(2)
   Press_Key('return', 5)
