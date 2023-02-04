@@ -83,7 +83,7 @@ Furthermore, you have the choice between `full_install`, which is aimed at a Kal
     - BASHRC and ZSHRC
     - Screenrc
     - VIM
-  - Repository change from bleeding-edge to last-snapshot
+  - Repository change from rolling-release (bleeding-edge) to last-snapshot
   - Overview about some useful information after the install
 - GUI automation to accept licenses
 - Hardening
