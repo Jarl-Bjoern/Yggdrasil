@@ -21,7 +21,7 @@ This tool is intended to simplify the setup of various tools and configuration o
 
 The name `Yggdrasil` comes from Norse mythology and is the tree of life or world tree, here the name is quite appropriate for the concept of the program, as it is geared for several pentetration test areas or even for digital forensics.<br />
 
-## ❗ News ❗
+## ❗ News
 Upcoming changes for version `0.9`
   - new parameter was added to show interaction messages during the apt installation
   - new menu for the best practice settings like vim configuration, crontab etc.
@@ -112,16 +112,16 @@ Furthermore, you have the choice between `full_install`, which is aimed at a Kal
   - [Include Customized Scripts](#directory_install)
 
 <a name="download_install"></a>
-# How to download and install the tool
+# ⚔ How to download and install the tool
 
 <a name="dos2unix_install"></a>
-## ⚔ Make sure that the dos2unix tool is installed ⚔
+## ⚔ Make sure that the dos2unix tool is installed
 ```bash
 sudo apt install -y dos2unix
 ```
 
 <a name="start_install"></a>
-## ⚔ Download and start the tool ⚔
+## ⚔ Download and start the tool
 ```bash
 sudo git clone https://github.com/Jarl-Bjoern/Yggdrasil/
 cd Yggdrasil
@@ -129,7 +129,7 @@ sudo python3 yggdrasil.py
 ```
 
 <a name="help_install"></a>
-## ⚔ Using the help section to see which parameters do we have ⚔
+## ⚔ Using the help section to see which parameters do we have
 ```python
 usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] [-p PATH]
                     [-sC [SKIP_CONFIG]] [-sH [SKIP_HARDENING]] [-tP TOOL_PATH]
@@ -208,7 +208,7 @@ optional arguments:
 ```
 
 <a name="category_install"></a>
-## ⚔ Choose one of the three category types ⚔
+## ⚔ Choose one of the three category types
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -233,7 +233,7 @@ Your Choice: pentest
 ```
 
 <a name="pentesting_install"></a>
-## ⚔ Choose between one of the Pentesting categories ⚔
+## ⚔ Choose between one of the Pentesting categories
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -259,7 +259,7 @@ Your Choice: infrastructure
 ```
 
 <a name="pentesting_multiple_install"></a>
-## ⚔ Choose between multiple Pentesting categories ⚔
+## ⚔ Choose between multiple Pentesting categories
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -285,7 +285,7 @@ Your Choice: 1,5
 ```
 
 <a name="type_install"></a>
-## ⚔ Choose one of the two installation types ⚔
+## ⚔ Choose one of the two installation types
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -308,7 +308,7 @@ Your Choice: full
 ```
 
 <a name="hardening_install"></a>
-## ⚔ Choose between multiple hardening options ⚔
+## ⚔ Choose between multiple hardening options
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -333,7 +333,7 @@ Your Choice: 1
 ```
 
 <a name="ssh_install"></a>
-## ⚔ Configurate your SSH IP-Address ⚔
+## ⚔ Configurate your SSH IP-Address
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -358,7 +358,7 @@ Your Choice: 192.168.56.2
 ```
 
 <a name="best_practice_settings"></a>
-## ⚔ Choose between the provided best practice settings ⚔
+## ⚔ Choose between the provided best practice settings
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -386,7 +386,7 @@ Your Choice: 1
 ```
 
 <a name="automated_install"></a>
-## ⚔ Using the automated variant ⚔
+## ⚔ Using the automated variant
 ```bash
 # Automated Variant without Firewall, Hardening with text
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
@@ -413,7 +413,7 @@ EOF
 ```
 
 <a name="custom_install"></a>
-# Customize your installation
+# 📝 Customize your installation
 You can open up one of the configuration files and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a `#`).
 
 In this example we take the configuration file for `infrastructure penetration testing`, which can be found under the following path `Config/Linux/Pentest/Infrastructure/minimal.txt`
@@ -435,7 +435,7 @@ URL Name Method
 ```
 
 <a name="method_install"></a>
-## The following methods are available:
+## 📝 The following methods are available:
 ### Archive
 With the `Archive` argument you specify that you are downloading an archive, which is then loaded into the provided Python script and unpacked.
 ```bash
@@ -462,7 +462,7 @@ https://sh.rustup.rs rust Installer
 ```
 
 <a name="custom_install_II"></a>
-## Build from scratch
+## 📝 Build from scratch
 You can also build the file from scratch yourself. To do this, navigate to the directory `Config/Linux/Custom` and edit the file `install.txt`
 ```bash
 # APT
@@ -485,7 +485,7 @@ You can also build the file from scratch yourself. To do this, navigate to the d
 ```
 
 <a name="customized_scripts"></a>
-## Include Customized Scripts
+## 📝 Include Customized Scripts
 In addition, it is also possible that you can place your own scripts or packages in the `Custom` directory and use them in the installation script.
 
 For this, you must use the parameter `-p` in combination with the absolute path, as in the example below
@@ -509,5 +509,5 @@ In the context of the development of the tool, I would like to thank the followi
   - pyxon73
   - SandySchoene
 
-# ⚠️ Remark ⚠️
+# ⚠️ Remark
 It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester or digital forensics, certain pre-settings.
