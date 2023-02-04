@@ -156,7 +156,7 @@ optional arguments:
                         Example:
                           -  python3 yggdrasil.py -p /opt/yggdrasil/Custom
 
-                        -------------------------------------------------------------------------------------
+                        ---------------------------------------------------------------
 
   -sC [SKIP_CONFIG], --skip--config [SKIP__CONFIG]
                         This parameter skips the configs part.
