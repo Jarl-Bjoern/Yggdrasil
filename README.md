@@ -37,6 +37,8 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - logging bug fixes
   - bug and logical fixes
 
+<a href="https://github.com/jarl-bjoern/yggdrasil/changelog/full.log">Full Changelog</a>
+
 <strong>Hotfix</strong> `0.8b`:
   - the hostname changing function was now set to the end of the script
 
