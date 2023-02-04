@@ -634,7 +634,7 @@ sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ;
 if [[ $Switch_UPDATES == true ]]; then
         sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
 fi
-if [[ $Switch_SHREDDER == true]]; then
+if [[ $Switch_SHREDDER == true ]]; then
         sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path" "shred"
 fi
 
