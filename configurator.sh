@@ -32,6 +32,7 @@ Switch_Skip_Hardening=false
 Switch_SQUID=false
 Switch_SSH=false
 Switch_UPDATES=false
+Switch_Verbose=false
 Switch_VIM_CONFIG=false
 Switch_WGET=false
 
@@ -267,7 +268,11 @@ function File_Installer() {
         while IFS= read -r line
         do
                 if [[ $line = "# APT" ]]; then
-                        Command="sudo DEBIAN_FRONTEND=noninteractive apt install -y" ; Skip=true ; Switch_WGET=false
+                        if [[ "$Switch_Verbose" == false ]]; then
+                                 Command="sudo DEBIAN_FRONTEND=noninteractive apt install -y" ; Skip=true ; Switch_WGET=false
+                        else
+                                 Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false
+                        fi
                 elif [[ $line = "# Cargo" ]]; then
                         Command="sudo cargo install" ; Skip=true ; Switch_WGET=false
                 elif [[ $line = "# Docker" ]]; then
@@ -413,6 +418,8 @@ for arg; do
                 Switch_Skip_Configs=true
         elif [[ $arg == "-aL" ]]; then
                 Switch_License=true
+        elif [[ $arg == "-v" ]]; then
+                Switch_Verbose=true
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-aW" ]]; then
                 PATH_WORKSPACE="$(echo "$arg" | rev | cut -c5- | rev)"
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c4- | rev)" '{print $2}')" == ".-p" ]]; then
