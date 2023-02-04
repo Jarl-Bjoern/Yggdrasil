@@ -121,7 +121,7 @@ sudo apt install -y dos2unix
 ```
 
 <a name="start_install"></a>
-## Download and start the tool
+## ⚔ Download and start the tool ⚔
 ```bash
 sudo git clone https://github.com/Jarl-Bjoern/Yggdrasil/
 cd Yggdrasil
@@ -129,7 +129,7 @@ sudo python3 yggdrasil.py
 ```
 
 <a name="help_install"></a>
-## Using the help section to see which parameters do we have
+## ⚔ Using the help section to see which parameters do we have ⚔
 ```python
 usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] [-p PATH]
                     [-sC [SKIP_CONFIG]] [-sH [SKIP_HARDENING]] [-tP TOOL_PATH]
@@ -208,7 +208,7 @@ optional arguments:
 ```
 
 <a name="category_install"></a>
-## Choose one of the three category types
+## ⚔ Choose one of the three category types ⚔
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -233,7 +233,7 @@ Your Choice: pentest
 ```
 
 <a name="pentesting_install"></a>
-## Choose between one of the Pentesting categories
+## ⚔ Choose between one of the Pentesting categories ⚔
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -259,7 +259,7 @@ Your Choice: infrastructure
 ```
 
 <a name="pentesting_multiple_install"></a>
-## Choose between multiple Pentesting categories
+## ⚔ Choose between multiple Pentesting categories ⚔
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -285,7 +285,7 @@ Your Choice: 1,5
 ```
 
 <a name="type_install"></a>
-## Choose one of the two installation types
+## ⚔ Choose one of the two installation types ⚔
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -308,7 +308,7 @@ Your Choice: full
 ```
 
 <a name="hardening_install"></a>
-## Choose between multiple hardening options
+## ⚔ Choose between multiple hardening options ⚔
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -333,7 +333,7 @@ Your Choice: 1
 ```
 
 <a name="ssh_install"></a>
-## Configurate your SSH IP-Address
+## ⚔ Configurate your SSH IP-Address ⚔
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -358,7 +358,7 @@ Your Choice: 192.168.56.2
 ```
 
 <a name="best_practice_settings"></a>
-## Choose between the provided best practice settings
+## ⚔ Choose between the provided best practice settings ⚔
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -386,7 +386,7 @@ Your Choice: 1
 ```
 
 <a name="automated_install"></a>
-## Using the automated variant
+## ⚔ Using the automated variant ⚔
 ```bash
 # Automated Variant without Firewall, Hardening with text
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
