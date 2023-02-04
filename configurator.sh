@@ -410,6 +410,8 @@ for arg; do
                 Switch_Skip_Configs=true
         elif [[ $arg == "-aL" ]]; then
                 Switch_License=true
+        elif [[ $arg =~ ".-aW" ]]; then
+                PATH_WORKSPACE=$(echo $arg | tr '.-aW' ' ')
         elif [[ $LEN_ARGV -gt 2 ]]; then
                 if [[ -d $arg ]]; then
                         PATH_Install_Dir=$arg
