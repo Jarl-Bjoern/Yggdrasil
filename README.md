@@ -25,6 +25,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 Upcoming changes for version `0.9`
   - new menu for the best practice settings like vim configuration, crontab etc.
   - automated updater for the git tools
+  - ability to choose your own installation directory
   - colorized information after the installation
   - manual update alias for the installed git tools and microcode update
   - added automated shredding task after 90 days for data privacy
