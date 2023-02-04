@@ -370,7 +370,7 @@ Your Choice: 1
 <a name="automated_install"></a>
 ## ⚔ Using the automated variant
 ```bash
-# Automated Variant without Firewall, Hardening with text
+# Automated Variant text based without Hardening
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
 pentest
 infrastructure
@@ -378,7 +378,7 @@ full
 complete
 EOF
 
-# Automated Variant without Firewall, Hardening with numbers
+# Automated Variant without Hardening with numbers
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
 4
 1
