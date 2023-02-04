@@ -37,7 +37,6 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - logging bug fixes
   - bug and logical fixes
 
-<br />
 <a href="https://github.com/jarl-bjoern/yggdrasil/changelog/full.log">
   Full Changelog
 </a><br />
