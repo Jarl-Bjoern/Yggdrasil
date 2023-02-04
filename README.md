@@ -21,7 +21,7 @@ This tool is intended to simplify the setup of various tools and configuration o
 
 The name `Yggdrasil` comes from Norse mythology and is the tree of life or world tree, here the name is quite appropriate for the concept of the program, as it is geared for several pentetration test areas or even for digital forensics.<br />
 
-## News
+## ❗ News ❗
 Upcoming changes for version `0.9`
   - new parameter was added to show interaction messages during the apt installation
   - new menu for the best practice settings like vim configuration, crontab etc.
@@ -496,7 +496,7 @@ For this, you must use the parameter `-p` in combination with the absolute path,
 python3 /opt/Yggdrasil/yggdrasil.py -p /mnt/MY_DIRECTORY
 ```
 
-# 🙏 Special thanks 🙏
+# Special thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
   - cddmp
