@@ -36,6 +36,7 @@ Switch_Verbose=false
 Switch_VIM_CONFIG=false
 Switch_WGET=false
 TEMP_GIT_PATH=""
+TEMP_WGET_PATH=""
 
 # Arrays
 declare -a Array_Categories=()
