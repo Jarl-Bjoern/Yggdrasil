@@ -25,4 +25,5 @@ if __name__ == '__main__':
         except ReadError:
             with tfopen(f'{argv[2]}/{File}') as f:
                 f.extractall(f'{argv[2]}/')
+        except FileNotFoundError: pass
         remove (f'{argv[2]}/{File}')
