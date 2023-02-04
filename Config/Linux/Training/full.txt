@@ -5,6 +5,7 @@
 # Docker
 bkimminich/juice-shop
 tleemcjr/metasploitable2
+webgoat/webgoat
 
 # Gem
 
