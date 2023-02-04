@@ -294,6 +294,8 @@ Your Choice: full
 | [2] Firewall         :   firewall                      |
 | [3] Sysctl (OS)      :   sysctl hardening              |
 | [4] SSH              :   SSH hardening                 |
+| [5] Apache           :   Apache hardening              |
+| [6] nginx            :   nginx hardening               |
 |                                                        |
 ----------------------------------------------------------
 
