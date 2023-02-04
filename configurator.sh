@@ -657,7 +657,11 @@ if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
         export HISTCONTROL=ignoreboth:erasedups
 fi
 echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
-sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
+if [[ "$Switch_Verbose" == false ]]; then
+         sudo apt update -y ; sudo apt DEBIAN_FRONTEND=noninteractive full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
+else
+	 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
+fi
 if [[ $Switch_UPDATES == true ]]; then
         sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
 fi
