@@ -4,9 +4,11 @@
 [![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://GitHub.com/jarl-bjoern/yggdrasil/releases/)
 <div align="center">
   <a href="https://svgshare.com/i/Zhy.svg">
-    <img alt="Releases" src="https://svgshare.com/i/Zhy.svg" />
+    <img alt="linux" src="https://svgshare.com/i/Zhy.svg" />
   </a>
-  <a href=""></a>
+  <a href="https://www.python.org/downloads/release/python-3100/">
+    <img alt="linux" src="https://img.shields.io/badge/python-3.10-blue.svg" />
+  </a>
   <a href=""></a>
   <a href=""></a>
   <a href="https://github.com/jarl-bjoern">
