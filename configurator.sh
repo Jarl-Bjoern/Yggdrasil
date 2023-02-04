@@ -309,10 +309,6 @@ function File_Installer() {
                                                                         Switch_IGNORE=true
                                                                         break
                                                                 fi
-#                                                                if [[ -d $CHECK_GIT ]]; then
-#                                                                        Switch_IGNORE=true
-#                                                                        break
-#                                                                fi
                                                         fi
                                                 done
                                         else
@@ -363,21 +359,6 @@ function File_Installer() {
                                                                         break
                                                                 fi
                                                         fi
-#                                                       if [[ "$(echo "$CHECK_FILE" | awk -F "$(echo "$CHECK_FILE" | rev | cut -c2- | rev)" '{print $2}')" == "*" ]]; then
-#                                                               SEARCH_PATTERN="$(echo "$CHECK_FILE" | rev | cut -d '/' -f1 | rev)"
-#                                                               REST_OF_FILE="$(echo "$CHECK_FILE" | tr '/' ' ')"
-#                                                               TEMP_DIRECTORY=""
-#                                                               for i in $REST_OF_FILE; do if [[ "$i" != "$SEARCH_PATTERN" ]]; then TEMP_DIRECTORY+="/$i"; fi; done
-#                                                               if find "$TEMP_DIRECTORY" -maxdepth 1 ! -path "$TEMP_DIRECTORY" | grep -q "$SEARCH_PATTERN"; then
-#                                                                       Switch_IGNORE=true
-#                                                                       break
-#                                                               fi
-#                                                       else
-#                                                               if [[ $(ls "$CHECK_FILE") 2>/dev/null ]]; then
-#                                                                       Switch_IGNORE=true
-#                                                                       break
-#                                                               fi
-#                                                       fi
                                                 fi
                                         done
                                         if [[ $Switch_IGNORE = false ]]; then
