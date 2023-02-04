@@ -322,7 +322,7 @@ function File_Installer() {
                                         echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
                                         for CHECK_FILE in "${Array_Filter_Download[@]}"; do
                                                 if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
-                                                        if [[ "$CHECK_FILE" =~ "*" ]]; then
+                                                        if [[ "$(echo "$CHECK_FILE" | awk -F "$(echo "$CHECK_FILE" | rev | cut -c2- | rev)" '{print $2}')" == "*" ]]; then
                                                                 SEARCH_PATTERN="$(echo "$CHECK_FILE" | rev | cut -d '/' -f1 | rev)"
                                                                 REST_OF_FILE="$(echo "$CHECK_FILE" | tr '/' ' ')"
                                                                 TEMP_DIRECTORY=""
@@ -412,12 +412,12 @@ for arg; do
                 Switch_Skip_Configs=true
         elif [[ $arg == "-aL" ]]; then
                 Switch_License=true
-        elif [[ "$(echo $arg | awk -F "$(echo $arg | rev | cut -c5- | rev)" '{print $2}')" == ".-aW" ]]; then
-                PATH_WORKSPACE="$(echo $arg | rev | cut -c5- | rev)"
-        elif [[ "$(echo $arg | awk -F "$(echo $arg | rev | cut -c4- | rev)" '{print $2}')" == ".-p" ]]; then
-                PATH_Install_Dir="$(echo $arg | rev | cut -c4- | rev)"
-        elif [[ "$(echo $arg | awk -F "$(echo $arg | rev | cut -c5- | rev)" '{print $2}')" == ".-hN" ]]; then
-                HOST_Pentest="$(echo $arg | rev | cut -c5- | rev)"
+        elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-aW" ]]; then
+                PATH_WORKSPACE="$(echo "$arg" | rev | cut -c5- | rev)"
+        elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c4- | rev)" '{print $2}')" == ".-p" ]]; then
+                PATH_Install_Dir="$(echo "$arg" | rev | cut -c4- | rev)"
+        elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-hN" ]]; then
+                HOST_Pentest="$(echo "$arg" | rev | cut -c5- | rev)"
 #        elif [[ $LEN_ARGV -gt 2 ]]; then
 #                if [[ -d $arg ]]; then
 #                        PATH_Install_Dir=$arg
