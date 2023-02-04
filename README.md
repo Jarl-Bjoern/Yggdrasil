@@ -417,7 +417,7 @@ URL Name Method
 ```
 1. Insert a `URL` in the `first position` and make sure that the links can be called with a direct download and are not provided with a timer.
 2. Note the `name` of the program to the `second place`, this is necessary that the file is named with a simpler name during the download and thus it is also easier to filter.
-3. In the `third place` now follows the `method`, what kind of format the file has, a detailed listing of the available methods follows in the next chapter.
+3. In the `third place` now follows the `method`, what kind of format the file has and how the program should behave, for example to unpack an archive. A detailed list of the available methods follows in the next chapter.
 
 <a name="method_install"></a>
 ## 📝 The following methods are available:
