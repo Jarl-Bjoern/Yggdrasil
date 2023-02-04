@@ -19,7 +19,7 @@ def Firefox_Addons(Path):
   Press_Key('win', 2)
   autowrite('firefox'),sleep(2)
   Press_Key('return', 5)
-  Press_Hotkey('ctrl', 'k', 2)
+  Press_Hotkey('ctrl', 'k', 2), Press_Key('backspace', 1)
   autowrite(f'file:///{Path}'), Press_Key('return', 2.5)
 
 def SoapUI_Install(Path):
