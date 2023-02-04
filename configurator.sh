@@ -11,6 +11,7 @@ PATH_ALIAS=""
 PATH_Install_Dir=""
 PATH_SCREEN=""
 PATH_VIM=""
+PATH_WORKSPACE=""
 PATH_ZSH=""
 pentesting=""
 Skip=false
