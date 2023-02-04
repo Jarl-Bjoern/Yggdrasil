@@ -358,7 +358,7 @@ function File_Installer() {
                                                                         break
                                                                 fi
                                                         else
-                                                                if [[ $(ls "$TEMP_WGET_PATH") 2>/dev/null ]]; then
+                                                                if [[ $(ls "$TEMP_WGET_PATH" 2>/dev/null) ]]; then
                                                                         Switch_IGNORE=true
                                                                         break
                                                                 fi
