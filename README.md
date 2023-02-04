@@ -359,11 +359,13 @@ cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 pentest
 infrastructure
 full
+complete
 EOF
 
 # Automated Variant without Firewall, Hardening and SSH configuration with numbers
 cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 4
+1
 1
 1
 EOF
@@ -372,6 +374,7 @@ EOF
 cat <<EOF | sudo bash /opt/Yggdrasil/configurator.sh -sH
 4
 1,5
+1
 EOF
 ```
 
