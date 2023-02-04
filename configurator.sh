@@ -635,7 +635,7 @@ if [[ $Switch_UPDATES == true ]]; then
         sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
 fi
 if [[ $Switch_SHREDDER == true ]]; then
-        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path" "shred"
+        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
 fi
 
 # Standard_Installation
