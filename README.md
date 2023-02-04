@@ -22,7 +22,7 @@ This tool is intended to simplify the setup of various tools and configuration o
 The name `Yggdrasil` comes from Norse mythology and is the tree of life or world tree, here the name is quite appropriate for the concept of the program, as it is geared for several pentetration test areas or even for digital forensics.<br />
 
 ## News
-Upcoming changes for version ***0.9***
+Upcoming changes for version `0.9`
   - new menu for the best practice settings like vim configuration, crontab etc.
   - automated updater for the git tools
   - colorized information after the installation
@@ -35,13 +35,13 @@ Upcoming changes for version ***0.9***
   - logging bug fixes
   - bug and logical fixes
 
-Hotfix ***0.8b***
+Hotfix `0.8b`
   - the hostname changing function was now set to the end of the script
 
-Hotfix ***0.8a***
+Hotfix `0.8a`
   - bug and logical fixes
 
-Changes of version ***0.8***
+Changes of version `0.8`
   - custom workspace place via argument
   - overview about hardening options
   - colorized help menu
@@ -51,11 +51,11 @@ Changes of version ***0.8***
   - filter option for webscanner tools
   - download logging function
 
-With version ***0.7g*** it is now possible to select multiple categories in pentesting for installation.
+With version `0.7g` it is now possible to select multiple categories in pentesting for installation.
 
-Since version ***0.7*** it is now possible to choose between the three categories ***Complete***, ***Forensic*** and ***Pentest***.
+Since version `0.7` it is now possible to choose between the three categories `Complete`, `Forensic` and `Pentest`.
 
-Furthermore, you have the choice between ***full_install***, which is aimed at a Kali installation with GUI and ***minimal_install***, which is aimed at the CLI variant.<br />
+Furthermore, you have the choice between `full_install`, which is aimed at a Kali installation with GUI and `minimal_install`, which is aimed at the CLI variant.<br />
 
 ## Settings overview
 - Ability to configure your own setting
@@ -394,7 +394,7 @@ EOF
 
 <a name="custom_install"></a>
 # Customize your installation
-You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a **#**).
+You can open the configuration file and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a `#`).
 
 ```bash
 # APT
@@ -405,7 +405,7 @@ YOUR_EXAMPLE
 https://github.com/Jarl-Bjoern/Yggdrasil/
 ```
 
-For example, when you arrive at the ***Wget*** section, you need to see that they follow the structure below.
+For example, when you arrive at the `Wget` section, you need to see that they follow the structure below.
 ```
 URL Name Method
 ```
@@ -413,25 +413,25 @@ URL Name Method
 <a name="method_install"></a>
 ## The following methods are available:
 ### Archive
-With the ***Archive*** argument you specify that you are downloading an archive, which is then loaded into the provided Python script and unpacked.
+With the `Archive` argument you specify that you are downloading an archive, which is then loaded into the provided Python script and unpacked.
 ```bash
 # Wget
 https://dl.pstmn.io/download/latest/linux64 Postman Archive
 ```
 ### DPKG
-The argument ***DPKG*** is used to download a package, which will be imported/installed afterwards.
+The argument `DPKG` is used to download a package, which will be imported/installed afterwards.
 ```bash
 # Wget
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb chrome DPKG
 ```
 ### Executeable
-With ***Executeable***, you specify that you are downloading an executable file that is for example downloadable via Github like kerbrute.
+With `Executeable`, you specify that you are downloading an executable file that is for example downloadable via Github like kerbrute.
 ```bash
 # Wget
 https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 kerbrute Executeable
 ```
 ### Installer
-The ***Installer*** argument specifies that you download an installation package like .msi, which is subsequently launched, as is done with the Soap UI ready, for example, if you use the template for web penetration testing.
+The `Installer` argument specifies that you download an installation package like .msi, which is subsequently launched, as is done with the Soap UI ready, for example, if you use the template for web penetration testing.
 ```bash
 # Wget
 https://sh.rustup.rs rust Installer
@@ -439,7 +439,7 @@ https://sh.rustup.rs rust Installer
 
 <a name="custom_install_II"></a>
 ## Build from scratch
-You can also build the file from scratch yourself. To do this, navigate to the directory ***Config/Linux/Custom*** and edit the file ***install.txt***
+You can also build the file from scratch yourself. To do this, navigate to the directory `Config/Linux/Custom` and edit the file `install.txt`
 ```bash
 # APT
 
@@ -462,9 +462,9 @@ You can also build the file from scratch yourself. To do this, navigate to the d
 
 <a name="customized_scripts"></a>
 ## Include Customized Scripts
-In addition, it is also possible that you can place your own scripts or packages in the ***Custom*** directory and use them in the installation script.
+In addition, it is also possible that you can place your own scripts or packages in the `Custom` directory and use them in the installation script.
 
-For this, you must use the parameter ***-p*** in combination with the absolute path, as in the example below
+For this, you must use the parameter `-p` in combination with the absolute path, as in the example below
 
 <a name="directory_install"></a>
 ## Example
