@@ -7,6 +7,7 @@ HOST_Pentest="pentest-kali"
 IP_INT="127.0.0.1"
 FULL_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename "$BASH_SOURCE")
+OPT_Path=""
 PATH_ALIAS=""
 PATH_Install_Dir=""
 PATH_SCREEN=""
@@ -418,6 +419,8 @@ for arg; do
                 PATH_Install_Dir="$(echo "$arg" | rev | cut -c4- | rev)"
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-hN" ]]; then
                 HOST_Pentest="$(echo "$arg" | rev | cut -c5- | rev)"
+        elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-tP" ]]; then
+                OPT_Path="$(echo "$arg" | rev | cut -c5- | rev)"
 #        elif [[ $LEN_ARGV -gt 2 ]]; then
 #                if [[ -d $arg ]]; then
 #                        PATH_Install_Dir=$arg
@@ -432,12 +435,16 @@ header "category"
 read -rp "Your Choice: " category_type
 if [[ $category_type = "forensic" || $category_type = "3" ]]; then
         Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic"
-        OPT_Path="/opt/forensic_tools"
+        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+                OPT_Path="/opt/forensic_tools"
+        fi
         if [[ $HOST_Pentest == "pentest-kali" ]]; then
                 HOST_Pentest="forensic-kali"
         fi
 elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
-        OPT_Path="/opt/pentest_tools"
+        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+                OPT_Path="/opt/pentest_tools"
+        fi
         header "pentesting_category"
         read -rp "Your Choice: " pentesting
         if [[ $pentesting =~ "," ]]; then
@@ -474,9 +481,10 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
         fi
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
         Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Custom"
-        OPT_Path="/opt/pentest_tools"
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
-        OPT_Path="/opt/pentest_tools"
+        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+                OPT_Path="/opt/pentest_forensic_tools"
+        fi
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
