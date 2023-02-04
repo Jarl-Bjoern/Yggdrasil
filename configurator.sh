@@ -25,6 +25,7 @@ Switch_License=false
 Switch_NGINX=false
 Switch_REPO=false
 Switch_SCREENRC=false
+Switch_SHREDDER=false
 Switch_Skip_Configs=false
 Switch_Skip_Hardening=false
 Switch_SQUID=false
@@ -593,11 +594,13 @@ if [[ $Switch_Skip_Configs != true ]]; then
                                 Switch_VIM_CONFIG=true
                         elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]];  then
                                 Switch_REPO=true
+                        elif [[ $Cust_Setting = "shredder" || $Cust_Setting = "7" ]];  then
+                                Switch_SHREDDER=true
                         fi
                 done
         else
                 if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
-                        Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true
+                        Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true ; Switch_SHREDDER=true
                 elif [[ $custom_settings = "updates" || $custom_settings = "2" ]];  then
                         Switch_UPDATES=true
                 elif [[ $custom_settings = "alias" || $custom_settings = "3" ]];  then
@@ -608,6 +611,8 @@ if [[ $Switch_Skip_Configs != true ]]; then
                         Switch_VIM_CONFIG=true
                 elif [[ $custom_settings = "repo" || $custom_settings = "6" ]];  then
                         Switch_REPO=true
+                elif [[ $custom_settings = "shredder" || $custom_settings = "7" ]];  then
+                        Switch_SHREDDER=true
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                 fi
@@ -628,6 +633,9 @@ echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 if [[ $Switch_UPDATES == true ]]; then
         sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
+fi
+if [[ Switch_SHREDDER == true]]; then
+        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path" "shred"
 fi
 
 # Standard_Installation
