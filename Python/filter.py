@@ -25,7 +25,7 @@ def Crontab_Configuration(path_to_file, opt_path):
 0 3     * * *  root for GIT_TOOL in $(cat {opt_path}/update.info); do cd $GIT_TOOL; git pull; done"""
         write_file(path_to_file, Config_Crontab)
 
-def Shredder(path_to_file, path_workspace):
+def Shredder_Configuration(path_to_file, path_workspace):
         Config_Shredder = f"""0 4     * * *  root for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt 90 ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
         write_file(path_to_file, Config_Shredder)
 
