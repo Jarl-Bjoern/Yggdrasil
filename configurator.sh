@@ -298,14 +298,14 @@ function File_Installer() {
                                                 echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
                                                 for CHECK_GIT in "${Array_Filter_Git[@]}"; do
                                                         if [[ $CHECK_GIT =~ $(echo "$line" | cut -d "/" -f5) ]]; then
-                                                                if [[ $CHECK_GIT =~ "/opt/pentest_tools" ]]; then
+                                                                if [[ "$CHECK_GIT" =~ "/opt/pentest_tools" ]]; then
                                                                         TEMP_GIT_PATH="$(echo "$CHECK_GIT" | sed "s#/opt/pentest_tools#$OPT_Path#g")"
-                                                                elif [[ $CHECK_GIT =~ "/opt/forensic_tools" ]]; then
+                                                                elif [[ "$CHECK_GIT" =~ "/opt/forensic_tools" ]]; then
                                                                         TEMP_GIT_PATH="$(echo "$CHECK_GIT" | sed "s#/opt/forensic_tools#$OPT_Path#g")"
                                                                 else
                                                                         TEMP_GIT_PATH="$CHECK_GIT"
                                                                 fi
-                                                                if [[ -d $TEMP_GIT_PATH ]]; then
+                                                                if [[ -d "$TEMP_GIT_PATH" ]]; then
                                                                         Switch_IGNORE=true
                                                                         break
                                                                 fi
@@ -337,9 +337,9 @@ function File_Installer() {
                                         echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
                                         for CHECK_FILE in "${Array_Filter_Download[@]}"; do
                                                 if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
-							if [[ $CHECK_FILE =~ "/opt/pentest_tools" ]]; then
+							if [[ "$CHECK_FILE" =~ "/opt/pentest_tools" ]]; then
 								TEMP_WGET_PATH="$(echo "$CHECK_FILE" | sed "s#/opt/pentest_tools#$OPT_Path#g")"
-							elif [[ $CHECK_FILE =~ "/opt/forensic_tools" ]]; then
+							elif [[ "$CHECK_FILE" =~ "/opt/forensic_tools" ]]; then
 								TEMP_WGET_PATH="$(echo "$CHECK_FILE" | sed "s#/opt/forensic_tools#$OPT_Path#g")"
 							else
 								TEMP_WGET_PATH="$CHECK_FILE"
@@ -1235,7 +1235,7 @@ if [ -f "/usr/share/wordlists/rockyou.txt.gz" ]; then
 fi
 
 # Docker_Standard_Images
-if grep -q nessus "$File_Path"; then
+if grep -q nessus "$File_Path" || [ "$category_type" = "complete" ] || [ "$category_type" = "1" ]; then
         if docker ps -a | grep -q nessus; then
                 NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
                 sudo docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; sudo docker rm "$NESSUS_DOCKER_TEMP"
