@@ -246,7 +246,7 @@ function File_Installer() {
 				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 			fi
                 elif [[ $1 =~ "git" ]]; then
-			if find $OPT_Path -maxdepth 1 ! -path $OPT_Path | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)"; then
+			if find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)"; then
 				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
 				if [[ ${Array_GIT_Updater[*]} != $(echo "$2" | rev | cut -d '/' -f1 | rev) ]]; then
 					Array_GIT_Updater+=($(echo "$2" | rev | cut -d '/' -f1 | rev))
@@ -652,9 +652,9 @@ if [[ $Switch_Skip_Hardening != true ]]; then
         echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 fi
 if [[ $category_type != "custom" && $category_type != "2" ]]; then
-        File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/standard.txt" $OPT_Path
+        File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/standard.txt" "$OPT_Path"
         if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
-                File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/gui.txt" $OPT_Path
+                File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/gui.txt" "$OPT_Path"
         fi
 fi
 
@@ -917,17 +917,17 @@ EOF
         fi
 
         # GIT_Updater_Configuration
-        if [[ ! $(ls $OPT_Path/"update.info" 2>/dev/null) ]]; then
-                echo "" > $OPT_Path/update.info
+        if [[ ! $(ls "$OPT_Path/update.info" 2>/dev/null) ]]; then
+                echo "" > "$OPT_Path/update.info"
         fi
         for git_tool in "${Array_GIT_Updater[@]}"; do
                 if [[ ! $(grep "$git_tool" "$OPT_Path/update.info") =~ $git_tool ]]; then
-                        find $OPT_Path -name "$git_tool" | head -n 1 >> $OPT_Path/update.info
+                        find "$OPT_Path" -name "$git_tool" | head -n 1 >> "$OPT_Path/update.info"
                 fi
         done
         for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
                 if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
-                        echo "$git_wordlist" >> $OPT_Path/update.info
+                        echo "$git_wordlist" >> "$OPT_Path/update.info"
                 fi
         done
 fi
@@ -942,7 +942,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
                 else
                         sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
                 fi
-                for veracrypt_file in $(find $OPT_Path -maxdepth 1 ! -path $OPT_Path | grep "setup"); do sudo rm -f "$veracrypt_file"; done
+                for veracrypt_file in $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup"); do sudo rm -f "$veracrypt_file"; done
         fi
 
         if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")" ]; then
@@ -1222,11 +1222,6 @@ if [[ $category_type = "pentest" || $category_type = "4" ]];  then
                 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
         fi
 fi
-#if [[ $category_type = "complete" || $category_type = "1" ]]; then
-#        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/forensic_tools
-#        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" /opt/pentest_tools
-#else
 sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" "$OPT_Path"
-#fi
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
