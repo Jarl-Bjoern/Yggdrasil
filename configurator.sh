@@ -267,7 +267,7 @@ function File_Installer() {
         while IFS= read -r line
         do
                 if [[ $line = "# APT" ]]; then
-                        Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false
+                        Command="DEBIAN_FRONTEND=noninteractive sudo apt install -y" ; Skip=true ; Switch_WGET=false
                 elif [[ $line = "# Cargo" ]]; then
                         Command="sudo cargo install" ; Skip=true ; Switch_WGET=false
                 elif [[ $line = "# Docker" ]]; then
