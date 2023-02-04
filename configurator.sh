@@ -919,7 +919,7 @@ EOF
         done
         for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
                 if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
-                        echo "/opt/wordlists/$git_wordlist" >> $OPT_Path/update.info
+                        echo "$git_wordlist" >> $OPT_Path/update.info
                 fi
         done
 fi
