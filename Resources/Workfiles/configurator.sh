@@ -244,26 +244,29 @@ function File_Installer() {
                                 echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
                         fi
                 elif [[ $1 =~ "gem" ]]; then
-			if gem list | grep -q "$2"; then
-				echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
-			else
-				echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
-			fi
+                        if gem list | grep -q "$2"; then
+                                echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
+                        else
+                                echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
+                        fi
                 elif [[ $1 =~ "git" ]]; then
-			if find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)"; then
-				echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
-				if [[ ${Array_GIT_Updater[*]} != $(echo "$2" | rev | cut -d '/' -f1 | rev) ]]; then
-					Array_GIT_Updater+=($(echo "$2" | rev | cut -d '/' -f1 | rev))
-				fi
-			else
-				echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
-			fi
+                        if find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)"; then
+                                echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
+                                Temp_GIT_Name=$(echo "$2" | rev | cut -d '/' -f1 | rev)
+                                if [[ ${Array_GIT_Updater[*]} != "$Temp_GIT_Name" ]]; then
+                                        if [[ "$Switch_WGET" == false ]]; then
+                                                Array_GIT_Updater+=("$Temp_GIT_Name")
+                                        fi
+                                fi
+                        else
+                                echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
+                        fi
                 elif [[ $1 =~ "pip3" ]]; then
-			if pip3 freeze | grep -q "$2"; then
-				echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
-			else
-				echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
-			fi
+                        if pip3 freeze | grep -q "$2"; then
+                                echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
+                        else
+                                echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
+                        fi
                 fi
         }
 
