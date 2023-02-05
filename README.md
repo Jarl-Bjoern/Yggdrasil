@@ -398,14 +398,31 @@ In this example we take the configuration file for `infrastructure penetration t
 
 <strong>Notice:</strong> The `minimal.txt` is set for special installation, e.g. if you are designing internal penetration tests remotely and can only connect to your target system via SSH and have no way to use GUI-based applications unless X11 forwarding is available.
 
+After opening the minimal.txt file with an editor of your choice, we now see a variety of tools that are entered.
+
 ```bash
 # APT
-feroxbuster
-YOUR_EXAMPLE
+bloodhound
+dhcpig
+fcrackzip
 
-# Git
-https://github.com/Jarl-Bjoern/Yggdrasil/
+...
 ```
+
+In this example we add the tool Feroxbuster under the header "APT", now at the next start the added tool will be installed.
+
+When inserting the tool, make sure that you add it to the correct section of the respective package manager.
+
+```bash
+# APT
+bloodhound
+dhcpig
+fcrackzip
+feroxbuster
+
+.....
+```
+Now you can add more tools as you wish.
 
 For example, when you arrive at the `Wget` section, you need to see that they follow the structure below.
 ```
