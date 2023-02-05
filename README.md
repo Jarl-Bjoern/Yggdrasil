@@ -127,13 +127,6 @@ optional arguments:
                           - Veracrypt
 
                         ---------------------------------------------------------------
-  -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
-                        This parameter is required to accept licenses.
-
-                        Licenses:
-                          - Veracrypt
-
-                        ---------------------------------------------------------------
   -aW ADD_WORKSPACE, --add-workspace ADD_WORKSPACE
                         This parameter specifies your default workspace location.
 
