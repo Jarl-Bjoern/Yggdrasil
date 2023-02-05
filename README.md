@@ -16,6 +16,14 @@
   <a href="https://github.com/jarl-bjoern">
       <img title="Follower" src="https://img.shields.io/github/followers/Jarl-Bjoern.svg?style=social&label=Follow&maxAge=2592000"><a href="https://github.com/Jarl-Bjoern?tab=followers"></a>
 </div><br />
+<div align="center">
+  <a href="https://www.python.org/">
+    <img alt="linux" src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" />
+  </a>
+  <a href="https://www.gnu.org/software/bash/">
+    <img alt="linux" src="https://img.shields.io/badge/Made%20with-Bash-1f425f.svg" />
+  </a>
+</div>
 
 This tool is intended to simplify the setup of various tools and configuration of a Kali machine after a fresh installation and save unnecessary time, so that a predefined list can be used in advance or you can also create your own.<br />
 
