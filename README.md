@@ -24,6 +24,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 ## ❗ News
 <strong>Upcoming changes for version</strong> `0.9`:
   - new parameter was added to show interaction messages during the apt installation
+  - reorganization of the repository
   - new menu for the best practice settings like vim configuration, crontab etc.
   - automated updater for the git tools
   - ability to choose your own installation directory
