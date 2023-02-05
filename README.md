@@ -11,7 +11,7 @@
     <img alt="visitors" src="https://visitor-badge.glitch.me/badge?page_id=jarl-bjoern/yggdrasil&left_color=grey&right_color=blue" />
   </a>
   <a href="https://GitHub.com/jarl-bjoern/yggdrasil/releases/">
-    <img alt="visitors" src="https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg" />
+    <img alt="releases" src="https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg" />
   </a>
   <a href="https://github.com/jarl-bjoern">
       <img title="Follower" src="https://img.shields.io/github/followers/Jarl-Bjoern.svg?style=social&label=Follow&maxAge=2592000"><a href="https://github.com/Jarl-Bjoern?tab=followers"></a>
