@@ -1,0 +1,19 @@
+# APT
+
+# Cargo
+
+# Docker
+tenableofficial/nessus
+
+# Gem
+
+# Git
+https://github.com/CISOfy/lynis
+
+# Go
+
+# Python
+
+# Wget
+
+# Wordlists
