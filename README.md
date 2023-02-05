@@ -424,7 +424,7 @@ feroxbuster
 ```
 Now you can add more tools as you wish.
 
-For example, when you arrive at the `Wget` section, you need to see that they follow the structure below.
+When you arrive at the `Wget` section, you need to see that they follow the structure below.
 ```
 URL Name Method
 ```
