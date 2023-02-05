@@ -373,9 +373,9 @@ function File_Installer() {
                                                         wget --content-disposition "$FILE"
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
-                                                                sudo python3 "$FULL_PATH/Python/zip.py" "$FILE_NAME" "$2" | tee -a "$FULL_PATH/yggdrasil.log"
+                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE_NAME" "$2" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         else
-                                                                sudo python3 "$FULL_PATH/Python/zip.py" "$FILE" "$2" | tee -a "$FULL_PATH/yggdrasil.log"
+                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE" "$2" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                                 elif [ "$MODE" = "Installer" ]; then
                                                         wget --content-disposition "$FILE"
@@ -583,7 +583,7 @@ if [[ $Switch_Skip_Hardening != true ]]; then
         if [[ $Switch_SSH != false ]]; then
                 echo -e "\n             Please select an IP address to be used\n                     for SSH configuration"
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-                sudo python3 "$FULL_PATH/Python/nic.py"
+                sudo python3 "$FULL_PATH/Resources/Python/nic.py"
                 echo -e "\n${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
                 read -rp "Your Choice: " IP_TEMP
                 if [[ ${#IP_TEMP} -gt 0 ]]; then
@@ -663,10 +663,10 @@ else
 	 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 fi
 if [[ $Switch_UPDATES == true ]]; then
-        sudo python3 "$FULL_PATH/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
+        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
 fi
 if [[ $Switch_SHREDDER == true ]]; then
-        sudo python3 "$FULL_PATH/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
+        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
 fi
 
 # Standard_Installation
@@ -712,9 +712,9 @@ for i in $(find /home -maxdepth 1 | grep -v -E "/home|lost+found") "/root"; do
                 # ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
                 sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH"
                 sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_ZSH"
-                sudo python3 "$FULL_PATH/Python/filter.py" "$PATH_ALIAS"
-                sudo python3 "$FULL_PATH/Python/filter.py" "$PATH_BSH"
-                sudo python3 "$FULL_PATH/Python/filter.py" "$PATH_ZSH"
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ALIAS"
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_BSH"
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ZSH"
         fi
 
         if [[ $Switch_SCREENRC == true ]]; then
@@ -960,7 +960,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
         fi
         if [[ -f $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
                 if [[ $Switch_License == true ]]; then
-                        sudo python3 "$FULL_PATH/Python/auto.py" Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
+                        sudo python3 "$FULL_PATH/Resources/Python/auto.py" Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
                 else
                         sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
                 fi
@@ -972,7 +972,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
                 "$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
         fi
         if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
-                sudo python3 "$FULL_PATH/Python/install.py" "$PATH_Install_Dir"
+                sudo python3 "$FULL_PATH/Resources/Python/install.py" "$PATH_Install_Dir"
         fi
 fi
 
@@ -1112,7 +1112,7 @@ EOF
         # Firewall_Configuration
         if [[ $Switch_Firewall = true ]]; then
                 if [ -f /etc/iptables/rules.v4 ]; then
-                        sudo python3 "$FULL_PATH/Python/filter.py" "/etc/iptables/rules.v4"
+                        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/iptables/rules.v4"
                         sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
                         sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
                         sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
@@ -1146,7 +1146,7 @@ EOF
                 fi
 
                 if [ -f /etc/iptables/rules.v6 ]; then
-                        sudo python3 "$FULL_PATH/Python/filter.py" "/etc/iptables/rules.v6"
+                        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/iptables/rules.v6"
                         sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
                         sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
                         sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
@@ -1244,6 +1244,6 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
                 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
         fi
 fi
-sudo python3 "$FULL_PATH/Python/clean.py" "$OPT_Path"
+sudo python3 "$FULL_PATH/Resources/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
