@@ -50,7 +50,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/blob/main/Information/Changelog/full.md">
   Full Changelog
-</a>
+</a> ⬅️
 </div><br />
 
 ## 📃 Settings overview
