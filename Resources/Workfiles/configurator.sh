@@ -20,7 +20,7 @@ Skip=false
 Switch_APACHE=false
 Switch_CUSTOM_CONFIGS=false
 Switch_Firewall=false
-Switch_FTP=false
+#Switch_FTP=false
 Switch_Hardening=false
 Switch_IGNORE=false
 Switch_License=false
@@ -30,7 +30,7 @@ Switch_SCREENRC=false
 Switch_SHREDDER=false
 Switch_Skip_Configs=false
 Switch_Skip_Hardening=false
-Switch_SQUID=false
+#Switch_SQUID=false
 Switch_SSH=false
 Switch_UPDATES=false
 Switch_Verbose=false
@@ -577,7 +577,7 @@ if [[ $Switch_Skip_Hardening != true ]]; then
                 done
         else
                 if [[ $hardening = "complete" || $hardening = "1" ]]; then
-                        Switch_Firewall=true ; Switch_Hardening=true ; Switch_SSH=true ; Switch_APACHE=true ; Switch_NGINX=true ; Switch_FTP=true ; Switch_SQUID=true
+                        Switch_Firewall=true ; Switch_Hardening=true ; Switch_SSH=true ; Switch_APACHE=true ; Switch_NGINX=true #; Switch_FTP=true ; Switch_SQUID=true
                 elif [[ $hardening = "firewall" || $hardening = "2" ]]; then
                         Switch_Firewall=true
                 elif [[ $hardening = "sysctl" || $hardening = "3" ]]; then
