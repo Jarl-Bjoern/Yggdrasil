@@ -458,7 +458,7 @@ if [[ $category_type = "forensic" || $category_type = "3" ]]; then
         if [[ $HOST_Pentest == "pentest-kali" ]]; then
                 HOST_Pentest="forensic-kali"
         fi
-elif [[ $category_type = "pentest" || $category_type = "4" ]];  then
+elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
                 OPT_Path="/opt/pentest_tools"
         fi
@@ -611,34 +611,34 @@ if [[ $Switch_Skip_Configs != true ]]; then
         if [[ $custom_settings =~ "," ]]; then
                 readarray -td, Array_Custom_Settings <<< "$custom_settings", declare -p Array_Custom_Settings
                 for Cust_Setting in "${Array_Custom_Settings[@]}"; do
-                        if [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]];  then
+                        if [[ $Cust_Setting = "updates" || $Cust_Setting = "2" ]]; then
                                 Switch_UPDATES=true
-                        elif [[ $Cust_Setting = "alias" || $Cust_Setting = "3" ]];  then
+                        elif [[ $Cust_Setting = "alias" || $Cust_Setting = "3" ]]; then
                                 Switch_CUSTOM_CONFIGS=true
-                        elif [[ $Cust_Setting = "screenrc" || $Cust_Setting = "4" ]];  then
+                        elif [[ $Cust_Setting = "screenrc" || $Cust_Setting = "4" ]]; then
                                 Switch_SCREENRC=true
-                        elif [[ $Cust_Setting = "vim" || $Cust_Setting = "5" ]];  then
+                        elif [[ $Cust_Setting = "vim" || $Cust_Setting = "5" ]]; then
                                 Switch_VIM_CONFIG=true
-                        elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]];  then
+                        elif [[ $Cust_Setting = "repo" || $Cust_Setting = "6" ]]; then
                                 Switch_REPO=true
-                        elif [[ $Cust_Setting = "shredder" || $Cust_Setting = "7" ]];  then
+                        elif [[ $Cust_Setting = "shredder" || $Cust_Setting = "7" ]]; then
                                 Switch_SHREDDER=true
                         fi
                 done
         else
                 if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
                         Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true ; Switch_SHREDDER=true
-                elif [[ $custom_settings = "updates" || $custom_settings = "2" ]];  then
+                elif [[ $custom_settings = "updates" || $custom_settings = "2" ]]; then
                         Switch_UPDATES=true
-                elif [[ $custom_settings = "alias" || $custom_settings = "3" ]];  then
+                elif [[ $custom_settings = "alias" || $custom_settings = "3" ]]; then
                         Switch_CUSTOM_CONFIGS=true
-                elif [[ $custom_settings = "screenrc" || $custom_settings = "4" ]];  then
+                elif [[ $custom_settings = "screenrc" || $custom_settings = "4" ]]; then
                         Switch_SCREENRC=true
-                elif [[ $custom_settings = "vim" || $custom_settings = "5" ]];  then
+                elif [[ $custom_settings = "vim" || $custom_settings = "5" ]]; then
                         Switch_VIM_CONFIG=true
-                elif [[ $custom_settings = "repo" || $custom_settings = "6" ]];  then
+                elif [[ $custom_settings = "repo" || $custom_settings = "6" ]]; then
                         Switch_REPO=true
-                elif [[ $custom_settings = "shredder" || $custom_settings = "7" ]];  then
+                elif [[ $custom_settings = "shredder" || $custom_settings = "7" ]]; then
                         Switch_SHREDDER=true
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
@@ -774,7 +774,7 @@ EOF
         fi
 done
 
-if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
+if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]]; then
         # Git_Tools_Installation
         if [ -d "$OPT_Path/chisel" ]; then
                 cd "$OPT_Path"/chisel || return 0 ; sudo go get ; sudo go build
@@ -794,7 +794,6 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
         if [ -d "$OPT_Path/socketcand" ]; then
                 cd "$OPT_Path"/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
         fi
-
         if [ -f "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")" ]; then
                 sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")"
         fi
@@ -938,25 +937,25 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 /webdav/servlet/webdav/
 EOF
         fi
-
-        # GIT_Updater_Configuration
-        if [[ ! $(ls "$OPT_Path/update.info" 2>/dev/null) ]]; then
-                echo "" > "$OPT_Path/update.info"
-        fi
-        for git_tool in "${Array_GIT_Updater[@]}"; do
-                if [[ ! $(grep "$git_tool" "$OPT_Path/update.info") =~ $git_tool ]]; then
-                        find "$OPT_Path" -name "$git_tool" | head -n 1 >> "$OPT_Path/update.info"
-                fi
-        done
-        for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
-                if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
-                        echo "$git_wordlist" >> "$OPT_Path/update.info"
-                fi
-        done
 fi
 
+# GIT_Updater_Configuration
+if [[ ! $(ls "$OPT_Path/update.info" 2>/dev/null) ]]; then
+	echo "" > "$OPT_Path/update.info"
+fi
+for git_tool in "${Array_GIT_Updater[@]}"; do
+	if [[ ! $(grep "$git_tool" "$OPT_Path/update.info") =~ $git_tool ]]; then
+		find "$OPT_Path" -name "$git_tool" | head -n 1 >> "$OPT_Path/update.info"
+	fi
+done
+for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
+	if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
+		echo "$git_wordlist" >> "$OPT_Path/update.info"
+	fi
+done
+
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
-        if [[ $category_type = "pentest" || $category_type = "4" ]];  then
+        if [[ $category_type = "pentest" || $category_type = "4" ]]; then
                 ln -sf "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
         fi
         if [[ -f $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
@@ -1240,7 +1239,7 @@ if grep -q nessus "$File_Path" || [ "$category_type" = "complete" ] || [ "$categ
         fi
         sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 fi
-if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]];  then
+if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]]; then
         if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
                 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
         fi
