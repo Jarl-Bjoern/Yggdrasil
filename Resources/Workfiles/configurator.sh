@@ -320,14 +320,26 @@ function File_Installer() {
                                                         echo "$line was skipped" | tee -a "$FULL_PATH/yggdrasil.log"
                                                 else
                                                         if [[ $Switch_IGNORE = false ]]; then
-                                                                eval "$Command $line" ; Logger "$Command" "$line"
+                                                                if [[ $Command =~ "apt" ]]; then
+                                                                        SECOND_Command="$Command $line || apt --fix-broken install -y && $Command $line"
+                                                                        eval "$SECOND_Command"
+                                                                else
+                                                                        eval "$Command $line"
+                                                                fi
+                                                                Logger "$Command" "$line"
                                                         else
                                                                 echo "$line already exists." | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                                 fi
                                         else
                                                 if [[ $Switch_IGNORE = false ]]; then
-                                                        eval "$Command $line" ; Logger "$Command" "$line"
+							if [[ $Command =~ "apt" ]]; then
+								SECOND_Command="$Command $line || apt --fix-broken install -y && $Command $line"
+								eval "$SECOND_Command"
+							else
+								eval "$Command $line"
+							fi
+							Logger "$Command" "$line"
                                                 else
                                                         echo "$line already exists." | tee -a "$FULL_PATH/yggdrasil.log"
                                                 fi
