@@ -18,10 +18,13 @@
 </div>
 <div align="center">
   <a href="https://www.python.org/">
-    <img alt="linux" src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" />
+    <img alt="python" src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" />
   </a>
   <a href="https://www.gnu.org/software/bash/">
-    <img alt="linux" src="https://img.shields.io/badge/Made%20with-Bash-1f425f.svg" />
+    <img alt="bash" src="https://img.shields.io/badge/Made%20with-Bash-1f425f.svg" />
+  </a>
+    <a href="https://www.gnu.org/software/bash/">
+    <img alt="powershell" src="https://img.shields.io/badge/Made%20with-PowerShell-1f425f.svg" />
   </a>
 </div><br/>
 
