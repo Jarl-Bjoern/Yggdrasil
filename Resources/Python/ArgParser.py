@@ -3,8 +3,8 @@
 # Rainer Christian Bjoern Herold
 
 # Libraries
-from Resources.Python.Standard.Libraries import ArgumentParser, FileType, osname, RawTextHelpFormatter, SUPPRESS
-from Resources.Python.Standard.Colors import Colors
+from Resources.Python.Libraries import ArgumentParser, FileType, osname, RawTextHelpFormatter, SUPPRESS
+from Resources.Python.Colors import Colors
 
 def Argument_Parser():
   Program_Description = """-------------------------------------------------------------------------------------
