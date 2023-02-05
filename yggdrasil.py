@@ -56,7 +56,7 @@ def main():
     File_Path = dirname(realpath(__file__))
     Start_Script = join(File_Path, "Resources/Workfiles/configurator.sh")
 
-    from Resources.Python.ArgParser import Argument_Parser
+    from Resources.Python.Standard_Operations.ArgParser import Argument_Parser
     args = Argument_Parser()
     del Argument_Parser
 
