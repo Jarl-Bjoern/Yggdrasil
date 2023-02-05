@@ -33,9 +33,9 @@ __maintainer__ = "Rainer C. B. Herold"
 __status__ = "Production"
 
 # Libraries
-from Python.Resources.Libraries import *
-from Python.Resources.Standard import Standard
-from Python.Resources.Colors import Colors
+from Resources.Python.Libraries import *
+from Resources.Python.Standard import Standard
+from Resources.Python.Colors import Colors
 
 # Functions
 def Check_dosunix():
