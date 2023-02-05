@@ -321,7 +321,7 @@ function File_Installer() {
                                                 else
                                                         if [[ $Switch_IGNORE = false ]]; then
                                                                 if [[ $Command =~ "apt" ]]; then
-                                                                        SECOND_Command="$Command $line || apt --fix-broken install -y && $Command $line"
+                                                                        SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
                                                                         eval "$SECOND_Command"
                                                                 else
                                                                         eval "$Command $line"
@@ -334,7 +334,7 @@ function File_Installer() {
                                         else
                                                 if [[ $Switch_IGNORE = false ]]; then
 							if [[ $Command =~ "apt" ]]; then
-								SECOND_Command="$Command $line || apt --fix-broken install -y && $Command $line"
+								SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
 								eval "$SECOND_Command"
 							else
 								eval "$Command $line"
