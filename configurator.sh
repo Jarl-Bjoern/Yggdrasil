@@ -5,8 +5,9 @@
 decision=""
 HOST_Pentest="pentest-kali"
 IP_INT="127.0.0.1"
-FULL_PATH=$(readlink -f -- "$0")
+TEMP_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename "$BASH_SOURCE")
+FULL_PATH=${TEMP_PATH::-${#SCRIPT_NAME}-11}
 OPT_Path=""
 PATH_ALIAS=""
 PATH_Install_Dir=""
@@ -41,12 +42,12 @@ TEMP_WGET_PATH=""
 # Arrays
 declare -a Array_Categories=()
 
-declare -a Array_Complete_Install=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming/full.txt"
-"${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web/full.txt")
+declare -a Array_Complete_Install=("$FULL_PATH/Config/Linux/Forensic/full.txt"
+"$FULL_PATH/Config/Linux/Pentest/Infrastructure/full.txt"
+"$FULL_PATH/Config/Linux/Pentest/IOT/full.txt"
+"$FULL_PATH/Config/Linux/Pentest/Mobile/full.txt"
+"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/full.txt"
+"$FULL_PATH/Config/Linux/Pentest/Web/full.txt")
 
 declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/usr/bin/code"
@@ -232,36 +233,36 @@ function File_Installer() {
         function Logger() {
                 if [[ $1 =~ "apt" ]]; then
                         if [[ ! $(apt-cache policy "$2" | grep "Installed:") =~ (none) || ! $(apt-cache policy "$2" | grep "Installiert:") =~ (keine) ]]; then
-                                echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
                         else
-                                echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
                         fi
                 elif [[ $1 =~ "docker" ]]; then
                         if docker images | grep -q "$2"; then
-                                echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
                         else
-                                echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
                         fi
                 elif [[ $1 =~ "gem" ]]; then
 			if gem list | grep -q "$2"; then
-				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+				echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
 			else
-				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+				echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
 			fi
                 elif [[ $1 =~ "git" ]]; then
 			if find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)"; then
-				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+				echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
 				if [[ ${Array_GIT_Updater[*]} != $(echo "$2" | rev | cut -d '/' -f1 | rev) ]]; then
 					Array_GIT_Updater+=($(echo "$2" | rev | cut -d '/' -f1 | rev))
 				fi
 			else
-				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+				echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
 			fi
                 elif [[ $1 =~ "pip3" ]]; then
 			if pip3 freeze | grep -q "$2"; then
-				echo "$2 was successfully installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+				echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
 			else
-				echo "$2 was not installed." >> "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+				echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
 			fi
                 fi
         }
@@ -295,7 +296,7 @@ function File_Installer() {
                         if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
                                 if [ "$Switch_WGET" = false ]; then
                                         if [[ $line =~ "github" ]]; then
-                                                echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "$FULL_PATH/yggdrasil.log"
                                                 for CHECK_GIT in "${Array_Filter_Git[@]}"; do
                                                         if [[ $CHECK_GIT =~ $(echo "$line" | cut -d "/" -f5) ]]; then
                                                                 if [[ "$CHECK_GIT" =~ "/opt/pentest_tools" ]]; then
@@ -312,29 +313,29 @@ function File_Installer() {
                                                         fi
                                                 done
                                         else
-                                                echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$line${NOCOLOR}" | tee -a "$FULL_PATH/yggdrasil.log"
                                         fi
                                         if [ "$Switch_Skip_Hardening" = true ]; then
                                                 if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
-                                                        echo "$line was skipped" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                        echo "$line was skipped" | tee -a "$FULL_PATH/yggdrasil.log"
                                                 else
                                                         if [[ $Switch_IGNORE = false ]]; then
                                                                 eval "$Command $line" ; Logger "$Command" "$line"
                                                         else
-                                                                echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                                echo "$line already exists." | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                                 fi
                                         else
                                                 if [[ $Switch_IGNORE = false ]]; then
                                                         eval "$Command $line" ; Logger "$Command" "$line"
                                                 else
-                                                        echo "$line already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                        echo "$line already exists." | tee -a "$FULL_PATH/yggdrasil.log"
                                                 fi
                                         fi
                                 else
                                         FILE=$(echo "$line" | cut -d" " -f1)
                                         FILE_NAME=$(echo "$line" | cut -d" " -f2)
-                                        echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                        echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "$FULL_PATH/yggdrasil.log"
                                         for CHECK_FILE in "${Array_Filter_Download[@]}"; do
                                                 if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
 							if [[ "$CHECK_FILE" =~ "/opt/pentest_tools" ]]; then
@@ -372,17 +373,17 @@ function File_Installer() {
                                                         wget --content-disposition "$FILE"
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
-                                                                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py" "$FILE_NAME" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                                sudo python3 "$FULL_PATH/Python/zip.py" "$FILE_NAME" "$2" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         else
-                                                                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/zip.py" "$FILE" "$2" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                                sudo python3 "$FULL_PATH/Python/zip.py" "$FILE" "$2" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                                 elif [ "$MODE" = "Installer" ]; then
                                                         wget --content-disposition "$FILE"
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
                                                         if [[ $FILE_NAME =~ "rustup" ]]; then
-                                                                sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                                sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
                                                         else
-                                                                sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                                sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                                 elif [ "$MODE" = "Extension" ]; then
                                                         # UNDER CONSTRUCTION
@@ -393,16 +394,16 @@ function File_Installer() {
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
                                                                 wget --content-disposition "$FILE"
-                                                                sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                                sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         else
                                                                 FILE_NAME=$(echo "$line" | cut -d" " -f2)
                                                                 wget "$FILE" -O "$FILE_NAME".deb
-                                                                sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2).deb" | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                                sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2).deb" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                         fi
                                                 Logger "$FILE" "$FILE_NAME"
                                         else
-                                                echo "$FILE_NAME already exists." | tee -a "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+                                                echo "$FILE_NAME already exists." | tee -a "$FULL_PATH/yggdrasil.log"
                                         fi
                                 fi
                         fi
@@ -450,7 +451,7 @@ done
 header "category"
 read -rp "Your Choice: " category_type
 if [[ $category_type = "forensic" || $category_type = "3" ]]; then
-        Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Forensic"
+        Path_Way="$FULL_PATH/Config/Linux/Forensic"
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
                 OPT_Path="/opt/forensic_tools"
         fi
@@ -467,36 +468,36 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
                 readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
                 for testing_category in "${Array_Pentesting[@]}"; do
                         if [[ $testing_category = "infrastructure" || $testing_category = "1" ]]; then
-                                Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure")
+                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Infrastructure")
                         elif [[ $testing_category = "iot" || $testing_category = "2" ]]; then
-                                Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT")
+                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/IOT")
                         elif [[ $testing_category = "mobile" || $testing_category = "3" ]]; then
-                                Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile")
+                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Mobile")
                         elif [[ $testing_category = "red_teaming" || $testing_category = "4" ]]; then
-                                Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming")
+                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
                         elif [[ $testing_category = "web" || $testing_category = "5" ]]; then
-                                Array_Categories+=("${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web")
+                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
                         else
                                 echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                         fi
                 done
         else
                 if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
-                        Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure"
+                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
                 elif [[ $pentesting = "iot" || $pentesting = "2" ]]; then
-                        Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/IOT"
+                        Path_Way="$FULL_PATH/Config/Linux/Pentest/IOT"
                 elif [[ $pentesting = "mobile" || $pentesting = "3" ]]; then
-                        Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Mobile"
+                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Mobile"
                 elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
-                        Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Red_Teaming"
+                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Red_Teaming"
                 elif [[ $pentesting = "web" || $pentesting = "5" ]]; then
-                        Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Web"
+                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Web"
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                 fi
         fi
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
-        Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Custom"
+        Path_Way="$FULL_PATH/Config/Linux/Custom"
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
                 OPT_Path="/opt/pentest_forensic_tools"
@@ -508,28 +509,28 @@ fi
 # Installation_Type
 if [[ $category_type = "custom" || $category_type = "2" ]]; then
         File_Path="${Path_Way}/install.txt"
-        Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+        Informational="$FULL_PATH/Information/info.txt"
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         decision="0"
-        Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+        Informational="$FULL_PATH/Information/info.txt"
 else
         if [[ ${#Array_Categories} -gt 0 ]]; then
-                Path_Way="${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/Pentest/Infrastructure"
+                Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
                 File_Path="${Path_Way}/full.txt"
-                Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+                Informational="$FULL_PATH/Information/info.txt"
                 decision="full"
         else
                 if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" ]]; then
                         File_Path="${Path_Way}/full.txt"
                         decision="full"
-                        Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+                        Informational="$FULL_PATH/Information/info.txt"
                 else
                         header "installation"
                         read -rp "Your Choice: " decision
                         if [[ $decision = "full" || $decision = "1" ]]; then
                                 File_Path="${Path_Way}/full.txt"
                                 if [[ $category_type = "pentest" || $category_type = "4" ]]; then
-                                       Informational="${FULL_PATH::-${#SCRIPT_NAME}}/Information/info.txt"
+                                       Informational="$FULL_PATH/Information/info.txt"
                                 fi
                         elif [[ $decision = "minimal" || $decision = "2" ]]; then
                                 File_Path="${Path_Way}/minimal.txt"
@@ -582,7 +583,7 @@ if [[ $Switch_Skip_Hardening != true ]]; then
         if [[ $Switch_SSH != false ]]; then
                 echo -e "\n             Please select an IP address to be used\n                     for SSH configuration"
                 echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/nic.py"
+                sudo python3 "$FULL_PATH/Python/nic.py"
                 echo -e "\n${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
                 read -rp "Your Choice: " IP_TEMP
                 if [[ ${#IP_TEMP} -gt 0 ]]; then
@@ -655,17 +656,17 @@ fi
 if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
         export HISTCONTROL=ignoreboth:erasedups
 fi
-echo "" > "${FULL_PATH::-${#SCRIPT_NAME}}/yggdrasil.log"
+echo "" > "$FULL_PATH/yggdrasil.log"
 if [[ "$Switch_Verbose" == false ]]; then
          sudo apt update -y ; sudo DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 else
 	 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 fi
 if [[ $Switch_UPDATES == true ]]; then
-        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
+        sudo python3 "$FULL_PATH/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
 fi
 if [[ $Switch_SHREDDER == true ]]; then
-        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
+        sudo python3 "$FULL_PATH/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
 fi
 
 # Standard_Installation
@@ -674,9 +675,9 @@ if [[ $Switch_Skip_Hardening != true ]]; then
         echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 fi
 if [[ $category_type != "custom" && $category_type != "2" ]]; then
-        File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/standard.txt" "$OPT_Path"
+        File_Installer "$FULL_PATH/Config/Linux/General/standard.txt" "$OPT_Path"
         if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
-                File_Installer "${FULL_PATH::-${#SCRIPT_NAME}}/Config/Linux/General/gui.txt" "$OPT_Path"
+                File_Installer "$FULL_PATH/Config/Linux/General/gui.txt" "$OPT_Path"
         fi
 fi
 
@@ -711,9 +712,9 @@ for i in $(find /home -maxdepth 1 | grep -v -E "/home|lost+found") "/root"; do
                 # ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
                 sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH"
                 sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_ZSH"
-                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ALIAS"
-                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_BSH"
-                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "$PATH_ZSH"
+                sudo python3 "$FULL_PATH/Python/filter.py" "$PATH_ALIAS"
+                sudo python3 "$FULL_PATH/Python/filter.py" "$PATH_BSH"
+                sudo python3 "$FULL_PATH/Python/filter.py" "$PATH_ZSH"
         fi
 
         if [[ $Switch_SCREENRC == true ]]; then
@@ -959,7 +960,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
         fi
         if [[ -f $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
                 if [[ $Switch_License == true ]]; then
-                        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}"/Python/auto.py Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
+                        sudo python3 "$FULL_PATH/Python/auto.py" Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
                 else
                         sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
                 fi
@@ -971,7 +972,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
                 "$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
         fi
         if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
-                sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/install.py" "$PATH_Install_Dir"
+                sudo python3 "$FULL_PATH/Python/install.py" "$PATH_Install_Dir"
         fi
 fi
 
@@ -1111,7 +1112,7 @@ EOF
         # Firewall_Configuration
         if [[ $Switch_Firewall = true ]]; then
                 if [ -f /etc/iptables/rules.v4 ]; then
-                        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/iptables/rules.v4"
+                        sudo python3 "$FULL_PATH/Python/filter.py" "/etc/iptables/rules.v4"
                         sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v4
                         sudo sed -i '/COMMIT/d' /etc/iptables/rules.v4
                         sudo sed -i '/# Completed on/d' /etc/iptables/rules.v4
@@ -1145,7 +1146,7 @@ EOF
                 fi
 
                 if [ -f /etc/iptables/rules.v6 ]; then
-                        sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/filter.py" "/etc/iptables/rules.v6"
+                        sudo python3 "$FULL_PATH/Python/filter.py" "/etc/iptables/rules.v6"
                         sudo sed -i '/# Commit all changes/d' /etc/iptables/rules.v6
                         sudo sed -i '/COMMIT/d' /etc/iptables/rules.v6
                         sudo sed -i '/# Completed on/d' /etc/iptables/rules.v6
@@ -1243,6 +1244,6 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
                 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
         fi
 fi
-sudo python3 "${FULL_PATH::-${#SCRIPT_NAME}}/Python/clean.py" "$OPT_Path"
+sudo python3 "$FULL_PATH/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
