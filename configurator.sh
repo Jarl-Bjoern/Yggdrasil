@@ -427,7 +427,6 @@ function File_Reader() {
 
 # Checking_Parameters
 for arg; do
-#        LEN_ARGV=$(wc -c <<< "$arg")
         if [[ $arg == "-sH" ]]; then
                 Switch_Skip_Hardening=true
         elif [[ $arg == "-sC" ]]; then
