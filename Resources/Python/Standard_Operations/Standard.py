@@ -3,8 +3,8 @@
 # Rainer Christian Bjoern Herold
 
 # Libraries
-from Resources.Python.Libraries import osname, sleep, stdout, system
-from Resources.Python.Colors import Colors
+from Resources.Python.Standard_Operations.Libraries import osname, sleep, stdout, system
+from Resources.Python.Standard_Operations.Colors import Colors
 
 # Classes
 class Standard:
