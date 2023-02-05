@@ -21,6 +21,7 @@ def write_file(path_to_file, config_var):
 def Crontab_Configuration(path_to_file, opt_path):
         Config_Crontab = f"""0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
 0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
+0 6     * * *  root for Image in $(docker images | grep "<none>" | awk '"""+"""{print $3}');"""+f""" do docker image rm $Image; done
 0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
 0 3     * * *  root for GIT_TOOL in $(cat {opt_path}/update.info); do cd $GIT_TOOL; git pull; done"""
         write_file(path_to_file, Config_Crontab)
