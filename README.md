@@ -412,7 +412,7 @@ fcrackzip
 
 In this example we add the tool `Feroxbuster` under the header `#APT`, now at the next start the added tool will be installed.
 
-<strong>Notice:</strong> When inserting the tool, make sure that you add it to the correct section of the respective package manager.
+<strong>Notice:</strong> When inserting new tools, make sure that you add it to the correct section of the respective package manager.
 
 ```bash
 # APT
