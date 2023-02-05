@@ -54,7 +54,7 @@ def Check_Permissions(File_Path):
 
 def main():
     File_Path = dirname(realpath(__file__))
-    Start_Script = join(File_Path, "Workfiles/configurator.sh")
+    Start_Script = join(File_Path, "Resources/Workfiles/configurator.sh")
 
     from Resources.Python.ArgParser import Argument_Parser
     args = Argument_Parser()
