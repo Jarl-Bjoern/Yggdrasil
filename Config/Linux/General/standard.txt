@@ -27,6 +27,8 @@ netfilter-persistent
 nmap
 openconnect
 opensc
+podman
+podman-compose
 python3-dev
 python3-pip
 ruby-full
