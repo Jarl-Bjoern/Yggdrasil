@@ -406,10 +406,8 @@ function File_Installer() {
                                                                 sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                                 elif [ "$MODE" = "Extension" ]; then
-                                                        # UNDER CONSTRUCTION
                                                         wget --content-disposition "$FILE"
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
-                                                        ###
                                                 elif [ "$MODE" = "DPKG" ]; then
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
@@ -485,17 +483,18 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
         header "pentesting_category"
         read -rp "Your Choice: " pentesting
         if [[ $pentesting =~ "," ]]; then
-                readarray -td, Array_Pentesting <<< "$pentesting", declare -p Array_Pentesting
+                IFS=,
+                Array_Pentesting=("$pentesting")
                 for testing_category in "${Array_Pentesting[@]}"; do
-                        if [[ $testing_category -eq "infrastructure" || $testing_category -eq "1" ]]; then
+                        if [[ $testing_category == "infrastructure" || $testing_category == "1" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Infrastructure")
-                        elif [[ $testing_category -eq "iot" || $testing_category -eq "2" ]]; then
+                        elif [[ $testing_category == "iot" || $testing_category == "2" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/IOT")
-                        elif [[ $testing_category -eq "mobile" || $testing_category -eq "3" ]]; then
+                        elif [[ $testing_category == "mobile" || $testing_category == "3" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Mobile")
-                        elif [[ $testing_category -eq "red_teaming" || $testing_category -eq "4" ]]; then
+                        elif [[ $testing_category == "red_teaming" || $testing_category == "4" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
-                        elif [[ $testing_category -eq "web" || $testing_category -eq "5" ]]; then
+                        elif [[ $testing_category == "web" || $testing_category == "5" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
                         else
                                 echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
@@ -584,17 +583,18 @@ if [[ $Switch_Skip_Hardening != true ]]; then
         header "hardening"
         read -rp "Your Choice: " hardening
         if [[ $hardening =~ "," ]]; then
-                readarray -td, Array_Hardening <<< "$hardening", declare -p Array_Hardening
+                IFS=,
+                Array_Hardening=("$hardening")
                 for testing_category in "${Array_Hardening[@]}"; do
-                        if [[ $testing_category -eq "firewall" || $testing_category -eq "2" ]]; then
+                        if [[ $testing_category == "firewall" || $testing_category == "2" ]]; then
                                 Switch_Firewall=true
-                        elif [[ $testing_category -eq "sysctl" || $testing_category -eq "3" ]]; then
+                        elif [[ $testing_category == "sysctl" || $testing_category == "3" ]]; then
                                 Switch_Hardening=true
-                        elif [[ $testing_category -eq "ssh" || $testing_category -eq "4" ]]; then
+                        elif [[ $testing_category == "ssh" || $testing_category == "4" ]]; then
                                 Switch_SSH=true
-                        elif [[ $testing_category -eq "apache" || $testing_category -eq "5" ]]; then
+                        elif [[ $testing_category == "apache" || $testing_category == "5" ]]; then
                                 Switch_APACHE=true
-                        elif [[ $testing_category -eq "nginx" || $testing_category -eq "6" ]]; then
+                        elif [[ $testing_category == "nginx" || $testing_category == "6" ]]; then
                                 Switch_NGINX=true
                         fi
                 done
@@ -647,19 +647,20 @@ if [[ $Switch_Skip_Configs != true ]]; then
         header "settings"
         read -rp "Your Choice: " custom_settings
         if [[ $custom_settings =~ "," ]]; then
-                readarray -td, Array_Custom_Settings <<< "$custom_settings", declare -p Array_Custom_Settings
+                IFS=,
+                Array_Custom_Settings=("$custom_settings")
                 for Cust_Setting in "${Array_Custom_Settings[@]}"; do
-                        if [[ $Cust_Setting -eq "updates" || $Cust_Setting -eq "2" ]]; then
+                        if [[ $Cust_Setting == "updates" || $Cust_Setting == "2" ]]; then
                                 Switch_UPDATES=true
-                        elif [[ $Cust_Setting -eq "alias" || $Cust_Setting -eq "3" ]]; then
+                        elif [[ $Cust_Setting == "alias" || $Cust_Setting == "3" ]]; then
                                 Switch_CUSTOM_CONFIGS=true
-                        elif [[ $Cust_Setting -eq "screenrc" || $Cust_Setting -eq "4" ]]; then
+                        elif [[ $Cust_Setting == "screenrc" || $Cust_Setting == "4" ]]; then
                                 Switch_SCREENRC=true
-                        elif [[ $Cust_Setting -eq "vim" || $Cust_Setting -eq "5" ]]; then
+                        elif [[ $Cust_Setting == "vim" || $Cust_Setting == "5" ]]; then
                                 Switch_VIM_CONFIG=true
-                        elif [[ $Cust_Setting -eq "repo" || $Cust_Setting -eq "6" ]]; then
+                        elif [[ $Cust_Setting == "repo" || $Cust_Setting == "6" ]]; then
                                 Switch_REPO=true
-                        elif [[ $Cust_Setting -eq "shredder" || $Cust_Setting -eq "7" ]]; then
+                        elif [[ $Cust_Setting == "shredder" || $Cust_Setting == "7" ]]; then
                                 Switch_SHREDDER=true
                         fi
                 done
