@@ -8,7 +8,7 @@ try:
     from os import kill, listdir, system
     from os.path import join
     from psutil import process_iter
-    from pyautogui import hold, hotkey, keyDown, press, write as autowrite
+    from pyautogui import click as mouse_click, hold, hotkey, keyDown, press, size as screen_resolution, write as autowrite
     from signal import SIGKILL
     from Standard_Operations.Colors import Colors
     from sys import argv
