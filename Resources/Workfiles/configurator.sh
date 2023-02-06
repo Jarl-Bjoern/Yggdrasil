@@ -723,11 +723,6 @@ fi
 if [[ $category_type = "complete" || $category_type = "1" ]]; then
         for i in "${Array_Complete_Install[@]}"; do
                 File_Installer "$i" "$OPT_Path"
-                #if [[ $i =~ "Forensic" ]]; then
-                #        File_Installer "$i" "$OPT_Path"
-                #else
-	        #        File_Installer "$i" "$OPT_Path"
-                #fi
         done
 else
         if [[ ${#Array_Categories} -gt 0 ]]; then
