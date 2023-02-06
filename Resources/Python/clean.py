@@ -4,7 +4,7 @@
 # Libraries
 from os import listdir, remove
 from os.path import join
-from logger import *
+from Standard_Operation.Logger import Write_Log
 from sys import argv
 
 # Arrays
@@ -12,8 +12,9 @@ Array_Filter = ['.sh','.deb','.tar.gz','.bz2','.zip','.rar','.xpi','.msi']
 
 # Main
 if __name__ == '__main__':
-  for File in listdir(str(argv[1])):
-     for Filter in Array_Filter:
-          try:
-              if (File.endswith(Filter) or Filter in File): remove(join(argv[1], File))
-          except FileNotFoundError: pass
+    for File in listdir(str(argv[1])):
+        for Filter in Array_Filter:
+            try:
+                if (File.endswith(Filter) or Filter in File):
+                    remove(join(argv[1], File))
+            except FileNotFoundError: pass
