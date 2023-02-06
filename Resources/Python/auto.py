@@ -4,14 +4,24 @@
 # Version 0.1 29.10.2022
 
 # Libraries
-from os import listdir, system
-from os.path import join
-from pyautogui import hold, hotkey, keyDown, press, write as autowrite
-from sys import argv
-from time import sleep
-from threading import Thread
+try:
+    from os import kill, listdir, system
+    from os.path import join
+    from psutil import process_iter
+    from pyautogui import hold, hotkey, keyDown, press, write as autowrite
+    from signal import SIGKILL
+    from Standard_Operations.Colors import Colors
+    from sys import argv
+    from time import sleep
+    from threading import Thread
+except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
 
 # Functions
+def Process_ID(Process_Name):
+    for P in process_iter():
+        if (Process_Name in P.name()):
+            return P.pid
+
 def Press_Hotkey(key_One, key_Two, seconds): hotkey(key_One, key_Two), sleep(seconds)
 
 def Press_Key(key, seconds): press(key), sleep(seconds)
@@ -25,8 +35,11 @@ def Firefox_Addons(Path, License_Parameter):
             for _ in join(Path, Extension_File).split('/'):
                 Press_Hotkey('shift','7', 0.5), autowrite(_)
             Press_Key('return', 2.5)
-            if (License_Parameter == "False"): input('The script was stopped because the parameter "-aL | --accept-licenses" is set to False by default for legal reasons. Please confirm the operation with the "Return" button to continue the program.')
+            if (License_Parameter == "False"):
+                input(Colors.ORANGE+'\n\nThe script was stopped because the parameter "-aL | --accept-licenses" is set to False by default for legal reasons. Please confirm the operation with the "Return" button to continue the program.'+Colors.RESET)
+                sleep(2), Press_Hotkey('STRG','F4',2)
             else: pass
+    kill(Process_ID("Firefox"), SIGKILL)
 
 def SoapUI_Install(Path):
     def Auto_Install():
