@@ -35,6 +35,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 ## ❗ News
 <strong>Upcoming changes for version</strong> `0.9`:
   - new cleaning task for old container images inside the updater settings
+  - new installation categories was added
   - new parameter was added to show interaction messages during the apt installation
   - reorganization of the repository
   - new menu for the best practice settings like vim configuration, crontab etc.
@@ -205,7 +206,7 @@ optional arguments:
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
 💀                       Yggdrasil                       💀
-💀                     Version 0.7b                      💀
+💀                     Version 0.9                       💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
@@ -218,6 +219,10 @@ optional arguments:
 | [2] custom      :   installation of custom tools       |
 | [3] forensic    :   installation of forensic tools     |
 | [4] pentest     :   installation of pentest tools      |
+| [5] hardening   :   installation of hardening tools    |
+| [6] cloud       :   installation of cloud-pentesting   |
+|                     tools                              |
+| [7] training    :   installation of training tools     |
 |                                                        |
 ----------------------------------------------------------
 
