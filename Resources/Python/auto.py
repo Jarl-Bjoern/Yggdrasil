@@ -8,7 +8,7 @@ try:
     from os import kill, listdir, system
     from os.path import dirname, join, realpath
     from psutil import process_iter
-    from pyautogui import click as mouse_click, hold, hotkey, keyDown, press, size as screen_resolution, write as autowrite
+    from pyautogui import click as mouse_click, hold, hotkey, keyDown, locateOnScreen press, size as screen_resolution, write as autowrite
     from signal import SIGKILL
     from Standard_Operations.Colors import Colors
     from sys import argv
@@ -27,10 +27,8 @@ def Press_Hotkey(key_One, key_Two, seconds): hotkey(key_One, key_Two), sleep(sec
 def Press_Key(key, seconds): press(key), sleep(seconds)
 
 def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__file__)).replace('Python','Auto/Linux/Firefox/Firefox_ADD.jpg')):
-    Press_Hotkey('win','right', 2), Press_Key('win', 2), autowrite('firefox'), sleep(2), Press_Key('return', 5)
-    if (License_Parameter == "False"):
-        Press_Hotkey('win','left', 2)
-        X, Y = screen_resolution().width*0.08, screen_resolution().height*0.38
+    Press_Hotkey('win','right', 2), Press_Key('win', 2), autowrite('firefox'), sleep(2), Press_Key('return', 5), Press_Hotkey('win','left', 2)
+    X, Y = screen_resolution().width*0.08, screen_resolution().height*0.38
     try:
         for Extension_File in listdir(Path):
             if (Extension_File.endswith('.xpi')):
