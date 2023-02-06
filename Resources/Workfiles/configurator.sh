@@ -1000,7 +1000,13 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
                 fi
                 for veracrypt_file in $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup"); do sudo rm -f "$veracrypt_file"; done
         fi
-
+        if [[ $(find "/opt/pentest_tools" -maxdepth 1 ! -path "/opt/pentest_tools" -name "*.xpi") ]]; then
+		if [[ $Switch_License == true ]]; then
+			sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "True"
+		else
+			sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "False"
+		fi
+        fi
         if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")" ]; then
                 TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")
                 "$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
