@@ -38,9 +38,8 @@ def Firefox_Addons(Path, License_Parameter):
                     Press_Hotkey('shift','7', 0.5), autowrite(_)
                 Press_Key('return', 2.5)
                 if (License_Parameter == "False"):
-                    try:
-                        input(Colors.RED+'-----------------------------------------------------------------'+Colors.ORANGE+'\n\nThe script was stopped because the parameter "'+Colors.BLUE+'-aL '+Colors.RED+'|'+Colors.BLUE+' --accept-licenses'+Colors.ORANGE+'" is set to False by default for legal reasons. Please confirm the operation with the "'+Colors.BLUE+'Return'+Colors.ORANGE+'" button to continue the program.\n\n'+Colors.RESET)
-                        sleep(2), mouse_click(int(X), int(Y))
+                    input(Colors.RED+'-----------------------------------------------------------------'+Colors.ORANGE+'\n\nThe script was stopped because the parameter "'+Colors.BLUE+'-aL '+Colors.RED+'|'+Colors.BLUE+' --accept-licenses'+Colors.ORANGE+'" is set to False by default for legal reasons. Please confirm the operation with the "'+Colors.BLUE+'Return'+Colors.ORANGE+'" button to continue the program.\n\n'+Colors.RESET)
+                    sleep(2), mouse_click(int(X), int(Y))
                 else: pass
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL)
