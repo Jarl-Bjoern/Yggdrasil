@@ -38,7 +38,7 @@ def Firefox_Addons(Path, License_Parameter):
             Press_Key('return', 2.5)
             if (License_Parameter == "False"):
                 input(Colors.ORANGE+'\n\nThe script was stopped because the parameter "-aL | --accept-licenses" is set to False by default for legal reasons. Please confirm the operation with the "Return" button to continue the program.'+Colors.RESET)
-                sleep(2), mouse_click(int(X), int(Y)), Press_Hotkey('ctrl','F4',2)
+                sleep(2), mouse_click(int(X), int(Y))
             else: pass
     kill(Process_ID("Firefox"), SIGKILL)
 
