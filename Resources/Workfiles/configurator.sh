@@ -43,6 +43,8 @@ TEMP_WGET_PATH=""
 declare -a Array_Categories=()
 
 declare -a Array_Complete_Install=("$FULL_PATH/Config/Linux/Forensic/full.txt"
+"$FULL_PATH/Config/Linux/Cloud/full.txt"
+"$FULL_PATH/Config/Linux/Hardening/full.txt"
 "$FULL_PATH/Config/Linux/Pentest/Infrastructure/full.txt"
 "$FULL_PATH/Config/Linux/Pentest/IOT/full.txt"
 "$FULL_PATH/Config/Linux/Pentest/Mobile/full.txt"
@@ -546,6 +548,9 @@ if [[ $category_type = "custom" || $category_type = "2" ]]; then
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         decision="0"
         Informational="$FULL_PATH/Information/info.txt"
+elif [[ $category_type = "cloud" || $category_type = "5" || $category_type = "hardening" || $category_type = "6" ]]; then
+        File_Path="${Path_Way}/full.txt"
+        Informational="$FULL_PATH/Information/info.txt"
 else
         if [[ ${#Array_Categories} -gt 0 ]]; then
                 Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
@@ -717,11 +722,12 @@ fi
 # Tool_Installation
 if [[ $category_type = "complete" || $category_type = "1" ]]; then
         for i in "${Array_Complete_Install[@]}"; do
-                if [[ $i =~ "Forensic" ]]; then
-                        File_Installer "$i" "$OPT_Path"
-                else
-	                File_Installer "$i" "$OPT_Path"
-                fi
+                File_Installer "$i" "$OPT_Path"
+                #if [[ $i =~ "Forensic" ]]; then
+                #        File_Installer "$i" "$OPT_Path"
+                #else
+	        #        File_Installer "$i" "$OPT_Path"
+                #fi
         done
 else
         if [[ ${#Array_Categories} -gt 0 ]]; then
