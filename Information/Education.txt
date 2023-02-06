@@ -2,3 +2,5 @@ https://www.hackthebox.com/
 https://tryhackme.com/
 https://overthewire.org/wargames/
 https://book.hacktricks.xyz/welcome/readme
+https://www.vulnhub.com/
+https://picoctf.org/
