@@ -28,7 +28,7 @@ def Press_Key(key, seconds): press(key), sleep(seconds)
 
 def Firefox_Addons(Path, License_Parameter):
     Press_Hotkey('win','right', 2), Press_Key('win', 2), autowrite('firefox'), sleep(2), Press_Key('return', 5), Press_Hotkey('win','left', 2)
-    X, Y = screen_resolution().width*0.08, screen_resolution().height*0,38
+    X, Y = screen_resolution().width*0.08, screen_resolution().height*0.38
     for Extension_File in listdir(Path):
         if (Extension_File.endswith('.xpi')):
             Press_Hotkey('ctrl', 'l', 2)
