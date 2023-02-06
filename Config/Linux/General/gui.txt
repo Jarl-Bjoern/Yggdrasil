@@ -10,6 +10,7 @@ python-tk
 python3-tk
 ranger
 rofi
+scrot
 synaptic
 texstudio
 thunderbird
