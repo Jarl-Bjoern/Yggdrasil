@@ -484,7 +484,7 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
         header "pentesting_category"
         read -rp "Your Choice: " pentesting
         if [[ $pentesting =~ "," ]]; then
-                IFS=,
+                IFS=", "
                 Array_Pentesting=($pentesting)
                 for testing_category in "${Array_Pentesting[@]}"; do
                         if [[ $testing_category == "infrastructure" || $testing_category == "1" ]]; then
@@ -584,7 +584,7 @@ if [[ $Switch_Skip_Hardening != true ]]; then
         header "hardening"
         read -rp "Your Choice: " hardening
         if [[ $hardening =~ "," ]]; then
-                IFS=,
+                IFS=", "
                 Array_Hardening=($hardening)
                 for testing_category in "${Array_Hardening[@]}"; do
                         if [[ $testing_category == "firewall" || $testing_category == "2" ]]; then
@@ -648,7 +648,7 @@ if [[ $Switch_Skip_Configs != true ]]; then
         header "settings"
         read -rp "Your Choice: " custom_settings
         if [[ $custom_settings =~ "," ]]; then
-                IFS=,
+                IFS=", "
                 Array_Custom_Settings=($custom_settings)
                 for Cust_Setting in "${Array_Custom_Settings[@]}"; do
                         if [[ $Cust_Setting == "updates" || $Cust_Setting == "2" ]]; then
