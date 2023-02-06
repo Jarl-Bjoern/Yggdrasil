@@ -4,7 +4,7 @@
 # Libraries
 from os import listdir, remove
 from os.path import join
-from Standard_Operation.Logger import Write_Log
+from Standard_Operations.Logger import Write_Log
 from sys import argv
 
 # Arrays
