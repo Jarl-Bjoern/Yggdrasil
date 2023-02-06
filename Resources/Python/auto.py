@@ -15,14 +15,15 @@ def Press_Hotkey(key_One, key_Two, seconds): hotkey(key_One, key_Two), sleep(sec
 
 def Press_Key(key, seconds): press(key), sleep(seconds)
 
-def Firefox_Addons(Path):
+def Firefox_Addons(Path, License_Parameter):
     Press_Key('win', 2), autowrite('firefox'), sleep(2), Press_Key('return', 5)
     Press_Hotkey('ctrl', 'l', 2)
     autowrite('file:'), Press_Hotkey('shift','7', 0.15)
     for _ in Path.split('/'):
         Press_Hotkey('shift','7', 0.5), autowrite(_)
     Press_Key('return', 2.5)
-  
+    if (License_Parameter == False): input('The script was stopped because the parameter "-aL | --accept-licenses" is set to False by default for legal reasons. Please confirm the operation with the "Return" button to continue the program.')
+    else: pass
 
 def SoapUI_Install(Path):
     def Auto_Install():
@@ -51,4 +52,4 @@ if __name__ == '__main__':
     if (argv[1] == "Veracrypt"): Veracrypt_Install(argv[2])
     elif (argv[1] == "Pycharm"): Pycharm_Install(argv[2])
     elif (argv[1] == "SoapUI"): SoapUI_Install(argv[2])
-    elif (argv[1] == "Firefox"): Firefox_Addons(argv[2])
+    elif (argv[1] == "Firefox"): Firefox_Addons(argv[2], argv[3])
