@@ -15,6 +15,7 @@ texstudio
 thunderbird
 
 # Python
+psutil
 pyautogui
 
 # Wget
