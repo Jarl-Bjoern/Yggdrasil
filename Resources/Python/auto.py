@@ -29,18 +29,21 @@ def Press_Key(key, seconds): press(key), sleep(seconds)
 def Firefox_Addons(Path, License_Parameter):
     Press_Hotkey('win','right', 2), Press_Key('win', 2), autowrite('firefox'), sleep(2), Press_Key('return', 5), Press_Hotkey('win','left', 2)
     X, Y = screen_resolution().width*0.08, screen_resolution().height*0.38
-    for Extension_File in listdir(Path):
-        if (Extension_File.endswith('.xpi')):
-            Press_Hotkey('ctrl', 'l', 2)
-            autowrite('file:'), Press_Hotkey('shift','7', 0.15)
-            for _ in join(Path, Extension_File).split('/'):
-                Press_Hotkey('shift','7', 0.5), autowrite(_)
-            Press_Key('return', 2.5)
-            if (License_Parameter == "False"):
-                input(Colors.ORANGE+'\n\nThe script was stopped because the parameter "-aL | --accept-licenses" is set to False by default for legal reasons. Please confirm the operation with the "Return" button to continue the program.'+Colors.RESET)
-                sleep(2), mouse_click(int(X), int(Y))
-            else: pass
-    kill(Process_ID("firefox"), SIGKILL)
+    try:
+        for Extension_File in listdir(Path):
+            if (Extension_File.endswith('.xpi')):
+                Press_Hotkey('ctrl', 'l', 2)
+                autowrite('file:'), Press_Hotkey('shift','7', 0.15)
+                for _ in join(Path, Extension_File).split('/'):
+                    Press_Hotkey('shift','7', 0.5), autowrite(_)
+                Press_Key('return', 2.5)
+                if (License_Parameter == "False"):
+                    try:
+                        input(Colors.RED+'-----------------------------------------------------------------'+Colors.ORANGE+'\n\nThe script was stopped because the parameter "'+Colors.BLUE+'-aL '+Colors.RED+'|'+Colors.BLUE+' --accept-licenses'+Colors.ORANGE'" is set to False by default for legal reasons. Please confirm the operation with the "'+Colors.BLUE+'Return'+Colors.ORANGE+'" button to continue the program.\n\n'+Colors.RESET)
+                        sleep(2), mouse_click(int(X), int(Y))
+                else: pass
+    except KeyboardInterrupt: print("The program will be closed.")
+    finally: kill(Process_ID("firefox"), SIGKILL)
 
 def SoapUI_Install(Path):
     def Auto_Install():
