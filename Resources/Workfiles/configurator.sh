@@ -8,7 +8,7 @@ IP_INT="127.0.0.1"
 TEMP_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename "${BASH_SOURCE[0]}")
 FULL_PATH=${TEMP_PATH::-${#SCRIPT_NAME}-21}
-OLDIFS=$IFS
+OLDIFS="$IFS"
 OPT_Path=""
 PATH_ALIAS=""
 PATH_Install_Dir=""
@@ -687,7 +687,7 @@ if [[ $Switch_Skip_Configs != true ]]; then
         clearing
 fi
 
-IFS=$OLDIFS
+IFS="$OLDIFS"
 # Basic_Configuration
 if [[ $(grep "PRETTY_NAME" /etc/os-release | cut -d '"' -f2) =~ "Kali" ]]; then
         if [[ $Switch_REPO == true ]]; then
