@@ -6,6 +6,7 @@
 # Libraries
 from os import system, walk
 from os.path import exists, join
+from Standard_Operation.Logger import Write_Log
 from sys import argv
 
 # Main
