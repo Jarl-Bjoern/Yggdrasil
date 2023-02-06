@@ -47,7 +47,7 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
                     while (r == None):
                             r = locateOnScreen(Button_Path, grayscale=False, confidence=0.85)
                             sleep(0.75)
-                    mouse_click(r)
+                    mouse_click(r), sleep(1)
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL)
 
