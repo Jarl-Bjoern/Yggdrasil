@@ -25,7 +25,7 @@ def Firefox_Addons(Path, License_Parameter):
             for _ in join(Path, Extension_File).split('/'):
                 Press_Hotkey('shift','7', 0.5), autowrite(_)
             Press_Key('return', 2.5)
-            if (License_Parameter == False): input('The script was stopped because the parameter "-aL | --accept-licenses" is set to False by default for legal reasons. Please confirm the operation with the "Return" button to continue the program.')
+            if (License_Parameter == "False"): input('The script was stopped because the parameter "-aL | --accept-licenses" is set to False by default for legal reasons. Please confirm the operation with the "Return" button to continue the program.')
             else: pass
 
 def SoapUI_Install(Path):
