@@ -514,11 +514,26 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                 fi
         fi
+elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
+        Path_Way="$FULL_PATH/Config/Linux/Hardening"
+        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+                OPT_Path="/opt/hardening_tools"
+        fi
+elif [[ $category_type = "cloud" || $category_type = "6" ]]; then
+        Path_Way="$FULL_PATH/Config/Linux/Cloud"
+        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+                OPT_Path="/opt/pentest_tools"
+        fi
+elif [[ $category_type = "training" || $category_type = "7" ]]; then
+        Path_Way="$FULL_PATH/Config/Linux/Training"
+        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+                OPT_Path="/opt/training_tools"
+        fi
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
         Path_Way="$FULL_PATH/Config/Linux/Custom"
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
-                OPT_Path="/opt/pentest_forensic_tools"
+                OPT_Path="/opt/complete_tools"
         fi
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
