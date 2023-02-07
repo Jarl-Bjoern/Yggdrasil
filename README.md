@@ -77,7 +77,9 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
     - GIT Tools
     - Important pip packages
     - OS
-  - Automated shredding script to remove your penetration test results after 90 days for privacy reasons
+  - Autmated cleaning tasks
+    - shredding script to remove your penetration test results after 90 days for privacy reasons
+    - cleaning script to remove old container images
   - Changing the default hostname
   - Custom configuration
     - Alias
