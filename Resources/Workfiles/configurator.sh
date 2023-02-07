@@ -885,7 +885,6 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
         # Metasploit_Configuration
         sudo systemctl enable --now postgresql
         sudo msfdb init
-	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
 
         # Linking_Local_Wordlists
         ln -sf /usr/share/wordlists /opt/wordlists/kali_wordlists
