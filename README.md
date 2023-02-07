@@ -86,7 +86,9 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
     - VIM
   - Repository change from rolling-release (bleeding-edge) to last-snapshot
   - Overview about some useful information after the install
-- GUI automation to accept licenses
+- GUI automation
+  - accept licenses
+  - install firefox extensions
 - Hardening
   - Apache
   - Firewall
@@ -485,6 +487,14 @@ The `Installer` argument specifies that you download an installation package lik
 ```bash
 # Wget
 https://sh.rustup.rs rust Installer
+```
+### Extension
+With the `Extension` argument you specify that a browser addon should be installed. if you use the template for web penetration testing. This has already been implemented for the Web Penetration Testing Template, for example.
+
+<strong>Notice:</strong> Currently this is only possible for Firefox.
+```bash
+# Wget
+https://addons.mozilla.org/android/downloads/file/3616824/foxyproxy_standard-7.5.1.xpi foxyproxy Extension
 ```
 
 <a name="custom_install_II"></a>
