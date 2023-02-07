@@ -820,22 +820,22 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
                 sudo pip3 install -r "$OPT_Path"/enum4linux-ng/requirements.txt
         fi
         if [ -f "$OPT_Path/EyeWitness/Python/setup/setup.sh" ]; then
-                sudo bash "$OPT_Path"/EyeWitness/Python/setup/setup.sh
+                sudo bash "$OPT_Path"/EyeWitness/Python/setup/setup.sh ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
         fi
         if [ -f "$OPT_Path/PEASS-ng/metasploit/peass.rb" ]; then
                 sudo cp "$OPT_Path"/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
         fi
         if [ -d "$OPT_Path/ssh_scan" ]; then
-                cd "$OPT_Path"/ssh_scan || return 0 ; sudo gem install bundler ; sudo bundle install
+                cd "$OPT_Path"/ssh_scan || return 0 ; sudo gem install bundler ; sudo bundle install ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
         fi
         if [ -d "$OPT_Path/socketcand" ]; then
-                cd "$OPT_Path"/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install
+                cd "$OPT_Path"/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
         fi
         if [ -f "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")" ]; then
                 sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")"
         fi
         if [ -d "$OPT_Path/Responder" ]; then
-                pip3 install -r "$OPT_Path"/Responder/requirements.txt
+                pip3 install -r "$OPT_Path"/Responder/requirements.txt ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
         fi
         if [ -f "$OPT_Path/mitmdump" ]; then
                 cd "$OPT_Path" || return 0 ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p "$OPT_Path"/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ || return 0 ; mv mitmproxy.sh mitmproxy
@@ -885,6 +885,7 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
         # Metasploit_Configuration
         sudo systemctl enable --now postgresql
         sudo msfdb init
+	echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
 
         # Linking_Local_Wordlists
         ln -sf /usr/share/wordlists /opt/wordlists/kali_wordlists
