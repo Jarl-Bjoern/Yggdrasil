@@ -489,7 +489,7 @@ The `Installer` argument specifies that you download an installation package lik
 https://sh.rustup.rs rust Installer
 ```
 ### Extension
-With the `Extension` argument you specify that a browser addon should be installed. if you use the template for web penetration testing. This has already been implemented for the Web Penetration Testing Template, for example.
+With the `Extension` argument you specify that a browser addon should be installed. This has already been implemented for the Web Penetration Testing Template, for example.
 
 <strong>Notice:</strong> Currently this is only possible for Firefox.
 ```bash
