@@ -395,6 +395,8 @@ Your Choice: 1
 
 <a name="automated_install"></a>
 ## ⚔ Using the automated variant
+<strong>Notice:</strong> Make sure that if you use the Complete installation from Hardening, that you also specify the IP address for the SSH server, otherwise you will end up in an exception.
+
 ```bash
 # Automated Variant text based without Hardening
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
@@ -416,6 +418,15 @@ EOF
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
 4
 1,5
+1
+EOF
+
+# Automated Variant with multiple pentesting categories with numbers
+cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py
+4
+1,5
+1
+192.168.2.1
 1
 EOF
 ```
