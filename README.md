@@ -96,7 +96,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 
 # 📖 Table of Contents
 - [How to download and install the tool](#download_install)
-  - [Make sure that the dos2unix tool is installed](#dos2unix_install)
+  - [Preparations](#preparation_install)
   - [Download and start the tool](#start_install)
   - [Using the help section to see which parameters do we have](#help_install)
   - [Choose one of the three category types](#category_install)
@@ -115,11 +115,19 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 <a name="download_install"></a>
 # ⚔ How to download and install the tool
 
-<a name="dos2unix_install"></a>
-## ⚔ Make sure that the dos2unix tool is installed
+<a name="preparation_install"></a>
+## ⚔ Preparations
+The tool `dos2unix` is needed to be able to format all the files of the program into the correct format. 
 ```bash
 sudo apt install -y dos2unix
 ```
+
+If you want to use the provided GUI automation, make sure that the `scort` tool is installed.
+```
+sudo apt install -y scort
+```
+
+<strong>Notice:</strong> In some cases, you may need to restart the Kali machine once after the preparations.
 
 <a name="start_install"></a>
 ## ⚔ Download and start the tool
