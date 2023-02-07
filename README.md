@@ -419,8 +419,18 @@ cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
 1
 EOF
 ```
+
 <br /><strong>Notice:</strong> Make sure that if you use the Complete installation from Hardening, that you also specify the IP address for the SSH server, otherwise you will end up in an exception.
 ```bash
+# Automated Variant with multiple pentesting categories text based
+cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py
+pentest
+infrastructure,web
+complete
+192.168.2.1
+complete
+EOF
+
 # Automated Variant with multiple pentesting categories with numbers
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py
 4
