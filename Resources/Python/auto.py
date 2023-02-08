@@ -41,11 +41,17 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
                     input(Colors.RED+'-----------------------------------------------------------------'+Colors.ORANGE+'\n\nThe script was stopped because the parameter "'+Colors.BLUE+'-aL '+Colors.RED+'|'+Colors.BLUE+' --accept-licenses'+Colors.ORANGE+'" is set to False by default for legal reasons.\n\nPlease confirm the operation with the "'+Colors.BLUE+'Return'+Colors.ORANGE+'" button to continue the program.\n\n'+Colors.RESET)
                     sleep(2), mouse_click(int(X), int(Y))
                 else:
-                    r = None
+                    r, Counter = None, 0
                     while (r == None):
-                            r = locateOnScreen(Button_Path, grayscale=False, confidence=0.85)
-                            sleep(0.75)
-                    mouse_click(r), sleep(1)
+                        if (Counter <= 10): r = locateOnScreen(Button_Path, grayscale=False, confidence=0.85)
+                        elif (Counter > 10): r = locateOnScreen(Button_Path, grayscale=True, confidence=0.85)
+                        elif (Counter == 20):
+                            print (Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
+                            break
+                        Counter += 1
+                        sleep(0.75)
+                    else:
+                        mouse_click(r), sleep(1)
     except KeyboardInterrupt: print("The program will be closed.")
     finally: hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up'), sleep(2), kill(Process_ID("firefox"), SIGKILL)
 
