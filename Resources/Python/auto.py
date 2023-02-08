@@ -44,8 +44,9 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
                     r, Counter = None, 0
                     while (r == None):
                         if (Counter <= 10): r = locateOnScreen(Button_Path, grayscale=False, confidence=0.85)
-                        elif (Counter > 10): r = locateOnScreen(Button_Path, grayscale=True, confidence=0.85)
-                        elif (Counter == 20):
+                        else: r = locateOnScreen(Button_Path, grayscale=True, confidence=0.85)
+
+                        if (Counter == 20):
                             print (Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
                             break
                         Counter += 1
