@@ -7,7 +7,7 @@
 # Libraries
 from sys import argv
 
-# Functions
+# Standard_Functions
 def read_file(path_to_file):
         with open(path_to_file, 'r') as f:
                 return f.read().splitlines()
@@ -18,6 +18,33 @@ def write_file(path_to_file, config_var):
                 for _ in config_var.splitlines():
                         if (_ not in Array_Temp): f.write(f'{_}\n')
 
+# Work_Functions
+def Alias_Configuration(path_to_file):
+        Config_Alias_ZSH = r"""alias la='ls -lha --color=auto'
+alias grep='grep --color=auto'
+alias df='df -h'
+alias du='du -h'
+alias ffs='sudo $(history -p !!)'
+alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
+setopt hist_ignore_all_dups
+function b64() { echo $1 | base64 -d | xxd; }
+alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
+alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
+alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
+        Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
+alias grep='grep --color=auto'
+alias df='df -h'
+alias du='du -h'
+alias ffs='sudo $(history -p !!)'
+alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
+function b64() { echo $1 | base64 -d | xxd; }
+alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
+alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
+alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
+
+        if ('.zshrc' in path_to_file): write_file(path_to_file, Config_Alias_ZSH)
+        else: write_file(path_to_file, Config_Alias_BSH)
+
 def Crontab_Configuration(path_to_file, opt_path):
         Config_Crontab = f"""0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
 0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
@@ -25,10 +52,6 @@ def Crontab_Configuration(path_to_file, opt_path):
 0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
 0 3     * * *  root for GIT_TOOL in $(cat {opt_path}/update.info); do cd $GIT_TOOL; git pull; done"""
         write_file(path_to_file, Config_Crontab)
-
-def Shredder_Configuration(path_to_file, path_workspace):
-        Config_Shredder = f"""0 4     * * *  root for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt 90 ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
-        write_file(path_to_file, Config_Shredder)
 
 def Firewall_Configuration(path_to_file):
         Array_v4 = ["# Allow established, related and localhost traffic",
@@ -80,31 +103,13 @@ def Firewall_Configuration(path_to_file):
                         for _ in Array_v6:
                                 if (_ not in Array_Temp): f.write(f'{_}\n')
 
-def Alias_Configuration(path_to_file):
-        Config_Alias_ZSH = r"""alias la='ls -lha --color=auto'
-alias grep='grep --color=auto'
-alias df='df -h'
-alias du='du -h'
-alias ffs='sudo $(history -p !!)'
-alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
-setopt hist_ignore_all_dups
-function b64() { echo $1 | base64 -d | xxd; }
-alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
-alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
-        Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
-alias grep='grep --color=auto'
-alias df='df -h'
-alias du='du -h'
-alias ffs='sudo $(history -p !!)'
-alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
-function b64() { echo $1 | base64 -d | xxd; }
-alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
-alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
+def Shredder_Configuration(path_to_file, path_workspace):
+        Config_Shredder = f"""0 4     * * *  root for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt 90 ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
+        write_file(path_to_file, Config_Shredder)
 
-        if ('.zshrc' in path_to_file): write_file(path_to_file, Config_Alias_ZSH)
-        else: write_file(path_to_file, Config_Alias_BSH)
+def Systemd_Timer_Configuration(path_to_file, command):
+        with open(path_to_file, 'w') as f:
+                f.write(command)
 
 # Main
 if __name__ == '__main__':
