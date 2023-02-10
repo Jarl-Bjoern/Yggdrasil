@@ -19,7 +19,7 @@ def write_file(path_to_file, config_var):
                         if (_ not in Array_Temp): f.write(f'{_}\n')
 
 # Work_Functions
-def Alias_Configuration(path_to_file):
+def Alias_Configuration(path_to_file, opt_path):
         Config_Alias_ZSH = r"""alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
 alias df='df -h'
@@ -28,9 +28,10 @@ alias ffs='sudo $(history -p !!)'
 alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 setopt hist_ignore_all_dups
 function b64() { echo $1 | base64 -d | xxd; }
-alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
+"""+f"""alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
+alias git-tools-update='for i in $(cat {opt_path}/update.info); do echo "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'
+alias cargo-tools-update='for i in $(cat {opt_path}/update.info); do echo "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
 alias df='df -h'
@@ -38,9 +39,10 @@ alias du='du -h'
 alias ffs='sudo $(history -p !!)'
 alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 function b64() { echo $1 | base64 -d | xxd; }
-alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
+"""+f"""alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-alias git-tools-update='for i in $(cat /opt/pentest_tools/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
+alias git-tools-update='for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'
+alias cargo-tools-update='for i in $(cat {opt_path}/update.info); do echo "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
 
         if ('.zshrc' in path_to_file): write_file(path_to_file, Config_Alias_ZSH)
         else: write_file(path_to_file, Config_Alias_BSH)
@@ -120,5 +122,5 @@ if __name__ == '__main__':
                         elif ("normal" in argv[3]): Crontab_Configuration(argv[1], argv[2])
                 elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
-                elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1])
+                elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1], argv[2])
         except FileNotFoundError: pass
