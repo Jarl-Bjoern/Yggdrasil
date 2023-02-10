@@ -83,6 +83,12 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - Changing the default hostname
   - Custom configuration
     - Alias
+      - base64 function
+      - colorized grep
+      - human readable df & du commands
+      - manual microcode update
+      - manual git tools update
+      - nmap exclude for local ip addresses
     - BASHRC and ZSHRC
     - Screenrc
     - VIM
