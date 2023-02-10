@@ -244,6 +244,13 @@ function File_Installer() {
                         else
                                 echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
                         fi
+                elif [[ $1 =~ "cargo" ]]; then
+                        if cargo install --list | grep -q "$2"; then
+                                echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
+                        else
+                                echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
+                        fi
+                        Array_Cargo_Update+=("$2")
                 elif [[ $1 =~ "docker" ]]; then
                         if docker images | grep -q "$2"; then
                                 echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
@@ -333,9 +340,6 @@ function File_Installer() {
                                                                 if [[ $Command =~ "apt" ]]; then
                                                                         SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
                                                                         eval "$SECOND_Command"
-                                                                elif [[ $Command =~ "cargo" ]]; then
-                                                                        Array_Cargo_Update+=("$line")
-									eval "$Command $line"
                                                                 else
                                                                         eval "$Command $line"
                                                                 fi
@@ -349,9 +353,6 @@ function File_Installer() {
 							if [[ $Command =~ "apt" ]]; then
 								SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
 								eval "$SECOND_Command"
-                                                        elif [[ $Command =~ "cargo" ]]; then
-                                                                Array_Cargo_Update+=("$line")
-								eval "$Command $line"
 							else
 								eval "$Command $line"
 							fi
