@@ -219,8 +219,8 @@ optional arguments:
 
                         ---------------------------------------------------------------
   -v [VERBOSE], --verbose [VERBOSE]
-                        This parameter shows all messages during the apt package manager
-                        installation process.
+                        This parameter shows all interaction messages during the apt
+                        package manager installation process.
 
                         ---------------------------------------------------------------
 ```
