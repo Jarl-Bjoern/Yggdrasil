@@ -4,3 +4,5 @@ https://overthewire.org/wargames/
 https://book.hacktricks.xyz/welcome/readme
 https://www.vulnhub.com/
 https://picoctf.org/
+http://flaws.cloud/
+http://flaws2.cloud/
