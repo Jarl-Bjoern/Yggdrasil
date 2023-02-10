@@ -37,6 +37,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - new cleaning task for old container images inside the updater settings
   - automated installer for firefox extensions
   - new installation categories was added
+  - auotmated updater for the cargo tools
   - new parameter was added to show interaction messages during the apt installation
   - reorganization of the repository
   - new menu for the best practice settings like vim configuration, crontab etc.
@@ -76,6 +77,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
     - Docker Images
     - GIT Tools
     - Important pip packages
+    - Cargo Tools
     - OS
   - Autmated cleaning tasks
     - shredding script to remove your penetration test results after 90 days for privacy reasons
