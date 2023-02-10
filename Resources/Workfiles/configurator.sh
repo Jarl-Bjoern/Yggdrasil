@@ -250,7 +250,7 @@ function File_Installer() {
                         else
                                 echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
                         fi
-                        Array_Cargo_Update+=("$2")
+                        Array_Cargo_Updater+=("$2")
                 elif [[ $1 =~ "docker" ]]; then
                         if docker images | grep -q "$2"; then
                                 echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
