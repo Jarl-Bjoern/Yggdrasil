@@ -126,9 +126,9 @@ The tool `dos2unix` is needed to be able to format all the files of the program 
 sudo apt install -y dos2unix
 ```
 
-If you want to use the provided GUI automation, make sure that the `scort` tool is installed.
+If you want to use the provided GUI automation, make sure that the `scrot` tool is installed.
 ```
-sudo apt install -y scort
+sudo apt install -y scrot
 ```
 
 <strong>Notice:</strong> In some cases, you may need to restart the Kali machine once after the preparations.
