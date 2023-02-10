@@ -1,5 +1,6 @@
 # APT
 filezilla
+flameshot
 keepassxc
 kitty
 i3
