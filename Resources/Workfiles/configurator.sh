@@ -224,7 +224,7 @@ function header() {
         elif [ "$1" = "settings" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}      :   complete configuration                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}updates${NOCOLOR}       :   automated updates                      ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}                        (${CYAN}APT${RED}|${CYAN}Docker${RED}|${CYAN}Git Packages${RED}|${CYAN}Pip${NOCOLOR})          ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}                        (${CYAN}APT${RED}|${CYAN}Cargo${RED}|${CYAN}Docker${RED}|${CYAN}Git Packages${RED}|${CYAN}Pip${NOCOLOR})    ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}alias${NOCOLOR}         :   custom configs (${GREEN}alias${RED}|${GREEN}.bashrc${RED}|${GREEN}.zshrc${NOCOLOR})  ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}screenrc${NOCOLOR}      :   custom screenrc config                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}vim${NOCOLOR}           :   custom vim config                      ${CYAN}|${NOCOLOR}"
