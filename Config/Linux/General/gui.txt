@@ -1,7 +1,7 @@
 # APT
 filezilla
 flameshot
-gnome-disks
+gnome-disk-utility
 keepassxc
 kitty
 i3
