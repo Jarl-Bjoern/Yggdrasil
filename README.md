@@ -158,8 +158,8 @@ usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-hN HOST_NAME] 
 
 optional arguments:
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
-                        This parameter is required to accept licenses and the popups
-                        from firefox during the installation of extensions.
+                        This parameter is required to accept licenses and the popups from firefox
+                        during the installation of extensions.
 
                         Extensions:
                           - Firefox
@@ -321,7 +321,7 @@ Your Choice: 1,5
           Please choose between one installation
 ----------------------------------------------------------
 |                                                        |
-|  [1]       full    : full installation (GUI)           |
+|  [1]       full    : full    installation (GUI)        |
 |  [2]       minimal : minimal installation (CLI)        |
 |                                                        |
 ----------------------------------------------------------
