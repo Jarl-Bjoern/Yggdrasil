@@ -42,6 +42,7 @@ TEMP_WGET_PATH=""
 
 # Arrays
 declare -a Array_Categories=()
+declare -a Array_Cargo_Updater=()
 
 declare -a Array_Complete_Install=("$FULL_PATH/Config/Linux/Forensic/full.txt"
 "$FULL_PATH/Config/Linux/Cloud/full.txt"
@@ -332,6 +333,8 @@ function File_Installer() {
                                                                 if [[ $Command =~ "apt" ]]; then
                                                                         SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
                                                                         eval "$SECOND_Command"
+                                                                elif [[ $Command =~ "cargo" ]]; then
+                                                                        Array_Cargo_Update+=("$line")
                                                                 else
                                                                         eval "$Command $line"
                                                                 fi
@@ -345,6 +348,8 @@ function File_Installer() {
 							if [[ $Command =~ "apt" ]]; then
 								SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
 								eval "$SECOND_Command"
+                                                        elif [[ $Command =~ "cargo" ]]; then
+                                                                Array_Cargo_Update+=("$line")
 							else
 								eval "$Command $line"
 							fi
@@ -988,6 +993,16 @@ done
 for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
 	if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
 		echo "$git_wordlist" >> "$OPT_Path/update.info"
+	fi
+done
+
+# Cargo_Updater_Configuration
+if [[ ! $(ls "$OPT_Path/update_cargo.info" 2>/dev/null) ]]; then
+	echo "" > "$OPT_Path/update.info"
+fi
+for cargo_tool in "${Array_Cargo_Updater[@]}"; do
+	if [[ ! $(grep "$cargo_tool" "$OPT_Path/update_cargo.info") =~ $cargo_tool ]]; then
+		echo "$cargo_tool" >> "$OPT_Path/update.info"
 	fi
 done
 
