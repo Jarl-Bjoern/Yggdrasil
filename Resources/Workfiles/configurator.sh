@@ -335,6 +335,7 @@ function File_Installer() {
                                                                         eval "$SECOND_Command"
                                                                 elif [[ $Command =~ "cargo" ]]; then
                                                                         Array_Cargo_Update+=("$line")
+									eval "$Command $line"
                                                                 else
                                                                         eval "$Command $line"
                                                                 fi
@@ -350,6 +351,7 @@ function File_Installer() {
 								eval "$SECOND_Command"
                                                         elif [[ $Command =~ "cargo" ]]; then
                                                                 Array_Cargo_Update+=("$line")
+								eval "$Command $line"
 							else
 								eval "$Command $line"
 							fi
