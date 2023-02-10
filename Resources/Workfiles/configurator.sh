@@ -1005,7 +1005,7 @@ if [[ ! $(ls "$OPT_Path/update_cargo.info" 2>/dev/null) ]]; then
 fi
 for cargo_tool in "${Array_Cargo_Updater[@]}"; do
 	if [[ ! $(grep "$cargo_tool" "$OPT_Path/update_cargo.info") =~ $cargo_tool ]]; then
-		echo "$cargo_tool" >> "$OPT_Path/update.info"
+		echo "$cargo_tool" >> "$OPT_Path/update_cargo.info"
 	fi
 done
 
