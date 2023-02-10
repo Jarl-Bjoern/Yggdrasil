@@ -1001,7 +1001,7 @@ done
 
 # Cargo_Updater_Configuration
 if [[ ! $(ls "$OPT_Path/update_cargo.info" 2>/dev/null) ]]; then
-	echo "" > "$OPT_Path/update.info"
+	echo "" > "$OPT_Path/update_cargo.info"
 fi
 for cargo_tool in "${Array_Cargo_Updater[@]}"; do
 	if [[ ! $(grep "$cargo_tool" "$OPT_Path/update_cargo.info") =~ $cargo_tool ]]; then
