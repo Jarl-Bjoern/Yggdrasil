@@ -239,7 +239,7 @@ optional arguments:
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 
 
-          Please choose between one category
+           Please choose between one category
 ----------------------------------------------------------
 |                                                        |
 | [1] complete    :  installation of both      toolkits  |
@@ -266,7 +266,7 @@ Your Choice: pentest
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 
 
-          Please choose between one category
+           Please choose between one category
 ----------------------------------------------------------
 |                                                        |
 | [1] infrastructure  :   tools for infra  pentesting    |
@@ -293,7 +293,7 @@ Your Choice: infrastructure
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 
 
-          Please choose between one category
+           Please choose between one category
 ----------------------------------------------------------
 |                                                        |
 | [1] infrastructure  :   tools for infra  pentesting    |
