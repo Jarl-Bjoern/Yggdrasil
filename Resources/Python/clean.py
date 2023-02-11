@@ -18,5 +18,5 @@ if __name__ == '__main__':
             try:
                 if (File.endswith(Filter) or Filter in File):
                     remove(join(argv[1], File))
-                    Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.ORANGE+f"The File {File} was successfully removed."+Colors.RESET)
+                    Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RESET+"The File "+Colors.ORANGE+f"{File}"+Colors.RESET+" was successfully removed.")
             except FileNotFoundError: pass
