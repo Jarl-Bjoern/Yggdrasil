@@ -207,8 +207,8 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}hardening${NOCOLOR}   :  installation of hardening tools          ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}training${NOCOLOR}    :  installation of training  tools          ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "installation" ]; then
-                echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full    installation (GUI)             ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)             ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}full${NOCOLOR}       :  full    installation (GUI)           ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}minimal${NOCOLOR}   :  minimal installation (CLI)           ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "pentesting_category" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra  pentesting         ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot    pentesting         ${CYAN}|${NOCOLOR}"
