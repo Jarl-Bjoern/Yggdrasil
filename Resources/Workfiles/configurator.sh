@@ -200,12 +200,12 @@ function header() {
         echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}"
         echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
         if [ "$1" = "category" ]; then
-                echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :   installation of both toolkits           ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :   installation of custom tools            ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools          ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools           ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}hardening${NOCOLOR}   :   installation of hardening tools         ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}training${NOCOLOR}    :   installation of training tools          ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}    :  installation of both      toolkits           ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}custom${NOCOLOR}      :  installation of custom    tools            ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :  installation of forensic  tools          ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :  installation of pentest   tools           ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}hardening${NOCOLOR}   :  installation of hardening tools         ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}training${NOCOLOR}    :  installation of training  tools          ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "installation" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full    installation (GUI)             ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)             ${CYAN}|${NOCOLOR}"
