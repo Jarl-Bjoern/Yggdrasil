@@ -74,10 +74,10 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - pip
 - Best Practice settings
   - Automated Updater via Crontab
+    - Cargo Tools
     - Docker Images
     - GIT Tools
     - Important pip packages
-    - Cargo Tools
     - OS
   - Autmated cleaning tasks
     - shredding script to remove your penetration test results after 90 days for privacy reasons
