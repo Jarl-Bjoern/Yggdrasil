@@ -54,7 +54,7 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
                         Counter += 1
                         sleep(0.75)
                     else:
-                        mouse_click(r), sleep(1), Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.ORANGE+f"The Extension {Extension_File} was successfully installed."+Colors.RESET)
+                        mouse_click(r), sleep(1), Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RESET+"The Extension "+Colors.ORANGE+f"{Extension_File}"+Colors.RESET+" was successfully installed.")
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL), sleep(2), hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up')
 
