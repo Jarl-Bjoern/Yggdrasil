@@ -596,7 +596,7 @@ For this, you must use the parameter `-cP` in combination with the absolute path
 <a name="directory_install"></a>
 ## Example
 ```bash
-python3 /opt/Yggdrasil/yggdrasil.py -p /mnt/MY_DIRECTORY
+python3 /opt/Yggdrasil/yggdrasil.py -cP /mnt/MY_DIRECTORY
 ```
 
 # 🏆 Special thanks
