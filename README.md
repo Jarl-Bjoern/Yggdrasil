@@ -269,12 +269,12 @@ Your Choice: pentest
           Please choose between one category
 ----------------------------------------------------------
 |                                                        |
-| [1] infrastructure  :   tools for infra pentesting     |
-| [2] iot             :   tools for iot pentesting       |
+| [1] infrastructure  :   tools for infra  pentesting    |
+| [2] iot             :   tools for iot    pentesting    |
 | [3] mobile          :   tools for mobile pentesting    |
-| [4] red_teaming     :   tools for red teaming          |
-| [5] web             :   tools for web pentesting       |
-| [6] cloud           :   tools for cloud pentesting     |
+| [4] red_teaming     :   tools for red    teaming       |
+| [5] web             :   tools for web    pentesting    |
+| [6] cloud           :   tools for cloud  pentesting    |
 |                                                        |
 ----------------------------------------------------------
 
@@ -296,12 +296,12 @@ Your Choice: infrastructure
           Please choose between one category
 ----------------------------------------------------------
 |                                                        |
-| [1] infrastructure  :   tools for infra pentesting     |
-| [2] iot             :   tools for iot pentesting       |
+| [1] infrastructure  :   tools for infra  pentesting    |
+| [2] iot             :   tools for iot    pentesting    |
 | [3] mobile          :   tools for mobile pentesting    |
-| [4] red_teaming     :   tools for red teaming          |
-| [5] web             :   tools for web pentesting       |
-| [6] cloud           :   tools for cloud pentesting     |
+| [4] red_teaming     :   tools for red    teaming       |
+| [5] web             :   tools for web    pentesting    |
+| [6] cloud           :   tools for cloud  pentesting    |
 |                                                        |
 ----------------------------------------------------------
 
