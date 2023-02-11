@@ -205,8 +205,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}forensic${NOCOLOR}    :   installation of forensic tools          ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :   installation of pentest tools           ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}hardening${NOCOLOR}   :   installation of hardening tools         ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}       :   installation of cloud-pentesting tools  ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}training${NOCOLOR}    :   installation of training tools          ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}training${NOCOLOR}    :   installation of training tools          ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "installation" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}]        ${GREEN}full${NOCOLOR}    : full    installation (GUI)             ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}]        ${ORANGE}minimal${NOCOLOR} : minimal installation (CLI)             ${CYAN}|${NOCOLOR}"
@@ -216,6 +215,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}3${NOCOLOR}] ${BLUE}mobile${NOCOLOR}          :   tools for mobile pentesting         ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red teaming               ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web pentesting            ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}           :   tools for cloud pentesting          ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "hardening" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration             ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}firewall${NOCOLOR}         :   firewall                           ${CYAN}|${NOCOLOR}"
@@ -510,6 +510,8 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
                         elif [[ $testing_category == "web" || $testing_category == "5" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
+                        elif [[ $testing_category == "cloud" || $testing_category == "6" ]]; then
+                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Cloud")
                         else
                                 echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                         fi
@@ -525,6 +527,8 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
                         Path_Way="$FULL_PATH/Config/Linux/Pentest/Red_Teaming"
                 elif [[ $pentesting = "web" || $pentesting = "5" ]]; then
                         Path_Way="$FULL_PATH/Config/Linux/Pentest/Web"
+                elif [[ $pentesting = "cloud" || $pentesting = "6" ]]; then
+                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Cloud"
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                 fi
@@ -534,12 +538,7 @@ elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
                 OPT_Path="/opt/hardening_tools"
         fi
-elif [[ $category_type = "cloud" || $category_type = "6" ]]; then
-        Path_Way="$FULL_PATH/Config/Linux/Cloud"
-        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
-                OPT_Path="/opt/pentest_tools"
-        fi
-elif [[ $category_type = "training" || $category_type = "7" ]]; then
+elif [[ $category_type = "training" || $category_type = "6" ]]; then
         Path_Way="$FULL_PATH/Config/Linux/Training"
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
                 OPT_Path="/opt/training_tools"
@@ -561,7 +560,7 @@ if [[ $category_type = "custom" || $category_type = "2" ]]; then
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         decision="0"
         Informational="$FULL_PATH/Information/info.txt"
-elif [[ $category_type = "cloud" || $category_type = "5" || $category_type = "hardening" || $category_type = "6" ]]; then
+elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
         File_Path="${Path_Way}/full.txt"
         Informational="$FULL_PATH/Information/info.txt"
 else
@@ -571,7 +570,7 @@ else
                 Informational="$FULL_PATH/Information/info.txt"
                 decision="full"
         else
-                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" ]]; then
+                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" || $pentesting = "cloud" || $pentesting = "6" ]]; then
                         File_Path="${Path_Way}/full.txt"
                         decision="full"
                         Informational="$FULL_PATH/Information/info.txt"
