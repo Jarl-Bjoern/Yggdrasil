@@ -751,7 +751,7 @@ else
 fi
 
 # Path_Filtering
-for i in $(find /home -maxdepth 1 | grep -v -E "/home|lost+found") "/root"; do
+for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root"; do
         PATH_BSH="$i/.bashrc"
         PATH_SCREEN="$i/.screenrc"
         PATH_ALIAS="$i/.bash_aliases"
