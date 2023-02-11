@@ -11,6 +11,7 @@ try:
     from pyautogui import click as mouse_click, hold, hotkey, keyDown, locateOnScreen, press, size as screen_resolution, write as autowrite
     from signal import SIGKILL
     from Standard_Operations.Colors import Colors
+    from Standard_Operations.Logger import Write_Log
     from sys import argv
     from time import sleep
     from threading import Thread
@@ -48,11 +49,12 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
 
                         if (Counter == 20):
                             print (Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
+                            Write_Log(dirname(realpath(__file__)).replace('Resource/Python','yggdrasil.log'), Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
                             break
                         Counter += 1
                         sleep(0.75)
                     else:
-                        mouse_click(r), sleep(1)
+                        mouse_click(r), sleep(1), Write_Log(dirname(realpath(__file__)).replace('Resource/Python','yggdrasil.log'), Colors.ORANGE+f"The Extension {Extension_File} was successfully installed."+Colors.RESET)
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL), sleep(2), hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up')
 
@@ -77,6 +79,8 @@ def Veracrypt_Install(Path):
     t1 = Thread(target=Installer, args=[Path], daemon=True).start()
     sleep(1.25)
     t2 = Thread(target=Auto_Install).start()
+
+    Write_Log(dirname(realpath(__file__)).replace('Resource/Python','yggdrasil.log'), Colors.ORANGE+f"Veracrypt was successfully installed."+Colors.RESET)
 
 # Main
 if __name__ == '__main__':
