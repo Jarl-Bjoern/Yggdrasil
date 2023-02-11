@@ -174,18 +174,20 @@ optional arguments:
                         Default: /opt/workspace
 
                         ---------------------------------------------------------------
+  -cP CUSTOM_PATH, --custom-path CUSTOM_PATH
+                        This parameter specifies the target path of your custom scripts
+                        or tools.
+                                                                                                                                                                       
+                        Example:                                                                                                                                       
+                          - python3 yggdrasil.py -p /opt/yggdrasil/Custom
+
+                        ---------------------------------------------------------------
   -hN HOST_NAME, --host-name HOST_NAME
                         This parameter specifies the hostname of the kali machine.
 
                         Default:
                           - pentest-kali
                           - forensic-kali
-
-                        ---------------------------------------------------------------
-  -p PATH, --path PATH  This parameter specifies the target path of your custom tools.
-                                                                                                                                                                                                                                            
-                        Example:
-                          - python3 yggdrasil.py -p /opt/yggdrasil/Custom
 
                         ---------------------------------------------------------------
   -sC [SKIP_CONFIG], --skip-config [SKIP_CONFIG]
@@ -559,7 +561,7 @@ You can also build the file from scratch yourself. To do this, navigate to the d
 ## 📝 Include Customized Scripts
 In addition, it is also possible that you can place your own scripts or packages in the provided `Custom` directory or your own directory and use them in the installation script.
 
-For this, you must use the parameter `-p` in combination with the absolute path, as in the example below
+For this, you must use the parameter `-cP` in combination with the absolute path, as in the example below
 
 <strong>Currently the following formats are available to install external scripts or packages:</strong>
   - Bash/Shell
