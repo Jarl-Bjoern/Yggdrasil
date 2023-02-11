@@ -177,9 +177,9 @@ optional arguments:
   -cP CUSTOM_PATH, --custom-path CUSTOM_PATH
                         This parameter specifies the target path of your custom scripts
                         or tools.
-                                                                                                                                                                       
-                        Example:                                                                                                                                       
-                          - python3 yggdrasil.py -p /opt/yggdrasil/Custom
+
+                        Example:
+                          - python3 yggdrasil.py -cP /opt/yggdrasil/Custom
 
                         ---------------------------------------------------------------
   -hN HOST_NAME, --host-name HOST_NAME
