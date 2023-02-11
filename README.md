@@ -242,12 +242,12 @@ optional arguments:
           Please choose between one category
 ----------------------------------------------------------
 |                                                        |
-| [1] complete    :   installation of both toolkits      |
-| [2] custom      :   installation of custom tools       |
-| [3] forensic    :   installation of forensic tools     |
-| [4] pentest     :   installation of pentest tools      |
-| [5] hardening   :   installation of hardening tools    |
-| [6] training    :   installation of training tools     |
+| [1] complete    :  installation of both      toolkits  |
+| [2] custom      :  installation of custom    tools     |
+| [3] forensic    :  installation of forensic  tools     |
+| [4] pentest     :  installation of pentest   tools     |
+| [5] hardening   :  installation of hardening tools     |
+| [6] training    :  installation of training  tools     |
 |                                                        |
 ----------------------------------------------------------
 
