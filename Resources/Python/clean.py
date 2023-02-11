@@ -4,6 +4,7 @@
 # Libraries
 from os import listdir, remove
 from os.path import join
+from Standard_Operations.Colors import Colors
 from Standard_Operations.Logger import Write_Log
 from sys import argv
 
@@ -17,4 +18,5 @@ if __name__ == '__main__':
             try:
                 if (File.endswith(Filter) or Filter in File):
                     remove(join(argv[1], File))
+                    Write_Log(dirname(realpath(__file__)).replace('Resource/Python','yggdrasil.log'), Colors.ORANGE+f"The File {File} was successfully removed."+Colors.RESET)
             except FileNotFoundError: pass
