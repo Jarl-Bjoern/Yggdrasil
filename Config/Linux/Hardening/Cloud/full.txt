@@ -1,0 +1,73 @@
+# APT
+
+# Cargo
+
+# Docker
+
+# Gem
+
+# Git
+https://github.com/prowler-cloud/prowler
+https://github.com/duo-labs/cloudmapper
+https://github.com/nccgroup/ScoutSuite
+https://github.com/cloud-custodian/cloud-custodian/
+https://github.com/Teevity/ice
+https://github.com/aquasecurity/cloudsploit
+https://github.com/aws-samples/network-access-analyzer-multi-account-analysis
+https://github.com/duo-labs/cloudtracker
+https://github.com/amazon-archives/aws-security-benchmark
+https://github.com/arkadiyt/aws_public_ips
+https://github.com/nccgroup/PMapper
+https://github.com/nccgroup/aws-inventory
+https://github.com/disruptops/resource-counter
+https://github.com/cyberark/SkyArk
+https://github.com/willbengtson/trailblazer-aws
+https://github.com/lateralblast/lunar
+https://github.com/tensult/cloud-reports
+https://github.com/tmobile/pacbot
+https://github.com/SecurityFTW/cs-suite
+https://github.com/te-papa/aws-key-disabler
+https://github.com/turnerlabs/antiope
+https://github.com/nozaq/terraform-aws-secure-baseline
+https://github.com/lyft/cartography
+https://github.com/flosell/trailscraper
+https://github.com/tailwarden/komiser
+https://github.com/darkarnium/perimeterator
+https://github.com/salesforce/policy_sentry
+https://github.com/DenizParlak/Zeus
+https://github.com/janiko71/aws-inventory
+https://github.com/WithSecureLabs/awspx
+https://github.com/lyz-code/clinv
+https://github.com/xen0l/aws-gate
+https://github.com/Netflix-Skunkworks/aws-credential-compromise-detection
+https://github.com/z0ph/aws-security-toolbox
+https://github.com/xen0l/iam-lint
+https://github.com/anaynayak/aws-security-viz
+https://github.com/bridgecrewio/AirIAM
+https://github.com/salesforce/cloudsplaining
+https://github.com/aletheia/iam-policy-generator
+https://github.com/cyberark/SkyWrapper
+https://github.com/darkbitio/aws-recon
+https://github.com/mhlabs/iam-policies-cli
+https://github.com/rams3sh/Aaia
+https://github.com/udondan/iam-floyd
+https://github.com/goldfiglabs/rpCheckup
+https://github.com/seisvelas/S3-Exif-Cleaner
+https://github.com/turbot/steampipe
+https://github.com/ermetic/access-undenied-aws
+https://github.com/salesforce/metabadger
+https://github.com/globaldatanet/aws-firewall-factory
+https://github.com/WithSecureLabs/IAMSpy
+https://github.com/cjsrkd3321/aws-security-architectures
+https://github.com/gabrielsoltz/metahub
+https://github.com/matanolabs/matano
+https://github.com/ine-labs/AWSGoat
+
+# Go
+
+# Python
+
+# Wget
+
+# Wordlists
+
