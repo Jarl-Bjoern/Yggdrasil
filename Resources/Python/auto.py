@@ -49,12 +49,12 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
 
                         if (Counter == 20):
                             print (Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
-                            Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
+                            Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
                             break
                         Counter += 1
                         sleep(0.75)
                     else:
-                        mouse_click(r), sleep(1), Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.ORANGE+f"The Extension {Extension_File} was successfully installed."+Colors.RESET)
+                        mouse_click(r), sleep(1), Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.ORANGE+f"The Extension {Extension_File} was successfully installed."+Colors.RESET)
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL), sleep(2), hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up')
 
