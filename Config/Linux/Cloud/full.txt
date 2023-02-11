@@ -7,8 +7,6 @@
 # Gem
 
 # Git
-https://github.com/kubescape/kubescape
-
 https://github.com/prowler-cloud/prowler
 https://github.com/duo-labs/cloudmapper
 https://github.com/nccgroup/ScoutSuite
