@@ -409,9 +409,9 @@ function File_Installer() {
                                                         wget --content-disposition "$FILE"
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
-                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE_NAME" "$2" | tee -a "$FULL_PATH/yggdrasil.log"
+                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE_NAME" "$2"
                                                         else
-                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE" "$2" | tee -a "$FULL_PATH/yggdrasil.log"
+                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE" "$2"
                                                         fi
                                                 elif [ "$MODE" = "Installer" ]; then
                                                         wget --content-disposition "$FILE"
