@@ -536,7 +536,7 @@ https://addons.mozilla.org/android/downloads/file/3616824/foxyproxy_standard-7.5
 
 <a name="custom_install_II"></a>
 ## 📝 Build from scratch
-You can also build the file from scratch yourself. To do this, navigate to the directory `Config/Linux/Custom` and edit the file `install.txt`
+You can also build the file from scratch. To do this, navigate to the directory `Config/Linux/Custom` and edit the file `install.txt`
 ```bash
 # APT
 
