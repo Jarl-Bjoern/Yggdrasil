@@ -8,6 +8,7 @@
 
 # Libraries
 from os import remove
+from os.path import dirname, realpath
 from re import finditer
 from shutil import ReadError, unpack_archive
 from Standard_Operations.Colors import Colors
@@ -24,11 +25,14 @@ if __name__ == '__main__':
         else:
             if ('\n' in argv[1] or '\r' in argv[1]): File = argv[1][:-1]
             else: File = argv[1]
-        try: unpack_archive(f'{argv[2]}/{File}', f'{argv[2]}/')
+        try:
+            unpack_archive(f'{argv[2]}/{File}', f'{argv[2]}/')
+            Write_Log(dirname(realpath(__file__)).replace('Resource/Python','yggdrasil.log'), Colors.ORANGE+f"The File {File} was successfully unzipped."+Colors.RESET)
         except ReadError:
             try:
                 with tfopen(f'{argv[2]}/{File}') as f:
                     f.extractall(f'{argv[2]}/')
+                Write_Log(dirname(realpath(__file__)).replace('Resource/Python','yggdrasil.log'), Colors.ORANGE+f"The Extension {File} was successfully unzipped."+Colors.RESET)
             except FileNotFoundError: pass
         except FileNotFoundError: pass
         remove (f'{argv[2]}/{File}')
