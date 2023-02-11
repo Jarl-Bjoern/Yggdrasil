@@ -557,6 +557,32 @@ You can also build the file from scratch. To do this, navigate to the directory 
 # Wordlists
 ```
 
+After that, select the `Custom` category in the tool to be able to use your self-created list.
+```bash
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                       💀
+💀                       Yggdrasil                       💀
+💀                     Version 0.9                       💀
+💀           Rainer Christian Bjoern Herold              💀
+💀                                                       💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+
+
+           Please choose between one category
+----------------------------------------------------------
+|                                                        |
+| [1] complete    :  installation of both      toolkits  |
+| [2] custom      :  installation of custom    tools     |
+| [3] forensic    :  installation of forensic  tools     |
+| [4] pentest     :  installation of pentest   tools     |
+| [5] hardening   :  installation of hardening tools     |
+| [6] training    :  installation of training  tools     |
+|                                                        |
+----------------------------------------------------------
+
+Your Choice: custom
+```
+
 <a name="customized_scripts"></a>
 ## 📝 Include Customized Scripts
 In addition, it is also possible that you can place your own scripts or packages in the provided `Custom` directory or your own directory and use them in the installation script.
