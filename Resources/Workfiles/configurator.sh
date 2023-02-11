@@ -371,7 +371,11 @@ function File_Installer() {
                                 else
                                         FILE=$(echo "$line" | cut -d" " -f1)
                                         FILE_NAME=$(echo "$line" | cut -d" " -f2)
-                                        echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "$FULL_PATH/yggdrasil.log"
+                                        if [[ $(echo "$line" | cut -d" " -f3) = "Extension" ]]; then
+                                                echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}"
+                                        else
+                                                echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$FILE_NAME${NOCOLOR}" | tee -a "$FULL_PATH/yggdrasil.log"
+                                        fi
                                         for CHECK_FILE in "${Array_Filter_Download[@]}"; do
                                                 if [[ $CHECK_FILE =~ $FILE_NAME ]]; then
 							if [[ "$CHECK_FILE" =~ "/opt/pentest_tools" ]]; then
