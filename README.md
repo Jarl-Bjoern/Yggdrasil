@@ -557,7 +557,7 @@ You can also build the file from scratch. To do this, navigate to the directory 
 # Wordlists
 ```
 
-After that, select the `Custom` category in the tool to be able to use your self-created list.
+After that, start the tool and select the `Custom` category to use your self-created list.
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
