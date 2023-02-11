@@ -27,12 +27,12 @@ if __name__ == '__main__':
             else: File = argv[1]
         try:
             unpack_archive(f'{argv[2]}/{File}', f'{argv[2]}/')
-            Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.ORANGE+f"The File {File} was successfully unzipped."+Colors.RESET)
+            Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RESET+"The File "+Colors.ORANGE+f"{File}"+Colors.RESET+" was successfully unzipped.")
         except ReadError:
             try:
                 with tfopen(f'{argv[2]}/{File}') as f:
                     f.extractall(f'{argv[2]}/')
-                Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.ORANGE+f"The Extension {File} was successfully unzipped."+Colors.RESET)
+                Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RESET+"The File "+Colors.ORANGE+f"{File}"+Colors.RESET+" was successfully unzipped.")
             except FileNotFoundError: pass
         except FileNotFoundError: pass
         remove (f'{argv[2]}/{File}')
