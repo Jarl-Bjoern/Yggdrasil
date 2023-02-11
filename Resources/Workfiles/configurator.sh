@@ -61,7 +61,7 @@ declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/opt/pentest_tools/jetbrains*"
 "/opt/pentest_tools/Proxy/mitmproxy"
 "/opt/pentest_tools/kerbrute"
-"/opt/pentest_tools/Postman")
+"/opt/pentest_tools/API/Postman")
 
 declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Webscanner/SAP/PyRFC"
@@ -93,7 +93,9 @@ declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/SIP/SIPTools"
 "/opt/pentest_tools/SIP/sipvicious"
 "/opt/pentest_tools/Fuzzer/ffuf"
-"/opt/pentest_tools/Fuzzer/wfuzz")
+"/opt/pentest_tools/Fuzzer/wfuzz"
+"/opt/pentest_tools/API/swagger-ui"
+"/opt/pentest_tools/API/jwt_tool")
 
 declare -a Array_GIT_Updater=()
 
@@ -886,6 +888,9 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
         if [[ $(ls "$OPT_Path"/{"ffuf","wfuzz"} 2>/dev/null) ]]; then
                 sudo mkdir -p "$OPT_Path"/Fuzzer ; mv ffuf wfuzz "$OPT_Path"/Fuzzer || sudo rm -rf ffuf wfuzz
         fi
+        if [[ $(ls "$OPT_Path"/{"Postman","swagger-ui","jwt_tool"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/API ; mv Postman swagger-ui jwt_tool "$OPT_Path"/API || sudo rm -rf Postman swagger-ui jwt_tool
+        fi
         if [[ -d "$OPT_Path/plown" ]]; then
                 sudo mkdir -p "$OPT_Path"/Webscanner/Plone ; mv plown "$OPT_Path"/Webscanner/Plone || sudo rm -rf plown
         fi
@@ -988,33 +993,37 @@ EOF
 fi
 
 # GIT_Updater_Configuration
-if [[ ! $(ls "$OPT_Path/update.info" 2>/dev/null) ]]; then
-	echo "" > "$OPT_Path/update.info"
+if [[ ${#Array_GIT_Updater} -gt 0 ]]; then
+        if [[ ! $(ls "$OPT_Path/update.info" 2>/dev/null) ]]; then
+                echo "" > "$OPT_Path/update.info"
+        fi
+        for git_tool in "${Array_GIT_Updater[@]}"; do
+                if [[ ! $(grep "$git_tool" "$OPT_Path/update.info") =~ $git_tool ]]; then
+                        find "$OPT_Path" -name "$git_tool" | head -n 1 >> "$OPT_Path/update.info"
+                fi
+        done
+        for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
+                if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
+                        echo "$git_wordlist" >> "$OPT_Path/update.info"
+                fi
+        done
 fi
-for git_tool in "${Array_GIT_Updater[@]}"; do
-	if [[ ! $(grep "$git_tool" "$OPT_Path/update.info") =~ $git_tool ]]; then
-		find "$OPT_Path" -name "$git_tool" | head -n 1 >> "$OPT_Path/update.info"
-	fi
-done
-for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
-	if [[ ! $(grep "$git_wordlist" "$OPT_Path/update.info") =~ $git_wordlist ]]; then
-		echo "$git_wordlist" >> "$OPT_Path/update.info"
-	fi
-done
 
 # Cargo_Updater_Configuration
-if [[ ! $(ls "$OPT_Path/update_cargo.info" 2>/dev/null) ]]; then
-	echo "" > "$OPT_Path/update_cargo.info"
+if [[ ${#Array_Cargo_Updater} -gt 0 ]]; then
+        if [[ ! $(ls "$OPT_Path/update_cargo.info" 2>/dev/null) ]]; then
+                echo "" > "$OPT_Path/update_cargo.info"
+        fi
+        for cargo_tool in "${Array_Cargo_Updater[@]}"; do
+                if [[ ! $(grep "$cargo_tool" "$OPT_Path/update_cargo.info") =~ $cargo_tool ]]; then
+                        echo "$cargo_tool" >> "$OPT_Path/update_cargo.info"
+                fi
+        done
 fi
-for cargo_tool in "${Array_Cargo_Updater[@]}"; do
-	if [[ ! $(grep "$cargo_tool" "$OPT_Path/update_cargo.info") =~ $cargo_tool ]]; then
-		echo "$cargo_tool" >> "$OPT_Path/update_cargo.info"
-	fi
-done
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
         if [[ $category_type = "pentest" || $category_type = "4" ]]; then
-                ln -sf "$OPT_Path/Postman/app/Postman" /usr/local/bin/postman
+                ln -sf "$OPT_Path/API/Postman/app/Postman" /usr/local/bin/postman
         fi
         if [[ -f $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
                 if [[ $Switch_License == true ]]; then
