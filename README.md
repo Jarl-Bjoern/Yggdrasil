@@ -247,9 +247,7 @@ optional arguments:
 | [3] forensic    :   installation of forensic tools     |
 | [4] pentest     :   installation of pentest tools      |
 | [5] hardening   :   installation of hardening tools    |
-| [6] cloud       :   installation of cloud-pentesting   |
-|                     tools                              |
-| [7] training    :   installation of training tools     |
+| [6] training    :   installation of training tools     |
 |                                                        |
 ----------------------------------------------------------
 
@@ -262,7 +260,7 @@ Your Choice: pentest
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
 💀                       Yggdrasil                       💀
-💀                     Version 0.7b                      💀
+💀                     Version 0.9                       💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
@@ -276,6 +274,7 @@ Your Choice: pentest
 | [3] mobile          :   tools for mobile pentesting    |
 | [4] red_teaming     :   tools for red teaming          |
 | [5] web             :   tools for web pentesting       |
+| [6] cloud           :   tools for cloud pentesting     |
 |                                                        |
 ----------------------------------------------------------
 
@@ -288,7 +287,7 @@ Your Choice: infrastructure
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
 💀                       Yggdrasil                       💀
-💀                     Version 0.7g                      💀
+💀                     Version 0.9                       💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
@@ -302,6 +301,7 @@ Your Choice: infrastructure
 | [3] mobile          :   tools for mobile pentesting    |
 | [4] red_teaming     :   tools for red teaming          |
 | [5] web             :   tools for web pentesting       |
+| [6] cloud           :   tools for cloud pentesting     |
 |                                                        |
 ----------------------------------------------------------
 
