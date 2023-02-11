@@ -323,8 +323,8 @@ Your Choice: 1,5
           Please choose between one installation
 ----------------------------------------------------------
 |                                                        |
-|  [1]       full    : full    installation (GUI)        |
-|  [2]       minimal : minimal installation (CLI)        |
+|  [1] full          :    full    installation (GUI)     |
+|  [2] minimal       :    minimal installation (CLI)     |
 |                                                        |
 ----------------------------------------------------------
 
