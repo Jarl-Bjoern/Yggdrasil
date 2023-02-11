@@ -30,7 +30,7 @@ setopt hist_ignore_all_dups
 function b64() { echo $1 | base64 -d | xxd; }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-"""+rf"""alias git-tools-update='for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'
+"""+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" "$i" ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done; cd "$BACK"'
 alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
@@ -41,7 +41,7 @@ alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 function b64() { echo $1 | base64 -d | xxd; }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-"""+rf"""alias git-tools-update='for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd $i ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'
+"""+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done; cd "$BACK"'
 alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
 
         if ('.zshrc' in path_to_file): write_file(path_to_file, Config_Alias_ZSH)
@@ -52,8 +52,8 @@ def Crontab_Configuration(path_to_file, opt_path):
 0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
 0 6     * * *  root for Image in $(docker images | grep "<none>" | awk '"""+"""{print $3}');"""+f""" do docker image rm $Image; done
 0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
-0 5     * * *  root for CARGO_TOOL in $(cat {opt_path}/update_cargo.info); do cargo install --force $CARGO_TOOL; done
-0 3     * * *  root for GIT_TOOL in $(cat {opt_path}/update.info); do cd $GIT_TOOL; git pull; done"""
+0 5     * * *  root for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done
+0 3     * * *  root for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done"""
         write_file(path_to_file, Config_Crontab)
 
 def Firewall_Configuration(path_to_file):
