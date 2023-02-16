@@ -38,6 +38,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 <strong>Upcoming changes for version</strong> `0.9`:
   - new cleaning task for old container images inside the updater settings
   - automated installer for firefox extensions
+  - added new choice to choose between cronjobs or systemd timer for the automated updates
   - new installation categories was added
   - automated and manual updater for the cargo tools
   - new parameter was added to show interaction messages during the apt installation
