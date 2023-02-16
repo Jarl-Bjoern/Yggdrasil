@@ -194,7 +194,7 @@ optional arguments:
                         This parameter skips the configs part.
 
                         Best practice settings:
-                          - Automated Updates (APT|Docker|Git Packages|Pip)
+                          - Automated Updates (APT|Cargo|Docker|Git Packages|Pip)
                           - Custom Configs (alias|bashrc|zshrc)
                           - screenrc
                           - vim
