@@ -724,11 +724,11 @@ fi
 IFS="$OLDIFS"
 # Basic_Configuration
 if [[ $(grep "PRETTY_NAME" /etc/os-release | cut -d '"' -f2) =~ "Kali" ]]; then
-        if [[ $Switch_REPO == true ]]; then
+        if [[ "$Switch_REPO" == true ]]; then
                 sudo sed -i "s#deb http://http.kali.org/kali kali-rolling main contrib non-free#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free#g" /etc/apt/sources.list
         fi
 fi
-if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
+if [[ "$Switch_CUSTOM_CONFIGS" == true ]]; then
         export HISTCONTROL=ignoreboth:erasedups
 fi
 echo "" > "$FULL_PATH/yggdrasil.log"
@@ -737,17 +737,17 @@ if [[ "$Switch_Verbose" == false ]]; then
 else
 	 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 fi
-if [[ $Switch_CRON == true ]]; then
+if [[ "$Switch_CRON" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
-elif [[ $Switch_SYSTEMD == true ]]; then
+elif [[ "$Switch_SYSTEMD" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/systemd/system" "$OPT_Path"
 fi
-if [[ $Switch_SHREDDER == true ]]; then
+if [[ "$Switch_SHREDDER" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
 fi
 
 # Standard_Installation
-if [[ $Switch_Skip_Hardening != true ]]; then
+if [[ "$Switch_Skip_Hardening" != true ]]; then
         echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
         echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 fi
