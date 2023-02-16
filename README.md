@@ -2,7 +2,7 @@
 <p align="center"></p>
 <div align="center">
   <a href="https://www.kali.org/">
-    <img alt="windows" src="https://img.shields.io/badge/os%20-Windows-1f425f.svg" />
+    <img alt="linux" src="https://img.shields.io/badge/os%20-Windows-1f425f.svg" />
   </a>
   <a href="https://www.python.org/downloads/release/python-3100/">
     <img alt="python" src="https://img.shields.io/badge/python-3.10-blue.svg" />
