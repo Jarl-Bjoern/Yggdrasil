@@ -19,6 +19,7 @@ PATH_ZSH=""
 pentesting=""
 Skip=false
 Switch_APACHE=false
+Switch_CRON=false
 Switch_CUSTOM_CONFIGS=false
 Switch_Firewall=false
 #Switch_FTP=false
@@ -33,6 +34,7 @@ Switch_Skip_Configs=false
 Switch_Skip_Hardening=false
 #Switch_SQUID=false
 Switch_SSH=false
+Switch_SYSTEMD=false
 Switch_UPDATES=false
 Switch_Verbose=false
 Switch_VIM_CONFIG=false
@@ -237,7 +239,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}                        (${RED}after 90 days${NOCOLOR})                        ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "task" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}cronjob${NOCOLOR}      :   cronjob configuration                 ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}systemd timer${NOCOLOR}       :   systemd timer configuration                      ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}timer${NOCOLOR}       :   systemd timer configuration                      ${CYAN}|${NOCOLOR}"
         fi
         echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
         echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
@@ -705,6 +707,19 @@ if [[ $Switch_Skip_Configs != true ]]; then
         clearing
 fi
 
+# Updater_Configuration
+if [[ $Switch_UPDATES = true ]]; then
+        header "task"
+        read -rp "Your Choice: " task_settings
+        if [[ $task_settings = "cronjob" || $task_settings = "1" ]]; then
+                Switch_CRON=true
+        elif [[ $task_settings = "timer" || $task_settings = "2" ]]; then
+                Switch_SYSTEMD=true
+        else
+                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+        fi
+fi
+
 IFS="$OLDIFS"
 # Basic_Configuration
 if [[ $(grep "PRETTY_NAME" /etc/os-release | cut -d '"' -f2) =~ "Kali" ]]; then
@@ -721,8 +736,10 @@ if [[ "$Switch_Verbose" == false ]]; then
 else
 	 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 fi
-if [[ $Switch_UPDATES == true ]]; then
+if [[ $Switch_CRON == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
+elif [[ $Switch_SYSTEMD == true]]; then
+        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/systemd/system" "$OPT_Path" "This script is for installing updates."
 fi
 if [[ $Switch_SHREDDER == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
