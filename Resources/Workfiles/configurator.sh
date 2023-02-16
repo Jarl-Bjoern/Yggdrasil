@@ -740,7 +740,7 @@ fi
 if [[ "$Switch_CRON" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
 elif [[ "$Switch_SYSTEMD" == true ]]; then
-        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/systemd/system" "$OPT_Path"
+        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/usr/lib/systemd/system" "$OPT_Path"
 fi
 if [[ "$Switch_SHREDDER" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
