@@ -237,7 +237,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}vim${NOCOLOR}           :   custom vim config                      ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${PURPLE}6${NOCOLOR}] ${PURPLE}repo${NOCOLOR}          :   kali repository change                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}7${NOCOLOR}] ${RED}shredder${NOCOLOR}      :   workspace file shredding script        ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}                        (${RED}after 90 days (${ORANGE}default${RED})${NOCOLOR})              ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}                        (${RED}after 90 days [${ORANGE}default${RED}]${NOCOLOR})              ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "task" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}cronjob${NOCOLOR}      :   cronjob configuration                   ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}timer${NOCOLOR}        :   systemd timer configuration             ${CYAN}|${NOCOLOR}"
