@@ -414,6 +414,8 @@ Your Choice: 192.168.56.2
 |  [4] screenrc      :   custom screenrc config           |
 |  [5] vim           :   custom vim config                |
 |  [6] repo          :   kali repository change           |
+|  [7] shredder      :   workspace file shredding script  |
+|                        (after 90 days [default])        |
 |                                                         |
 -----------------------------------------------------------
 
