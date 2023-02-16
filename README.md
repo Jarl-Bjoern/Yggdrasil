@@ -463,12 +463,14 @@ cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
 1
 1
 1
+1
 EOF
 
 # Automated Variant with multiple pentesting categories without Hardening with numbers
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
 4
 1,5
+1
 1
 EOF
 ```
@@ -482,6 +484,7 @@ infrastructure,web
 complete
 192.168.2.1
 complete
+cronjob
 EOF
 
 # Automated Variant with multiple pentesting categories with numbers
@@ -490,6 +493,7 @@ cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py
 1,5
 1
 192.168.2.1
+1
 1
 EOF
 ```
