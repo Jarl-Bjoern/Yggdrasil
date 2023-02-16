@@ -117,12 +117,12 @@ def Shredder_Configuration(path_to_file, path_workspace):
 
 def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         Crontab_Commands = {
-        'Yggdrasil_System_Updates': 
+        'Yggdrasil_System_Updates':
                 {
                         'Time': '6',
                         'Command': 'apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND'
                 },
-        'Yggdrasil_Container_Updates': 
+        'Yggdrasil_Container_Updates':
                 {
                         'Time': '6',
                         'Command': 'for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done'
