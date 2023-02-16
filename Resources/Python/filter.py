@@ -164,7 +164,7 @@ ExecStart={Crontab_Commands[Unit]['Command']}"""
 
 [Unit]
 Description=This script is to install updates
-Requires={join(Temp_File_Name, '.service')}
+Requires={Temp_File_Name}.service
 
 [Timer]
 Unit={Unit}.service
@@ -174,8 +174,8 @@ OnCalendar=*-*-* {Crontab_Commands[Unit]['Time']}:00:00
 WantedBy=multi-user.target"""
 
                 # File_Creation
-                Service_Writer(join(Temp_File_Name, '.service'), Base_Unit)
-                Service_Writer(join(Temp_File_Name, '.timer'), Base_Timer)
+                Service_Writer(f'{Temp_File_Name}.service'), Base_Unit)
+                Service_Writer(f'{Temp_File_Name}.timer'), Base_Timer)
 
 # Main
 if __name__ == '__main__':
