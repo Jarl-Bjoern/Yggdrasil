@@ -114,34 +114,60 @@ def Shredder_Configuration(path_to_file, path_workspace):
         Config_Shredder = f"""0 4     * * *  root for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt 90 ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
         write_file(path_to_file, Config_Shredder)
 
-def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path, hour, description):
-        Crontab_Commands = [
-'apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND',
-'for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done',
-'for Image in $(docker images | grep "<none>" | awk "{print $3}"); do docker image rm $Image; done',
-'pip3 install --upgrade pip setuptools python-debian',
-f'root for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done',
-f'root for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done']
+def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
+        Crontab_Commands = {
+        'Yggdrasil_System_Updates': 
+                {
+                        'Time': '6',
+                        'Command': 'apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND'
+                },
+        'Yggdrasil_Container_Updates': 
+                {
+                        'Time': '6',
+                        'Command': 'for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done'
+                },
+        'Yggdrasil_Container_Cleaner':
+                {
+                        'Time': '6',
+                        'Command': 'for Image in $(docker images | grep "<none>" | awk "{print $3}"); do docker image rm $Image; done'
+                },
+        'Yggdrasil_PIP_Updater':
+                {
+                        'Time': '5',
+                        'Command': 'pip3 install --upgrade pip setuptools python-debian'
+                },
+        'Yggdrasil_Cargo_Updater':
+                {
+                        'Time': '5',
+                        'Command': f'root for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done'
+                },
+        'Yggdrasil_GIT_Updater':
+                {
+                        'Time': '3',
+                        'Command': f'root for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done'
+                }
+        }
 
         for Unit in Crontab_Commands:
+                Temp_File_Name = join(path_to_file, Unit)
                 Base_Unit = f"""# Rainer Christian Bjoern Herold
 
 [Unit]
-Description={description}
+Description=This script is to install updates
 
 [Service]
 Type=oneshot
-ExecStart={command}"""
+ExecStart={Crontab_Commands[Unit]['Command']}"""
 
                 Base_Timer = f"""# Rainer Christian Bjoern Herold
 
 [Unit]
-Description={description}
-Requires={join(path_to_file, '.service')}
+Description=This script is to install updates
+Requires={join(Temp_File_Name, '.service')}
 
 [Timer]
-Unit=myMonitor.service
-OnCalendar=*-*-* {hour}:00:00
+Unit={Unit}.service
+OnCalendar=*-*-* {Crontab_Commands[Unit]['Time']}:00:00
 
 [Install]
 WantedBy=multi-user.target"""
@@ -159,5 +185,5 @@ if __name__ == '__main__':
                 elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
                 elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1], argv[2])
-                elif ("/systemd/system" in argv[1]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2], argv[3], argv[4])
+                elif ("/systemd/system" in argv[1]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2], argv[3])
         except FileNotFoundError: pass
