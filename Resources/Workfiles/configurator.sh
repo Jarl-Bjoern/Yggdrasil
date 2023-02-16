@@ -17,6 +17,7 @@ PATH_VIM=""
 PATH_WORKSPACE=""
 PATH_ZSH=""
 pentesting=""
+Shredding_DAYS=""
 Skip=false
 Switch_APACHE=false
 Switch_CRON=false
@@ -484,6 +485,8 @@ for arg; do
                 HOST_Pentest="$(echo "$arg" | rev | cut -c5- | rev)"
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-tP" ]]; then
                 OPT_Path="$(echo "$arg" | rev | cut -c5- | rev)"
+        elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-sD" ]]; then
+                Shredding_DAYS="$(echo "$arg" | rev | cut -c5- | rev)"
         fi
 done
 
@@ -737,16 +740,26 @@ if [[ "$Switch_Verbose" == false ]]; then
 else
 	 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 fi
-if [[ "$Switch_CRON" == true ]]; then
-        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
-elif [[ "$Switch_SYSTEMD" == true ]]; then
-        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/usr/lib/systemd/system" "$OPT_Path"
-        sudo systemctl enable --now Yggdrasil_Cargo_Updater.timer Yggdrasil_Container_Cleaner.timer Yggdrasil_Container_Updates.timer Yggdrasil_GIT_Updater.timer Yggdrasil_PIP_Updater.timer Yggdrasil_System_Updates.timer &>/dev/null
-        sudo systemctl daemon-reload &>/dev/null
+
+# Task_Configuration
+if [[ "$Switch_UPDATES" == true ]]; then
+        if [[ "$Switch_CRON" == true ]]; then
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
+        elif [[ "$Switch_SYSTEMD" == true ]]; then
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/usr/lib/systemd/system" "$OPT_Path"
+                sudo systemctl enable --now Yggdrasil_Cargo_Updater.timer Yggdrasil_Container_Cleaner.timer Yggdrasil_Container_Updates.timer Yggdrasil_GIT_Updater.timer Yggdrasil_PIP_Updater.timer Yggdrasil_System_Updates.timer &>/dev/null
+                sudo systemctl daemon-reload &>/dev/null
+        fi
 fi
 if [[ "$Switch_SHREDDER" == true ]]; then
-        sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
+        if [[ "$Switch_CRON" == true ]]; then
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred" "$Shredding_DAYS"
+        elif [[ "$Switch_SYSTEMD" == true ]]; then
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/usr/lib/systemd/system" "$PATH_WORKSPACE" "shred" "$Shredding_DAYS"
+                sudo systemctl enable --now Yggdrasil_Workspace_Cleaner.timer &>/dev/null
+        fi
 fi
+sudo systemctl daemon-reload &>/dev/null
 
 # Standard_Installation
 if [[ "$Switch_Skip_Hardening" != true ]]; then
