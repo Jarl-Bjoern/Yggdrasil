@@ -239,7 +239,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}                        (${RED}after 90 days${NOCOLOR})                        ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "task" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}cronjob${NOCOLOR}      :   cronjob configuration                   ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}timer${NOCOLOR}        :   systemd timer configuration              ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}timer${NOCOLOR}        :   systemd timer configuration             ${CYAN}|${NOCOLOR}"
         fi
         echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
         echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
