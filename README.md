@@ -2,7 +2,7 @@
 <p align="center"></p>
 <div align="center">
   <a href="https://www.kali.org/">
-    <img alt="linux" src="https://svgshare.com/i/Zhy.svg" />
+    <img alt="windows" src="https://img.shields.io/badge/os%20-Windows-1f425f.svg" />
   </a>
   <a href="https://www.python.org/downloads/release/python-3100/">
     <img alt="python" src="https://img.shields.io/badge/python-3.10-blue.svg" />
@@ -13,6 +13,8 @@
   <a href="https://GitHub.com/jarl-bjoern/yggdrasil/releases/">
     <img alt="releases" src="https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg" />
   </a>
+</div>
+<div align="center">
   <a href="https://github.com/jarl-bjoern">
       <img title="Follower" src="https://img.shields.io/github/followers/Jarl-Bjoern.svg?style=social&label=Follow&maxAge=2592000"><a href="https://github.com/Jarl-Bjoern?tab=followers"></a>
 </div>
