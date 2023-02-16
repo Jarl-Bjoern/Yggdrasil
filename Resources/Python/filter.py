@@ -18,6 +18,10 @@ def write_file(path_to_file, config_var):
                 for _ in config_var.splitlines():
                         if (_ not in Array_Temp): f.write(f'{_}\n')
 
+def Service_Writer(path_to_file, input_text):
+        with open(path_to_file, 'w') as f:
+                f.write(input_text)
+
 # Work_Functions
 def Alias_Configuration(path_to_file, opt_path):
         Config_Alias_ZSH = r"""alias la='ls -lha --color=auto'
@@ -110,9 +114,32 @@ def Shredder_Configuration(path_to_file, path_workspace):
         Config_Shredder = f"""0 4     * * *  root for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt 90 ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
         write_file(path_to_file, Config_Shredder)
 
-def Systemd_Timer_Configuration(path_to_file, time, command):
-        with open(path_to_file, 'w') as f:
-                f.write(command)
+def Systemd_Service_And_Timer_Configuration(path_to_file, hour, command, description):
+        Base_Unit = f"""# Rainer Christian Bjoern Herold
+
+[Unit]
+Description={description}
+
+[Service]
+Type=oneshot
+ExecStart={command}"""
+
+        Base_Timer = f"""# Rainer Christian Bjoern Herold
+
+[Unit]
+Description={description}
+Requires={join(path_to_file, '.service')}
+
+[Timer]
+Unit=myMonitor.service
+OnCalendar=*-*-* {hour}:00:00
+
+[Install]
+WantedBy=multi-user.target"""
+
+        # File_Creation
+        Service_Writer(join(path_to_file, '.service'), Base_Unit)
+        Service_Writer(join(path_to_file, '.timer'), Base_Timer)
 
 # Main
 if __name__ == '__main__':
@@ -123,4 +150,5 @@ if __name__ == '__main__':
                 elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
                 elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1], argv[2])
+                elif ("/systemd/system" in argv[1]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2], argv[3], argv[4])
         except FileNotFoundError: pass
