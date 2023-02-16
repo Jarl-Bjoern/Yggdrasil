@@ -168,7 +168,7 @@ Requires={Unit}.service
 
 [Timer]
 Unit={Unit}.service
-OnCalendar=*-*-* {Crontab_Commands[Unit]['Time']}:00:00
+OnCalendar=*-*-* 00/{Crontab_Commands[Unit]['Time']}:00:00
 
 [Install]
 WantedBy=multi-user.target"""
