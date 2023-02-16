@@ -53,6 +53,7 @@ def main():
             if (Arg_Name == "accept_licenses"): Parameters += "-aL "
             elif (Arg_Name == "skip_hardening"): Parameters += "-sH "
             elif (Arg_Name == "skip_config"): Parameters += "-sC "
+            elif (Arg_Name == "skip_days"): Parameters += f"{Arg_Value}.-sD "
             elif (Arg_Name == "verbose"): Parameters += "-v "
             elif (Arg_Name == "add_workspace" and Arg_Value != None):
                 try: makedirs(args.add_workspace)
@@ -64,7 +65,6 @@ def main():
                 Parameters += f"{args.tool_path}.-tP "
         elif (Arg_Name == "custom_path" and Arg_Value != None): Parameters += f"{Arg_Value}.-p "
         elif (Arg_Name == "host_name" and Arg_Value != None): Parameters += f"{Arg_Value}.-hN "
-        elif (Arg_Name == "skip_days" and Arg_Value != None): Parameters += f"{Arg_Value}.-sD "
     Standard.Initials(), system(f'sudo bash {Start_Script} {Parameters}')
 
 # Main
