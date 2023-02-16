@@ -111,9 +111,44 @@ def Firewall_Configuration(path_to_file):
                         for _ in Array_v6:
                                 if (_ not in Array_Temp): f.write(f'{_}\n')
 
-def Shredder_Configuration(path_to_file, path_workspace):
-        Config_Shredder = f"""0 4     * * *  root for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt 90 ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
+def Shredder_Configuration(path_to_file, path_workspace, shredding_days):
+        Config_Shredder = f"""0 4     * * *  root for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt """+f"""{shredding_days}"""+""" ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
         write_file(path_to_file, Config_Shredder)
+
+def Systemd_Shredder_Configuration(path_to_file, path_workspace, shredding_days):
+        Crontab_Commands = {
+        'Yggdrasil_Workspace_Cleaner':
+                {
+                        'Time': '4',
+                        'Command': """for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt """+f"""{shredding_days}"""+""" ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
+                }
+
+        Temp_File_Name = join(path_to_file, 'Yggdrasil_Workspace_Cleaner')
+        Base_Unit = f"""# Rainer Christian Bjoern Herold
+
+[Unit]
+Description=This script is to install updates
+
+[Service]
+Type=oneshot
+ExecStart={Crontab_Commands['Yggdrasil_Workspace_Cleaner']['Command']}"""
+
+                Base_Timer = f"""# Rainer Christian Bjoern Herold
+
+[Unit]
+Description=This script is to install updates
+Requires=Yggdrasil_Workspace_Cleaner.service
+
+[Timer]
+Unit=Yggdrasil_Workspace_Cleaner.service
+OnCalendar=*-*-* 00/{Crontab_Commands['Yggdrasil_Workspace_Cleaner']['Time']}:00:00
+
+[Install]
+WantedBy=multi-user.target"""
+
+        # File_Creation
+        Service_Writer(f'{Temp_File_Name}.service', Base_Unit)
+        Service_Writer(f'{Temp_File_Name}.timer', Base_Timer)
 
 def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         Crontab_Commands = {
@@ -181,10 +216,12 @@ WantedBy=multi-user.target"""
 if __name__ == '__main__':
         try:
                 if ("crontab" in argv[1]):
-                        if ("shred" in argv[3]): Shredder_Configuration(argv[1], argv[2])
+                        if ("shred" in argv[3]): Shredder_Configuration(argv[1], argv[2], argv[4])
                         elif ("normal" in argv[3]): Crontab_Configuration(argv[1], argv[2])
                 elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
                 elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1], argv[2])
-                elif ("/systemd/system" in argv[1]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2])
+                elif ("/systemd/system" in argv[1]):
+                        if ("shred" in argv[3]): Systemd_Shredder_Configuration(argv[1], argv[2], argv[4])
+                        elif ("normal" in argv[3]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2])
         except FileNotFoundError: pass
