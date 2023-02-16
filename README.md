@@ -211,7 +211,7 @@ optional arguments:
                         Default:
                           - 90 Days
 
-                        -------------------------------------------------------------------------------------
+                        ---------------------------------------------------------------
   -sH [SKIP_HARDENING], --skip-hardening [SKIP_HARDENING]
                         This parameter skips the hardening part.
 
