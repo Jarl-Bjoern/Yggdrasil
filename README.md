@@ -122,6 +122,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [Choose between multiple hardening options](#hardening_install)
   - [Configurate your SSH IP-Address](#ssh_install)
   - [Choose between the provided best practice settings](#best_practice_settings)
+  - [Choose between one of the two task settings](#task_settings)
 - [Using the automated variant](#automated_install)
 - [Customize your installation](#custom_install)
   - [Method Example](#method_install)
@@ -420,6 +421,29 @@ Your Choice: 192.168.56.2
 -----------------------------------------------------------
 
 Your Choice: 1
+```
+
+<a name="task_settings"></a>
+## ⚔ Choose between one of the two task settings
+```bash
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                            💀
+💀                         Yggdrasil                          💀
+💀                        Version 0.9                         💀
+💀              Rainer Christian Bjoern Herold                💀
+💀                                                            💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+
+
+-----------------------------------------------------------------
+|                                                               |
+|  [1] cronjob      :   cronjob configuration                   |
+|  [2] timer        :   systemd timer configuration             |
+|                                                               |
+-----------------------------------------------------------------
+
+Your Choice: cronjob
+
 ```
 
 <a name="automated_install"></a>
