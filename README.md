@@ -455,6 +455,7 @@ pentest
 infrastructure
 full
 complete
+cronjob
 EOF
 
 # Automated Variant without Hardening with numbers
