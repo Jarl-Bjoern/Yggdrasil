@@ -741,6 +741,8 @@ if [[ "$Switch_CRON" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
 elif [[ "$Switch_SYSTEMD" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/usr/lib/systemd/system" "$OPT_Path"
+        sudo systemctl enable --now Yggdrasil_Cargo_Updater.timer Yggdrasil_Container_Cleaner.timer Yggdrasil_Container_Updates.timer Yggdrasil_GIT_Updater.timer Yggdrasil_PIP_Updater.timer Yggdrasil_System_Updates.timer
+        sudo systemctl daemon-reload
 fi
 if [[ "$Switch_SHREDDER" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
