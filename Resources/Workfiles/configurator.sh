@@ -718,6 +718,7 @@ if [[ $Switch_UPDATES = true ]]; then
         else
                 echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
         fi
+        clearing
 fi
 
 IFS="$OLDIFS"
