@@ -711,7 +711,7 @@ if [[ $Switch_Skip_Configs != true ]]; then
 fi
 
 # Updater_Configuration
-if [[ $Switch_UPDATES = true ]]; then
+if [[ $Switch_UPDATES = true || $Switch_SHREDDER = true ]]; then
         header "task"
         read -rp "Your Choice: " task_settings
         if [[ $task_settings = "cronjob" || $task_settings = "1" ]]; then
