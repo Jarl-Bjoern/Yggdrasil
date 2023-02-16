@@ -741,8 +741,8 @@ if [[ "$Switch_CRON" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$OPT_Path" "normal"
 elif [[ "$Switch_SYSTEMD" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/usr/lib/systemd/system" "$OPT_Path"
-        sudo systemctl enable --now Yggdrasil_Cargo_Updater.timer Yggdrasil_Container_Cleaner.timer Yggdrasil_Container_Updates.timer Yggdrasil_GIT_Updater.timer Yggdrasil_PIP_Updater.timer Yggdrasil_System_Updates.timer
-        sudo systemctl daemon-reload
+        sudo systemctl enable --now Yggdrasil_Cargo_Updater.timer Yggdrasil_Container_Cleaner.timer Yggdrasil_Container_Updates.timer Yggdrasil_GIT_Updater.timer Yggdrasil_PIP_Updater.timer Yggdrasil_System_Updates.timer &>/dev/null
+        sudo systemctl daemon-reload &>/dev/null
 fi
 if [[ "$Switch_SHREDDER" == true ]]; then
         sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/etc/crontab" "$PATH_WORKSPACE" "shred"
@@ -924,7 +924,7 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
         fi
 
         # Metasploit_Configuration
-        sudo systemctl enable --now postgresql
+        sudo systemctl enable --now postgresql &>/dev/null
         sudo msfdb init
 
         # Linking_Local_Wordlists
@@ -1293,7 +1293,7 @@ COMMIT
 EOF
                 fi
                 sudo chmod 0600 /etc/iptables/*
-                sudo systemctl enable --now netfilter-persistent.service
+                sudo systemctl enable --now netfilter-persistent.service &>/dev/null
         fi
 
         # SSH_Configuration
