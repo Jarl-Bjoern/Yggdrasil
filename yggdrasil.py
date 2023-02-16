@@ -64,6 +64,7 @@ def main():
                 Parameters += f"{args.tool_path}.-tP "
         elif (Arg_Name == "custom_path" and Arg_Value != None): Parameters += f"{Arg_Value}.-p "
         elif (Arg_Name == "host_name" and Arg_Value != None): Parameters += f"{Arg_Value}.-hN "
+        elif (Arg_Name == "skip_days" and Arg_Value != None): Parameters += f"{Arg_Value}.-sD "
     Standard.Initials(), system(f'sudo bash {Start_Script} {Parameters}')
 
 # Main
