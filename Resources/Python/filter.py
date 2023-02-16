@@ -164,7 +164,7 @@ ExecStart={Crontab_Commands[Unit]['Command']}"""
 
 [Unit]
 Description=This script is to install updates
-Requires={Temp_File_Name}.service
+Requires={Unit}.service
 
 [Timer]
 Unit={Unit}.service
