@@ -185,5 +185,5 @@ if __name__ == '__main__':
                 elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
                 elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1], argv[2])
-                elif ("/systemd/system" in argv[1]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2], argv[3])
+                elif ("/systemd/system" in argv[1]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2])
         except FileNotFoundError: pass
