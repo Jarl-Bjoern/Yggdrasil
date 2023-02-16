@@ -205,6 +205,13 @@ optional arguments:
                           - repo-change (rolling-release to last-snapshot)
 
                         ---------------------------------------------------------------
+  -sD SKIP_DAYS, --skip-days SKIP_DAYS
+                        This parameter specifies the max days for the shredding script.
+
+                        Default:
+                          - 90 Days
+
+                        -------------------------------------------------------------------------------------
   -sH [SKIP_HARDENING], --skip-hardening [SKIP_HARDENING]
                         This parameter skips the hardening part.
 
