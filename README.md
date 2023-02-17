@@ -244,6 +244,11 @@ optional arguments:
                           - nginx
 
                         ---------------------------------------------------------------
+  -sU [SKIP_URLS], --skip-urls [SKIP_URLS]
+                        This parameter skips the url opening part after the
+                        installation process.
+                                            
+                        ---------------------------------------------------------------
   -tP TOOL_PATH, --tool-path TOOL_PATH
                         This parameter specifies your default tools location.
 
