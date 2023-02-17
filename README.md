@@ -515,6 +515,7 @@ bat is already the newest version (0.22.1-1).
 ```
 
 <br />
+
 <a name="automated_install"></a>
 ## 🔧 Using the automated variant
 ```bash
