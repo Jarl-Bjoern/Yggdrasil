@@ -581,11 +581,18 @@ If you have chosen the provided `alias configuration`, you can use the aliases l
 
 <a name="nmap_exclude"></a>
 ## ⚙️ Exclude local IP-Addresses inside nmap scans
-UNDER CONSTRUCTION
+In some cases, for example, you may receive an entire network as a target, in which case your Kali machine may also be located. As a result, it would be possible that you discover yourself with multiple vulnerabilities, to avoid this, this feature was built.
+
+Whenever nmap is called, all local addresses are automatically included as exclude parameters, so if you have a network (e.g. 192.168.30.0/24) as target and your machine has the IP address 192.168.30.50, this and also the IPv6 addresses will be ignored.
+````
 
 <a name="manual_tool_updater"></a>
 ## ⚙️ Manual Tools Updater
-UNDER CONSTRUCTION
+In many cases it can happen that sometimes tools were downloaded via Github, which may not have been fully operational at that time, for this purpose automated tasks were also built, but they always start after `5 hours`.
+
+To speed up the process and manually pull updates from the repos, the alias `git-tools-update` was created.
+
+Notice: Only the tools installed by Yggdrasil are affected by an update.
 
 <a name="manual_url_opener"></a>
 ## ⚙️ Manual URL Opener
