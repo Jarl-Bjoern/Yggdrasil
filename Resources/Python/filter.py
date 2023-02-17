@@ -62,8 +62,10 @@ alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
 . "$HOME/.cargo/env""""
+        Config_Alias_Profile = """. "$HOME/.cargo/env""""
 
         if ('.zshrc' in path_to_file): write_file(path_to_file, Config_Alias_ZSH)
+        elif ('.profile' in path_to_file): write_file(path_to_file, Config_Alias_Profile)
         else: write_file(path_to_file, Config_Alias_BSH)
 
 def Crontab_Configuration(path_to_file, opt_path):
@@ -235,7 +237,7 @@ if __name__ == '__main__':
                         elif ("normal" in argv[3]): Crontab_Configuration(argv[1], argv[2])
                 elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
-                elif (".zshrc" in argv[1] or ".bashrc" in argv[1]): Alias_Configuration(argv[1], argv[2], argv[3])
+                elif (".zshrc" in argv[1] or ".bashrc" in argv[1] or ".profile" in argv[1]): Alias_Configuration(argv[1], argv[2], argv[3])
                 elif ("/systemd/system" in argv[1]):
                         if ("shred" in argv[3]): Systemd_Shredder_Configuration(argv[1], argv[2], argv[4])
                         elif ("normal" in argv[3]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2])
