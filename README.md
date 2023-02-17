@@ -592,7 +592,8 @@ In many cases it can happen that sometimes tools were downloaded via Github, whi
 To speed up the process and manually pull updates from the repos, the alias `git-tools-update` was created.
 
 ```r
-git-tools-update                                  
+kali💀pentest-kali)-[/home/kali]
+└─# git-tools-update                                  
 
 Update: /opt/pentest_tools/EyeWitness
 Already up to date.
