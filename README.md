@@ -250,7 +250,7 @@ optional arguments:
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                       Yggdrasil                       💀
+💀                      Yggdrasil                        💀
 💀                     Version 0.9                       💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
@@ -277,7 +277,7 @@ Your Choice: pentest
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                       Yggdrasil                       💀
+💀                      Yggdrasil                        💀
 💀                     Version 0.9                       💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
@@ -331,7 +331,7 @@ Your Choice: 1,5
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                       Yggdrasil                       💀
+💀                      Yggdrasil                        💀
 💀                     Version 0.7b                      💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
@@ -354,7 +354,7 @@ Your Choice: full
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                       Yggdrasil                       💀
+💀                      Yggdrasil                        💀
 💀                     Version 0.8                       💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
@@ -379,7 +379,7 @@ Your Choice: 1
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                       Yggdrasil                       💀
+💀                      Yggdrasil                        💀
 💀                     Version 0.8                       💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
@@ -404,9 +404,9 @@ Your Choice: 192.168.56.2
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                         Yggdrasil                     💀
-💀                        Version 0.9                    💀
-💀              Rainer Christian Bjoern Herold           💀
+💀                      Yggdrasil                        💀
+💀                     Version 0.9                       💀
+💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 
@@ -434,9 +434,9 @@ Your Choice: 1
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                         Yggdrasil                     💀
-💀                        Version 0.9                    💀
-💀              Rainer Christian Bjoern Herold           💀
+💀                      Yggdrasil                        💀
+💀                     Version 0.9                       💀
+💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 
@@ -460,9 +460,9 @@ In the next step, the script will go through all the configured steps and instal
 ```r
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                         Yggdrasil                     💀
-💀                        Version 0.9                    💀
-💀              Rainer Christian Bjoern Herold           💀
+💀                      Yggdrasil                        💀
+💀                     Version 0.9                       💀
+💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 
@@ -662,7 +662,7 @@ After that, start the tool and select the `Custom` category to use your self-cre
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                       Yggdrasil                       💀
+💀                      Yggdrasil                        💀
 💀                     Version 0.9                       💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
