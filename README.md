@@ -12,6 +12,9 @@
   </a>
 </div>
 <div align="center">
+  <a href="">
+    <img alt="repo size" src="https://img.shields.io/github/repo-size/jarl-bjoern/yggdrasil" />
+  </a>
   <a href="https://GitHub.com/jarl-bjoern/yggdrasil/releases/">
     <img alt="releases" src="https://img.shields.io/github/downloads/jarl-bjoern/yggdrasil/total?color=blue&logo=github&logoColor=cyan" />
   </a>
