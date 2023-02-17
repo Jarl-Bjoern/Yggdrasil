@@ -577,7 +577,7 @@ EOF
 
 <a name="useful_functions"></a>
 # ⚙️ Useful provided functions
-UNDER CONSTRUCTION
+If you have chosen the provided `alias configuration`, you can use the aliases listed in the next chapter.
 
 <a name="nmap_exclude"></a>
 ## ⚙️ Exclude local IP-Addresses inside nmap scans
