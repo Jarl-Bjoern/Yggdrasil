@@ -453,7 +453,7 @@ Your Choice: 1
 ```
 
 <a name="example_install_process"></a>
-## Installation Process
+## ⚔ Installation Process
 
 In the next step, the script will go through all the configured steps and install the tools like in the example below.
 
