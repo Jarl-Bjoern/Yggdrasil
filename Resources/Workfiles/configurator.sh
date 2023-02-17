@@ -810,9 +810,9 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
                 # ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
                 sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH"
                 sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_ZSH"
-                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ALIAS" "$OPT_Path"
-                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_BSH" "$OPT_Path"
-                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ZSH" "$OPT_Path"
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ALIAS" "$OPT_Path" "$FULL_PATH"
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_BSH" "$OPT_Path" "$FULL_PATH"
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ZSH" "$OPT_Path" "$FULL_PATH"
         fi
 
         if [[ $Switch_SCREENRC == true ]]; then
