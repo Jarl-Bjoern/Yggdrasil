@@ -843,6 +843,7 @@ python3 /opt/Yggdrasil/yggdrasil.py -cP /mnt/MY_DIRECTORY
 
 <br />
 
+<a name="special_thanks"></a>
 # 🏆 Special thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
