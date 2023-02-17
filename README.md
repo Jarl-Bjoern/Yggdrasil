@@ -43,6 +43,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - new cleaning task for old container images inside the updater settings
   - several new aliases have been added to allow reopening of various important web pages, such as for further education, or the information that appears after installation
   - scalable number of days for the shredding task
+  - automated rust language updater
   - new parameter was added to skip the automated url opening process after the installation
   - automated URL opener for meaningful pages for example for pentesting
   - automated installer for firefox extensions
@@ -90,6 +91,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
     - GIT Tools
     - Important pip packages
     - OS
+    - Rust
   - Autmated cleaning tasks
     - shredding task to delete your penetration test results for privacy reasons after 90 days (default) or after a custom number of days
     - cleaning task to remove old container images
