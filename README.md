@@ -5,15 +5,15 @@
     <img alt="linux" src="https://img.shields.io/badge/os%20-Linux-1f425f.svg" />
   </a>
   <a href="https://www.python.org/downloads/release/python-3100/">
-    <img alt="python" src="https://img.shields.io/badge/python-3.10-blue.svg" />
+    <img alt="python" src="https://img.shields.io/badge/python-3.10-blue.svg?logo=github&logoColor=cyan" />
   </a>
   <a href="https://visitor-badge.glitch.me/badge?page_id=jarl-bjoern/yggdrasil&left_color=grey&right_color=blue">
     <img alt="visitors" src="https://visitor-badge.glitch.me/badge?page_id=jarl-bjoern/yggdrasil&left_color=grey&right_color=blue" />
   </a>
 </div>
 <div align="center">
-  <a href="">
-    <img alt="repo size" src="https://img.shields.io/github/repo-size/jarl-bjoern/yggdrasil" />
+  <a href="https://GitHub.com/jarl-bjoern/yggdrasil/releases/">
+    <img alt="repo size" src="https://img.shields.io/github/repo-size/jarl-bjoern/yggdrasil?logo=github&logoColor=cyan" />
   </a>
   <a href="https://GitHub.com/jarl-bjoern/yggdrasil/releases/">
     <img alt="releases" src="https://img.shields.io/github/downloads/jarl-bjoern/yggdrasil/total?color=blue&logo=github&logoColor=cyan" />
