@@ -814,7 +814,7 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
 
         if [[ $Switch_Cargo == true ]]; then
                 sudo cp -r "$HOME/.cargo" "$i"
-                sudo chown -r "$(echo "$i" | rev | cut -d '/' -f1 | rev)": "$i/.cargo"
+                sudo chown -R "$(echo "$i" | rev | cut -d '/' -f1 | rev)": "$i/.cargo"
         fi
 
         if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
