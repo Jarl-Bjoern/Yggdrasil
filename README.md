@@ -119,7 +119,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - nginx
   - SSH
 
-<br /><br />
+<br />
 # 📖 Table of Contents
 - [⚔ How to download and install the tool](#download_install)
   - [⚔ Preparations](#preparation_install)
@@ -141,7 +141,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [📝 Build from scratch](#custom_install_II)
   - [📝 Include Customized Scripts](#directory_install)
 
-<br /><br />
+<br />
 <a name="download_install"></a>
 # ⚔ How to download and install the tool
 
@@ -512,7 +512,7 @@ bat is already the newest version (0.22.1-1).
 
 ```
 
-<br /><br />
+<br />
 <a name="automated_install"></a>
 ## 🔧 Using the automated variant
 ```bash
@@ -566,7 +566,7 @@ cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py
 EOF
 ```
 
-<br /><br />
+<br />
 <a name="useful_functions"></a>
 # ⚙️ Useful provided functions
 UNDER CONSTRUCTION
@@ -586,8 +586,7 @@ UNDER CONSTRUCTION
 ## ⚙️ Manual Yggdrasil Info show
 UNDER CONSTRUCTION
 
-<br /><br />
-
+<br /><
 <a name="custom_install"></a>
 # 📝 Customize your installation
 You can open up one of the configuration files and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a `#`).
@@ -730,7 +729,7 @@ For this, you must use the parameter `-cP` in combination with the absolute path
 python3 /opt/Yggdrasil/yggdrasil.py -cP /mnt/MY_DIRECTORY
 ```
 
-<br /><br />
+<br />
 # 🏆 Special thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
