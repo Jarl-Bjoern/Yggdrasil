@@ -566,9 +566,9 @@ elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
                 OPT_Path="/opt/complete_tools"
         fi
-        declare -a Array_URL=("$FULL_PATH/Information/Infrastructure.txt",
-"$FULL_PATH/Information/OSINT.txt",
-"$FULL_PATH/Information/Forensic.txt",
+        declare -a Array_URL=("$FULL_PATH/Information/Infrastructure.txt"
+"$FULL_PATH/Information/OSINT.txt"
+"$FULL_PATH/Information/Forensic.txt"
 "$FULL_PATH/Information/Hardening.txt")
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
@@ -1369,7 +1369,7 @@ sudo python3 "$FULL_PATH/Resources/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
 if [[ ${#Array_URL} -gt 0 ]]; then
         for URL in "${Array_URL[@]}"; do
-                sudo python3 "$FULL_PATH/Resources/Python/browse.py" $URL
+                sudo python3 "$FULL_PATH/Resources/Python/browse.py" "$URL"
         done
 fi
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
