@@ -457,7 +457,7 @@ Your Choice: 1
 
 In the next step, the script will go through all the configured steps and install the tools like in the example below.
 
-```bash
+```r
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
 💀                         Yggdrasil                     💀
