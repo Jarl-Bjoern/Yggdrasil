@@ -678,7 +678,7 @@ Last but not least, in some cases an annoying message may appear from the `micro
 <a name="manual_url_opener"></a>
 ## ⚙️ Manual URL Opener
 In some cases, you may need certain URLs and lack the time to always set them up as home pages in the browser.
-<br />
+
 <br />
 
 | Alias               | Description |
@@ -689,6 +689,7 @@ In some cases, you may need certain URLs and lack the time to always set them up
 | yggdrasil-osint     | XX |
 
 <br />
+
 In addition, I have developed another tool <a href="https://github.com/Jarl-Bjoern/Tyr">TYR</a>, which also loads URLs automatically into the default browser. This is integrated by default in Yggdrasil if you have selected the `Penetration Testing` category `Web` during the installation.
 
 <a name="manual_info_show"></a>
