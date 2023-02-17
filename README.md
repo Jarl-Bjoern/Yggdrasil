@@ -661,7 +661,15 @@ Last but not least, in some cases an annoying message may appear from the `micro
 
 <a name="manual_url_opener"></a>
 ## ⚙️ Manual URL Opener
-UNDER CONSTRUCTION
+In some cases, you may need certain URLs and lack the time to always set them up as home pages in the browser.
+
+The following aliases were created:
+  - yggdrasil-education
+  - yggdrasil-forensic
+  - yggdrasil-hardening
+  - yggdrasil-osint
+
+In addition, I have developed another tool <a href="https://github.com/Jarl-Bjoern/Tyr">TYR</a>, which also loads URLs automatically into the default browser. This is integrated by default in Yggdrasil if you have selected the Penetration Testing category Web during the installation.
 
 <a name="manual_info_show"></a>
 ## ⚙️ Manual Yggdrasil Info show
