@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Rainer Christian Bjoern Herold
-# Version 0.1 07.10.2022
-# Version 0.2 21.11.2022
 
 # Libraries
 from os.path import join
+from Standard_Operations.Colors import Colors
+from Standard_Operations.Logger import Write_Log
 from sys import argv
 
 # Standard_Functions
