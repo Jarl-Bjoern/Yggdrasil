@@ -12,7 +12,7 @@
   </a>
 </div>
 <div align="center">
-  <a href="https://GitHub.com/jarl-bjoern/yggdrasil/releases/">
+  <a href="https://GitHub.com/jarl-bjoern/yggdrasil/">
     <img alt="repo size" src="https://img.shields.io/github/repo-size/jarl-bjoern/yggdrasil?logo=github&logoColor=cyan" />
   </a>
   <a href="https://GitHub.com/jarl-bjoern/yggdrasil/releases/">
