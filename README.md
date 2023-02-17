@@ -128,6 +128,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [Configurate your SSH IP-Address](#ssh_install)
   - [Choose between the provided best practice settings](#best_practice_settings)
   - [Choose between one of the two task settings](#task_settings)
+  - [Installation Process](#example_install_process)
 - [Using the automated variant](#automated_install)
 - [Customize your installation](#custom_install)
   - [Method Example](#method_install)
@@ -447,7 +448,60 @@ Your Choice: 1
 |                                                         |
 -----------------------------------------------------------
 
-Your Choice: cronjob
+Your Choice: 1
+
+```
+
+<a name="example_install_process"></a>
+## Installation Process
+
+In the next step, the script will go through all the configured steps and install the tools like in the example below.
+
+```bash
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                       💀
+💀                         Yggdrasil                     💀
+💀                        Version 0.9                    💀
+💀              Rainer Christian Bjoern Herold           💀
+💀                                                       💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+
+
+Hit:1 http://packages.microsoft.com/repos/code stable InRelease
+Hit:2 https://dl.google.com/linux/chrome/deb stable InRelease                                   
+Hit:3 https://ftp.halifax.rwth-aachen.de/kali kali-last-snapshot InRelease                      
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+-------------------------------------------------------------------------------
+
+Download ansible
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+ansible is already the newest version (6.4.0+dfsg-1).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+-------------------------------------------------------------------------------
+
+Download bat
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+bat is already the newest version (0.22.1-1).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+-------------------------------------------------------------------------------
+
+...
 
 ```
 
