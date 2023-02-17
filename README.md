@@ -567,6 +567,21 @@ EOF
 # ⚙️ Useful provided functions
 UNDER CONSTRUCTION
 
+## ⚙️ Exclude local IP-Addresses inside nmap scans
+UNDER CONSTRUCTION
+
+## ⚙️ Manual microcode Updater
+UNDER CONSTRUCTION
+
+## ⚙️ Manual Tools Updater
+UNDER CONSTRUCTION
+
+## ⚙️ Manual URL Opener
+UNDER CONSTRUCTION
+
+## ⚙️ Manual Yggdrasil Info show
+UNDER CONSTRUCTION
+
 <a name="custom_install"></a>
 # 📝 Customize your installation
 You can open up one of the configuration files and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a `#`).
