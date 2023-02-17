@@ -137,6 +137,10 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [⚔ Installation Process](#example_install_process)
 - [🔧 Using the automated variant](#automated_install)
 - [⚙️ Useful provided functions](#useful_functions)
+  - [⚙️ Exclude local IP-Addresses inside nmap scans](#nmap_exclude)
+  - [⚙️ Manual Tools Updater](#manual_tool_updater)
+  - [⚙️ Manual URL Opener](#manual_url_opener)
+  - [⚙️ Manual Yggdrasil Info show](#manual_info_show)
 - [📝 Customize your installation](#custom_install)
   - [📝 Method Example](#method_install)
   - [📝 Build from scratch](#custom_install_II)
@@ -575,18 +579,19 @@ EOF
 # ⚙️ Useful provided functions
 UNDER CONSTRUCTION
 
+<a name="nmap_exclude"></a>
 ## ⚙️ Exclude local IP-Addresses inside nmap scans
 UNDER CONSTRUCTION
 
-## ⚙️ Manual microcode Updater
-UNDER CONSTRUCTION
-
+<a name="manual_tool_updater"></a>
 ## ⚙️ Manual Tools Updater
 UNDER CONSTRUCTION
 
+<a name="manual_url_opener"></a>
 ## ⚙️ Manual URL Opener
 UNDER CONSTRUCTION
 
+<a name="manual_info_show"></a>
 ## ⚙️ Manual Yggdrasil Info show
 UNDER CONSTRUCTION
 
