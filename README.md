@@ -41,7 +41,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 ## ❗ News
 <strong>Upcoming changes for version</strong> `0.9`:
   - new cleaning task for old container images inside the updater settings
-  - Several new aliases have been added to allow reopening of various important web pages, such as for further education, or the information that appears after installation
+  - several new aliases have been added to allow reopening of various important web pages, such as for further education, or the information that appears after installation
   - scalable number of days for the shredding task
   - automated URL opener for meaningful pages for example for pentesting
   - automated installer for firefox extensions
