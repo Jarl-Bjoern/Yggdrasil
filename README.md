@@ -685,7 +685,7 @@ The following aliases were created:
   - yggdrasil-hardening
   - yggdrasil-osint
 
-In addition, I have developed another tool <a href="https://github.com/Jarl-Bjoern/Tyr">TYR</a>, which also loads URLs automatically into the default browser. This is integrated by default in Yggdrasil if you have selected the Penetration Testing category Web during the installation.
+In addition, I have developed another tool <a href="https://github.com/Jarl-Bjoern/Tyr">TYR</a>, which also loads URLs automatically into the default browser. This is integrated by default in Yggdrasil if you have selected the `Penetration Testing` category `Web` during the installation.
 
 <a name="manual_info_show"></a>
 ## ⚙️ Manual Yggdrasil Info show
