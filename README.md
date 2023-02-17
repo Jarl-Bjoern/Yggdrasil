@@ -92,6 +92,9 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - Custom configuration
     - Alias
       - base64 function
+      - yggdrasil colorized file reader function
+      - callable yggdrasil best practice information after the installation
+      - url opener divided by categories (education | forensic | infrastructure | osint)
       - colorized grep
       - human readable df & du commands
       - manual microcode update
