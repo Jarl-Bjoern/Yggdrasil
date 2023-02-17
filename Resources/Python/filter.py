@@ -42,7 +42,8 @@ alias yggdrasil-info='echo -e "\n\033[0;36m-------------------------------------
 alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/OSINT.txt"'
 alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Forensic.txt"'
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
-alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'"""
+alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
+. "$HOME/.cargo/env""""
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
 alias df='df -h'
@@ -59,7 +60,8 @@ alias yggdrasil-info='echo -e "\n\033[0;36m-------------------------------------
 alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/OSINT.txt"'
 alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Forensic.txt"'
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
-alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'"""
+alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
+. "$HOME/.cargo/env""""
 
         if ('.zshrc' in path_to_file): write_file(path_to_file, Config_Alias_ZSH)
         else: write_file(path_to_file, Config_Alias_BSH)
