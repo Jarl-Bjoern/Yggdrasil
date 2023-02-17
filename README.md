@@ -564,6 +564,7 @@ cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py
 EOF
 ```
 
+<br /><br />
 <a name="useful_functions"></a>
 # ⚙️ Useful provided functions
 UNDER CONSTRUCTION
