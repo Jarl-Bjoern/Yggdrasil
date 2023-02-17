@@ -73,6 +73,7 @@ def Crontab_Configuration(path_to_file, opt_path):
 0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
 0 6     * * *  root for Image in $(docker images | grep "<none>" | awk '"""+"""{print $3}');"""+f""" do docker image rm $Image; done
 0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
+0 5     * * *  root rustup update
 0 5     * * *  root for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done
 0 3     * * *  root for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done"""
         write_file(path_to_file, Config_Crontab)
@@ -192,12 +193,17 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_Cargo_Updater':
                 {
                         'Time': '5',
-                        'Command': f'root for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done'
+                        'Command': f'for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done'
+                },
+        'Yggdrasil_Rust_Updater':
+                {
+                        'Time': '5',
+                        'Command': f'rustup update'
                 },
         'Yggdrasil_GIT_Updater':
                 {
                         'Time': '3',
-                        'Command': f'root for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done'
+                        'Command': f'for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done'
                 }
         }
 
@@ -206,7 +212,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
                 Base_Unit = f"""# Rainer Christian Bjoern Herold
 
 [Unit]
-Description=This script is to install updates
+Description=The script was designed to be able to install updates automatically via systemd services.
 
 [Service]
 Type=oneshot
