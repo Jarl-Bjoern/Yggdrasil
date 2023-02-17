@@ -143,6 +143,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [📝 Include Customized Scripts](#directory_install)
 
 <br />
+
 <a name="download_install"></a>
 # ⚔ How to download and install the tool
 
@@ -568,6 +569,7 @@ EOF
 ```
 
 <br />
+
 <a name="useful_functions"></a>
 # ⚙️ Useful provided functions
 UNDER CONSTRUCTION
@@ -587,7 +589,8 @@ UNDER CONSTRUCTION
 ## ⚙️ Manual Yggdrasil Info show
 UNDER CONSTRUCTION
 
-<br /><
+<br />
+
 <a name="custom_install"></a>
 # 📝 Customize your installation
 You can open up one of the configuration files and add your own tools to the list to customize it to your liking (Make sure that the heading must always begin with a `#`).
@@ -731,6 +734,7 @@ python3 /opt/Yggdrasil/yggdrasil.py -cP /mnt/MY_DIRECTORY
 ```
 
 <br />
+
 # 🏆 Special thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
