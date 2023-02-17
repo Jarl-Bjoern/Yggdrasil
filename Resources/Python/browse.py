@@ -12,5 +12,6 @@ from webbrowser import open as webbrowser_open
 if __name__ == '__main__':
   with open(argv[1], 'r') as f:
       for URL in f.read().splitlines():
-          webbrowser_open(URL)
+          try: webbrowser_open(URL)
+          except: pass
           sleep(0.65)
