@@ -133,7 +133,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [⚔ Choose between the provided best practice settings](#best_practice_settings)
   - [⚔ Choose between one of the two task settings](#task_settings)
   - [⚔ Installation Process](#example_install_process)
-- [⚔ Using the automated variant](#automated_install)
+- [🔧 Using the automated variant](#automated_install)
 - [📝 Customize your installation](#custom_install)
   - [📝 Method Example](#method_install)
   - [📝 Build from scratch](#custom_install_II)
@@ -510,7 +510,7 @@ bat is already the newest version (0.22.1-1).
 ```
 
 <a name="automated_install"></a>
-## ⚔ Using the automated variant
+## 🔧 Using the automated variant
 ```bash
 # Automated Variant text based without Hardening
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
