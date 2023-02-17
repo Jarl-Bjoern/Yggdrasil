@@ -44,11 +44,15 @@ function Yggdrasil_File_Reader() {
         done < "$input"
 }
 function b64() { echo $1 | base64 -d | xxd; }
-alias yggdrasil-info='echo -e "\n\033[0;36m---------------------------------------------------------------------------------\033[0m\n" ; Yggdrasil_File_Reader "/opt/yggdrasil/Information/info.txt" ; echo -e "\n\033[0;36m---------------------------------------------------------------------------------\033[0m\n"'
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
 """+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" "$i" ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done; cd "$BACK"'
-alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
+alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'
+alias yggdrasil-info='echo -e "\n\033[0;36m---------------------------------------------------------------------------------\033[0m\n" ; Yggdrasil_File_Reader "/opt/yggdrasil/Information/info.txt" ; echo -e "\n\033[0;36m---------------------------------------------------------------------------------\033[0m\n"'
+alias yggdrasil-osint='sudo python3 /opt/yggdrasil/Resources/Python/browse.py /opt/yggdrasil/Information/OSINT.txt'
+alias yggdrasil-forensic='sudo python3 /opt/yggdrasil/Resources/Python/browse.py /opt/yggdrasil/Information/Forensic.txt'
+alias yggdrasil-education='sudo python3 /opt/yggdrasil/Resources/Python/browse.py /opt/yggdrasil/Information/Education.txt'
+alias yggdrasil-hardening='sudo python3 /opt/yggdrasil/Resources/Python/browse.py /opt/yggdrasil/Information/Hardening.txt'"""
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
 alias df='df -h'
@@ -67,11 +71,15 @@ function Yggdrasil_File_Reader() {
         done < "$input"
 }
 function b64() { echo $1 | base64 -d | xxd; }
-alias yggdrasil-info='echo -e "\n\033[0;36m---------------------------------------------------------------------------------\033[0m\n" ; Yggdrasil_File_Reader "/opt/yggdrasil/Information/info.txt" ; echo -e "\n\033[0;36m---------------------------------------------------------------------------------\033[0m\n"'
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
 """+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done; cd "$BACK"'
-alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'"""
+alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done'
+alias yggdrasil-info='echo -e "\n\033[0;36m---------------------------------------------------------------------------------\033[0m\n" ; Yggdrasil_File_Reader "/opt/yggdrasil/Information/info.txt" ; echo -e "\n\033[0;36m---------------------------------------------------------------------------------\033[0m\n"'
+alias yggdrasil-osint='sudo python3 /opt/yggdrasil/Resources/Python/browse.py /opt/yggdrasil/Information/OSINT.txt'
+alias yggdrasil-forensic='sudo python3 /opt/yggdrasil/Resources/Python/browse.py /opt/yggdrasil/Information/Forensic.txt'
+alias yggdrasil-education='sudo python3 /opt/yggdrasil/Resources/Python/browse.py /opt/yggdrasil/Information/Education.txt'
+alias yggdrasil-hardening='sudo python3 /opt/yggdrasil/Resources/Python/browse.py /opt/yggdrasil/Information/Hardening.txt'"""
 
         if ('.zshrc' in path_to_file): write_file(path_to_file, Config_Alias_ZSH)
         else: write_file(path_to_file, Config_Alias_BSH)
