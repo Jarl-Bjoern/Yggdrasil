@@ -564,7 +564,7 @@ EOF
 ```
 
 <a name="useful_functions"></a>
-# Useful provided functions
+# ⚙️ Useful provided functions
 UNDER CONSTRUCTION
 
 <a name="custom_install"></a>
