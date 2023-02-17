@@ -592,7 +592,7 @@ In many cases it can happen that sometimes tools were downloaded via Github, whi
 To speed up the process and manually pull updates from the repos, the alias `git-tools-update` was created.
 
 ```r
-kali💀pentest-kali)-[/home/kali]
+┌──(kali💀pentest-kali)-[/home/kali]
 └─# git-tools-update                                  
 
 Update: /opt/pentest_tools/EyeWitness
@@ -627,7 +627,29 @@ UNDER CONSTRUCTION
 
 <a name="manual_info_show"></a>
 ## ⚙️ Manual Yggdrasil Info show
-UNDER CONSTRUCTION
+After installing Yggdrasil you will get a colored output of minor information, sometimes it may be needed again, to ensure this, this feature was built.
+
+With the alias `yggdrasil-info` the output can be given up as often as you like.
+
+```r
+┌──(kali💀pentest-kali)-[/home/kali]
+└─# yggdrasil-info     
+
+---------------------------------------------------------------------------------
+...
+
+##################### Confirm Shell Configuration ############################
+# source ~/.zshrc
+##############################################################################
+
+...
+
+######################## Change Default Browser ##############################
+# sudo update-alternatives --config x-www-browser
+##############################################################################
+
+---------------------------------------------------------------------------------
+```
 
 <br />
 
