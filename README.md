@@ -129,11 +129,11 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [⚔ Choose between the provided best practice settings](#best_practice_settings)
   - [⚔ Choose between one of the two task settings](#task_settings)
   - [⚔ Installation Process](#example_install_process)
-- [Using the automated variant](#automated_install)
-- [Customize your installation](#custom_install)
-  - [Method Example](#method_install)
-  - [Build from scratch](#custom_install_II)
-  - [Include Customized Scripts](#directory_install)
+- [⚔ Using the automated variant](#automated_install)
+- [📝 Customize your installation](#custom_install)
+  - [📝 Method Example](#method_install)
+  - [📝 Build from scratch](#custom_install_II)
+  - [📝 Include Customized Scripts](#directory_install)
 
 <a name="download_install"></a>
 # ⚔ How to download and install the tool
