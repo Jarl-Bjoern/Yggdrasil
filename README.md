@@ -617,6 +617,44 @@ Already up to date.
 
 Furthermore, a manual updater for the package manager `Cargo` has also been created, which can be called using `cargo-tools-update`.
 
+```r
+┌──(kali💀pentest-kali)-[/opt]
+└─# cargo-tools-update
+------------------------------------------------
+Update: evtx
+    Updating crates.io index
+  Installing evtx v0.8.0
+  Downloaded fastrand v1.9.0
+  Downloaded 1 crate (11.9 KB) in 0.52s
+   Compiling autocfg v1.1.0
+   Compiling libc v0.2.139
+   Compiling cfg-if v1.0.0
+   Compiling proc-macro2 v1.0.51
+   Compiling unicode-ident v1.0.6
+   Compiling quote v1.0.23
+   Compiling syn v1.0.107
+   Compiling memchr v2.5.0
+   Compiling crossbeam-utils v0.8.14
+   Compiling serde_derive v1.0.152
+   Compiling encoding_index_tests v0.1.4
+   Compiling serde v1.0.152
+   Compiling log v0.4.17
+   Compiling termcolor v1.1.3
+   Compiling scopeguard v1.1.0
+   Compiling itoa v1.0.5
+   Compiling rayon-core v1.10.2
+   Compiling regex-syntax v0.6.28
+   Compiling serde_json v1.0.93
+   Compiling quick-error v1.2.3
+   Compiling thiserror v1.0.38
+   Compiling anyhow v1.0.69
+   Compiling bitflags v1.3.2
+   Compiling time-macros v0.2.4
+....
+```
+
+<strong>Important:</strong> Be careful not to remove the two files `update.info` and `update_cargo.info` from your installation directory, they contain the packages that will be updated.
+
 Last but not least, in some cases an annoying message may appear from the `microcode`, which can be tried to be fixed using the provided alias `microcode-update`.
 
 <strong>Notice:</strong> Only the tools installed by Yggdrasil are affected by an update.
