@@ -584,7 +584,6 @@ If you have chosen the provided `alias configuration`, you can use the aliases l
 In some cases, for example, you may receive an entire network as a target, in which case your Kali machine may also be located. As a result, it would be possible that you discover yourself with multiple vulnerabilities, to avoid this, this feature was built.
 
 Whenever nmap is called, all local addresses are automatically included as exclude parameters, so if you have a network (e.g. 192.168.30.0/24) as target and your machine has the IP address 192.168.30.50, this and also the IPv6 addresses will be ignored.
-````
 
 <a name="manual_tool_updater"></a>
 ## ⚙️ Manual Tools Updater
