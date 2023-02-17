@@ -304,7 +304,7 @@ Your Choice: infrastructure
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
-💀                       Yggdrasil                       💀
+💀                      Yggdrasil                        💀
 💀                     Version 0.9                       💀
 💀           Rainer Christian Bjoern Herold              💀
 💀                                                       💀
