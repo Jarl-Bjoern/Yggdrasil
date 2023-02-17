@@ -11,6 +11,6 @@ from webbrowser import open as webbrowser_open
 # Main
 if __name__ == '__main__':
   with open(argv[1], 'r') as f:
-    for URL in f.read().splitlines():
-      webbrowser_open(URL)
-      sleep(0.45)
+      for URL in f.read().splitlines():
+          webbrowser_open(URL)
+          sleep(0.65)
