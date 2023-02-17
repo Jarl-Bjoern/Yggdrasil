@@ -12,6 +12,7 @@ OLDIFS="$IFS"
 OPT_Path=""
 PATH_ALIAS=""
 PATH_Install_Dir=""
+PATH_PROFILE=""
 PATH_SCREEN=""
 PATH_VIM=""
 PATH_WORKSPACE=""
@@ -805,6 +806,7 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
         PATH_ALIAS="$i/.bash_aliases"
         PATH_VIM="$i/.vimrc"
         PATH_ZSH="$i/.zshrc"
+        PATH_PROFILE="$i/.profile"
 
         if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
                 # ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
@@ -813,6 +815,7 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ALIAS" "$OPT_Path" "$FULL_PATH"
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_BSH" "$OPT_Path" "$FULL_PATH"
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ZSH" "$OPT_Path" "$FULL_PATH"
+                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_PROFILE" "$OPT_Path" "$FULL_PATH"
         fi
 
         if [[ $Switch_SCREENRC == true ]]; then
