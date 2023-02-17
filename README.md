@@ -137,7 +137,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [⚔ Installation Process](#example_install_process)
 - [🔧 Using the automated variant](#automated_install)
 - [⚙️ Useful provided functions](#useful_functions)
-  - [⚙️ Exclude local IP-Addresses inside nmap scans](#nmap_exclude)
+  - [⚙️ Exclude local IP-Addresses within nmap scans](#nmap_exclude)
   - [⚙️ Manual Tools Updater](#manual_tool_updater)
   - [⚙️ Manual URL Opener](#manual_url_opener)
   - [⚙️ Manual Yggdrasil Info show](#manual_info_show)
@@ -580,7 +580,7 @@ EOF
 If you have chosen the provided `alias configuration`, you can use the aliases listed in the next chapter.
 
 <a name="nmap_exclude"></a>
-## ⚙️ Exclude local IP-Addresses inside nmap scans
+## ⚙️ Exclude local IP-Addresses within nmap scans
 In some cases, for example, you may receive an entire network as a target, in which case your Kali machine may also be located. As a result, it would be possible that you discover yourself with multiple vulnerabilities, to avoid this, this feature was built.
 
 Whenever nmap is called, all local addresses are automatically included as exclude parameters, so if you have a network (e.g. `192.168.30.0/24`) as target and your machine has the IP address `192.168.30.50`, this and also the local `IPv6 addresses` will be `ignored`.
