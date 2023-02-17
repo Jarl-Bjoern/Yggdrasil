@@ -593,7 +593,7 @@ Whenever nmap is called, all local addresses are automatically included as exclu
 
 ```r
 # Nmap 7.93 scan initiated Thu Feb 16 06:28:47 2023 as:
-nmap --exclude 127.0.0.1,::1,192.168.30.50,fe80::20c:29ff:fe69:66b3,172.17.0.1 -p22 192.168.30.1
+nmap --exclude 127.0.0.1,::1,192.168.30.50,fe80::20c:29ff:fe69:66b3,172.17.0.1 192.168.30.1
 
 Nmap scan report for 192.168.30.1
 Host is up (0.00054s latency).
