@@ -591,7 +591,33 @@ In many cases it can happen that sometimes tools were downloaded via Github, whi
 
 To speed up the process and manually pull updates from the repos, the alias `git-tools-update` was created.
 
-Notice: Only the tools installed by Yggdrasil are affected by an update.
+```bash
+git-tools-update                                  
+Update: /opt/pentest_tools/EyeWitness
+Already up to date.
+------------------------------------------------
+Update: /opt/pentest_tools/evil-winrm
+Already up to date.
+------------------------------------------------
+Update: /opt/pentest_tools/enum4linux-ng
+Already up to date.
+------------------------------------------------
+Update: /opt/pentest_tools/PowerSploit
+Already up to date.
+------------------------------------------------
+Update: /opt/pentest_tools/PEASS-ng
+Already up to date.
+------------------------------------------------
+Update: /opt/pentest_tools/impacket
+Already up to date.
+------------------------------------------------
+```
+
+Furthermore, a manual updater for the package manager `Cargo` has also been created, which can be called using `cargo-tools-update`.
+
+Last but not least, in some cases an annoying message may appear from the `microcode`, which can be tried to be fixed using the provided alias `microcode-update`.
+
+<strong>Notice:</strong> Only the tools installed by Yggdrasil are affected by an update.
 
 <a name="manual_url_opener"></a>
 ## ⚙️ Manual URL Opener
