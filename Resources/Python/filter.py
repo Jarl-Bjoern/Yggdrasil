@@ -42,7 +42,7 @@ function Yggdrasil_File_Reader() {
                         echo -e "\033[1;33m$line\033[0m"
                 fi
         done < "$input"
-}
+"""+r"""}"""+"""
 function b64() { echo $1 | base64 -d | xxd; }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
@@ -69,7 +69,7 @@ function Yggdrasil_File_Reader() {
                         echo -e "\033[1;33m$line\033[0m"
                 fi
         done < "$input"
-}
+"""+r"""}"""+"""
 function b64() { echo $1 | base64 -d | xxd; }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
