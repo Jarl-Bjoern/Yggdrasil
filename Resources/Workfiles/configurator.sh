@@ -35,6 +35,7 @@ Switch_SCREENRC=false
 Switch_SHREDDER=false
 Switch_Skip_Configs=false
 Switch_Skip_Hardening=false
+Switch_Skip_URLS=false
 #Switch_SQUID=false
 Switch_SSH=false
 Switch_SYSTEMD=false
@@ -482,6 +483,8 @@ for arg; do
                 Switch_License=true
         elif [[ $arg == "-v" ]]; then
                 Switch_Verbose=true
+        elif [[ $arg == "-sU" ]]; then
+                Switch_Skip_URLS=true
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-aW" ]]; then
                 PATH_WORKSPACE="$(echo "$arg" | rev | cut -c5- | rev)"
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c4- | rev)" '{print $2}')" == ".-p" ]]; then
@@ -1102,7 +1105,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
         fi
         if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")" ]; then
                 TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")
-                "$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 10
+                "$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 15
         fi
         if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
                 sudo python3 "$FULL_PATH/Resources/Python/install.py" "$PATH_Install_Dir"
@@ -1380,9 +1383,11 @@ fi
 sudo python3 "$FULL_PATH/Resources/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
-sleep 5
-if [[ ${#Array_URL} -gt 0 ]]; then
-        for URL in "${Array_URL[@]}"; do
-                sudo python3 "$FULL_PATH/Resources/Python/browse.py" "$URL"
-        done
+if [[ $Switch_Skip_URLS == false ]]; then
+        sleep 3
+        if [[ ${#Array_URL} -gt 0 ]]; then
+                for URL in "${Array_URL[@]}"; do
+                        sudo python3 "$FULL_PATH/Resources/Python/browse.py" "$URL"
+                done
+        fi
 fi
