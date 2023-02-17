@@ -513,12 +513,14 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
                 for testing_category in "${Array_Pentesting[@]}"; do
                         if [[ $testing_category == "infrastructure" || $testing_category == "1" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Infrastructure")
+                                Array_URL+=("$FULL_PATH/Information/Infrastructure.txt")
                         elif [[ $testing_category == "iot" || $testing_category == "2" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/IOT")
                         elif [[ $testing_category == "mobile" || $testing_category == "3" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Mobile")
                         elif [[ $testing_category == "red_teaming" || $testing_category == "4" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
+                                Array_URL+=("$FULL_PATH/Information/OSINT.txt")
                         elif [[ $testing_category == "web" || $testing_category == "5" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
                         elif [[ $testing_category == "cloud" || $testing_category == "6" ]]; then
@@ -530,12 +532,14 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
         else
                 if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
                         Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
+                        Array_URL+=("$FULL_PATH/Information/Infrastructure.txt")
                 elif [[ $pentesting = "iot" || $pentesting = "2" ]]; then
                         Path_Way="$FULL_PATH/Config/Linux/Pentest/IOT"
                 elif [[ $pentesting = "mobile" || $pentesting = "3" ]]; then
                         Path_Way="$FULL_PATH/Config/Linux/Pentest/Mobile"
                 elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
                         Path_Way="$FULL_PATH/Config/Linux/Pentest/Red_Teaming"
+                        Array_URL+=("$FULL_PATH/Information/OSINT.txt")
                 elif [[ $pentesting = "web" || $pentesting = "5" ]]; then
                         Path_Way="$FULL_PATH/Config/Linux/Pentest/Web"
                 elif [[ $pentesting = "cloud" || $pentesting = "6" ]]; then
@@ -549,17 +553,23 @@ elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
                 OPT_Path="/opt/hardening_tools"
         fi
+        Array_URL+=("$FULL_PATH/Information/Hardening.txt")
 elif [[ $category_type = "training" || $category_type = "6" ]]; then
         Path_Way="$FULL_PATH/Config/Linux/Training"
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
                 OPT_Path="/opt/training_tools"
         fi
+        Array_URL+=("$FULL_PATH/Information/Education.txt")
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
         Path_Way="$FULL_PATH/Config/Linux/Custom"
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
                 OPT_Path="/opt/complete_tools"
         fi
+        declare -a Array_URL=("$FULL_PATH/Information/Infrastructure.txt",
+"$FULL_PATH/Information/OSINT.txt",
+"$FULL_PATH/Information/Forensic.txt",
+"$FULL_PATH/Information/Hardening.txt")
 else
         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 fi
@@ -1357,4 +1367,9 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 fi
 sudo python3 "$FULL_PATH/Resources/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
+if [[ ${#Array_URL} -gt 0 ]]; then
+        for URL in "${Array_URL[@]}"; do
+                sudo python3 "$FULL_PATH/Resources/Python/browse.py" $URL
+        done
+fi
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
