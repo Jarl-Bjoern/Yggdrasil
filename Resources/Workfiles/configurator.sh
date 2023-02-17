@@ -21,6 +21,7 @@ pentesting=""
 Shredding_DAYS=""
 Skip=false
 Switch_APACHE=false
+Switch_Cargo=false
 Switch_CRON=false
 Switch_CUSTOM_CONFIGS=false
 Switch_Firewall=false
@@ -426,6 +427,9 @@ function File_Installer() {
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
                                                         if [[ $FILE_NAME =~ "rustup" ]]; then
                                                                 sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
+                                                                if [[ -d "/root/.cargo" ]]; then
+                                                                        Switch_Cargo=true
+                                                                fi
                                                         else
                                                                 sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
@@ -807,6 +811,10 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
         PATH_VIM="$i/.vimrc"
         PATH_ZSH="$i/.zshrc"
         PATH_PROFILE="$i/.profile"
+
+        if [[ $Switch_Cargo == true ]]; then
+                cp -r "$HOME/.cargo" "$i"
+        fi
 
         if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
                 # ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
