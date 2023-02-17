@@ -62,7 +62,7 @@ alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
 . "$HOME/.cargo/env""""
-        Config_Alias_Profile = """. "$HOME/.cargo/env""""
+        Config_Alias_Profile = r'. "$HOME/.cargo/env"'
 
         if ('.zshrc' in path_to_file): write_file(path_to_file, Config_Alias_ZSH)
         elif ('.profile' in path_to_file): write_file(path_to_file, Config_Alias_Profile)
