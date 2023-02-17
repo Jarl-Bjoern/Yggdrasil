@@ -119,6 +119,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - nginx
   - SSH
 
+<br /><br />
 # 📖 Table of Contents
 - [⚔ How to download and install the tool](#download_install)
   - [⚔ Preparations](#preparation_install)
@@ -140,6 +141,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [📝 Build from scratch](#custom_install_II)
   - [📝 Include Customized Scripts](#directory_install)
 
+<br /><br />
 <a name="download_install"></a>
 # ⚔ How to download and install the tool
 
@@ -728,6 +730,7 @@ For this, you must use the parameter `-cP` in combination with the absolute path
 python3 /opt/Yggdrasil/yggdrasil.py -cP /mnt/MY_DIRECTORY
 ```
 
+<br /><br />
 # 🏆 Special thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
