@@ -40,8 +40,8 @@ class Standard:
 
         for root, _, files in walk(File_Path, topdown=False):
             for file in files:
-                if (not file.endswith('.ps1') and not file.endswith('.py') and not file.endswith('.jpg') and not file.endswith('.jpeg') and not file.endswith('.png')):
-                    try: 
+                if (not file.endswith('.ps1') and not file.endswith('.py') and not file.endswith('.jpg') and not file.endswith('.jpeg') and not file.endswith('.png') and not '.git' in root):
+                    try:
                         with open(join(root, file), 'r', encoding='utf-8', errors='ignore') as f:
                             Temp_Text = f.read().replace('\r\n', '\n')
                     except UnicodeDecodeError:
