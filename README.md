@@ -511,8 +511,6 @@ In the next step, the script will go through all the configured steps and instal
 
 ![Demo](https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_installation.gif)
 
-```
-
 <br />
 
 <a name="automated_install"></a>
