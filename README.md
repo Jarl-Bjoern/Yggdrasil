@@ -130,10 +130,9 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [⚔ Download and start the tool](#start_install)
   - [⚔ Using the help section to see which parameters do we have](#help_install)
   - [⚔ Choose one of the six category types](#category_install)
-  - [⚔ Choose between one of the Pentesting categories](#pentesting_install)
-  - [⚔ Choose between multiple Pentesting categories](#pentesting_multiple_install)
+  - [⚔ Choose between the Pentesting categories](#pentesting_install)
   - [⚔ Choose one of the two installation types](#type_install)
-  - [⚔ Choose between multiple hardening options](#hardening_install)
+  - [⚔ Choose between the hardening options](#hardening_install)
   - [⚔ Configurate your SSH IP-Address](#ssh_install)
   - [⚔ Choose between the provided best practice settings](#best_practice_settings)
   - [⚔ Choose between one of the two task settings](#task_settings)
@@ -296,7 +295,7 @@ Your Choice: pentest
 ```
 
 <a name="pentesting_install"></a>
-## ⚔ Choose between one of the Pentesting categories
+## ⚔ Choose between the Pentesting categories
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -322,8 +321,6 @@ Your Choice: pentest
 Your Choice: infrastructure
 ```
 
-<a name="pentesting_multiple_install"></a>
-## ⚔ Choose between multiple Pentesting categories
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -373,7 +370,7 @@ Your Choice: full
 ```
 
 <a name="hardening_install"></a>
-## ⚔ Choose between multiple hardening options
+## ⚔ Choose between the hardening options
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
