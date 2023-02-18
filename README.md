@@ -269,6 +269,13 @@ optional arguments:
 
 <a name="category_install"></a>
 ## ⚔ Choose one of the six category types
+
+After starting the program you should see the selection menu below, where you can now choose between several categories.
+
+You can either use the full name of the category or the number.
+
+<strong>Notice:</strong> Note that here you can only choose between one of the six categories.
+
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -411,7 +418,7 @@ Your Choice: 1
 <a name="ssh_install"></a>
 ## ⚔ Configurate your SSH IP-Address
 
-In this chapter you have to define the IP address under which your SSH service should be reachable.
+If you selected `Hardening for SSH` in the previous step, then you will be prompted to select one of the available local IP addresses.
 
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
@@ -473,6 +480,9 @@ Your Choice: 1
 
 <a name="task_settings"></a>
 ## ⚔ Choose between one of the two task settings
+
+If you have selected either the `Updater` or the `Shredder` function, you will be redirected to the page below where you have the choice of creating the automated tasks as either a `Cronjob` or `Systemd Unit`.
+
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
