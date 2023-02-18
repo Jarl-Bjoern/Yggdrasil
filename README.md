@@ -129,7 +129,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [⚔ Preparations](#preparation_install)
   - [⚔ Download and start the tool](#start_install)
   - [⚔ Using the help section to see which parameters do we have](#help_install)
-  - [⚔ Choose one of the three category types](#category_install)
+  - [⚔ Choose one of the six category types](#category_install)
   - [⚔ Choose between one of the Pentesting categories](#pentesting_install)
   - [⚔ Choose between multiple Pentesting categories](#pentesting_multiple_install)
   - [⚔ Choose one of the two installation types](#type_install)
@@ -267,7 +267,7 @@ optional arguments:
 ```
 
 <a name="category_install"></a>
-## ⚔ Choose one of the three category types
+## ⚔ Choose one of the six category types
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
