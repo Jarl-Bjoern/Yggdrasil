@@ -46,7 +46,7 @@ def main():
     args = Argument_Parser()
     del Argument_Parser
 
-    Standard.Check_dosunix(), Standard.Check_Permissions(File_Path)
+    Standard.Carriage_Remove(File_Path), Standard.Check_Permissions(File_Path)
     Parameters = ""
     for Arg_Name, Arg_Value in vars(args).items():
         if ((Arg_Name != "custom_path" and Arg_Value != None) and (Arg_Name != "host_name" and Arg_Value != None)):
