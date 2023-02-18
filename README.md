@@ -685,10 +685,10 @@ In some cases, you may need certain URLs and lack the time to always set them up
 
 | Alias               | Description |
 | ------------------- | ----------- |
-| yggdrasil-education | XX |
-| yggdrasil-forensic  | XX |
-| yggdrasil-hardening | XX |
-| yggdrasil-osint     | XX |
+| yggdrasil-education | This alias is used to load pages into their default browser, which can be used for training purposes. |
+| yggdrasil-forensic  | This alias is used to load web pages into your browser that are relevant for forensic purposes. |
+| yggdrasil-hardening | This alias is used to load web pages that are relevant for hardening purposes. |
+| yggdrasil-osint     | This alias opens URLs that are relevant for OSINT. |
 
 <br />
 
