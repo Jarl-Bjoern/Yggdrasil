@@ -612,9 +612,9 @@ Furthermore, a manual updater for the package manager `Cargo` has also been crea
 
 <strong>Important:</strong> Be careful not to remove the two files `update.info` and `update_cargo.info` from your installation directory, they contain the packages that will be updated.
 
-Last but not least, in some cases an annoying message may appear from the `microcode`, which can be tried to be fixed using the provided alias `microcode-update`.
-
 <strong>Notice:</strong> Only the tools installed by Yggdrasil are affected by an update.
+
+Last but not least, in some cases an annoying message may appear from the `microcode`, which can be tried to be fixed using the provided alias `microcode-update`.
 
 <a name="manual_url_opener"></a>
 ## ⚙️ Manual URL Opener
