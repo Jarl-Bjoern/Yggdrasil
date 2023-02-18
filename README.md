@@ -153,11 +153,6 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 
 <a name="preparation_install"></a>
 # ⛓️ Preparations
-The tool `dos2unix` is needed to be able to format all the files of the program into the correct unix format. 
-```bash
-sudo apt install -y dos2unix
-```
-
 If you want to use the provided GUI automation, make sure that the `scrot` tool is installed.
 ```
 sudo apt install -y scrot
