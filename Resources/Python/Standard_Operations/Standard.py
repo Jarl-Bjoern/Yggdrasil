@@ -40,21 +40,28 @@ class Standard:
 
         for root, _, files in walk(File_Path, topdown=False):
             for file in files:
-                if (not file.endswith('.ps1') and not file.endswith('.py') and not file.endswith('.jpg') and not file.endswith('.jpeg') and not file.endswith('.png') and not '.git' in root):
-                    try:
-                        with open(join(root, file), 'r', encoding='utf-8', errors='ignore') as f:
-                            Temp_Text = f.read().replace('\r\n', '\n')
-                    except UnicodeDecodeError:
-                        while True:
-                            for Codec in Array_Codecs:
-                                try:
-                                    with open(join(root, file), 'r', encoding=Codec, errors='ignore') as f:
-                                        Temp_Text = f.read().replace('\r\n', '\n')
-                                    break
-                                except UnicodeDecodeError: pass
-                    finally:
-                        with open(join(root, file), 'w') as f:
-                            f.write(Temp_Text)
+                if (not file.endswith('.ps1') and 
+                    not file.endswith('.py') and
+                    not file.endswith('.jpg') and
+                    not file.endswith('.jpeg') and
+                    not file.endswith('.png') and
+                    not '.git' in root and
+                    not '__pycache__' in root):
+                        try:
+                            with open(join(root, file), 'r', encoding='utf-8', errors='ignore') as f:
+                                Temp_Text = f.read().replace('\r\n', '\n')
+                        except UnicodeDecodeError:
+                            print (f"The file {join(root, file)} was not written in 'utf-8'.\n\nthe tool is now trying to get the correct format.")
+                            while True:
+                                for Codec in Array_Codecs:
+                                    try:
+                                        with open(join(root, file), 'r', encoding=Codec, errors='ignore') as f:
+                                            Temp_Text = f.read().replace('\r\n', '\n')
+                                        break
+                                    except UnicodeDecodeError: pass
+                        finally:
+                            with open(join(root, file), 'w') as f:
+                                f.write(Temp_Text)
 
     def Check_Permissions(File_Path):
         def Permission_Change(File): run(['sudo','chmod','+x',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
