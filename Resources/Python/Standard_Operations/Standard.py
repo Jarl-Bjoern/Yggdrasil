@@ -32,9 +32,11 @@ class Standard:
             for file in files:
                 if (not file.endswith('.ps1') or not file.endswith('.py')):
                     with open(join(root, file), 'r') as f:
-                        Temp_Text = f.read().replace('\r\n', '\n')
+                        Temp_Text = f.readlines()
                         with open(join(root, file), 'w') as f:
-                            f. write(Temp_Text)
+                            for _ in Temp_Text:
+                                if ('\r\n' in _): f.write(_.replace('\r\n', '\n'))
+                                else: f. write(_)
 
     def Check_dosunix():
         if ('Installed: (none)' in getoutput(['sudo apt-cache policy dos2unix']) or 'Installiert: (keine)' in getoutput(['sudo apt-cache policy dos2unix'])):
