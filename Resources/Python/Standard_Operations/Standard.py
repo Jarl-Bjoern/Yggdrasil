@@ -48,7 +48,7 @@ class Standard:
                     not '.git' in root and
                     not '__pycache__' in root):
                         try:
-                            with open(join(root, file), 'r', encoding='utf-8', errors='ignore') as f:
+                            with open(join(root, file), 'r', encoding='utf-8') as f:
                                 Temp_Text = f.read().replace('\r\n', '\n')
                         except UnicodeDecodeError:
                             print ("The file "+Colors.RED+f"{join(root, file)}"+Colors.RESET+" was not written in 'utf-8'.\n\nthe tool is now trying to get the correct format.")
