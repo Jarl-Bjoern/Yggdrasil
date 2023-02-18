@@ -274,7 +274,7 @@ After starting the program you should see the selection menu below, where you ca
 
 You can either use the `full name` of the category or the `number`.
 
-<strong>Notice:</strong> Note that here you can only choose between one of the six categories.
+<strong>Notice:</strong> Note that here you can only choose between `one` of the six categories.
 
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
