@@ -152,7 +152,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 
 <a name="preparation_install"></a>
 # ⛓️ Preparations
-The tool `dos2unix` is needed to be able to format all the files of the program into the correct format. 
+The tool `dos2unix` is needed to be able to format all the files of the program into the correct unix format. 
 ```bash
 sudo apt install -y dos2unix
 ```
@@ -272,7 +272,7 @@ optional arguments:
 
 After starting the program you should see the selection menu below, where you can now choose between several categories.
 
-You can either use the full name of the category or the number.
+You can either use the `full name` of the category or the `number`.
 
 <strong>Notice:</strong> Note that here you can only choose between one of the six categories.
 
@@ -333,9 +333,9 @@ Furthermore, you can take either the `full name` of the category or the `number`
 Your Choice: infrastructure
 ```
 
-You can take multiple categories in number notation as in the example below, use a `,` to separate them.
+You can take multiple categories in `number notation` as in the example below, use a `,` to separate them.
 
-<strong>Notice:</strong> The same applies if you write out the name in full.
+<strong>Notice:</strong> The same applies if you write out the name in full (e.g. `infrastructure,web`.
 
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
@@ -561,6 +561,9 @@ bat is already the newest version (0.22.1-1).
 
 <a name="automated_install"></a>
 ## 🔧 Using the automated variant
+
+If you are already familiar with the program, then you can also run it completely automatically using the `cat <<EOF` command.
+
 ```bash
 # Automated Variant text based without Hardening
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py -sH
@@ -590,6 +593,7 @@ EOF
 ```
 
 <br /><strong>Notice:</strong> Make sure that if you use the Complete installation from Hardening part, that you also specify the IP address for the SSH server, otherwise you will end up in an exception.
+
 ```bash
 # Automated Variant with multiple pentesting categories text based
 cat <<EOF | sudo python3 /opt/Yggdrasil/yggdrasil.py
