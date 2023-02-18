@@ -163,9 +163,9 @@ If you want to use the provided GUI automation, make sure that the `scrot` tool 
 sudo apt install -y scrot
 ```
 
-<br />
-
 <strong>Notice:</strong> In some cases, you may need to restart the Kali machine once after the preparations.
+
+<br />
 
 <a name="download_install"></a>
 # ⚔ How to download and install the tool
