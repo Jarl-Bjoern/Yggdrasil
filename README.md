@@ -509,6 +509,8 @@ Your Choice: 1
 
 In the next step, the script will go through all the configured steps and install the tools like in the example below.
 
+![Demo](https://github.com/Jarl-Bjoern/Jarl-Bjoern/tree/main/Screencasts/yggdrasil_installation.gif)
+
 ```r
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
