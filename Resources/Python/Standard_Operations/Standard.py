@@ -40,7 +40,7 @@ class Standard:
 
         for root, _, files in walk(File_Path, topdown=False):
             for file in files:
-                if (not file.endswith('.ps1') and 
+                if (not file.endswith('.ps1') and
                     not file.endswith('.py') and
                     not file.endswith('.jpg') and
                     not file.endswith('.jpeg') and
