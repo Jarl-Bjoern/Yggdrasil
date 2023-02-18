@@ -511,52 +511,6 @@ In the next step, the script will go through all the configured steps and instal
 
 ![Demo](https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_installation.gif)
 
-```r
-💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
-💀                                                       💀
-💀                      Yggdrasil                        💀
-💀                     Version 0.9                       💀
-💀           Rainer Christian Bjoern Herold              💀
-💀                                                       💀
-💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
-
-
-Hit:1 http://packages.microsoft.com/repos/code stable InRelease
-Hit:2 https://dl.google.com/linux/chrome/deb stable InRelease                                   
-Hit:3 https://ftp.halifax.rwth-aachen.de/kali kali-last-snapshot InRelease                      
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-All packages are up to date.
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-Calculating upgrade... Done
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
--------------------------------------------------------------------------------
-
-Download ansible
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-ansible is already the newest version (6.4.0+dfsg-1).
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
--------------------------------------------------------------------------------
-
-Download bat
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-bat is already the newest version (0.22.1-1).
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
--------------------------------------------------------------------------------
-
-...
-
 ```
 
 <br />
@@ -646,67 +600,11 @@ In many cases it can happen that sometimes tools were downloaded via Github, whi
 
 To speed up the process and manually pull updates from the repos, the alias `git-tools-update` was created.
 
-```r
-┌──(kali💀pentest-kali)-[/home/kali]
-└─# git-tools-update                                  
-
-Update: /opt/pentest_tools/EyeWitness
-Already up to date.
-------------------------------------------------
-Update: /opt/pentest_tools/evil-winrm
-Already up to date.
-------------------------------------------------
-Update: /opt/pentest_tools/enum4linux-ng
-Already up to date.
-------------------------------------------------
-Update: /opt/pentest_tools/PowerSploit
-Already up to date.
-------------------------------------------------
-Update: /opt/pentest_tools/PEASS-ng
-Already up to date.
-------------------------------------------------
-Update: /opt/pentest_tools/impacket
-Already up to date.
-------------------------------------------------
-```
+![Demo](https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/git_tools_update.gif)
 
 Furthermore, a manual updater for the package manager `Cargo` has also been created, which can be called using `cargo-tools-update`.
 
-```r
-┌──(kali💀pentest-kali)-[/opt]
-└─# cargo-tools-update
-------------------------------------------------
-Update: evtx
-    Updating crates.io index
-  Installing evtx v0.8.0
-  Downloaded fastrand v1.9.0
-  Downloaded 1 crate (11.9 KB) in 0.52s
-   Compiling autocfg v1.1.0
-   Compiling libc v0.2.139
-   Compiling cfg-if v1.0.0
-   Compiling proc-macro2 v1.0.51
-   Compiling unicode-ident v1.0.6
-   Compiling quote v1.0.23
-   Compiling syn v1.0.107
-   Compiling memchr v2.5.0
-   Compiling crossbeam-utils v0.8.14
-   Compiling serde_derive v1.0.152
-   Compiling encoding_index_tests v0.1.4
-   Compiling serde v1.0.152
-   Compiling log v0.4.17
-   Compiling termcolor v1.1.3
-   Compiling scopeguard v1.1.0
-   Compiling itoa v1.0.5
-   Compiling rayon-core v1.10.2
-   Compiling regex-syntax v0.6.28
-   Compiling serde_json v1.0.93
-   Compiling quick-error v1.2.3
-   Compiling thiserror v1.0.38
-   Compiling anyhow v1.0.69
-   Compiling bitflags v1.3.2
-   Compiling time-macros v0.2.4
-....
-```
+![Demo](https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/cargo_update_tools.gif)
 
 <strong>Important:</strong> Be careful not to remove the two files `update.info` and `update_cargo.info` from your installation directory, they contain the packages that will be updated.
 
@@ -737,25 +635,7 @@ After installing Yggdrasil you will get a colored output of minor information, s
 
 With the alias `yggdrasil-info` the output can be given up as often as you like.
 
-```r
-┌──(kali💀pentest-kali)-[/home/kali]
-└─# yggdrasil-info     
-
----------------------------------------------------------------------------------
-...
-
-##################### Confirm Shell Configuration ############################
-# source ~/.zshrc
-##############################################################################
-
-...
-
-######################## Change Default Browser ##############################
-# sudo update-alternatives --config x-www-browser
-##############################################################################
-
----------------------------------------------------------------------------------
-```
+![Demo](https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_info.gif)
 
 <br />
 
