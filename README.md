@@ -633,7 +633,7 @@ After installing Yggdrasil you will get a colored output of minor information, s
 
 With the alias `yggdrasil-info` the output can be given up as often as you like.
 
-![Demo](https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_info.gif)
+![Demo](https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggdrasil_info.gif)
 
 <br />
 
