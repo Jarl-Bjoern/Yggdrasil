@@ -59,6 +59,7 @@ class Standard:
                                             Temp_Text = f.read().replace('\r\n', '\n')
                                         break
                                     except UnicodeDecodeError: pass
+                                break
                         finally:
                             with open(join(root, file), 'w') as f:
                                 f.write(Temp_Text)
