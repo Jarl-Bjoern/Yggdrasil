@@ -328,6 +328,8 @@ Your Choice: infrastructure
 
 You can take multiple categories in number notation as in the example below, use a `,` to separate them.
 
+<strong>Notice:</strong> The same applies if you write out the name in full.
+
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -378,6 +380,11 @@ Your Choice: full
 
 <a name="hardening_install"></a>
 ## ⚔ Choose between the hardening options
+
+In this chapter you can use the provided hardening measures, also here you have the possibility to choose either one or more settings.
+
+<strong>Notice:</strong> If you want to skip this part in the future, use the parameter `-sH` when starting Yggdrasil.
+
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -403,6 +410,9 @@ Your Choice: 1
 
 <a name="ssh_install"></a>
 ## ⚔ Configurate your SSH IP-Address
+
+In this chapter you have to define the IP address under which your SSH service should be reachable.
+
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -428,6 +438,11 @@ Your Choice: 192.168.56.2
 
 <a name="best_practice_settings"></a>
 ## ⚔ Choose between the provided best practice settings
+
+Here you can use the best practice settings, also here it is possible that several can be selected.
+
+<strong>Notice:</strong> If you want to skip this part in the future, use the parameter `-sC` when starting Yggdrasil.
+
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
