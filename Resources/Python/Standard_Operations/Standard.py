@@ -31,7 +31,7 @@ class Standard:
         for root, _, files in walk(File_Path, topdown=False):
             for file in files:
                 if (not file.endswith('.ps1') or not file.endswith('.py')):
-                    with open(join(root, file), 'r', encoding='utf-8') as f:
+                    with open(join(root, file), 'r', encoding='utf-8', errors='ignore') as f:
                         Temp_Text = f.read().replace('\r\n', '\n')
                         with open(join(root, file), 'w') as f:
                             f.write(Temp_Text)
