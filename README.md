@@ -606,7 +606,9 @@ To speed up the process and manually pull updates from the repos, the alias `git
 
 Furthermore, a manual updater for the package manager `Cargo` has also been created, which can be called using `cargo-tools-update`.
 
-![Demo](https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/cargo_update_tools.gif)
+<p>
+    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/cargo_update_tools.gif" width=800 height=600>
+</p>
 
 <strong>Important:</strong> Be careful not to remove the two files `update.info` and `update_cargo.info` from your installation directory, they contain the packages that will be updated.
 
