@@ -94,20 +94,20 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
     - OS
     - Rust
   - Autmated cleaning tasks
-    - shredding task to delete your penetration test results for privacy reasons after 90 days (default) or after a custom number of days
     - cleaning task to remove old container images
+    - shredding task to delete your penetration test results for privacy reasons after 90 days (default) or after a custom number of days
   - Changing the default hostname
   - Custom configuration
     - Alias
       - base64 function
-      - yggdrasil colorized file reader function
       - callable yggdrasil best practice information after the installation
-      - url opener divided by categories (education | forensic | infrastructure | osint)
       - colorized grep
       - human readable df & du commands
       - manual microcode update
       - manual git tools update
       - nmap exclude for local ip addresses
+      - url opener divided by categories (education | forensic | infrastructure | osint)
+      - yggdrasil colorized file reader function
     - BASHRC and ZSHRC
     - Screenrc
     - VIM
