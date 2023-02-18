@@ -296,6 +296,11 @@ Your Choice: pentest
 
 <a name="pentesting_install"></a>
 ## ⚔ Choose between the Pentesting categories
+
+In this chapter you have the possibility to choose between `one` or `multiple` pentesting areas.
+
+Furthermore, you can take either the `full name` of the category or the `number`.
+
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀                                                       💀
@@ -320,6 +325,8 @@ Your Choice: pentest
 
 Your Choice: infrastructure
 ```
+
+You can take multiple categories in number notation as in the example below, use a `,` to separate them.
 
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
