@@ -51,7 +51,7 @@ class Standard:
                             with open(join(root, file), 'r', encoding='utf-8', errors='ignore') as f:
                                 Temp_Text = f.read().replace('\r\n', '\n')
                         except UnicodeDecodeError:
-                            print (f"The file {join(root, file)} was not written in 'utf-8'.\n\nthe tool is now trying to get the correct format.")
+                            print ("The file "+Colors.RED+f"{join(root, file)}"+Colors.RESET" was not written in 'utf-8'.\n\nthe tool is now trying to get the correct format.")
                             while True:
                                 for Codec in Array_Codecs:
                                     try:
