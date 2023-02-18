@@ -601,13 +601,13 @@ In many cases it can happen that sometimes tools were downloaded via Github, whi
 To speed up the process and manually pull updates from the repos, the alias `git-tools-update` was created.
 
 <p align='center'>
-    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/git_tools_update.gif" width=800 height=600>
+    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/git_tools_update.gif" width=700 height=500>
 </p>
 
 Furthermore, a manual updater for the package manager `Cargo` has also been created, which can be called using `cargo-tools-update`.
 
 <p align='center'>
-    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/cargo_update_tools.gif" width=800 height=600>
+    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/cargo_update_tools.gif" width=700 height=500>
 </p>
 
 <strong>Important:</strong> Be careful not to remove the two files `update.info` and `update_cargo.info` from your installation directory, they contain the packages that will be updated.
