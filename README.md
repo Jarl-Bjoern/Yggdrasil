@@ -601,7 +601,7 @@ In many cases it can happen that sometimes tools were downloaded via Github, whi
 To speed up the process and manually pull updates from the repos, the alias `git-tools-update` was created.
 
 <p>
-    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/git_tools_update.gif" width=958 height=608>
+    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/git_tools_update.gif" width=800 height=600>
 </p>
 
 Furthermore, a manual updater for the package manager `Cargo` has also been created, which can be called using `cargo-tools-update`.
