@@ -510,7 +510,7 @@ Your Choice: 1
 In the next step, the script will go through all the configured steps and install the tools like in the example below.
 
 <p align=center>
-    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_installation.gif" width=800 height=600>
+    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_installation.gif" width=700 height=500>
 </p>
 
 <br />
@@ -640,7 +640,7 @@ After installing Yggdrasil you will get a colored output of minor information, s
 With the alias `yggdrasil-info` the output can be given up as often as you like.
 
 <p align='center'>
-    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggdrasil_info.gif" width=800 height=600>
+    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggdrasil_info.gif" width=700 height=500>
 </p>
 
 <br />
