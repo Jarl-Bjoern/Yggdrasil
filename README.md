@@ -185,8 +185,8 @@ usage: yggdrasil.py [-aL [ACCEPT_LICENSES]] [-aW ADD_WORKSPACE] [-cP CUSTOM_PATH
 
 optional arguments:
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
-                        This parameter is required to accept licenses and the popups from firefox
-                        during the installation of extensions.
+                        This parameter is required to accept licenses and the popups
+                        from firefox during the installation of extensions.
 
                         Extensions:
                           - Firefox
