@@ -510,7 +510,7 @@ Your Choice: 1
 In the next step, the script will go through all the configured steps and install the tools like in the example below.
 
 <p align=center>
-    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_installation.gif">
+    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_installation.gif" width=700 height=500>
 </p>
 
 <br />
