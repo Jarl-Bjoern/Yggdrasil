@@ -3,7 +3,7 @@
 # Rainer Christian Bjoern Herold
 
 # Libraries
-from Resources.Python.Standard_Operations.Libraries import DEVNULL, getoutput, join, osname, run, sleep, stdout, system, walk
+from Resources.Python.Standard_Operations.Libraries import DEVNULL, join, osname, run, sleep, stdout, system, walk
 from Resources.Python.Standard_Operations.Colors import Colors
 
 # Classes
@@ -52,17 +52,18 @@ class Standard:
                                 Temp_Text = f.read().replace('\r\n', '\n')
                         except UnicodeDecodeError:
                             print ("The file "+Colors.RED+f"{join(root, file)}"+Colors.RESET+" was not written in 'utf-8'.\n\nthe tool is now trying to get the correct format.")
-                            while True:
-                                for Codec in Array_Codecs:
-                                    try:
-                                        with open(join(root, file), 'r', encoding=Codec, errors='ignore') as f:
-                                            Temp_Text = f.read().replace('\r\n', '\n')
-                                        break
-                                    except UnicodeDecodeError: pass
-                                break
+                            for Codec in Array_Codecs:
+                                try:
+                                    with open(join(root, file), 'r', encoding=Codec, errors='ignore') as f:
+                                        Temp_Text = f.read().replace('\r\n', '\n')
+                                    break
+                                except UnicodeDecodeError: pass
                         finally:
-                            with open(join(root, file), 'w') as f:
-                                f.write(Temp_Text)
+                            try:
+                                with open(join(root, file), 'w') as f:
+                                    f.write(Temp_Text)
+                            except:
+                                print (Colors.RED+f"It was not possible to convert any kind of data.\n\nPlease use for custom files 'utf-8' as standard encode and try it again.")
 
     def Check_Permissions(File_Path):
         def Permission_Change(File): run(['sudo','chmod','+x',File], stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL)
