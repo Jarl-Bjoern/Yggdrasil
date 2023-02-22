@@ -43,6 +43,7 @@ alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py 
 alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Forensic.txt"'
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
+alias yggdrasil-vnc='sudo x11vnc -storepasswd ; sudo x11vnc -display :0 -autoport -localhost -nopw -bg -xkb -ncache -ncache_cr -quiet -forever ; /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900'
 . "$HOME/.cargo/env"
 """
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
@@ -62,6 +63,7 @@ alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py 
 alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Forensic.txt"'
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
+alias yggdrasil-vnc='sudo x11vnc -storepasswd ; sudo x11vnc -display :0 -autoport -localhost -nopw -bg -xkb -ncache -ncache_cr -quiet -forever ; /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900'
 . "$HOME/.cargo/env"
 """
         Config_Alias_Profile = r'. "$HOME/.cargo/env"'
