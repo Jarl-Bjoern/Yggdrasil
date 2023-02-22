@@ -39,6 +39,8 @@ squid
 tmux
 tor
 torbrowser-launcher
+novnc
+x11vnc
 
 # Python
 docker-compose
