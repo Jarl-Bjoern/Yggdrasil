@@ -1096,7 +1096,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
                 fi
                 for veracrypt_file in $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup"); do sudo rm -f "$veracrypt_file"; done
         fi
-        if [[ $(find "/opt/pentest_tools" -maxdepth 1 ! -path "/opt/pentest_tools" -name "*.xpi") ]]; then
+        if [[ $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" -name "*.xpi") ]]; then
 		if [[ $Switch_License == true ]]; then
 			sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "True"
 		else
