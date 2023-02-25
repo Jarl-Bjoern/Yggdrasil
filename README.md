@@ -87,6 +87,9 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - Go
   - pip
 - Best Practice settings
+  - Automated cleaning tasks
+    - cleaning task to remove old container images
+    - shredding task to delete your penetration test results for privacy reasons after 90 days (default) or after a custom number of days
   - Automated Updater via Crontab
     - Cargo Tools
     - Docker Images
@@ -94,9 +97,6 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
     - Important pip packages
     - OS
     - Rust
-  - Autmated cleaning tasks
-    - cleaning task to remove old container images
-    - shredding task to delete your penetration test results for privacy reasons after 90 days (default) or after a custom number of days
   - Changing the default hostname
   - Custom configuration
     - Alias
