@@ -415,7 +415,7 @@ Your Choice: 1
 <a name="ssh_install"></a>
 ## ⚔ Configurate your SSH IP-Address
 
-If you selected `Hardening for SSH` in the previous step, then you will be prompted to select one of the available local IP addresses.
+If you selected `SSH hardening` in the previous step, then you will be prompted to select one of the available local IP addresses.
 
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
