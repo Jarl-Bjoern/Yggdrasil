@@ -34,7 +34,7 @@ alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 setopt hist_ignore_all_dups
 function Yggdrasil_File_Reader() { input=$1; while IFS= read -r line; do if [[ $line =~ "##" ]]; then echo -e "\033[0;32m$line\033[0m"; else; echo -e "\033[1;33m$line\033[0m"; fi; done < "$input" }
 function b64() { echo $1 | base64 -d | xxd; }
-function Yggdrasil_VNC_Check() { if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u); do kill $i; done; fi; if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1); fi; sudo x11vnc -storepasswd ; sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet & ; /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --ssl-only --key /etc/apache2/ssl/pentest-key.pem --cert /etc/apache2/ssl/pentest-cert.pem }
+function yggdrasil-vnc() { if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u); do kill $i; done; fi; if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1); fi; sudo x11vnc -storepasswd ; sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet & ; /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --ssl-only --key /etc/apache2/ssl/pentest-key.pem --cert /etc/apache2/ssl/pentest-cert.pem }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
 """+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" "$i" ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done; cd "$BACK"'
@@ -44,7 +44,6 @@ alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py 
 alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Forensic.txt"'
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
-alias yggdrasil-vnc='Yggdrasil_VNC_Check'
 . "$HOME/.cargo/env"
 """
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
@@ -55,7 +54,7 @@ alias ffs='sudo $(history -p !!)'
 alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 function Yggdrasil_File_Reader() { input=$1; while IFS= read -r line; do if [[ $line =~ "##" ]]; then echo -e "\033[0;32m$line\033[0m"; else; echo -e "\033[1;33m$line\033[0m"; fi; done < "$input" }
 function b64() { echo $1 | base64 -d | xxd; }
-function Yggdrasil_VNC_Check() { if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u); do kill $i; done; fi; if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1); fi; sudo x11vnc -storepasswd ; sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet & ; /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --ssl-only --key /etc/apache2/ssl/pentest-key.pem --cert /etc/apache2/ssl/pentest-cert.pem }
+function yggdrasil-vnc() { if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u); do kill $i; done; fi; if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1); fi; sudo x11vnc -storepasswd ; sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet & ; /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --ssl-only --key /etc/apache2/ssl/pentest-key.pem --cert /etc/apache2/ssl/pentest-cert.pem }
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
 """+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; done; cd "$BACK"'
@@ -65,7 +64,6 @@ alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py 
 alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Forensic.txt"'
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
-alias yggdrasil-vnc='Yggdrasil_VNC_Check'
 . "$HOME/.cargo/env"
 """
         Config_Alias_Profile = r'. "$HOME/.cargo/env"'
