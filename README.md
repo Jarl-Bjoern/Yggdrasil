@@ -99,17 +99,19 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
     - Rust
   - Changing the default hostname
   - Custom configuration
-    - Alias
-      - base64 function
-      - callable yggdrasil best practice information after the installation
-      - colorized grep
-      - human readable df & du commands
-      - manual microcode update
-      - manual git tools update
-      - nmap exclude for local ip addresses
-      - url opener divided by categories (education | forensic | infrastructure | osint)
-      - yggdrasil colorized file reader function
     - BASHRC and ZSHRC
+      - Alias
+        - callable yggdrasil best practice information after the installation
+        - colorized grep
+        - human readable df & du commands
+        - manual microcode update
+        - manual git tools update
+        - nmap exclude for local ip addresses
+        - url opener divided by categories (education | forensic | infrastructure | osint)
+      - Functions
+        - base64 function
+        - yggdrasil colorized file reader function
+        - yggdrasil vnc start function
     - Screenrc
     - VIM
   - Repository change from rolling-release (bleeding-edge) to last-snapshot
