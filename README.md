@@ -43,7 +43,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - new cleaning task for old container images inside the updater settings
   - several new aliases have been added to allow reopening of various important web pages, such as for further education, or the information that appears after installation
   - scalable number of days for the shredding task
-  - alias to use vnc for remote gui applications
+  - function to use vnc inside the browser for remote gui applications
   - automated rust language updater
   - replacement of the dos2unix tool by a self-written converter
   - new parameter was added to skip the automated url opening process after the installation
