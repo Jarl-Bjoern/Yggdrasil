@@ -217,13 +217,14 @@ optional arguments:
                         ---------------------------------------------------------------
   -sC [SKIP_CONFIG], --skip-config [SKIP_CONFIG]
                         This parameter skips the configs part.
-
+                        
                         Best practice settings:
-                          - Automated Updates (APT|Cargo|Docker|Git Packages|Pip)
+                          - Automated Updates (APT|Cargo|Docker|Git Packages|Pip|Rust)
                           - Custom Configs (alias|bashrc|zshrc)
                           - screenrc
                           - vim
                           - repo-change (rolling-release to last-snapshot)
+                          - automated shredding task
 
                         ---------------------------------------------------------------
   -sD SKIP_DAYS, --skip-days SKIP_DAYS
