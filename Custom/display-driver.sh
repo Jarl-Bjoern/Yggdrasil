@@ -7,5 +7,4 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y unzip linux-headers-"$(uname 
 cat <<EOF | sudo bash displaylink-debian.sh
 i
 Y
-n
-EOF
+nEOF
