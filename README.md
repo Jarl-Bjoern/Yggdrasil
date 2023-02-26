@@ -110,8 +110,8 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
         - url opener divided by categories (education | forensic | infrastructure | osint)
       - Functions
         - base64 function
-        - yggdrasil colorized file reader function
-        - yggdrasil vnc start function
+        - colorized file reader function
+        - vnc start function
     - Screenrc
     - VIM
   - Repository change from rolling-release (bleeding-edge) to last-snapshot
