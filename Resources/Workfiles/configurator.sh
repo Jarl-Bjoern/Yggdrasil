@@ -1091,9 +1091,6 @@ if [[ ${#Array_Cargo_Updater} -gt 0 ]]; then
 fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
-        if [[ $category_type = "pentest" || $category_type = "4" ]]; then
-                ln -sf "$OPT_Path/API/Postman/app/Postman" /usr/local/bin/postman
-        fi
         if [[ -f $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
                 if [[ $Switch_License == true ]]; then
                         sudo python3 "$FULL_PATH/Resources/Python/auto.py" Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
@@ -1102,12 +1099,15 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
                 fi
                 for veracrypt_file in $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup"); do sudo rm -f "$veracrypt_file"; done
         fi
-        if [[ $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" -name "*.xpi") ]]; then
-		if [[ $Switch_License == true ]]; then
-			sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "True"
-		else
-			sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "False"
-		fi
+        if [[ $category_type = "pentest" || $category_type = "4" ]]; then
+                ln -sf "$OPT_Path/API/Postman/app/Postman" /usr/local/bin/postman
+                if [[ $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" -name "*.xpi") ]]; then
+                        if [[ $Switch_License == true ]]; then
+                                sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "True"
+                        else
+                                sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "False"
+                        fi
+                fi
         fi
         if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")" ]; then
                 TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")
