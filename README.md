@@ -63,6 +63,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - updated README
   - added hardening options for apache and nginx
   - new colors was added
+  - suppressed usage message at the help section
   - the python files have been split up
   - logging bug fixes
   - bug and logical fixes
