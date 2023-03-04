@@ -179,6 +179,15 @@ sudo python3 yggdrasil.py
 <a name="help_install"></a>
 ## ⚔ Using the help section to see which parameters do we have
 ```python
+-------------------------------------------------------------------------------------
+|  Created by Rainer Christian Bjoern Herold                                        |
+|  Copyright 2022-2023. All rights reserved.                                        |
+|                                                                                   |
+|  Please do not use the program for illegal activities.                            |
+|                                                                                   |
+|  If you got any problems don't hesitate to contact me so I can try to fix them.   |
+-------------------------------------------------------------------------------------
+
 optional arguments:
   -aL [ACCEPT_LICENSES], --accept-licenses [ACCEPT_LICENSES]
                         This parameter is required to accept licenses and the popups
