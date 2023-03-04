@@ -17,7 +17,7 @@ def Argument_Parser():
 -------------------------------------------------------------------------------------
 """
 
-  parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter, description=Colors.ORANGE+Program_Description+Colors.RESET)
+  parser = ArgumentParser(add_help=False, formatter_class=RawTextHelpFormatter, description=Colors.ORANGE+Program_Description+Colors.RESET, usage=SUPPRESS)
   optional = parser.add_argument_group(Colors.ORANGE+'optional arguments'+Colors.RESET)
 
   if (osname == 'nt'):
