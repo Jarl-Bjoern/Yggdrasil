@@ -738,6 +738,20 @@ if [[ $Switch_Skip_Configs != true ]]; then
         clearing
 fi
 
+# VIM_Configuration
+if [[ $Switch_VIM_CONFIG = true ]]; then
+        header "vim"
+        read -rp "Your Choice: " vim_settings
+        if [[ $vim_settings = "homesen" || $vim_settings = "1" ]]; then
+                Switch_VIM_HOMESEN=true
+        elif [[ $vim_settings = "nayaningaloo" || $vim_settings = "2" ]]; then
+                Switch_VIM_NAYANINGALOO=true
+        else
+                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+        fi
+        clearing        
+fi
+
 # Updater_Configuration
 if [[ $Switch_UPDATES = true || $Switch_SHREDDER = true ]]; then
         header "task"
