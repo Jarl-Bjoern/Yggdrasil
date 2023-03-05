@@ -144,6 +144,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [⚔ Installation Process](#example_install_process)
 - [🔧 Using the automated variant](#automated_install)
 - [⚙️ Useful provided functions](#useful_functions)
+  - [⚙️ Encrypted VNC Server](#encrypted_vnc)
   - [⚙️ Exclude local IP-Addresses within nmap scans](#nmap_exclude)
   - [⚙️ Manual Tools Updater](#manual_tool_updater)
   - [⚙️ Manual URL Opener](#manual_url_opener)
@@ -583,6 +584,16 @@ EOF
 <a name="useful_functions"></a>
 # ⚙️ Useful provided functions
 If you have chosen the provided `alias configuration`, you can use the aliases listed in the next chapter.
+
+<a name="encrypted_vnc"></a>
+## Encrypted VNC Server
+In some cases, you may end up on a Windows jumphost through a Citrix host and have no way to post-install tools unless you attempt unauthorized actions. The problem here is that either X11 forwarding is disabled for an SSH session or you have no way to install an X11 client on the jump host, however in some cases you may be able to reach your Kali instance from the jump host on any ports, you can use this to set up a VNC server to use applications like BURP Suite.
+
+In advance, security aspects were also taken into account, since VNC natively acts unencrypted, here, for example, encrypted transmission via a proxy server was ensured and at the same time a password constraint was added to the alias, so that you should not use the same one every time. Furthermore, it is also possible that you accidentally set up the alias and forget to turn off the server again, which would be a vulnerability per se, to counteract this, an idle timeout was set to `900 seconds`.
+
+So you can use the alias `yggdrasil-vnc` to set up the instance, then open the browser on the jumphost and enter the URL `https://your-kali-machine:8081`.
+
+<strong>Notice:</strong> In some cases it can happen that the machine is not simply accessible, try here a SSH tunneling and bind the port in your browser, should this also not work, then the variant is omitted.
 
 <a name="nmap_exclude"></a>
 ## ⚙️ Exclude local IP-Addresses within nmap scans
