@@ -250,8 +250,8 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}cronjob${NOCOLOR}      :   cronjob configuration                   ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}timer${NOCOLOR}        :   systemd timer configuration             ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "vim" ]; then
-                echo -e "${CYAN}|${NOCOLOR}  [${BLUE}1${NOCOLOR}] ${BLUE}vim${NOCOLOR}           :   custom vim config (@HomeSen)           ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}  [${BLUE}2${NOCOLOR}] ${BLUE}vim2${NOCOLOR}          :   custom vim config (@nayaningaloo)      ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}vim${NOCOLOR}           :   custom vim config ${RED}(@HomeSen)${NOCOLOR}           ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}vim2${NOCOLOR}          :   custom vim config ${CYAN}(@nayaningaloo)${NOCOLOR}      ${CYAN}|${NOCOLOR}"
         fi
         echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
         echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
