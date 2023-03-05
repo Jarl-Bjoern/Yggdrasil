@@ -9,6 +9,8 @@ tenableofficial/nessus
 
 # Git
 https://github.com/CISOfy/lynis
+https://github.com/yandex/gixy
+https://github.com/stark0de/nginxpwner
 
 # Go
 
