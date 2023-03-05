@@ -817,6 +817,7 @@ In the context of the development of the tool, I would like to thank the followi
   - ikstream
   - janstarke
   - julion-m
+  - nayaningaloo
   - pyxon73
   - SandySchoene
   - SecMyth
