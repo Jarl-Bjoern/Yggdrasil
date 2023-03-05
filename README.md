@@ -141,6 +141,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [⚔ Choose between the hardening options](#hardening_install)
   - [⚔ Configurate your SSH IP-Address](#ssh_install)
   - [⚔ Choose between the provided best practice settings](#best_practice_settings)
+  - [⚔ Choose between one of the two vim configs](#vim_settings)
   - [⚔ Choose between one of the two task settings](#task_settings)
   - [⚔ Installation Process](#example_install_process)
 - [🔧 Using the automated variant](#automated_install)
@@ -484,6 +485,34 @@ Here you can use the best practice settings, also here it is possible that sever
 -----------------------------------------------------------
 
 Your Choice: 1
+```
+
+<a name="vim_settings"></a>
+## ⚔ Choose between one of the two vim configs
+
+If you selected the `vim` configuration in the previous step, you will now have the choice between two custom configurations.
+
+Thanks here again to the people `@HomeSen` and `@nayaningaloo`.
+
+```bash
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+💀                                                            💀
+💀                         Yggdrasil                          💀
+💀                        Version 0.9                         💀
+💀              Rainer Christian Bjoern Herold                💀
+💀                                                            💀
+💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+
+
+-----------------------------------------------------------------
+|                                                               |
+|  [1] homesen       :   custom vim config (@HomeSen)           |
+|  [2] nayaningaloo  :   custom vim config (@nayaningaloo)      |
+|                                                               |
+-----------------------------------------------------------------
+
+Your Choice: 1
+
 ```
 
 <a name="task_settings"></a>
