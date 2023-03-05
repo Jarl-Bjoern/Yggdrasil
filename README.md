@@ -208,6 +208,13 @@ optional arguments:
                         Default: /opt/workspace
 
                         ---------------------------------------------------------------
+  -cD CUSTOM_DAYS, --custom-days CUSTOM_DAYS
+                        This parameter specifies the max days for the shredding script.
+
+                        Default:
+                          - 90 Days
+
+                        ---------------------------------------------------------------
   -cP CUSTOM_PATH, --custom-path CUSTOM_PATH
                         This parameter specifies the target path of your custom scripts
                         or tools.
@@ -234,13 +241,6 @@ optional arguments:
                           - vim
                           - repo-change (rolling-release to last-snapshot)
                           - automated shredding task
-
-                        ---------------------------------------------------------------
-  -sD SKIP_DAYS, --skip-days SKIP_DAYS
-                        This parameter specifies the max days for the shredding script.
-
-                        Default:
-                          - 90 Days
 
                         ---------------------------------------------------------------
   -sH [SKIP_HARDENING], --skip-hardening [SKIP_HARDENING]
