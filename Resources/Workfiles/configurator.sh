@@ -913,6 +913,7 @@ EOF
                          sudo DEBIAN_FRONTEND=noninteractive apt install -y vim vim-addon-manager vim-addon-mw-utils vim-common vim-fugitive vim-git-hub vim-gitgutter vim-gtk3 vim-gui-common vim-latexsuite vim-pathogen vim-runtime vim-scripts vim-snipmate vim-snippets vim-tiny vim-tlib vim-icinga2 vim-airline vim-airline-themes shellcheck gitlint yamllint
                 else
                          sudo apt install -y vim vim-addon-manager vim-addon-mw-utils vim-common vim-fugitive vim-git-hub vim-gitgutter vim-gtk3 vim-gui-common vim-latexsuite vim-pathogen vim-runtime vim-scripts vim-snipmate vim-snippets vim-tiny vim-tlib vim-icinga2 vim-airline vim-airline-themes shellcheck gitlint yamllint
+                fi
                 cd /tmp ; git clone https://github.com/nayaningaloo/vim ; cd vim ; sudo cp -r .vim "$i" ; sudo cp .vimrc .gitmodules "$i"
         fi
 done
