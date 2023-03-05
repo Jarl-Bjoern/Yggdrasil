@@ -53,7 +53,7 @@ def main():
             if (Arg_Name == "accept_licenses"): Parameters += "-aL "
             elif (Arg_Name == "skip_hardening"): Parameters += "-sH "
             elif (Arg_Name == "skip_config"): Parameters += "-sC "
-            elif (Arg_Name == "skip_days"): Parameters += f"{Arg_Value}.-sD "
+            elif (Arg_Name == "custom_days"): Parameters += f"{Arg_Value}.-cD "
             elif (Arg_Name == "skip_urls"): Parameters += f"-sU "
             elif (Arg_Name == "verbose"): Parameters += "-v "
             elif (Arg_Name == "add_workspace" and Arg_Value != None):
