@@ -780,7 +780,7 @@ echo "" > "$FULL_PATH/yggdrasil.log"
 if [[ "$Switch_Verbose" == false ]]; then
          sudo apt update -y ; sudo DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 else
-	 sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
+         sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 fi
 
 # Task_Configuration
