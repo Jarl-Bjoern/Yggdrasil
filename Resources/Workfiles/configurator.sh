@@ -501,7 +501,7 @@ for arg; do
                 HOST_Pentest="$(echo "$arg" | rev | cut -c5- | rev)"
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-tP" ]]; then
                 OPT_Path="$(echo "$arg" | rev | cut -c5- | rev)"
-        elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-sD" ]]; then
+        elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-cD" ]]; then
                 Shredding_DAYS="$(echo "$arg" | rev | cut -c5- | rev)"
         fi
 done
