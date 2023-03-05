@@ -586,7 +586,7 @@ EOF
 If you have chosen the provided `alias configuration`, you can use the aliases listed in the next chapter.
 
 <a name="encrypted_vnc"></a>
-## Encrypted VNC Server
+## ⚙️ Encrypted VNC Server
 In some cases, you may end up on a Windows jumphost through a Citrix host and have no way to post-install tools unless you attempt unauthorized actions. The problem here is that either X11 forwarding is disabled for an SSH session or you have no way to install an X11 client on the jump host, however in some cases you may be able to reach your Kali instance from the jump host on any ports, you can use this to set up a VNC server to use applications like BURP Suite.
 
 In advance, security aspects were also taken into account, since VNC natively acts unencrypted, here, for example, encrypted transmission via a proxy server was ensured and at the same time a password constraint was added to the alias, so that you should not use the same one every time. Furthermore, it is also possible that you accidentally set up the alias and forget to turn off the server again, which would be a vulnerability per se, to counteract this, an idle timeout was set to `900 seconds`.
