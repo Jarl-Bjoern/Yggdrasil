@@ -863,7 +863,7 @@ hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
 EOF
         fi
 
-        if [[ $Switch_VIM_CONFIG == true ]]; then
+        if [[ $Switch_VIM_HOMESEN == true ]]; then
                 # Vim_Configuration (Thx to @HomeSen)
                 cat <<'EOF' > "$PATH_VIM"
 syntax on
@@ -908,6 +908,9 @@ set statusline+=\ ]
 set statusline+=\
 set statusline+=%p%%
 EOF
+        elif [[ $Switch_VIM_NAYANINGALOO == true ]]; then
+                sudo apt install -y vim vim-addon-manager vim-addon-mw-utils vim-common vim-fugitive vim-git-hub vim-gitgutter vim-gtk3 vim-gui-common vim-latexsuite vim-pathogen vim-runtime vim-scripts vim-snipmate vim-snippets vim-tiny vim-tlib vim-icinga2 vim-airline vim-airline-themes shellcheck gitlint yamllint
+
         fi
 done
 
