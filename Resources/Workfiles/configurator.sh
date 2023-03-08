@@ -1160,14 +1160,20 @@ EOF
                 sudo sysctl --system
         fi
 
+        # VNC_Cert
+        if [[ ! -d "/opt/ssl" ]]; then
+            sudo mkdir -p /opt/ssl
+        fi
+        sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /opt/ssl/pentest-key.pem -out /opt/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
+
         # Apache_Configuration
         if [[ $Switch_APACHE = true ]]; then
                 if [[ $(apt-cache policy apache2 | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
                         sudo a2enmod headers rewrite ssl ; sudo rm -f /var/www/html/index.html ; sudo mkdir -p /etc/apache2/ssl
+                        sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
                         if ! grep -q "#Listen 80" /etc/apache2/ports.conf; then
                             sudo sed -i "s/Listen 80/#Listen 80/g" /etc/apache2/ports.conf
                         fi
-                        sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/apache2/ssl/pentest-key.pem -out /etc/apache2/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
                         sudo sed -i "s/Options FollowSymLinks/Options None/g" /etc/apache2/apache2.conf
                         sudo sed -i "s/Options Indexes FollowSymLinks/Options None/g" /etc/apache2/apache2.conf
                         if ! grep -qE "ServerSignature Off|ServerTokens Prod|TraceEnable off|FileETag None" /etc/apache2/apache2.conf; then
