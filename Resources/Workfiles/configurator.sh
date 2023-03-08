@@ -1157,12 +1157,6 @@ EOF
                 sudo sysctl --system
         fi
 
-        # VNC_Cert
-        if [[ ! -d "/opt/ssl" ]]; then
-            sudo mkdir -p /opt/ssl
-        fi
-        sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /opt/ssl/pentest-key.pem -out /opt/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
-
         # Apache_Configuration
         if [[ $Switch_APACHE = true ]]; then
                 if [[ $(apt-cache policy apache2 | grep "Installed" | cut -d ":" -f2) != "(none)" ]]; then
@@ -1417,6 +1411,13 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
                 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
         fi
 fi
+
+# VNC_Cert
+if [[ ! -d "/opt/ssl" ]]; then
+    sudo mkdir -p /opt/ssl
+fi
+sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /opt/ssl/pentest-key.pem -out /opt/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali'
+
 sudo python3 "$FULL_PATH/Resources/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
