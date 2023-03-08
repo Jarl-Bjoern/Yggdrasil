@@ -1417,7 +1417,7 @@ fi
 sudo python3 "$FULL_PATH/Resources/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
-if [[ $Switch_Skip_URLS == false ]]; then
+if [[ $Switch_Skip_URLS == false && $decision != "minimal" ]]; then
         sleep 3
         if [[ ${#Array_URL} -gt 0 ]]; then
                 for URL in "${Array_URL[@]}"; do
