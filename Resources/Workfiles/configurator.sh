@@ -837,7 +837,6 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
         PATH_ALIAS="$i/.bash_aliases"
         PATH_VIM="$i/.vimrc"
         PATH_ZSH="$i/.zshrc"
-        PATH_PROFILE="$i/.profile"
 
         if [[ $Switch_Cargo == true ]]; then
                 sudo cp -r "$HOME/.cargo" "$i" &>/dev/null
@@ -851,7 +850,6 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ALIAS" "$OPT_Path" "$FULL_PATH"
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_BSH" "$OPT_Path" "$FULL_PATH"
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ZSH" "$OPT_Path" "$FULL_PATH"
-                sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_PROFILE" "$OPT_Path" "$FULL_PATH"
         fi
 
         if [[ $Switch_SCREENRC == true ]]; then
