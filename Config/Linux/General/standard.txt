@@ -1,5 +1,6 @@
 # APT
 ansible
+apache2
 bat
 cargo
 charon-cmd
@@ -24,6 +25,7 @@ mc
 mono-complete
 neovim
 netfilter-persistent
+nginx
 nmap
 openconnect
 opensc
