@@ -46,7 +46,7 @@ alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
 . "$HOME/.cargo/env"
 """
-        Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
+        Config_Alias_BSH = """alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
 alias df='df -h'
 alias du='du -h'
