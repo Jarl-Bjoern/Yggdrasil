@@ -30,6 +30,9 @@
   - logging bug fixes
   - bug and logical fixes
 
+<strong>Known issues of </strong> `0.9`:
+  - The logging is bugged
+  - Rust still does not install correctly
 
 ## Version 0.8b
 <strong>Hotfix</strong> `0.8b`:
