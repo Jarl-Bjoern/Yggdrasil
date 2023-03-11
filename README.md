@@ -39,36 +39,9 @@ This tool is intended to simplify the setup of various tools and configuration o
 The name `Yggdrasil` comes from Norse mythology and is the tree of life or world tree, here the name is quite appropriate for the concept of the program, as it is geared for several pentetration test areas or even for digital forensics.<br />
 
 ## ❗ News
-<strong>Upcoming changes for version</strong> `0.9`:
-  - new cleaning task for old container images inside the updater settings
-  - several new aliases have been added to allow reopening of various important web pages, such as for further education, or the information that appears after installation
-  - scalable number of days for the shredding task
-  - function to use vnc inside the browser for remote gui applications
-  - automated rust language updater
-  - replacement of the dos2unix tool by a self-written converter
-  - new parameter was added to skip the automated url opening process after the installation
-  - automated URL opener for meaningful pages for example for pentesting
-  - automated installer for firefox extensions
-  - added new choice to choose between cronjobs or systemd timer for the automated updates
-  - new installation categories was added
-  - automated and manual updater for the cargo tools
-  - new parameter was added to show interaction messages during the apt installation
-  - reorganization of the repository
-  - new menu to choose between two provided vim configurations
-  - new menu for the best practice settings like vim configuration, crontab etc.
-  - automated updater for the git tools
-  - ability to choose your own installation directory
-  - colorized information after the installation
-  - manual update alias for the installed git tools and microcode update
-  - added automated shredding task after 90 days for data privacy
-  - updated README
-  - added hardening options for apache and nginx
-  - alias bugfixes for bashrc
-  - new colors was added
-  - suppressed usage message at the help section
-  - the python files have been split up
-  - logging bug fixes
-  - bug and logical fixes
+<strong>Upcoming changes for version</strong> `0.9b`:
+  - Logging fixes
+  - Better rust updater
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/blob/main/Information/Changelog/full.md">
