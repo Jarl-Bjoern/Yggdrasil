@@ -748,7 +748,7 @@ if [[ $Switch_VIM_CONFIG = true ]]; then
         else
                 echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
         fi
-        clearing        
+        clearing
 fi
 
 # Updater_Configuration
