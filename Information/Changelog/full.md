@@ -1,3 +1,4 @@
+## Version 0.9
 <strong>Changes of version</strong> `0.9`:
   - new cleaning task for old container images inside the updater settings
   - several new aliases have been added to allow reopening of various important web pages, such as for further education, or the information that appears after installation
@@ -29,12 +30,16 @@
   - logging bug fixes
   - bug and logical fixes
 
+
+## Version 0.8b
 <strong>Hotfix</strong> `0.8b`:
   - the hostname changing function was now set to the end of the script
 
+## Version 0.8a
 <strong>Hotfix</strong> `0.8a`:
   - bug and logical fixes
 
+## Version 0.8
 <strong>Changes of version</strong> `0.8`:
   - custom workspace place via argument
   - overview about hardening options
@@ -45,6 +50,8 @@
   - filter option for webscanner tools
   - download logging function
 
+## Version 0.7g
 With version `0.7g` it is now possible to select multiple categories in pentesting for installation.
 
+## Version 0.7
 Since version `0.7` it is now possible to choose between the three categories `Complete`, `Forensic` and `Pentest`.
