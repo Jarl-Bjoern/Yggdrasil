@@ -348,7 +348,7 @@ Your Choice: 1,5
 <a name="type_install"></a>
 ## ⚔ Choose one of the two installation types
 
-<strong>Notice:</strong> This selection area appears only if you have selected the Infrastructure category during pentesting or Forensic before.
+<strong>Notice:</strong> This selection area appears only if you have selected the `Infrastructure` category or `Forensic` before.
 
 ```bash
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
