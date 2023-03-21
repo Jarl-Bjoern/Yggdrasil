@@ -19,6 +19,7 @@ thunderbird
 
 # Python
 psutil
+opencv-python
 pyautogui
 
 # Wget
