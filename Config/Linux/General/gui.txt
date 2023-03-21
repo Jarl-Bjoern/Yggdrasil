@@ -18,8 +18,8 @@ texstudio
 thunderbird
 
 # Python
-psutil
 opencv-python
+psutil
 pyautogui
 
 # Wget
