@@ -1,3 +1,5 @@
 https://www.shodan.io/
 https://archive.org/web/
 https://hunter.io/
+https://www.linkedin.com/
+https://www.xing.com/
