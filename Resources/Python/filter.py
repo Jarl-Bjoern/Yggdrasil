@@ -44,6 +44,7 @@ alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py 
 alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Forensic.txt"'
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
+alias yggdrasil-pentest='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Infrastructure.txt"'
 alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ; sudo chmod +x rust_install.sh ; sudo bash rust_install.sh -y ; sudo rm -f /tmp/rust_install.sh'
 """
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
@@ -62,6 +63,7 @@ alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py 
 alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Forensic.txt"'
 alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Education.txt"'
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Hardening.txt"'
+alias yggdrasil-pentest='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Infrastructure.txt"'
 alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ; sudo chmod +x rust_install.sh ; sudo bash rust_install.sh -y ; sudo rm -f /tmp/rust_install.sh'
 """
         Config_Alias_Profile = r'. "$HOME/.cargo/env"'
