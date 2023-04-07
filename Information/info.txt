@@ -53,6 +53,10 @@
 # sudo update-alternatives --config x-www-browser
 ##############################################################################
 
+############ Changing the ssh cipher suites as a client ######################
+# sudo nano /etc/ssh/ssh.config
+##############################################################################
+
 ######################## Remove the ssh version ##############################
 # strings /usr/sbin/sshd | grep Debian     <--   check the version and os name
 # sudo cp /usr/sbin/sshd /tmp/sshd.backup
