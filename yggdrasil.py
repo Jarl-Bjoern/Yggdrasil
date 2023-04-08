@@ -25,22 +25,22 @@
 # Vers 0.9  11.03.2023
 
 # Author
-__author__ = "Rainer C. B. Herold"
-__copyright__ = "Copyright 2022-2023, Rainer C. B. Herold"
-__credits__ = "Rainer C. B. Herold"
-__license__ = "MIT license"
-__version__ = "0.9b"
+__author__     = "Rainer C. B. Herold"
+__copyright__  = "Copyright 2022-2023, Rainer C. B. Herold"
+__credits__    = "Rainer C. B. Herold"
+__license__    = "MIT license"
+__version__    = "0.9b"
 __maintainer__ = "Rainer C. B. Herold"
-__status__ = "Production"
+__status__     = "Production"
 
 # Libraries
 from Resources.Python.Standard_Operations.Libraries import *
-from Resources.Python.Standard_Operations.Standard import Standard
-from Resources.Python.Standard_Operations.Colors import Colors
+from Resources.Python.Standard_Operations.Standard  import Standard
+from Resources.Python.Standard_Operations.Colors    import Colors
 
 # Functions
 def main():
-    File_Path = dirname(realpath(__file__))
+    File_Path    = dirname(realpath(__file__))
     Start_Script = join(File_Path, "Resources/Workfiles/configurator.sh")
 
     from Resources.Python.Standard_Operations.ArgParser import Argument_Parser
@@ -51,12 +51,12 @@ def main():
     Parameters = ""
     for Arg_Name, Arg_Value in vars(args).items():
         if ((Arg_Name != "custom_path" and Arg_Value != None) and (Arg_Name != "host_name" and Arg_Value != None)):
-            if (Arg_Name == "accept_licenses"): Parameters += "-aL "
+            if (Arg_Name == "accept_licenses"):  Parameters += "-aL "
             elif (Arg_Name == "skip_hardening"): Parameters += "-sH "
-            elif (Arg_Name == "skip_config"): Parameters += "-sC "
-            elif (Arg_Name == "custom_days"): Parameters += f"{Arg_Value}.-cD "
-            elif (Arg_Name == "skip_urls"): Parameters += f"-sU "
-            elif (Arg_Name == "verbose"): Parameters += "-v "
+            elif (Arg_Name == "skip_config"):    Parameters += "-sC "
+            elif (Arg_Name == "custom_days"):    Parameters += f"{Arg_Value}.-cD "
+            elif (Arg_Name == "skip_urls"):      Parameters += f"-sU "
+            elif (Arg_Name == "verbose"):        Parameters += "-v "
             elif (Arg_Name == "add_workspace" and Arg_Value != None):
                 try: makedirs(args.add_workspace)
                 except FileExistsError: pass
@@ -66,7 +66,7 @@ def main():
                 except FileExistsError: pass
                 Parameters += f"{args.tool_path}.-tP "
         elif (Arg_Name == "custom_path" and Arg_Value != None): Parameters += f"{Arg_Value}.-p "
-        elif (Arg_Name == "host_name" and Arg_Value != None): Parameters += f"{Arg_Value}.-hN "
+        elif (Arg_Name == "host_name" and Arg_Value != None):   Parameters += f"{Arg_Value}.-hN "
     Standard.Initials(), system(f'sudo bash {Start_Script} {Parameters}')
 
 # Main
