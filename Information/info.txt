@@ -61,7 +61,7 @@
 # MACs hmac-md5,hmac-sha1,umac-64@openssh.com
 ##############################################################################
 
-######################## Remove the ssh version ##############################
+#################### Remove the ssh server version ###########################
 # strings /usr/sbin/sshd | grep Debian     <--   check the version and os name
 # sudo cp /usr/sbin/sshd /tmp/sshd.backup
 # sudo cp /tmp/sshd.backup /tmp/sshd
