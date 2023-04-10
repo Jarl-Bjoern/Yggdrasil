@@ -678,8 +678,6 @@ With the alias `yggdrasil-info` the output can be given up as often as you like.
     <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggdrasil_info.gif" width=700 height=500>
 </p>
 
-<br />
-
 <a name="manual_rust_update"></a>
 ## ⚙️ Manual rust updater
 In some cases, you may not be able to install various cargo packages due to an outdated version of Rust.
