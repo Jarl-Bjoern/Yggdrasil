@@ -84,8 +84,9 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
         - human readable df & du commands
         - manual microcode update
         - manual git tools update
+        - manual rust updater
         - nmap exclude for local ip addresses
-        - url opener divided by categories (education | forensic | infrastructure | osint)
+        - url opener divided by categories (education | forensic | infrastructure | osint | pentesting)
       - Functions
         - base64 function
         - colorized file reader function
