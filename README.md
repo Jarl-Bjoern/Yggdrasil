@@ -684,7 +684,7 @@ In some cases, you may not be able to install various cargo packages due to an o
 
 With the alias `yggdrasil-rust-update` you can try to update the current Rust version.
 
-**Notice: Only available at version 0.9b)**
+**Notice: Only available at version 0.9b**
 
 <br />
 
