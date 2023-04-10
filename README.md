@@ -653,12 +653,14 @@ In some cases, you may need certain URLs and lack the time to always set them up
 
 <br />
 
-| Alias               | Description |
-| ------------------- | ----------- |
-| yggdrasil-education | This alias is used to load pages into your default browser, which can be used for training purposes. |
-| yggdrasil-forensic  | This alias is used to load web pages into your browser that are relevant for forensic purposes. |
-| yggdrasil-hardening | This alias is used to load web pages that are relevant for hardening purposes. |
-| yggdrasil-osint     | This alias opens URLs that are relevant for OSINT. |
+| Alias                 | Description |
+| --------------------- | ----------- |
+| yggdrasil-education   | This alias is used to load pages into your default browser, which can be used for training purposes. |
+| yggdrasil-forensic    | This alias is used to load web pages into your browser that are relevant for forensic purposes. |
+| yggdrasil-hardening   | This alias is used to load web pages that are relevant for hardening purposes. |
+| yggdrasil-osint       | This alias opens URLs that are relevant for OSINT. |
+| yggdrasil-pentesting  | This alias is used to load web pages into your browser that are relevant for pentest purposes. **(Available at Version 0.9b)** |
+| yggdrasil-rust-update | With this alias you can try to update the current Rust version. **(Available at Version 0.9b)** |
 
 <br />
 
