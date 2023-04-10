@@ -127,6 +127,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - [⚙️ Manual Tools Updater](#manual_tool_updater)
   - [⚙️ Manual URL Opener](#manual_url_opener)
   - [⚙️ Manual Yggdrasil Info show](#manual_info_show)
+  - [⚙️ Manual rust updater](#manual_rust_update)
 - [📝 Customize your installation](#custom_install)
   - [📝 Method Example](#method_install)
   - [📝 Build from scratch](#custom_install_II)
@@ -660,7 +661,6 @@ In some cases, you may need certain URLs and lack the time to always set them up
 | yggdrasil-hardening   | This alias is used to load web pages that are relevant for hardening purposes. |
 | yggdrasil-osint       | This alias opens URLs that are relevant for OSINT. |
 | yggdrasil-pentesting  | This alias is used to load web pages into your browser that are relevant for pentest purposes. **(Available at Version 0.9b)** |
-| yggdrasil-rust-update | With this alias you can try to update the current Rust version. **(Available at Version 0.9b)** |
 
 <br />
 
@@ -675,6 +675,16 @@ With the alias `yggdrasil-info` the output can be given up as often as you like.
 <p align='center'>
     <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggdrasil_info.gif" width=700 height=500>
 </p>
+
+<br />
+
+<a name="manual_rust_update"></a>
+## ⚙️ Manual rust updater
+In some cases, you may not be able to install various cargo packages due to an outdated version of Rust.
+
+With the alias `yggdrasil-rust-update` you can try to update the current Rust version.
+
+**Notice: Only available at version 0.9b)**
 
 <br />
 
