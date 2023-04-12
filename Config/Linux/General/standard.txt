@@ -2,7 +2,6 @@
 ansible
 apache2
 bat
-cargo
 charon-cmd
 curl
 docker.io
