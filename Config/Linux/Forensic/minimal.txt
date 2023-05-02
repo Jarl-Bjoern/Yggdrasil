@@ -46,6 +46,7 @@ https://github.com/Aorimn/dislocker
 https://github.com/airbus-cert/regrippy
 https://github.com/BurntSushi/ripgrep
 https://github.com/getreu/stringsext
+https://github.com/Yamato-Security/hayabusa
 
 # Go
 
