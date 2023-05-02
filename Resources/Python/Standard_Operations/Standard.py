@@ -4,7 +4,7 @@
 
 # Libraries
 from Resources.Python.Standard_Operations.Libraries import DEVNULL, join, osname, run, sleep, stdout, system, walk
-from Resources.Python.Standard_Operations.Colors import Colors
+from Resources.Python.Standard_Operations.Colors    import Colors
 
 # Classes
 class Standard:
@@ -16,7 +16,7 @@ class Standard:
 
     def Initials():
         if (osname == 'nt'): system('cls')
-        else: system('clear')
+        else:                system('clear')
         Header = """💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 💀\t\t\t\t\t\t\t\t💀
 💀\t\t           """+Colors.UNDERLINE+"Yggdrasil"+Colors.RESET+"""\t\t\t\t💀
@@ -40,12 +40,12 @@ class Standard:
 
         for root, _, files in walk(File_Path, topdown=False):
             for file in files:
-                if (not file.endswith('.ps1') and
-                    not file.endswith('.py') and
-                    not file.endswith('.jpg') and
+                if (not file.endswith('.ps1')  and
+                    not file.endswith('.py')   and
+                    not file.endswith('.jpg')  and
                     not file.endswith('.jpeg') and
-                    not file.endswith('.png') and
-                    not '.git' in root and
+                    not file.endswith('.png')  and
+                    not '.git' in root         and
                     not '__pycache__' in root):
                         try:
                             with open(join(root, file), 'r', encoding='utf-8') as f:
@@ -70,5 +70,5 @@ class Standard:
 
         for root, _, files in walk(File_Path, topdown=False):
             for file in files:
-                if (file.endswith('.py')): Permission_Change(join(root, file))
+                if (file.endswith('.py')):   Permission_Change(join(root, file))
                 elif (file.endswith('.sh')): Permission_Change(join(root, file))
