@@ -3,11 +3,11 @@
 # Rainer Christian Bjoern Herold
 
 # Libraries
-from os import listdir, remove
-from os.path import dirname, join, realpath
+from os                         import listdir, remove
+from os.path                    import dirname, join, realpath
 from Standard_Operations.Colors import Colors
 from Standard_Operations.Logger import Write_Log
-from sys import argv
+from sys                        import argv
 
 # Arrays
 Array_Filter = ['.sh','.deb','.tar.gz','.bz2','.zip','.rar','.xpi','.msi']
