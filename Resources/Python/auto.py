@@ -5,16 +5,16 @@
 
 # Libraries
 try:
-    from os import kill, listdir, system
-    from os.path import dirname, join, realpath
-    from psutil import process_iter
-    from pyautogui import click as mouse_click, hold, hotkey, keyDown, locateOnScreen, press, size as screen_resolution, write as autowrite
-    from signal import SIGKILL
+    from os                         import kill, listdir, system
+    from os.path                    import dirname, join, realpath
+    from psutil                     import process_iter
+    from pyautogui                  import click as mouse_click, hold, hotkey, keyDown, locateOnScreen, press, size as screen_resolution, write as autowrite
+    from signal                     import SIGKILL
     from Standard_Operations.Colors import Colors
     from Standard_Operations.Logger import Write_Log
-    from sys import argv
-    from time import sleep
-    from threading import Thread
+    from sys                        import argv
+    from time                       import sleep
+    from threading                  import Thread
 except ModuleNotFoundError as e: input(f"The module was not found\n\n{e}\n\nPlease confirm with the button 'Return'"), exit()
 
 # Functions
@@ -25,7 +25,7 @@ def Process_ID(Process_Name):
 
 def Press_Hotkey(key_One, key_Two, seconds): hotkey(key_One, key_Two), sleep(seconds)
 
-def Press_Key(key, seconds): press(key), sleep(seconds)
+def Press_Key(key, seconds):                 press(key), sleep(seconds)
 
 def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__file__)).replace('Python','Auto/Linux/Firefox/Firefox_ADD.jpg')):
     Press_Hotkey('win','right', 2), Press_Key('win', 2), autowrite('firefox'), sleep(2), Press_Key('return', 5), Press_Hotkey('win','left', 2)
@@ -45,7 +45,7 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
                     r, Counter = None, 0
                     while (r == None):
                         if (Counter <= 10): r = locateOnScreen(Button_Path, grayscale=False, confidence=0.85)
-                        else: r = locateOnScreen(Button_Path, grayscale=True, confidence=0.85)
+                        else:               r = locateOnScreen(Button_Path, grayscale=True, confidence=0.85)
 
                         if (Counter == 20):
                             print (Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
@@ -86,5 +86,5 @@ def Veracrypt_Install(Path):
 if __name__ == '__main__':
     if (argv[1] == "Veracrypt"): Veracrypt_Install(argv[2])
     elif (argv[1] == "Pycharm"): Pycharm_Install(argv[2])
-    elif (argv[1] == "SoapUI"): SoapUI_Install(argv[2])
+    elif (argv[1] == "SoapUI"):  SoapUI_Install(argv[2])
     elif (argv[1] == "Firefox"): Firefox_Addons(argv[2], argv[3])
