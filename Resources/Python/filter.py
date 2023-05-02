@@ -3,10 +3,10 @@
 # Rainer Christian Bjoern Herold
 
 # Libraries
-from os.path import join
+from os.path                    import join
 from Standard_Operations.Colors import Colors
 from Standard_Operations.Logger import Write_Log
-from sys import argv
+from sys                        import argv
 
 # Standard_Functions
 def read_file(path_to_file):
@@ -251,12 +251,12 @@ WantedBy=multi-user.target"""
 if __name__ == '__main__':
         try:
                 if ("crontab" in argv[1]):
-                        if ("shred" in argv[3]): Shredder_Configuration(argv[1], argv[2], argv[4])
+                        if ("shred" in argv[3]):    Shredder_Configuration(argv[1], argv[2], argv[4])
                         elif ("normal" in argv[3]): Crontab_Configuration(argv[1], argv[2])
                 elif ("rules.v4" in argv[1]): Firewall_Configuration(argv[1])
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
                 elif (".zshrc" in argv[1] or ".bashrc" in argv[1] or ".profile" in argv[1]): Alias_Configuration(argv[1], argv[2], argv[3])
                 elif ("/systemd/system" in argv[1]):
-                        if ("shred" in argv[3]): Systemd_Shredder_Configuration(argv[1], argv[2], argv[4])
+                        if ("shred" in argv[3]):    Systemd_Shredder_Configuration(argv[1], argv[2], argv[4])
                         elif ("normal" in argv[3]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2])
         except FileNotFoundError: pass
