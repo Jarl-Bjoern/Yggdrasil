@@ -7,14 +7,14 @@
 # Version 0.4 06.02.2023
 
 # Libraries
-from os import remove
-from os.path import dirname, realpath
-from re import finditer
-from shutil import ReadError, unpack_archive
+from os                         import remove
+from os.path                    import dirname, realpath
+from re                         import finditer
+from shutil                     import ReadError, unpack_archive
 from Standard_Operations.Colors import Colors
 from Standard_Operations.Logger import Write_Log
-from sys import argv
-from tarfile import open as tfopen
+from sys                        import argv
+from tarfile                    import open as tfopen
 
 # Main
 if __name__ == '__main__':
@@ -24,7 +24,7 @@ if __name__ == '__main__':
             File = argv[1][Position:]
         else:
             if ('\n' in argv[1] or '\r' in argv[1]): File = argv[1][:-1]
-            else: File = argv[1]
+            else:                                    File = argv[1]
         try:
             unpack_archive(f'{argv[2]}/{File}', f'{argv[2]}/')
             Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RESET+"The File "+Colors.ORANGE+f"{File}"+Colors.RESET+" was successfully unzipped.")
