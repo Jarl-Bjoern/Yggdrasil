@@ -44,6 +44,7 @@ novnc
 x11vnc
 
 # Python
+defaultcreds-cheat-sheet
 docker-compose
 
 # Wget
