@@ -71,6 +71,7 @@ declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/opt/pentest_tools/JuicyPotato"
 "/opt/pentest_tools/RoguePotato"
 "/opt/pentest_tools/Snaffler"
+"/opt/pentest_tools/LaZagne"
 "/opt/pentest_tools/API/Postman")
 
 declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
