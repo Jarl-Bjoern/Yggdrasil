@@ -1395,7 +1395,7 @@ fi
 
 # Unpacking_Rockyou
 if [ -f "/usr/share/wordlists/rockyou.txt.gz" ]; then
-        sudo gunzip /usr/share/wordlists/rockyou.txt.gz || echo "rockyou already exists."
+        sudo gunzip /usr/share/wordlists/rockyou.txt.gz || yes Y | sudo gunzip /usr/share/wordlists/rockyou.txt.gz
 fi
 
 # Docker_Standard_Images
