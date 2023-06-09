@@ -11,6 +11,7 @@ putty
 python-tk
 python3-tk
 ranger
+remmina
 rofi
 scrot
 synaptic
