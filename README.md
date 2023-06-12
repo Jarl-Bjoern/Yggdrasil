@@ -63,6 +63,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - Custom Websites (via wget)
   - Docker
   - Gem
+  - Github
   - Go
   - pip
 - Best Practice settings
