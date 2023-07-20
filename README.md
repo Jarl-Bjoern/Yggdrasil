@@ -48,6 +48,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - Improved red teaming category
   - Improved firewall settings
   - New alias for important pentesting url opening
+  - Outsourcing of the documentation to the Yggdrasil wiki.
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/blob/main/Information/Changelog/full.md">
