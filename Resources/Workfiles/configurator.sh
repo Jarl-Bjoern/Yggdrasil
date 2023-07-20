@@ -330,7 +330,6 @@ function File_Installer() {
                 elif [[ $line = "# Git" ]]; then
                         Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
                 elif [[ $line = "# Git_Branch" ]]; then
-		        echo "$2" ; exit
                         Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
 			Switch_BRANCH=true
                 elif [[ $line = "# Gem" ]]; then
@@ -831,7 +830,6 @@ if [[ "$Switch_Skip_Hardening" != true ]]; then
         echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 fi
 if [[ $category_type != "custom" && $category_type != "2" ]]; then
-        echo "$OPT_Path"
         File_Installer "$FULL_PATH/Config/Linux/General/standard.txt" "$OPT_Path"
         if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
                 File_Installer "$FULL_PATH/Config/Linux/General/gui.txt" "$OPT_Path"
@@ -849,6 +847,7 @@ else
                         File_Installer "${i}/full.txt" "$OPT_Path"
                 done
         else
+	        echo "$OPT_Path"
                 File_Installer "$File_Path" "$OPT_Path"
         fi
 fi
