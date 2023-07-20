@@ -344,7 +344,7 @@ function File_Installer() {
                         if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
                                 if [ "$Switch_WGET" = false ]; then
                                         if [[ $line =~ "github" ]]; then
-					        if [[ "$Switch_BRANCH" = false ]]; then
+					        if [[ "$Switch_BRANCH" == false ]]; then
                                                     echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "$FULL_PATH/yggdrasil.log"
 						else
                                                     echo "$line" | cut -d "/" -f5
