@@ -292,6 +292,7 @@ function File_Installer() {
                                 echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
                         fi
                 elif [[ $1 =~ "git" ]]; then
+                        echo "$2"
                         if find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)"; then
                                 echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
                                 Temp_GIT_Name=$(echo "$2" | rev | cut -d '/' -f1 | rev)
