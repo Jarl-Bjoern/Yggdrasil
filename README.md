@@ -63,7 +63,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - APT
   - Cargo
   - Custom Websites (via wget)
-  - Docker
+  - Docker (normal | specific branch | submodules)
   - Gem
   - Github
   - Go
@@ -781,6 +781,10 @@ You can also build the file from scratch. To do this, navigate to the directory 
 # Gem
 
 # Git
+
+# Git_Branch
+
+# Git_Submodules
 
 # Go
 
