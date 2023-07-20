@@ -9,7 +9,6 @@
 # Git
 
 # Git_Branch
-https://github.com/PowerShellMafia/PowerSploit dev
 
 # Go
 
