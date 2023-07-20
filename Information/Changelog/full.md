@@ -33,6 +33,8 @@
 <strong>Known issues of </strong> `0.9`:
   - The logging is bugged
   - Rust still does not install correctly
+  - Kali 23.1 doesn't include a preinstalled version of opencv-python
+  - Shredding Script doesn't work correctly
 
 ## Version 0.8b
 <strong>Hotfix</strong> `0.8b`:
