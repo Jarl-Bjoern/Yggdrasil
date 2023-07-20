@@ -370,7 +370,7 @@ function File_Installer() {
                                         fi
                                         if [ "$Switch_Skip_Hardening" = true ]; then
                                                 if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
-                                                        echo "$line was skipped" | tee -a "$FULL_PATH/yggdrasil.log"
+                                                        echo -e "${RED}$line${NOCOLOR} was skipped" | tee -a "$FULL_PATH/yggdrasil.log"
                                                 else
                                                         if [[ $Switch_IGNORE = false ]]; then
                                                                 if [[ $Command =~ "apt" ]]; then
