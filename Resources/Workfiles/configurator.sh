@@ -328,8 +328,8 @@ function File_Installer() {
                         Command="pip3 install" ; Skip=true ; Switch_WGET=false
                 elif [[ $line = "# Git" ]]; then
                         Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
-#                elif [[ $line = "# Git_Branch" ]]; then
-#                        Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
+                elif [[ $line = "# Git_Branch" ]]; then
+                        Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
                 elif [[ $line = "# Gem" ]]; then
                         Command="gem install" ; Skip=true ; Switch_WGET=false
                 elif [[ $line = "# Go" ]]; then
