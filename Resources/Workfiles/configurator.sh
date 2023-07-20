@@ -292,7 +292,6 @@ function File_Installer() {
                                 echo "$2 was not installed." >> "$FULL_PATH/yggdrasil.log"
                         fi
                 elif [[ $1 =~ "git" ]]; then
-                        echo "$2"
                         if find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep -q "$(echo "$2" | rev | cut -d '/' -f1 | rev)"; then
                                 echo "$2 was successfully installed." >> "$FULL_PATH/yggdrasil.log"
                                 Temp_GIT_Name=$(echo "$2" | rev | cut -d '/' -f1 | rev)
@@ -331,6 +330,7 @@ function File_Installer() {
                 elif [[ $line = "# Git" ]]; then
                         Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
                 elif [[ $line = "# Git_Branch" ]]; then
+		        echo "$2"
                         Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
 			Switch_BRANCH=true
                 elif [[ $line = "# Gem" ]]; then
