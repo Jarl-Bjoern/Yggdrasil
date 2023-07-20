@@ -406,7 +406,7 @@ function File_Installer() {
 							fi
 							Logger "$Command" "$line"
                                                 else
-                                                        echo "$line already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+                                                        echo -e "${RED}$line${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
                                                 fi
                                         fi
                                 else
@@ -485,7 +485,7 @@ function File_Installer() {
                                         fi
                                                 Logger "$FILE" "$FILE_NAME"
                                         else
-                                                echo "$FILE_NAME already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+                                                echo -e "${RED}$FILE_NAME${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
                                         fi
                                 fi
                         fi
