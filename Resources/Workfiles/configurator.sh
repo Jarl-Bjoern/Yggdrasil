@@ -20,6 +20,7 @@ pentesting=""
 Shredding_DAYS=""
 Skip=false
 Switch_APACHE=false
+Switch_BRANCH=false
 Switch_Cargo=false
 Switch_CRON=false
 Switch_CUSTOM_CONFIGS=false
@@ -330,6 +331,7 @@ function File_Installer() {
                         Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
                 elif [[ $line = "# Git_Branch" ]]; then
                         Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
+			Switch_BRANCH=true
                 elif [[ $line = "# Gem" ]]; then
                         Command="gem install" ; Skip=true ; Switch_WGET=false
                 elif [[ $line = "# Go" ]]; then
