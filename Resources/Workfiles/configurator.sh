@@ -632,11 +632,21 @@ else
                 Informational="$FULL_PATH/Information/info.txt"
                 decision="full"
         else
-                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "web" || $pentesting = "5" || $pentesting = "cloud" || $pentesting = "6" ]]; then
+                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "5" || $pentesting = "cloud" || $pentesting = "6" ]]; then
                         File_Path="${Path_Way}/full.txt"
                         decision="full"
                         Informational="$FULL_PATH/Information/info.txt"
                 else
+                        if [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
+			        header "red_team"
+			        read -rp "Your Choice: " red_team
+			        if [[ $red_team =~ "," ]]; then
+			                IFS=", "
+                                        echo "UNDER CONSTRUCTION"
+			        else
+                                    echo "UNDER CONSTRUCTION"
+			        fi
+                        fi
                         header "installation"
                         read -rp "Your Choice: " decision
                         if [[ $decision = "full" || $decision = "1" ]]; then
