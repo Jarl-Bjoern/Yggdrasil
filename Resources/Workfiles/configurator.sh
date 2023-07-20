@@ -850,7 +850,6 @@ else
                         File_Installer "${i}/full.txt" "$OPT_Path"
                 done
         else
-	        echo "$OPT_Path"
                 File_Installer "$File_Path" "$OPT_Path"
         fi
 fi
