@@ -344,7 +344,10 @@ function File_Installer() {
                         if [ "$Skip" = false ] && [ ! "$line" = "" ]; then
                                 if [ "$Switch_WGET" = false ]; then
                                         if [[ $line =~ "github" ]]; then
-                                                echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "$FULL_PATH/yggdrasil.log"
+					        if [[ "$Switch_BRANCH" = false ]]; then
+                                                    echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5)${NOCOLOR}"  | tee -a "$FULL_PATH/yggdrasil.log"
+						else
+                                                    echo -e "${CYAN}-------------------------------------------------------------------------------${NOCOLOR}\n\nDownload ${ORANGE}$(echo "$line" | cut -d "/" -f5 | cut -d " " -f1)${NOCOLOR}"  | tee -a "$FULL_PATH/yggdrasil.log"
                                                 for CHECK_GIT in "${Array_Filter_Git[@]}"; do
                                                         if [[ $CHECK_GIT =~ $(echo "$line" | cut -d "/" -f5) ]]; then
                                                                 if [[ "$CHECK_GIT" =~ "/opt/pentest_tools" ]]; then
