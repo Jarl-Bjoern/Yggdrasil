@@ -369,6 +369,10 @@ function File_Installer() {
                                                                 if [[ $Command =~ "apt" ]]; then
                                                                         SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
                                                                         eval "$SECOND_Command"
+								elif [[ $Command =~ "git clone -b" ]]; then
+                                                                        FILE_URL=$(echo "$line" | cut -d" " -f1)
+                                                                        FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
+									eval "$Command $FILE_BRANCH $FILE_URL"
                                                                 else
                                                                         eval "$Command $line"
                                                                 fi
@@ -382,6 +386,10 @@ function File_Installer() {
 							if [[ $Command =~ "apt" ]]; then
 								SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
 								eval "$SECOND_Command"
+							elif [[ $Command =~ "git clone -b" ]]; then
+								FILE_URL=$(echo "$line" | cut -d" " -f1)
+								FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
+								eval "$Command $FILE_BRANCH $FILE_URL"
 							else
 								eval "$Command $line"
 							fi
