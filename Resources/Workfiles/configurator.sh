@@ -330,7 +330,7 @@ function File_Installer() {
                 elif [[ $line = "# Git" ]]; then
                         Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
                 elif [[ $line = "# Git_Branch" ]]; then
-		        echo "$2"
+		        echo "$2" ; exit
                         Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false
 			Switch_BRANCH=true
                 elif [[ $line = "# Gem" ]]; then
