@@ -55,6 +55,15 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 </a> ⬅️
 </div><br />
 
+## 🛡️ Full Documentation
+UNDER CONSTRUCTION
+
+<div align="center">
+➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki">
+  Full Documentation
+</a> ⬅️
+</div><br />
+
 ## 📃 Settings overview
 - Ability to configure your own setting
   - Changing the default installation path to your own
