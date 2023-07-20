@@ -122,6 +122,13 @@ Under the link below you can find the official documentation about the tool.
 
 <br />
 
+<a name="live_example"></a>
+## ⚔ Live Example
+
+<p align=center>
+    <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_installation.gif" width=700 height=500>
+</p>
+
 <a name="special_thanks"></a>
 # 🏆 Special thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
