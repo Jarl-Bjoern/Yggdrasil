@@ -38,6 +38,9 @@ This tool is intended to simplify the setup of various tools and configuration o
 
 The name `Yggdrasil` comes from Norse mythology and is the tree of life or world tree, here the name is quite appropriate for the concept of the program, as it is geared for several pentetration test areas or even for digital forensics.<br />
 
+Please do not use the program for illegal activities.<br />
+<br />
+
 ## ❗ News
 <strong>Upcoming changes for version</strong> `0.9b`:
   - Logging fixes
