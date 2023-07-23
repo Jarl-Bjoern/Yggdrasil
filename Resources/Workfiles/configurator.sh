@@ -605,7 +605,7 @@ elif [[ $category_type = "training" || $category_type = "6" ]]; then
 elif [[ $category_type = "custom" || $category_type = "2" ]]; then
         Path_Way="$FULL_PATH/Config/Linux/Custom"
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
-                OPT_Path="/opt/pentest_tools"
+                OPT_Path="/opt/custom_yggdrasil_tools"
         fi
 elif [[ $category_type = "complete" || $category_type = "1" ]]; then
         if [[ ! "${#OPT_Path}" -gt 2 ]]; then
