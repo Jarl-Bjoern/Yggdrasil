@@ -563,43 +563,41 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
                         elif [[ $testing_category == "red_teaming" || $testing_category == "4" ]]; then
                                 #Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
                                 #Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
-                                if [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
-			                header "red_team"
-			                read -rp "Your Choice: " red_team
-			                if [[ $red_team =~ "," ]]; then
-			                        IFS=", "
-                                                Array_Red_Teaming=($red_team)
-                                                for testing_category in "${Array_Red_Teaming[@]}"; do
-                                                    if [[ $testing_category == "complete" || $testing_category == "1" ]]; then
-                                                          echo "UNDER CONSTRUCTION"
-                                                    elif [[ $testing_category == "active_directory" || $testing_category == "2" ]]; then
-                                                          echo "UNDER CONSTRUCTION"
-                                                    elif [[ $testing_category == "osint" || $testing_category == "3" ]]; then
-                                                          echo "UNDER CONSTRUCTION"
-                                                    elif [[ $testing_category == "phishing" || $testing_category == "4" ]]; then
-                                                          echo "UNDER CONSTRUCTION"
-                                                    elif [[ $testing_category == "physical" || $testing_category == "5" ]]; then
-                                                          echo "UNDER CONSTRUCTION"
-					            else
-		                                          echo "UNDER CONSTRUCTION" ; exit
-                                                    fi
-                                                done
-			                else
-                                                if [[ $red_team == "complete" || $red_team == "1" ]]; then
-                                                      echo "UNDER CONSTRUCTION"
-                                                elif [[ $red_team == "active_directory" || $red_team == "2" ]]; then
-                                                      echo "UNDER CONSTRUCTION"
-                                                elif [[ $red_team == "osint" || $red_team == "3" ]]; then
-                                                      echo "UNDER CONSTRUCTION"
-                                                elif [[ $red_team == "phishing" || $red_team == "4" ]]; then
-                                                      echo "UNDER CONSTRUCTION"
-                                                elif [[ $red_team == "physical" || $red_team == "5" ]]; then
-                                                      echo "UNDER CONSTRUCTION"
-					        else
-		                                      echo "UNDER CONSTRUCTION" ; exit
-                                                fi
-			                fi
-                                fi
+				header "red_team"
+				read -rp "Your Choice: " red_team
+				if [[ $red_team =~ "," ]]; then
+					IFS=", "
+					Array_Red_Teaming=($red_team)
+					for testing_category in "${Array_Red_Teaming[@]}"; do
+					    if [[ $testing_category == "complete" || $testing_category == "1" ]]; then
+						  echo "UNDER CONSTRUCTION"
+					    elif [[ $testing_category == "active_directory" || $testing_category == "2" ]]; then
+						  echo "UNDER CONSTRUCTION"
+					    elif [[ $testing_category == "osint" || $testing_category == "3" ]]; then
+						  echo "UNDER CONSTRUCTION"
+					    elif [[ $testing_category == "phishing" || $testing_category == "4" ]]; then
+						  echo "UNDER CONSTRUCTION"
+					    elif [[ $testing_category == "physical" || $testing_category == "5" ]]; then
+						  echo "UNDER CONSTRUCTION"
+					    else
+						  echo "UNDER CONSTRUCTION" ; exit
+					    fi
+					done
+				else
+					if [[ $red_team == "complete" || $red_team == "1" ]]; then
+					      echo "UNDER CONSTRUCTION"
+					elif [[ $red_team == "active_directory" || $red_team == "2" ]]; then
+					      echo "UNDER CONSTRUCTION"
+					elif [[ $red_team == "osint" || $red_team == "3" ]]; then
+					      echo "UNDER CONSTRUCTION"
+					elif [[ $red_team == "phishing" || $red_team == "4" ]]; then
+					      echo "UNDER CONSTRUCTION"
+					elif [[ $red_team == "physical" || $red_team == "5" ]]; then
+					      echo "UNDER CONSTRUCTION"
+					else
+					      echo "UNDER CONSTRUCTION" ; exit
+					fi
+				fi
                         elif [[ $testing_category == "web" || $testing_category == "5" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
                         elif [[ $testing_category == "cloud" || $testing_category == "6" ]]; then
