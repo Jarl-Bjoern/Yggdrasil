@@ -58,10 +58,6 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL), sleep(2), hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up')
 
-def SoapUI_Install(Path):
-    def Auto_Install():
-        pass
-
 def Pycharm_Install(Path):
     def Auto_Install():
         pass
