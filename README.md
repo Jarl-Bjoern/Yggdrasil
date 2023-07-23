@@ -74,7 +74,7 @@ Under the link below you can find the official documentation about the tool.
 Under the following link, you can see all the implemented features that the tool currently offers.
 
 <div align="center">
-➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki/%F0%9F%93%83-Settings-overview">
+➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki/%F0%9F%93%83-Features-overview">
   List of all features
 </a> ⬅️
 </div><br />
