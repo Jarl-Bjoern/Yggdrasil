@@ -68,7 +68,6 @@ declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/usr/bin/code"
 "/usr/bin/rustc"
 "/usr/bin/google-chrome"
-"/opt/pentest_tools/jetbrains*"
 "/opt/pentest_tools/Proxy/mitmproxy"
 "/opt/pentest_tools/kerbrute"
 "/opt/pentest_tools/JuicyPotato"
@@ -1200,10 +1199,6 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
                                 sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "False"
                         fi
                 fi
-        fi
-        if [ -d "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")" ]; then
-                TEMP_PATH_JET=$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "jetbrains")
-                "$TEMP_PATH_JET"/jetbrains-toolbox ; sleep 15
         fi
         if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
                 sudo python3 "$FULL_PATH/Resources/Python/install.py" "$PATH_Install_Dir"
