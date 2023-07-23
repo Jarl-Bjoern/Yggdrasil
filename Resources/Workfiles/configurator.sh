@@ -561,6 +561,7 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
                         elif [[ $testing_category == "mobile" || $testing_category == "3" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Mobile")
                         elif [[ $testing_category == "red_teaming" || $testing_category == "4" ]]; then
+			        echo "test" ; exit
                                 #Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
                                 #Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
 				header "red_team"
