@@ -563,6 +563,16 @@ elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
                         elif [[ $testing_category == "red_teaming" || $testing_category == "4" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
                                 Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
+                                if [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
+			                header "red_team"
+			                read -rp "Your Choice: " red_team
+			                if [[ $red_team =~ "," ]]; then
+			                        IFS=", "
+                                                echo "UNDER CONSTRUCTION"
+			                else
+                                                echo "UNDER CONSTRUCTION"
+			                fi
+                                fi
                         elif [[ $testing_category == "web" || $testing_category == "5" ]]; then
                                 Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
                         elif [[ $testing_category == "cloud" || $testing_category == "6" ]]; then
@@ -636,21 +646,11 @@ else
                 Informational="$FULL_PATH/Information/info.txt"
                 decision="full"
         else
-                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "5" || $pentesting = "cloud" || $pentesting = "6" ]]; then
+                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "5" || $pentesting = "cloud" || $pentesting = "6" ]]; then
                         File_Path="${Path_Way}/full.txt"
                         decision="full"
                         Informational="$FULL_PATH/Information/info.txt"
                 else
-                        if [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
-			        header "red_team"
-			        read -rp "Your Choice: " red_team
-			        if [[ $red_team =~ "," ]]; then
-			                IFS=", "
-                                        echo "UNDER CONSTRUCTION"
-			        else
-                                    echo "UNDER CONSTRUCTION"
-			        fi
-                        fi
                         header "installation"
                         read -rp "Your Choice: " decision
                         if [[ $decision = "full" || $decision = "1" ]]; then
