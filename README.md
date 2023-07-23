@@ -59,6 +59,7 @@ Please do not use the program for illegal activities.<br />
 </a> ⬅️
 </div><br />
 
+
 ## 🛡️ Official Documentation
 Under the link below you can find the official documentation about the tool.
 
@@ -68,73 +69,31 @@ Under the link below you can find the official documentation about the tool.
 </a> ⬅️
 </div><br />
 
-## 📃 Settings overview
-- Ability to configure your own setting
-  - Changing the default installation path to your own
-  - Custom config based on the provided template
-  - Include a custom path of your own scripts or dpkg packages
-- Automation download of tools from the following categories
-  - APT
-  - Cargo
-  - Custom Websites (via wget)
-  - Docker (normal | specific branch | submodules)
-  - Gem
-  - Github
-  - Go
-  - pip
-- Best Practice settings
-  - Automated cleaning tasks
-    - cleaning task to remove old container images
-    - shredding task to delete your penetration test results for privacy reasons after 90 days (default) or after a custom number of days
-  - Automated Updater via Crontab
-    - Cargo Tools
-    - Docker Images
-    - GIT Tools
-    - Important pip packages
-    - OS
-    - Rust
-  - Changing the default hostname
-  - Custom configuration
-    - BASHRC and ZSHRC
-      - Alias
-        - callable yggdrasil best practice information after the installation
-        - colorized grep
-        - human readable df & du commands
-        - manual microcode update
-        - manual git tools update
-        - manual rust updater
-        - nmap exclude for local ip addresses
-        - url opener divided by categories (education | forensic | infrastructure | osint | pentesting)
-      - Functions
-        - base64 function
-        - colorized file reader function
-        - vnc start function
-    - Screenrc
-    - VIM
-  - Repository change from rolling-release (bleeding-edge) to last-snapshot
-  - Overview about some useful information after the install
-- GUI automation
-  - accept licenses
-  - install firefox extensions
-- Hardening
-  - Apache
-  - Firewall
-  - Kernel
-  - nginx
-  - SSH
 
-<br />
+## 📃 Settings
+<div align="center">
+➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki/%F0%9F%93%83-Settings-overview">
+  List of all settings
+</a> ⬅️
+</div><br />
 
-<a name="live_example"></a>
+
+## ⚙️ Features
+<div align="center">
+➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki/%E2%9A%99%EF%B8%8F-Useful-provided-functions">
+  List of all features
+</a> ⬅️
+</div><br />
+
+
 ## ⚔ Live Example
-
 <p align=center>
     <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_installation.gif" width=700 height=500>
 </p>
 
 <br />
 
-<a name="special_thanks"></a>
+
 # 🏆 Special thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
