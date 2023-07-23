@@ -58,7 +58,10 @@ declare -a Array_Complete_Install=("$FULL_PATH/Config/Linux/Forensic/full.txt"
 "$FULL_PATH/Config/Linux/Pentest/Infrastructure/full.txt"
 "$FULL_PATH/Config/Linux/Pentest/IOT/full.txt"
 "$FULL_PATH/Config/Linux/Pentest/Mobile/full.txt"
-"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/full.txt"
+"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Active_Directory/full.txt"
+"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/OSINT/full.txt"
+"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Phishing/full.txt"
+"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Physical_Pentesting/full.txt"
 "$FULL_PATH/Config/Linux/Pentest/Web/full.txt")
 
 declare -a Array_Filter_Download=("/usr/bin/veracrypt"
