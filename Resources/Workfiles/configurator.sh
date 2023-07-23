@@ -513,10 +513,13 @@ function File_Reader() {
 function Red_Team_Check() {
         red_team=$1
 	if [[ $red_team == "complete" || $red_team == "1" ]]; then
-	      echo "UNDER CONSTRUCTION"
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Active_Directory")
+              Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming/OSINT")
+              Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Phishing")
+              Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Physical_Pentesting")
+              Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
 	elif [[ $red_team == "active_directory" || $red_team == "2" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Active_Directory")
-	      Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
 	elif [[ $red_team == "osint" || $red_team == "3" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming/OSINT")
 	      Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
@@ -525,7 +528,7 @@ function Red_Team_Check() {
 	elif [[ $red_team == "physical" || $red_team == "5" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Physical_Pentesting")
 	else
-	      echo "UNDER CONSTRUCTION" ; exit
+	      echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	fi
 }
 
