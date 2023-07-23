@@ -65,7 +65,6 @@ declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/usr/bin/code"
 "/usr/bin/rustc"
 "/usr/bin/google-chrome"
-"/opt/SmartBear/SoapUI*"
 "/opt/pentest_tools/jetbrains*"
 "/opt/pentest_tools/Proxy/mitmproxy"
 "/opt/pentest_tools/kerbrute"
@@ -973,9 +972,6 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
         fi
         if [ -d "$OPT_Path/socketcand" ]; then
                 cd "$OPT_Path"/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-        fi
-        if [ -f "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")" ]; then
-                sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "SoapUI")"
         fi
         if [ -d "$OPT_Path/Responder" ]; then
                 pip3 install -r "$OPT_Path"/Responder/requirements.txt ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
