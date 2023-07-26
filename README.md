@@ -4,11 +4,11 @@
   <a href="https://www.kali.org/">
     <img alt="Kali 22-4" src="https://img.shields.io/badge/%20-Linux-1f425f.svg?logo=linux&logoColor=cyan" />
   </a>
-  <a href="https://www.python.org/downloads/release/python-3100/">
-    <img alt="python" src="https://img.shields.io/badge/python-3.10-blue.svg?logo=python&logoColor=cyan" />
+  <a href="https://www.python.org/downloads/release/python-3110/">
+    <img alt="python" src="https://img.shields.io/badge/python-3.11-blue.svg?logo=python&logoColor=cyan" />
   </a>
   <a href="https://visitor-badge.glitch.me/badge?page_id=jarl-bjoern/yggdrasil&left_color=grey&right_color=blue">
-    <img alt="visitors" src="https://visitor-badge.glitch.me/badge?page_id=jarl-bjoern/yggdrasil&left_color=grey&right_color=blue" />
+    <img alt="visitors" src="https://visitor-badge.lithub.cc/badge?page_id=jarl-bjoern/yggdrasil.visitor-badge&left_text=Visitors" />
   </a>
 </div>
 <div align="center">
