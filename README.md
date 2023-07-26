@@ -7,7 +7,7 @@
   <a href="https://www.python.org/downloads/release/python-3110/">
     <img alt="python" src="https://img.shields.io/badge/python-3.11-blue.svg?logo=python&logoColor=cyan" />
   </a>
-  <a href="https://visitor-badge.glitch.me/badge?page_id=jarl-bjoern/yggdrasil&left_color=grey&right_color=blue">
+  <a href="https://visitor-badge.lithub.cc/badge?page_id=jarl-bjoern/yggdrasil.visitor-badge&left_text=Visitors">
     <img alt="visitors" src="https://visitor-badge.lithub.cc/badge?page_id=jarl-bjoern/yggdrasil.visitor-badge&left_text=Visitors" />
   </a>
 </div>
