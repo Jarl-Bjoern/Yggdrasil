@@ -925,6 +925,23 @@ else
         fi
 fi
 
+# Presetup_VIM_Config
+if [[ $Switch_VIM_NAYANINGALOO == true ]]; then
+	if [[ "$Switch_Verbose" == false ]]; then
+		 sudo DEBIAN_FRONTEND=noninteractive apt install -y vim vim-addon-manager vim-addon-mw-utils vim-common vim-fugitive vim-git-hub vim-gitgutter vim-gtk3 vim-gui-common vim-latexsuite vim-pathogen vim-runtime vim-scripts vim-snipmate vim-snippets vim-tiny vim-tlib vim-icinga2 vim-airline vim-airline-themes shellcheck gitlint yamllint
+	else
+		 sudo apt install -y vim vim-addon-manager vim-addon-mw-utils vim-common vim-fugitive vim-git-hub vim-gitgutter vim-gtk3 vim-gui-common vim-latexsuite vim-pathogen vim-runtime vim-scripts vim-snipmate vim-snippets vim-tiny vim-tlib vim-icinga2 vim-airline vim-airline-themes shellcheck gitlint yamllint
+	fi
+        cd /tmp || return 0 ; git clone https://github.com/nayaningaloo/vim
+fi
+
+# Setup_TMUX_Conf
+if [[ $Switch_TMUX == true ]]; then
+        cat <<'EOF' > "/etc/tmux.conf"
+set-option -g status-style "bg=black,fg=gold"
+EOF
+fi
+
 # Path_Filtering
 for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root"; do
         PATH_BSH="$i/.bashrc"
@@ -947,12 +964,31 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ZSH" "$OPT_Path" "$FULL_PATH"
         fi
 
-        if [[ $Switch_SCREENRC == true ]]; then
+        if [[ $Switch_SCREENRC_HOMESEN == true ]]; then
                 # Screen_Configuration (Thx to @HomeSen)
                 cat <<'EOF' > "$PATH_SCREEN"
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %Y-%m-%d %c "
+EOF
+        elif [[ $Switch_SCREENRC_BJOERN == true ]]; then
+                cat <<'EOF' > "$PATH_SCREEN"
+hardstatus on
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+
+# Turn_Off_Startup_Message
+startup_message off
+
+# Create_Five_Tabs
+screen -t vpn
+screen -t monitoring
+screen -t ssh-kali01
+screen -t ssh-kali02
+screen -t scp
+
+# Select_First_Tab
+select 0
 EOF
         fi
 
@@ -1002,12 +1038,7 @@ set statusline+=\
 set statusline+=%p%%
 EOF
         elif [[ $Switch_VIM_NAYANINGALOO == true ]]; then
-                if [[ "$Switch_Verbose" == false ]]; then
-                         sudo DEBIAN_FRONTEND=noninteractive apt install -y vim vim-addon-manager vim-addon-mw-utils vim-common vim-fugitive vim-git-hub vim-gitgutter vim-gtk3 vim-gui-common vim-latexsuite vim-pathogen vim-runtime vim-scripts vim-snipmate vim-snippets vim-tiny vim-tlib vim-icinga2 vim-airline vim-airline-themes shellcheck gitlint yamllint
-                else
-                         sudo apt install -y vim vim-addon-manager vim-addon-mw-utils vim-common vim-fugitive vim-git-hub vim-gitgutter vim-gtk3 vim-gui-common vim-latexsuite vim-pathogen vim-runtime vim-scripts vim-snipmate vim-snippets vim-tiny vim-tlib vim-icinga2 vim-airline vim-airline-themes shellcheck gitlint yamllint
-                fi
-                cd /tmp || return 0 ; git clone https://github.com/nayaningaloo/vim ; cd vim || return 0 ; sudo cp -r .vim "$i" ; sudo cp .vimrc .gitmodules "$i"
+                cd /tmp/vim || return 0 ; sudo cp -r .vim "$i" ; sudo cp .vimrc .gitmodules "$i"
         fi
 done
 
