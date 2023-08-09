@@ -11,11 +11,13 @@ tenableofficial/nessus
 https://github.com/CISOfy/lynis
 https://github.com/yandex/gixy
 https://github.com/stark0de/nginxpwner
+https://github.com/carlospolop/PEASS-ng
 
 # Go
 
 # Python
 
 # Wget
+https://github.com/SnaffCon/Snaffler/releases/download/1.0.112/Snaffler.exe Snaffler Executeable
 
 # Wordlists
