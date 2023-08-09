@@ -41,6 +41,7 @@ Switch_Skip_URLS=false
 #Switch_SQUID=false
 Switch_SSH=false
 Switch_SYSTEMD=false
+Switch_TMUX=false
 Switch_UPDATES=false
 Switch_Verbose=false
 Switch_VIM_CONFIG=false
@@ -809,6 +810,8 @@ if [[ $Switch_Skip_Configs != true ]]; then
                         Switch_REPO=true
                 elif [[ $custom_settings = "shredder" || $custom_settings = "7" ]]; then
                         Switch_SHREDDER=true
+                elif [[ $custom_settings = "tmux" || $custom_settings = "8" ]]; then
+                        Switch_TMUX=true
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                 fi
@@ -824,6 +827,20 @@ if [[ $Switch_VIM_CONFIG = true ]]; then
                 Switch_VIM_HOMESEN=true
         elif [[ $vim_settings = "nayaningaloo" || $vim_settings = "2" ]]; then
                 Switch_VIM_NAYANINGALOO=true
+        else
+                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+        fi
+        clearing
+fi
+
+# Screenrc_Configuration
+if [[ $Switch_SCREENRC_CONFIG = true ]]; then
+        header "screenrc"
+        read -rp "Your Choice: " screenrc_settings
+        if [[ $screenrc_settings = "homesen" || $screenrc_settings = "1" ]]; then
+                Switch_SCREENRC_HOMESEN=true
+        elif [[ $screenrc_settings = "jarl-bjoern" || $screenrc_settings = "2" ]]; then
+                Switch_SCREENRC_BJOERN=true
         else
                 echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
         fi
