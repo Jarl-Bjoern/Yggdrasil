@@ -792,6 +792,8 @@ if [[ $Switch_Skip_Configs != true ]]; then
                                 Switch_REPO=true
                         elif [[ $Cust_Setting == "shredder" || $Cust_Setting == "7" ]]; then
                                 Switch_SHREDDER=true
+                        elif [[ $Cust_Setting == "tmux" || $Cust_Setting == "8" ]]; then
+                                Switch_TMUX=true
                         fi
                 done
         else
