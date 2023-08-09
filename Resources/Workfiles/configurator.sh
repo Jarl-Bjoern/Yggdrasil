@@ -833,7 +833,7 @@ if [[ $Switch_VIM_CONFIG = true ]]; then
 fi
 
 # Screenrc_Configuration
-if [[ $Switch_SCREENRC_CONFIG = true ]]; then
+if [[ $Switch_SCREENRC = true ]]; then
         header "screenrc"
         read -rp "Your Choice: " screenrc_settings
         if [[ $screenrc_settings = "homesen" || $screenrc_settings = "1" ]]; then
