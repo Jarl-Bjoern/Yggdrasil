@@ -8,7 +8,9 @@ docker.io
 exiftool
 fish
 g++
+g++-multilib
 gcc
+gcc-multilib
 gem
 git
 gnutls-bin
@@ -18,6 +20,11 @@ htop
 iptables-persistent
 libcharon-extra-plugins
 libcharon-extauth-plugins
+libldap2-dev
+libmnl-dev
+libnftnl-dev
+libsasl2-dev
+libssl-dev
 libstrongswan-extra-plugins
 maven
 mc
