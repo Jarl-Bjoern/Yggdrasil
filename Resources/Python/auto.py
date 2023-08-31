@@ -72,7 +72,7 @@ def Veracrypt_Install(Path):
     sleep(1.25)
     t2 = Thread(target=Auto_Install).start()
 
-    Write_Log(dirname(realpath(__file__)).replace('Resource/Python','yggdrasil.log'), Colors.ORANGE+f"Veracrypt was successfully installed."+Colors.RESET)
+    Write_Log(dirname(realpath(__file__)).replace('Resource/Python','yggdrasil.log'), Colors.ORANGE+"Veracrypt was successfully installed."+Colors.RESET)
 
 # Main
 if __name__ == '__main__':
