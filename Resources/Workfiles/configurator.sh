@@ -43,6 +43,7 @@ Switch_SSH=false
 Switch_SYSTEMD=false
 Switch_TMUX=false
 Switch_UPDATES=false
+Switch_URL=true
 Switch_Verbose=false
 Switch_VIM_CONFIG=false
 Switch_VIM_HOMESEN=false
@@ -704,6 +705,7 @@ else
                                 fi
                         elif [[ $decision = "minimal" || $decision = "2" ]]; then
                                 File_Path="${Path_Way}/minimal.txt"
+                                Switch_URL=false
                         else
                                 echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                         fi
@@ -1545,7 +1547,7 @@ sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /opt/ssl/pentest-key.pem 
 sudo python3 "$FULL_PATH/Resources/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
-if [[ $Switch_Skip_URLS == false && $decision != "minimal" ]]; then
+if [[ $Switch_Skip_URLS == false && $Switch_URL != false ]]; then
         sleep 3
         if [[ ${#Array_URL} -gt 0 ]]; then
                 for URL in "${Array_URL[@]}"; do
