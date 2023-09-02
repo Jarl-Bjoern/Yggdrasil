@@ -1261,9 +1261,11 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
                         fi
                 fi
         fi
-        if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
-                sudo python3 "$FULL_PATH/Resources/Python/install.py" "$PATH_Install_Dir"
-        fi
+fi
+
+# Check_For_Custom_Scripts
+if [[ ${#PATH_Install_Dir} -gt 1 ]]; then
+	sudo python3 "$FULL_PATH/Resources/Python/install.py" "$PATH_Install_Dir"
 fi
 
 if [[ $Switch_Skip_Hardening != true ]]; then
