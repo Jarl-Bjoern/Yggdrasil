@@ -801,7 +801,7 @@ if [[ $Switch_Skip_Configs != true ]]; then
                 done
         else
                 if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
-                        Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true ; Switch_SHREDDER=true
+                        Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true ; Switch_SHREDDER=true ; Switch_TMUX=true
                 elif [[ $custom_settings = "updates" || $custom_settings = "2" ]]; then
                         Switch_UPDATES=true
                 elif [[ $custom_settings = "alias" || $custom_settings = "3" ]]; then
