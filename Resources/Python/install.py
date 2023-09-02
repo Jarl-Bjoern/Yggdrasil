@@ -6,7 +6,7 @@
 
 # Libraries
 from os                         import system, walk
-from os.path                    import dirname, exists, join, realpath
+from os.path                    import dirname, exists, isdir, isfile, join, realpath
 from Standard_Operations.Colors import Colors
 from Standard_Operations.Logger import Write_Log
 from sys                        import argv
