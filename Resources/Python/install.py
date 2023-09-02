@@ -16,10 +16,10 @@ if __name__ == '__main__':
     if (isfile(argv[1])):
         file = argv[1]
         if (file.endswith('.deb')):
-                    system(f'sudo dpkg -i {join(root, file)}')
+                    system(f'sudo dpkg -i {file}')
         elif (file.endswith('.sh') or
               file.endswith('.bash')):
-                    system(f'sudo bash {join(root, file)}')
+                    system(f'sudo bash {file}')
     elif (isdir(argv[1])):
         for root, _, files in walk(str(argv[1]), topdown=False):
             for file in files:
