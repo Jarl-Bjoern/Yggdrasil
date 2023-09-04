@@ -478,6 +478,7 @@ function File_Installer() {
                                                                 if [[ -d "/root/.cargo" ]]; then
                                                                         Switch_Cargo=true
                                                                 fi
+								source "$HOME/.cargo/env"
                                                         else
                                                                 sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
