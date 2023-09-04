@@ -474,6 +474,7 @@ function File_Installer() {
                                                 elif [ "$MODE" = "Installer" ]; then
                                                         wget --content-disposition "$FILE"
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
+							echo $FILE_NAME
                                                         if [[ "$FILE_NAME" =~ "rustup-init.sh" ]]; then
 								Temp_Rust_Array=($(find "/home" "/root" -maxdepth 3 -name ".cargo"))
 								if [[ ${#Temp_Rust_Array} -eq 0 ]]; then
