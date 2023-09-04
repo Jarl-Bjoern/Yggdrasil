@@ -484,6 +484,7 @@ function File_Installer() {
 									source "$HOME/.cargo/env"
 	 							fi
                                                         else
+								echo $FILE_NAME
                                                                 sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                                 elif [ "$MODE" = "Extension" ]; then
