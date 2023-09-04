@@ -474,7 +474,7 @@ function File_Installer() {
                                                 elif [ "$MODE" = "Installer" ]; then
                                                         wget --content-disposition "$FILE"
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
-                                                        if [[ $FILE_NAME =~ "rustup" ]]; then
+                                                        if [[ $FILE_NAME =~ "rustup-init.sh" ]]; then
 								Temp_Rust_Array=($(find "/home" "/root" -maxdepth 3 -name ".cargo"))
 								if [[ ${#Temp_Rust_Array} -eq 0 ]]; then
 									sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
