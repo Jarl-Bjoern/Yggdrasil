@@ -483,7 +483,7 @@ function File_Installer() {
 									fi
 									source "$HOME/.cargo/env"
 	 							else
-	 								echo -e "${RED}$FILE_NAME${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+	 								echo -e "${RED}rust${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
 	 							fi
                                                         else
 								wget --content-disposition "$FILE"
