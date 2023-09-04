@@ -395,7 +395,7 @@ function File_Installer() {
                                                                         FILE_URL=$(echo "$line" | cut -d" " -f1)
                                                                         FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
 									eval "$Command $FILE_BRANCH $FILE_URL"
-								elif [[ $line =~ "cargo" ]]; then
+								elif [[ $Command =~ "cargo" ]]; then
      									eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
                                                                 else
                                                                         eval "$Command $line"
