@@ -475,11 +475,14 @@ function File_Installer() {
                                                         wget --content-disposition "$FILE"
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                         if [[ $FILE_NAME =~ "rustup" ]]; then
-								sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
-								if [[ -d "/root/.cargo" ]]; then
-									Switch_Cargo=true
-								fi
-								source "$HOME/.cargo/env"
+								########################
+								if [[ find "/home" "/root" -maxdepth 3 -name ".cargo" ]]; then
+									sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
+									if [[ -d "/root/.cargo" ]]; then
+										Switch_Cargo=true
+									fi
+									source "$HOME/.cargo/env"
+	 							fi
                                                         else
                                                                 sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
