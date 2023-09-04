@@ -333,7 +333,7 @@ function File_Installer() {
                                  Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false
                         fi
                 elif [[ $line = "# Cargo" ]]; then
-                        Command="sudo cargo install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false
+                        Command="cargo install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false
                 elif [[ $line = "# Docker" ]]; then
                         Command="docker pull" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false
                 elif [[ $line = "# Python" ]]; then
@@ -396,7 +396,7 @@ function File_Installer() {
                                                                         FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
 									eval "$Command $FILE_BRANCH $FILE_URL"
 								elif [[ $Command =~ "cargo" ]]; then
-     									eval "$Command $line" || source "/root/.cargo/env" && eval "$Command $line"
+     									eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
                                                                 else
                                                                         eval "$Command $line"
                                                                 fi
