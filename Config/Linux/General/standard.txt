@@ -5,7 +5,6 @@ bat
 charon-cmd
 curl
 docker.io
-exiftool
 fish
 g++
 g++-multilib
@@ -20,6 +19,7 @@ htop
 iptables-persistent
 libcharon-extra-plugins
 libcharon-extauth-plugins
+libimage-exiftool-perl
 libldap2-dev
 libmnl-dev
 libnftnl-dev
