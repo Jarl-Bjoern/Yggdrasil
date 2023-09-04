@@ -465,7 +465,7 @@ function File_Installer() {
                                                         chmod +x "$FILE_NAME" ; cd "$2" || return 0
                                                 elif [ "$MODE" = "Archive" ]; then
                                                         wget --content-disposition "$FILE"
-                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
+                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
                                                                 sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE_NAME" "$2"
                                                         else
@@ -473,7 +473,7 @@ function File_Installer() {
                                                         fi
                                                 elif [ "$MODE" = "Installer" ]; then
                                                         wget --content-disposition "$FILE"
-                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
+                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                         if [[ $FILE_NAME =~ "rustup" ]]; then
 								sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
 								if [[ -d "/root/.cargo" ]]; then
@@ -485,9 +485,9 @@ function File_Installer() {
                                                         fi
                                                 elif [ "$MODE" = "Extension" ]; then
                                                         wget --content-disposition "$FILE"
-                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
+                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                 elif [ "$MODE" = "DPKG" ]; then
-                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | cut -d "=" -f2)
+                                                        FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
                                                                 wget --content-disposition "$FILE"
                                                                 sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
