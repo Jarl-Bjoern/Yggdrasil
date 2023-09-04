@@ -25,15 +25,13 @@ sleuthkit
 tree
 
 # Cargo
+dfir-toolkit
 dionysos
 evtx
 evtxtools
-evtx2bodyfile
-mactime2
-mft2bodyfile
+mft2vodyfile
 ntdsextract2
 nt_hive2
-pol_export
 regview
 stringsext
 usnjrnl
