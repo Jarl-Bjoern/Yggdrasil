@@ -472,12 +472,11 @@ function File_Installer() {
                                                                 sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE" "$2"
                                                         fi
                                                 elif [ "$MODE" = "Installer" ]; then
-                                                        wget --content-disposition "$FILE"
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
-							echo $FILE_NAME
                                                         if [[ "$FILE_NAME" =~ "rustup-init.sh" ]]; then
 								Temp_Rust_Array=($(find "/home" "/root" -maxdepth 3 -name ".cargo"))
 								if [[ ${#Temp_Rust_Array} -eq 0 ]]; then
+									wget --content-disposition "$FILE"
 									sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
 									if [[ -d "/root/.cargo" ]]; then
 										Switch_Cargo=true
@@ -485,6 +484,7 @@ function File_Installer() {
 									source "$HOME/.cargo/env"
 	 							fi
                                                         else
+								wget --content-disposition "$FILE"
                                                                 sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                                 elif [ "$MODE" = "Extension" ]; then
