@@ -51,6 +51,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - Improved rust updater
   - Improved red teaming category
   - Improved firewall settings
+  - Improved wget Downloader
   - Improved yggdrasil-info alias
   - New alias for clearing the terminal
   - New alias for important pentesting url opening
