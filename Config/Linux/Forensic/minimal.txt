@@ -23,6 +23,7 @@ tree
 yara
 
 # Cargo
+dfir-toolkit
 dionysos
 evtx
 evtxtools
