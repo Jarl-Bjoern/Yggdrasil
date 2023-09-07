@@ -5,6 +5,7 @@ bat
 charon-cmd
 curl
 docker.io
+exa
 fish
 g++
 g++-multilib
