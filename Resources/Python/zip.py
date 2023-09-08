@@ -7,7 +7,7 @@
 # Version 0.4 06.02.2023
 
 # Libraries
-from os                         import remove
+from os                         import makedirs, remove
 from os.path                    import dirname, realpath
 from re                         import finditer
 from shutil                     import ReadError, unpack_archive
@@ -26,6 +26,7 @@ if __name__ == '__main__':
             if ('\n' in argv[1] or '\r' in argv[1]): File = argv[1][:-1]
             else:                                    File = argv[1]
         try:
+            print (argv[2])
             unpack_archive(f'{argv[2]}/{File}', f'{argv[2]}/')
             Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RESET+"The File "+Colors.ORANGE+f"{File}"+Colors.RESET+" was successfully unzipped.")
         except ReadError:
