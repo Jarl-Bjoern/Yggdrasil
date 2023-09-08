@@ -42,26 +42,8 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 <br />
 
 ## ❗ News
-<strong>Upcoming changes for version</strong> `0.9b`:
-  - Added the tool `exa` as replace for `ls` with an new alias
-  - Logging fixes
-  - Hotfix for broken cargo installer
-  - Hotfix for the path bug during the process for creating the file `update.info`
-  - Hotfix for missing installation path while using the custom category
-  - Hotfix for the shredding task
-  - Improved APT-Downloader
-  - Improved Git-Tool Downloader
-  - Improved rust updater
-  - Improved red teaming category
-  - Improved firewall settings
-  - Improved wget Downloader
-  - Improved yggdrasil-info alias
-  - New alias for clearing the terminal
-  - New alias for important pentesting url opening
-  - New feature to choose between one or multiple files while using the parameter `-cP`
-  - New custom configs for screenrc and tmux
-  - New tools was added to mulitple sections
-  - Outsourcing of the documentation to the Yggdrasil wiki
+<strong>Upcoming changes for version</strong> `0.9c`:
+  - Improved Categories
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/blob/main/Information/Changelog/full.md">
