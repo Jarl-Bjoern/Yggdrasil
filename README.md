@@ -60,6 +60,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - New alias for important pentesting url opening
   - New feature to choose between one or multiple files while using the parameter `-cP`
   - New custom configs for screenrc and tmux
+  - New tools was added to mulitple sections
   - Outsourcing of the documentation to the Yggdrasil wiki
 
 <div align="center">
