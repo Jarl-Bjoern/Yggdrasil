@@ -512,7 +512,7 @@ function File_Installer() {
                 fi
                 Skip=false
                 Switch_IGNORE=false
-                sleep 0.15
+                sleep 0.2
         done < "$input"
 }
 
