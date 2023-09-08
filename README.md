@@ -46,7 +46,9 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
   - Added the tool `exa` as replace for `ls` with an new alias
   - Logging fixes
   - Hotfix for broken cargo installer
+  - Hotfix for the path bug during the process for creating the file `update.info`
   - Hotfix for missing installation path while using the custom category
+  - Hotfix for the shredding task
   - Improved APT-Downloader
   - Improved Git-Tool Downloader
   - Improved rust updater
