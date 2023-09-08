@@ -5,9 +5,10 @@
 # Version 0.2 22.10.2022
 # Version 0.3 24.10.2022
 # Version 0.4 06.02.2023
+# Version 0.5 08.09.2023
 
 # Libraries
-from os                         import makedirs, remove
+from os                         import remove
 from os.path                    import dirname, realpath
 from re                         import finditer
 from shutil                     import ReadError, unpack_archive
