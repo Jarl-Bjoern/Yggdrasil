@@ -1133,92 +1133,6 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
 
         # Linking_Local_Wordlists
         ln -sf /usr/share/wordlists /opt/wordlists/kali_wordlists
-
-        # Custom_Wordlist
-        if [[ ! -f "/opt/wordlists/tomcat-directories.txt" ]]; then
-                # Copied from https://gist.github.com/KINGSABRI/277e01a9b03ea7643efef8d5747c8f16/tomcat-directory.list
-                cat <<'EOF' > /opt/wordlists/tomcat-directories.txt
-/admin
-/admin-console
-/docs/
-/examples
-/examples/jsp/index.html
-/examples/jsp/snp/snoop.jsp
-/examples/jsp/source.jsp
-/examples/servlet/HelloWorldExample
-/examples/servlet/SnoopServlet
-/examples/servlet/TroubleShooter
-/examples/servlet/default/jsp/snp/snoop.jsp
-/examples/servlet/default/jsp/source.jsp
-/examples/servlet/org.apache.catalina.INVOKER.HelloWorldExample
-/examples/servlet/org.apache.catalina.INVOKER.SnoopServlet
-/examples/servlet/org.apache.catalina.INVOKER.TroubleShooter
-/examples/servlet/org.apache.catalina.servlets.DefaultServlet/jsp/snp/snoop.jsp
-/examples/servlet/org.apache.catalina.servlets.DefaultServlet/jsp/source.jsp
-/examples/servlet/org.apache.catalina.servlets.WebdavServlet/jsp/snp/snoop.jsp
-/examples/servlet/org.apache.catalina.servlets.WebdavServlet/jsp/source.jsp
-/examples/servlet/snoop
-/examples/servlets/index.html
-/examples/websocket/index.xhtml
-/host-manager
-/host-manager/add
-/host-manager/host-manager.xml
-/host-manager/html
-/host-manager/html/*
-/host-manager/list
-/host-manager/remove
-/host-manager/start
-/host-manager/stop
-/invoker/JMXInvokerServlet
-/jmx-console
-/jmx-console/HtmlAdaptor
-/jsp-examples
-/manager
-/manager/deploy
-/manager/html
-/manager/html/*
-/manager/install
-/manager/jmxproxy
-/manager/jmxproxy/*
-/manager/list
-/manager/manager.xml
-/manager/reload
-/manager/remove
-/manager/resources
-/manager/roles
-/manager/save
-/manager/serverinfo
-/manager/sessions
-/manager/start
-/manager/status.xsd
-/manager/status/*
-/manager/stop
-/manager/undeploy
-/server-manager/html
-/servlet/default/
-/servlet/org.apache.catalina.INVOKER.org.apache.catalina.servlets.DefaultServlet/tomcat.gif
-/servlet/org.apache.catalina.INVOKER.org.apache.catalina.servlets.SnoopAllServlet
-/servlet/org.apache.catalina.INVOKER.org.apache.catalina.servlets.WebdavServlet/
-/servlet/org.apache.catalina.servlets.DefaultServlet/
-/servlet/org.apache.catalina.servlets.DefaultServlet/tomcat.gif
-/servlet/org.apache.catalina.servlets.HTMLManagerServlet
-/servlet/org.apache.catalina.servlets.InvokerServlet/org.apache.catalina.servlets.DefaultServlet/tomcat.gif
-/servlet/org.apache.catalina.servlets.InvokerServlet/org.apache.catalina.servlets.SnoopAllServlet
-/servlet/org.apache.catalina.servlets.ManagerServlet
-/servlet/org.apache.catalina.servlets.SnoopAllServlet
-/servlet/org.apache.catalina.servlets.WebdavServlet/
-/servlets-examples
-/status
-/tomcat-docs
-/tomcat/manager/html
-/web-console
-/web-console/Invoker
-/webdav
-/webdav/index.html
-/webdav/servlet/org.apache.catalina.servlets.WebdavServlet/
-/webdav/servlet/webdav/
-EOF
-        fi
 fi
 
 # GIT_Updater_Configuration
@@ -1228,7 +1142,7 @@ if [[ ${#Array_GIT_Updater} -gt 0 ]]; then
         fi
         for git_tool in "${Array_GIT_Updater[@]}"; do
                 if [[ ! $(grep "$git_tool" "$OPT_Path/update.info") =~ $git_tool ]]; then
-                        find "$OPT_Path" -name "$git_tool" | head -n 1 >> "$OPT_Path/update.info"
+                        find "$OPT_Path" -maxdepth 1 -name "$git_tool" | head -n 1 >> "$OPT_Path/update.info"
                 fi
         done
         for git_wordlist in $(find /opt/wordlists -maxdepth 1 ! -path /opt/wordlists | grep -v -E "kali_wordlists|.txt"); do
