@@ -26,7 +26,6 @@ if __name__ == '__main__':
             if ('\n' in argv[1] or '\r' in argv[1]): File = argv[1][:-1]
             else:                                    File = argv[1]
         try:
-            print (argv[2])
             unpack_archive(f'{argv[2]}/{File}', f'{argv[2]}/')
             Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RESET+"The File "+Colors.ORANGE+f"{File}"+Colors.RESET+" was successfully unzipped.")
         except ReadError:
