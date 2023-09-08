@@ -466,16 +466,11 @@ function File_Installer() {
                                                 elif [ "$MODE" = "Archive" ]; then
                                                         wget --content-disposition "$FILE"
 							TEMP_SECOND_PART_FILE="$FILE_NAME"
-
-       
-       							echo $TEMP_SECOND_PART_FILE ; exit
-
-       
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
-                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE_NAME" "$2"
+                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE_NAME" "$2" "$TEMP_SECOND_PART_FILE"
                                                         else
-                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE" "$2"
+                                                                sudo python3 "$FULL_PATH/Resources/Python/zip.py" "$FILE" "$2" "$TEMP_SECOND_PART_FILE"
                                                         fi
                                                 elif [ "$MODE" = "Installer" ]; then
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
