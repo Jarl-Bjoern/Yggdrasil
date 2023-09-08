@@ -34,6 +34,7 @@ alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 setopt hist_ignore_all_dups
 function Yggdrasil_File_Reader() { input=$1; while IFS= read -r line; do if [[ $line =~ "##" ]]; then echo -e "\033[0;32m$line\033[0m"; else; echo -e "\033[1;33m$line\033[0m"; fi; done < "$input" }
 function b64() { echo $1 | base64 -d | xxd; }
+function Yggdrasil_shredder() { for data in $(find "$1" -maxdepth 1 -type d ! -path "$1"); do TEMP_DATE_SHRED="$(/usr/bin/ls -l --time-style=long-iso $1 | grep $(echo $data | rev | cut -d '/' -f1 | rev) | awk '{print $6}')"; if [[ "${#TEMP_DATE_SHRED}" -eq 10 ]]; then if [[ $(expr $(expr "$(date +%s)" - $(date -d "$TEMP_DATE_SHRED" +%s)) / 86400) -gt 90 ]]; then find $data -type f -exec shred --remove=wipesync {} -exec sleep 1.15; rm -rf $data; fi; fi; done }
 function yggdrasil-vnc() { if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u); do kill $i; done; fi; if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1); fi; sudo x11vnc -storepasswd ; sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet & ; /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --idle-timeout 900 --ssl-only --key /opt/ssl/pentest-key.pem --cert /opt/ssl/pentest-cert.pem }
 alias cls='clear'
 alias ls='exa -l -F -g -h --icons --group-directories-first'
@@ -80,7 +81,7 @@ alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ;
                         with open(path_to_file, 'a') as fa:
                                 Temp_Check = f.read().splitlines()
                                 if ("function Yggdrasil_shredder()" not in Temp_Check):
-                                        fa.write("""function Yggdrasil_shredder() {\n    for data in $(find "$1" -maxdepth 1 -type d ! -path "$1"); do\n        TEMP_DATE_SHRED="$(/usr/bin/ls -l --time-style=long-iso $1 | grep $(echo $data | rev | cut -d '/' -f1 | rev) | awk '{print $6}')"\n        if [[ "${#TEMP_DATE_SHRED}" -eq 10 ]]; then\n            if [[ $(expr $(expr "$(date +%s)" - $(date -d "$TEMP_DATE_SHRED" +%s)) / 86400) -gt 90 ]]; then\n                find $data -type f -exec shred --remove=wipesync {} -exec sleep 1.15; rm -rf $data\n            fi\n        fi\n    done\n}
+                                        fa.write("""function Yggdrasil_shredder() {\n    for data in $(find "$1" -maxdepth 1 -type d ! -path "$1"); do\n        TEMP_DATE_SHRED="$(/usr/bin/ls -l --time-style=long-iso $1 | grep $(echo $data | rev | cut -d '/' -f1 | rev) | awk '{print $6}')"\n        if [[ "${#TEMP_DATE_SHRED}" -eq 10 ]]; then\n            if [[ $(expr $(expr "$(date +%s)" - $(date -d "$TEMP_DATE_SHRED" +%s)) / 86400) -gt 90 ]]; then\n                find $data -type f -exec shred --remove=wipesync {} -exec sleep 1.15; rm -rf $data\n            fi\n        fi\n    done\n}""")
                                 if ("function Yggdrasil_File_Reader()" not in Temp_Check):
                                         fa.write("""function Yggdrasil_File_Reader() {\n    input=$1\n    while IFS= read -r line\n        do\n            if [[ $line =~ "##" ]]; then\n                echo -e "\033[0;32m$line\033[0m"\n            else\n                echo -e "\033[1;33m$line\033[0m"\n            fi\n        done < "$input"\n}\n""")
                                 if ("function yggdrasil-vnc()" not in Temp_Check):
@@ -147,7 +148,7 @@ def Firewall_Configuration(path_to_file):
                                 if (_ not in Array_Temp): f.write(f'{_}\n')
 
 def Shredder_Configuration(path_to_file, path_workspace, shredding_days):
-        Config_Shredder = f"""0 4     * * *  root for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt """+f"""{shredding_days}"""+""" ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
+        Config_Shredder = f'0 4     * * *  root Yggdrasil_shredder "{path_workspace}"'
         write_file(path_to_file, Config_Shredder)
 
 def Systemd_Shredder_Configuration(path_to_file, path_workspace, shredding_days):
@@ -155,7 +156,7 @@ def Systemd_Shredder_Configuration(path_to_file, path_workspace, shredding_days)
         'Yggdrasil_Workspace_Cleaner':
                 {
                         'Time': '4',
-                        'Command': f"""for data in $(find "{path_workspace}" -maxdepth 1 ! -path "{path_workspace}"); do if [[ $(expr $(expr "$(date +%s)" - "$(date -d "$(ls -l --time-style=long-iso $data | awk """+"""'{print $6}') +%s)") / 86400) -gt """+f"""{shredding_days}"""+""" ]]; then find """+f"""{path_workspace}"""+""" -type f -exec shred --remove=wipesync {} + -exec sleep 1.15 +; rm -rf """+f"""{path_workspace}"""+"""; fi; done"""
+                        'Command': f'Yggdrasil_shredder "{path_workspace}"'
                 }
         }
 
