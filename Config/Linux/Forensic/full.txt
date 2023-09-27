@@ -29,7 +29,7 @@ dfir-toolkit
 dionysos
 evtx
 evtxtools
-mft2vodyfile
+mft2bodyfile
 ntdsextract2
 nt_hive2
 regview
