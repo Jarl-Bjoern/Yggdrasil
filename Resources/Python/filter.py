@@ -94,7 +94,9 @@ def Crontab_Configuration(path_to_file, opt_path):
 0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
 0 5     * * *  root rustup update
 0 5     * * *  root for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done
-0 3     * * *  root for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done"""
+0 3     * * *  root for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done
+0 3     * * *  root for GIT_Tool in "$(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev)"; do if [[ ! "$(cat {opt_path}/update.info | grep "$GIT_Tool")" ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done
+0 3     * * *  root for GIT_Old_Tool in "$(cat {opt_path}/update.info)"; do if [[ ! "$(find {opt_path} -maxdepth 1 -type d | grep $GIT_Old_Tool)" ]] && [[ ! "$(find /opt/wordlists -maxdepth 1 -type d | grep $GIT_Old_Tool)" ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done"""
         write_file(path_to_file, Config_Crontab)
 
 def Firewall_Configuration(path_to_file):
