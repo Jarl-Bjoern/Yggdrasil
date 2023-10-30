@@ -233,7 +233,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
                 {
                         'Time': '3',
                         'Command': f'for GIT_Tool in $(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done'
-                }
+                },
         'Yggdrasil_GIT_Monitor_Cleaner':
                 {
                         'Time': '3',
