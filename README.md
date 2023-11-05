@@ -58,7 +58,7 @@ The name `Yggdrasil` comes from Norse mythology and is the tree of life or world
 
 
 ## 🛡️ Official Documentation
-Under the link below you can find the official documentation about the tool.
+The official documentation on the tool can be found at the following link.
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki">
@@ -68,7 +68,7 @@ Under the link below you can find the official documentation about the tool.
 
 
 ## 📃 Features
-Under the following link, you can see all the implemented features that the tool currently offers.
+The following link lists all the features that the tool offers.
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki/%F0%9F%93%83-Features-overview">
