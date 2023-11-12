@@ -20,6 +20,7 @@ htop
 iptables-persistent
 libcharon-extra-plugins
 libcharon-extauth-plugins
+libcurl4-openssl-dev
 libimage-exiftool-perl
 libldap2-dev
 libmnl-dev
