@@ -71,7 +71,6 @@ declare -a Array_Complete_Install=("$FULL_PATH/Config/Linux/Forensic/full.txt"
 declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/usr/bin/code"
 "/usr/bin/google-chrome"
-"/opt/pentest_tools/Proxy/mitmproxy"
 "/opt/pentest_tools/kerbrute"
 "/opt/pentest_tools/JuicyPotato"
 "/opt/pentest_tools/RoguePotato"
@@ -103,7 +102,6 @@ declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Webscanner/Plone/plown"
 "/opt/pentest_tools/Webscanner/Liferay/LiferayScan"
 "/opt/pentest_tools/Proxy/chisel"
-"/opt/pentest_tools/Proxy/mitmproxy"
 "/opt/pentest_tools/Proxy/mitm_relay"
 "/opt/pentest_tools/Proxy/proxychains-ng"
 "/opt/pentest_tools/SIP/viproy-voipkit"
@@ -1081,9 +1079,6 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
         if [ -d "$OPT_Path/Responder" ]; then
                 pip3 install -r "$OPT_Path"/Responder/requirements.txt ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
         fi
-        if [ -f "$OPT_Path/mitmdump" ]; then
-                cd "$OPT_Path" || return 0 ; mv mitmproxy mitmproxy.sh ; sudo mkdir -p "$OPT_Path"/mitmproxy ; mv mitmproxy.sh mitmdump mitmweb mitmproxy/ ; cd mitmproxy/ || return 0 ; mv mitmproxy.sh mitmproxy
-        fi
 
         # Categories_Sort
         cd "$OPT_Path" || return 0
@@ -1109,9 +1104,9 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
                 sudo mkdir -p "$OPT_Path"/Webscanner/Moodle
                 mv moodlescan badmoodle mooscan "$OPT_Path"/Webscanner/Moodle || sudo rm -rf moodlescan badmoodle mooscan
         fi
-        if [[ $(ls "$OPT_Path"/{"chisel","mitmproxy","mitm_relay","proxychains-ng"} 2>/dev/null) ]]; then
+        if [[ $(ls "$OPT_Path"/{"chisel","mitm_relay","proxychains-ng"} 2>/dev/null) ]]; then
                 sudo mkdir -p "$OPT_Path"/Proxy
-                mv chisel mitmproxy mitm_relay proxychains-ng "$OPT_Path"/Proxy || sudo rm -rf chisel mitmproxy mitm_relay proxychains-ng
+                mv chisel mitm_relay proxychains-ng "$OPT_Path"/Proxy || sudo rm -rf chisel mitm_relay proxychains-ng
         fi
         if [[ $(ls "$OPT_Path"/{"SIPTools","sipvicious","viproy-voipkit"} 2>/dev/null) ]]; then
                 sudo mkdir -p "$OPT_Path"/SIP ; mv viproy-voipkit sipvicious SIPTools "$OPT_Path"/SIP || sudo rm -rf viproy-voipkit sipvicious SIPTools
