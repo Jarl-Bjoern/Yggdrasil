@@ -153,7 +153,7 @@ def Firewall_Configuration(path_to_file):
                                 if (_ not in Array_Temp): f.write(f'{_}\n')
 
 def Shredder_Configuration(path_to_file, path_workspace, shredding_days):
-        Config_Shredder = f'0 4     * * *  root Yggdrasil_shredder "{path_workspace}"'
+        Config_Shredder = f'0 */4     * * *  root Yggdrasil_shredder "{path_workspace}"'
         write_file(path_to_file, Config_Shredder)
 
 def Systemd_Shredder_Configuration(path_to_file, path_workspace, shredding_days):
