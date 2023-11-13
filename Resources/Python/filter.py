@@ -91,15 +91,15 @@ alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ;
                                         fa.write("""function yggdrasil-vnc() {\n    if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then\n        for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u);\n            do kill $i\n        done\n    fi\n    if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then\n        kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1)\n    fi\n    sudo x11vnc -storepasswd\n    sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet &\n    /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --idle-timeout 900 --ssl-only --key /opt/ssl/pentest-key.pem --cert /opt/ssl/pentest-cert.pem\n}\n""")
 
 def Crontab_Configuration(path_to_file, opt_path):
-        Config_Crontab = f"""0 6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
-0 6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
-0 6     * * *  root for Image in $(docker images | grep "<none>" | awk '"""+"""{print $3}');"""+f""" do docker image rm $Image; done
-0 5     * * *  root pip3 install --upgrade pip setuptools python-debian
-0 5     * * *  root rustup update
-0 5     * * *  root for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done
-0 3     * * *  root for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done
-0 3     * * *  root for GIT_Tool in $(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done
-0 3     * * *  root for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info"""
+        Config_Crontab = f"""0 */6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
+0 */6     * * *  root for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done
+0 */6     * * *  root for Image in $(docker images | grep "<none>" | awk '"""+"""{print $3}');"""+f""" do docker image rm $Image; done
+0 */5     * * *  root pip3 install --upgrade pip setuptools python-debian
+0 */5     * * *  root rustup update
+0 */5     * * *  root for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done
+0 */3     * * *  root for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done
+0 */3     * * *  root for GIT_Tool in $(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done
+0 */3     * * *  root for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info"""
         write_file(path_to_file, Config_Crontab)
 
 def Firewall_Configuration(path_to_file):
