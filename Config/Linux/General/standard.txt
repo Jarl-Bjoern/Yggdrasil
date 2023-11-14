@@ -53,9 +53,6 @@ torbrowser-launcher
 novnc
 x11vnc
 
-# Gem
-haiti-hash
-
 # Python
 defaultcreds-cheat-sheet
 docker-compose
