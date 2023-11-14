@@ -1,0 +1,7 @@
+# APT
+bulk-extractor
+
+# Python
+scrapy
+
+# Git
