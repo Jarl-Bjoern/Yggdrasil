@@ -1162,13 +1162,13 @@ if [[ ${#Array_Cargo_Updater} -gt 0 ]]; then
 fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
-        if [[ -f $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
+        if [[ -f $(find "$OPT_Path/veracrypt" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64") ]]; then
                 if [[ $Switch_License == true ]]; then
-                        sudo python3 "$FULL_PATH/Resources/Python/auto.py" Veracrypt "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
+                        sudo python3 "$FULL_PATH/Resources/Python/auto.py" Veracrypt "$(find "$OPT_Path/veracrypt" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
                 else
-                        sudo bash "$(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
+                        sudo bash "$(find "$OPT_Path/veracrypt" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
                 fi
-                for veracrypt_file in $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" | grep "setup"); do sudo rm -f "$veracrypt_file"; done
+                for veracrypt_file in $(find "$OPT_Path/veracrypt" -maxdepth 1 ! -path "$OPT_Path" | grep "setup"); do sudo rm -f "$veracrypt_file"; done
         fi
         if [[ $category_type = "pentest" || $category_type = "4" ]]; then
                 ln -sf "$OPT_Path/API/Postman/app/Postman" /usr/local/bin/postman
