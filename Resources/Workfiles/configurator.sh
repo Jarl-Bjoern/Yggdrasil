@@ -579,150 +579,152 @@ for arg; do
 done
 
 # Category
-header "category"
-read -rp "Your Choice: " category_type
-if [[ $category_type = "forensic" || $category_type = "3" ]]; then
-        Path_Way="$FULL_PATH/Config/Linux/Forensic"
-        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
-                OPT_Path="/opt/forensic_tools"
-        fi
-        if [[ $HOST_Pentest == "pentest-kali" ]]; then
-                HOST_Pentest="forensic-kali"
-        fi
-elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
-        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
-                OPT_Path="/opt/pentest_tools"
-        fi
-        header "pentesting_category"
-        read -rp "Your Choice: " pentesting
-        if [[ $pentesting =~ "," ]]; then
-                IFS=", "
-                Array_Pentesting=($pentesting)
-                for testing_category in "${Array_Pentesting[@]}"; do
-                        if [[ $testing_category == "infrastructure" || $testing_category == "1" ]]; then
-                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Infrastructure")
-                                Array_URL+=("$FULL_PATH/Information/Pages/Infrastructure.txt")
-                        elif [[ $testing_category == "iot" || $testing_category == "2" ]]; then
-                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/IOT")
-                        elif [[ $testing_category == "mobile" || $testing_category == "3" ]]; then
-                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Mobile")
-                        elif [[ $testing_category == "red_teaming" || $testing_category == "4" ]]; then
-                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
-                                Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
+if [[ $Switch_Skip_Installation == false ]]; then
+	header "category"
+	read -rp "Your Choice: " category_type
+	if [[ $category_type = "forensic" || $category_type = "3" ]]; then
+	        Path_Way="$FULL_PATH/Config/Linux/Forensic"
+	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+	                OPT_Path="/opt/forensic_tools"
+	        fi
+	        if [[ $HOST_Pentest == "pentest-kali" ]]; then
+	                HOST_Pentest="forensic-kali"
+	        fi
+	elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
+	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+	                OPT_Path="/opt/pentest_tools"
+	        fi
+	        header "pentesting_category"
+	        read -rp "Your Choice: " pentesting
+	        if [[ $pentesting =~ "," ]]; then
+	                IFS=", "
+	                Array_Pentesting=($pentesting)
+	                for testing_category in "${Array_Pentesting[@]}"; do
+	                        if [[ $testing_category == "infrastructure" || $testing_category == "1" ]]; then
+	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Infrastructure")
+	                                Array_URL+=("$FULL_PATH/Information/Pages/Infrastructure.txt")
+	                        elif [[ $testing_category == "iot" || $testing_category == "2" ]]; then
+	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/IOT")
+	                        elif [[ $testing_category == "mobile" || $testing_category == "3" ]]; then
+	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Mobile")
+	                        elif [[ $testing_category == "red_teaming" || $testing_category == "4" ]]; then
+	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
+	                                Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
+					header "red_team"
+					read -rp "Your Choice: " red_team
+					if [[ $red_team =~ "," ]]; then
+						IFS=", "
+						Array_Red_Teaming=($red_team)
+						for testing_category in "${Array_Red_Teaming[@]}"; do
+	                                            Red_Team_Check $testing_category
+						done
+					else
+	                                        Red_Team_Check $red_team
+					fi
+	                        elif [[ $testing_category == "web" || $testing_category == "5" ]]; then
+	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
+	                        elif [[ $testing_category == "cloud" || $testing_category == "6" ]]; then
+	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Cloud")
+	                        else
+	                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	                        fi
+	                done
+	        else
+	                if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
+	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
+	                        Array_URL+=("$FULL_PATH/Information/Pages/Infrastructure.txt")
+	                elif [[ $pentesting = "iot" || $pentesting = "2" ]]; then
+	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/IOT"
+	                elif [[ $pentesting = "mobile" || $pentesting = "3" ]]; then
+	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Mobile"
+	                elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
 				header "red_team"
 				read -rp "Your Choice: " red_team
 				if [[ $red_team =~ "," ]]; then
 					IFS=", "
 					Array_Red_Teaming=($red_team)
 					for testing_category in "${Array_Red_Teaming[@]}"; do
-                                            Red_Team_Check $testing_category
+	                                     Red_Team_Check $testing_category
 					done
 				else
-                                        Red_Team_Check $red_team
+	                                Red_Team_Check $red_team
 				fi
-                        elif [[ $testing_category == "web" || $testing_category == "5" ]]; then
-                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
-                        elif [[ $testing_category == "cloud" || $testing_category == "6" ]]; then
-                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Cloud")
-                        else
-                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-                        fi
-                done
-        else
-                if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
-                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
-                        Array_URL+=("$FULL_PATH/Information/Pages/Infrastructure.txt")
-                elif [[ $pentesting = "iot" || $pentesting = "2" ]]; then
-                        Path_Way="$FULL_PATH/Config/Linux/Pentest/IOT"
-                elif [[ $pentesting = "mobile" || $pentesting = "3" ]]; then
-                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Mobile"
-                elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
-			header "red_team"
-			read -rp "Your Choice: " red_team
-			if [[ $red_team =~ "," ]]; then
-				IFS=", "
-				Array_Red_Teaming=($red_team)
-				for testing_category in "${Array_Red_Teaming[@]}"; do
-                                     Red_Team_Check $testing_category
-				done
-			else
-                                Red_Team_Check $red_team
-			fi
-                elif [[ $pentesting = "web" || $pentesting = "5" ]]; then
-                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Web"
-                elif [[ $pentesting = "cloud" || $pentesting = "6" ]]; then
-                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Cloud"
-                else
-                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-                fi
-        fi
-elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
-        Path_Way="$FULL_PATH/Config/Linux/Hardening"
-        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
-                OPT_Path="/opt/hardening_tools"
-        fi
-        Array_URL+=("$FULL_PATH/Information/Pages/Hardening.txt")
-elif [[ $category_type = "training" || $category_type = "6" ]]; then
-        Path_Way="$FULL_PATH/Config/Linux/Training"
-        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
-                OPT_Path="/opt/training_tools"
-        fi
-        Array_URL+=("$FULL_PATH/Information/Pages/Education.txt")
-elif [[ $category_type = "custom" || $category_type = "2" ]]; then
-        Path_Way="$FULL_PATH/Config/Linux/Custom"
-        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
-                OPT_Path="/opt/custom_yggdrasil_tools"
-        fi
-elif [[ $category_type = "complete" || $category_type = "1" ]]; then
-        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
-                OPT_Path="/opt/complete_tools"
-        fi
-        declare -a Array_URL=("$FULL_PATH/Information/Pages/Infrastructure.txt"
-"$FULL_PATH/Information/OSINT.txt"
-"$FULL_PATH/Information/Forensic.txt"
-"$FULL_PATH/Information/Hardening.txt")
-else
-        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-fi
-
-# Installation_Type
-if [[ $category_type = "custom" || $category_type = "2" ]]; then
-        File_Path="${Path_Way}/install.txt"
-        Informational="$FULL_PATH/Information/info.txt"
-elif [[ $category_type = "complete" || $category_type = "1" ]]; then
-        decision="0"
-        Informational="$FULL_PATH/Information/info.txt"
-elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
-        File_Path="${Path_Way}/full.txt"
-        Informational="$FULL_PATH/Information/info.txt"
-else
-        if [[ ${#Array_Categories} -gt 0 ]]; then
-                Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
-                File_Path="${Path_Way}/full.txt"
-                Informational="$FULL_PATH/Information/info.txt"
-                decision="full"
-        else
-                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "5" || $pentesting = "cloud" || $pentesting = "6" ]]; then
-                        File_Path="${Path_Way}/full.txt"
-                        decision="full"
-                        Informational="$FULL_PATH/Information/info.txt"
-                else
-                        header "installation"
-                        read -rp "Your Choice: " decision
-                        if [[ $decision = "full" || $decision = "1" ]]; then
-                                File_Path="${Path_Way}/full.txt"
-                                if [[ $category_type = "pentest" || $category_type = "4" ]]; then
-                                       Informational="$FULL_PATH/Information/info.txt"
-                                fi
-                        elif [[ $decision = "minimal" || $decision = "2" ]]; then
-                                File_Path="${Path_Way}/minimal.txt"
-                                Switch_URL=false
-                        else
-                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-                        fi
-                fi
-        fi
-fi
+	                elif [[ $pentesting = "web" || $pentesting = "5" ]]; then
+	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Web"
+	                elif [[ $pentesting = "cloud" || $pentesting = "6" ]]; then
+	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Cloud"
+	                else
+	                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	                fi
+	        fi
+	elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
+	        Path_Way="$FULL_PATH/Config/Linux/Hardening"
+	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+	                OPT_Path="/opt/hardening_tools"
+	        fi
+	        Array_URL+=("$FULL_PATH/Information/Pages/Hardening.txt")
+	elif [[ $category_type = "training" || $category_type = "6" ]]; then
+	        Path_Way="$FULL_PATH/Config/Linux/Training"
+	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+	                OPT_Path="/opt/training_tools"
+	        fi
+	        Array_URL+=("$FULL_PATH/Information/Pages/Education.txt")
+	elif [[ $category_type = "custom" || $category_type = "2" ]]; then
+	        Path_Way="$FULL_PATH/Config/Linux/Custom"
+	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+	                OPT_Path="/opt/custom_yggdrasil_tools"
+	        fi
+	elif [[ $category_type = "complete" || $category_type = "1" ]]; then
+	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+	                OPT_Path="/opt/complete_tools"
+	        fi
+	        declare -a Array_URL=("$FULL_PATH/Information/Pages/Infrastructure.txt"
+	"$FULL_PATH/Information/OSINT.txt"
+	"$FULL_PATH/Information/Forensic.txt"
+	"$FULL_PATH/Information/Hardening.txt")
+	else
+	        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	fi
+	
+	# Installation_Type
+	if [[ $category_type = "custom" || $category_type = "2" ]]; then
+	        File_Path="${Path_Way}/install.txt"
+	        Informational="$FULL_PATH/Information/info.txt"
+	elif [[ $category_type = "complete" || $category_type = "1" ]]; then
+	        decision="0"
+	        Informational="$FULL_PATH/Information/info.txt"
+	elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
+	        File_Path="${Path_Way}/full.txt"
+	        Informational="$FULL_PATH/Information/info.txt"
+	else
+	        if [[ ${#Array_Categories} -gt 0 ]]; then
+	                Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
+	                File_Path="${Path_Way}/full.txt"
+	                Informational="$FULL_PATH/Information/info.txt"
+	                decision="full"
+	        else
+	                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "5" || $pentesting = "cloud" || $pentesting = "6" ]]; then
+	                        File_Path="${Path_Way}/full.txt"
+	                        decision="full"
+	                        Informational="$FULL_PATH/Information/info.txt"
+	                else
+	                        header "installation"
+	                        read -rp "Your Choice: " decision
+	                        if [[ $decision = "full" || $decision = "1" ]]; then
+	                                File_Path="${Path_Way}/full.txt"
+	                                if [[ $category_type = "pentest" || $category_type = "4" ]]; then
+	                                       Informational="$FULL_PATH/Information/info.txt"
+	                                fi
+	                        elif [[ $decision = "minimal" || $decision = "2" ]]; then
+	                                File_Path="${Path_Way}/minimal.txt"
+	                                Switch_URL=false
+	                        else
+	                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	                        fi
+	                fi
+	        fi
+	fi
+ fi
 
 # Hardening_Configuration
 if [[ $Switch_Skip_Hardening != true ]]; then
