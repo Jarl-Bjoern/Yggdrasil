@@ -579,7 +579,7 @@ for arg; do
 done
 
 # Category
-if [[ $Switch_Skip_Installation == false ]]; then
+if [[ "$Switch_Skip_Installation" == false ]]; then
 	header "category"
 	read -rp "Your Choice: " category_type
 	if [[ $category_type = "forensic" || $category_type = "3" ]]; then
@@ -891,11 +891,13 @@ if [[ "$Switch_CUSTOM_CONFIGS" == true ]]; then
         export HISTCONTROL=ignoreboth:erasedups
 fi
 echo "" > "$FULL_PATH/yggdrasil.log"
-if [[ "$Switch_Verbose" == false ]]; then
-         sudo apt update -y ; sudo DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
-else
-         sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
-fi
+if [[ "$Switch_Skip_Installation" == false ]]; then
+	if [[ "$Switch_Verbose" == false ]]; then
+	         sudo apt update -y ; sudo DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
+	else
+	         sudo apt update -y ; sudo apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
+	fi
+ fi
 
 # Task_Configuration
 if [[ "$Switch_UPDATES" == true ]]; then
