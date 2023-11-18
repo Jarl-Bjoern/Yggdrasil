@@ -919,32 +919,35 @@ if [[ "$Switch_SHREDDER" == true ]]; then
 fi
 sudo systemctl daemon-reload &>/dev/null
 
-# Standard_Installation
-if [[ "$Switch_Skip_Hardening" != true ]]; then
-        echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
-        echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
-fi
-if [[ $category_type != "custom" && $category_type != "2" ]]; then
-        File_Installer "$FULL_PATH/Config/Linux/General/standard.txt" "$OPT_Path"
-        if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
-                File_Installer "$FULL_PATH/Config/Linux/General/gui.txt" "$OPT_Path"
-        fi
-fi
 
-# Tool_Installation
-if [[ $category_type = "complete" || $category_type = "1" ]]; then
-        for i in "${Array_Complete_Install[@]}"; do
-                File_Installer "$i" "$OPT_Path"
-        done
-else
-        if [[ ${#Array_Categories} -gt 0 ]]; then
-                for i in "${Array_Categories[@]}"; do
-                        File_Installer "${i}/full.txt" "$OPT_Path"
-                done
-        else
-                File_Installer "$File_Path" "$OPT_Path"
-        fi
-fi
+if [[ "$Switch_Skip_Installation" == false ]]; then
+	# Standard_Installation
+	if [[ "$Switch_Skip_Hardening" != true ]]; then
+	        echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+	        echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
+	fi
+	if [[ $category_type != "custom" && $category_type != "2" ]]; then
+	        File_Installer "$FULL_PATH/Config/Linux/General/standard.txt" "$OPT_Path"
+	        if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
+	                File_Installer "$FULL_PATH/Config/Linux/General/gui.txt" "$OPT_Path"
+	        fi
+	fi
+	
+	# Tool_Installation
+	if [[ $category_type = "complete" || $category_type = "1" ]]; then
+	        for i in "${Array_Complete_Install[@]}"; do
+	                File_Installer "$i" "$OPT_Path"
+	        done
+	else
+	        if [[ ${#Array_Categories} -gt 0 ]]; then
+	                for i in "${Array_Categories[@]}"; do
+	                        File_Installer "${i}/full.txt" "$OPT_Path"
+	                done
+	        else
+	                File_Installer "$File_Path" "$OPT_Path"
+	        fi
+	fi
+ fi
 
 # Presetup_VIM_Config
 if [[ $Switch_VIM_NAYANINGALOO == true ]]; then
