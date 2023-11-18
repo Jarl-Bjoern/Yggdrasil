@@ -37,6 +37,7 @@ Switch_SCREENRC_BJOERN=false
 Switch_SHREDDER=false
 Switch_Skip_Configs=false
 Switch_Skip_Hardening=false
+Switch_Skip_Installation=true
 Switch_Skip_URLS=false
 #Switch_SQUID=false
 Switch_SSH=false
@@ -560,6 +561,8 @@ for arg; do
                 Switch_License=true
         elif [[ $arg == "-v" ]]; then
                 Switch_Verbose=true
+	elif [[ $arg == "-sI" ]]; then
+ 		Switch_Skip_Installation=true
         elif [[ $arg == "-sU" ]]; then
                 Switch_Skip_URLS=true
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-aW" ]]; then
