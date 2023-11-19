@@ -51,7 +51,7 @@ alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse
 alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Hardening.txt"'
 alias yggdrasil-pentesting='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Infrastructure.txt"'
 alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ; sudo chmod +x /tmp/rust_install.sh ; sudo bash /tmp/rust_install.sh -y ; sudo rm -f /tmp/rust_install.sh'
-function Yggdrasil_Old_Tool_Monitor() { for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info }
+f"""function Yggdrasil_Old_Tool_Monitor() { for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info }
 function Yggdrasil_New_Tool_Monitor() { for GIT_Tool in $(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done }
 """
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
