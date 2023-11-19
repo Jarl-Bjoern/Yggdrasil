@@ -724,7 +724,25 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                fi
 	        fi
 	fi
- fi
+else
+	if [ -d "/opt/pentest_tools" ]; then
+		OPT_Path="/opt/pentest_tools"
+ 	elif [ -d "/opt/forensic_tools" ]; then
+  		OPT_Path="/opt/forensic_tools"
+    	elif [ -d "/opt/hardening_tools" ]; then
+     		OPT_Path="/opt/hardening_tools"
+        elif [ -d "/opt/custom_yggdrasil_tools" ]; then
+		OPT_Path="/opt/custom_yggdrasil_tools"
+	elif [ -d "/opt/training_tools" ]; then
+ 		OPT_Path="/opt/training_tools"
+ 	elif [ -d "/opt/complete_tools" ]; then
+  		OPT_Path="/opt/complete_tools"
+	else
+ 		if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+			OPT_Path="/opt/pentest_tools"
+   		fi
+	fi
+fi
 
 # Hardening_Configuration
 if [[ $Switch_Skip_Hardening != true ]]; then
