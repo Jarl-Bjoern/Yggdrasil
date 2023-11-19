@@ -91,6 +91,10 @@ alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ;
                                         fa.write("""function Yggdrasil_File_Reader() {\n    input=$1\n    while IFS= read -r line\n        do\n            if [[ $line =~ "##" ]]; then\n                echo -e "\033[0;32m$line\033[0m"\n            else\n                echo -e "\033[1;33m$line\033[0m"\n            fi\n        done < "$input"\n}\n""")
                                 if ("function yggdrasil-vnc()" not in Temp_Check):
                                         fa.write("""function yggdrasil-vnc() {\n    if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then\n        for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u);\n            do kill $i\n        done\n    fi\n    if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then\n        kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1)\n    fi\n    sudo x11vnc -storepasswd\n    sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet &\n    /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --idle-timeout 900 --ssl-only --key /opt/ssl/pentest-key.pem --cert /opt/ssl/pentest-cert.pem\n}\n""")
+                                if ("function Yggdrasil_Old_Tool_Monitor()" not in Temp_Check):
+                                        pass
+                                if ("function Yggdrasil_New_Tool_Monitor()" not in Temp_Check):
+                                        pass
 
 def Crontab_Configuration(path_to_file, opt_path):
         Config_Crontab = f"""0 */6     * * *  root apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND
