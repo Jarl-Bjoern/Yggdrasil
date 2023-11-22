@@ -1,19 +1,20 @@
 ##################### BURP PLUGINS & Configuration ###########################
 # /usr/bin/jython
 #
-# EsPReSSO
-# Freddy, Deserialization Bug Finder
-# Copy As Python-Requests
 # ActiveScan++
 # Additional Scanner Checks
 # AuthMatrix
 # Autorize
 # Backslash Powered Scanner
+# Copy As Python-Requests
 # CSRF Scanner
 # Error Message Checks
+# EsPReSSO
 # ExifTool Scanner
-# GWT Insertion Points
 # Flow
+# Freddy, Deserialization Bug Finder
+# GraphQL Raider
+# GWT Insertion Points
 # Java Deserialization Scanner
 # JSON Web Token Attacker
 # J2EEScan
@@ -22,12 +23,11 @@
 # PHP Object Injection Check
 # PDF Metadata
 # Retire.js
+# Software Version Reporter
 # Software Vulnerability Scanner
 # WAFDetect
-# Software Version Reporter
 # WCF Deserializer
 # Wsdler
-# GraphQL Raider
 #
 # Upstream Proxy Servers
 # * 127.0.0.1 8080
