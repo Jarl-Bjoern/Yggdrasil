@@ -1,5 +1,9 @@
-https://www.shodan.io/
 https://archive.org/web/
+https://search.censys.io/
+https://grep.app/
 https://hunter.io/
+https://intelx.io/
+https://www.shodan.io/
+https://urlscan.io/
 https://www.linkedin.com/
 https://www.xing.com/
