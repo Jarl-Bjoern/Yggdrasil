@@ -651,6 +651,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 				fi
 	                elif [[ $pentesting = "web" || $pentesting = "5" ]]; then
 	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Web"
+				Array_URL+=("$FULL_PATH/Information/Pages/Web.txt")
 	                elif [[ $pentesting = "cloud" || $pentesting = "6" ]]; then
 	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Cloud"
 	                else
@@ -679,9 +680,10 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                OPT_Path="/opt/complete_tools"
 	        fi
 	        declare -a Array_URL=("$FULL_PATH/Information/Pages/Infrastructure.txt"
-	"$FULL_PATH/Information/OSINT.txt"
-	"$FULL_PATH/Information/Forensic.txt"
-	"$FULL_PATH/Information/Hardening.txt")
+	"$FULL_PATH/Information/Pages/OSINT.txt"
+	"$FULL_PATH/Information/Pages/Forensic.txt"
+	"$FULL_PATH/Information/Pages/Hardening.txt"
+ 	"$FULL_PATH/Information/Pages/Web.txt")
 	else
 	        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	fi
