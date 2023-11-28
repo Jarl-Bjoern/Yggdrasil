@@ -951,7 +951,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                File_Installer "$FULL_PATH/Config/Linux/General/gui.txt" "$OPT_Path"
 	        fi
 	fi
-	
+
 	# Tool_Installation
 	if [[ $category_type = "complete" || $category_type = "1" ]]; then
 	        for i in "${Array_Complete_Install[@]}"; do
@@ -1475,18 +1475,20 @@ if [ -f "/usr/share/wordlists/rockyou.txt.gz" ]; then
 fi
 
 # Docker_Standard_Images
-if grep -q nessus "$File_Path" || [ "$category_type" = "complete" ] || [ "$category_type" = "1" ]; then
-        if docker ps -a | grep -q nessus; then
-                NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
-                sudo docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; sudo docker rm "$NESSUS_DOCKER_TEMP"
-        fi
-        sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
-fi
-if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]]; then
-        if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
-                echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
-        fi
-fi
+if [[ "$Switch_Skip_Installation" == false ]]; then
+	if grep -q nessus "$File_Path" || [ "$category_type" = "complete" ] || [ "$category_type" = "1" ]; then
+	        if docker ps -a | grep -q nessus; then
+	                NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
+	                sudo docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; sudo docker rm "$NESSUS_DOCKER_TEMP"
+	        fi
+	        sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
+	fi
+	if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]]; then
+	        if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
+	                echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
+	        fi
+	fi
+ fi
 
 # VNC_Cert
 if [[ ! -d "/opt/ssl" ]]; then
