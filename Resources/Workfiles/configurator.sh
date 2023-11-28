@@ -687,7 +687,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	else
 	        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	fi
-	
+
 	# Installation_Type
 	if [[ $category_type = "custom" || $category_type = "2" ]]; then
 	        File_Path="${Path_Way}/install.txt"
