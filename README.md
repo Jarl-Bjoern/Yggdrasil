@@ -47,6 +47,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
   - Hotfix Veracrypt Installation
   - Improved Categories
   - Improved Yggdrasil Wiki
+  - New alias for `sslyze` was added (thx to @HomeSen)
   - New parameter `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs
   - Added two new features:
       - The installation path `Default: /opt/pentest_tools` will be now monitored if there are new tools added from github. If this is the case, then these are added to Update.info so that they are also updated automatically, regardless of whether they are integrated in the toolset of Yggdrasil.
