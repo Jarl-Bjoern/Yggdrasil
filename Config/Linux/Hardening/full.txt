@@ -15,6 +15,10 @@ https://github.com/DataDog/KubeHound
 https://github.com/stark0de/nginxpwner
 https://github.com/carlospolop/PEASS-ng
 https://github.com/AonCyberLabs/Windows-Exploit-Suggester
+https://github.com/r3motecontrol/Ghostpack-CompiledBinaries
+https://github.com/Arvanaghi/SessionGopher
+https://github.com/411Hall/JAWS
+https://github.com/FuzzySecurity/PowerShell-Suite
 
 # Go
 
