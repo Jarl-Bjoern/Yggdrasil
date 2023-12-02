@@ -20,6 +20,7 @@ thunderbird
 
 # Python
 opencv-python
+Pillow
 psutil
 pyautogui
 
