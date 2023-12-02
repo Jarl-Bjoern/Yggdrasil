@@ -1,1 +1,2 @@
 https://www.cisecurity.org/cis-benchmarks/
+https://github.com/paralax/awesome-honeypots
