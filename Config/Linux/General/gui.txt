@@ -1,4 +1,5 @@
 # APT
+gnome-screenshot
 filezilla
 flameshot
 gnome-disk-utility
