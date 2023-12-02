@@ -8,10 +8,13 @@ tenableofficial/nessus
 # Gem
 
 # Git
+https://github.com/61106960/adPEAS
 https://github.com/CISOfy/lynis
 https://github.com/yandex/gixy
+https://github.com/DataDog/KubeHound
 https://github.com/stark0de/nginxpwner
 https://github.com/carlospolop/PEASS-ng
+https://github.com/AonCyberLabs/Windows-Exploit-Suggester
 
 # Go
 
