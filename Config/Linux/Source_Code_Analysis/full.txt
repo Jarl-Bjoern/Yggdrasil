@@ -1,1 +1,21 @@
-PLATZHALTER
+# APT
+
+# Cargo
+
+# Docker
+
+# Gem
+
+# Git
+
+# Git_Branch
+
+# Git_Submodules
+
+# Go
+
+# Python
+
+# Wget
+
+# Wordlists
