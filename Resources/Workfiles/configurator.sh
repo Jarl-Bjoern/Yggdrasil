@@ -1137,8 +1137,8 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
                 sudo mkdir -p "$OPT_Path"/Proxy
                 mv chisel mitm_relay proxychains-ng "$OPT_Path"/Proxy || sudo rm -rf chisel mitm_relay proxychains-ng
         fi
-        if [[ $(ls "$OPT_Path"/{"SIPTools","sipvicious","viproy-voipkit"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/SIP ; mv viproy-voipkit sipvicious SIPTools "$OPT_Path"/SIP || sudo rm -rf viproy-voipkit sipvicious SIPTools
+        if [[ $(ls "$OPT_Path"/{"SIPTools","viproy-voipkit"} 2>/dev/null) ]]; then
+                sudo mkdir -p "$OPT_Path"/SIP ; mv viproy-voipkit SIPTools "$OPT_Path"/SIP || sudo rm -rf viproy-voipkit SIPTools
         fi
         if [[ $(ls "$OPT_Path"/{"ffuf","wfuzz"} 2>/dev/null) ]]; then
                 sudo mkdir -p "$OPT_Path"/Fuzzer ; mv ffuf wfuzz "$OPT_Path"/Fuzzer || sudo rm -rf ffuf wfuzz
