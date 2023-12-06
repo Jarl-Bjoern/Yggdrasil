@@ -44,6 +44,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 ## ❗ News
 <strong>Upcoming changes for version</strong> `0.9c`:
   - Hotfix Cronjobs
+  - Hotfix DPKG Installer
   - Hotfix Veracrypt Installation
   - Improved Categories
   - Improved Yggdrasil Wiki
