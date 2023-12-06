@@ -55,7 +55,6 @@ x11vnc
 
 # Python
 defaultcreds-cheat-sheet
-docker-compose
 
 # Wget
 https://sh.rustup.rs rust Installer
