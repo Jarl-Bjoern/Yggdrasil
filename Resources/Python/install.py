@@ -13,10 +13,13 @@ from sys                        import argv
 
 # Main
 if __name__ == '__main__':
-    if (isfile(argv[1]) or '.deb' in argv[1][-6:]):
-        file = argv[1]
+    if ('\r' in argv[1]): Temp = argv[1].split('\r')[0]
+    else:                 Temp = argv[1]
+
+    if (isfile(Temp) or '.deb' in Temp[-6:]):
+        file = Temp
         if (file.endswith('.deb') or
-            '.deb' in argv[1][-6:]):
+            '.deb' in file[-6:]):
                     system(f'sudo dpkg -i {file}')
         elif (file.endswith('.sh')   or
               file.endswith('.bash') or
@@ -24,7 +27,7 @@ if __name__ == '__main__':
               '.bash' in file[-6:]):
                     system(f'sudo bash {file}')
     elif (isdir(argv[1])):
-        for root, _, files in walk(str(argv[1]), topdown=False):
+        for root, _, files in walk(str(Temp), topdown=False):
             for file in files:
                 if (file.endswith('.deb')    or '.deb' in file[1][-6:]):
                             system(f'sudo dpkg -i {join(root, file)}')
