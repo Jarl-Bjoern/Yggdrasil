@@ -496,11 +496,11 @@ function File_Installer() {
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
                                                                 wget --content-disposition "$FILE"
-                                                                sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
+								sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         else
                                                                 FILE_NAME=$(echo "$line" | cut -d" " -f2)
                                                                 wget "$FILE" -O "$FILE_NAME".deb
-                                                                sudo dpkg -i "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2).deb" | tee -a "$FULL_PATH/yggdrasil.log"
+								sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2).deb" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                         fi
                                                 Logger "$FILE" "$FILE_NAME"
