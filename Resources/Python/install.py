@@ -29,7 +29,7 @@ if __name__ == '__main__':
     elif (isdir(argv[1])):
         for root, _, files in walk(str(Temp), topdown=False):
             for file in files:
-                if (file.endswith('.deb')    or '.deb' in file[1][-6:]):
+                if (file.endswith('.deb')    or '.deb' in file[-6:]):
                             system(f'sudo dpkg -i {join(root, file)}')
                 elif (file.endswith('.sh')   or
                       file.endswith('.bash') or
