@@ -691,7 +691,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                OPT_Path="/opt/training_tools"
 	        fi
 	        Array_URL+=("$FULL_PATH/Information/Pages/Education.txt")
-	elif [[ $testing_category == "development" || $testing_category == "7" ]]; then
+	elif [[ $category_type == "development" || $category_type == "7" ]]; then
 		Path_Way="$FULL_PATH/Config/Linux/Development"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/development_tools"
