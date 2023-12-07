@@ -53,7 +53,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
   - New parameter `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs
   - Added two new features:
       - The installation path `Default: /opt/pentest_tools` will be now monitored if there are new tools added from github. If this is the case, then these are added to Update.info so that they are also updated automatically, regardless of whether they are integrated in the toolset of Yggdrasil.
-      - If a tool is no longer in the installation path `Default: /opt/pentest_tools`, it is deleted from `update.info` via a task.
+      - If a tool is no longer in the installation path `Default: /opt/pentest_tools`, it will be deleted from `update.info` via a task.
   - A new alias `kali-repo-switch` has been integrated, which can be used to switch between the two repositories `kali-rolling` and `kali-last-snapshot`.
 
 <div align="center">
