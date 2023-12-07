@@ -28,9 +28,7 @@ libnftnl-dev
 libsasl2-dev
 libssl-dev
 libstrongswan-extra-plugins
-maven
 mc
-mono-complete
 neovim
 netfilter-persistent
 nginx
