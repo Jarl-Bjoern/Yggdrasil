@@ -226,7 +226,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :  installation of pentest   tools          ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}hardening${NOCOLOR}   :  installation of hardening tools          ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}training${NOCOLOR}    :  installation of training  tools          ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${YELLOW}6${NOCOLOR}] ${YELLOW}development${NOCOLOR}    :  installation of development  tools          ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${YELLOW}6${NOCOLOR}] ${YELLOW}development${NOCOLOR} :  installation of development  tools          ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "development" ]; then
 	        echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}source_code_analysis${NOCOLOR}    :  installation of sca  tools          ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}reverse_engineering${NOCOLOR}    :  installation of reverse engineering  tools          ${CYAN}|${NOCOLOR}"
