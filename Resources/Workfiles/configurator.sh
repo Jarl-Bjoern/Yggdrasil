@@ -630,7 +630,6 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                        elif [[ $testing_category == "mobile" || $testing_category == "3" ]]; then
 	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Mobile")
 	                        elif [[ $testing_category == "red_teaming" || $testing_category == "4" ]]; then
-	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Red_Teaming")
 	                                Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
 					header "red_team"
 					read -rp "Your Choice: " red_team
@@ -647,6 +646,18 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
 	                        elif [[ $testing_category == "cloud" || $testing_category == "6" ]]; then
 	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Cloud")
+				elif [[ $testing_category == "development" || $testing_category == "7" ]]; then
+					header "development"
+					read -rp "Your Choice: " development
+					if [[ $development =~ "," ]]; then
+						IFS=", "
+						Array_Development=($development)
+						for testing_category in "${Array_Development[@]}"; do
+	                                            Development_Check $testing_category
+						done
+					else
+	                                        Development_Check $red_team
+					fi    
 	                        else
 	                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	                        fi
@@ -676,6 +687,18 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 				Array_URL+=("$FULL_PATH/Information/Pages/Web.txt")
 	                elif [[ $pentesting = "cloud" || $pentesting = "6" ]]; then
 	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Cloud"
+			elif [[ $testing_category == "development" || $testing_category == "7" ]]; then
+				header "development"
+				read -rp "Your Choice: " development
+				if [[ $development =~ "," ]]; then
+					IFS=", "
+					Array_Development=($development)
+					for testing_category in "${Array_Development[@]}"; do
+					    Development_Check $testing_category
+					done
+				else
+					Development_Check $red_team
+				fi
 	                else
 	                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	                fi
