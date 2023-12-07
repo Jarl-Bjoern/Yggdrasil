@@ -645,19 +645,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                        elif [[ $testing_category == "web" || $testing_category == "5" ]]; then
 	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
 	                        elif [[ $testing_category == "cloud" || $testing_category == "6" ]]; then
-	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Cloud")
-				elif [[ $testing_category == "development" || $testing_category == "7" ]]; then
-					header "development"
-					read -rp "Your Choice: " development
-					if [[ $development =~ "," ]]; then
-						IFS=", "
-						Array_Development=($development)
-						for testing_category in "${Array_Development[@]}"; do
-	                                            Development_Check $testing_category
-						done
-					else
-	                                        Development_Check $red_team
-					fi    
+	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Cloud") 
 	                        else
 	                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	                        fi
@@ -687,18 +675,6 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 				Array_URL+=("$FULL_PATH/Information/Pages/Web.txt")
 	                elif [[ $pentesting = "cloud" || $pentesting = "6" ]]; then
 	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Cloud"
-			elif [[ $testing_category == "development" || $testing_category == "7" ]]; then
-				header "development"
-				read -rp "Your Choice: " development
-				if [[ $development =~ "," ]]; then
-					IFS=", "
-					Array_Development=($development)
-					for testing_category in "${Array_Development[@]}"; do
-					    Development_Check $testing_category
-					done
-				else
-					Development_Check $red_team
-				fi
 	                else
 	                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	                fi
@@ -715,6 +691,22 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                OPT_Path="/opt/training_tools"
 	        fi
 	        Array_URL+=("$FULL_PATH/Information/Pages/Education.txt")
+	elif [[ $testing_category == "development" || $testing_category == "7" ]]; then
+		Path_Way="$FULL_PATH/Config/Linux/Development"
+	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+	                OPT_Path="/opt/development_tools"
+	        fi
+		header "development"
+		read -rp "Your Choice: " development
+		if [[ $development =~ "," ]]; then
+			IFS=", "
+			Array_Development=($development)
+			for testing_category in "${Array_Development[@]}"; do
+			    Development_Check $testing_category
+			done
+		else
+			Development_Check $testing_category
+		fi
 	elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Custom"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
