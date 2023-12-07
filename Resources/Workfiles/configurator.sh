@@ -562,12 +562,12 @@ function Development_Check() {
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Exploit_Development")
               Array_Categories+=("$FULL_PATH/Config/Linux/Development/Reverse_Engineering")
               Array_Categories+=("$FULL_PATH/Config/Linux/Development/Source_Code_Analysis")
-	elif [[ $development == "exploit_development" || $development == "2" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Exploit_Development")
+	elif [[ $development == "source_code_analysis" || $development == "2" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Source_Code_Analysis")
 	elif [[ $development == "reverse_engineering" || $development == "3" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Reverse_Engineering")
-	elif [[ $development == "source_code_analysis" || $development == "4" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Source_Code_Analysis")
+	elif [[ $development == "exploit_development" || $development == "4" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Exploit_Development")
 	else
 	      echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
 	fi
