@@ -48,6 +48,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
   - Hotfix Veracrypt Installation
   - Improved Categories
   - Improved Yggdrasil Wiki
+  - New categories `source code analysis`, `reverse engineering` and `exploit development` was added
   - New alias for `sslyze` was added (thx to `@HomeSen`)
   - New parameter `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs
   - Added two new features:
