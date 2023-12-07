@@ -705,7 +705,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 			    Development_Check $testing_category
 			done
 		else
-			Development_Check $testing_category
+			Development_Check $development
 		fi
 	elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Custom"
