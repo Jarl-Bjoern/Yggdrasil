@@ -226,9 +226,9 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :  installation of pentest   tools          ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}hardening${NOCOLOR}   :  installation of hardening tools          ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}training${NOCOLOR}    :  installation of training  tools          ${CYAN}|${NOCOLOR}"
-		#echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}source_code_analysis${NOCOLOR}    :  installation of sca  tools          ${CYAN}|${NOCOLOR}"
-		#echo -e "${CYAN}|${NOCOLOR}   [${CYAN}8${NOCOLOR}] ${CYAN}reverse_engineering${NOCOLOR}    :  installation of reverse engineering  tools          ${CYAN}|${NOCOLOR}"
-  		#echo -e "${CYAN}|${NOCOLOR}   [${GREEN}9${NOCOLOR}] ${GREEN}exploit_development${NOCOLOR}    :  installation of exploit development  tools          ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${YELLOW}7${NOCOLOR}] ${YELLOW}source_code_analysis${NOCOLOR}    :  installation of sca  tools          ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}   [${RED}8${NOCOLOR}] ${RED}reverse_engineering${NOCOLOR}    :  installation of reverse engineering  tools          ${CYAN}|${NOCOLOR}"
+  		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}9${NOCOLOR}] ${CYAN}exploit_development${NOCOLOR}    :  installation of exploit development  tools          ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "installation" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}full${NOCOLOR}         :     full    installation (${GREEN}GUI${NOCOLOR})           ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}minimal${NOCOLOR}      :     minimal installation (${ORANGE}CLI${NOCOLOR})           ${CYAN}|${NOCOLOR}"
