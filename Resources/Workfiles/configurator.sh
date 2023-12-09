@@ -229,10 +229,10 @@ function header() {
 		echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}development${NOCOLOR} :  installation of development tools        ${CYAN}|${NOCOLOR}"
   	elif [ "$1" = "forensic" ]; then
 		echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}           :  installation of  all  toolkits   ${CYAN}|${NOCOLOR}"
-	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}             :  tools for cloud analysis   ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}crypto${NOCOLOR}          :  tools for crypto analysis   ${CYAN}|${NOCOLOR}"
-  		echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}infrastructure${NOCOLOR}    :  tools for infrastructure analysis   ${CYAN}|${NOCOLOR}"
-    		echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}mobile${NOCOLOR}               :  tools for mobile forensics   ${CYAN}|${NOCOLOR}"
+	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud analysis   ${CYAN}|${NOCOLOR}"
+		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}crypto${NOCOLOR}            :  tools for crypto analysis   ${CYAN}|${NOCOLOR}"
+  		echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}infrastructure${NOCOLOR}     :  tools for infrastructure analysis   ${CYAN}|${NOCOLOR}"
+    		echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}mobile${NOCOLOR}            :  tools for mobile forensics   ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "development" ]; then
 		echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}             :  installation of  all  toolkits   ${CYAN}|${NOCOLOR}"
 	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}source_code_analysis${NOCOLOR} :  tools for source code analysis   ${CYAN}|${NOCOLOR}"
