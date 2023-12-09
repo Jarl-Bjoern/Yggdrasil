@@ -534,6 +534,27 @@ function File_Reader() {
         done < "$input"
 }
 
+function Forensic_Check() {
+        forensic_type=$1
+	if [[ $forensic_type == "complete" || $forensic_type == "1" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Cloud")
+              Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Crypto")
+              Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Infrastructure")
+              Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Mobile")
+	elif [[ $red_team == "cloud" || $red_team == "2" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Cloud")
+	elif [[ $red_team == "crypto" || $red_team == "3" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Crypto")
+	elif [[ $red_team == "infrastructure" || $red_team == "4" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Infrastructure")
+	elif [[ $red_team == "mobile" || $red_team == "5" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Mobile")
+	else
+	      echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	fi
+        Array_URL+=("$FULL_PATH/Information/Pages/Forensic.txt")
+}
+
 function Red_Team_Check() {
         red_team=$1
 	if [[ $red_team == "complete" || $red_team == "1" ]]; then
