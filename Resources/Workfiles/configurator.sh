@@ -261,6 +261,8 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}ssh${NOCOLOR}              :   SSH      hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}apache${NOCOLOR}           :   Apache   hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx    hardening                 ${CYAN}|${NOCOLOR}"
+                #echo -e "${CYAN}|${NOCOLOR}   [${BLUE}7${NOCOLOR}] ${BLUE}ftp${NOCOLOR}           :   ftp   hardening                 ${CYAN}|${NOCOLOR}"
+                #echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}8${NOCOLOR}] ${PURPLE}squid${NOCOLOR}            :   squid    hardening                 ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "settings" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}      :   complete configuration                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}updates${NOCOLOR}       :   automated updates                      ${CYAN}|${NOCOLOR}"
@@ -632,13 +634,23 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	header "category"
 	read -rp "Your Choice: " category_type
 	if [[ $category_type = "forensic" || $category_type = "3" ]]; then
-	        Path_Way="$FULL_PATH/Config/Linux/Forensic"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/forensic_tools"
 	        fi
 	        if [[ $HOST_Pentest == "pentest-kali" ]]; then
 	                HOST_Pentest="forensic-kali"
 	        fi
+	        header "forensic"
+	        read -rp "Your Choice: " forensics
+	        if [[ $forensics =~ "," ]]; then
+	                IFS=", "
+	                Array_Forensics=($forensics)
+	                for forensic_category in "${Forensics[@]}"; do
+				Forensic_Check $forensics
+	                done
+		 else
+   			Forensic_Check $forensics
+		fi
 	elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/pentest_tools"
