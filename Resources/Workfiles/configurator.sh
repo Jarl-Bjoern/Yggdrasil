@@ -855,6 +855,10 @@ if [[ $Switch_Skip_Hardening != true ]]; then
                         Switch_APACHE=true
                 elif [[ $hardening = "nginx" || $hardening = "6" ]]; then
                         Switch_NGINX=true
+#                elif [[ $hardening = "ftp" || $hardening = "7" ]]; then
+#                        Switch_FTP=true
+#                elif [[ $hardening = "squid" || $hardening = "8" ]]; then
+#                        Switch_SQUID=true
                 else
                         echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
                 fi
