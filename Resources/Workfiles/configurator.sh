@@ -238,6 +238,10 @@ function header() {
 	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}source_code_analysis${NOCOLOR} :  tools for source code analysis   ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}reverse_engineering${NOCOLOR}  :  tools for reverse  engineering   ${CYAN}|${NOCOLOR}"
   		echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}exploit_development${NOCOLOR}  :  tools for exploit  development   ${CYAN}|${NOCOLOR}"
+  	elif [ "$1" = "hardening_category" ]; then
+		echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}           :  installation of  all  toolkits     ${CYAN}|${NOCOLOR}"
+	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud  hardening          ${CYAN}|${NOCOLOR}"
+  		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}     :  tools for infrastructure hardening  ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "installation" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}full${NOCOLOR}         :     full    installation (${GREEN}GUI${NOCOLOR})           ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}minimal${NOCOLOR}      :     minimal installation (${ORANGE}CLI${NOCOLOR})           ${CYAN}|${NOCOLOR}"
@@ -563,6 +567,21 @@ function Forensic_Check() {
         Array_URL+=("$FULL_PATH/Information/Pages/Forensic.txt")
 }
 
+function Hardening_Check() {
+        hardening_type=$1
+	if [[ $hardening_type == "complete" || $hardening_type == "1" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Cloud")
+              Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Infrastructure")
+	elif [[ $hardening_type == "cloud" || $hardening_type == "2" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Cloud")
+	elif [[ $hardening_type == "infrastructure" || $hardening_type == "3" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Infrastructure")
+	else
+	      echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	fi
+        Array_URL+=("$FULL_PATH/Information/Pages/Hardening.txt")
+}
+
 function Red_Team_Check() {
         red_team=$1
 	if [[ $red_team == "complete" || $red_team == "1" ]]; then
@@ -645,7 +664,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        if [[ $forensics =~ "," ]]; then
 	                IFS=", "
 	                Array_Forensics=($forensics)
-	                for forensic_category in "${Forensics[@]}"; do
+	                for forensic_category in "${Array_Forensics[@]}"; do
 				Forensic_Check $forensics
 	                done
 		 else
@@ -723,7 +742,17 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/hardening_tools"
 	        fi
-	        Array_URL+=("$FULL_PATH/Information/Pages/Hardening.txt")
+	        header "hardening_category"
+	        read -rp "Your Choice: " hardening_input
+	        if [[ $hardening_input =~ "," ]]; then
+	                IFS=", "
+	                Array_Hardening_Input=($hardening_input)
+	                for forensic_category in "${Array_Hardening_Input[@]}"; do
+				Hardening_Check $hardening_input
+	                done
+		 else
+   			Hardening_Check $hardening_input
+		fi
 	elif [[ $category_type = "training" || $category_type = "6" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Training"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
