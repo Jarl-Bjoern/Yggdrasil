@@ -549,13 +549,13 @@ function Forensic_Check() {
               Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Crypto")
               Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Infrastructure")
               Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Mobile")
-	elif [[ $red_team == "cloud" || $red_team == "2" ]]; then
+	elif [[ $forensic_type == "cloud" || $forensic_type == "2" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Cloud")
-	elif [[ $red_team == "crypto" || $red_team == "3" ]]; then
+	elif [[ $forensic_type == "crypto" || $forensic_type == "3" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Crypto")
-	elif [[ $red_team == "infrastructure" || $red_team == "4" ]]; then
+	elif [[ $forensic_type == "infrastructure" || $forensic_type == "4" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Infrastructure")
-	elif [[ $red_team == "mobile" || $red_team == "5" ]]; then
+	elif [[ $forensic_type == "mobile" || $forensic_type == "5" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Mobile")
 	else
 	      echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
