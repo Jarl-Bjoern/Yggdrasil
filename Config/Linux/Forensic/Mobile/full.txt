@@ -67,6 +67,7 @@ apfs-dkms
 lvm2
 qemu-system-x86-64
 mdadm
+unyaffs
 
 # Python
 pytsk3
