@@ -3,6 +3,7 @@
 # Rainer Christian Bjoern Herold
 # Version 0.1 27.10.2022
 # Version 0.2 02.09.2023
+# Version 0.3 16.12.2023
 
 # Libraries
 from os                         import system, walk
