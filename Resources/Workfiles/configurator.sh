@@ -1567,7 +1567,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        fi
 	        sudo docker run -d -p 127.0.0.1:8834:8834 --name nessus tenableofficial/nessus
 	fi
-	if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]]; then
+	if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" || $category_type = "red_teaming" || $category_type = "7" ]]; then
 	        if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
 	                echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}" ; File_Reader "$Informational"
 	        fi
