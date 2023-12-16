@@ -775,32 +775,34 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        File_Path="${Path_Way}/full.txt"
 	        Informational="$FULL_PATH/Information/info.txt"
 	else
-	        if [[ ${#Array_Categories} -gt 0 ]]; then
-	                Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
-	                File_Path="${Path_Way}/full.txt"
-	                Informational="$FULL_PATH/Information/info.txt"
-	                decision="full"
-	        else
-	                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "red_teaming" || $pentesting = "4" || $pentesting = "5" || $pentesting = "cloud" || $pentesting = "6" ]]; then
-	                        File_Path="${Path_Way}/full.txt"
-	                        decision="full"
-	                        Informational="$FULL_PATH/Information/info.txt"
-	                else
-	                        header "installation"
-	                        read -rp "Your Choice: " decision
-	                        if [[ $decision = "full" || $decision = "1" ]]; then
-	                                File_Path="${Path_Way}/full.txt"
-	                                if [[ $category_type = "pentest" || $category_type = "4" ]]; then
-	                                       Informational="$FULL_PATH/Information/info.txt"
-	                                fi
-	                        elif [[ $decision = "minimal" || $decision = "2" ]]; then
-	                                File_Path="${Path_Way}/minimal.txt"
-	                                Switch_URL=false
-	                        else
-	                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-	                        fi
-	                fi
-	        fi
+	        if [[ ${#Array_Categories[@]} -gt 0  ]]; then
+	 		if [[ ${#Array_Categories[@]} -neq 1 ]]; then
+		                Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
+		                File_Path="${Path_Way}/full.txt"
+		                Informational="$FULL_PATH/Information/info.txt"
+		                decision="full"
+		        else
+		                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "4" || $pentesting = "cloud" || $pentesting = "5" ]]; then
+		                        File_Path="${Path_Way}/full.txt"
+		                        decision="full"
+		                        Informational="$FULL_PATH/Information/info.txt"
+		                else
+		                        header "installation"
+		                        read -rp "Your Choice: " decision
+		                        if [[ $decision = "full" || $decision = "1" ]]; then
+		                                File_Path="${Path_Way}/full.txt"
+		                                if [[ $category_type = "pentest" || $category_type = "4" ]]; then
+		                                       Informational="$FULL_PATH/Information/info.txt"
+		                                fi
+		                        elif [[ $decision = "minimal" || $decision = "2" ]]; then
+		                                File_Path="${Path_Way}/minimal.txt"
+		                                Switch_URL=false
+		                        else
+		                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+		                        fi
+		                fi
+		        fi
+	  	fi
 	fi
 else
 	if [ -d "/opt/pentest_tools" ]; then
