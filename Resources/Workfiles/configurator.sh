@@ -238,9 +238,8 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}  :   tools for infra  pentesting         ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}iot${NOCOLOR}             :   tools for iot    pentesting         ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}3${NOCOLOR}] ${BLUE}mobile${NOCOLOR}          :   tools for mobile pentesting         ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${RED}4${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red    teaming            ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${CYAN}5${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web    pentesting         ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}           :   tools for cloud  pentesting         ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${CYAN}4${NOCOLOR}] ${CYAN}web${NOCOLOR}             :   tools for web    pentesting         ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}5${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}           :   tools for cloud  pentesting         ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "red_team" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}            :   complete configuration          ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}2${NOCOLOR}] ${PURPLE}active_directory${NOCOLOR}    :   tools for Active Directory      ${CYAN}|${NOCOLOR}"
@@ -571,6 +570,25 @@ function Hardening_Check() {
         Array_URL+=("$FULL_PATH/Information/Pages/Hardening.txt")
 }
 
+function Pentest_Check() {
+        pentest_check=$1
+	if [[ $pentest_check = "infrastructure" || $pentest_check = "1" ]]; then
+		Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Infrastructure")
+		Array_URL+=("$FULL_PATH/Information/Pages/Infrastructure.txt")
+	elif [[ $pentest_check = "iot" || $pentest_check = "2" ]]; then
+		Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/IOT")
+	elif [[ $pentest_check = "mobile" || $pentest_check = "3" ]]; then
+		Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Mobile")
+	elif [[ $pentest_check = "web" || $pentest_check = "4" ]]; then
+		Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
+		Array_URL+=("$FULL_PATH/Information/Pages/Web.txt")
+	elif [[ $pentest_check = "cloud" || $pentest_check = "5" ]]; then
+		Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Cloud")
+	else
+		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	fi
+}
+
 function Red_Team_Check() {
         red_team=$1
 	if [[ $red_team == "complete" || $red_team == "1" ]]; then
@@ -669,62 +687,10 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                IFS=", "
 	                Array_Pentesting=($pentesting)
 	                for testing_category in "${Array_Pentesting[@]}"; do
-	                        if [[ $testing_category == "infrastructure" || $testing_category == "1" ]]; then
-	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Infrastructure")
-	                                Array_URL+=("$FULL_PATH/Information/Pages/Infrastructure.txt")
-	                        elif [[ $testing_category == "iot" || $testing_category == "2" ]]; then
-	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/IOT")
-	                        elif [[ $testing_category == "mobile" || $testing_category == "3" ]]; then
-	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Mobile")
-	                        elif [[ $testing_category == "red_teaming" || $testing_category == "4" ]]; then
-	                                Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
-					header "red_team"
-					read -rp "Your Choice: " red_team
-					if [[ $red_team =~ "," ]]; then
-						IFS=", "
-						Array_Red_Teaming=($red_team)
-						for testing_category in "${Array_Red_Teaming[@]}"; do
-	                                            Red_Team_Check $testing_category
-						done
-					else
-	                                        Red_Team_Check $red_team
-					fi
-	                        elif [[ $testing_category == "web" || $testing_category == "5" ]]; then
-	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Web")
-	                        elif [[ $testing_category == "cloud" || $testing_category == "6" ]]; then
-	                                Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Cloud") 
-	                        else
-	                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-	                        fi
+		 		Pentest_Check $testing_category
 	                done
 	        else
-	                if [[ $pentesting = "infrastructure" || $pentesting = "1" ]]; then
-	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
-	                        Array_URL+=("$FULL_PATH/Information/Pages/Infrastructure.txt")
-	                elif [[ $pentesting = "iot" || $pentesting = "2" ]]; then
-	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/IOT"
-	                elif [[ $pentesting = "mobile" || $pentesting = "3" ]]; then
-	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Mobile"
-	                elif [[ $pentesting = "red_teaming" || $pentesting = "4" ]]; then
-				header "red_team"
-				read -rp "Your Choice: " red_team
-				if [[ $red_team =~ "," ]]; then
-					IFS=", "
-					Array_Red_Teaming=($red_team)
-					for testing_category in "${Array_Red_Teaming[@]}"; do
-	                                     Red_Team_Check $testing_category
-					done
-				else
-	                                Red_Team_Check $red_team
-				fi
-	                elif [[ $pentesting = "web" || $pentesting = "5" ]]; then
-	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Web"
-				Array_URL+=("$FULL_PATH/Information/Pages/Web.txt")
-	                elif [[ $pentesting = "cloud" || $pentesting = "6" ]]; then
-	                        Path_Way="$FULL_PATH/Config/Linux/Pentest/Cloud"
-	                else
-	                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-	                fi
+			Pentest_Check $pentesting
 	        fi
 	elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Hardening"
@@ -748,7 +714,23 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	                OPT_Path="/opt/training_tools"
 	        fi
 	        Array_URL+=("$FULL_PATH/Information/Pages/Education.txt")
-	elif [[ $category_type == "development" || $category_type == "7" ]]; then
+	elif [[ $category_type = "red_teaming" || $category_type = "7" ]]; then
+	        Path_Way="$FULL_PATH/Config/Linux/Red_Teaming"
+	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
+	                OPT_Path="/opt/red_teaming_tools"
+	        fi
+		header "red_team"
+		read -rp "Your Choice: " red_team
+		if [[ $red_team =~ "," ]]; then
+			IFS=", "
+			Array_Red_Teaming=($red_team)
+			for testing_category in "${Array_Red_Teaming[@]}"; do
+			     Red_Team_Check $testing_category
+			done
+		else
+			Red_Team_Check $red_team
+		fi
+	elif [[ $category_type == "development" || $category_type == "8" ]]; then
 		Path_Way="$FULL_PATH/Config/Linux/Development"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/development_tools"
