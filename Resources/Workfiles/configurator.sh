@@ -57,18 +57,6 @@ TEMP_WGET_PATH=""
 declare -a Array_Categories=()
 declare -a Array_Cargo_Updater=()
 
-declare -a Array_Complete_Install=("$FULL_PATH/Config/Linux/Forensic/full.txt"
-"$FULL_PATH/Config/Linux/Cloud/full.txt"
-"$FULL_PATH/Config/Linux/Hardening/full.txt"
-"$FULL_PATH/Config/Linux/Pentest/Infrastructure/full.txt"
-"$FULL_PATH/Config/Linux/Pentest/IOT/full.txt"
-"$FULL_PATH/Config/Linux/Pentest/Mobile/full.txt"
-"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Active_Directory/full.txt"
-"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/OSINT/full.txt"
-"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Phishing/full.txt"
-"$FULL_PATH/Config/Linux/Pentest/Red_Teaming/Physical_Pentesting/full.txt"
-"$FULL_PATH/Config/Linux/Pentest/Web/full.txt")
-
 declare -a Array_Filter_Download=("/usr/bin/veracrypt"
 "/usr/bin/code"
 "/usr/bin/google-chrome"
@@ -1064,8 +1052,8 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 
 	# Tool_Installation
 	if [[ $category_type = "complete" || $category_type = "1" ]]; then
-#	        for i in "${Array_Complete_Install[@]}"; do
-		for i in "$(find $FULL_PATH/Config/Linux -type f -name full.txt)"; do
+		Array_Complete_Install=$(find $FULL_PATH/Config/Linux -type f -name full.txt)
+		for i in "${Array_Complete_Install[@]}"; do
 	                File_Installer "$i" "$OPT_Path"
 	        done
 	else
