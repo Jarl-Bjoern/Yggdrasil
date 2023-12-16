@@ -46,9 +46,18 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
   - Hotfix Cronjobs
   - Hotfix DPKG Installer
   - Hotfix Veracrypt Installation
-  - Improved Categories
+  - Category improvements:
+    - Forensics:
+      - `Cloud`
+      - `Crypto`
+      - `Infrastructure`
+      - `Mobile`
+  - New categories was added:
+    - Development:
+      - `source code analysis`
+      - `reverse engineering`
+      - `exploit development`
   - Improved Yggdrasil Wiki
-  - New categories `source code analysis`, `reverse engineering` and `exploit development` was added
   - New alias for `sslyze` was added (thx to `@HomeSen`)
   - New parameter `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs
   - Added two new features:
