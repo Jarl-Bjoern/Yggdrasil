@@ -1064,7 +1064,8 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 
 	# Tool_Installation
 	if [[ $category_type = "complete" || $category_type = "1" ]]; then
-	        for i in "${Array_Complete_Install[@]}"; do
+#	        for i in "${Array_Complete_Install[@]}"; do
+		for i in "$(find $FULL_PATH/Config/Linux -type f -name full.txt)"; do
 	                File_Installer "$i" "$OPT_Path"
 	        done
 	else
