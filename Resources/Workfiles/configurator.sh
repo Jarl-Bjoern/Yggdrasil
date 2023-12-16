@@ -776,7 +776,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        Informational="$FULL_PATH/Information/info.txt"
 	else
 	        if [[ ${#Array_Categories[@]} -gt 0  ]]; then
-	 		if [[ ${#Array_Categories[@]} -neq 1 ]]; then
+	 		if [[ ${#Array_Categories[@]} -gt 1 ]]; then
 		                Path_Way="$FULL_PATH/Config/Linux/Pentest/Infrastructure"
 		                File_Path="${Path_Way}/full.txt"
 		                Informational="$FULL_PATH/Information/info.txt"
