@@ -1052,7 +1052,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 
 	# Tool_Installation
 	if [[ $category_type = "complete" || $category_type = "1" ]]; then
-		Array_Complete_Install=$(find $FULL_PATH/Config/Linux -type f -name full.txt)
+		Array_Complete_Install=($(find $FULL_PATH/Config/Linux -type f -name full.txt))
 		for i in "${Array_Complete_Install[@]}"; do
 	                File_Installer "$i" "$OPT_Path"
 	        done
