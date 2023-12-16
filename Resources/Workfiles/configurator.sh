@@ -215,7 +215,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}hardening${NOCOLOR}   :  installation of hardening   tools        ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}training${NOCOLOR}    :  installation of training    tools        ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}7${NOCOLOR}] ${CYAN}development${NOCOLOR} :  installation of development tools        ${CYAN}|${NOCOLOR}"
-  		echo -e "${CYAN}|${NOCOLOR}   [${RED}8${NOCOLOR}] ${RED}red_teaming${NOCOLOR}     :   tools for red    teaming            ${CYAN}|${NOCOLOR}"
+  		echo -e "${CYAN}|${NOCOLOR}   [${RED}8${NOCOLOR}] ${RED}red_teaming${NOCOLOR} :   installation of red teaming tools            ${CYAN}|${NOCOLOR}"
   	elif [ "$1" = "forensic" ]; then
 		echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}           :  installation of  all  toolkits     ${CYAN}|${NOCOLOR}"
 	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud  analysis          ${CYAN}|${NOCOLOR}"
