@@ -29,7 +29,7 @@ if __name__ == '__main__':
     else:                 Temp = argv[1]
 
     if (isfile(Temp) or '.deb' in Temp[-6:]):
-        Check_File(Temp)
+        Check_File(Temp, "")
     elif (isdir(argv[1])):
         for root, _, files in walk(str(Temp), topdown=False):
             for file in files:
