@@ -1560,7 +1560,7 @@ fi
 
 # Docker_Standard_Images
 if [[ "$Switch_Skip_Installation" == false ]]; then
-	if grep -q nessus "$File_Path" || [ "$category_type" = "complete" ] || [ "$category_type" = "1" ]; then
+	if grep -q nessus "$File_Path" 2>/dev/null || [ "$category_type" = "complete" ] || [ "$category_type" = "1" ]; then
 	        if docker ps -a | grep -q nessus; then
 	                NESSUS_DOCKER_TEMP=$(docker ps -a | grep "nessus" | cut -d " " -f1)
 	                sudo docker stop "$NESSUS_DOCKER_TEMP" ; sleep 1 ; sudo docker rm "$NESSUS_DOCKER_TEMP"
