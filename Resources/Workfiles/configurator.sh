@@ -782,7 +782,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 		                Informational="$FULL_PATH/Information/info.txt"
 		                decision="full"
 		        else
-		                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "4" || $pentesting = "cloud" || $pentesting = "5" ]]; then
+		                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "4" || $pentesting = "cloud" || $pentesting = "5" || $red_team = "1" || $red_team = "complete" || $red_team = "2" || $red_team = "active_directory" || $red_team = "3" || $red_team = "osint" || $red_team = "4" || $red_team = "phishing" || $red_team = "5" || $red_team = "physical" ]]; then
 		                        File_Path="${Path_Way}/full.txt"
 		                        decision="full"
 		                        Informational="$FULL_PATH/Information/info.txt"
