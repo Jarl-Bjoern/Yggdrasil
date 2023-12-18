@@ -551,7 +551,8 @@ function Forensic_Check() {
 	elif [[ $forensic_type == "mobile" || $forensic_type == "5" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Forensic/Mobile")
 	else
-	      echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	      echo -e "\nYour decision was not accepted!\nPlease try again."
+              Show_Error_Message=true
 	fi
         Array_URL+=("$FULL_PATH/Information/Pages/Forensic.txt")
 }
@@ -566,7 +567,8 @@ function Hardening_Check() {
 	elif [[ $hardening_type == "infrastructure" || $hardening_type == "3" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Infrastructure")
 	else
-	      echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	      echo -e "\nYour decision was not accepted!\nPlease try again."
+              Show_Error_Message=true
 	fi
         Array_URL+=("$FULL_PATH/Information/Pages/Hardening.txt")
 }
@@ -586,7 +588,8 @@ function Pentest_Check() {
 	elif [[ $pentest_check = "cloud" || $pentest_check = "5" ]]; then
 		Array_Categories+=("$FULL_PATH/Config/Linux/Pentest/Cloud")
 	else
-		echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+		echo -e "\nYour decision was not accepted!\nPlease try again."
+                Show_Error_Message=true
 	fi
 }
 
@@ -608,7 +611,8 @@ function Red_Team_Check() {
 	elif [[ $red_team == "physical" || $red_team == "5" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Pentesting")
 	else
-	      echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	      echo -e "\nYour decision was not accepted!\nPlease try again."
+              Show_Error_Message=true
 	fi
 }
 
@@ -625,7 +629,8 @@ function Development_Check() {
 	elif [[ $development == "exploit_development" || $development == "4" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Exploit_Development")
 	else
-	      echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	      echo -e "\nYour decision was not accepted!\nPlease try again."
+              Show_Error_Message=true
 	fi
 }
 
