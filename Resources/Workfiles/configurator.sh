@@ -635,8 +635,7 @@ function Development_Check() {
 }
 
 function Category_Loop() {
-	Kill_Loop=false
-	while [[ "$Kill_Loop" == false ]];
+	while true;
 	do
 		header "$1"
   		read -rp "Your Choice: " temp_check_input
@@ -653,9 +652,9 @@ function Category_Loop() {
 		if [[ "$Show_Error_Message" == true ]]; then
   			clearing
      		else
-			Show_Error_Message=false
-   			Kill_Loop=true
+   			break
   		fi
+                Show_Error_Message=false
  	done
 }
 
