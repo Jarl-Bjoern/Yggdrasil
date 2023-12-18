@@ -813,6 +813,7 @@ fi
 # Hardening_Configuration
 if [[ $Switch_Skip_Hardening != true ]]; then
 	while true;
+ 	do
 	        header "hardening"
 	        read -rp "Your Choice: " hardening
 	        if [[ $hardening =~ "," ]]; then
