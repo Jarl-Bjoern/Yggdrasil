@@ -651,6 +651,7 @@ function Category_Loop() {
 
 		if [[ "$Show_Error_Message" == true ]]; then
   			clearing
+     			break
      		else
 			Show_Error_Message=false
    			break
