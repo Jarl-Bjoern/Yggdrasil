@@ -632,7 +632,7 @@ function Development_Check() {
 function Category_Loop() {
 	while true;
 	do
-		header $1
+		header "$1"
   		read -rp "Your Choice: " temp_check_input
     		if [[ "$temp_check_input" =~ "," ]]; then
 			IFS=", "
@@ -691,20 +691,20 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        if [[ $HOST_Pentest == "pentest-kali" ]]; then
 	                HOST_Pentest="forensic-kali"
 	        fi
-		Category_Loop() "forensic" Forensic_Check
+                Category_Loop() "forensic" Forensic_Check
 
 	elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/pentest_tools"
-	        fi
-		Category_Loop() "pentesting_category" Pentest_Check
+                fi
+                Category_Loop() "pentesting_category" Pentest_Check
 
 	elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Hardening"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/hardening_tools"
 	        fi
-		Category_Loop() "hardening_category" Hardening_Check
+                Category_Loop() "hardening_category" Hardening_Check
 
 	elif [[ $category_type = "training" || $category_type = "6" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Training"
