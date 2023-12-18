@@ -44,7 +44,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 ## ❗ News
 <strong>Upcoming changes for version</strong> `0.9c`:
   - Code improvements:
-    - The program is no longer terminated if an incorrect entry is made, provided you are in step 2.
+    - The program will no longer terminate if an incorrect entry is made, provided you are in step 2.
   - Hotfix Cronjobs
   - Hotfix DPKG Installer
   - Hotfix Veracrypt Installation
