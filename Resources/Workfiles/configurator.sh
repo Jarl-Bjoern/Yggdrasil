@@ -812,67 +812,89 @@ fi
 
 # Hardening_Configuration
 if [[ $Switch_Skip_Hardening != true ]]; then
-        header "hardening"
-        read -rp "Your Choice: " hardening
-        if [[ $hardening =~ "," ]]; then
-                IFS=", "
-                Array_Hardening=($hardening)
-                for testing_category in "${Array_Hardening[@]}"; do
-                        if [[ $testing_category == "firewall" || $testing_category == "2" ]]; then
-                                Switch_Firewall=true
-                        elif [[ $testing_category == "sysctl" || $testing_category == "3" ]]; then
-                                Switch_Hardening=true
-                        elif [[ $testing_category == "ssh" || $testing_category == "4" ]]; then
-                                Switch_SSH=true
-                        elif [[ $testing_category == "apache" || $testing_category == "5" ]]; then
-                                Switch_APACHE=true
-                        elif [[ $testing_category == "nginx" || $testing_category == "6" ]]; then
-                                Switch_NGINX=true
-                        fi
-                done
-        else
-                if [[ $hardening = "complete" || $hardening = "1" ]]; then
-                        Switch_Firewall=true ; Switch_Hardening=true ; Switch_SSH=true ; Switch_APACHE=true ; Switch_NGINX=true #; Switch_FTP=true ; Switch_SQUID=true
-                elif [[ $hardening = "firewall" || $hardening = "2" ]]; then
-                        Switch_Firewall=true
-                elif [[ $hardening = "sysctl" || $hardening = "3" ]]; then
-                        Switch_Hardening=true
-                elif [[ $hardening = "ssh" || $hardening = "4" ]]; then
-                        Switch_SSH=true
-                elif [[ $hardening = "apache" || $hardening = "5" ]]; then
-                        Switch_APACHE=true
-                elif [[ $hardening = "nginx" || $hardening = "6" ]]; then
-                        Switch_NGINX=true
-#                elif [[ $hardening = "ftp" || $hardening = "7" ]]; then
-#                        Switch_FTP=true
-#                elif [[ $hardening = "squid" || $hardening = "8" ]]; then
-#                        Switch_SQUID=true
-                else
-                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-                fi
-        fi
+	while true;
+	        header "hardening"
+	        read -rp "Your Choice: " hardening
+	        if [[ $hardening =~ "," ]]; then
+	                IFS=", "
+	                Array_Hardening=($hardening)
+	                for testing_category in "${Array_Hardening[@]}"; do
+	                        if [[ $testing_category == "firewall" || $testing_category == "2" ]]; then
+	                                Switch_Firewall=true
+	                        elif [[ $testing_category == "sysctl" || $testing_category == "3" ]]; then
+	                                Switch_Hardening=true
+	                        elif [[ $testing_category == "ssh" || $testing_category == "4" ]]; then
+	                                Switch_SSH=true
+	                        elif [[ $testing_category == "apache" || $testing_category == "5" ]]; then
+	                                Switch_APACHE=true
+	                        elif [[ $testing_category == "nginx" || $testing_category == "6" ]]; then
+	                                Switch_NGINX=true
+	                        fi
+	                done
+	        else
+	                if [[ $hardening = "complete" || $hardening = "1" ]]; then
+	                        Switch_Firewall=true ; Switch_Hardening=true ; Switch_SSH=true ; Switch_APACHE=true ; Switch_NGINX=true #; Switch_FTP=true ; Switch_SQUID=true
+	                elif [[ $hardening = "firewall" || $hardening = "2" ]]; then
+	                        Switch_Firewall=true
+	                elif [[ $hardening = "sysctl" || $hardening = "3" ]]; then
+	                        Switch_Hardening=true
+	                elif [[ $hardening = "ssh" || $hardening = "4" ]]; then
+	                        Switch_SSH=true
+	                elif [[ $hardening = "apache" || $hardening = "5" ]]; then
+	                        Switch_APACHE=true
+	                elif [[ $hardening = "nginx" || $hardening = "6" ]]; then
+	                        Switch_NGINX=true
+	#                elif [[ $hardening = "ftp" || $hardening = "7" ]]; then
+	#                        Switch_FTP=true
+	#                elif [[ $hardening = "squid" || $hardening = "8" ]]; then
+	#                        Switch_SQUID=true
+ 			fi
+		else
+			echo -e "\nYour decision was not accepted!\nPlease try again."
+			Show_Error_Message=true
+		fi
+
+	        if [[ "$Show_Error_Message" == true ]]; then
+  			clearing
+     		else
+   			break
+  		fi
+                Show_Error_Message=false
+	done
         clearing
 
         # SSH_Configuration
         if [[ $Switch_SSH != false ]]; then
-                echo -e "\n             Please select an IP address to be used\n                     for SSH configuration"
-                echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-                sudo python3 "$FULL_PATH/Resources/Python/nic.py"
-                echo -e "\n${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-                read -rp "Your Choice: " IP_TEMP
-                if [[ ${#IP_TEMP} -gt 0 ]]; then
-                        LEN_CHECK=$(ip a | grep "$IP_TEMP")
-                        if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *"."* ]]; then
-                                IP_INT=$IP_TEMP
-                        elif [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *":"* ]]; then
-                                IP_INT="[$IP_TEMP]"
-                        else
-                                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-                        fi
-                        clearing
-                else
-                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-                fi
+		while true;
+  		do
+	                echo -e "\n             Please select an IP address to be used\n                     for SSH configuration"
+	                echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
+	                sudo python3 "$FULL_PATH/Resources/Python/nic.py"
+	                echo -e "\n${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
+	                read -rp "Your Choice: " IP_TEMP
+	                if [[ ${#IP_TEMP} -gt 0 ]]; then
+	                        LEN_CHECK=$(ip a | grep "$IP_TEMP")
+	                        if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *"."* ]]; then
+	                                IP_INT=$IP_TEMP
+	                        elif [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *":"* ]]; then
+	                                IP_INT="[$IP_TEMP]"
+	                        else
+	                                echo -e "\nYour decision was not accepted!\nPlease try again."
+					Show_Error_Message=true
+	                        fi
+	                        clearing
+	                else
+	                        echo -e "\nYour decision was not accepted!\nPlease try again."
+				Show_Error_Message=true
+	                fi
+	
+			if [[ "$Show_Error_Message" == true ]]; then
+	  			clearing
+	     		else
+	   			break
+	  		fi
+	                Show_Error_Message=false
+		done
         fi
 else
         clearing
@@ -880,91 +902,134 @@ fi
 
 # Settings_Configuration
 if [[ $Switch_Skip_Configs != true ]]; then
-        header "settings"
-        read -rp "Your Choice: " custom_settings
-        if [[ $custom_settings =~ "," ]]; then
-                IFS=", "
-                Array_Custom_Settings=($custom_settings)
-                for Cust_Setting in "${Array_Custom_Settings[@]}"; do
-                        if [[ $Cust_Setting == "updates" || $Cust_Setting == "2" ]]; then
-                                Switch_UPDATES=true
-                        elif [[ $Cust_Setting == "alias" || $Cust_Setting == "3" ]]; then
-                                Switch_CUSTOM_CONFIGS=true
-                        elif [[ $Cust_Setting == "screenrc" || $Cust_Setting == "4" ]]; then
-                                Switch_SCREENRC=true
-                        elif [[ $Cust_Setting == "vim" || $Cust_Setting == "5" ]]; then
-                                Switch_VIM_CONFIG=true
-                        elif [[ $Cust_Setting == "repo" || $Cust_Setting == "6" ]]; then
-                                Switch_REPO=true
-                        elif [[ $Cust_Setting == "shredder" || $Cust_Setting == "7" ]]; then
-                                Switch_SHREDDER=true
-                        elif [[ $Cust_Setting == "tmux" || $Cust_Setting == "8" ]]; then
-                                Switch_TMUX=true
-                        fi
-                done
-        else
-                if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
-                        Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true ; Switch_SHREDDER=true ; Switch_TMUX=true
-                elif [[ $custom_settings = "updates" || $custom_settings = "2" ]]; then
-                        Switch_UPDATES=true
-                elif [[ $custom_settings = "alias" || $custom_settings = "3" ]]; then
-                        Switch_CUSTOM_CONFIGS=true
-                elif [[ $custom_settings = "screenrc" || $custom_settings = "4" ]]; then
-                        Switch_SCREENRC=true
-                elif [[ $custom_settings = "vim" || $custom_settings = "5" ]]; then
-                        Switch_VIM_CONFIG=true
-                elif [[ $custom_settings = "repo" || $custom_settings = "6" ]]; then
-                        Switch_REPO=true
-                elif [[ $custom_settings = "shredder" || $custom_settings = "7" ]]; then
-                        Switch_SHREDDER=true
-                elif [[ $custom_settings = "tmux" || $custom_settings = "8" ]]; then
-                        Switch_TMUX=true
-                else
-                        echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-                fi
-        fi
+	while true;
+ 	do
+	        header "settings"
+	        read -rp "Your Choice: " custom_settings
+	        if [[ $custom_settings =~ "," ]]; then
+	                IFS=", "
+	                Array_Custom_Settings=($custom_settings)
+	                for Cust_Setting in "${Array_Custom_Settings[@]}"; do
+	                        if [[ $Cust_Setting == "updates" || $Cust_Setting == "2" ]]; then
+	                                Switch_UPDATES=true
+	                        elif [[ $Cust_Setting == "alias" || $Cust_Setting == "3" ]]; then
+	                                Switch_CUSTOM_CONFIGS=true
+	                        elif [[ $Cust_Setting == "screenrc" || $Cust_Setting == "4" ]]; then
+	                                Switch_SCREENRC=true
+	                        elif [[ $Cust_Setting == "vim" || $Cust_Setting == "5" ]]; then
+	                                Switch_VIM_CONFIG=true
+	                        elif [[ $Cust_Setting == "repo" || $Cust_Setting == "6" ]]; then
+	                                Switch_REPO=true
+	                        elif [[ $Cust_Setting == "shredder" || $Cust_Setting == "7" ]]; then
+	                                Switch_SHREDDER=true
+	                        elif [[ $Cust_Setting == "tmux" || $Cust_Setting == "8" ]]; then
+	                                Switch_TMUX=true
+	                        fi
+	                done
+	        else
+	                if [[ $custom_settings = "complete" || $custom_settings = "1" ]]; then
+	                        Switch_UPDATES=true ; Switch_CUSTOM_CONFIGS=true ; Switch_SCREENRC=true ; Switch_VIM_CONFIG=true ; Switch_REPO=true ; Switch_SHREDDER=true ; Switch_TMUX=true
+	                elif [[ $custom_settings = "updates" || $custom_settings = "2" ]]; then
+	                        Switch_UPDATES=true
+	                elif [[ $custom_settings = "alias" || $custom_settings = "3" ]]; then
+	                        Switch_CUSTOM_CONFIGS=true
+	                elif [[ $custom_settings = "screenrc" || $custom_settings = "4" ]]; then
+	                        Switch_SCREENRC=true
+	                elif [[ $custom_settings = "vim" || $custom_settings = "5" ]]; then
+	                        Switch_VIM_CONFIG=true
+	                elif [[ $custom_settings = "repo" || $custom_settings = "6" ]]; then
+	                        Switch_REPO=true
+	                elif [[ $custom_settings = "shredder" || $custom_settings = "7" ]]; then
+	                        Switch_SHREDDER=true
+	                elif [[ $custom_settings = "tmux" || $custom_settings = "8" ]]; then
+	                        Switch_TMUX=true
+	                else
+	                        echo -e "\nYour decision was not accepted!\nPlease try again."
+				Show_Error_Message=true
+	                fi
+	        fi
+
+		if [[ "$Show_Error_Message" == true ]]; then
+  			clearing
+     		else
+   			break
+  		fi
+                Show_Error_Message=false
+	done
         clearing
 fi
 
 # VIM_Configuration
 if [[ $Switch_VIM_CONFIG = true ]]; then
-        header "vim"
-        read -rp "Your Choice: " vim_settings
-        if [[ $vim_settings = "homesen" || $vim_settings = "1" ]]; then
-                Switch_VIM_HOMESEN=true
-        elif [[ $vim_settings = "nayaningaloo" || $vim_settings = "2" ]]; then
-                Switch_VIM_NAYANINGALOO=true
-        else
-                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-        fi
+	while true;
+ 	do
+	        header "vim"
+	        read -rp "Your Choice: " vim_settings
+	        if [[ $vim_settings = "homesen" || $vim_settings = "1" ]]; then
+	                Switch_VIM_HOMESEN=true
+	        elif [[ $vim_settings = "nayaningaloo" || $vim_settings = "2" ]]; then
+	                Switch_VIM_NAYANINGALOO=true
+	        else
+	                echo -e "\nYour decision was not accepted!\nPlease try again."
+			Show_Error_Message=true
+	        fi
+
+		if [[ "$Show_Error_Message" == true ]]; then
+  			clearing
+     		else
+   			break
+  		fi
+                Show_Error_Message=false
+	done
         clearing
 fi
 
 # Screenrc_Configuration
 if [[ $Switch_SCREENRC = true ]]; then
-        header "screenrc"
-        read -rp "Your Choice: " screenrc_settings
-        if [[ $screenrc_settings = "homesen" || $screenrc_settings = "1" ]]; then
-                Switch_SCREENRC_HOMESEN=true
-        elif [[ $screenrc_settings = "jarl-bjoern" || $screenrc_settings = "2" ]]; then
-                Switch_SCREENRC_BJOERN=true
-        else
-                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-        fi
+	while true;
+ 	do
+	        header "screenrc"
+	        read -rp "Your Choice: " screenrc_settings
+	        if [[ $screenrc_settings = "homesen" || $screenrc_settings = "1" ]]; then
+	                Switch_SCREENRC_HOMESEN=true
+	        elif [[ $screenrc_settings = "jarl-bjoern" || $screenrc_settings = "2" ]]; then
+	                Switch_SCREENRC_BJOERN=true
+	        else
+	                echo -e "\nYour decision was not accepted!\nPlease try again."
+			Show_Error_Message=true
+	        fi
+
+		if [[ "$Show_Error_Message" == true ]]; then
+  			clearing
+     		else
+   			break
+  		fi
+                Show_Error_Message=false
+	done
         clearing
 fi
 
 # Updater_Configuration
 if [[ $Switch_UPDATES = true || $Switch_SHREDDER = true ]]; then
-        header "task"
-        read -rp "Your Choice: " task_settings
-        if [[ $task_settings = "cronjob" || $task_settings = "1" ]]; then
-                Switch_CRON=true
-        elif [[ $task_settings = "timer" || $task_settings = "2" ]]; then
-                Switch_SYSTEMD=true
-        else
-                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
-        fi
+	while true;
+	do
+	        header "task"
+	        read -rp "Your Choice: " task_settings
+	        if [[ $task_settings = "cronjob" || $task_settings = "1" ]]; then
+	                Switch_CRON=true
+	        elif [[ $task_settings = "timer" || $task_settings = "2" ]]; then
+	                Switch_SYSTEMD=true
+	        else
+	                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	        fi
+
+		if [[ "$Show_Error_Message" == true ]]; then
+  			clearing
+     		else
+   			break
+  		fi
+                Show_Error_Message=false
+	done
         clearing
 fi
 
