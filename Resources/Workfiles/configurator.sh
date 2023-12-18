@@ -632,7 +632,7 @@ function Development_Check() {
 function Category_Loop() {
 	while true;
 	do
-		header "$1"
+		header $1
   		read -rp "Your Choice: " temp_check_input
     		if [[ "$temp_check_input" =~ "," ]]; then
 			IFS=", "
