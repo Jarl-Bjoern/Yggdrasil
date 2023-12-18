@@ -1021,7 +1021,8 @@ if [[ $Switch_UPDATES = true || $Switch_SHREDDER = true ]]; then
 	        elif [[ $task_settings = "timer" || $task_settings = "2" ]]; then
 	                Switch_SYSTEMD=true
 	        else
-	                echo -e "\nYour decision was not accepted!\nPlease try again." ; exit
+	                echo -e "\nYour decision was not accepted!\nPlease try again."
+		        Show_Error_Message=true
 	        fi
 
 		if [[ "$Show_Error_Message" == true ]]; then
