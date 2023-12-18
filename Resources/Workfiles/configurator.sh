@@ -17,6 +17,7 @@ PATH_VIM=""
 PATH_WORKSPACE=""
 PATH_ZSH=""
 pentesting=""
+Show_Error_Message=false
 Shredding_DAYS=""
 Skip=false
 Switch_APACHE=false
@@ -628,6 +629,30 @@ function Development_Check() {
 	fi
 }
 
+function Category_Loop() {
+	while true;
+	do
+		header "$1"
+  		read -rp "Your Choice: " temp_check_input
+    		if [[ "$temp_check_input" =~ "," ]]; then
+			IFS=", "
+   			Array_Temp_Check=($temp_check_input)
+      			for Check_category in "${Array_Temp_Check[@]}"; do
+				$2 $Check_category
+  			done
+     		else
+       			$2 $temp_check_input
+      		fi
+
+		if [[ "$Show_Error_Message" == true ]]; then
+  			clearing
+     		else
+			Show_Error_Message=false
+   			break
+  		fi
+ 	done
+}
+
 # Checking_Parameters
 for arg; do
         if [[ $arg == "-sH" ]]; then
@@ -666,86 +691,42 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        if [[ $HOST_Pentest == "pentest-kali" ]]; then
 	                HOST_Pentest="forensic-kali"
 	        fi
-	        header "forensic"
-	        read -rp "Your Choice: " forensics
-	        if [[ $forensics =~ "," ]]; then
-	                IFS=", "
-	                Array_Forensics=($forensics)
-	                for forensic_category in "${Array_Forensics[@]}"; do
-				Forensic_Check $forensics
-	                done
-		 else
-   			Forensic_Check $forensics
-		fi
+		Category_Loop() "forensic" Forensic_Check
+
 	elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/pentest_tools"
 	        fi
-	        header "pentesting_category"
-	        read -rp "Your Choice: " pentesting
-	        if [[ $pentesting =~ "," ]]; then
-	                IFS=", "
-	                Array_Pentesting=($pentesting)
-	                for testing_category in "${Array_Pentesting[@]}"; do
-		 		Pentest_Check $testing_category
-	                done
-	        else
-			Pentest_Check $pentesting
-	        fi
+		Category_Loop() "pentesting_category" Pentest_Check
+
 	elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Hardening"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/hardening_tools"
 	        fi
-	        header "hardening_category"
-	        read -rp "Your Choice: " hardening_input
-	        if [[ $hardening_input =~ "," ]]; then
-	                IFS=", "
-	                Array_Hardening_Input=($hardening_input)
-	                for forensic_category in "${Array_Hardening_Input[@]}"; do
-				Hardening_Check $hardening_input
-	                done
-		 else
-   			Hardening_Check $hardening_input
-		fi
+		Category_Loop() "hardening_category" Hardening_Check
+
 	elif [[ $category_type = "training" || $category_type = "6" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Training"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/training_tools"
 	        fi
 	        Array_URL+=("$FULL_PATH/Information/Pages/Education.txt")
+
 	elif [[ $category_type = "red_teaming" || $category_type = "7" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Red_Teaming"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/red_teaming_tools"
 	        fi
-		header "red_team"
-		read -rp "Your Choice: " red_team
-		if [[ $red_team =~ "," ]]; then
-			IFS=", "
-			Array_Red_Teaming=($red_team)
-			for testing_category in "${Array_Red_Teaming[@]}"; do
-			     Red_Team_Check $testing_category
-			done
-		else
-			Red_Team_Check $red_team
-		fi
+		Category_Loop() "red_team" Red_Team_Check
+
 	elif [[ $category_type == "development" || $category_type == "8" ]]; then
 		Path_Way="$FULL_PATH/Config/Linux/Development"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/development_tools"
 	        fi
-		header "development"
-		read -rp "Your Choice: " development
-		if [[ $development =~ "," ]]; then
-			IFS=", "
-			Array_Development=($development)
-			for testing_category in "${Array_Development[@]}"; do
-			    Development_Check $testing_category
-			done
-		else
-			Development_Check $development
-		fi
+		Category_Loop() "development" Development_Check
+
 	elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Custom"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
