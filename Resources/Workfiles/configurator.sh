@@ -636,7 +636,7 @@ function Development_Check() {
 
 function Category_Loop() {
 	Kill_Loop=false
-	while ($Kill_Loop != true);
+	while $Kill_Loop = false;
 	do
 		header "$1"
   		read -rp "Your Choice: " temp_check_input
