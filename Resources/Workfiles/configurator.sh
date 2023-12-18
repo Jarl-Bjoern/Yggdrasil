@@ -848,11 +848,11 @@ if [[ $Switch_Skip_Hardening != true ]]; then
 	#                        Switch_FTP=true
 	#                elif [[ $hardening = "squid" || $hardening = "8" ]]; then
 	#                        Switch_SQUID=true
- 			fi
-		else
-			echo -e "\nYour decision was not accepted!\nPlease try again."
-			Show_Error_Message=true
-		fi
+			else
+				echo -e "\nYour decision was not accepted!\nPlease try again."
+				Show_Error_Message=true
+			fi
+   		fi
 
 	        if [[ "$Show_Error_Message" == true ]]; then
   			clearing
