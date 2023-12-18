@@ -691,20 +691,20 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        if [[ $HOST_Pentest == "pentest-kali" ]]; then
 	                HOST_Pentest="forensic-kali"
 	        fi
-                Category_Loop() "forensic" Forensic_Check
+                Category_Loop "forensic" Forensic_Check
 
 	elif [[ $category_type = "pentest" || $category_type = "4" ]]; then
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/pentest_tools"
                 fi
-                Category_Loop() "pentesting_category" Pentest_Check
+                Category_Loop "pentesting_category" Pentest_Check
 
 	elif [[ $category_type = "hardening" || $category_type = "5" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Hardening"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/hardening_tools"
 	        fi
-                Category_Loop() "hardening_category" Hardening_Check
+                Category_Loop "hardening_category" Hardening_Check
 
 	elif [[ $category_type = "training" || $category_type = "6" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Training"
@@ -718,14 +718,14 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/red_teaming_tools"
 	        fi
-		Category_Loop() "red_team" Red_Team_Check
+		Category_Loop "red_team" Red_Team_Check
 
 	elif [[ $category_type == "development" || $category_type == "8" ]]; then
 		Path_Way="$FULL_PATH/Config/Linux/Development"
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/development_tools"
 	        fi
-		Category_Loop() "development" Development_Check
+		Category_Loop "development" Development_Check
 
 	elif [[ $category_type = "custom" || $category_type = "2" ]]; then
 	        Path_Way="$FULL_PATH/Config/Linux/Custom"
