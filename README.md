@@ -43,6 +43,9 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 
 ## ❗ News
 <strong>Upcoming changes for version</strong> `0.9c`:
+  - Added two new features:
+      - The installation path `Default: /opt/pentest_tools` will be now monitored if there are new tools added from github. If this is the case, then these are added to Update.info so that they are also updated automatically, regardless of whether they are integrated in the toolset of Yggdrasil.
+      - If a tool is no longer in the installation path `Default: /opt/pentest_tools`, it will be deleted from `update.info` via a task.
   - Code improvements:
     - The program will no longer terminate if an incorrect entry is made, provided you are in step 2.
   - Correction of a spelling error `Executable` on all configs.
@@ -52,24 +55,30 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
     - External scripts `Location: /etc/yggdrasil` have now been created for both variants, which are called as a replacement.
   - Hotfix DPKG Installer
   - Hotfix Veracrypt Installation
-  - Category improvements:
-    - Forensics:
-      - `Cloud`
-      - `Crypto`
-      - `Infrastructure`
-      - `Mobile`
+  - New Improvements:
+    - Category improvements:
+      - Forensics:
+        - `Cloud`
+        - `Crypto`
+        - `Infrastructure`
+        - `Mobile`
+    - Yggdrasil Wiki improvements:
+        - `Cheat Sheet`
+        - `Features Overview`
+        - `Tools Overview`
+        - `Tools Usage`
+        - `Useful Provided Functions`
   - New categories was added:
     - Development:
       - `source code analysis`
       - `reverse engineering`
       - `exploit development`
-  - Improved Yggdrasil Wiki
-  - New alias for `sslyze` was added (thx to `@HomeSen`)
+  - New aliases was added:
+    - `kali-repo-switch` has been integrated, which can be used to switch between the two repositories `kali-rolling` and `kali-last-snapshot`.
+    - `ls_old` was added to use the old `ls` instead of `exa`.
+    - `sslyze` was added to scan tls with all parameters (thx to `@HomeSen`).
   - New parameter `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs
-  - Added two new features:
-      - The installation path `Default: /opt/pentest_tools` will be now monitored if there are new tools added from github. If this is the case, then these are added to Update.info so that they are also updated automatically, regardless of whether they are integrated in the toolset of Yggdrasil.
-      - If a tool is no longer in the installation path `Default: /opt/pentest_tools`, it will be deleted from `update.info` via a task.
-  - A new alias `kali-repo-switch` has been integrated, which can be used to switch between the two repositories `kali-rolling` and `kali-last-snapshot`.
+ 
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/blob/main/Information/Changelog/full.md">
