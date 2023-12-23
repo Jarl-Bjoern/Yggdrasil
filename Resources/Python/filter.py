@@ -107,7 +107,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_System_Updates':
                 {
                         'Time': '6',
-                        'Command': 'apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all',
+                        'Command': 'apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all',
                         'Path': '/etc/yggdrasil/Yggdrasil_System_Updates.sh'
                 },
         'Yggdrasil_Container_Updates':
