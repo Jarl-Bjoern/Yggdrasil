@@ -55,6 +55,15 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
     - External scripts `Location: /etc/yggdrasil` have now been created for both variants, which are called as a replacement.
   - Hotfix DPKG Installer
   - Hotfix Veracrypt Installation
+  - New Aliases:
+    - `kali-repo-switch` has been integrated, which can be used to switch between the two repositories `kali-rolling` and `kali-last-snapshot`.
+    - `ls_old` was added to use the old `ls` instead of `exa`.
+    - `sslyze` was added to scan tls with all parameters (thx to `@HomeSen`).
+  - New Categories:
+    - Development:
+      - `source code analysis`
+      - `reverse engineering`
+      - `exploit development`
   - New Improvements:
     - Category improvements:
       - Forensics:
@@ -68,16 +77,8 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
         - `Tools Overview`
         - `Tools Usage`
         - `Useful Provided Functions`
-  - New categories was added:
-    - Development:
-      - `source code analysis`
-      - `reverse engineering`
-      - `exploit development`
-  - New aliases was added:
-    - `kali-repo-switch` has been integrated, which can be used to switch between the two repositories `kali-rolling` and `kali-last-snapshot`.
-    - `ls_old` was added to use the old `ls` instead of `exa`.
-    - `sslyze` was added to scan tls with all parameters (thx to `@HomeSen`).
-  - New parameter `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs
+  - New Parameters:
+    - `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs.
  
 
 <div align="center">
