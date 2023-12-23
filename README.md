@@ -78,7 +78,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
         - `Cheat Sheet`
         - `Features Overview`
         - `Tools Overview`
-        - `Tools Usage`
+        - `Tool Usage`
         - `Useful Provided Functions`
   - New Parameters:
     - `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs.
