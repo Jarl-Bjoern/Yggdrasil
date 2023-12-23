@@ -263,7 +263,7 @@ ExecStart={Crontab_Commands[Unit]['Command']}"""
                 Base_Timer = f"""# Rainer Christian Bjoern Herold
 
 [Unit]
-Description=This script is to install updates
+Description=This script was formed to install updates.
 Requires={Unit}.service
 
 [Timer]
