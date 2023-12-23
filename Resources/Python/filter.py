@@ -205,7 +205,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_System_Updates':
                 {
                         'Time': '6',
-                        'Command': 'apt update -y ; DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all ; unset DEBIAN_FRONTEND'
+                        'Command': 'apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all'
                 },
         'Yggdrasil_Container_Updates':
                 {
