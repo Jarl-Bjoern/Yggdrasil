@@ -41,6 +41,7 @@ function yggdrasil-vnc() { if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $
 function Yggdrasil_New_Tool_Monitor() {"""+f""" for GIT_Tool in $(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done """+"""}
 """+r"""alias cls='clear'
 alias ls='exa -l -F -g -h --icons --group-directories-first'
+alias ls_old='/usr/bin/ls'
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias sslyze='sslyze --sslv2 --sslv3 --tlsv1 --tlsv1_1 --tlsv1_2 --tlsv1_3 --elliptic_curves --http_headers --certinfo --resum --early_data --openssl_ccs --fallback --heartbleed --robot --compression --reneg --mozilla_config intermediate'
 alias kali-repo-switch='Yggdrasil_Repo_Switch'
@@ -65,6 +66,7 @@ alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 function b64() { echo $1 | base64 -d | xxd; }
 alias cls='clear'
 alias ls='exa -l -F -g -h --icons --group-directories-first'
+alias ls_old='/usr/bin/ls'
 alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 | tr "\n" "," | rev | cut -c2- | rev)'
 alias sslyze='sslyze --sslv2 --sslv3 --tlsv1 --tlsv1_1 --tlsv1_2 --tlsv1_3 --elliptic_curves --http_headers --certinfo --resum --early_data --openssl_ccs --fallback --heartbleed --robot --compression --reneg --mozilla_config intermediate'
 alias kali-repo-switch='Yggdrasil_Repo_Switch'
