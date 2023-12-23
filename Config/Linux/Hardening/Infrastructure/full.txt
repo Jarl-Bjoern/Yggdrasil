@@ -25,6 +25,6 @@ https://github.com/FuzzySecurity/PowerShell-Suite
 # Python
 
 # Wget
-https://github.com/SnaffCon/Snaffler/releases/download/1.0.112/Snaffler.exe Snaffler Executeable
+https://github.com/SnaffCon/Snaffler/releases/download/1.0.112/Snaffler.exe Snaffler Executable
 
 # Wordlists
