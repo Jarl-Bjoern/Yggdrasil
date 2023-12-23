@@ -199,20 +199,6 @@ function Change_Hostname {
         sudo sed -i s/"127.0.1.1	kali/127.0.1.1	$1"/g /etc/hosts
 }
 
-function Create_Filter_Array {
-        input=$1
-        while IFS= read -r line
-        do
-		if [[ "$line" != " " ]]; then
-			if [[ $(find "$OPT_PATH" -maxdepth 2 -name "$i" -type d ! -path "$OPT_PATH") ]]; then
-				Array_Filter+=($(find "$OPT_PATH" -maxdepth 2 -name "$i" -type d ! "$OPT_PATH"))
-	   		elif [[ $(which "$i") ]]; then
-	     			Array_Filter+=($(which "$i"))
-			fi
-   		fi
- 	done < "$input"
-}
-
 function header() {
         clear ; initials
         if [ "$1" = "category" ]; then
@@ -293,6 +279,20 @@ function header() {
         fi
         echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
         echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
+}
+
+function Create_Filter_Array {
+        input=$1
+        while IFS= read -r line
+        do
+		if [[ "$line" != " " ]]; then
+			if [[ $(find "$OPT_PATH" -maxdepth 2 -name "$line" -type d ! -path "$OPT_PATH") ]]; then
+				Array_Filter+=($(find "$OPT_PATH" -maxdepth 2 -name "$line" -type d ! "$OPT_PATH"))
+	   		elif [[ $(which "$line") ]]; then
+	     			Array_Filter+=($(which "$line"))
+			fi
+   		fi
+ 	done < "$input"
 }
 
 function File_Installer() {
