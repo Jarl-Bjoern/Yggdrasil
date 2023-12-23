@@ -888,7 +888,7 @@ if [[ $Switch_Skip_Hardening != true ]]; then
 	                        echo -e "\nYour decision was not accepted!\nPlease try again."
 				Show_Error_Message=true
 	                fi
-	
+
 			if [[ "$Show_Error_Message" == true ]]; then
 	  			clearing
 	     		else
