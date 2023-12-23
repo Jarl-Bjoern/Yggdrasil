@@ -205,47 +205,56 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_System_Updates':
                 {
                         'Time': '6',
-                        'Command': 'apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all'
+                        'Command': 'apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all',
+                        'Path': '/etc/yggdrasil/Yggdrasil_System_Updates.sh'
                 },
         'Yggdrasil_Container_Updates':
                 {
                         'Time': '6',
-                        'Command': 'for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done'
+                        'Command': 'for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done',
+                        'Path': '/etc/yggdrasil/Yggdrasil_Container_Updates.sh'
                 },
         'Yggdrasil_Container_Cleaner':
                 {
                         'Time': '6',
-                        'Command': 'for Image in $(docker images | grep "<none>" | awk "{print $3}"); do docker image rm $Image; done'
+                        'Command': 'for Image in $(docker images | grep "<none>" | awk "{print $3}"); do docker image rm $Image; done',
+                        'Path': '/etc/yggdrasil/Yggdrasil_Container_Cleaner.sh'
                 },
         'Yggdrasil_PIP_Updater':
                 {
                         'Time': '5',
-                        'Command': 'pip3 install --upgrade pip setuptools python-debian'
+                        'Command': 'pip3 install --upgrade pip setuptools python-debian',
+                        'Path': '/etc/yggdrasil/Yggdrasil_PIP_Updater.sh'
                 },
         'Yggdrasil_Cargo_Updater':
                 {
                         'Time': '5',
-                        'Command': f'for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done'
+                        'Command': f'for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done',
+                        'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater'
                 },
         'Yggdrasil_Rust_Updater':
                 {
                         'Time': '5',
-                        'Command': f'rustup update'
+                        'Command': f'rustup update',
+                        'Path': '/etc/yggdrasil/Yggdrasil_Rust_Updater.sh'
                 },
         'Yggdrasil_GIT_Updater':
                 {
                         'Time': '3',
-                        'Command': f'for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done'
+                        'Command': f'for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done',
+                        'Path': '/etc/yggdrasil/Yggdrasil_GIT_Updater.sh'
                 },
         'Yggdrasil_GIT_Monitor':
                 {
                         'Time': '3',
-                        'Command': f'for GIT_Tool in $(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done'
+                        'Command': f'for GIT_Tool in $(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done',
+                        'Path': '/etc/yggdrasil/Yggdrasil_GIT_Monitor.sh'
                 },
         'Yggdrasil_GIT_Monitor_Cleaner':
                 {
                         'Time': '3',
-                        'Command': f"""for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info"""
+                        'Command': f"""for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info""",
+                        'Path': '/etc/yggdrasil/Yggdrasil_GIT_Monitor_Cleaner.sh'
                 }
         }
 
@@ -258,7 +267,7 @@ Description=The script was designed to be able to install updates automatically 
 
 [Service]
 Type=oneshot
-ExecStart={Crontab_Commands[Unit]['Command']}"""
+ExecStart={Crontab_Commands[Unit]['Path']}"""
 
                 Base_Timer = f"""# Rainer Christian Bjoern Herold
 
@@ -276,6 +285,7 @@ WantedBy=multi-user.target"""
                 # File_Creation
                 Service_Writer(f'{Temp_File_Name}.service', Base_Unit)
                 Service_Writer(f'{Temp_File_Name}.timer', Base_Timer)
+                Write_Service_File(Crontab_Commands[Unit]['Path'], {Crontab_Commands[Unit]['Command']})
 
 # Main
 if __name__ == '__main__':
