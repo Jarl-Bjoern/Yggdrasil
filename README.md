@@ -45,9 +45,11 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 <strong>Upcoming changes for version</strong> `0.9c`:
   - Code improvements:
     - The program will no longer terminate if an incorrect entry is made, provided you are in step 2.
-  - Hotfix Cronjobs
+  - Hotfix Cronjobs & Systemd Units:
+    - Due to a programming error, the Systemd units could not be used without the data shredder.
+    - The cron jobs were not triggered as larger commands could not be used due to the complexity.
+    - External scripts `Location: /etc/yggdrasil` have now been created for both variants, which are called as a replacement.
   - Hotfix DPKG Installer
-  - Hotfix Systemd Units
   - Hotfix Veracrypt Installation
   - Category improvements:
     - Forensics:
