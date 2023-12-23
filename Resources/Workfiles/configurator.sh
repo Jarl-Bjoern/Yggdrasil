@@ -200,13 +200,17 @@ function Change_Hostname {
 }
 
 function Create_Filter_Array {
-	for i in ${Array_Test[@]}; do
-		if [[ $(find "$OPT_PATH" -maxdepth 2 -name "$i" -type d ! -path "$OPT_PATH") ]]; then
-			Array_Filter+=($(find "$OPT_PATH" -maxdepth 2 -name "$i" -type d ! "$OPT_PATH"))
-   		elif [[ $(which "$i") ]]; then
-     			Array_Filter+=($(which "$i"))
-		fi
- 	done
+        input=$1
+        while IFS= read -r line
+        do
+		if [[ "$line" != " " ]]; then
+			if [[ $(find "$OPT_PATH" -maxdepth 2 -name "$i" -type d ! -path "$OPT_PATH") ]]; then
+				Array_Filter+=($(find "$OPT_PATH" -maxdepth 2 -name "$i" -type d ! "$OPT_PATH"))
+	   		elif [[ $(which "$i") ]]; then
+	     			Array_Filter+=($(which "$i"))
+			fi
+   		fi
+ 	done < "$input"
 }
 
 function header() {
