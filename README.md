@@ -43,19 +43,21 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 
 ## ❗ News
 <strong>Upcoming changes for version</strong> `0.9c`:
-  - Added two new features:
+  - Added Two New Features:
       - The installation path `Default: /opt/pentest_tools` will be now monitored if there are new tools added from github. If this is the case, then these are added to Update.info so that they are also updated automatically, regardless of whether they are integrated in the toolset of Yggdrasil.
       - If a tool is no longer in the installation path `Default: /opt/pentest_tools`, it will be deleted from `update.info` via a task.
-  - Code improvements:
+  - Code Improvements:
     - The program will no longer terminate if an incorrect entry is made, provided you are in step 2.
-  - Correction of a spelling error `Executable` on all configs.
-  - Hotfix Cronjobs & Systemd Units:
-    - Due to a programming error, the Systemd units could not be used without the data shredder.
-    - The cron jobs were not triggered as larger commands could not be used due to the complexity.
-    - The times of the cronjobs have been adjusted.
-    - External scripts `Location: /etc/yggdrasil` have now been created for both variants, which are called as a replacement.
-  - Hotfix DPKG Installer
-  - Hotfix Veracrypt Installation
+  - Hotfixes:
+    - Cronjobs & Systemd Units:
+      - Due to a programming error, the Systemd units could not be used without the data shredder.
+      - The cron jobs were not triggered as larger commands could not be used due to the complexity.
+      - The times of the cronjobs have been adjusted.
+      - External scripts `Location: /etc/yggdrasil` have now been created for both variants, which are called as a replacement.
+    - DPKG Installer
+    - Grammatical Errors:
+      - Correction of `Executable` on all configs and the logic in the script.
+    - Veracrypt Installation
   - New Aliases:
     - `kali-repo-switch` has been integrated, which can be used to switch between the two repositories `kali-rolling` and `kali-last-snapshot`.
     - `ls_old` was added to use the old `ls` instead of `exa`.
