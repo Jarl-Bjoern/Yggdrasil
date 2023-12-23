@@ -161,9 +161,8 @@ def Crontab_Configuration(path_to_file, opt_path):
         }
 
         for Unit in Crontab_Commands:
-                print (Unit)
                 write_file(path_to_file, f"0 */{Crontab_Commands[Unit]['Time']}     * * *  root /bin/bash {Crontab_Commands[Unit]['Path']}")
-                write_file(Crontab_Commands[Unit]['Path'], Crontab_Commands[Unit]['Command'])
+                Service_Writer(Crontab_Commands[Unit]['Path'], Crontab_Commands[Unit]['Command'])
 
 def Firewall_Configuration(path_to_file):
         Array_v4 = ["# Allow established, related and localhost traffic",
