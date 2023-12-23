@@ -52,6 +52,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
   - Hotfix Cronjobs & Systemd Units:
     - Due to a programming error, the Systemd units could not be used without the data shredder.
     - The cron jobs were not triggered as larger commands could not be used due to the complexity.
+    - The times of the cronjobs have been adjusted.
     - External scripts `Location: /etc/yggdrasil` have now been created for both variants, which are called as a replacement.
   - Hotfix DPKG Installer
   - Hotfix Veracrypt Installation
