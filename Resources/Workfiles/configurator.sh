@@ -479,7 +479,7 @@ function File_Installer() {
                                         if [[ $Switch_IGNORE = false ]]; then
                                                 MODE=$(echo "$line" | cut -d" " -f3)
                                                 mkdir -p "$2" ; cd "$2" || return 0
-                                                if [ "$MODE" = "Executeable" ]; then
+                                                if [ "$MODE" = "Executable" ]; then
                                                         mkdir -p "$2"/"$FILE_NAME" ; cd "$2"/"$FILE_NAME" || return 0
                                                         wget "$FILE" -O "$FILE_NAME"
                                                         chmod +x "$FILE_NAME" ; cd "$2" || return 0
