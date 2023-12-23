@@ -269,7 +269,7 @@ Description=The script was designed to be able to install updates automatically 
 
 [Service]
 Type=oneshot
-ExecStart={Crontab_Commands[Unit]['Path']}"""
+ExecStart=/bin/bash {Crontab_Commands[Unit]['Path']}"""
 
                 Base_Timer = f"""# Rainer Christian Bjoern Herold
 
