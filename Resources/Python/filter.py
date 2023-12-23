@@ -237,7 +237,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_Rust_Updater':
                 {
                         'Time': '5',
-                        'Command': f'rustup update',
+                        'Command': f'for i in $(find "/root" "/home" -type f -name "rustup"); do "$i" update; done',
                         'Path': '/etc/yggdrasil/Yggdrasil_Rust_Updater.sh'
                 },
         'Yggdrasil_GIT_Updater':
