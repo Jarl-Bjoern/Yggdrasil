@@ -132,7 +132,7 @@ def Crontab_Configuration(path_to_file, opt_path):
                 {
                         'Time': '5',
                         'Command': f'for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done',
-                        'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater'
+                        'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater.sh'
                 },
         'Yggdrasil_Rust_Updater':
                 {
@@ -286,7 +286,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
                 {
                         'Time': '5',
                         'Command': f'for CARGO_TOOL in "$(cat {opt_path}/update_cargo.info)"; do cargo install --force "$CARGO_TOOL"; done',
-                        'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater'
+                        'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater.sh'
                 },
         'Yggdrasil_Rust_Updater':
                 {
