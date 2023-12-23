@@ -286,8 +286,8 @@ function Create_Filter_Array {
         while IFS= read -r line
         do
 		if [[ "$line" != " " ]]; then
-			if [[ $(find "$OPT_PATH" -maxdepth 2 -name "$line" -type d ! -path "$OPT_PATH") ]]; then
-				Array_Filter+=($(find "$OPT_PATH" -maxdepth 2 -name "$line" -type d ! "$OPT_PATH"))
+			if [[ $(find "$OPT_Path" -maxdepth 2 -name "$line" -type d ! -path "$OPT_Path") ]]; then
+				Array_Filter+=($(find "$OPT_Path" -maxdepth 2 -name "$line" -type d ! "$OPT_Path"))
 	   		elif [[ $(which "$line") ]]; then
 	     			Array_Filter+=($(which "$line"))
 			fi
