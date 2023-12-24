@@ -285,12 +285,22 @@ function Create_Filter_Array {
         input=$1
         while IFS= read -r line
         do
-		if [[ "$line" != " " ]]; then
-			if [[ $(find "$OPT_Path" -maxdepth 2 -name "$line" -type d ! -path "$OPT_Path") ]]; then
-				Array_Filter+=($(find "$OPT_Path" -maxdepth 2 -name "$line" -type d ! "$OPT_Path"))
-	   		elif [[ $(which "$line") ]]; then
-	     			Array_Filter+=($(which "$line"))
-			fi
+		if [[ ! "$line" =~ "#" && ${#line} -gt 2 ]]; then
+                        if [[ "$line" =~ "https://" && "$line" =~ " " ]]; then
+                                TEMP_Filter=$(echo "$line" | awk '{print $2}' | tr -d '\r')
+                        elif [[ "$line" =~ "https://" && ! "$line" =~ " " ]]; then
+                                TEMP_Filter=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+                        else
+                                TEMP_Filter=$(echo "$line" | tr -d '\r')
+                        fi
+
+                        if [[ $(find "$OPT_Path" -maxdepth 2 -name "$TEMP_Filter" -type d ! -path "$OPT_Path" | head -n1) ]]; then
+                                Array_Filter+=($(find "$OPT_Path" -maxdepth 2 -name "$TEMP_Filter" -type d ! -path "$OPT_Path" | head -n1))
+                        elif [[ $(find '/opt/wordlists' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/wordlists' | head -n1) ]]; then
+                                Array_Filter+=($(find '/opt/wordlists' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/wordlists' | head -n1))
+                        elif [[ $(which "$TEMP_Filter") ]]; then
+                                Array_Filter+=($(which "$TEMP_Filter"))
+                        fi
    		fi
  	done < "$input"
 }
