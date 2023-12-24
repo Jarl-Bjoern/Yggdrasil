@@ -95,6 +95,7 @@ https://github.com/loseys/BlackMamba
 https://github.com/its-a-feature/Mythic
 https://github.com/Ne0nd0g/merlin
 https://github.com/BishopFox/sliver
+https://github.com/ly4k/Certipy
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
