@@ -143,7 +143,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_GIT_Updater':
                 {
                         'Time': '3',
-                        'Command': f'for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done',
+                        'Command': f'HOME="/root"; for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd $("$GIT_TOOL" | tr -d "\n"); git pull; sleep 0.45; done',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Updater.sh'
                 },
         'Yggdrasil_GIT_Monitor':
@@ -297,7 +297,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_GIT_Updater':
                 {
                         'Time': '3',
-                        'Command': f'for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd "$GIT_TOOL"; git pull; done',
+                        'Command': f'HOME="/root"; for GIT_TOOL in "$(cat {opt_path}/update.info)"; do cd $("$GIT_TOOL" | tr -d "\n"); git pull; sleep 0.45; done',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Updater.sh'
                 },
         'Yggdrasil_GIT_Monitor':
