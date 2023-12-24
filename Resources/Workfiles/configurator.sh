@@ -230,8 +230,8 @@ function header() {
   		echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}exploit_development${NOCOLOR}  :  tools for exploit  development   ${CYAN}|${NOCOLOR}"
   	elif [ "$1" = "hardening_category" ]; then
 		echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}           :  installation of  all  toolkits     ${CYAN}|${NOCOLOR}"
-	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud  hardening          ${CYAN}|${NOCOLOR}"
-  		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}     :  tools for infrastructure hardening  ${CYAN}|${NOCOLOR}"
+	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud  hardening         ${CYAN}|${NOCOLOR}"
+  		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}     :  tools for infrastructure hardening ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "installation" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}full${NOCOLOR}         :     full    installation (${GREEN}GUI${NOCOLOR})           ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}minimal${NOCOLOR}      :     minimal installation (${ORANGE}CLI${NOCOLOR})           ${CYAN}|${NOCOLOR}"
