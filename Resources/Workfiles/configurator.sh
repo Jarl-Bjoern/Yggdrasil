@@ -254,8 +254,8 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}ssh${NOCOLOR}              :   SSH      hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}apache${NOCOLOR}           :   Apache   hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx    hardening                 ${CYAN}|${NOCOLOR}"
-                #echo -e "${CYAN}|${NOCOLOR}   [${BLUE}7${NOCOLOR}] ${BLUE}ftp${NOCOLOR}           :   ftp   hardening                 ${CYAN}|${NOCOLOR}"
-                #echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}8${NOCOLOR}] ${PURPLE}squid${NOCOLOR}            :   squid    hardening                 ${CYAN}|${NOCOLOR}"
+                #echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}ftp${NOCOLOR}           :   ftp   hardening                 ${CYAN}|${NOCOLOR}"
+                #echo -e "${CYAN}|${NOCOLOR}   [${CYAN}8${NOCOLOR}] ${CYAN}squid${NOCOLOR}            :   squid    hardening                 ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "settings" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}      :   complete configuration                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}updates${NOCOLOR}       :   automated updates                      ${CYAN}|${NOCOLOR}"
