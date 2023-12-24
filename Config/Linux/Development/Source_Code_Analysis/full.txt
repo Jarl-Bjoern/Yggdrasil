@@ -7,6 +7,55 @@
 # Gem
 
 # Git
+https://github.com/PyCQA/flake8
+https://github.com/GeoffreyHecht/paprika
+https://github.com/linkedin/qark
+https://github.com/astro/deadnix
+https://github.com/lirantal/lockfile-lint
+https://github.com/rpm-software-management/rpmlint
+https://github.com/facetoe/promformat
+https://github.com/facetoe/promval
+https://github.com/yoheimuta/protolint
+https://github.com/voxpupuli/metadata-json-lint
+https://github.com/SAP/credential-digger
+https://github.com/thesp0nge/dawnscanner
+https://github.com/gitleaks/gitleaks
+https://github.com/Yelp/detect-secrets
+https://github.com/ConsenSys/mythril
+https://github.com/digitalocean/clusterlint
+https://github.com/helm/chart-testing
+https://github.com/uswitch/klint
+https://github.com/tomasbjerre/violations-lib
+https://github.com/mrtazz/checkmake
+https://github.com/DavidAnson/markdownlint
+https://github.com/markdownlint/markdownlint
+https://github.com/quay/clair
+https://github.com/aws-cloudformation/cfn-lint
+https://github.com/yandex/gixy
+https://github.com/stelligent/cfn_nag
+https://github.com/angr/angr
+https://github.com/quarkslab/binbloom
+https://github.com/ferivoz/alquitran
+https://github.com/ronomon/pure
+https://github.com/dense-analysis/ale
+https://github.com/nicklockwood/SwiftFormat
+https://github.com/openstack/bashate
+https://github.com/HairyFotr/linter
+https://github.com/scapegoat-scala/scapegoat
+https://github.com/channable/dbcritic
+https://github.com/timescale/pgspot
+https://github.com/nrempel/sleek
+https://github.com/jarulraj/sqlcheck
+https://github.com/est31/cargo-udeps
+https://github.com/RazrFalcon/cargo-bloat
+https://github.com/rubysec/bundler-audit
+https://github.com/square/cane
+https://github.com/danmayer/churn
+https://github.com/styrainc/regal
+https://github.com/MangoTheCat/cyclocomp
+https://github.com/r-lib/lintr
+https://github.com/PyCQA/autoflake
+https://github.com/htrgouvea/zarn
 
 # Git_Branch
 
