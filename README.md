@@ -62,6 +62,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
     - `kali-repo-switch` has been integrated, which can be used to switch between the two repositories `kali-rolling` and `kali-last-snapshot`.
     - `ls_old` was added to use the old `ls` instead of `exa`.
     - `sslyze` was added to scan tls with all parameters (thx to `@HomeSen`).
+    - `yggdrasil-web` was added to open some useful urls for web pentests.
   - New Categories:
     - Development:
       - `source code analysis`
