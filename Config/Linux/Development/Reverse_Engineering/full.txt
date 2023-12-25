@@ -5,3 +5,5 @@ jd-gui
 
 # Git
 https://github.com/xtiankisutsa/MARA_Framework
+https://github.com/dnSpyEx/dnSpy
+https://github.com/WerWolv/ImHex
