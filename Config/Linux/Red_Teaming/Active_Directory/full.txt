@@ -96,6 +96,8 @@ https://github.com/its-a-feature/Mythic
 https://github.com/Ne0nd0g/merlin
 https://github.com/BishopFox/sliver
 https://github.com/ly4k/Certipy
+https://github.com/bitsadmin/nopowershell
+https://github.com/bitsadmin/wesng
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
