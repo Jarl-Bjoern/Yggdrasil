@@ -98,6 +98,7 @@ https://github.com/BishopFox/sliver
 https://github.com/ly4k/Certipy
 https://github.com/bitsadmin/nopowershell
 https://github.com/bitsadmin/wesng
+https://github.com/DominicBreuker/pspy
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
