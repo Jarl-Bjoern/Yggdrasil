@@ -55,5 +55,6 @@ https://github.com/log2timeline/plaso
 evtxtract
 
 # Wget
+https://dragokas.com/tools/HiJackThis.zip HiJackThis Archive
 
 # Wordlists
