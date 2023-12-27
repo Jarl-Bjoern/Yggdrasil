@@ -56,5 +56,6 @@ evtxtract
 
 # Wget
 https://dragokas.com/tools/HiJackThis.zip HiJackThis Archive
+https://download.sysinternals.com/files/SysinternalsSuite.zip Sysinternals Archive
 
 # Wordlists
