@@ -140,4 +140,4 @@ But also the developer would like to thank the people who do not have a GitHub a
 <br />
 
 # ⚠️ Remark
-It should be said that the scripts are still under development, but already allow an easier start to perform as a penetration tester or digital forensics, certain pre-settings.
+It should be said that the scripts are still under development, but already allow an easier start to perform e.g. as a penetration tester or digital forensics, certain pre-settings.
