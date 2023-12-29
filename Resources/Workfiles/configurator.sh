@@ -1676,7 +1676,7 @@ echo -e "\n${CYAN}--------------------------------------------------------------
 echo -e "       Toolpath:                         ${ORANGE}$OPT_Path${NOCOLOR}"
 echo -e "       Hashcat-Rules:                    ${ORANGE}/opt/hashcat_rules${NOCOLOR}"
 echo -e "       Wordlists:                        ${ORANGE}/opt/wordlists${NOCOLOR}"
-echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
+echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                ${ORANGE}The installation was successful! :)${NOCOLOR}"
 if [[ $Switch_Skip_URLS == false && $Switch_URL != false ]]; then
         sleep 3
         if [[ ${#Array_URL} -gt 0 ]]; then
