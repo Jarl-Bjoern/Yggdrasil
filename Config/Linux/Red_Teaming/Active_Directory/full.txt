@@ -12,6 +12,7 @@ starkiller
 testssl.sh
 
 # Docker
+remnux/ciphey
 tenableofficial/nessus
 
 # Git
@@ -114,7 +115,6 @@ https://github.com/cobbr/Covenant
 
 # Python
 bloodhound
-ciphey
 requests-ntlm
 requests-credssp
 scapy
