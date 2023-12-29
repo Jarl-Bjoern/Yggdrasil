@@ -102,6 +102,7 @@ https://github.com/DominicBreuker/pspy
 https://github.com/charnim/Invoke-ReflectivePEInjection.ps1
 https://github.com/The-Viper-One/PsMapExec
 https://github.com/Leo4j/Amnesiac
+https://github.com/outflanknl/RedELK
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
