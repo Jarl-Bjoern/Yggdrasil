@@ -795,11 +795,11 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 		                Informational="$FULL_PATH/Information/info.txt"
 		                decision="full"
 		        else
-		                if [[ $pentesting = "iot" || $pentesting = "2" || $pentesting = "mobile" || $pentesting = "3" || $pentesting = "web" || $pentesting = "4" || $pentesting = "cloud" || $pentesting = "5" || $red_team = "1" || $red_team = "complete" || $red_team = "2" || $red_team = "active_directory" || $red_team = "3" || $red_team = "osint" || $red_team = "4" || $red_team = "phishing" || $red_team = "5" || $red_team = "physical" ]]; then
+		                if [[ $pentest_check = "iot" || $pentest_check = "2" || $pentest_check = "mobile" || $pentest_check = "3" || $pentest_check = "web" || $pentest_check = "4" || $pentest_check = "cloud" || $pentest_check = "5" || $red_team = "1" || $red_team = "complete" || $red_team = "2" || $red_team = "active_directory" || $red_team = "3" || $red_team = "osint" || $red_team = "4" || $red_team = "phishing" || $red_team = "5" || $red_team = "physical" ]]; then
 		                        File_Path="${Path_Way}/full.txt"
 		                        decision="full"
 		                        Informational="$FULL_PATH/Information/info.txt"
-		                elif [[ $pentesting = "infrastructure" || $pentesting = "1" || $forensics = "infrastructure" || $forensics = "4" ]]; then
+		                elif [[ $pentest_check = "infrastructure" || $pentest_check = "1" || $forensics = "infrastructure" || $forensics = "4" ]]; then
 		                        header "installation"
 		                        read -rp "Your Choice: " decision
 		                        if [[ $decision = "full" || $decision = "1" ]]; then
