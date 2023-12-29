@@ -799,7 +799,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 		                        File_Path="${Path_Way}/full.txt"
 		                        decision="full"
 		                        Informational="$FULL_PATH/Information/info.txt"
-		                elif [[ $pentest_check = "infrastructure" || $pentest_check = "1" || $forensics = "infrastructure" || $forensics = "4" ]]; then
+		                elif [[ $pentest_check = "infrastructure" || $pentest_check = "1" || $forensic_type = "infrastructure" || $forensic_type = "4" ]]; then
 		                        header "installation"
 		                        read -rp "Your Choice: " decision
 		                        if [[ $decision = "full" || $decision = "1" ]]; then
