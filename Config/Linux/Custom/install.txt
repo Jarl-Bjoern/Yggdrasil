@@ -19,3 +19,5 @@
 # Wget
 
 # Wordlists
+
+# Hashcat_Rules
