@@ -1681,7 +1681,7 @@ if [[ $Switch_Skip_URLS == false && $Switch_URL != false ]]; then
         sleep 3
         if [[ ${#Array_URL} -gt 0 ]]; then
                 for URL in "${Array_URL[@]}"; do
-                        sudo python3 "$FULL_PATH/Resources/Python/browse.py" "$URL" 2>/dev/null
+                        sudo python3 "$FULL_PATH/Resources/Python/browse.py" "$URL" &> /dev/null 
                 done
         fi
 fi
