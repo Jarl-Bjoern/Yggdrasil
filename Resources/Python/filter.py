@@ -103,7 +103,7 @@ alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ;
                                 if ("function Yggdrasil_Old_Tool_Monitor()" not in Temp_Check):
                                         pass
                                 if ("function Yggdrasil_New_Tool_Monitor()" not in Temp_Check):
-                                        pass
+                                        fa.write("""for GIT_Tool in $(find {opt_path} /opt/wordlists /opt/hashcat_rules -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev)\ndo\n    if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]\n    then\n        echo "$GIT_Tool" >> {opt_path}/update.info\n    fi\ndone""")
 
 def Crontab_Configuration(path_to_file, opt_path):
         Crontab_Commands = {
