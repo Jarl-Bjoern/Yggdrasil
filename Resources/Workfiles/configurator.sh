@@ -763,6 +763,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/custom_yggdrasil_tools"
 	        fi
+		Array_URL+=("$FULL_PATH/Information/Pages/Custom.txt")
 	elif [[ $category_type = "complete" || $category_type = "1" ]]; then
 	        if [[ ! "${#OPT_Path}" -gt 2 ]]; then
 	                OPT_Path="/opt/complete_tools"
@@ -827,6 +828,10 @@ else
 		OPT_Path="/opt/custom_yggdrasil_tools"
 	elif [ -d "/opt/training_tools" ]; then
  		OPT_Path="/opt/training_tools"
+   	elif [ -d "/opt/red_teaming_tools" ]; then
+ 		OPT_Path="/opt/red_teaming_tools"
+      	elif [ -d "/opt/development_tools" ]; then
+ 		OPT_Path="/opt/development_tools"
  	elif [ -d "/opt/complete_tools" ]; then
   		OPT_Path="/opt/complete_tools"
 	else
