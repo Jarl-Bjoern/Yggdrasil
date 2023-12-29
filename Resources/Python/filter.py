@@ -153,13 +153,13 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_GIT_Monitor':
                 {
                         'Time': '3',
-                        'Command': f'for GIT_Tool in $(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done',
+                        'Command': f'for GIT_Tool in $(find {opt_path} /opt/wordlists /opt/hashcat_rules -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Monitor.sh'
                 },
         'Yggdrasil_GIT_Monitor_Cleaner':
                 {
                         'Time': '3',
-                        'Command': f"""for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info""",
+                        'Command': f"""for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} /opt/wordlists /opt/hashcat_rules -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info""",
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Monitor_Cleaner.sh'
                 }
         }
@@ -307,13 +307,13 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_GIT_Monitor':
                 {
                         'Time': '3',
-                        'Command': f'for GIT_Tool in $(find {opt_path} -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done',
+                        'Command': f'for GIT_Tool in $(find {opt_path} /opt/wordlists /opt/hashcat_rules -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Monitor.sh'
                 },
         'Yggdrasil_GIT_Monitor_Cleaner':
                 {
                         'Time': '3',
-                        'Command': f"""for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info""",
+                        'Command': f"""for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} /opt/wordlists /opt/hashcat_rules -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info""",
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Monitor_Cleaner.sh'
                 }
         }
