@@ -61,7 +61,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
     - DPKG Installer
     - Grammatical Errors:
       - Correction of `Executable` on all configs and the logic in the script.
-    - The URL opener should now no longer produce ugly output inside the shell.
+    - The URL opener should now no longer produce output inside the shell.
     - Veracrypt Installation
   - New Aliases / Functions:
     - `kali-repo-switch` has been integrated, which can be used to switch between the two repositories `kali-rolling` and `kali-last-snapshot`.
