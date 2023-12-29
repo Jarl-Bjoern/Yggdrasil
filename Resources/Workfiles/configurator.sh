@@ -1671,11 +1671,11 @@ sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /opt/ssl/pentest-key.pem 
 sudo python3 "$FULL_PATH/Resources/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n"
-echo -e "               The following paths have been integrated by the tool"
+echo -e "           The following paths have been integrated by the tool"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n"
-echo -e "      Toolpath:            ${ORANGE}$OPT_Path${NOCOLOR}"
-echo -e "      Hashcat-Rules:       ${ORANGE}/opt/hashcat_rules${NOCOLOR}"
-echo -e "      Wordlists:           ${ORANGE}/opt/wordlists${NOCOLOR}"
+echo -e "            Toolpath:            ${ORANGE}$OPT_Path${NOCOLOR}"
+echo -e "            Hashcat-Rules:       ${ORANGE}/opt/hashcat_rules${NOCOLOR}"
+echo -e "            Wordlists:           ${ORANGE}/opt/wordlists${NOCOLOR}"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n                    ${ORANGE}The installation was successful! :)${NOCOLOR}"
 if [[ $Switch_Skip_URLS == false && $Switch_URL != false ]]; then
         sleep 3
