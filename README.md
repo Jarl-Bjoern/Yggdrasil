@@ -48,6 +48,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
       - If a tool is no longer in the installation path `Default: /opt/pentest_tools`, it will be deleted from `update.info` via a task.
       - It is now also possible to download `hashcat rules` which can then be found in the `/opt/hashcat_rules` directory.
       - The new function `yggdrasil-custom` can now also be used to open custom URLs (the provided file `Default: /opt/yggdrasil/Information/Pages/Custom.txt` can be edited or an external file `yggdrasil-custom /home/kali/my_own_urls.txt` can be loaded).
+      - The `table of contents` in the wiki has been made clearer. In addition, all links can now be accessed without having to select the top category of the page first.
   - Code Improvements:
     - The program will no longer terminate if an incorrect entry is made (the loop starts after the `main category` was selected).
   - Hotfixes:
