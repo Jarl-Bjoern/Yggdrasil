@@ -1093,9 +1093,7 @@ if [[ "$Switch_UPDATES" == true ]]; then
         elif [[ "$Switch_SYSTEMD" == true ]]; then
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "/usr/lib/systemd/system" "$OPT_Path" "normal"
                 sudo systemctl daemon-reload &>/dev/null
-                echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n"
-                echo "Setting up the timer and services."
-		echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n"
+                echo -e "\nSetting up the timer and services.\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n"
                 sudo systemctl enable --now Yggdrasil_Cargo_Updater.timer Yggdrasil_Container_Cleaner.timer Yggdrasil_Container_Updates.timer Yggdrasil_GIT_Updater.timer Yggdrasil_PIP_Updater.timer Yggdrasil_System_Updates.timer Yggdrasil_GIT_Monitor_Cleaner Yggdrasil_GIT_Monitor Yggdrasil_Rust_Updater &>/dev/null
         fi
 	chmod +x /etc/yggdrasil/*
