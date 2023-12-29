@@ -139,3 +139,8 @@ https://github.com/google/fuzzing
 https://github.com/six2dez/OneListForAll
 https://github.com/carlospolop/Auto_Wordlists
 https://github.com/insidetrust/statistically-likely-usernames
+
+# Hashcat_Rules
+https://github.com/stealthsploit/Optimised-hashcat-Rule
+https://github.com/clem9669/hashcat-rule
+https://github.com/stealthsploit/OneRuleToRuleThemStill
