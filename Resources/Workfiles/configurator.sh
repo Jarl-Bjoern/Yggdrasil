@@ -380,6 +380,8 @@ function File_Installer() {
                         Command="go get" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false
                 elif [[ $line = "# Wordlists" ]]; then
                         Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists || return 0 ; Switch_WGET=false ; Switch_BRANCH=false
+                elif [[ $line = "# Hashcat_Rules" ]]; then
+                        Command="git clone" ; Skip=true ; mkdir -p /opt/hashcat_rules ; cd /opt/hashcat_rules || return 0 ; Switch_WGET=false ; Switch_BRANCH=false
                 elif [[ $line = "# Wget" ]]; then
                         Switch_WGET=true
                 else
