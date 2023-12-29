@@ -50,12 +50,12 @@ alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/a
 """+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" "$i" ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.45; done; cd "$BACK"'
 alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.45; done'
 alias yggdrasil-info='Yggdrasil_File_Reader "/opt/yggdrasil/Information/info.txt" | less -r'
-alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/OSINT.txt"'
-alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Forensic.txt"'
-alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Education.txt"'
-alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Hardening.txt"'
-alias yggdrasil-pentesting='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Infrastructure.txt"'
-alias yggdrasil-web='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Web.txt"'
+alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/OSINT.txt" &> /dev/null'
+alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Forensic.txt" &> /dev/null'
+alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Education.txt" &> /dev/null'
+alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Hardening.txt" &> /dev/null'
+alias yggdrasil-pentesting='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Infrastructure.txt" &> /dev/null'
+alias yggdrasil-web='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Web.txt" &> /dev/null'
 alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ; sudo chmod +x /tmp/rust_install.sh ; sudo bash /tmp/rust_install.sh -y ; sudo rm -f /tmp/rust_install.sh'
 """
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
@@ -75,12 +75,12 @@ alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/a
 """+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.45; done; cd "$BACK"'
 alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.45; done'
 alias yggdrasil-info='Yggdrasil_File_Reader "/opt/yggdrasil/Information/info.txt" | less -r'
-alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/OSINT.txt"'
-alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Forensic.txt"'
-alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Education.txt"'
-alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Hardening.txt"'
-alias yggdrasil-pentesting='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Infrastructure.txt"'
-alias yggdrasil-web='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Web.txt"'
+alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/OSINT.txt" &> /dev/null'
+alias yggdrasil-forensic='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Forensic.txt" &> /dev/null'
+alias yggdrasil-education='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Education.txt" &> /dev/null'
+alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Hardening.txt" &> /dev/null'
+alias yggdrasil-pentesting='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Infrastructure.txt" &> /dev/null'
+alias yggdrasil-web='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Web.txt" &> /dev/null'
 alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ; sudo chmod +x /tmp/rust_install.sh ; sudo bash /tmp/rust_install.sh -y ; sudo rm -f /tmp/rust_install.sh'
 """
         Config_Alias_Profile = r'. "$HOME/.cargo/env"'
@@ -99,7 +99,7 @@ alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ;
                                 if ("function yggdrasil-vnc()" not in Temp_Check):
                                         fa.write("""function yggdrasil-vnc() {\n    if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then\n        for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u);\n            do kill $i\n        done\n    fi\n    if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then\n        kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1)\n    fi\n    sudo x11vnc -storepasswd\n    sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet &\n    /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --idle-timeout 900 --ssl-only --key /opt/ssl/pentest-key.pem --cert /opt/ssl/pentest-cert.pem\n}\n""")
                                 if ("function yggdrasil-custom()" not in Temp_Check):
-                                        fa.write("""function yggdrasil-custom() {\n    if [[ "$1" ]]; then\n        sudo python3 {yggdrasil_path}/Resources/Python/browse.py "$1"\n    else\n        sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Custom.txt"\n    fi\n}\n""")
+                                        fa.write("""function yggdrasil-custom() {\n    if [[ "$1" ]]; then\n        sudo python3 {yggdrasil_path}/Resources/Python/browse.py "$1" &> /dev/null\n    else\n        sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Custom.txt" &> /dev/null\n    fi\n}\n""")
                                 if ("function Yggdrasil_Repo_Switch()" not in Temp_Check):
                                         fa.write("""function Yggdrasil_Repo_Switch() {\n    if [[ $(cat /etc/apt/sources.list | head -n2 | grep -v "#" | cut -d ' ' -f3) == "kali-last-snapshot" ]]; then\n        sed -i 's#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free non-free-firmware#deb https://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware#g' /etc/apt/sources.list\n        echo -e "The repository was successfully changed to \033[0;32mkali-rolling\033[0m"\n    elif [[ $(cat /etc/apt/sources.list | head -n2 | grep -v "#" | cut -d ' ' -f3) == "kali-rolling" ]]; then\n        sed -i 's#deb https://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free non-free-firmware#g' /etc/apt/sources.list\n        echo -e "The repository was successfully changed to \033[0;32mkali-last-snapshot\033[0m"\n    fi\n}\n""")
                                 if ("function Yggdrasil_Old_Tool_Monitor()" not in Temp_Check):
