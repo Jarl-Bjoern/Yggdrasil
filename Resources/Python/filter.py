@@ -99,7 +99,7 @@ alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ;
                                 if ("function yggdrasil-vnc()" not in Temp_Check):
                                         fa.write("""function yggdrasil-vnc() {\n    if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then\n        for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u);\n            do kill $i\n        done\n    fi\n    if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then\n        kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1)\n    fi\n    sudo x11vnc -storepasswd\n    sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet &\n    /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --idle-timeout 900 --ssl-only --key /opt/ssl/pentest-key.pem --cert /opt/ssl/pentest-cert.pem\n}\n""")
                                 if ("function yggdrasil-custom()" not in Temp_Check):
-                                        pass
+                                        fa.write("""yggdrasil-custom {\n    if [[ "$1" ]]; then\n        sudo python3 {yggdrasil_path}/Resources/Python/browse.py "$1"\n    else\n        sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Custom.txt"\n    fi\n}\n""")
                                 if ("function Yggdrasil_Old_Tool_Monitor()" not in Temp_Check):
                                         pass
                                 if ("function Yggdrasil_New_Tool_Monitor()" not in Temp_Check):
