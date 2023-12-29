@@ -47,7 +47,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
       - The installation path `Default: /opt/pentest_tools` will be now monitored if there are new tools added from github. If this is the case, then these are added to Update.info so that they are also updated automatically, regardless of whether they are integrated in the toolset of Yggdrasil.
       - If a tool is no longer in the installation path `Default: /opt/pentest_tools`, it will be deleted from `update.info` via a task.
       - It is now also possible to download `hashcat rules` which can then be found in the `/opt/hashcat_rules` directory.
-      - The new alias `yggdrasil-custom` can now also be used to open custom URLs (File xy must be edited `Default: /opt/yggdrasil/Information/Pages/Custom.txt`).
+      - The new alias `yggdrasil-custom` can now also be used to open custom URLs (the provided file `Default: /opt/yggdrasil/Information/Pages/Custom.txt` can be edited or an external file `yggdrasil-custom /home/kali/my_own_urls.txt` can be loaded.).
   - Code Improvements:
     - The program will no longer terminate if an incorrect entry is made (the loop starts after the `main category` was selected).
   - Hotfixes:
