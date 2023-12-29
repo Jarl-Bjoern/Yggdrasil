@@ -50,6 +50,7 @@ https://github.com/getreu/stringsext
 https://github.com/log2timeline/plaso
 https://github.com/gfoss/PSRecon
 https://github.com/Invoke-IR/PowerForensics
+https://github.com/Neo23x0/Loki
 
 # Go
 
