@@ -128,7 +128,7 @@ The following link lists all the features that the tool offers.
 <br />
 
 
-# 🏆 Special thanks
+# 🏆 Special Thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
   - cddmp
