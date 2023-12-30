@@ -418,7 +418,7 @@ function File_Installer() {
                                                         if [[ $Switch_IGNORE = false ]]; then
                                                                 if [[ $Command =~ "apt" ]]; then
                                                                         SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
-                                                                        if [[ "$(apt-cache policy $line | head -n2 | grep "[0-9]" | awk '{print $2}')" ]]; then
+                                                                        if [[ $(which "$line") || "$(apt-cache policy $line | head -n2 | grep "[0-9]" | awk '{print $2}')" ]]; then
                                                                             echo -e "${RED}$line${NOCOLOR} is already installed."
 	                                                                else
                                                                             eval "$SECOND_Command"
@@ -441,7 +441,11 @@ function File_Installer() {
                                                 if [[ $Switch_IGNORE = false ]]; then
 							if [[ $Command =~ "apt" ]]; then
 								SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
-								eval "$SECOND_Command"
+								if [[ $(which "$line") || "$(apt-cache policy $line | head -n2 | grep "[0-9]" | awk '{print $2}')" ]]; then
+								    echo -e "${RED}$line${NOCOLOR} is already installed."
+								else
+								    eval "$SECOND_Command"
+								fi
 							elif [[ $Command =~ "git clone -b" ]]; then
 								FILE_URL=$(echo "$line" | cut -d" " -f1)
 								FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
