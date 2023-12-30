@@ -62,6 +62,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
     - Grammatical Errors:
       - Correction of `Executable` on all configs and the logic in the script.
     - The URL opener should now no longer produce output inside the shell.
+    - Tools that are installed via `Go` will get a rework so that the tool is downloaded via `git clone` and then installed via `go install`, as the `go get` command is no longer supported.
     - Veracrypt Installation
   - New Aliases / Functions:
     - `kali-repo-switch` has been integrated, which can be used to switch between the two repositories `kali-rolling` and `kali-last-snapshot`.
