@@ -377,7 +377,7 @@ function File_Installer() {
                 elif [[ $line = "# Gem" ]]; then
                         Command="gem install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false
                 elif [[ $line = "# Go" ]]; then
-                        Command="go get" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false
+                        Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_BRANCH=false
                 elif [[ $line = "# Wordlists" ]]; then
                         Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists || return 0 ; Switch_WGET=false ; Switch_BRANCH=false
                 elif [[ $line = "# Hashcat_Rules" ]]; then
