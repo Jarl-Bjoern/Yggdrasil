@@ -299,6 +299,7 @@ function Download_Commander() {
 		for Check in ${Array_Filter_Download[@]}; do
 			if [[ "$Check" =~ $1 ]]; then
 				Switch_Skip_Git_Download=true
+				break
 			fi
 		done		
  	}
@@ -318,7 +319,8 @@ function Download_Commander() {
 			if [[ "$Switch_Skip_Git_Download" == false ]]; then
 				eval "$Command $FILE_BRANCH $FILE_URL"
     			else
-       				echo -e "${RED}$1${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+				Tool_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+       				echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
     			fi
 		elif [[ $Command =~ "cargo" ]]; then
 			eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
@@ -327,7 +329,8 @@ function Download_Commander() {
 			if [[ "$Switch_Skip_Git_Download" == false ]]; then
 				eval "$Command $line"
     			else
-       				echo -e "${RED}$line${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+				Tool_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+       				echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
     			fi
 			
 			if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
