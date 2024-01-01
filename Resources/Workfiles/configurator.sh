@@ -326,7 +326,7 @@ function Download_Commander() {
 		elif [[ $Command =~ "git clone -b" ]]; then
 			FILE_URL=$(echo "$line" | cut -d" " -f1)
 			FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
-			Check_For_Skip_Download $line
+			Check_For_Skip_Download $FILE_URL
 			if [[ "$Switch_Skip_Git_Download" == false ]]; then
 				eval "$Command $FILE_BRANCH $FILE_URL"
     			else
