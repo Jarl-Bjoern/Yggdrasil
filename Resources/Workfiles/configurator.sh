@@ -294,32 +294,32 @@ function Create_Filter_Array() {
 }
 
 function Download_Commander() {
-	line=$1
-	Command=$2
+	line=$($1 | tr -d '\r')
+	Command=$($2 | tr -d '\r')
 
 	if [[ $Switch_IGNORE = false ]]; then
-		if [[ $2 =~ "apt" ]]; then
-			SECOND_Command="$2 $1 || (apt --fix-broken install -y && $2 $1)"
-			if [[ $(which "$1") || "$(apt-cache policy $1 | head -n2 | grep "[0-9]" | awk '{print $2}')" ]]; then
-			    echo -e "${RED}$1${NOCOLOR} is already installed."
+		if [[ $Command =~ "apt" ]]; then
+			SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
+			if [[ $(which "$line") || "$(apt-cache policy $line | head -n2 | grep "[0-9]" | awk '{print $2}')" ]]; then
+			    echo -e "${RED}$line${NOCOLOR} is already installed."
 			else
 			    eval "$SECOND_Command"
 			fi
-		elif [[ $2 =~ "git clone -b" ]]; then
-			FILE_URL=$(echo "$1" | cut -d" " -f1)
-			FILE_BRANCH=$(echo "$1" | cut -d" " -f2)
+		elif [[ $Command =~ "git clone -b" ]]; then
+			FILE_URL=$(echo "$line" | cut -d" " -f1)
+			FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
 			eval "$Command $FILE_BRANCH $FILE_URL"
-		elif [[ $2 =~ "cargo" ]]; then
-			eval "$2 $1" || source "$HOME/.cargo/env" && eval "$2 $1"
+		elif [[ $Command =~ "cargo" ]]; then
+			eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
 		else
-			eval "$2 $1"
-			if [[ "$2" =~ "git clone" && "$Switch_GO" == true ]]; then
-				Temp_File_Name=$(echo "$1" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+			eval "$Command $line"
+			if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
+				Temp_File_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
 				Temp_PATH_Switcher=$(find "$OPT_Path" -maxdepth 2 -name "$Temp_File_Name" -type d ! -path "$OPT_Path" | head -n1)
 				cd $Temp_PATH_Switcher ; go install ; cd ..
 			fi
 		fi
-		Logger "$2" "$1"
+		Logger "$Command" "$line"
 	else
 		echo -e "${RED}$1${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
 	fi
