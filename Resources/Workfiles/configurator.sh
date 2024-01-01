@@ -434,6 +434,11 @@ function File_Installer() {
      									eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
                                                                 else
                                                                         eval "$Command $line"
+
+									########################################
+									if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
+										echo ""
+  									fi
                                                                 fi
                                                                 Logger "$Command" "$line"
                                                         else
@@ -455,6 +460,11 @@ function File_Installer() {
 								eval "$Command $FILE_BRANCH $FILE_URL"
 							else
 								eval "$Command $line"
+
+								########################################
+								if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
+									echo $line
+								fi
 							fi
 							Logger "$Command" "$line"
                                                 else
