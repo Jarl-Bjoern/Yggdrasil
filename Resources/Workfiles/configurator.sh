@@ -294,6 +294,15 @@ function Create_Filter_Array() {
 }
 
 function Download_Commander() {
+	function Check_For_Skip_Download() {
+		Switch_Skip_Git_Download=false
+		for Check in ${Array_Filter_Download[@]}; do
+			if [[ "$Check" =~ $1 ]]; then
+				Switch_Skip_Git_Download=true
+			fi
+		done		
+ 	}
+
 	if [[ $Switch_IGNORE = false ]]; then
 		if [[ $Command =~ "apt" ]]; then
 			SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
@@ -304,12 +313,23 @@ function Download_Commander() {
 			fi
 		elif [[ $Command =~ "git clone -b" ]]; then
 			FILE_URL=$(echo "$line" | cut -d" " -f1)
-			FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
-			eval "$Command $FILE_BRANCH $FILE_URL"
+			FILE_BRANCH=$(echo "$line" | cut -d" " -f2)	
+			Check_For_Skip_Download $line
+			if [[ "$Switch_Skip_Git_Download" == false ]]; then
+				eval "$Command $FILE_BRANCH $FILE_URL"
+    			else
+       				echo -e "${RED}$1${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+    			fi
 		elif [[ $Command =~ "cargo" ]]; then
 			eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
 		else
-			eval "$Command $line"
+			Check_For_Skip_Download $line
+			if [[ "$Switch_Skip_Git_Download" == false ]]; then
+				eval "$Command $line"
+    			else
+       				echo -e "${RED}$1${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+    			fi
+			
 			if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
 				Temp_File_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
 				Temp_PATH_Switcher=$(find "$OPT_Path" -maxdepth 2 -name "$Temp_File_Name" -type d ! -path "$OPT_Path" | head -n1)
