@@ -41,6 +41,7 @@ Switch_Skip_Configs=false
 Switch_Skip_Hardening=false
 Switch_Skip_Installation=false
 Switch_Skip_URLS=false
+#Switch_SMB=false
 #Switch_SQUID=false
 Switch_SSH=false
 Switch_SYSTEMD=false
@@ -238,12 +239,13 @@ function header() {
         elif [ "$1" = "hardening" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration             ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}firewall${NOCOLOR}         :   firewall configuration             ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}sysctl (OS)${NOCOLOR}      :   sysctl   hardening                 ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${GREEN}3${NOCOLOR}] ${GREEN}sysctl${NOCOLOR}           :   sysctl   hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}ssh${NOCOLOR}              :   SSH      hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}apache${NOCOLOR}           :   Apache   hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx    hardening                 ${CYAN}|${NOCOLOR}"
                 #echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}ftp${NOCOLOR}           :   ftp   hardening                 ${CYAN}|${NOCOLOR}"
                 #echo -e "${CYAN}|${NOCOLOR}   [${CYAN}8${NOCOLOR}] ${CYAN}squid${NOCOLOR}            :   squid    hardening                 ${CYAN}|${NOCOLOR}"
+                #echo -e "${CYAN}|${NOCOLOR}   [${GREEN}9${NOCOLOR}] ${GREEN}ftp${NOCOLOR}           :   smb   hardening                 ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "settings" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}      :   complete configuration                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}updates${NOCOLOR}       :   automated updates                      ${CYAN}|${NOCOLOR}"
