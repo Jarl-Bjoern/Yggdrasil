@@ -53,6 +53,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
   - Code Improvements:
     - The program will no longer terminate if an incorrect entry is made (the loop starts after the `main category` was selected).
     - The tools that are downloaded via `WGET` are now filtered dynamically so that they do not have to be hardcoded anymore. (However, this can lead to problems if the name inside the config is not the same which will be displayed after the installation inside the `/usr/bin` location - as a example `/usr/bin/chrome` will not be found because the correct installed package is called `/usr/bin/google-chrome`)
+    - The tools that are downloaded via `GitHub` are now also checked to see if they are already installed locally in order to skip them and display the output during the installation process.
   - Hotfixes:
     - Cronjobs & Systemd Units:
       - Due to a programming error, the Systemd units could not be used without the data shredder.
