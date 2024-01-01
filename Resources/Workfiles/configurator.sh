@@ -58,20 +58,7 @@ TEMP_WGET_PATH=""
 # Arrays
 declare -a Array_Categories=()
 declare -a Array_Cargo_Updater=()
-
-declare -a Array_Filter_Download=("/usr/bin/veracrypt"
-"/usr/bin/code"
-"/usr/bin/google-chrome"
-"/usr/bin/insomnium"
-"/usr/bin/obsidian"
-"/usr/bin/insomnia"
-"/opt/pentest_tools/kerbrute"
-"/opt/pentest_tools/JuicyPotato"
-"/opt/pentest_tools/RoguePotato"
-"/opt/pentest_tools/Snaffler"
-"/opt/pentest_tools/LaZagne"
-"/opt/pentest_tools/SharpHound"
-"/opt/pentest_tools/API/Postman")
+declare -a Array_Filter_Download=()
 
 declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Webscanner/SAP/PyRFC"
