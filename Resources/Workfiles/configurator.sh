@@ -301,7 +301,7 @@ function Download_Commander() {
 				Switch_Skip_Git_Download=true
 				break
 			fi
-		done		
+		done
  	}
 
 	if [[ $Switch_IGNORE = false ]]; then
@@ -314,7 +314,7 @@ function Download_Commander() {
 			fi
 		elif [[ $Command =~ "git clone -b" ]]; then
 			FILE_URL=$(echo "$line" | cut -d" " -f1)
-			FILE_BRANCH=$(echo "$line" | cut -d" " -f2)	
+			FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
 			Check_For_Skip_Download $line
 			if [[ "$Switch_Skip_Git_Download" == false ]]; then
 				eval "$Command $FILE_BRANCH $FILE_URL"
@@ -332,7 +332,7 @@ function Download_Commander() {
 				Tool_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
        				echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
     			fi
-			
+
 			if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
 				Temp_File_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
 				Temp_PATH_Switcher=$(find "$OPT_Path" -maxdepth 2 -name "$Temp_File_Name" -type d ! -path "$OPT_Path" | head -n1)
