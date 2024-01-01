@@ -288,6 +288,8 @@ function Create_Filter_Array() {
                                 Array_Filter_Download+=($(find "$OPT_Path" -maxdepth 2 -name "$TEMP_Filter" -type d ! -path "$OPT_Path" | head -n1))
                         elif [[ $(find '/opt/wordlists' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/wordlists' | head -n1) ]]; then
                                 Array_Filter_Download+=($(find '/opt/wordlists' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/wordlists' | head -n1))
+                        elif [[ $(find '/opt/hashcat_rules' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/hashcat_rules' | head -n1) ]]; then
+                                Array_Filter_Download+=($(find '/opt/hashcat_rules' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/hashcat_rules' | head -n1))
                         elif [[ $(which "$TEMP_Filter") ]]; then
                                 Array_Filter_Download+=($(which "$TEMP_Filter"))
                         fi
