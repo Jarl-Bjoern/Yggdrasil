@@ -718,6 +718,8 @@ for arg; do
  		Switch_Skip_Installation=true
         elif [[ $arg == "-sU" ]]; then
                 Switch_Skip_URLS=true
+	elif [[ $arg == "-sbI" ]]; then
+ 		Switch_Skip_Basic_Installation=true
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-aW" ]]; then
                 PATH_WORKSPACE="$(echo "$arg" | rev | cut -c5- | rev)"
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c4- | rev)" '{print $2}')" == ".-p" ]]; then
