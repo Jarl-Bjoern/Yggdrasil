@@ -327,7 +327,7 @@ function Download_Commander() {
 			if [[ "$Switch_Skip_Git_Download" == false ]]; then
 				eval "$Command $line"
     			else
-       				echo -e "${RED}$1${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+       				echo -e "${RED}$line${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
     			fi
 			
 			if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
@@ -338,7 +338,7 @@ function Download_Commander() {
 		fi
 		Logger "$Command" "$line"
 	else
-		echo -e "${RED}$1${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+		echo -e "${RED}$line${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
 	fi
 }
 
