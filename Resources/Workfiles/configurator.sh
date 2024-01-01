@@ -437,7 +437,7 @@ function File_Installer() {
 
 									########################################
 									if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
-										echo ""
+										echo $line
   									fi
                                                                 fi
                                                                 Logger "$Command" "$line"
