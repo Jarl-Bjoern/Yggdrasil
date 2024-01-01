@@ -353,10 +353,11 @@ function File_Installer() {
                 fi
         }
 
+        Create_Filter_Array $1
+
         input=$1
         while IFS= read -r line
         do
-                Create_Filter_Array $line
                 if [[ $line = "# APT" ]]; then
                         if [[ "$Switch_Verbose" == false ]]; then
                                  Command="sudo DEBIAN_FRONTEND=noninteractive apt install -y" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false
