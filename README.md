@@ -93,6 +93,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
         - `Using The Automated Variant`
   - New Parameters:
     - `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs.
+    - `-sbI` was integrated to skip the installation process of the basic tools.
  
 
 <div align="center">
