@@ -434,10 +434,10 @@ function File_Installer() {
      									eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
                                                                 else
                                                                         eval "$Command $line"
-
-									########################################
 									if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
-										echo $line
+										Temp_File_Name=(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+										Temp_PATH_Switcher=(find "$OPT_Path" -maxdepth 2 -name "$Temp_File_Name" -type d ! -path "$OPT_Path" | head -n1)
+	  									cd $Temp_PATH_Switcher ; go install ; cd ..
   									fi
                                                                 fi
                                                                 Logger "$Command" "$line"
@@ -460,10 +460,10 @@ function File_Installer() {
 								eval "$Command $FILE_BRANCH $FILE_URL"
 							else
 								eval "$Command $line"
-
-								########################################
 								if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
-									echo $line
+									Temp_File_Name=(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+									Temp_PATH_Switcher=(find "$OPT_Path" -maxdepth 2 -name "$Temp_File_Name" -type d ! -path "$OPT_Path" | head -n1)
+									cd $Temp_PATH_Switcher ; go install ; cd ..
 								fi
 							fi
 							Logger "$Command" "$line"
