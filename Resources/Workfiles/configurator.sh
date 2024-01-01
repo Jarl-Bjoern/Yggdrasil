@@ -39,6 +39,7 @@ Switch_SCREENRC_BJOERN=false
 Switch_SHREDDER=false
 Switch_Skip_Configs=false
 Switch_Skip_Hardening=false
+Switch_Skip_Basic_Installation=false
 Switch_Skip_Installation=false
 Switch_Skip_URLS=false
 #Switch_SMB=false
@@ -1096,7 +1097,7 @@ if [[ "$Switch_CUSTOM_CONFIGS" == true ]]; then
         export HISTCONTROL=ignoreboth:erasedups
 fi
 echo "" > "$FULL_PATH/yggdrasil.log"
-if [[ "$Switch_Skip_Installation" == false ]]; then
+if [[ "$Switch_Skip_Installation" == false && "$Switch_Skip_Basic_Installation" == false ]]; then
 	if [[ "$Switch_Verbose" == false ]]; then
 	         sudo apt update -y ; sudo DEBIAN_FRONTEND=noninteractive apt full-upgrade -y ; sudo apt autoremove -y --purge ; sudo apt clean all
 	else
@@ -1136,12 +1137,15 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 	        echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
 	        echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 	fi
-	if [[ $category_type != "custom" && $category_type != "2" ]]; then
-	        File_Installer "$FULL_PATH/Config/Linux/General/standard.txt" "$OPT_Path"
-	        if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
-	                File_Installer "$FULL_PATH/Config/Linux/General/gui.txt" "$OPT_Path"
-	        fi
-	fi
+
+ 	if [[ $Switch_Skip_Basic_Installation == false ]]; then
+		if [[ $category_type != "custom" && $category_type != "2" ]]; then
+		        File_Installer "$FULL_PATH/Config/Linux/General/standard.txt" "$OPT_Path"
+		        if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" || ${#Array_Categories} -gt 0 ]]; then
+		                File_Installer "$FULL_PATH/Config/Linux/General/gui.txt" "$OPT_Path"
+		        fi
+		fi
+  	fi
 
 	# Tool_Installation
 	if [[ $category_type = "complete" || $category_type = "1" ]]; then
