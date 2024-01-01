@@ -297,17 +297,24 @@ function Create_Filter_Array() {
  	done < "$input"
 }
 
-function Download_Commander() {
-	function Check_For_Skip_Download() {
-		Switch_Skip_Git_Download=false
-		for Check in ${Array_Filter_Download[@]}; do
-			if [[ "$Check" =~ "$OPT_Path" && "$1" =~ $(echo "$Check" | rev | cut -d '/' -f1 | rev | tr -d '\r') ]]; then
-				Switch_Skip_Git_Download=true
-				break
-			fi
-		done
- 	}
+function Check_For_Skip_Download() {
+	Switch_Skip_Git_Download=false
+	for Check in ${Array_Filter_Download[@]}; do
+		if [[ "$Check" =~ "$OPT_Path" && "$1" =~ $(echo "$Check" | rev | cut -d '/' -f1 | rev | tr -d '\r') ]]; then
+			Switch_Skip_Git_Download=true
+  		elif [[ "$Check" =~ "/opt/wordlists" && "$1" =~ $(echo "$Check" | rev | cut -d '/' -f1 | rev | tr -d '\r')  ]]; then
+			Switch_Skip_Git_Download=true
+    		elif [[ "$Check" =~ "/opt/hashcat_rules" && "$1" =~ $(echo "$Check" | rev | cut -d '/' -f1 | rev | tr -d '\r')  ]]; then
+			Switch_Skip_Git_Download=true
+		fi
 
+  		if [[ "$Switch_Skip_Git_Download" == true ]]; then
+			break
+    		fi
+	done
+}
+
+function Download_Commander() {
 	if [[ $Switch_IGNORE = false ]]; then
 		if [[ $Command =~ "apt" ]]; then
 			SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
