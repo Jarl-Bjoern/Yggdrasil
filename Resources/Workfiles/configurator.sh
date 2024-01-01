@@ -437,10 +437,60 @@ function File_Installer() {
                                                 if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
                                                         echo -e "${RED}$line${NOCOLOR} was skipped" | tee -a "$FULL_PATH/yggdrasil.log"
                                                 else
-							Download_Commander $line $Command
+							if [[ $Switch_IGNORE = false ]]; then
+								if [[ $Command =~ "apt" ]]; then
+									SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
+									if [[ $(which "$line") || "$(apt-cache policy $line | head -n2 | grep "[0-9]" | awk '{print $2}')" ]]; then
+									    echo -e "${RED}$line${NOCOLOR} is already installed."
+									else
+									    eval "$SECOND_Command"
+									fi
+								elif [[ $Command =~ "git clone -b" ]]; then
+									FILE_URL=$(echo "$line" | cut -d" " -f1)
+									FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
+									eval "$Command $FILE_BRANCH $FILE_URL"
+								elif [[ $Command =~ "cargo" ]]; then
+									eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
+								else
+									eval "$Command $line"
+									if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
+										Temp_File_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+										Temp_PATH_Switcher=$(find "$OPT_Path" -maxdepth 2 -name "$Temp_File_Name" -type d ! -path "$OPT_Path" | head -n1)
+										cd $Temp_PATH_Switcher ; go install ; cd ..
+									fi
+								fi
+								Logger "$Command" "$line"
+							else
+								echo -e "${RED}$1${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+							fi
                                                 fi
                                         else
-						Download_Commander $line $Command
+						if [[ $Switch_IGNORE = false ]]; then
+							if [[ $Command =~ "apt" ]]; then
+								SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
+								if [[ $(which "$line") || "$(apt-cache policy $line | head -n2 | grep "[0-9]" | awk '{print $2}')" ]]; then
+								    echo -e "${RED}$line${NOCOLOR} is already installed."
+								else
+								    eval "$SECOND_Command"
+								fi
+							elif [[ $Command =~ "git clone -b" ]]; then
+								FILE_URL=$(echo "$line" | cut -d" " -f1)
+								FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
+								eval "$Command $FILE_BRANCH $FILE_URL"
+							elif [[ $Command =~ "cargo" ]]; then
+								eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
+							else
+								eval "$Command $line"
+								if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
+									Temp_File_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+									Temp_PATH_Switcher=$(find "$OPT_Path" -maxdepth 2 -name "$Temp_File_Name" -type d ! -path "$OPT_Path" | head -n1)
+									cd $Temp_PATH_Switcher ; go install ; cd ..
+								fi
+							fi
+							Logger "$Command" "$line"
+						else
+							echo -e "${RED}$1${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+						fi
                                         fi
                                 else
                                         FILE=$(echo "$line" | cut -d" " -f1)
