@@ -333,7 +333,7 @@ function Download_Commander() {
 			if [[ "$Switch_Skip_Git_Download" == false ]]; then
 				eval "$Command $FILE_BRANCH $FILE_URL"
     			else
-				Tool_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+				Tool_Name=$(echo "$line" | awk '{print $1}' | rev | cut -d '/' -f1 | rev | tr -d '\r')
        				echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
     			fi
 		elif [[ $Command =~ "cargo" ]]; then
