@@ -24,13 +24,14 @@
 # Vers 0.8b 15.12.2022
 # Vers 0.9  11.03.2023
 # Vers 0.9b 08.09.2023
+# Vers 0.9c 02.01.2024
 
 # Author
 __author__     = "Rainer C. B. Herold"
 __copyright__  = "Copyright 2022-2024, Rainer C. B. Herold"
 __credits__    = "Rainer C. B. Herold"
 __license__    = "MIT license"
-__version__    = "0.9c"
+__version__    = "0.9d"
 __maintainer__ = "Rainer C. B. Herold"
 __status__     = "Production"
 
