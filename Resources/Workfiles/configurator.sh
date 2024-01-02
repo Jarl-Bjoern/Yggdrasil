@@ -355,7 +355,12 @@ function Download_Commander() {
 		fi
 		Logger "$Command" "$line"
 	else
-		echo -e "${RED}$line${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+ 		if [[ "$line" =~ "https://" ]]; then
+			Tool_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+   		else
+     			Tool_Name="$line"
+		fi
+		echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
 	fi
 }
 
