@@ -300,7 +300,7 @@ function Create_Filter_Array() {
 
 function Check_For_Skip_Download() {
 	Switch_Skip_Git_Download=false
-	if [[ ! -d /opt/hashcat_rules && ! -d /opt/wordlists ]]; then
+	if [[ ! -d /opt/hashcat_rules || ! -d /opt/wordlists ]]; then
 		mkdir -p /opt/hashcat_rules /opt/wordlists
  	fi
   
