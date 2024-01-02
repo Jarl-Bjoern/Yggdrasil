@@ -299,7 +299,7 @@ function Create_Filter_Array() {
 }
 
 function Check_For_Skip_Download() {
-	Switch_Skip_Git_Download=false  
+	Switch_Skip_Git_Download=false
 	for Check in ${Array_Filter_Download[@]}; do
 		if [[ "$Check" =~ "$OPT_Path" && "$1" =~ $(echo "$Check" | rev | cut -d '/' -f1 | rev | tr -d '\r') ]]; then
 			Switch_Skip_Git_Download=true
