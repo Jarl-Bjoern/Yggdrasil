@@ -405,7 +405,7 @@ function File_Installer() {
                 fi
         }
 
-	if [[ ! -d /opt/hashcat_rules || ! -d /opt/wordlists ]]; then
+	if [[ ! -d "/opt/hashcat_rules" || ! -d "/opt/wordlists" ]]; then
 		mkdir -p /opt/hashcat_rules /opt/wordlists
  	fi
 
