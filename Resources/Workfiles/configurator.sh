@@ -279,6 +279,8 @@ function Create_Filter_Array() {
 		if [[ ! "$line" =~ "#" && ${#line} -gt 2 ]]; then
                         if [[ "$line" =~ "https://" && $(grep -o " " <<< "$line" | wc -c) -gt 2 ]]; then
                                 TEMP_Filter=$(echo "$line" | awk '{print $2}' | tr -d '\r')
+                        elif [[ "$line" =~ "https://" && $(grep -o " " <<< "$line" | wc -c) -eq 2 ]]; then
+                                TEMP_Filter=$(echo "$line" | awk '{print $1}' | rev | cut -d '/' -f1 | rev | tr -d '\r')
                         elif [[ "$line" =~ "https://" && ! "$line" =~ " " ]]; then
                                 TEMP_Filter=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
                         else
