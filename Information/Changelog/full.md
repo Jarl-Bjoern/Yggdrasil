@@ -51,6 +51,7 @@
   - New Parameters:
     - `-sI` was integrated to skip the installation way to use e.g. the hardening or custom configs.
     - `-sbI` was integrated to skip the installation process of the basic tools.
+<br />
 
 ## Version 0.9b
 <strong>Changes of version</strong> `0.9b`:
@@ -73,6 +74,7 @@
   - New custom configs for screenrc and tmux
   - New tools was added to mulitple sections
   - Outsourcing of the documentation to the Yggdrasil wiki
+<br />
 
 ## Version 0.9
 <strong>Changes of version</strong> `0.9`:
@@ -111,14 +113,17 @@
   - Rust still does not install correctly
   - Kali 23.1 doesn't include a preinstalled version of opencv-python
   - Shredding Script doesn't work correctly
+<br />
 
 ## Version 0.8b
 <strong>Hotfix</strong> `0.8b`:
   - the hostname changing function was now set to the end of the script
+<br />
 
 ## Version 0.8a
 <strong>Hotfix</strong> `0.8a`:
   - bug and logical fixes
+<br />
 
 ## Version 0.8
 <strong>Changes of version</strong> `0.8`:
@@ -130,9 +135,11 @@
   - bug and logical fixes
   - filter option for webscanner tools
   - download logging function
+<br />
 
 ## Version 0.7g
 With version `0.7g` it is now possible to select multiple categories in pentesting for installation.
+<br />
 
 ## Version 0.7
 Since version `0.7` it is now possible to choose between the three categories `Complete`, `Forensic` and `Pentest`.
