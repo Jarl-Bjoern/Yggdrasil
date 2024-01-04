@@ -34,7 +34,6 @@ alias rot13='tr "a-zA-Z" "n-za-mN-ZA-M"'
 setopt hist_ignore_all_dups
 function Yggdrasil_File_Reader() { input=$1; while IFS= read -r line; do if [[ $line =~ "##" ]]; then echo -e "\033[0;32m$line\033[0m"; else; echo -e "\033[1;33m$line\033[0m"; fi; done < "$input" }
 function b64() { echo $1 | base64 -d | xxd; }
-function Yggdrasil_shredder() { for data in $(find "$1" -maxdepth 1 -type d ! -path "$1"); do TEMP_DATE_SHRED="$(/usr/bin/ls -l --time-style=long-iso $1 | grep $(echo $data | rev | cut -d '/' -f1 | rev) | awk '{print $6}')"; if [[ "${#TEMP_DATE_SHRED}" -eq 10 ]]; then if [[ $(expr $(expr "$(date +%s)" - $(date -d "$TEMP_DATE_SHRED" +%s)) / 86400) -gt 90 ]]; then find $data -type f -exec shred --remove=wipesync {} -exec sleep 1.15; rm -rf $data; fi; fi; done }
 function Yggdrasil_Repo_Switch() { if [[ $(cat /etc/apt/sources.list | head -n2 | grep -v "#" | cut -d ' ' -f3) == "kali-last-snapshot" ]]; then sed -i 's#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free non-free-firmware#deb https://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware#g' /etc/apt/sources.list ; echo -e "The repository was successfully changed to \033[0;32mkali-rolling\033[0m"; elif [[ $(cat /etc/apt/sources.list | head -n2 | grep -v "#" | cut -d ' ' -f3) == "kali-rolling" ]]; then sed -i 's#deb https://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware#deb https://http.kali.org/kali kali-last-snapshot main contrib non-free non-free-firmware#g' /etc/apt/sources.list ; echo -e "The repository was successfully changed to \033[0;32mkali-last-snapshot\033[0m"; fi }
 function yggdrasil-custom { if [[ "$1" ]]; then sudo python3 {yggdrasil_path}/Resources/Python/browse.py "$1"; else sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Custom.txt"; fi }
 function yggdrasil-vnc() { if [[ $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u) ]]; then for i in $(netstat -tnap | grep 'x11vnc' | awk '{print $7}' | cut -d '/' -f1 | sort -u); do kill $i; done; fi; if [[ $(netstat -tnap | grep -v 'tcp6' | awk '{print $4}' | cut -d ':' -f2 | grep '8081') ]]; then kill $(netstat -tnap | grep -v 'tcp6' | grep '0.0.0.0:8081' | awk '{print $7}' | cut -d '/' -f1); fi; sudo x11vnc -storepasswd ; sudo x11vnc -display :0 -autoport -bg -localhost -rfbauth ~/.vnc/passwd -xkb -ncache -ncache_cr -quiet & ; /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5900 --idle-timeout 900 --ssl-only --key /opt/ssl/pentest-key.pem --cert /opt/ssl/pentest-cert.pem }
@@ -57,6 +56,7 @@ alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse
 alias yggdrasil-pentesting='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Infrastructure.txt" &> /dev/null'
 alias yggdrasil-web='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Web.txt" &> /dev/null'
 alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ; sudo chmod +x /tmp/rust_install.sh ; sudo bash /tmp/rust_install.sh -y ; sudo rm -f /tmp/rust_install.sh'
+alias yggdrasil-services='for i in $(find "/usr/lib/systemd/system" -type f -name "Yggdrasil*" | grep "service"); do systemctl status $(echo "$i" | rev | cut -d "/" -f1 | rev); echo -e "\033[0;36m------------------------------------------------\033[0m\n"; done'
 """
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
@@ -229,7 +229,7 @@ def Systemd_Shredder_Configuration(path_to_file, path_workspace, shredding_days)
         'Yggdrasil_Workspace_Cleaner':
                 {
                         'Time': '4',
-                        'Command': f'Yggdrasil_shredder "{path_workspace}"',
+                        'Command': f"""for data in $(find "{path_workspace}" -maxdepth 1 -type d ! -path "{path_workspace}"); do TEMP_DATE_SHRED="$(/usr/bin/ls -l --time-style=long-iso {path_workspace} | grep $(echo $data | rev | cut -d '/' -f1 | rev) | awk '{print $6}')"; if [[ "${#TEMP_DATE_SHRED}" -eq 10 ]]; then if [[ $(expr $(expr "$(date +%s)" - $(date -d "$TEMP_DATE_SHRED" +%s)) / 86400) -gt 90 ]]; then find $data -type f -exec shred --remove=wipesync {} -exec sleep 1.15; rm -rf $data; fi; fi; done""",
                         'Path': '/etc/yggdrasil/Yggdrasil_Workspace_Cleaner.sh'
                 }
         }
