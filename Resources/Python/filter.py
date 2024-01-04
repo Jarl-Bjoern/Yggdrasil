@@ -229,7 +229,7 @@ def Systemd_Shredder_Configuration(path_to_file, path_workspace, shredding_days)
         'Yggdrasil_Workspace_Cleaner':
                 {
                         'Time': '4',
-                        'Command': f"""for data in $(find "{path_workspace}" -maxdepth 1 -type d ! -path "{path_workspace}"); do TEMP_DATE_SHRED="$(/usr/bin/ls -l --time-style=long-iso {path_workspace} | grep $(echo $data | rev | cut -d '/' -f1 | rev) | awk '{print """+'$6'+f"""}')"; if [[ "${#TEMP_DATE_SHRED}" -eq 10 ]]; then if [[ $(expr $(expr "$(date +%s)" - $(date -d "$TEMP_DATE_SHRED" +%s)) / 86400) -gt 90 ]]; then find $data -type f -exec shred --remove=wipesync {} -exec sleep 1.15; rm -rf $data; fi; fi; done""",
+                        'Command': f"""for data in $(find "{path_workspace}" -maxdepth 1 -type d ! -path "{path_workspace}"); do TEMP_DATE_SHRED="$(/usr/bin/ls -l --time-style=long-iso {path_workspace} | grep $(echo $data | rev | cut -d '/' -f1 | rev) | awk """+"'{print $6}'"+f""")"; if [[ "${#TEMP_DATE_SHRED}" -eq 10 ]]; then if [[ $(expr $(expr "$(date +%s)" - $(date -d "$TEMP_DATE_SHRED" +%s)) / 86400) -gt 90 ]]; then find $data -type f -exec shred --remove=wipesync {} -exec sleep 1.15; rm -rf $data; fi; fi; done""",
                         'Path': '/etc/yggdrasil/Yggdrasil_Workspace_Cleaner.sh'
                 }
         }
