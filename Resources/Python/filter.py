@@ -136,7 +136,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_Cargo_Updater':
                 {
                         'Time': '5',
-                        'Command': f'input="{opt_path}/update_cargo.info)"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; done; done < "$input"',
+                        'Command': f'input="{opt_path}/update_cargo.info"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; done; done < "$input"',
 
                         'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater.sh'
                 },
@@ -238,16 +238,16 @@ def Systemd_Shredder_Configuration(path_to_file, path_workspace, shredding_days)
         Base_Unit = f"""# Rainer Christian Bjoern Herold
 
 [Unit]
-Description=This script is to install updates
+Description=This script was created to cleaning up the workspace
 
 [Service]
 Type=oneshot
-ExecStart={Crontab_Commands['Yggdrasil_Workspace_Cleaner']['Path']}"""
+ExecStart=/bin/bash {Crontab_Commands['Yggdrasil_Workspace_Cleaner']['Path']}"""
 
         Base_Timer = f"""# Rainer Christian Bjoern Herold
 
 [Unit]
-Description=This script is to install updates
+Description=This script was created to cleaning up the workspace
 Requires=Yggdrasil_Workspace_Cleaner.service
 
 [Timer]
@@ -291,7 +291,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_Cargo_Updater':
                 {
                         'Time': '5',
-                        'Command': f'input="{opt_path}/update_cargo.info)"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; done; done < "$input"',
+                        'Command': f'input="{opt_path}/update_cargo.info"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; done; done < "$input"',
                         'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater.sh'
                 },
         'Yggdrasil_Rust_Updater':
