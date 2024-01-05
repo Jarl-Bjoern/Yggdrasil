@@ -8,6 +8,7 @@
 
 # Git
 https://github.com/prowler-cloud/prowler
+https://github.com/nccgroup/azucar
 https://github.com/duo-labs/cloudmapper
 https://github.com/nccgroup/ScoutSuite
 https://github.com/cloud-custodian/cloud-custodian/
