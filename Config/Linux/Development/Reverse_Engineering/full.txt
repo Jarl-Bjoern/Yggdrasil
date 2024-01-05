@@ -2,6 +2,7 @@
 ghidra
 jadx
 jd-gui
+maven
 
 # Git
 https://github.com/xtiankisutsa/MARA_Framework
