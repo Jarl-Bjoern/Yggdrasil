@@ -580,6 +580,14 @@ function File_Installer() {
         done < "$input"
 }
 
+function Config_Reader() {
+	input=$1
+ 	while IFS= read -r line
+	do
+ 		echo "Lorem Ipsum"
+  	done < "$input"
+}
+
 function File_Reader() {
         input=$1
         while IFS= read -r line
