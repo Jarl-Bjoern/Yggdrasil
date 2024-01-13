@@ -749,6 +749,8 @@ for arg; do
                 OPT_Path="$(echo "$arg" | rev | cut -c5- | rev)"
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-cD" ]]; then
                 Shredding_DAYS="$(echo "$arg" | rev | cut -c5- | rev)"
+        elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-rCf" ]]; then
+                echo "UNDER CONSTRUCTION"
         fi
 done
 
