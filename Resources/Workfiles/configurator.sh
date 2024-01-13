@@ -750,7 +750,7 @@ for arg; do
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-cD" ]]; then
                 Shredding_DAYS="$(echo "$arg" | rev | cut -c5- | rev)"
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c6- | rev)" '{print $2}')" == ".-rCf" ]]; then
-                echo "UNDER CONSTRUCTION"
+                PATH_Config_File="$(echo "$arg" | rev | cut -c6- | rev)"
         fi
 done
 
