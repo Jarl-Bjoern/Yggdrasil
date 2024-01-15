@@ -107,6 +107,7 @@ https://github.com/Leo4j/Amnesiac
 https://github.com/outflanknl/RedELK
 https://github.com/BC-SECURITY/Empire
 https://github.com/FuzzySecurity/StandIn
+https://github.com/MWR-CyberSec/PXEThief
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
