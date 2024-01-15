@@ -50,6 +50,8 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 - New Aliases:
   - `yggdrasil-services` was added to monitor all systemd units of the tool
 - New Improvements:
+  - Systemd Units:
+    - New description fields was added
   - Yggdrasil Wiki improvements:
     - `Cheat Sheet`
     - `Features Overview`
