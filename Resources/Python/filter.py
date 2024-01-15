@@ -268,54 +268,72 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
                 {
                         'Time': '6',
                         'Command': 'apt update -y ; apt full-upgrade -y ; apt autoremove -y --purge ; apt clean all',
+                        'Description_One': 'The script was designed to trigger the systemd units which was installed by yggdrasil updates.',
+                        'Description_Two': 'This script was formed to install automatically updates.',
                         'Path': '/etc/yggdrasil/Yggdrasil_System_Updates.sh'
                 },
         'Yggdrasil_Container_Updates':
                 {
                         'Time': '6',
                         'Command': 'for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done',
+                        'Description_One': 'The script was designed to trigger the systemd units which was installed by yggdrasil updates.',
+                        'Description_Two': 'This script was formed to install automatically updates.',
                         'Path': '/etc/yggdrasil/Yggdrasil_Container_Updates.sh'
                 },
         'Yggdrasil_Container_Cleaner':
                 {
                         'Time': '6',
                         'Command': 'for Image in $(docker images | grep "<none>" | awk "{print $3}"); do docker image rm $Image; done',
+                        'Description_One': 'Test',
+                        'Description_Two': 'Test',
                         'Path': '/etc/yggdrasil/Yggdrasil_Container_Cleaner.sh'
                 },
         'Yggdrasil_PIP_Updater':
                 {
                         'Time': '5',
                         'Command': 'pip3 install --upgrade pip setuptools python-debian',
+                        'Description_One': 'The script was designed to trigger the systemd units which was installed by yggdrasil updates.',
+                        'Description_Two': 'This script was formed to install automatically updates.',
                         'Path': '/etc/yggdrasil/Yggdrasil_PIP_Updater.sh'
                 },
         'Yggdrasil_Cargo_Updater':
                 {
                         'Time': '5',
                         'Command': f'input="{opt_path}/update_cargo.info"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; done; done < "$input"',
+                        'Description_One': 'The script was designed to trigger the systemd units which was installed by yggdrasil updates.',
+                        'Description_Two': 'This script was formed to install automatically updates.',
                         'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater.sh'
                 },
         'Yggdrasil_Rust_Updater':
                 {
                         'Time': '5',
                         'Command': f'for i in $(find "/root" "/home" -type f -name "rustup"); do "$i" update; done',
+                        'Description_One': 'The script was designed to trigger the systemd units which was installed by yggdrasil updates.',
+                        'Description_Two': 'This script was formed to install automatically updates.',
                         'Path': '/etc/yggdrasil/Yggdrasil_Rust_Updater.sh'
                 },
         'Yggdrasil_GIT_Updater':
                 {
                         'Time': '3',
                         'Command': f'HOME="/root"; input="{opt_path}/update.info"; while IFS= read -r GIT_TOOL; do cd "$GIT_TOOL" && /usr/bin/git pull ; sleep 0.45; done < "$input"',
+                        'Description_One': 'Test',
+                        'Description_Two': 'Test',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Updater.sh'
                 },
         'Yggdrasil_GIT_Monitor':
                 {
                         'Time': '3',
                         'Command': f'for GIT_Tool in $(find {opt_path} /opt/wordlists /opt/hashcat_rules -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev); do if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]; then echo "$GIT_Tool" >> {opt_path}/update.info; fi; done',
+                        'Description_One': 'Test',
+                        'Description_Two': 'Test',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Monitor.sh'
                 },
         'Yggdrasil_GIT_Monitor_Cleaner':
                 {
                         'Time': '3',
                         'Command': f"""for GIT_Old_Tool in $(cat {opt_path}/update.info); do if [[ ! $(find {opt_path} /opt/wordlists /opt/hashcat_rules -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]] && [[ ! $(find /opt/wordlists -maxdepth 1 -type d | grep "$GIT_Old_Tool") ]]; then sed -i "s#$GIT_Old_Tool##g" {opt_path}/update.info; fi; done; sed -i '/^$/d' {opt_path}/update.info""",
+                        'Description_One': 'Test',
+                        'Description_Two': 'Test',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Monitor_Cleaner.sh'
                 }
         }
