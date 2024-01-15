@@ -20,8 +20,12 @@ https://github.com/eth0izzle/shhgit
 https://github.com/aboul3la/Sublist3r
 https://github.com/RedKatz/SocialMediaHackingToolkit
 https://github.com/lc/gau
+https://github.com/josh0xA/darkdump
+https://github.com/TebbaaX/Katana
+https://github.com/MikeMeliz/TorCrawl.py
 
 # Go
+https://github.com/iudicium/pryingdeep
 
 # Python
 
