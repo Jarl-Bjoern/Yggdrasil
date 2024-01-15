@@ -246,7 +246,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx    hardening                 ${CYAN}|${NOCOLOR}"
                 #echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}ftp${NOCOLOR}           :   ftp   hardening                 ${CYAN}|${NOCOLOR}"
                 #echo -e "${CYAN}|${NOCOLOR}   [${CYAN}8${NOCOLOR}] ${CYAN}squid${NOCOLOR}            :   squid    hardening                 ${CYAN}|${NOCOLOR}"
-                #echo -e "${CYAN}|${NOCOLOR}   [${GREEN}9${NOCOLOR}] ${GREEN}ftp${NOCOLOR}           :   smb   hardening                 ${CYAN}|${NOCOLOR}"
+                #echo -e "${CYAN}|${NOCOLOR}   [${GREEN}9${NOCOLOR}] ${GREEN}smb${NOCOLOR}           :   smb   hardening                 ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "settings" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}      :   complete configuration                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}updates${NOCOLOR}       :   automated updates                      ${CYAN}|${NOCOLOR}"
@@ -904,6 +904,12 @@ if [[ $Switch_Skip_Hardening != true ]]; then
 	                                Switch_APACHE=true
 	                        elif [[ $testing_category == "nginx" || $testing_category == "6" ]]; then
 	                                Switch_NGINX=true
+		#                elif [[ $testing_category = "ftp" || $testing_category = "7" ]]; then
+		#                        Switch_FTP=true
+		#                elif [[ $testing_category = "squid" || $testing_category = "8" ]]; then
+		#                        Switch_SQUID=true
+		#                elif [[ $testing_category = "smb" || $testing_category = "9" ]]; then
+		#                        Switch_SMB=true
 	                        fi
 	                done
 	        else
@@ -923,6 +929,8 @@ if [[ $Switch_Skip_Hardening != true ]]; then
 	#                        Switch_FTP=true
 	#                elif [[ $hardening = "squid" || $hardening = "8" ]]; then
 	#                        Switch_SQUID=true
+	#                elif [[ $hardening = "smb" || $hardening = "9" ]]; then
+	#                        Switch_SMB=true
 			else
 				echo -e "\nYour decision was not accepted!\nPlease try again."
 				Show_Error_Message=true
