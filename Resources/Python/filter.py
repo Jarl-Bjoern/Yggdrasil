@@ -56,7 +56,7 @@ alias yggdrasil-hardening='sudo python3 {yggdrasil_path}/Resources/Python/browse
 alias yggdrasil-pentesting='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Infrastructure.txt" &> /dev/null'
 alias yggdrasil-web='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/Web.txt" &> /dev/null'
 alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ; sudo chmod +x /tmp/rust_install.sh ; sudo bash /tmp/rust_install.sh -y ; sudo rm -f /tmp/rust_install.sh'
-alias yggdrasil-services='for i in $(find "/usr/lib/systemd/system" -type f -name "Yggdrasil*" | grep "service"); do sudo systemctl --no-pager status $(echo "$i" | rev | cut -d "/" -f1 | rev); echo -e "\033[0;36m------------------------------------------------\033[0m\n"; done'
+alias yggdrasil-services='for i in $(find "/usr/lib/systemd/system" -type f -name "Yggdrasil*" | grep "service" | sort -u); do sudo systemctl --no-pager status $(echo "$i" | rev | cut -d "/" -f1 | rev); echo -e "\033[0;36m------------------------------------------------\033[0m\n"; done'
 """
         Config_Alias_BSH = r"""alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
