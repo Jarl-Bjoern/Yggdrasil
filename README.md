@@ -46,8 +46,8 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 - Hotfixes:
   - Systemd Units:
     - Cargo Updater was fixed
+    - Not all timers was enabled.
     - Workspace Cleaner was fixed
-    - Not all timers have been added to the autostart was fixed.
 - New Aliases:
   - `yggdrasil-services` was added to monitor all systemd units of the tool
 - New Improvements:
