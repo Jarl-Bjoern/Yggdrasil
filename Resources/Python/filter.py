@@ -124,7 +124,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_Container_Cleaner':
                 {
                         'Time': '6',
-                        'Command': 'for Image in $(docker images | grep "<none>" | awk "{print $3}"); do docker image rm $Image; done',
+                        'Command': """for Image in $(docker images | grep "<none>" | awk '{print $3}'); do docker image rm $Image; done""",
                         'Path': '/etc/yggdrasil/Yggdrasil_Container_Cleaner.sh'
                 },
         'Yggdrasil_PIP_Updater':
@@ -283,7 +283,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_Container_Cleaner':
                 {
                         'Time': '6',
-                        'Command': 'for Image in $(docker images | grep "<none>" | awk "{print $3}"); do docker image rm $Image; done',
+                        'Command': """for Image in $(docker images | grep "<none>" | awk '{print $3}'); do docker image rm $Image; done""",
                         'Description_One': 'Test',
                         'Description_Two': 'Test',
                         'Path': '/etc/yggdrasil/Yggdrasil_Container_Cleaner.sh'
