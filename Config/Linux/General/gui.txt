@@ -9,6 +9,7 @@ kitty
 i3
 meld
 nitrogen
+npm
 putty
 python-tk
 python3-tk
