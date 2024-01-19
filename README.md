@@ -89,6 +89,17 @@ The following link lists all the features that the tool offers.
 </div><br />
 
 
+## ☢️ Cheat Sheet
+The following link contains the official cheat sheet for the tool.
+
+<div align="center">
+➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki/%E2%98%A2%EF%B8%8F-Cheat-Sheet">
+  Cheat Sheet
+</a> ⬅️
+</div><br />
+
+
+
 ## ⚔ Live Example
 <p align=center>
     <img src="https://github.com/Jarl-Bjoern/Jarl-Bjoern/blob/main/Screencasts/yggrdasil_installation.gif" width=700 height=500>
