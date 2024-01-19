@@ -433,6 +433,8 @@ function File_Installer() {
                         Command="docker pull" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
                 elif [[ $line = "# Python" ]]; then
                         Command="pip3 install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                elif [[ $line = "# NPM" ]]; then
+                        Command="npm install --global" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
                 elif [[ $line = "# Git" ]]; then
                         Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
                 elif [[ $line = "# Git_Branch" ]]; then
