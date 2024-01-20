@@ -416,6 +416,10 @@ function File_Installer() {
 		mkdir -p /opt/hashcat_rules /opt/wordlists
  	fi
 
+	if [[ ! -d "$OPT_Path" ]]; then
+		mkdir -p "$OPT_Path"
+ 	fi
+
         Create_Filter_Array $1
 
         input=$1
