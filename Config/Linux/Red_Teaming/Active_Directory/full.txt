@@ -108,6 +108,9 @@ https://github.com/outflanknl/RedELK
 https://github.com/BC-SECURITY/Empire
 https://github.com/FuzzySecurity/StandIn
 https://github.com/MWR-CyberSec/PXEThief
+https://github.com/itm4n/PrintSpoofer
+https://github.com/nettitude/SharpSocks
+https://github.com/s0md3v/Hash-Buster
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
