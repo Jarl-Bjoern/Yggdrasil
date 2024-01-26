@@ -5,7 +5,7 @@
 # Libraries
 from Resources.Python.Standard_Operations.Libraries import ArgumentParser, FileType, osname, RawTextHelpFormatter, SUPPRESS
 from Resources.Python.Standard_Operations.Colors    import Colors
-from os.path                                        import dirname
+from os.path                                        import dirname, realpath
 
 def Argument_Parser():
   Program_Description = """-------------------------------------------------------------------------------------
