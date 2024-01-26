@@ -1,2 +1,3 @@
 https://gchq.github.io/CyberChef/
 http://jsnice.org/
+https://owasp.org/www-project-web-security-testing-guide/
