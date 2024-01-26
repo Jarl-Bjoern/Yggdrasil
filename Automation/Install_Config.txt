@@ -1,0 +1,5 @@
+Main: Lorem
+Second: Lorem
+Minimal_Full: Lorem
+Hardening: Lorem
+Custom: Lorem
