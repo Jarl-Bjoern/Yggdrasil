@@ -16,7 +16,7 @@ if [ -d "$1" ]; then
     if [[ "$COVENANT_PATH" != "" ]]; then
         if [[ $(docker ps -a | grep -E "covenant|Covenant") ]]; then
             read -p "covenant already exists. should covenant be removed and rebuild? (y/n): " decision
-            if [[ "$decision" == "y" || "$decision" "Y" ]]; then
+            if [[ $decision == "y" || $decision == "Y" ]]; then
                 docker stop covenant || docker stop Covenant
                 docker rm covenant || docker rm Covenant
             else
