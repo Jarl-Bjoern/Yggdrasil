@@ -15,18 +15,20 @@ if [ -d "$1" ]; then
 
     if [[ "$COVENANT_PATH" != "" ]]; then
         if [[ $(docker ps -a | grep -E "covenant|Covenant") ]]; then
-            echo -e "covenant already exists. should it removed and rebuild?\n"
+            echo -e "Covenant already exists. Should it be removed and rebuilt?\n"
             read -p "decision (y/n): " decision
             if [[ $decision == "y" || $decision == "Y" ]]; then
                 docker stop covenant || docker stop Covenant
                 docker rm covenant || docker rm Covenant
+                cd "$COVENANT_PATH/Covenant"
+                docker build -t covenant .
+                docker run -it -d -p 7443:7443 -p 80:80 -p 443:443 --name covenant -v "$COVENANT_PATH"/Covenant/Data:/app/Data covenant
+            elif [[ $decision == "n" || $decision == "N" ]]; then
+                echo "Covenant will not be removed."
             else
-                exit
+                echo "The decision was not accepted." ; exit
             fi
         fi
-        cd "$COVENANT_PATH/Covenant"
-        docker build -t covenant .
-        docker run -it -d -p 7443:7443 -p 80:80 -p 443:443 --name covenant -v "$COVENANT_PATH"/Covenant/Data:/app/Data covenant
     fi
 else
     echo -e "Covenant was not found.\n\nPlease try again." ; exit
