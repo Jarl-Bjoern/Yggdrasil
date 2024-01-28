@@ -6,8 +6,8 @@ COVENANT_PATH=""
 # Main
 if [ -d "$1" ]; then
     if [[ ! "$1" =~ "Covenant" ]]; then
-        if [[ $(find "$1" -type d -name "Covenant") ]]; then
-            COVENANT_PATH=$(find "$1" -type d -name "Covenant")
+        if [[ $(find "$1" -type d -name "Covenant" | grep -v "Empire" | head -n1) ]]; then
+            COVENANT_PATH=$(find "$1" -type d -name "Covenant" | grep -v "Empire" | head -n1)
         else
             echo -e "Covenant was not found.\n\nPlease try again." ; exit
         fi
