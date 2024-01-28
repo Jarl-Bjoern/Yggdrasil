@@ -16,7 +16,7 @@ if [ -d "$1" ]; then
     if [[ "$COVENANT_PATH" != "" ]]; then
         cd "$COVENANT_PATH"
         docker build -t covenant .
-        docker run -it -d -p 7443:7443 -p 80:80 -p 443:443 --name covenant -v "$COVENANT_PATH"/Data:/app/Data covenant
+        docker run -it -d -p 7443:7443 -p 80:80 -p 443:443 --name covenant -v "$COVENANT_PATH"/Covenant/Data:/app/Data covenant
     fi
 else
     echo -e "Covenant was not found.\n\nPlease try again." ; exit
