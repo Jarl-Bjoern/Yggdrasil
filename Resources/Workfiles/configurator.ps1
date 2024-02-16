@@ -64,9 +64,12 @@ function Initials {
 
 function Downloader {
         New-Item "C:/Wordlists" -ItemType Directory
+        New-Item "C:/Pentest_Tools" -ItemType Directory
 
+        Set-Location -Path "C:/Pentest_Tools"
         foreach($line in Get-Content "") {
                 if ($line -match "") {
+                        git clone $line
                         Invoke-WebRequest "" -OutFile ""
                 }
         }
