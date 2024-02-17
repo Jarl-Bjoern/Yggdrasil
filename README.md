@@ -56,6 +56,8 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 - New Improvements:
   - Systemd Units:
     - New description fields was added
+  - Terminal:
+    - The terminal transparency has been set to `0`.
   - Yggdrasil Wiki improvements:
     - `Cheat Sheet`
     - `Features Overview`
