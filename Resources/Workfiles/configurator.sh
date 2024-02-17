@@ -32,6 +32,7 @@ Switch_Hardening=false
 Switch_IGNORE=false
 Switch_License=false
 Switch_NGINX=false
+Switch_NEOVIM=false
 Switch_REPO=false
 Switch_SCREENRC=false
 Switch_SCREENRC_HOMESEN=false
@@ -257,6 +258,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}7${NOCOLOR}] ${RED}shredder${NOCOLOR}      :   workspace file shredding script        ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}                        (${RED}after 90 days [${ORANGE}default${RED}]${NOCOLOR})              ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}  [${CYAN}8${NOCOLOR}] ${CYAN}tmux${NOCOLOR}          :   custom tmux config                     ${CYAN}|${NOCOLOR}"
+		#echo -e "${CYAN}|${NOCOLOR}  [${CYAN}9${NOCOLOR}] ${CYAN}neovim${NOCOLOR}          :   custom neovim config                     ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "task" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}cronjob${NOCOLOR}      :   cronjob configuration                   ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}timer${NOCOLOR}        :   systemd timer configuration             ${CYAN}|${NOCOLOR}"
@@ -1223,6 +1225,7 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
         PATH_ALIAS="$i/.bash_aliases"
         PATH_VIM="$i/.vimrc"
         PATH_ZSH="$i/.zshrc"
+	PATH_Terminal="$i/.config/qterminal.org/qterminal.ini"
 
         if [[ $Switch_Cargo == true ]]; then
                 sudo cp -r "$HOME/.cargo" "$i" &>/dev/null
@@ -1230,9 +1233,10 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
         fi
 
         if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
-                # ZSH_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64)
+                # ZSH_Terminal_and_Alias_Configuration (Thx to @HomeSen for the aliases until function b64 and sslyze)
                 sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_BSH" &>/dev/null
                 sudo sed -i "s/prompt_symbol=㉿/prompt_symbol=💀/g" "$PATH_ZSH" &>/dev/null
+                sudo sed -i s/"^TerminalTransparency=.*/TerminalTransparency=0"/g  "$PATH_Terminal" &>/dev/null
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ALIAS" "$OPT_Path" "$FULL_PATH"
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_BSH" "$OPT_Path" "$FULL_PATH"
                 sudo python3 "$FULL_PATH/Resources/Python/filter.py" "$PATH_ZSH" "$OPT_Path" "$FULL_PATH"
