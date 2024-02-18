@@ -1,3 +1,4 @@
 https://github.com/esidate/pentesting-active-directory
 https://www.ired.team/
 https://www.thehacker.recipes/
+https://ppn.snovvcrash.rocks/
