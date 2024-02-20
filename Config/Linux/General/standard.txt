@@ -36,6 +36,7 @@ nginx
 nmap
 openconnect
 opensc
+pipx
 podman
 podman-compose
 python3-dev
