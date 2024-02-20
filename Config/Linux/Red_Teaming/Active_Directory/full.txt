@@ -7,6 +7,7 @@ gpp-decrypt
 havoc
 metasploit-framework
 mitmproxy
+sslyze
 sslscan
 starkiller
 testssl.sh
@@ -20,7 +21,6 @@ https://github.com/Ascotbe/Kernelhub
 https://github.com/DataDog/KubeHound
 https://github.com/BloodHoundAD/AzureHound
 https://github.com/TryCatchHCF/PacketWhisper
-https://github.com/nabla-c0d3/sslyze
 https://github.com/rofl0r/proxychains-ng
 https://github.com/jpillora/chisel
 https://github.com/aboul3la/Sublist3r
@@ -81,7 +81,6 @@ https://github.com/ly4k/PwnKit
 https://github.com/whotwagner/logrotten
 https://github.com/Greenwolf/ntlm_theft
 https://github.com/topotam/PetitPotam
-https://github.com/61106960/adPEAS
 https://github.com/ShutdownRepo/targetedKerberoast
 https://github.com/Ben0xA/HoneyCreds
 https://github.com/p0dalirius/Coercer
