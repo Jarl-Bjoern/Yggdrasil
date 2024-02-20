@@ -17,6 +17,7 @@ https://github.com/OWASP/Serverless-Goat
 https://github.com/vulhub/vulhub
 https://github.com/safebuffer/vulnerable-AD
 https://github.com/ikstream/vulnerable-container
+https://github.com/davidprowe/BadBlood
 
 # Go
 
