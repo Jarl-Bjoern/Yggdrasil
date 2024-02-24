@@ -446,7 +446,7 @@ function File_Installer() {
                 elif [[ $line = "# Git_Branch" ]]; then
                         Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_BRANCH=true ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# BloodHound_Cyphers" ]]; then
-                        Switch_BloodHound=true; Skip=true; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                        Command="echo 'UNDER CONSTRUCTION'" ; Switch_BloodHound=true; Skip=true; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
                 elif [[ $line = "# Git_Submodules" ]]; then
                         Command="git clone --recurse-submodules" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Gem" ]]; then
