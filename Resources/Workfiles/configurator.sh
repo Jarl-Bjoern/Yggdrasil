@@ -495,9 +495,6 @@ function File_Installer() {
                                         else
 						Download_Commander
                                         fi
-                                elif [ "$Switch_BloodHound" = true ]; then
-                                        # UNDER CONSTRUCTION
-                                        ""
                                 else
                                         FILE=$(echo "$line" | cut -d" " -f1)
                                         FILE_NAME=$(echo "$line" | cut -d" " -f2)
