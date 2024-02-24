@@ -117,6 +117,7 @@ https://github.com/s0md3v/Hash-Buster
 https://github.com/Flangvik/SharpDllProxy
 https://github.com/francoismichel/ssh3
 https://github.com/SySS-Research/Seth
+https://github.com/t3l3machus/hoaxshell
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
