@@ -12,10 +12,6 @@ sslscan
 starkiller
 testssl.sh
 
-# BloodHound_Cyphers
-https://gist.githubusercontent.com/seajaysec/a4d4a545047a51053d52cba567f78a9b/raw/6c29e2d2bcd0523e516014d9a1b67d0736b43841/customqueries.json raw
-https://github.com/ly4k/Certipy repo
-
 # Docker
 remnux/ciphey
 tenableofficial/nessus
