@@ -21,6 +21,7 @@ Show_Error_Message=false
 Shredding_DAYS=""
 Skip=false
 Switch_APACHE=false
+Switch_BloodHound=false
 Switch_BRANCH=false
 Switch_Cargo=false
 Switch_CRON=false
@@ -445,6 +446,7 @@ function File_Installer() {
                 elif [[ $line = "# Git_Branch" ]]; then
                         Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false; Switch_BRANCH=true ; Switch_GO=false
                 elif [[ $line = "# BloodHound_Cyphers" ]]; then
+                        # UNDER CONSTRUCTION
                         ""; Skip=true; Switch_WGET=false; Switch_BRANCH=true ; Switch_GO=false
                 elif [[ $line = "# Git_Submodules" ]]; then
                         Command="git clone --recurse-submodules" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_GO=false
@@ -1228,10 +1230,16 @@ for i in $(find /home -maxdepth 1 ! -path "/home" | grep -v "lost+found") "/root
         PATH_VIM="$i/.vimrc"
         PATH_ZSH="$i/.zshrc"
 	PATH_Terminal="$i/.config/qterminal.org/qterminal.ini"
+        PATH_BloodHound="$i/.config/bloodhound"
 
         if [[ $Switch_Cargo == true ]]; then
                 sudo cp -r "$HOME/.cargo" "$i" &>/dev/null
                 sudo chown -R "$(echo "$i" | rev | cut -d '/' -f1 | rev)": "$i/.cargo"
+        fi
+
+        if [[ $Switch_BloodHound == true ]]; then
+                # UNDER CONSTRUCTION
+                ""
         fi
 
         if [[ $Switch_CUSTOM_CONFIGS == true ]]; then
