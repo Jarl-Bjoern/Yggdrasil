@@ -429,35 +429,35 @@ function File_Installer() {
         do
                 if [[ $line = "# APT" ]]; then
                         if [[ "$Switch_Verbose" == false ]]; then
-                                 Command="sudo DEBIAN_FRONTEND=noninteractive apt install -y" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                                 Command="sudo DEBIAN_FRONTEND=noninteractive apt install -y" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                         else
-                                 Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                                 Command="sudo apt install -y" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                         fi
                 elif [[ $line = "# Cargo" ]]; then
-                        Command="cargo install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                        Command="cargo install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Docker" ]]; then
-                        Command="docker pull" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                        Command="docker pull" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Python" ]]; then
-                        Command="pip3 install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                        Command="pip3 install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# NPM" ]]; then
-                        Command="npm install --global" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                        Command="npm install --global" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Git" ]]; then
-                        Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                        Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Git_Branch" ]]; then
-                        Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false; Switch_BRANCH=true ; Switch_GO=false
+                        Command="git clone -b" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_BRANCH=true ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# BloodHound_Cyphers" ]]; then
                         # UNDER CONSTRUCTION
-                        Skip=true; Switch_WGET=false; Switch_BRANCH=false ; Switch_GO=false
+                        Switch_BloodHound=true; Skip=true; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
                 elif [[ $line = "# Git_Submodules" ]]; then
-                        Command="git clone --recurse-submodules" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_GO=false
+                        Command="git clone --recurse-submodules" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Gem" ]]; then
-                        Command="gem install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                        Command="gem install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Go" ]]; then
-                        Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=true
+                        Command="git clone" ; Skip=true ; mkdir -p "$2" ; cd "$2" || return 0 ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=true ; Switch_BloodHound=false
                 elif [[ $line = "# Wordlists" ]]; then
-                        Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists || return 0 ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                        Command="git clone" ; Skip=true ; mkdir -p /opt/wordlists ; cd /opt/wordlists || return 0 ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Hashcat_Rules" ]]; then
-                        Command="git clone" ; Skip=true ; mkdir -p /opt/hashcat_rules ; cd /opt/hashcat_rules || return 0 ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false
+                        Command="git clone" ; Skip=true ; mkdir -p /opt/hashcat_rules ; cd /opt/hashcat_rules || return 0 ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Wget" ]]; then
                         Switch_WGET=true
                 else
@@ -496,6 +496,8 @@ function File_Installer() {
                                         else
 						Download_Commander
                                         fi
+                                elif [ "$Switch_BloodHound" = true ]; then
+                                        ""
                                 else
                                         FILE=$(echo "$line" | cut -d" " -f1)
                                         FILE_NAME=$(echo "$line" | cut -d" " -f2)
