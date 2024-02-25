@@ -1,0 +1,17 @@
+#!/usr/bin/expect
+
+# Download_Sliver
+spawn /bin/bash
+send "curl -s https://sliver.sh/install | sudo bash\r"
+send "exit\r"
+interact
+
+# Installation_of_all_Packages
+spawn sliver
+expect "> "
+send "armory install all\r"
+expect "y/N"
+send "y\r"
+expect "> "
+send "exit\r"
+interact
