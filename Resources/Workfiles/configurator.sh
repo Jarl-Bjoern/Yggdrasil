@@ -91,8 +91,6 @@ declare -a Array_Filter_Git=("/opt/pentest_tools/Webscanner/SAP/pysap"
 "/opt/pentest_tools/Proxy/proxychains-ng"
 "/opt/pentest_tools/SIP/viproy-voipkit"
 "/opt/pentest_tools/SIP/SIPTools"
-"/opt/pentest_tools/Fuzzer/ffuf"
-"/opt/pentest_tools/Fuzzer/wfuzz"
 "/opt/pentest_tools/API/swagger-ui"
 "/opt/pentest_tools/API/jwt_tool")
 
@@ -153,7 +151,7 @@ declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
 "# Encryption algorithms (ciphers)"
 "Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com"
 "# Message authentication code (MAC) algorithms"
-"MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com")
+"MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com")
 
 declare -a Array_URL=()
 
