@@ -317,6 +317,24 @@ function Check_For_Skip_Download() {
 	done
 }
 
+function Automation_Config_Check() {
+	input=$1
+ 	while IFS= read -r line
+  	do
+		if [[ "$line" =~ ":" ]]; then
+			Head=$(echo "$line" | awk '{print $1}' | cut -d ':' -f1)
+   			Function_Value=$(echo "$line" | awk '{print $2}')
+      			if [[ "$Head" == "Main" ]]; then
+				if [[ "$Function_Value" == "Pentest" || "$Function_Value" == "pentest" || "$Function_Value" == "4" ]]; then
+					echo "UNDER CONSTRUCTION"
+    				elif [[ "$Function_Value" == "Forensic" || "$Function_Value" == "forensic" || "$Function_Value" == "3" ]]; then
+					echo "UNDER CONSTRUCTION"
+ 				fi
+  			fi
+		fi
+   	done < "$input"
+}
+
 function Download_Commander() {
 	if [[ $Switch_IGNORE = false ]]; then
 		if [[ $Command =~ "apt" ]]; then
