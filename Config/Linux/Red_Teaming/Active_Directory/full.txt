@@ -66,7 +66,6 @@ https://github.com/dafthack/DomainPasswordSpray
 https://github.com/dirkjanm/mitm6
 https://github.com/61106960/adPEAS
 https://github.com/ropnop/windapsearch
-https://github.com/lgandx/Responder-Windows
 https://github.com/pkb1s/SharpRelay
 https://github.com/GoSecure/pyrdp
 https://github.com/liamg/traitor
