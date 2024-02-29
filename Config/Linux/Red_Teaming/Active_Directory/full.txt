@@ -7,6 +7,7 @@ gpp-decrypt
 havoc
 metasploit-framework
 mitmproxy
+powershell-empire
 sslyze
 sslscan
 starkiller
@@ -75,6 +76,7 @@ https://github.com/BeichenDream/GodPotato
 https://github.com/Prepouce/CoercedPotato
 https://github.com/CCob/SweetPotato
 https://github.com/breenmachine/RottenPotatoNG
+https://github.com/haseebT/mRemoteNG-Decrypt
 https://github.com/PApostol/CookieExtractor
 https://github.com/ly4k/PwnKit
 https://github.com/whotwagner/logrotten
@@ -102,7 +104,6 @@ https://github.com/charnim/Invoke-ReflectivePEInjection.ps1
 https://github.com/The-Viper-One/PsMapExec
 https://github.com/Leo4j/Amnesiac
 https://github.com/outflanknl/RedELK
-https://github.com/BC-SECURITY/Empire
 https://github.com/FuzzySecurity/StandIn
 https://github.com/MWR-CyberSec/PXEThief
 https://github.com/itm4n/PrintSpoofer
@@ -112,6 +113,8 @@ https://github.com/Flangvik/SharpDllProxy
 https://github.com/francoismichel/ssh3
 https://github.com/SySS-Research/Seth
 https://github.com/t3l3machus/hoaxshell
+https://github.com/0x09AL/RdpThief
+https://github.com/leechristensen/SpoolSample
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
