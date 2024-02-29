@@ -53,15 +53,15 @@ def main():
     Parameters = ""
     for Arg_Name, Arg_Value in vars(args).items():
         if ((Arg_Name != "custom_path" and Arg_Value != None) and (Arg_Name != "host_name" and Arg_Value != None)):
-            if (Arg_Name == "accept_licenses"):                          Parameters += "-aL "
-            elif (Arg_Name == "skip_hardening"):                         Parameters += "-sH "
-            elif (Arg_Name == "skip_config"):                            Parameters += "-sC "
-            elif (Arg_Name == "skip_basic_installation"):                Parameters += "-sbI "
-            elif (Arg_Name == "skip_installation"):                      Parameters += "-sI "
-            elif (Arg_Name == "custom_days"):                            Parameters += f"{Arg_Value}.-cD "
-            elif (Arg_Name == "skip_urls"):                              Parameters += f"-sU "
-            elif (Arg_Name == "verbose"):                                Parameters += "-v "
-            elif (Arg_Name == "read_config_file" and Arg_Value != None): Parameters += f"{Arg_Value}.-rCf "
+            if (Arg_Name == "accept_licenses"):                           Parameters += "-aL "
+            elif (Arg_Name == "skip_hardening"):                          Parameters += "-sH "
+            elif (Arg_Name == "skip_config"):                             Parameters += "-sC "
+            elif (Arg_Name == "skip_basic_installation"):                 Parameters += "-sbI "
+            elif (Arg_Name == "skip_installation"):                       Parameters += "-sI "
+            elif (Arg_Name == "custom_days"):                             Parameters += f"{Arg_Value}.-cD "
+            elif (Arg_Name == "skip_urls"):                               Parameters += f"-sU "
+            elif (Arg_Name == "verbose"):                                 Parameters += "-v "
+            elif (Arg_Name == "read_config_file" and Arg_Value != False): Parameters += f"{join(dirname(realpath(__file__)), 'Automation/Install.cfg')}.-rCf "
             elif (Arg_Name == "add_workspace" and Arg_Value != None):
                 try: makedirs(args.add_workspace)
                 except FileExistsError: pass
