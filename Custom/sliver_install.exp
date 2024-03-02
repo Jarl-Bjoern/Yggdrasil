@@ -12,5 +12,4 @@ expect "> "
 send "armory install all\r"
 expect "y/N"
 send "y\r"
-close
 interact
