@@ -113,6 +113,8 @@ https://github.com/SySS-Research/Seth
 https://github.com/t3l3machus/hoaxshell
 https://github.com/0x09AL/RdpThief
 https://github.com/leechristensen/SpoolSample
+https://github.com/danielbohannon/Invoke-Obfuscation
+https://github.com/hashcat/kwprocessor
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
