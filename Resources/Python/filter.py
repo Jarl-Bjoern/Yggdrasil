@@ -315,7 +315,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_GIT_Updater':
                 {
                         'Time': '3',
-                        'Command': f'HOME="/root"; input="{opt_path}/update.info"; while IFS= read -r GIT_TOOL; do cd "$GIT_TOOL" && /usr/bin/git pull ; sleep 0.45; done < "$input"',
+                        'Command': f'HOME="/root"; input="{opt_path}/update.info"; while IFS= read -r GIT_TOOL; do cd "$GIT_TOOL" && /usr/bin/git pull ; sleep 1.15; done < "$input"',
                         'Description_One': 'The script was designed to trigger the systemd unit to install git tool updates.',
                         'Description_Two': 'The script was formed to upgrade automatically tools which was installed by git.',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Updater.sh'
