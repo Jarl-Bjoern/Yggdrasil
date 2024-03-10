@@ -92,8 +92,6 @@ https://github.com/zer1t0/certi
 https://github.com/micahvandeusen/gMSADumper
 https://github.com/dirkjanm/adidnsdump
 https://github.com/BeetleChunks/SpoolSploit
-https://github.com/its-a-feature/Mythic
-https://github.com/Ne0nd0g/merlin
 https://github.com/ly4k/Certipy
 https://github.com/bitsadmin/nopowershell
 https://github.com/bitsadmin/wesng
