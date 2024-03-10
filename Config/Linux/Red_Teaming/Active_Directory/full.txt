@@ -8,6 +8,8 @@ havoc
 metasploit-framework
 mitmproxy
 powershell-empire
+proxychains4
+python3-impacket
 sslyze
 sslscan
 starkiller
@@ -22,13 +24,11 @@ https://github.com/Ascotbe/Kernelhub
 https://github.com/DataDog/KubeHound
 https://github.com/BloodHoundAD/AzureHound
 https://github.com/TryCatchHCF/PacketWhisper
-https://github.com/rofl0r/proxychains-ng
 https://github.com/jpillora/chisel
 https://github.com/aboul3la/Sublist3r
 https://github.com/utoni/ptunnel-ng
 https://github.com/klezVirus/inceptor
 https://github.com/roys/cewler
-https://github.com/SecureAuthCorp/impacket
 https://github.com/lgandx/Responder
 https://github.com/the-useless-one/pywerview
 https://github.com/roys/cewler
