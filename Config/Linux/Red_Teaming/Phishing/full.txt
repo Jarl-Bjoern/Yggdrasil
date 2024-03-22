@@ -15,6 +15,8 @@ https://github.com/drk1wi/Modlishka
 https://github.com/KasRoudra/PyPhisher
 https://github.com/trustedsec/social-engineer-toolkit
 https://github.com/wifiphisher/wifiphisher
+https://github.com/S3cur3Th1sSh1t/OffensiveVBA
+https://github.com/outflanknl/EvilClippy
 
 # Go
 https://github.com/gophish/gophish
