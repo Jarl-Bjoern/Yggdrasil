@@ -12,7 +12,6 @@ proxychains4
 python3-impacket
 sslyze
 sslscan
-starkiller
 testssl.sh
 
 # Docker
@@ -113,6 +112,8 @@ https://github.com/0x09AL/RdpThief
 https://github.com/leechristensen/SpoolSample
 https://github.com/danielbohannon/Invoke-Obfuscation
 https://github.com/hashcat/kwprocessor
+https://github.com/bats3c/darkarmour
+https://github.com/tokyoneon/Chimera
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
