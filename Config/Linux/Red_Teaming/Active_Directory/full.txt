@@ -5,6 +5,7 @@ dnscat2
 evil-winrm
 gpp-decrypt
 havoc
+krb5-user
 metasploit-framework
 mitmproxy
 powershell-empire
