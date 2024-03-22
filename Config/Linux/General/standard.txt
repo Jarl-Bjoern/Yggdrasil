@@ -51,6 +51,7 @@ tmux
 tor
 torbrowser-launcher
 novnc
+xclip
 x11vnc
 
 # Python
