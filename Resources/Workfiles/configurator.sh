@@ -217,6 +217,7 @@ function header() {
 	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}source_code_analysis${NOCOLOR} :  tools for source code analysis   ${CYAN}|${NOCOLOR}"
 		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}reverse_engineering${NOCOLOR}  :  tools for reverse  engineering   ${CYAN}|${NOCOLOR}"
   		echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}exploit_development${NOCOLOR}  :  tools for exploit  development   ${CYAN}|${NOCOLOR}"
+    		echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}malware_development${NOCOLOR}  :  tools for malware  development   ${CYAN}|${NOCOLOR}"
   	elif [ "$1" = "hardening_category" ]; then
 		echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}           :  installation of  all  toolkits     ${CYAN}|${NOCOLOR}"
 	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud  hardening         ${CYAN}|${NOCOLOR}"
@@ -713,12 +714,15 @@ function Development_Check() {
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Exploit_Development")
               Array_Categories+=("$FULL_PATH/Config/Linux/Development/Reverse_Engineering")
               Array_Categories+=("$FULL_PATH/Config/Linux/Development/Source_Code_Analysis")
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Malware_Development")
 	elif [[ $development == "source_code_analysis" || $development == "2" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Source_Code_Analysis")
 	elif [[ $development == "reverse_engineering" || $development == "3" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Reverse_Engineering")
 	elif [[ $development == "exploit_development" || $development == "4" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Exploit_Development")
+       	elif [[ $development == "malware_development" || $development == "5" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Development/Malware_Development")
 	else
 	      echo -e "\nYour decision was not accepted!\nPlease try again."
               Show_Error_Message=true
