@@ -46,7 +46,7 @@ alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 
 alias sslyze='sslyze --sslv2 --sslv3 --tlsv1 --tlsv1_1 --tlsv1_2 --tlsv1_3 --elliptic_curves --http_headers --certinfo --resum --early_data --openssl_ccs --fallback --heartbleed --robot --compression --reneg --mozilla_config intermediate'
 alias kali-repo-switch='Yggdrasil_Repo_Switch'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-"""+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" "$i" ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.45; done; cd "$BACK"'
+"""+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" "$i" ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.75; done; cd "$BACK"'
 alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.45; done'
 alias yggdrasil-info='Yggdrasil_File_Reader "/opt/yggdrasil/Information/info.txt" | less -r'
 alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/OSINT.txt" &> /dev/null'
@@ -72,7 +72,7 @@ alias nmap='nmap --exclude $(ip a | grep inet | cut -d " " -f6 | cut -d "/" -f1 
 alias sslyze='sslyze --sslv2 --sslv3 --tlsv1 --tlsv1_1 --tlsv1_2 --tlsv1_3 --elliptic_curves --http_headers --certinfo --resum --early_data --openssl_ccs --fallback --heartbleed --robot --compression --reneg --mozilla_config intermediate'
 alias kali-repo-switch='Yggdrasil_Repo_Switch'
 alias microcode-update='sudo sed -i "s#kali-last-snapshot#kali-rolling#g" /etc/apt/sources.list ; sudo apt clean all ; sudo apt update -y ; sudo apt install -y intel-microcode amd64-microcode ; sudo apt clean all ; sudo sed -i "s#kali-rolling#kali-last-snapshot#g" /etc/apt/sources.list'
-"""+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.45; done; cd "$BACK"'
+"""+rf"""alias git-tools-update='BACK="$(pwd)" ; for i in $(cat {opt_path}/update.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cd "$i" ; git pull ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.75; done; cd "$BACK"'
 alias cargo-tools-update='for i in $(cat {opt_path}/update_cargo.info); do echo -e "\033[1;33mUpdate:\033[0m" $i ; cargo install --force $i ; echo -e "\033[0;36m------------------------------------------------\033[0m"; sleep 0.45; done'
 alias yggdrasil-info='Yggdrasil_File_Reader "/opt/yggdrasil/Information/info.txt" | less -r'
 alias yggdrasil-osint='sudo python3 {yggdrasil_path}/Resources/Python/browse.py "{yggdrasil_path}/Information/Pages/OSINT.txt" &> /dev/null'
@@ -118,7 +118,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_Container_Updates':
                 {
                         'Time': '6',
-                        'Command': 'for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; done',
+                        'Command': 'for Cont_IMG in $(docker images | cut -d " " -f1 | grep -v "REPOSITORY"); do docker pull $Cont_IMG; sleep 1.15; done',
                         'Path': '/etc/yggdrasil/Yggdrasil_Container_Updates.sh'
                 },
         'Yggdrasil_Container_Cleaner':
@@ -136,7 +136,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_Cargo_Updater':
                 {
                         'Time': '5',
-                        'Command': f'input="{opt_path}/update_cargo.info"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; done; done < "$input"',
+                        'Command': f'input="{opt_path}/update_cargo.info"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; sleep 1.15; done; done < "$input"',
 
                         'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater.sh'
                 },
