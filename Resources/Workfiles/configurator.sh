@@ -249,7 +249,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}ssh${NOCOLOR}              :   ssh      hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}apache${NOCOLOR}           :   apache   hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx    hardening                 ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${GREEN}7${NOCOLOR}] ${GREEN}smb${NOCOLOR}              :   smb   hardening                 ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${GREEN}7${NOCOLOR}] ${GREEN}smb${NOCOLOR}              :   smb       hardening                 ${CYAN}|${NOCOLOR}"
                 #echo -e "${CYAN}|${NOCOLOR}   [${RED}8${NOCOLOR}] ${RED}ftp${NOCOLOR}           :   ftp   hardening                 ${CYAN}|${NOCOLOR}"
                 #echo -e "${CYAN}|${NOCOLOR}   [${CYAN}9${NOCOLOR}] ${CYAN}squid${NOCOLOR}            :   squid    hardening                 ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "settings" ]; then
