@@ -1053,7 +1053,7 @@ if [[ $Switch_Skip_Hardening != true ]]; then
   		do
                         read -rp "Share name: " SMB_Share_Name
 	                if [[ ${#SMB_Share_Name} -gt 0 ]]; then
-	                        clearing
+	                        Show_Error_Message=false
 	                else
 	                        echo -e "\nYour decision was not accepted!\nPlease try again."
 				Show_Error_Message=true
@@ -1070,8 +1070,7 @@ if [[ $Switch_Skip_Hardening != true ]]; then
   		# Share_Path
     		while true;
   		do
-                        echo -e "\n             Please select an IP address to be used\n                     for SMB configuration"
-                        read -rp "Your Choice: " SMB_Share_Path
+                        read -rp "Full share path: " SMB_Share_Path
 	                if [[ ${#SMB_Share_Path} -gt 0 ]]; then
 			        if [[ ! -d "$SMB_Share_Path" ]]; then
 	                             read -rp "The path doesn't exist! Should it be created (y/N): " SMB_Choice
