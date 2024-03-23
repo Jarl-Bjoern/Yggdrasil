@@ -1517,9 +1517,9 @@ EOF
 
         # Network
         dns proxy = no
-        interfaces = 127.0.0.1, XXX.XXX.XXX.XXX
+        interfaces = 127.0.0.1, $SMB_IP_Addresses
         bind interfaces only = yes
-        hosts allow localhost, XXX.XXX.XXX.XXX
+        hosts allow localhost, $SMB_Hosts
         smb ports = 445
 
         # Encryption
@@ -1544,9 +1544,9 @@ EOF
         # Logging
         max log size = 1024
 
-[Private]
-        path = /XXX/XXX
-        valid users = XXXX
+[$SMB_Share_Name]
+        path = $SMB_Share_Path
+        valid users = $SMB_Valid_Users
         writable = no
         read only = yes
 EOF
