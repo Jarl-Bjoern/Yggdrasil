@@ -57,6 +57,8 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 - New Features:
   - `npm` was added as a new download category
 - New Improvements:
+  - Automation script:
+    - Automation script to install sliver was added
   - Systemd Units:
     - New description fields was added
   - Terminal:
