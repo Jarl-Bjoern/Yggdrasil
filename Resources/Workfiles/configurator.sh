@@ -1014,6 +1014,125 @@ if [[ $Switch_Skip_Hardening != true ]]; then
 	                Show_Error_Message=false
 		done
         fi
+
+        # SMB_Configuration
+	if [[ $Switch_SMB != false ]]; then
+		# IP_Addresses
+		while true;
+  		do
+	                echo -e "\n             Please select an IP address to be used\n                     for SMB configuration"
+	                echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
+	                sudo python3 "$FULL_PATH/Resources/Python/nic.py"
+	                echo -e "\n${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
+	                read -rp "Your Choice: " IP_TEMP
+	                if [[ ${#IP_TEMP} -gt 0 ]]; then
+	                        LEN_CHECK=$(ip a | grep "$IP_TEMP")
+	                        if [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *"."* ]]; then
+	                                SMB_IP_Addresses=$IP_TEMP
+	                        elif [[ ${#LEN_CHECK} -gt 0 ]] && [[ ${IP_TEMP} = *":"* ]]; then
+	                                SMB_IP_Addresses="[$IP_TEMP]"
+	                        else
+	                                echo -e "\nYour decision was not accepted!\nPlease try again."
+					Show_Error_Message=true
+	                        fi
+	                else
+	                        echo -e "\nYour decision was not accepted!\nPlease try again."
+				Show_Error_Message=true
+	                fi
+
+			if [[ "$Show_Error_Message" == true ]]; then
+	  			clearing
+	     		else
+	   			break
+	  		fi
+	                Show_Error_Message=false
+    		done
+
+		# Share_Name
+		while true;
+  		do
+                        read -rp "Share name: " SMB_Share_Name
+	                if [[ ${#SMB_Share_Name} -gt 0 ]]; then
+	                        clearing
+	                else
+	                        echo -e "\nYour decision was not accepted!\nPlease try again."
+				Show_Error_Message=true
+	                fi
+
+			if [[ "$Show_Error_Message" == true ]]; then
+	  			clearing
+	     		else
+	   			break
+	  		fi
+	                Show_Error_Message=false
+		done
+
+  		# Share_Path
+    		while true;
+  		do
+                        echo -e "\n             Please select an IP address to be used\n                     for SMB configuration"
+                        read -rp "Your Choice: " SMB_Share_Path
+	                if [[ ${#SMB_Share_Path} -gt 0 ]]; then
+			        if [[ ! -d "$SMB_Share_Path" ]]; then
+	                             read -rp "The path doesn't exist! Should it be created (y/N): " SMB_Choice
+                                     if [[ $SMB_Choice == "y" or $SMB_Choice == "Y" ]]; then
+                                         sudo mkdir -p $SMB_Share_Path
+			             else
+		                         echo -e "\nYour decision was not accepted!\nPlease try again."
+				         Show_Error_Message=true
+                                     fi
+	                        fi
+	                else
+	                        echo -e "\nYour decision was not accepted!\nPlease try again."
+				Show_Error_Message=true
+	                fi
+
+			if [[ "$Show_Error_Message" == true ]]; then
+	  			clearing
+	     		else
+	   			break
+	  		fi
+	                Show_Error_Message=false
+		done
+
+      		# Share_Hosts
+		while true;
+  		do
+                        read -rp "SMB Hosts that could connect to the share (Hostnames or IP-Addresses): " SMB_Hosts
+	                if [[ ${#SMB_Hosts} -gt 0 ]]; then
+                                Show_Error_Message=false
+	                else
+	                        echo -e "\nYour decision was not accepted!\nPlease try again."
+				Show_Error_Message=true
+	                fi
+
+			if [[ "$Show_Error_Message" == true ]]; then
+	  			clearing
+	     		else
+	   			break
+	  		fi
+	                Show_Error_Message=false
+		done
+
+    		# Share_User
+		while true;
+  		do
+                        read -rp "Valid user list: " SMB_Valid_Users
+	                if [[ ${#SMB_Valid_Users} -gt 0 ]]; then
+	                        clearing
+	                else
+	                        echo -e "\nYour decision was not accepted!\nPlease try again."
+				Show_Error_Message=true
+	                fi
+
+			if [[ "$Show_Error_Message" == true ]]; then
+	  			clearing
+	     		else
+	   			break
+	  		fi
+	                Show_Error_Message=false
+		done
+        fi
 else
         clearing
 fi
