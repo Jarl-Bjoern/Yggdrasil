@@ -1075,7 +1075,7 @@ if [[ $Switch_Skip_Hardening != true ]]; then
 	                if [[ ${#SMB_Share_Path} -gt 0 ]]; then
 			        if [[ ! -d "$SMB_Share_Path" ]]; then
 	                             read -rp "The path doesn't exist! Should it be created (y/N): " SMB_Choice
-                                     if [[ $SMB_Choice == "y" or $SMB_Choice == "Y" ]]; then
+                                     if [[ $SMB_Choice == "y" || $SMB_Choice == "Y" ]]; then
                                          sudo mkdir -p $SMB_Share_Path
 			             else
 		                         echo -e "\nYour decision was not accepted!\nPlease try again."
