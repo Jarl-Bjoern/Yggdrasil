@@ -13,6 +13,7 @@ proxychains4
 python3-impacket
 sslyze
 sslscan
+starkiller
 testssl.sh
 
 # Docker
