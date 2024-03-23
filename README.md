@@ -56,6 +56,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
   - `Malware Development`
 - New Features:
   - `npm` was added as a new download category
+  - `smb` was added to the hardening options
 - New Improvements:
   - Automation script:
     - Automation script to install sliver was added
