@@ -69,7 +69,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
     - `Features Overview`
     - `Preparations`
     - `Tools Overview`
-    - `Using The Automated Variant`
+    - `Using the Automated Variant`
  
 
 <div align="center">
