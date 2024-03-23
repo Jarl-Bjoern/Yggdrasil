@@ -20,6 +20,11 @@ pentesting=""
 Show_Error_Message=false
 Shredding_DAYS=""
 Skip=false
+SMB_Share_Name=""
+SMB_Share_Path=""
+SMB_Valid_Users=""
+SMB_IP_Addresses=""
+SMB_Hosts=""
 Switch_APACHE=false
 Switch_BloodHound=false
 Switch_BRANCH=false
@@ -44,7 +49,7 @@ Switch_Skip_Hardening=false
 Switch_Skip_Basic_Installation=false
 Switch_Skip_Installation=false
 Switch_Skip_URLS=false
-#Switch_SMB=false
+Switch_SMB=false
 #Switch_SQUID=false
 Switch_SSH=false
 Switch_SYSTEMD=false
@@ -1495,6 +1500,56 @@ EOF
                         fi
                 done
                 sudo sysctl --system
+        fi
+
+        # SMB_Hardening
+        if [[ $Switch_SMB = true ]]; then
+                 sudo mv /etc/samba/smb.conf /etc/samba/smb.bak
+		 sudo systemctl disable smbd nmbd
+                 cat <<EOF > /etc/samba/smb.conf
+[global]
+        # Standard
+        workgroup = XXXXXXX
+        server string = --
+        netbios name = --
+        security = user
+        map to guest = never
+
+        # Network
+        dns proxy = no
+        interfaces = 127.0.0.1, XXX.XXX.XXX.XXX
+        bind interfaces only = yes
+        hosts allow localhost, XXX.XXX.XXX.XXX
+        smb ports = 445
+
+        # Encryption
+        client min protocol = SMB3
+        client signing = required
+        min protocol = SMB3
+        server signing = required
+
+        # Security
+        browseable = no
+        deadtime = 15
+        disable netbios = yes
+        guest ok = no
+        invalid users = root
+        keep alive = 30
+        max connections = 1
+        restrict anonymous = 2
+        usershare allow guests = no
+        usershare max shares = 0
+        unix password sync = no
+
+        # Logging
+        max log size = 1024
+
+[Private]
+        path = /XXX/XXX
+        valid users = XXXX
+        writable = no
+        read only = yes
+EOF
         fi
 
         # Apache_Configuration
