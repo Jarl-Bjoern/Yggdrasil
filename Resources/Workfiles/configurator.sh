@@ -1409,16 +1409,6 @@ hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u
 
 # Turn_Off_Startup_Message
 startup_message off
-
-# Create_Five_Tabs
-screen -t vpn
-screen -t monitoring
-screen -t ssh-kali01
-screen -t ssh-kali02
-screen -t scp
-
-# Select_First_Tab
-select 0
 EOF
         fi
 
