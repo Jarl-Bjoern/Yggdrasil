@@ -44,6 +44,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 ## ❗ News
 <strong>Upcoming changes for version</strong> `0.9d`:
 - Hotfixes:
+  - `Exa` was replaced with `Eza`.
   - Systemd Units:
     - Cargo Updater was fixed
     - Incorrect output during the filter process was issued several times if the installation path did not exist
