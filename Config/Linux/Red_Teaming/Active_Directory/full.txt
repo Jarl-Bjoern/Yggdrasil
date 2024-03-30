@@ -11,21 +11,16 @@ mitmproxy
 powershell-empire
 proxychains4
 python3-impacket
-sslyze
-sslscan
 starkiller
-testssl.sh
 
 # Docker
 tenableofficial/nessus
 
 # Git
-https://github.com/Ascotbe/Kernelhub
 https://github.com/DataDog/KubeHound
 https://github.com/BloodHoundAD/AzureHound
 https://github.com/TryCatchHCF/PacketWhisper
 https://github.com/jpillora/chisel
-https://github.com/aboul3la/Sublist3r
 https://github.com/utoni/ptunnel-ng
 https://github.com/klezVirus/inceptor
 https://github.com/roys/cewler
@@ -138,7 +133,6 @@ https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.5/LaZagne.exe LaZa
 https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe Snaffler Executable
 https://github.com/Kevin-Robertson/Inveigh/releases/download/v2.0.10/Inveigh-net7.0-osx-x64-trimmed-single-v2.0.10.tar.gz Inveigh Archive
 https://github.com/antonioCoco/RoguePotato/releases/download/1.0/RoguePotato.zip RoguePotato Archive
-https://github.com/BloodHoundAD/SharpHound/releases/download/v2.3.3/SharpHound-v2.3.3.zip SharpHound Archive
 https://download.sysinternals.com/files/SysinternalsSuite.zip Sysinternals Archive
 
 # Wordlists
