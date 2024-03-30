@@ -6,7 +6,7 @@ charon-cmd
 curl
 docker.io
 docker-compose
-exa
+eza
 fish
 g++
 g++-multilib
