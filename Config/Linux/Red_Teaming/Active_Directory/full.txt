@@ -111,6 +111,10 @@ https://github.com/hashcat/kwprocessor
 https://github.com/bats3c/darkarmour
 https://github.com/tokyoneon/Chimera
 https://github.com/DominicBreuker/pspy
+https://github.com/SnaffCon/Snaffler
+https://github.com/antonioCoco/RoguePotato
+https://github.com/AlessandroZ/LaZagne
+https://github.com/ohpe/juicy-potato
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
@@ -119,6 +123,7 @@ https://github.com/PowerShellMafia/PowerSploit dev
 https://github.com/cobbr/Covenant
 
 # Go
+https://github.com/ropnop/kerbrute
 
 # Python
 bloodhound
@@ -127,12 +132,6 @@ requests-credssp
 scapy
 
 # Wget
-https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 kerbrute Executable
-https://github.com/ohpe/juicy-potato/releases/download/v0.1/JuicyPotato.exe JuicyPotato Executable
-https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.5/LaZagne.exe LaZagne Executable
-https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe Snaffler Executable
-https://github.com/Kevin-Robertson/Inveigh/releases/download/v2.0.10/Inveigh-net7.0-osx-x64-trimmed-single-v2.0.10.tar.gz Inveigh Archive
-https://github.com/antonioCoco/RoguePotato/releases/download/1.0/RoguePotato.zip RoguePotato Archive
 https://download.sysinternals.com/files/SysinternalsSuite.zip Sysinternals Archive
 
 # Wordlists
