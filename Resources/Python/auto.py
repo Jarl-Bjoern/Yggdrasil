@@ -75,6 +75,8 @@ def Burp_Install(Path):
                     break
                 Counter += 1
                 sleep(0.75)
+            else:
+                mouse_click(r), sleep(1)
     except KeyboardInterrupt: print("The program will be closed.")
 
 def Veracrypt_Install(Path):
