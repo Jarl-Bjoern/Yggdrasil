@@ -1,4 +1,5 @@
 #!/bin/bash
+# Rainer Christian Bjoern Herold
 
 if [ $1 ]; then
   if [[ -f "$1" ]]; then
