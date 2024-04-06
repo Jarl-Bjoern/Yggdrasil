@@ -1,6 +1,11 @@
 #!/bin/bash
 # Rainer Christian Bjoern Herold
 
+# Variables
+SCRIPT_NAME=$(basename "${BASH_SOURCE[0]}")
+FULL_PATH=${TEMP_PATH::-${#SCRIPT_NAME}-21}
+
+# Main
 if [ $1 ]; then
   if [[ -f "$1" ]]; then
     # Install_xclip
@@ -22,8 +27,10 @@ if [ $1 ]; then
   
     # Install_Burp
     sudo bash "/tmp/burpsuite_pro_v$version.sh"
+    sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "Install"
 
     # Paste_License
+    sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "License"
     # UNDER CONSTRUCTION
 
     # Remove_Installer
