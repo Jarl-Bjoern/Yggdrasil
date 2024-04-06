@@ -26,11 +26,11 @@ if [ $1 ]; then
     xclip "$1"
   
     # Install_Burp
-    sudo bash "/tmp/burpsuite_pro_v$version.sh"
+    sudo bash "/tmp/burpsuite_pro_v$version.sh" &
     sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "Install"
 
     # Paste_License
-    /opt/BurpSuitePro/BurpSuitePro
+    /opt/BurpSuitePro/BurpSuitePro &
     sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "License"
     # UNDER CONSTRUCTION
 
