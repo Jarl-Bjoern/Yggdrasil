@@ -10,7 +10,7 @@ if [ $1 ]; then
   
     # Download_Burp
     website=$(curl -s "https://portswigger.net/burp/releases")
-    version=$(echo "$html" | grep -P "professional-community-" | cut -d '"' -f2 | cut -d '/' -f4 | sort -ur | head -n1)
+    version=$(echo "$website" | grep -P "professional-community-" | cut -d '"' -f2 | cut -d '/' -f4 | sort -ur | head -n1)
     wget "https://portswigger-cdn.net/burp/releases/download?product=pro&version=$version&type=Linux" -O "/tmp/burpsuite_pro_v$version.sh" --quiet --show-progress
   
     # Install_Burp
