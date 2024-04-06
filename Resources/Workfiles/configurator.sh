@@ -1463,23 +1463,8 @@ done
 
 if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "complete" || $category_type = "1" ]]; then
         # Git_Tools_Installation
-        if [ -d "$OPT_Path/chisel" ]; then
-                cd "$OPT_Path"/chisel || return 0 ; sudo go get ; sudo go build
-        fi
-        if [ -d "$OPT_Path/enum4linux-ng" ]; then
-                sudo pip3 install -r "$OPT_Path"/enum4linux-ng/requirements.txt
-        fi
-        if [ -f "$OPT_Path/EyeWitness/Python/setup/setup.sh" ]; then
-                sudo bash "$OPT_Path"/EyeWitness/Python/setup/setup.sh ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-        fi
         if [ -f "$OPT_Path/PEASS-ng/metasploit/peass.rb" ]; then
                 sudo cp "$OPT_Path"/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
-        fi
-        if [ -d "$OPT_Path/ssh_scan" ]; then
-                cd "$OPT_Path"/ssh_scan || return 0 ; sudo gem install bundler ; sudo bundle install ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-        fi
-        if [ -d "$OPT_Path/socketcand" ]; then
-                cd "$OPT_Path"/socketcand || return 0 ; sudo bash autogen.sh ; sudo ./configure ; sudo make ; sudo make install ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
         fi
         if [ -d "$OPT_Path/Responder" ]; then
                 pip3 install -r "$OPT_Path"/Responder/requirements.txt ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
