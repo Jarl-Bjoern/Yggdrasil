@@ -58,6 +58,24 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL), sleep(2), hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up')
 
+def Burp_Install(Path):
+    Button_First_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_01.jpg')
+    Button_Second_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_02.jpg')
+
+    try:
+        r, Counter = None, 0
+        while (r == None):
+            if (Counter <= 10): r = locateOnScreen(Button_First_Next, grayscale=False, confidence=0.85)
+            else:               r = locateOnScreen(Button_Second_Next, grayscale=True, confidence=0.85)
+
+            if (Counter == 20):
+                print (Colors.RED+"It was not possible to find the Button 'Next'!"+Colors.RESET)
+                Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
+                break
+            Counter += 1
+            sleep(0.75)
+    except KeyboardInterrupt: print("The program will be closed.")
+
 def Veracrypt_Install(Path):
     def Installer(Path): system(f'sudo bash {Path}')
 
@@ -79,5 +97,6 @@ if __name__ == '__main__':
     try:
         if (argv[1] == "Veracrypt"): Veracrypt_Install(argv[2])
         elif (argv[1] == "Firefox"): Firefox_Addons(argv[2], argv[3])
+        elif (argv[1] == "Burp"):    Burp_Install(argv[2])
     except KeyboardInterrupt:
         print("The program will be closed.")
