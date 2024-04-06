@@ -4,10 +4,10 @@
 if [ $1 ]; then
   if [[ -f "$1" ]]; then
     # Install_xclip
-    apt install -y xclip
+    sudo apt install -y xclip
   
     # Remove_Burp
-    apt remove -y burpsuite ; apt autoremove --purge -y
+    sudo apt remove -y burpsuite ; sudo apt autoremove --purge -y
   
     # Download_Burp
     website=$(curl -s "https://portswigger.net/burp/releases")
@@ -25,6 +25,9 @@ if [ $1 ]; then
 
     # Paste_License
     # UNDER CONSTRUCTION
+
+    # Remove_Installer
+    rm -f "/tmp/burpsuite_pro_v$version.sh"
 
     # Clear_Clipboard
     xclip /tmp/clean.txt ; rm -f /tmp/clean.txt
