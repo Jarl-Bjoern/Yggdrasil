@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # Rainer Christian Bjoern Herold
 # Version 0.1 29.10.2022
+# Version 0.2 06.04.2024
 
 # Libraries
 try:
