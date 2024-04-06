@@ -59,12 +59,12 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL), sleep(2), hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up')
 
-def Burp_Install(Mode):
-    Button_First_Next  = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_01.jpg')
-    Button_Second_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_02.jpg')
-    Button_Finish      = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_03.jpg')
-
+def Burp_Install(Mode, License_Accept):
     if (Mode == "Install"):
+        Button_First_Next  = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_01.jpg')
+        Button_Second_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_02.jpg')
+        Button_Finish      = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_03.jpg')
+
         for _ in range(0,4):
             r, Counter = None, 0
             try:
@@ -99,7 +99,12 @@ def Burp_Install(Mode):
         except KeyboardInterrupt: print("The program will be closed.")
         except ImageNotFoundException: pass
     elif (Mode == "License"):
-        pass
+        Button_Feedback      = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_04.jpg')
+        Button_Terms_Accept  = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_05.jpg')
+        Entry_License        = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_06.jpg')
+        Button_Next          = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_07.jpg')
+        Button_Close         = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_08.jpg')
+
 
 def Veracrypt_Install(Path):
     def Installer(Path): system(f'sudo bash {Path}')
