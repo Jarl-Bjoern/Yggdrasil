@@ -30,6 +30,7 @@ if [ $1 ]; then
     sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "Install"
 
     # Paste_License
+    /opt/BurpSuitePro/BurpSuitePro
     sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "License"
     # UNDER CONSTRUCTION
 
