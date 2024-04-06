@@ -18,7 +18,7 @@ if [ $1 ]; then
 
     
   else
-    echo "The provided argument is not a file."
+    echo "The provided argument is not a file or does not exist."
   fi
 else
   echo "The path of the license file was missing."
