@@ -8,7 +8,7 @@ try:
     from os                         import kill, listdir, system
     from os.path                    import dirname, join, realpath
     from psutil                     import process_iter
-    from pyautogui                  import click as mouse_click, hold, hotkey, keyDown, locateOnScreen, press, size as screen_resolution, write as autowrite
+    from pyautogui                  import click as mouse_click, hold, hotkey, keyDown, locateOnScreen, press, size as screen_resolution, write as autowrite, ImageNotFoundException
     from signal                     import SIGKILL
     from Standard_Operations.Colors import Colors
     from Standard_Operations.Logger import Write_Log
@@ -62,9 +62,9 @@ def Burp_Install(Path):
     Button_First_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_01.jpg')
     Button_Second_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_02.jpg')
 
-    try:
-        for _ in range(0,4):
-            r, Counter = None, 0
+    for _ in range(0,4):
+        r, Counter = None, 0
+        try:
             while (r == None):
                 if (Counter <= 10): r = locateOnScreen(Button_First_Next, grayscale=False, confidence=0.85)
                 else:               r = locateOnScreen(Button_Second_Next, grayscale=True, confidence=0.85)
@@ -77,7 +77,8 @@ def Burp_Install(Path):
                 sleep(0.75)
             else:
                 mouse_click(r), sleep(1)
-    except KeyboardInterrupt: print("The program will be closed.")
+        except KeyboardInterrupt: print("The program will be closed.")
+        except ImageNotFoundException: pass
 
 def Veracrypt_Install(Path):
     def Installer(Path): system(f'sudo bash {Path}')
