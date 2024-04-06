@@ -59,8 +59,9 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
     finally: kill(Process_ID("firefox"), SIGKILL), sleep(2), hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up')
 
 def Burp_Install(Path):
-    Button_First_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_01.jpg')
+    Button_First_Next  = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_01.jpg')
     Button_Second_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_02.jpg')
+    Button_Finish      = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_03.jpg')
 
     for _ in range(0,4):
         r, Counter = None, 0
@@ -79,6 +80,22 @@ def Burp_Install(Path):
                 mouse_click(r), sleep(1)
         except KeyboardInterrupt: print("The program will be closed.")
         except ImageNotFoundException: pass
+    r, Counter = None, 0
+    try:
+        while (r == None):
+            if (Counter <= 10): r = locateOnScreen(Button_Finish, grayscale=False, confidence=0.85)
+            else:               r = locateOnScreen(Button_Finish, grayscale=True, confidence=0.85)
+
+            if (Counter == 20):
+                print (Colors.RED+"It was not possible to find the Button 'Next'!"+Colors.RESET)
+                Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
+                break
+            Counter += 1
+            sleep(0.75)
+        else:
+            mouse_click(r), sleep(1)
+    except KeyboardInterrupt: print("The program will be closed.")
+    except ImageNotFoundException: pass
 
 def Veracrypt_Install(Path):
     def Installer(Path): system(f'sudo bash {Path}')
