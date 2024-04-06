@@ -59,7 +59,7 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL), sleep(2), hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up')
 
-def Burp_Install(Path):
+def Burp_Install():
     Button_First_Next  = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_01.jpg')
     Button_Second_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_02.jpg')
     Button_Finish      = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_03.jpg')
@@ -119,6 +119,6 @@ if __name__ == '__main__':
     try:
         if (argv[1] == "Veracrypt"): Veracrypt_Install(argv[2])
         elif (argv[1] == "Firefox"): Firefox_Addons(argv[2], argv[3])
-        elif (argv[1] == "Burp"):    Burp_Install(argv[2])
+        elif (argv[1] == "Burp"):    Burp_Install()
     except KeyboardInterrupt:
         print("The program will be closed.")
