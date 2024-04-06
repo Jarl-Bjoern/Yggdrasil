@@ -1,4 +1,5 @@
 #!/bin/bash
+# Rainer Christian Bjoern Herold
 # ALFA AWUS036ACS
 sudo apt install -y realtek-rtl88xxau-dkms
 
