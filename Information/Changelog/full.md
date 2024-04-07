@@ -54,7 +54,8 @@
 <br />
 
 ## Version 0.9b
-<details><strong><summary>Changes of version</strong> `0.9b`></summary>:
+<details><strong><summary>Changes of version</summary></strong> `0.9b`>:
+  
   - Added the tool exa as replace for ls with an new alias
   - Logging fixes
   - Hotfix for broken cargo installer
@@ -74,6 +75,7 @@
   - New custom configs for screenrc and tmux
   - New tools was added to mulitple sections
   - Outsourcing of the documentation to the Yggdrasil wiki
+
 </details>
 <br />
 
