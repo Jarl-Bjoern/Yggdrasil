@@ -54,8 +54,9 @@
 <br />
 
 ## Version 0.9b
-<details><strong><summary>Changes of version</summary></strong> `0.9b`>:
-  
+<details><summary>Changes of version `0.9b`:</summary>
+
+  <strong>Changes of version</strong> `0.9b`>:
   - Added the tool exa as replace for ls with an new alias
   - Logging fixes
   - Hotfix for broken cargo installer
