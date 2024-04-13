@@ -12,8 +12,8 @@ if [ $1 ]; then
         if [[ $("apt-cache policy burpsuite | grep 'Installed: '") ]];
             echo "Skipping the deinstallation process of BurpSuite Community."
         else
-            echo "Removing BurpSuite Community."
             # Remove_Burp
+            echo "Removing BurpSuite Community."
             sudo apt remove -y burpsuite ; sudo apt autoremove --purge -y
             echo "BurpSuite Community was removed."
         fi
