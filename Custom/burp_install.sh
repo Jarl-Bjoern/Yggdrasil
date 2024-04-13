@@ -9,8 +9,10 @@ FULL_PATH=${TEMP_PATH::-${#SCRIPT_NAME}-8}
 # Main
 if [ $1 ]; then
     if [[ -f "$1" ]]; then
+        echo "Removing BurpSuite Community."
         # Remove_Burp
         sudo apt remove -y burpsuite ; sudo apt autoremove --purge -y
+        echo "BurpSuite Community was removed."
 
         # Download_Burp
         website=$(curl -s "https://portswigger.net/burp/releases")
@@ -19,10 +21,12 @@ if [ $1 ]; then
 
         # Install_Burp
         sudo bash "/tmp/burpsuite_pro_v$version.sh" &
+        sleep (10)
         sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "Install" "TRUE" "EMPTY"
 
         # Paste_License
         /opt/BurpSuitePro/BurpSuitePro &
+        sleep (10)
         sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "License" "TRUE" "$1"
 
         # Remove_Installer
