@@ -19,7 +19,7 @@ if [ $1 ]; then
 
         # Install_Burp
         sudo bash "/tmp/burpsuite_pro_v$version.sh" &
-        sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "Install"
+        sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "Install" "EMPTY"
 
         # Paste_License
         /opt/BurpSuitePro/BurpSuitePro &
