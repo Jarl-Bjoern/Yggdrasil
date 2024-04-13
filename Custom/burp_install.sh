@@ -1,6 +1,13 @@
 #!/bin/bash
 # Rainer Christian Bjoern Herold
 
+# Color
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+RED='\033[0;31m'
+ORANGE='\033[1;33m'
+NOCOLOR='\033[0m'
+
 # Variables
 TEMP_PATH=$(readlink -f -- "$0")
 SCRIPT_NAME=$(basename "${BASH_SOURCE[0]}")
@@ -10,32 +17,32 @@ FULL_PATH=${TEMP_PATH::-${#SCRIPT_NAME}-8}
 if [ $1 ]; then
     if [[ -f "$1" ]]; then
         if [[ $("apt-cache policy burpsuite | grep 'Installed: '") ]];
-            echo "Skipping the deinstallation process of BurpSuite Community."
+            echo -e "${ORANGE}Skipping the deinstallation process of BurpSuite Community.${NOCOLOR}"
         else
             # Remove_Burp
-            echo "Removing BurpSuite Community."
+            echo -e "${RED}Removing BurpSuite Community.${NOCOLOR}"
             sudo apt remove -y burpsuite ; sudo apt autoremove --purge -y
-            echo "BurpSuite Community was removed."
+            echo -e "${ORANGE}BurpSuite Community was removed.${NOCOLOR}"
         fi
 
         if [[ -d "/opt/BurpSuitePro" ]]; then
-            echo "Skipping the download and installation process for BurpSuite Professional."
+            echo "${ORANGE}Skipping the download and installation process for BurpSuite Professional.${NOCOLOR}"
         else
             # Download_Burp
-            echo "Downloading the latest BurpSuite Professional version."
+            echo "${ORANGE}Downloading the latest BurpSuite Professional version.${NOCOLOR}"
             website=$(curl -s "https://portswigger.net/burp/releases")
             version=$(echo "$website" | grep -P "professional-community-" | cut -d '"' -f2 | cut -d '/' -f4 | sed 's/professional-community-//g' | sort -ur | head -n1 | sed 's/-/./g')
             wget "https://portswigger-cdn.net/burp/releases/download?product=pro&version=$version&type=Linux" -O "/tmp/burpsuite_pro_v$version.sh" --quiet --show-progress
     
             # Install_Burp
-            echo "Starting the installer."
+            echo "${ORANGE}Starting the installer.${NOCOLOR}"
             sudo bash "/tmp/burpsuite_pro_v$version.sh" &
             sleep 10
             sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "Install" "TRUE" "EMPTY"
         fi
 
         # Paste_License
-        echo "Starting BurpSuite Professional"
+        echo "${ORANGE}Starting BurpSuite Professional.${NOCOLOR}"
         /opt/BurpSuitePro/BurpSuitePro &
         sleep 10
         sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "License" "TRUE" "$1"
@@ -45,8 +52,8 @@ if [ $1 ]; then
             rm -f "/tmp/burpsuite_pro_v$version.sh"
         fi
     else
-        echo "The provided argument is not a file or does not exist."
+        echo "${RED}The provided argument is not a file or does not exist.${NOCOLOR}"
     fi
   else
-        echo "The path of the license file was missing."
+        echo "${RED}The path of the license file was missing.${NOCOLOR}"
 fi
