@@ -22,7 +22,7 @@ if [ $1 ]; then
             # Remove_Burp
             echo -e "${RED}Removing BurpSuite Community.\n${CYAN}-------------------------------------\n${NOCOLOR}"
             sudo apt remove -y burpsuite ; sudo apt autoremove --purge -y
-            echo -e "${ORANGE}BurpSuite Community was removed.\n${CYAN}-------------------------------------\n${NOCOLOR}"
+            echo -e "\n${ORANGE}BurpSuite Community was removed.\n${CYAN}-------------------------------------\n${NOCOLOR}"
         fi
 
         if [[ -d "/opt/BurpSuitePro" ]]; then
