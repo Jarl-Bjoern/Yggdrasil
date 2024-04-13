@@ -17,32 +17,32 @@ FULL_PATH=${TEMP_PATH::-${#SCRIPT_NAME}-8}
 if [ $1 ]; then
     if [[ -f "$1" ]]; then
         if [[ $("apt-cache policy burpsuite | grep 'Installed: '") ]];
-            echo -e "${ORANGE}Skipping the deinstallation process of BurpSuite Community.${NOCOLOR}"
+            echo -e "${ORANGE}Skipping the deinstallation process of BurpSuite Community.\n${CYAN}-------------------------------------\n${NOCOLOR}"
         else
             # Remove_Burp
-            echo -e "${RED}Removing BurpSuite Community.${NOCOLOR}"
+            echo -e "${RED}Removing BurpSuite Community.\n${CYAN}-------------------------------------\n${NOCOLOR}"
             sudo apt remove -y burpsuite ; sudo apt autoremove --purge -y
-            echo -e "${ORANGE}BurpSuite Community was removed.${NOCOLOR}"
+            echo -e "${ORANGE}BurpSuite Community was removed.\n${CYAN}-------------------------------------\n${NOCOLOR}"
         fi
 
         if [[ -d "/opt/BurpSuitePro" ]]; then
-            echo "${ORANGE}Skipping the download and installation process for BurpSuite Professional.${NOCOLOR}"
+            echo "${ORANGE}Skipping the download and installation process for BurpSuite Professional.\n${CYAN}-------------------------------------\n${NOCOLOR}"
         else
             # Download_Burp
-            echo "${ORANGE}Downloading the latest BurpSuite Professional version.${NOCOLOR}"
+            echo "${ORANGE}Downloading the latest BurpSuite Professional version.\n${CYAN}-------------------------------------\n${NOCOLOR}"
             website=$(curl -s "https://portswigger.net/burp/releases")
             version=$(echo "$website" | grep -P "professional-community-" | cut -d '"' -f2 | cut -d '/' -f4 | sed 's/professional-community-//g' | sort -ur | head -n1 | sed 's/-/./g')
             wget "https://portswigger-cdn.net/burp/releases/download?product=pro&version=$version&type=Linux" -O "/tmp/burpsuite_pro_v$version.sh" --quiet --show-progress
     
             # Install_Burp
-            echo "${ORANGE}Starting the installer.${NOCOLOR}"
+            echo "${ORANGE}Starting the installer.\n${CYAN}-------------------------------------\n${NOCOLOR}"
             sudo bash "/tmp/burpsuite_pro_v$version.sh" &
             sleep 10
             sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "Install" "TRUE" "EMPTY"
         fi
 
         # Paste_License
-        echo "${ORANGE}Starting BurpSuite Professional.${NOCOLOR}"
+        echo "${ORANGE}Starting BurpSuite Professional.\n${CYAN}-------------------------------------\n${NOCOLOR}"
         /opt/BurpSuitePro/BurpSuitePro &
         sleep 10
         sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "License" "TRUE" "$1"
