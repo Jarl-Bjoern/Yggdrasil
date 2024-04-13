@@ -21,12 +21,12 @@ if [ $1 ]; then
 
         # Install_Burp
         sudo bash "/tmp/burpsuite_pro_v$version.sh" &
-        sleep (10)
+        sleep 10
         sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "Install" "TRUE" "EMPTY"
 
         # Paste_License
         /opt/BurpSuitePro/BurpSuitePro &
-        sleep (10)
+        sleep 10
         sudo python3 "$FULL_PATH/Resources/Python/auto.py" "Burp" "License" "TRUE" "$1"
 
         # Remove_Installer
