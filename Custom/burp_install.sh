@@ -52,8 +52,8 @@ if [ $1 ]; then
             rm -f "/tmp/burpsuite_pro_v$version.sh"
         fi
     else
-        echo "${RED}The provided argument is not a file or does not exist.${NOCOLOR}"
+        echo -e "${RED}The provided argument is not a file or does not exist.${NOCOLOR}"
     fi
   else
-        echo "${RED}The path of the license file was missing.${NOCOLOR}"
+        echo -e "${RED}The path of the license file was missing.${NOCOLOR}"
 fi
