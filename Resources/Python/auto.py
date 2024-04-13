@@ -59,7 +59,7 @@ def Firefox_Addons(Path, License_Parameter, Button_Path = dirname(realpath(__fil
     except KeyboardInterrupt: print("The program will be closed.")
     finally: kill(Process_ID("firefox"), SIGKILL), sleep(2), hotkey('ctrl','win','up'), sleep(1), hotkey('ctrl','win','up')
 
-def Burp_Install(Mode, License_Accept):
+def Burp_Install(Mode, License_Parameter, Path):
     if (Mode == "Install"):
         Button_First_Next  = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_01.jpg')
         Button_Second_Next = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_02.jpg')
@@ -87,7 +87,7 @@ def Burp_Install(Mode, License_Accept):
             while (r == None):
                 if (Counter <= 10): r = locateOnScreen(Button_Finish, grayscale=False, confidence=0.85)
                 else:               r = locateOnScreen(Button_Finish, grayscale=True, confidence=0.85)
-    
+
                 if (Counter == 20):
                     print (Colors.RED+"It was not possible to find the Button 'Next'!"+Colors.RESET)
                     Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
@@ -105,6 +105,37 @@ def Burp_Install(Mode, License_Accept):
         Button_Next          = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_07.jpg')
         Button_Close         = dirname(realpath(__file__)).replace('Python','Auto/Linux/Burp/burp_install_08.jpg')
 
+        Array_Pictures = [Button_Feedback, Button_Terms_Accept, Entry_License, Button_Next, Button_Close]
+
+        with open(Path, 'r') as f:
+            License = f.read().splitlines()
+
+        for Picture in Array_Pictures:
+            r, Counter = None, 0
+            try:
+                while (r == None):
+                    if (Counter <= 10): r = locateOnScreen(Picture, grayscale=False, confidence=0.85)
+                    else:               r = locateOnScreen(Picture, grayscale=True, confidence=0.85)
+        
+                    if (Counter == 20):
+                        print (Colors.RED+"It was not possible to find the Button 'Next'!"+Colors.RESET)
+                        Write_Log(dirname(realpath(__file__)).replace('Resources/Python','yggdrasil.log'), Colors.CYAN+"-------------------------------------------------------------------------------\n\n"+Colors.RED+"It was not possible to find the Button 'Add'!"+Colors.RESET)
+                        break
+                    Counter += 1
+                    sleep(0.75)
+                else:
+                    if ("burp_install_05.jpg" in Picture):
+                        if (License_Parameter == "False"):
+                            input(Colors.RED+'-----------------------------------------------------------------'+Colors.ORANGE+'\n\nThe script was stopped because the parameter "'+Colors.BLUE+'-aL '+Colors.RED+'|'+Colors.BLUE+' --accept-licenses'+Colors.ORANGE+'" is set to False by default for legal reasons.\n\nPlease confirm the operation with the "'+Colors.BLUE+'Return'+Colors.ORANGE+'" button to continue the program.\n\n'+Colors.RESET)
+                            sleep(2), mouse_click(r)
+                        else:
+                            sleep(2), mouse_click(r)
+                    elif ("burp_install_06.jpg" in Picture):
+                        mouse_click(r), sleep(1), autowrite(License[0]), sleep(1)
+                    else:
+                        mouse_click(r), sleep(1)
+            except KeyboardInterrupt: print("The program will be closed.")
+            except ImageNotFoundException: pass
 
 def Veracrypt_Install(Path):
     def Installer(Path): system(f'sudo bash {Path}')
@@ -127,6 +158,6 @@ if __name__ == '__main__':
     try:
         if (argv[1] == "Veracrypt"): Veracrypt_Install(argv[2])
         elif (argv[1] == "Firefox"): Firefox_Addons(argv[2], argv[3])
-        elif (argv[1] == "Burp"):    Burp_Install(argv[2])
+        elif (argv[1] == "Burp"):    Burp_Install(argv[2], argv[3], argv[4])
     except KeyboardInterrupt:
         print("The program will be closed.")
