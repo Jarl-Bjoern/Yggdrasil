@@ -16,7 +16,7 @@ FULL_PATH=${TEMP_PATH::-${#SCRIPT_NAME}-8}
 # Main
 if [ $1 ]; then
     if [[ -f "$1" ]]; then
-        if [[ $("apt-cache policy burpsuite | grep 'Installed: '") ]]; then
+        if [[ ! "(none)" == $(apt-cache policy burpsuite | grep "Installed: " | awk '{print $2}') ]]; then
             echo -e "${ORANGE}Skipping the deinstallation process of BurpSuite Community.\n${CYAN}-------------------------------------\n${NOCOLOR}"
         else
             # Remove_Burp
