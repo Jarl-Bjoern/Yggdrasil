@@ -43,7 +43,6 @@ https://github.com/TheRook/subbrute
 https://github.com/nccgroup/SocksOverRDP
 https://github.com/itm4n/PrintSpoofer
 https://github.com/NetSPI/PowerUpSQL
-https://github.com/r3motecontrol/Ghostpack-CompiledBinaries
 https://github.com/dirkjanm/PKINITtools
 https://github.com/Mebus/cupp
 https://github.com/Ridter/noPac
