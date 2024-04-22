@@ -81,7 +81,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 
 
 ## 🛡️ Official Documentation
-The official documentation on the tool can be found at the following link.
+The official documentation could be found at the following link.
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki">
