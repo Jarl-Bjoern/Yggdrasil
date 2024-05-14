@@ -149,11 +149,11 @@ declare -a Array_HARDENING=("#Protecting_against_IP-Spoofing"
 declare -a Array_Pentesting=()
 
 declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
-"KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256"
+"KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,sntrup761x25519-sha512"
 "# Host-key algorithms"
-"HostKeyAlgorithms ssh-ed25519"
+"HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,pgp-sign-dss,x509v3-ecdsa-sha2-nistp256,x509v3-ecdsa-sha2-nistp384,x509v3-ecdsa-sha2-nistp521"
 "# Encryption algorithms (ciphers)"
-"Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com"
+"Ciphers chacha20-poly1305,aes256-ctr,aes128-ctr"
 "# Message authentication code (MAC) algorithms"
 "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com")
 
