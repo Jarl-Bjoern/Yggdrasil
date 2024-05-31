@@ -42,6 +42,7 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
 > [!IMPORTANT]
 > <strong>Please do `not` use the program `for illegal intentions`.</strong><br />
 <br />
+
 ---
 
 ## ❗ News
