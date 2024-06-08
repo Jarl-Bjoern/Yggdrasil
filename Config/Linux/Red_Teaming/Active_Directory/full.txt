@@ -116,6 +116,7 @@ https://github.com/SnaffCon/Snaffler
 https://github.com/antonioCoco/RoguePotato
 https://github.com/AlessandroZ/LaZagne
 https://github.com/ohpe/juicy-potato
+https://github.com/FalconForceTeam/SOAPHound
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
