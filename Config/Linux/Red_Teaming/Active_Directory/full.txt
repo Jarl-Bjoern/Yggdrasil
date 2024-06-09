@@ -1,5 +1,6 @@
 # APT
 bloodhound
+coercer
 crackmapexec
 dnscat2
 enum4linux-ng
@@ -80,7 +81,6 @@ https://github.com/Greenwolf/ntlm_theft
 https://github.com/topotam/PetitPotam
 https://github.com/ShutdownRepo/targetedKerberoast
 https://github.com/Ben0xA/HoneyCreds
-https://github.com/p0dalirius/Coercer
 https://github.com/dirkjanm/krbrelayx
 https://github.com/Kevin-Robertson/Powermad
 https://github.com/rootSySdk/PowerGPOAbuse
