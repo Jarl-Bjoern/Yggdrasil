@@ -31,7 +31,6 @@ https://github.com/utoni/ptunnel-ng
 https://github.com/klezVirus/inceptor
 https://github.com/roys/cewler
 https://github.com/lgandx/Responder
-https://github.com/the-useless-one/pywerview
 https://github.com/roys/cewler
 https://github.com/GhostPack/SafetyKatz
 https://github.com/GhostPack/Rubeus
@@ -117,6 +116,8 @@ https://github.com/antonioCoco/RoguePotato
 https://github.com/AlessandroZ/LaZagne
 https://github.com/ohpe/juicy-potato
 https://github.com/FalconForceTeam/SOAPHound
+https://github.com/Yaxxine7/ASRepCatcher
+https://github.com/aniqfakhrul/powerview.py
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
