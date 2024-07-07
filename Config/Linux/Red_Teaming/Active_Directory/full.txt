@@ -1,5 +1,6 @@
 # APT
 bloodhound
+certipy-ad
 coercer
 crackmapexec
 dnscat2
@@ -88,7 +89,6 @@ https://github.com/zer1t0/certi
 https://github.com/micahvandeusen/gMSADumper
 https://github.com/dirkjanm/adidnsdump
 https://github.com/BeetleChunks/SpoolSploit
-https://github.com/ly4k/Certipy
 https://github.com/bitsadmin/nopowershell
 https://github.com/bitsadmin/wesng
 https://github.com/DominicBreuker/pspy
