@@ -15,8 +15,8 @@
   <a href="https://GitHub.com/jarl-bjoern/yggdrasil/">
     <img alt="repo size" src="https://img.shields.io/github/repo-size/jarl-bjoern/yggdrasil?logo=github&logoColor=cyan" />
   </a>
-  <a href="https://GitHub.com/jarl-bjoern/yggdrasil/releases/">
-    <img alt="releases" src="https://img.shields.io/github/downloads/jarl-bjoern/yggdrasil/total?color=blue&logo=github&logoColor=cyan" />
+  <a href="https://github.com/Jarl-Bjoern/Yggdrasil/issues">
+    <img alt="issues" src="https://img.shields.io/github/issues/jarl-bjoern/yggdrasil?style=flat&logo=Github&logoColor=cyan&label=issues&color=blue" />
   </a>
   <a href="https://github.com/jarl-bjoern">
       <img title="Follower" src="https://img.shields.io/github/followers/jarl-bjoern?color=blue&label=follow&logo=github&logoColor=cyan&style=flat-square">
