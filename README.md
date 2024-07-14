@@ -62,7 +62,8 @@ The name `Yggdrasil` comes from norse mythology and is the tree of life or world
   - `smb` was added to the hardening options
 - New Improvements:
   - Automation script:
-    - Automation script to install sliver was added
+    - Automation script to install `sliver` was added
+    - Automation script to install `covenant` was added
   - Systemd Units:
     - New description fields was added
   - Terminal:
