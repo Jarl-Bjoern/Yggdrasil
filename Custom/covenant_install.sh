@@ -21,7 +21,8 @@ if [ -d "$1" ]; then
             if [[ $decision == "y" || $decision == "Y" ]]; then
                 docker stop covenant || docker stop Covenant
                 docker rm covenant || docker rm Covenant
-                cd "$COVENANT_PATH/Covenant"
+                cd "$COVENANT_PATH"
+                git checkout dev
                 docker build -t covenant .
                 docker run -it -d -p 7443:7443 -p 80:80 -p 443:443 --name covenant -v "$COVENANT_PATH"/Covenant/Data:/app/Data covenant
             elif [[ $decision == "n" || $decision == "N" ]]; then
@@ -30,7 +31,8 @@ if [ -d "$1" ]; then
                 echo "The decision was not accepted." ; exit
             fi
         else
-            cd "$COVENANT_PATH/Covenant"
+            cd "$COVENANT_PATH"
+            git checkout dev
             docker build -t covenant .
             docker run -it -d -p 7443:7443 -p 80:80 -p 443:443 --name covenant -v "$COVENANT_PATH"/Covenant/Data:/app/Data covenant
         fi
