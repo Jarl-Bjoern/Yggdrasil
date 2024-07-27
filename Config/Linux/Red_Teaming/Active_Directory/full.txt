@@ -17,6 +17,7 @@ netexec
 powershell-empire
 proxychains4
 python3-impacket
+responder
 starkiller
 
 # Docker
@@ -30,7 +31,6 @@ https://github.com/jpillora/chisel
 https://github.com/utoni/ptunnel-ng
 https://github.com/klezVirus/inceptor
 https://github.com/roys/cewler
-https://github.com/lgandx/Responder
 https://github.com/roys/cewler
 https://github.com/GhostPack/SafetyKatz
 https://github.com/GhostPack/Rubeus
@@ -118,6 +118,7 @@ https://github.com/ohpe/juicy-potato
 https://github.com/FalconForceTeam/SOAPHound
 https://github.com/Yaxxine7/ASRepCatcher
 https://github.com/aniqfakhrul/powerview.py
+https://github.com/micahvandeusen/gMSADumper
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
