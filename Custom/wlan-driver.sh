@@ -9,4 +9,11 @@ sudo mkdir -p /opt/drivers ; cd /opt/drivers || return 0 ; sudo git clone https:
 sudo make &&
 sudo make install &&
 echo "rtl8192eu" > /etc/modprobe.d/blacklist.conf &&
-echo "Installation completed"
+
+# ALFA AWUS1900
+sudo DEBIAN_FRONTEND=noninteractive apt install -y linux-headers-$(uname -r) build-essential bc dkms git libelf-dev rfkill iw realtek-rtl8814au-dkms
+sudo mkdir -p /opt/drivers ; cd /opt/drivers || return 0 ; sudo git clone https://github.com/morrownr/8814au ; cd 8814au || return 0
+cat <<EOF | sudo bash install-driver.sh
+n
+y
+EOF
