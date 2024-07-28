@@ -54,9 +54,6 @@ novnc
 xclip
 x11vnc
 
-# Docker
-ghcr.io/gchq/cyberchef
-
 # Python
 defaultcreds-cheat-sheet
 
