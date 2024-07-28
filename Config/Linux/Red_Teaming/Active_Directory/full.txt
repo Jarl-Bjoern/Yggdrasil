@@ -31,7 +31,6 @@ https://github.com/jpillora/chisel
 https://github.com/utoni/ptunnel-ng
 https://github.com/klezVirus/inceptor
 https://github.com/roys/cewler
-https://github.com/roys/cewler
 https://github.com/GhostPack/SafetyKatz
 https://github.com/GhostPack/Rubeus
 https://github.com/dafthack/MailSniper
@@ -94,7 +93,6 @@ https://github.com/DominicBreuker/pspy
 https://github.com/charnim/Invoke-ReflectivePEInjection.ps1
 https://github.com/The-Viper-One/PsMapExec
 https://github.com/Leo4j/Amnesiac
-https://github.com/outflanknl/RedELK
 https://github.com/FuzzySecurity/StandIn
 https://github.com/MWR-CyberSec/PXEThief
 https://github.com/itm4n/PrintSpoofer
