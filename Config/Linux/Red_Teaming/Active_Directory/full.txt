@@ -119,6 +119,7 @@ https://github.com/FalconForceTeam/SOAPHound
 https://github.com/Yaxxine7/ASRepCatcher
 https://github.com/aniqfakhrul/powerview.py
 https://github.com/micahvandeusen/gMSADumper
+https://github.com/samratashok/nishang
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
