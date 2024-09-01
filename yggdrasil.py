@@ -61,7 +61,7 @@ def main():
             elif (Arg_Name == "custom_days"):                             Parameters += f"{Arg_Value}.-cD "
             elif (Arg_Name == "skip_urls"):                               Parameters += f"-sU "
             elif (Arg_Name == "verbose"):                                 Parameters += "-v "
-            elif (Arg_Name == "read_config_file" and Arg_Value != False): Parameters += f"{join(dirname(realpath(__file__)), 'Automation/Install.cfg')}.-rCf "
+            elif (Arg_Name == "read_config_file" and Arg_Value != False): Parameters += f"{join(dirname(realpath(__file__)), 'Config/Automation/Install.cfg')}.-rCf "
             elif (Arg_Name == "add_workspace" and Arg_Value != None):
                 try: makedirs(args.add_workspace)
                 except FileExistsError: pass
