@@ -122,6 +122,10 @@ https://github.com/nettitude/SharpWSUS
 https://github.com/GoSecure/pywsus
 https://github.com/FSecureLABS/SharpGPOAbuse
 https://github.com/CravateRouge/bloodyAD
+https://github.com/lkarlslund/Adalanche
+https://github.com/X-C3LL/GPOwned
+https://github.com/Hackndo/pyGPOAbuse
+https://github.com/erebe/wstunnel
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
