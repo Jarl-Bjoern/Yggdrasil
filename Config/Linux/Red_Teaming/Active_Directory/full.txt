@@ -126,6 +126,8 @@ https://github.com/lkarlslund/Adalanche
 https://github.com/X-C3LL/GPOwned
 https://github.com/Hackndo/pyGPOAbuse
 https://github.com/erebe/wstunnel
+https://github.com/ShutdownRepo/pywhisker
+https://github.com/eladshamir/Whisker
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
