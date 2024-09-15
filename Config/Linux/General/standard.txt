@@ -52,6 +52,7 @@ tor
 torbrowser-launcher
 novnc
 xclip
+xz-utils
 x11vnc
 
 # Python
