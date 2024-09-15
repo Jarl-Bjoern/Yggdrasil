@@ -1,15 +1,16 @@
 # APT
 evolution
-gnome-screenshot
 filezilla
 flameshot
 gnome-disk-utility
+gnome-screenshot
 keepassxc
 kitty
 i3
 meld
 nitrogen
 npm
+obsidian
 putty
 python-tk
 python3-tk
@@ -30,4 +31,3 @@ pyautogui
 # Wget
 https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-setup.tar.bz2 veracrypt Archive
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb google-chrome DPKG
-https://github.com/obsidianmd/obsidian-releases/releases/download/v1.4.16/obsidian_1.4.16_amd64.deb obsidian DPKG
