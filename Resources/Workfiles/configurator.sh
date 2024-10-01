@@ -1466,53 +1466,50 @@ if [[ $category_type = "pentest" || $category_type = "4" || $category_type = "co
         if [ -f "$OPT_Path/PEASS-ng/metasploit/peass.rb" ]; then
                 sudo cp "$OPT_Path"/PEASS-ng/metasploit/peass.rb /usr/share/metasploit-framework/modules/post/multi/gather/
         fi
-        if [ -d "$OPT_Path/Responder" ]; then
-                pip3 install -r "$OPT_Path"/Responder/requirements.txt ; echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
-        fi
 
         # Categories_Sort
-        cd "$OPT_Path" || return 0
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"nmap-erpscan","pysap","PyRFC","SAP_GW_RCE_exploit","SAP_RECON"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/Webscanner/SAP
-                mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON "$OPT_Path"/Webscanner/SAP || sudo rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
-        fi
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"drupwn","droopescan","CMSmap","ac-drupal"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/Webscanner/Drupal
-                mv drupwn droopescan CMSmap ac-drupal "$OPT_Path"/Webscanner/Drupal || sudo rm -rf drupwn droopescan CMSmap ac-drupal
-        fi
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"Typo3Scan","T3Scan"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/Webscanner/Typo3 ; mv Typo3Scan T3Scan "$OPT_Path"/Webscanner/Typo3 || sudo rm -rf Typo3Scan T3Scan
-        fi
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"wpscan","wphunter","WPSeku","Wordpresscan"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/Webscanner/Wordpress
-                mv wpscan wphunter Wordpresscan WPSeku "$OPT_Path"/Webscanner/Wordpress || sudo rm -rf wpscan wphunter Wordpresscan WPSeku
-        fi
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"joomscan","joomlavs"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/Webscanner/Joomla ; mv joomscan joomlavs "$OPT_Path"/Webscanner/Joomla || sudo rm -rf joomscan joomlavs
-        fi
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"moodlescan","mooscan","badmoodle"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/Webscanner/Moodle
-                mv moodlescan badmoodle mooscan "$OPT_Path"/Webscanner/Moodle || sudo rm -rf moodlescan badmoodle mooscan
-        fi
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"chisel","mitm_relay","proxychains-ng"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/Proxy
-                mv chisel mitm_relay proxychains-ng "$OPT_Path"/Proxy || sudo rm -rf chisel mitm_relay proxychains-ng
-        fi
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"SIPTools","viproy-voipkit"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/SIP ; mv viproy-voipkit SIPTools "$OPT_Path"/SIP || sudo rm -rf viproy-voipkit SIPTools
-        fi
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"ffuf","wfuzz"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/Fuzzer ; mv ffuf wfuzz "$OPT_Path"/Fuzzer || sudo rm -rf ffuf wfuzz
-        fi
-        if [[ $(/usr/bin/ls "$OPT_Path"/{"Postman","swagger-ui","jwt_tool"} 2>/dev/null) ]]; then
-                sudo mkdir -p "$OPT_Path"/API ; mv Postman swagger-ui jwt_tool "$OPT_Path"/API || sudo rm -rf Postman swagger-ui jwt_tool
-        fi
-        if [[ -d "$OPT_Path/plown" ]]; then
-                sudo mkdir -p "$OPT_Path"/Webscanner/Plone ; mv plown "$OPT_Path"/Webscanner/Plone || sudo rm -rf plown
-        fi
-        if [[ -d "$OPT_Path/LiferayScan" ]]; then
-                sudo mkdir -p "$OPT_Path"/Webscanner/Liferay ; mv LiferayScan "$OPT_Path"/Webscanner/Liferay || sudo rm -rf LiferayScan
-        fi
+#        cd "$OPT_Path" || return 0
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"nmap-erpscan","pysap","PyRFC","SAP_GW_RCE_exploit","SAP_RECON"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/Webscanner/SAP
+#                mv nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON "$OPT_Path"/Webscanner/SAP || sudo rm -rf nmap-erpscan pysap PyRFC SAP_GW_RCE_exploit SAP_RECON
+#        fi
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"drupwn","droopescan","CMSmap","ac-drupal"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/Webscanner/Drupal
+#                mv drupwn droopescan CMSmap ac-drupal "$OPT_Path"/Webscanner/Drupal || sudo rm -rf drupwn droopescan CMSmap ac-drupal
+#        fi
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"Typo3Scan","T3Scan"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/Webscanner/Typo3 ; mv Typo3Scan T3Scan "$OPT_Path"/Webscanner/Typo3 || sudo rm -rf Typo3Scan T3Scan
+#        fi
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"wpscan","wphunter","WPSeku","Wordpresscan"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/Webscanner/Wordpress
+#                mv wpscan wphunter Wordpresscan WPSeku "$OPT_Path"/Webscanner/Wordpress || sudo rm -rf wpscan wphunter Wordpresscan WPSeku
+#        fi
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"joomscan","joomlavs"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/Webscanner/Joomla ; mv joomscan joomlavs "$OPT_Path"/Webscanner/Joomla || sudo rm -rf joomscan joomlavs
+#        fi
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"moodlescan","mooscan","badmoodle"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/Webscanner/Moodle
+#                mv moodlescan badmoodle mooscan "$OPT_Path"/Webscanner/Moodle || sudo rm -rf moodlescan badmoodle mooscan
+#        fi
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"chisel","mitm_relay","proxychains-ng"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/Proxy
+#                mv chisel mitm_relay proxychains-ng "$OPT_Path"/Proxy || sudo rm -rf chisel mitm_relay proxychains-ng
+#        fi
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"SIPTools","viproy-voipkit"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/SIP ; mv viproy-voipkit SIPTools "$OPT_Path"/SIP || sudo rm -rf viproy-voipkit SIPTools
+#        fi
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"ffuf","wfuzz"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/Fuzzer ; mv ffuf wfuzz "$OPT_Path"/Fuzzer || sudo rm -rf ffuf wfuzz
+#        fi
+#        if [[ $(/usr/bin/ls "$OPT_Path"/{"Postman","swagger-ui","jwt_tool"} 2>/dev/null) ]]; then
+#                sudo mkdir -p "$OPT_Path"/API ; mv Postman swagger-ui jwt_tool "$OPT_Path"/API || sudo rm -rf Postman swagger-ui jwt_tool
+#        fi
+#        if [[ -d "$OPT_Path/plown" ]]; then
+#                sudo mkdir -p "$OPT_Path"/Webscanner/Plone ; mv plown "$OPT_Path"/Webscanner/Plone || sudo rm -rf plown
+#        fi
+#        if [[ -d "$OPT_Path/LiferayScan" ]]; then
+#                sudo mkdir -p "$OPT_Path"/Webscanner/Liferay ; mv LiferayScan "$OPT_Path"/Webscanner/Liferay || sudo rm -rf LiferayScan
+#        fi
 
         # Metasploit_Configuration
         sudo systemctl enable --now postgresql &>/dev/null
