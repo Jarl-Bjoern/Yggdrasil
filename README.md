@@ -36,7 +36,7 @@
 
 The program was developed to automate the process of installing missing tools, as well as the configuration of kali Linux after a new installation to save time.<br />
 
-The name `Yggdrasil` comes from norse mythology and is the tree of life or world tree, here the name is quite appropriate for the concept of the program, as it is geared for several pentetration test areas or even for digital forensics.<br />
+The name `Yggdrasil` comes from norse mythology and is the world tree, here the name is quite appropriate for the concept of the program, as it is geared for several cyber security categories.<br />
 <br />
 
 > [!IMPORTANT]
