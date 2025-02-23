@@ -136,11 +136,10 @@ https://github.com/Mayyhem/SharpSCCM
 https://github.com/SecuraBV/Timeroast
 https://github.com/Kevin-Robertson/Sharpmad
 https://github.com/0x09AL/RdpThief
+https://github.com/Offensive-Panda/ShadowDumper
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
-
-# Git_Submodules
 
 # Go
 https://github.com/ropnop/kerbrute
