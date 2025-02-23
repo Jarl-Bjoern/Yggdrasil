@@ -129,15 +129,22 @@ https://github.com/erebe/wstunnel
 https://github.com/ShutdownRepo/pywhisker
 https://github.com/eladshamir/Whisker
 https://github.com/JonasBK/Powershell
+https://github.com/coffeegist/bofhound
+https://github.com/Friends-Security/ShadowHound
+https://github.com/garrettfoster13/sccmhunter
+https://github.com/Mayyhem/SharpSCCM
+https://github.com/SecuraBV/Timeroast
+https://github.com/Kevin-Robertson/Sharpmad
+https://github.com/0x09AL/RdpThief
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
 
 # Git_Submodules
-https://github.com/cobbr/Covenant
 
 # Go
 https://github.com/ropnop/kerbrute
+https://github.com/RedTeamPentesting/pretender
 
 # Python
 bloodhound
