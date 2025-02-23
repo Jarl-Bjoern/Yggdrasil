@@ -58,6 +58,7 @@ def main():
             elif (Arg_Name == "skip_config"):                                        Parameters += "-sC "
             elif (Arg_Name == "skip_basic_installation"):                            Parameters += "-sbI "
             elif (Arg_Name == "skip_installation"):                                  Parameters += "-sI "
+            elif (Arg_Name == "fuck_the_system"):                                    Parameters += "-FTS "
             elif (Arg_Name == "custom_days"):                                        Parameters += f"{Arg_Value}.-cD "
             elif (Arg_Name == "skip_urls"):                                          Parameters += f"-sU "
             elif (Arg_Name == "verbose"):                                            Parameters += "-v "
