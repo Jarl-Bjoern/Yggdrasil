@@ -136,7 +136,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_Cargo_Updater':
                 {
                         'Time': '5',
-                        'Command': f'input="{opt_path}/update_cargo.info"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; sleep 1.15; done; done < "$input"',
+                        'Command': f'input="{opt_path}/update_cargo.info"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; sleep 30; done; done < "$input"',
 
                         'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater.sh'
                 },
@@ -315,7 +315,7 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         'Yggdrasil_GIT_Updater':
                 {
                         'Time': '3',
-                        'Command': f'HOME="/root"; input="{opt_path}/update.info"; while IFS= read -r GIT_TOOL; do cd "$GIT_TOOL" && /usr/bin/git pull ; sleep 1.15; done < "$input"',
+                        'Command': f'HOME="/root"; input="{opt_path}/update.info"; while IFS= read -r GIT_TOOL; do cd "$GIT_TOOL" && /usr/bin/git pull ; sleep 30; done < "$input"',
                         'Description_One': 'The script was designed to trigger the systemd unit to install git tool updates.',
                         'Description_Two': 'The script was formed to upgrade automatically tools which was installed by git.',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Updater.sh'
@@ -380,4 +380,5 @@ if __name__ == '__main__':
                         if ("shred" in argv[3]):    Systemd_Shredder_Configuration(argv[1], argv[2], argv[4])
                         elif ("normal" in argv[3]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2])
         except FileNotFoundError: pass
+
 
