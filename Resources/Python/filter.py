@@ -149,7 +149,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_GIT_Updater':
                 {
                         'Time': '3',
-                        'Command': f'HOME="/root"; input="{opt_path}/update.info"; while IFS= read -r GIT_TOOL; do cd "$GIT_TOOL" && /usr/bin/git pull ; sleep 1.15; done < "$input"',
+                        'Command': f'HOME="/root"; input="{opt_path}/update.info"; while IFS= read -r GIT_TOOL; do cd "$GIT_TOOL" && /usr/bin/git pull ; sleep 30; done < "$input"',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Updater.sh'
                 },
         'Yggdrasil_GIT_Monitor':
@@ -380,3 +380,4 @@ if __name__ == '__main__':
                         if ("shred" in argv[3]):    Systemd_Shredder_Configuration(argv[1], argv[2], argv[4])
                         elif ("normal" in argv[3]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2])
         except FileNotFoundError: pass
+
