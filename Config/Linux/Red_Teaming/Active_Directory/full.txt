@@ -90,7 +90,6 @@ https://github.com/BeetleChunks/SpoolSploit
 https://github.com/bitsadmin/nopowershell
 https://github.com/bitsadmin/wesng
 https://github.com/DominicBreuker/pspy
-https://github.com/charnim/Invoke-ReflectivePEInjection.ps1
 https://github.com/The-Viper-One/PsMapExec
 https://github.com/Leo4j/Amnesiac
 https://github.com/FuzzySecurity/StandIn
@@ -153,6 +152,7 @@ scapy
 
 # Wget
 https://download.sysinternals.com/files/SysinternalsSuite.zip Sysinternals Archive
+https://github.com/SpecterOps/BloodHound-Legacy/releases/download/v4.3.1/BloodHound-linux-x64.zip BloodHound Archive
 
 # Wordlists
 https://github.com/netbiosX/Default-Credentials
