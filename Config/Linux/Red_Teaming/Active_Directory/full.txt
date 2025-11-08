@@ -8,6 +8,7 @@ dnscat2
 enum4linux-ng
 evil-winrm
 gpp-decrypt
+hoaxshell
 krbrelayx
 ligolo-ng
 havoc
@@ -101,7 +102,6 @@ https://github.com/s0md3v/Hash-Buster
 https://github.com/Flangvik/SharpDllProxy
 https://github.com/francoismichel/ssh3
 https://github.com/SySS-Research/Seth
-https://github.com/t3l3machus/hoaxshell
 https://github.com/0x09AL/RdpThief
 https://github.com/leechristensen/SpoolSample
 https://github.com/danielbohannon/Invoke-Obfuscation
@@ -134,7 +134,6 @@ https://github.com/garrettfoster13/sccmhunter
 https://github.com/Mayyhem/SharpSCCM
 https://github.com/SecuraBV/Timeroast
 https://github.com/Kevin-Robertson/Sharpmad
-https://github.com/0x09AL/RdpThief
 https://github.com/Offensive-Panda/ShadowDumper
 https://github.com/login-securite/DonPAPI
 https://github.com/peass-ng/PEASS-ng
