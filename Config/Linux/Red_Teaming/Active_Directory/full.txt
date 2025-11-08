@@ -8,10 +8,12 @@ dnscat2
 enum4linux-ng
 evil-winrm
 gpp-decrypt
+hoaxshell
 krbrelayx
 ligolo-ng
 havoc
 krb5-user
+macchanger
 metasploit-framework
 mitmproxy
 mitm6
@@ -19,6 +21,7 @@ netexec
 powershell-empire
 proxychains4
 python3-impacket
+rdate
 responder
 starkiller
 
@@ -81,7 +84,6 @@ https://github.com/whotwagner/logrotten
 https://github.com/Greenwolf/ntlm_theft
 https://github.com/topotam/PetitPotam
 https://github.com/ShutdownRepo/targetedKerberoast
-https://github.com/Ben0xA/HoneyCreds
 https://github.com/Kevin-Robertson/Powermad
 https://github.com/rootSySdk/PowerGPOAbuse
 https://github.com/zer1t0/certi
@@ -95,13 +97,11 @@ https://github.com/The-Viper-One/PsMapExec
 https://github.com/Leo4j/Amnesiac
 https://github.com/FuzzySecurity/StandIn
 https://github.com/MWR-CyberSec/PXEThief
-https://github.com/itm4n/PrintSpoofer
 https://github.com/nettitude/SharpSocks
 https://github.com/s0md3v/Hash-Buster
 https://github.com/Flangvik/SharpDllProxy
 https://github.com/francoismichel/ssh3
 https://github.com/SySS-Research/Seth
-https://github.com/t3l3machus/hoaxshell
 https://github.com/0x09AL/RdpThief
 https://github.com/leechristensen/SpoolSample
 https://github.com/danielbohannon/Invoke-Obfuscation
@@ -117,7 +117,6 @@ https://github.com/FalconForceTeam/SOAPHound
 https://github.com/Yaxxine7/ASRepCatcher
 https://github.com/aniqfakhrul/powerview.py
 https://github.com/micahvandeusen/gMSADumper
-https://github.com/samratashok/nishang
 https://github.com/nettitude/SharpWSUS
 https://github.com/GoSecure/pywsus
 https://github.com/FSecureLABS/SharpGPOAbuse
@@ -135,7 +134,6 @@ https://github.com/garrettfoster13/sccmhunter
 https://github.com/Mayyhem/SharpSCCM
 https://github.com/SecuraBV/Timeroast
 https://github.com/Kevin-Robertson/Sharpmad
-https://github.com/0x09AL/RdpThief
 https://github.com/Offensive-Panda/ShadowDumper
 https://github.com/login-securite/DonPAPI
 https://github.com/peass-ng/PEASS-ng
