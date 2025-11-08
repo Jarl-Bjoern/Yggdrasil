@@ -81,7 +81,6 @@ https://github.com/whotwagner/logrotten
 https://github.com/Greenwolf/ntlm_theft
 https://github.com/topotam/PetitPotam
 https://github.com/ShutdownRepo/targetedKerberoast
-https://github.com/Ben0xA/HoneyCreds
 https://github.com/Kevin-Robertson/Powermad
 https://github.com/rootSySdk/PowerGPOAbuse
 https://github.com/zer1t0/certi
