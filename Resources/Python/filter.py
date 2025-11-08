@@ -136,7 +136,7 @@ def Crontab_Configuration(path_to_file, opt_path):
         'Yggdrasil_Cargo_Updater':
                 {
                         'Time': '5',
-                        'Command': f'input="{opt_path}/update_cargo.info"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; sleep 10; done; done < "$input"',
+                        'Command': f'input="{opt_path}/update_cargo.info"; while IFS= read -r CARGO_TOOL; do for i in $(find "/root" "/home" -type f -name "cargo" | grep -v ".rustup"); do "$i" install --force "$CARGO_TOOL" ; sleep 30; done; done < "$input"',
 
                         'Path': '/etc/yggdrasil/Yggdrasil_Cargo_Updater.sh'
                 },

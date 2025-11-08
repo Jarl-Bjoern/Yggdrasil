@@ -90,7 +90,6 @@ https://github.com/BeetleChunks/SpoolSploit
 https://github.com/bitsadmin/nopowershell
 https://github.com/bitsadmin/wesng
 https://github.com/DominicBreuker/pspy
-https://github.com/charnim/Invoke-ReflectivePEInjection.ps1
 https://github.com/The-Viper-One/PsMapExec
 https://github.com/Leo4j/Amnesiac
 https://github.com/FuzzySecurity/StandIn
@@ -129,15 +128,21 @@ https://github.com/erebe/wstunnel
 https://github.com/ShutdownRepo/pywhisker
 https://github.com/eladshamir/Whisker
 https://github.com/JonasBK/Powershell
+https://github.com/coffeegist/bofhound
+https://github.com/Friends-Security/ShadowHound
+https://github.com/garrettfoster13/sccmhunter
+https://github.com/Mayyhem/SharpSCCM
+https://github.com/SecuraBV/Timeroast
+https://github.com/Kevin-Robertson/Sharpmad
+https://github.com/0x09AL/RdpThief
+https://github.com/Offensive-Panda/ShadowDumper
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
 
-# Git_Submodules
-https://github.com/cobbr/Covenant
-
 # Go
 https://github.com/ropnop/kerbrute
+https://github.com/RedTeamPentesting/pretender
 
 # Python
 bloodhound
@@ -147,6 +152,7 @@ scapy
 
 # Wget
 https://download.sysinternals.com/files/SysinternalsSuite.zip Sysinternals Archive
+https://github.com/SpecterOps/BloodHound-Legacy/releases/download/v4.3.1/BloodHound-linux-x64.zip BloodHound Archive
 
 # Wordlists
 https://github.com/netbiosX/Default-Credentials

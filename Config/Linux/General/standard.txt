@@ -34,6 +34,7 @@ neovim
 netfilter-persistent
 nginx
 nmap
+novnc
 openconnect
 opensc
 pipx
@@ -50,7 +51,7 @@ squid
 tmux
 tor
 torbrowser-launcher
-novnc
+wireguard
 xclip
 xz-utils
 x11vnc
@@ -60,3 +61,4 @@ defaultcreds-cheat-sheet
 
 # Wget
 https://sh.rustup.rs rust Installer
+
