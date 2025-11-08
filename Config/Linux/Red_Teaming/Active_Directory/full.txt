@@ -1,4 +1,5 @@
 # APT
+bloodyad
 bloodhound
 certipy-ad
 coercer
@@ -138,6 +139,8 @@ https://github.com/0x09AL/RdpThief
 https://github.com/Offensive-Panda/ShadowDumper
 https://github.com/login-securite/DonPAPI
 https://github.com/peass-ng/PEASS-ng
+https://github.com/leoloobeek/LAPSToolkit
+https://github.com/init5-SF/CTF-toolBox
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
