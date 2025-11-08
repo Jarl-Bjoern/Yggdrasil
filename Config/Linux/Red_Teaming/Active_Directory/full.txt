@@ -7,6 +7,7 @@ dnscat2
 enum4linux-ng
 evil-winrm
 gpp-decrypt
+krbrelayx
 ligolo-ng
 havoc
 krb5-user
@@ -24,8 +25,8 @@ starkiller
 tenableofficial/nessus
 
 # Git
+https://github.com/SpecterOps/BloodHound
 https://github.com/DataDog/KubeHound
-https://github.com/BloodHoundAD/AzureHound
 https://github.com/TryCatchHCF/PacketWhisper
 https://github.com/jpillora/chisel
 https://github.com/utoni/ptunnel-ng
@@ -80,7 +81,6 @@ https://github.com/Greenwolf/ntlm_theft
 https://github.com/topotam/PetitPotam
 https://github.com/ShutdownRepo/targetedKerberoast
 https://github.com/Ben0xA/HoneyCreds
-https://github.com/dirkjanm/krbrelayx
 https://github.com/Kevin-Robertson/Powermad
 https://github.com/rootSySdk/PowerGPOAbuse
 https://github.com/zer1t0/certi
@@ -136,6 +136,8 @@ https://github.com/SecuraBV/Timeroast
 https://github.com/Kevin-Robertson/Sharpmad
 https://github.com/0x09AL/RdpThief
 https://github.com/Offensive-Panda/ShadowDumper
+https://github.com/login-securite/DonPAPI
+https://github.com/peass-ng/PEASS-ng
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
@@ -145,7 +147,6 @@ https://github.com/ropnop/kerbrute
 https://github.com/RedTeamPentesting/pretender
 
 # Python
-bloodhound
 requests-ntlm
 requests-credssp
 scapy
