@@ -117,7 +117,6 @@ https://github.com/FalconForceTeam/SOAPHound
 https://github.com/Yaxxine7/ASRepCatcher
 https://github.com/aniqfakhrul/powerview.py
 https://github.com/micahvandeusen/gMSADumper
-https://github.com/samratashok/nishang
 https://github.com/nettitude/SharpWSUS
 https://github.com/GoSecure/pywsus
 https://github.com/FSecureLABS/SharpGPOAbuse
