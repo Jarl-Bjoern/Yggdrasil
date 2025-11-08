@@ -149,13 +149,13 @@ declare -a Array_HARDENING=("#Protecting_against_IP-Spoofing"
 declare -a Array_Pentesting=()
 
 declare -a Array_SSH_Ciphers=("# Keyexchange algorithms"
-"KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,sntrup761x25519-sha512"
+"#KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,sntrup761x25519-sha512"
 "# Host-key algorithms"
-"HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,pgp-sign-dss,x509v3-ecdsa-sha2-nistp256,x509v3-ecdsa-sha2-nistp384,x509v3-ecdsa-sha2-nistp521"
+"#HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,pgp-sign-dss,x509v3-ecdsa-sha2-nistp256,x509v3-ecdsa-sha2-nistp384,x509v3-ecdsa-sha2-nistp521"
 "# Encryption algorithms (ciphers)"
-"Ciphers chacha20-poly1305,aes256-ctr,aes128-ctr"
+"#Ciphers chacha20-poly1305,aes256-ctr,aes128-ctr"
 "# Message authentication code (MAC) algorithms"
-"MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com")
+"#MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com")
 
 declare -a Array_URL=()
 
@@ -208,24 +208,24 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}4${NOCOLOR}] ${ORANGE}pentest${NOCOLOR}     :  installation of pentest     tools        ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}hardening${NOCOLOR}   :  installation of hardening   tools        ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}training${NOCOLOR}    :  installation of training    tools        ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}red_teaming${NOCOLOR} :  installation of red teaming tools        ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${CYAN}8${NOCOLOR}] ${CYAN}development${NOCOLOR} :  installation of development tools        ${CYAN}|${NOCOLOR}"
-  	elif [ "$1" = "forensic" ]; then
-		echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}           :  installation of  all  toolkits     ${CYAN}|${NOCOLOR}"
-	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud  analysis          ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}crypto${NOCOLOR}             :  tools for crypto analysis          ${CYAN}|${NOCOLOR}"
-  		echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}infrastructure${NOCOLOR}     :  tools for infrastructure analysis  ${CYAN}|${NOCOLOR}"
-    		echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}mobile${NOCOLOR}             :  tools for mobile forensics         ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}red_teaming${NOCOLOR} :  installation of red teaming tools        ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${CYAN}8${NOCOLOR}] ${CYAN}development${NOCOLOR} :  installation of development tools        ${CYAN}|${NOCOLOR}"
+        elif [ "$1" = "forensic" ]; then
+                echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}           :  installation of  all  toolkits     ${CYAN}|${NOCOLOR}"
+	            echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud  analysis          ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}crypto${NOCOLOR}             :  tools for crypto analysis          ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}infrastructure${NOCOLOR}     :  tools for infrastructure analysis  ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}mobile${NOCOLOR}             :  tools for mobile forensics         ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "development" ]; then
-		echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}             :  installation of  all  toolkits   ${CYAN}|${NOCOLOR}"
-	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}source_code_analysis${NOCOLOR} :  tools for source code analysis   ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}reverse_engineering${NOCOLOR}  :  tools for reverse  engineering   ${CYAN}|${NOCOLOR}"
-  		echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}exploit_development${NOCOLOR}  :  tools for exploit  development   ${CYAN}|${NOCOLOR}"
-    		echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}malware_development${NOCOLOR}  :  tools for malware  development   ${CYAN}|${NOCOLOR}"
-  	elif [ "$1" = "hardening_category" ]; then
-		echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}           :  installation of  all  toolkits     ${CYAN}|${NOCOLOR}"
-	        echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud  hardening         ${CYAN}|${NOCOLOR}"
-  		echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}     :  tools for infrastructure hardening ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}             :  installation of  all  toolkits   ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}source_code_analysis${NOCOLOR} :  tools for source code analysis   ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}reverse_engineering${NOCOLOR}  :  tools for reverse  engineering   ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${ORANGE}4${NOCOLOR}] ${ORANGE}exploit_development${NOCOLOR}  :  tools for exploit  development   ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${BLUE}5${NOCOLOR}] ${BLUE}malware_development${NOCOLOR}  :  tools for malware  development   ${CYAN}|${NOCOLOR}"
+        elif [ "$1" = "hardening_category" ]; then
+                echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}           :  installation of  all  toolkits     ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}cloud${NOCOLOR}              :  tools for cloud  hardening         ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${GREEN}3${NOCOLOR}] ${GREEN}infrastructure${NOCOLOR}     :  tools for infrastructure hardening ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "installation" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}1${NOCOLOR}] ${GREEN}full${NOCOLOR}         :     full    installation (${GREEN}GUI${NOCOLOR})           ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}2${NOCOLOR}] ${ORANGE}minimal${NOCOLOR}      :     minimal installation (${ORANGE}CLI${NOCOLOR})           ${CYAN}|${NOCOLOR}"
@@ -237,7 +237,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}5${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}           :   tools for cloud  pentesting         ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "red_team" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}            :   complete configuration          ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}2${NOCOLOR}] ${PURPLE}active_directory${NOCOLOR}    :   tools for active directory      ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}2${NOCOLOR}] ${PURPLE}active_directory${NOCOLOR}    :   tools for active directory      ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}3${NOCOLOR}] ${CYAN}osint${NOCOLOR}               :   tools for osint                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}4${NOCOLOR}] ${GREEN}phishing${NOCOLOR}            :   tools for phishing              ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}5${NOCOLOR}] ${ORANGE}physical${NOCOLOR}            :   tools for physical tests        ${CYAN}|${NOCOLOR}"
@@ -261,8 +261,8 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}  [${PURPLE}6${NOCOLOR}] ${PURPLE}repo${NOCOLOR}          :   kali repository change                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}7${NOCOLOR}] ${RED}shredder${NOCOLOR}      :   workspace file shredding script        ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}                        (${RED}after 90 days [${ORANGE}default${RED}]${NOCOLOR})              ${CYAN}|${NOCOLOR}"
-		echo -e "${CYAN}|${NOCOLOR}  [${CYAN}8${NOCOLOR}] ${CYAN}tmux${NOCOLOR}          :   custom tmux config                     ${CYAN}|${NOCOLOR}"
-		#echo -e "${CYAN}|${NOCOLOR}  [${CYAN}9${NOCOLOR}] ${CYAN}neovim${NOCOLOR}          :   custom neovim config                     ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}  [${CYAN}8${NOCOLOR}] ${CYAN}tmux${NOCOLOR}          :   custom tmux config                     ${CYAN}|${NOCOLOR}"
+                #echo -e "${CYAN}|${NOCOLOR}  [${CYAN}9${NOCOLOR}] ${CYAN}neovim${NOCOLOR}          :   custom neovim config                     ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "task" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}cronjob${NOCOLOR}      :   cronjob configuration                   ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}timer${NOCOLOR}        :   systemd timer configuration             ${CYAN}|${NOCOLOR}"
@@ -282,25 +282,25 @@ function Create_Filter_Array() {
         while IFS= read -r line
         do
 		if [[ ! "$line" =~ "#" && ${#line} -gt 2 ]]; then
-                        if [[ "$line" =~ "https://" && $(grep -o " " <<< "$line" | wc -c) -gt 2 ]]; then
-                                TEMP_Filter=$(echo "$line" | awk '{print $2}' | tr -d '\r')
-                        elif [[ "$line" =~ "https://" && $(grep -o " " <<< "$line" | wc -c) -eq 2 ]]; then
-                                TEMP_Filter=$(echo "$line" | awk '{print $1}' | rev | cut -d '/' -f1 | rev | tr -d '\r')
-                        elif [[ "$line" =~ "https://" && ! "$line" =~ " " ]]; then
-                                TEMP_Filter=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
-                        else
-                                TEMP_Filter=$(echo "$line" | tr -d '\r')
-                        fi
+				if [[ "$line" =~ "https://" && $(grep -o " " <<< "$line" | wc -c) -gt 2 ]]; then
+						TEMP_Filter=$(echo "$line" | awk '{print $2}' | tr -d '\r')
+				elif [[ "$line" =~ "https://" && $(grep -o " " <<< "$line" | wc -c) -eq 2 ]]; then
+						TEMP_Filter=$(echo "$line" | awk '{print $1}' | rev | cut -d '/' -f1 | rev | tr -d '\r')
+				elif [[ "$line" =~ "https://" && ! "$line" =~ " " ]]; then
+						TEMP_Filter=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+				else
+						TEMP_Filter=$(echo "$line" | tr -d '\r')
+				fi
 
-                        if [[ $(find "$OPT_Path" -maxdepth 2 -name "$TEMP_Filter" -type d ! -path "$OPT_Path" | head -n1) ]]; then
-                                Array_Filter_Download+=($(find "$OPT_Path" -maxdepth 2 -name "$TEMP_Filter" -type d ! -path "$OPT_Path" | head -n1))
-                        elif [[ $(find '/opt/wordlists' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/wordlists' | head -n1) ]]; then
-                                Array_Filter_Download+=($(find '/opt/wordlists' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/wordlists' | head -n1))
-                        elif [[ $(find '/opt/hashcat_rules' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/hashcat_rules' | head -n1) ]]; then
-                                Array_Filter_Download+=($(find '/opt/hashcat_rules' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/hashcat_rules' | head -n1))
-                        elif [[ $(which "$TEMP_Filter") ]]; then
-                                Array_Filter_Download+=($(which "$TEMP_Filter"))
-                        fi
+				if [[ $(find "$OPT_Path" -maxdepth 2 -name "$TEMP_Filter" -type d ! -path "$OPT_Path" | head -n1) ]]; then
+						Array_Filter_Download+=($(find "$OPT_Path" -maxdepth 2 -name "$TEMP_Filter" -type d ! -path "$OPT_Path" | head -n1))
+				elif [[ $(find '/opt/wordlists' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/wordlists' | head -n1) ]]; then
+						Array_Filter_Download+=($(find '/opt/wordlists' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/wordlists' | head -n1))
+				elif [[ $(find '/opt/hashcat_rules' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/hashcat_rules' | head -n1) ]]; then
+						Array_Filter_Download+=($(find '/opt/hashcat_rules' -maxdepth 2 -name "$TEMP_Filter" -type d ! -path '/opt/hashcat_rules' | head -n1))
+				elif [[ $(which "$TEMP_Filter") ]]; then
+						Array_Filter_Download+=($(which "$TEMP_Filter"))
+				fi
    		fi
  	done < "$input"
 }
@@ -354,10 +354,10 @@ function Download_Commander() {
 			FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
 			Check_For_Skip_Download $FILE_URL
 			if [[ "$Switch_Skip_Git_Download" == false ]]; then
-				eval "$Command $FILE_BRANCH $FILE_URL"
+                    eval "$Command $FILE_BRANCH $FILE_URL"
     			else
-				Tool_Name=$(echo "$line" | awk '{print $1}' | rev | cut -d '/' -f1 | rev | tr -d '\r')
-       				echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+                    Tool_Name=$(echo "$line" | awk '{print $1}' | rev | cut -d '/' -f1 | rev | tr -d '\r')
+       	            echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
     			fi
 		elif [[ $Command =~ "cargo" ]]; then
 			eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
@@ -379,9 +379,9 @@ function Download_Commander() {
 		Logger "$Command" "$line"
 	else
  		if [[ "$line" =~ "https://" ]]; then
-			Tool_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
+            Tool_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
    		else
-     			Tool_Name="$line"
+            Tool_Name="$line"
 		fi
 		echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
 	fi
@@ -511,10 +511,12 @@ function File_Installer() {
                                                 if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
                                                         echo -e "${RED}$line${NOCOLOR} was skipped" | tee -a "$FULL_PATH/yggdrasil.log"
                                                 else
-							Download_Commander
+                                                        Download_Commander
+                                                        sleep 1
                                                 fi
                                         else
-						Download_Commander
+                                                Download_Commander
+                                                sleep 1
                                         fi
                                 else
                                         FILE=$(echo "$line" | cut -d" " -f1)
@@ -1921,3 +1923,4 @@ if [[ $Switch_Skip_URLS == false && $Switch_URL != false ]]; then
                 done
         fi
 fi
+
