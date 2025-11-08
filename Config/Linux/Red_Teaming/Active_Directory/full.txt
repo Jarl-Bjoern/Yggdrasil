@@ -96,7 +96,6 @@ https://github.com/The-Viper-One/PsMapExec
 https://github.com/Leo4j/Amnesiac
 https://github.com/FuzzySecurity/StandIn
 https://github.com/MWR-CyberSec/PXEThief
-https://github.com/itm4n/PrintSpoofer
 https://github.com/nettitude/SharpSocks
 https://github.com/s0md3v/Hash-Buster
 https://github.com/Flangvik/SharpDllProxy
