@@ -31,7 +31,7 @@ https://github.com/DavidAnson/markdownlint
 https://github.com/markdownlint/markdownlint
 https://github.com/quay/clair
 https://github.com/aws-cloudformation/cfn-lint
-https://github.com/yandex/gixy
+https://github.com/dvershinin/gixy
 https://github.com/stelligent/cfn_nag
 https://github.com/angr/angr
 https://github.com/quarkslab/binbloom
