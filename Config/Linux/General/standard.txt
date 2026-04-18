@@ -5,7 +5,7 @@ bat
 charon-cmd
 curl
 docker.io
-docker-compose
+docker-compose-plugin
 eza
 fish
 g++
