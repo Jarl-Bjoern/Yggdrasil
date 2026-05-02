@@ -106,7 +106,6 @@ https://github.com/danielbohannon/Invoke-Obfuscation
 https://github.com/hashcat/kwprocessor
 https://github.com/bats3c/darkarmour
 https://github.com/tokyoneon/Chimera
-https://github.com/DominicBreuker/pspy
 https://github.com/SnaffCon/Snaffler
 https://github.com/antonioCoco/RoguePotato
 https://github.com/AlessandroZ/LaZagne
