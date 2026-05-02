@@ -34,13 +34,11 @@
   </a>
 </div><br/>
 
-The program was developed to automate the process of installing missing tools, as well as the configuration of kali Linux after a new installation to save time.<br />
-
-The name `Yggdrasil` comes from norse mythology and is the world tree, here the name is quite appropriate for the concept of the program, as it is geared for several cybersecurity categories.<br />
+`Yggdrasil`, the world tree in Norse mythology, symbolizes connection and structure — an idea that reflects this program's purpose. Designed for multiple cybersecurity domains, it automates the installation of missing tools and streamlines the configuration of Kali Linux after a fresh setup, saving valuable time.<br />
 <br />
 
 > [!IMPORTANT]
-> <strong>Please do `not` use the program `for illegal intentions`.</strong><br />
+> <strong>Do `not` use this program `for illegal activities`.</strong><br />
 <br />
 
 ## ❗ News
