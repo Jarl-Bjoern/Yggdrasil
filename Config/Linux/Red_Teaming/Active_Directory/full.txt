@@ -1,6 +1,5 @@
 # APT
 bloodyad
-bloodhound
 certipy-ad
 coercer
 crackmapexec
@@ -11,7 +10,6 @@ gpp-decrypt
 hoaxshell
 krbrelayx
 ligolo-ng
-havoc
 krb5-user
 macchanger
 metasploit-framework
