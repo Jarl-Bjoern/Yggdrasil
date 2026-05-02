@@ -28,6 +28,7 @@ SMB_Hosts=""
 Switch_APACHE=false
 Switch_BloodHound=false
 Switch_BRANCH=false
+Switch_Break_Packages=false
 Switch_Cargo=false
 Switch_CRON=false
 Switch_CUSTOM_CONFIGS=false
@@ -459,7 +460,12 @@ function File_Installer() {
                 elif [[ $line = "# Docker" ]]; then
                         Command="docker pull" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Python" ]]; then
-                        Command="pip3 install" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
+                        if [[ $Switch_Break_Packages == true ]]; then
+                            Command="pip3 install --break-system-packages"
+                        else
+                            Command="pip3 install"
+                        fi
+                        Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# NPM" ]]; then
                         Command="npm install --global" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Git" ]]; then
@@ -761,18 +767,20 @@ function Category_Loop() {
 
 # Checking_Parameters
 for arg; do
-        if [[ $arg == "-sH" ]]; then
-                Switch_Skip_Hardening=true
-        elif [[ $arg == "-sC" ]]; then
-                Switch_Skip_Configs=true
-        elif [[ $arg == "-aL" ]]; then
-                Switch_License=true
-        elif [[ $arg == "-v" ]]; then
-                Switch_Verbose=true
+	if [[ $arg == "-sH" ]]; then
+		Switch_Skip_Hardening=true
+	elif [[ $arg == "-sC" ]]; then
+		Switch_Skip_Configs=true
+	elif [[ $arg == "-aL" ]]; then
+    	Switch_License=true
+	elif [[ $arg == "-v" ]]; then
+    	Switch_Verbose=true
 	elif [[ $arg == "-sI" ]]; then
  		Switch_Skip_Installation=true
-        elif [[ $arg == "-sU" ]]; then
-                Switch_Skip_URLS=true
+	elif [[ $arg == "-sU" ]]; then
+		Switch_Skip_URLS=true
+	elif [[ $arg == "-FTS" ]]; then
+		Switch_Break_Packages=true
 	elif [[ $arg == "-sbI" ]]; then
  		Switch_Skip_Basic_Installation=true
         elif [[ "$(echo "$arg" | awk -F "$(echo "$arg" | rev | cut -c5- | rev)" '{print $2}')" == ".-aW" ]]; then
