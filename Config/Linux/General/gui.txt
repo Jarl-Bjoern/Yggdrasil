@@ -29,5 +29,5 @@ psutil
 pyautogui
 
 # Wget
-https://launchpad.net/veracrypt/trunk/1.26.24/+download/veracrypt-1.26.24-setup.tar.bz2 veracrypt Archive
+https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_1.26.24/veracrypt-1.26.24-Debian-13-amd64.deb veracrypt DPKG
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb google-chrome DPKG
