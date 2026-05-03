@@ -99,7 +99,7 @@ The following link lists all the features that the tool offers.
 
 
 ## ☢️ Cheat Sheet
-The following link contains the official cheat sheet for the tool.
+The following link contains the official cheat sheet for `Yggdrasil`.
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki/%E2%98%A2%EF%B8%8F-Cheat-Sheet">
