@@ -50,6 +50,7 @@ Switch_Skip_Hardening=false
 Switch_Skip_Basic_Installation=false
 Switch_Skip_Installation=false
 Switch_Skip_URLS=false
+Switch_Skip_Sleep=false
 Switch_SMB=false
 #Switch_SQUID=false
 Switch_SSH=false
@@ -346,7 +347,8 @@ function Download_Commander() {
 		if [[ $Command =~ "apt" ]]; then
 			SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
 			if [[ $(which "$line") || "$(apt-cache policy $line | head -n2 | grep "[0-9]" | awk '{print $2}')" ]]; then
-			    echo -e "${RED}$line${NOCOLOR} is already installed."
+			    echo -e "${RED}$line${NOCOLOR} is already installed." | tee -a "$FULL_PATH/yggdrasil.log"
+				Switch_Skip_Sleep=true
 			else
 			    eval "$SECOND_Command"
 			fi
@@ -355,21 +357,30 @@ function Download_Commander() {
 			FILE_BRANCH=$(echo "$line" | cut -d" " -f2)
 			Check_For_Skip_Download $FILE_URL
 			if [[ "$Switch_Skip_Git_Download" == false ]]; then
-                    eval "$Command $FILE_BRANCH $FILE_URL"
-    			else
-                    Tool_Name=$(echo "$line" | awk '{print $1}' | rev | cut -d '/' -f1 | rev | tr -d '\r')
-       	            echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
-    			fi
+				eval "$Command $FILE_BRANCH $FILE_URL"
+			else
+				Tool_Name=$(echo "$line" | awk '{print $1}' | rev | cut -d '/' -f1 | rev | tr -d '\r')
+				echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+				Switch_Skip_Sleep=true
+			fi
 		elif [[ $Command =~ "cargo" ]]; then
 			eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
+        elif [[ $Command =~ "pip3" ]]; then
+		    if [[ ! $(pip3 freeze) | grep "^$line"]] ; then
+                eval "$Command $line"
+			else
+			    echo -e "${RED}$line${NOCOLOR} is already installed." | tee -a "$FULL_PATH/yggdrasil.log"
+			    Switch_Skip_Sleep=true
+			fi
 		else
 			Check_For_Skip_Download $line
 			if [[ "$Switch_Skip_Git_Download" == false ]]; then
 				eval "$Command $line"
-    			else
+    		else
 				Tool_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
-       				echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
-    			fi
+       			echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
+				Switch_Skip_Sleep=true
+    		fi
 
 			if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
 				Temp_File_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
@@ -518,12 +529,17 @@ function File_Installer() {
                                                         echo -e "${RED}$line${NOCOLOR} was skipped" | tee -a "$FULL_PATH/yggdrasil.log"
                                                 else
                                                         Download_Commander
-                                                        sleep 1
+                                                        if [[ "$Switch_Skip_Sleep" = false ]]; then
+                                                            sleep 1
+                                                        fi
                                                 fi
                                         else
                                                 Download_Commander
-                                                sleep 1
+												if [[ "$Switch_Skip_Sleep" = false ]]; then
+													sleep 1
+												fi
                                         fi
+										Switch_Skip_Sleep=false
                                 else
                                         FILE=$(echo "$line" | cut -d" " -f1)
                                         FILE_NAME=$(echo "$line" | cut -d" " -f2)
