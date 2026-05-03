@@ -366,7 +366,7 @@ function Download_Commander() {
 		elif [[ $Command =~ "cargo" ]]; then
 			eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
         elif [[ $Command =~ "pip3" ]]; then
-		    if [[ ! $(pip3 freeze) | grep "^$line"]] ; then
+		    if [[ ! $(pip3 freeze | grep "^$line") ]] ; then
                 eval "$Command $line"
 			else
 			    echo -e "${RED}$line${NOCOLOR} is already installed." | tee -a "$FULL_PATH/yggdrasil.log"
