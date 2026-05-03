@@ -57,6 +57,8 @@
   - `smb` was added to the hardening options
   - `-FTS` parameter was added to use `--break-system-packages` for pip packages
 - New Improvements:
+  - Downloader:
+    - To speed up the installation process, the timer for packages that have already been installed has been reduced.
   - Automation script:
     - Automation script to install `sliver` was added
     - Automation script to install `covenant` was added
