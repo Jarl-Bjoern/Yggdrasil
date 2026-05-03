@@ -363,8 +363,7 @@ function Download_Commander() {
 		if [[ $Command =~ "apt" ]]; then
 			SECOND_Command="$Command $line || (apt --fix-broken install -y && $Command $line)"
 			if [[ $(which "$line") || "$(apt-cache policy $line | head -n2 | grep "[0-9]" | awk '{print $2}')" ]]; then
-			    echo -e "${RED}$line${NOCOLOR} is already installed." | tee -a "$FULL_PATH/yggdrasil.log"
-				Switch_Skip_Sleep=true
+			    Skip_Message "$line" "is already installed."
 			else
 			    eval "$SECOND_Command"
 			fi
@@ -376,8 +375,7 @@ function Download_Commander() {
 				eval "$Command $FILE_BRANCH $FILE_URL"
 			else
 				Tool_Name=$(echo "$line" | awk '{print $1}' | rev | cut -d '/' -f1 | rev | tr -d '\r')
-				echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
-				Switch_Skip_Sleep=true
+				Skip_Message "$Tool_Name" "already exists."
 			fi
 		elif [[ $Command =~ "cargo" ]]; then
 			eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
@@ -385,15 +383,13 @@ function Download_Commander() {
 				if ! docker images | grep -q "$line"; then
 					eval "$Command $line"
 				else
-					echo -e "${RED}$line${NOCOLOR} is already installed." | tee -a "$FULL_PATH/yggdrasil.log"
-					Switch_Skip_Sleep=true
+					Skip_Message "$line" "is already installed."
 				fi
         elif [[ $Command =~ "pip3" ]]; then
 			if [[ ! $(grep "^$line==" /tmp/pip_packages.txt) ]]; then
 				eval "$Command $line"
 			else
-				echo -e "${RED}$line${NOCOLOR} is already installed." | tee -a "$FULL_PATH/yggdrasil.log"
-				Switch_Skip_Sleep=true
+				Skip_Message "$line" "is already installed."
 			fi
 		else
 			Check_For_Skip_Download $line
@@ -401,8 +397,7 @@ function Download_Commander() {
 				eval "$Command $line"
     		else
 				Tool_Name=$(echo "$line" | rev | cut -d '/' -f1 | rev | tr -d '\r')
-       			echo -e "${RED}$Tool_Name${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
-				Switch_Skip_Sleep=true
+				Skip_Message "$Tool_Name" "already exists."
     		fi
 
 			if [[ "$Command" =~ "git clone" && "$Switch_GO" == true ]]; then
