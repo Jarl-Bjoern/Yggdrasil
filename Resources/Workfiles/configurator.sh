@@ -172,6 +172,9 @@ PURPLE='\033[0;35m'
 UNDERLINE='\033[0;4m'
 NOCOLOR='\033[0m'
 
+# Dump pip package information
+pip3 freeze > /tmp/pip_packages.txt
+
 # Functions
 function initials {
         echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
@@ -366,11 +369,11 @@ function Download_Commander() {
 		elif [[ $Command =~ "cargo" ]]; then
 			eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
         elif [[ $Command =~ "pip3" ]]; then
-			if ! pip3 freeze | grep -q "$line"; then
-					eval "$Command $line"
+			if [[ ! $(grep "^$line==" /tmp/pip_packages.txt) ]]; then
+				eval "$Command $line"
 			else
-					echo -e "${RED}$line${NOCOLOR} is already installed." | tee -a "$FULL_PATH/yggdrasil.log"
-					Switch_Skip_Sleep=true
+				echo -e "${RED}$line${NOCOLOR} is already installed." | tee -a "$FULL_PATH/yggdrasil.log"
+				Switch_Skip_Sleep=true
 			fi
 		else
 			Check_For_Skip_Download $line
@@ -1930,6 +1933,7 @@ if [[ ! -d "/opt/ssl" ]]; then
 fi
 sudo openssl req -nodes -x509 -newkey rsa:2048 -keyout /opt/ssl/pentest-key.pem -out /opt/ssl/pentest-cert.pem -sha512 -days 365 -subj '/CN=pentest-kali' 2>/dev/null
 
+rm -f /tmp/pip_packages.txt
 sudo python3 "$FULL_PATH/Resources/Python/clean.py" "$OPT_Path"
 Change_Hostname "$HOST_Pentest"
 echo -e "\n${CYAN}---------------------------------------------------------------------------------${NOCOLOR}\n"
@@ -1947,4 +1951,3 @@ if [[ $Switch_Skip_URLS == false && $Switch_URL != false ]]; then
                 done
         fi
 fi
-
