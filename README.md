@@ -55,6 +55,7 @@
 - New Features:
   - `npm` was added as a new download category
   - `smb` was added to the hardening options
+  - `-FTS` parameter was added to use `--break-system-packages` for pip packages
 - New Improvements:
   - Automation script:
     - Automation script to install `sliver` was added
