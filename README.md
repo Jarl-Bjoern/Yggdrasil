@@ -92,7 +92,7 @@ The official documentation could be found at the following link.
 
 
 ## 📃 Features
-The following link lists all the features that the tool offers.
+The following link contains all features of `Yggdrasil`.
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/wiki/%F0%9F%93%83-Features-overview">
@@ -140,4 +140,4 @@ But also the developer would like to thank the people who do not have a GitHub a
 <br />
 
 # ⚠️ Remark
-It should be said that the scripts are still under development, but already allow an easier start to perform e.g. as a penetration tester or digital forensics, certain pre-settings.
+It should be noted that the scripts are still under active development; however, they already provide a simplified starting point for tasks such as penetration testing or digital forensics by offering predefined configurations and setup options.
