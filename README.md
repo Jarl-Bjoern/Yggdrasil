@@ -43,29 +43,31 @@
 - Hotfixes:
   - `Exa` was replaced with `Eza`.
   - Systemd Units:
-    - Cargo Updater was fixed
-    - Incorrect output during the filter process was issued several times if the installation path did not exist
-    - Not all timers was enabled
-    - Path filter process for custom configs was fixed
-    - Workspace Cleaner was fixed
+    - Cargo Updater was fixed.
+    - Incorrect output during the filter process was issued several times if the installation path did not exist.
+    - Not all timers was enabled.
+    - Path filter process for custom configs was fixed.
+    - Workspace Cleaner was fixed.
+- Additional Changes:
+  -  The planned feature for provisioning a Windows machine with the necessary tools was ultimately deferred due to time constraints.
 - New Aliases:
-  - `yggdrasil-services` was added to monitor all systemd units of the tool
+  - `yggdrasil-services` was added to monitor all systemd units of the tool.
 - New Category:
   - `Malware Development`
 - New Features:
-  - `npm` was added as a new download category
-  - `smb` was added to the hardening options
-  - `-FTS` parameter was added to use `--break-system-packages` for pip packages
+  - `npm` was added as a new download category.
+  - `smb` was added to the hardening options.
+  - `-FTS` parameter was added to use `--break-system-packages` for pip packages.
 - New Improvements:
   - Downloader:
     - To speed up the installation process, the timer for packages that have already been installed has been reduced.
   - Automation script:
-    - Automation script to install `sliver` was added
-    - Automation script to install `covenant` was added
+    - Automation script to install `sliver` was added.
+    - Automation script to install `covenant` was added.
   - Systemd Units:
-    - New description fields was added
+    - New description fields was added.
   - Terminal:
-    - The terminal transparency has been set to `0`
+    - The terminal transparency has been set to `0`.
   - Yggdrasil Wiki improvements:
     - `Cheat Sheet`
     - `Features Overview`
