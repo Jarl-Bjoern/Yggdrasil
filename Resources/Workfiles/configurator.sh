@@ -353,6 +353,11 @@ function Automation_Config_Check() {
    	done < "$input"
 }
 
+function Skip_Message() {
+        echo -e "${RED}$1${NOCOLOR} $2" | tee -a "$FULL_PATH/yggdrasil.log"
+        Switch_Skip_Sleep=true
+}
+
 function Download_Commander() {
 	if [[ $Switch_IGNORE = false ]]; then
 		if [[ $Command =~ "apt" ]]; then
