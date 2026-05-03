@@ -190,6 +190,14 @@ function clearing {
         sleep 2 ; clear ; initials
 }
 
+function custom_sleep {
+		if [[ "$Switch_Skip_Sleep" = false ]]; then
+			sleep 1
+		else
+			sleep 0.1
+		fi
+}
+
 function Change_Hostname {
         if [[ $(cat /etc/hostname) == "kali" ]]; then
                  sudo sed -i s/"kali/$1"/g /etc/hostname
@@ -532,19 +540,11 @@ function File_Installer() {
                                                         echo -e "${RED}$line${NOCOLOR} was skipped." | tee -a "$FULL_PATH/yggdrasil.log"
                                                 else
                                                         Download_Commander
-                                                        if [[ "$Switch_Skip_Sleep" = false ]]; then
-                                                            sleep 1
-														else
-															sleep 0.1
-                                                        fi
+														custom_sleep
                                                 fi
                                         else
                                                 Download_Commander
-												if [[ "$Switch_Skip_Sleep" = false ]]; then
-													sleep 1
-												else
-													sleep 0.1
-												fi
+												custom_sleep
                                         fi
 										Switch_Skip_Sleep=false
                                 else
