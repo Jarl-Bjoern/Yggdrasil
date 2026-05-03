@@ -376,6 +376,13 @@ function Download_Commander() {
 			fi
 		elif [[ $Command =~ "cargo" ]]; then
 			eval "$Command $line" || source "$HOME/.cargo/env" && eval "$Command $line"
+		elif [[ $Command =~ "docker" ]]; then
+				if ! docker images | grep -q "$line"; then
+					eval "$Command $line"
+				else
+					echo -e "${RED}$line${NOCOLOR} is already installed." | tee -a "$FULL_PATH/yggdrasil.log"
+					Switch_Skip_Sleep=true
+				fi
         elif [[ $Command =~ "pip3" ]]; then
 			if [[ ! $(grep "^$line==" /tmp/pip_packages.txt) ]]; then
 				eval "$Command $line"
