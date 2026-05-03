@@ -529,17 +529,21 @@ function File_Installer() {
                                         fi
                                         if [ "$Switch_Skip_Hardening" = true ]; then
                                                 if [[ $line =~ "iptables-persistent" || $line =~ "netfilter-persistent" || $line =~ "charon" || $line =~ "strongswan" || $line =~ "openconnect" || $line =~ "opensc" ]]; then
-                                                        echo -e "${RED}$line${NOCOLOR} was skipped" | tee -a "$FULL_PATH/yggdrasil.log"
+                                                        echo -e "${RED}$line${NOCOLOR} was skipped." | tee -a "$FULL_PATH/yggdrasil.log"
                                                 else
                                                         Download_Commander
                                                         if [[ "$Switch_Skip_Sleep" = false ]]; then
                                                             sleep 1
+														else
+															sleep 0.1
                                                         fi
                                                 fi
                                         else
                                                 Download_Commander
 												if [[ "$Switch_Skip_Sleep" = false ]]; then
 													sleep 1
+												else
+													sleep 0.1
 												fi
                                         fi
 										Switch_Skip_Sleep=false
