@@ -360,7 +360,7 @@ Unit={Unit}.service
 OnCalendar=*-*-* 00/{Crontab_Commands[Unit]['Time']}:00:00
 
 [Install]
-WantedBy=multi-user.target"""
+WantedBy=timers.target"""
 
                 # File_Creation
                 Service_Writer(f'{Temp_File_Name}.service', Base_Unit)
