@@ -138,6 +138,16 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 ├── 📁 Config
 |   ├── 📁 Automation (UNDER CONSTRUCTION)
 |   |   ├── Install.cfg
+|   ├── 📁 Files (UNDER CONSTRUCTION)
+|   |   ├── 📁 Apache / Nginx
+|   |   |   ├── 001-pentest.conf
+|   |   ├── 📁 iptables
+|   |   |   ├── rules.v4
+|   |   |   ├── rules.v6
+|   |   ├── samba_conf
+|   |   ├── screen_conf_homesen
+|   |   ├── screen_conf_jarl_bjoern
+|   |   ├── vim_conf_homesen
 |   ├── 📁 Linux
 |   |   ├── 📁 Custom
 |   |   |   ├── install.txt
