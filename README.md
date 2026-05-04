@@ -134,7 +134,7 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 
 ## 🏗️ Project Structure
 
-```terminal
+```console
 ├── 📁 Config
 |   ├── 📁 Automation (UNDER CONSTRUCTION)
 |   |   ├── Install.cfg
