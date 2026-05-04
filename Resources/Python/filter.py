@@ -2,13 +2,19 @@
 # -*- coding: utf-8 -*-
 # Rainer Christian Bjoern Herold
 
+###############################################################
 # Libraries
+###############################################################
 from os.path                    import join
 from Standard_Operations.Colors import Colors
 from Standard_Operations.Logger import Write_Log
 from sys                        import argv
 
-# Standard_Functions
+
+
+###############################################################
+# Standard Functions
+###############################################################
 def read_file(path_to_file):
         with open(path_to_file, 'r') as f:
                 return f.read().splitlines()
@@ -23,7 +29,11 @@ def Service_Writer(path_to_file, input_text):
         with open(path_to_file, 'w') as f:
                 f.write(input_text)
 
-# Work_Functions
+
+
+###############################################################
+# Alias Setup
+###############################################################
 def Alias_Configuration(path_to_file, opt_path, yggdrasil_path):
         Config_Alias_ZSH = r"""alias la='ls -lha --color=auto'
 alias grep='grep --color=auto'
@@ -107,6 +117,12 @@ alias yggdrasil-rust-update='wget https://sh.rustup.rs -O /tmp/rust_install.sh ;
                                 if ("function Yggdrasil_New_Tool_Monitor()" not in Temp_Check):
                                         fa.write("""function Yggdrasil_New_Tool_Monitor() {\n    for GIT_Tool in $(find {opt_path} /opt/wordlists /opt/hashcat_rules -maxdepth 2 -type d -name ".git" | rev | cut -c6- | rev)\n    do\n          if [[ ! $(cat {opt_path}/update.info | grep "$GIT_Tool") ]]\n          then\n            echo "$GIT_Tool" >> {opt_path}/update.info\n         fi\n    done\n}\n""")
 
+
+
+###############################################################
+# Crontab Configuration
+###############################################################
+
 def Crontab_Configuration(path_to_file, opt_path):
         Crontab_Commands = {
         'Yggdrasil_System_Updates':
@@ -175,6 +191,12 @@ def Crontab_Configuration(path_to_file, opt_path):
                 write_file(path_to_file, f"0 */{Crontab_Commands[Unit]['Time']}     * * *  root /bin/bash {Crontab_Commands[Unit]['Path']}")
                 Service_Writer(Crontab_Commands[Unit]['Path'], Crontab_Commands[Unit]['Command'])
 
+
+
+###############################################################
+# Firewall Setup
+###############################################################
+
 def Firewall_Configuration(path_to_file):
         Array_v4 = ["# Allow established, related and localhost traffic",
 "-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT",
@@ -225,6 +247,12 @@ def Firewall_Configuration(path_to_file):
                         for _ in Array_v6:
                                 if (_ not in Array_Temp): f.write(f'{_}\n')
 
+
+
+###############################################################
+# Shredder Setup
+###############################################################
+
 def Shredder_Configuration(path_to_file, path_workspace, shredding_days):
         Config_Shredder = f'0 */4     * * *  root Yggdrasil_shredder "{path_workspace}"'
         write_file(path_to_file, Config_Shredder)
@@ -266,6 +294,45 @@ WantedBy=multi-user.target"""
         Service_Writer(f'{Temp_File_Name}.service', Base_Unit)
         Service_Writer(f'{Temp_File_Name}.timer', Base_Timer)
         Service_Writer(Crontab_Commands['Yggdrasil_Workspace_Cleaner']['Path'], Crontab_Commands['Yggdrasil_Workspace_Cleaner']['Command'])
+
+
+
+###############################################################
+# Systemd Service Stop
+###############################################################
+
+def Systemd_Stop(path_to_file):
+        Crontab_Commands = {
+        'Yggdrasil_Service_Stop':
+                {
+                        'Time': '0',
+                        'Command': 'systemctl stop "Yggdrasil_*_Update*.service"',
+                        'Path': '/etc/yggdrasil/Yggdrasil_Service_Stop.sh'
+        }
+
+        Temp_File_Name = join(path_to_file, 'Yggdrasil_Service_Stop')
+        Base_Unit = f"""# Rainer Christian Bjoern Herold
+
+[Unit]
+Description=This script was designed to stop all running update services of Yggdrasil during startup.
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash {Crontab_Commands['Yggdrasil_Service_Stop']['Path']}
+OnBootSec=10s
+
+[Install]
+WantedBy=multi-user.target"""
+
+        # File_Creation
+        Service_Writer(f'{Temp_File_Name}.service', Base_Unit)
+        Service_Writer(Crontab_Commands['Yggdrasil_Service_Stop']['Path'], Crontab_Commands['Yggdrasil_Service_Stop']['Command'])
+
+
+
+###############################################################
+# Systemd Units and Timers
+###############################################################
 
 def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
         Crontab_Commands = {
@@ -340,13 +407,6 @@ def Systemd_Service_And_Timer_Configuration(path_to_file, opt_path):
                         'Description_One': 'This script was designed to trigger the systemd unit to remove tools from the update process of the git tools updater which was removed before.',
                         'Description_Two': 'This script was formed to remove not existing git tools from the update process of the git tools updater.',
                         'Path': '/etc/yggdrasil/Yggdrasil_GIT_Monitor_Cleaner.sh'
-                },
-        'Yggdrasil_Service_Stop':
-                {
-                        'Time': '0',
-                        'Command': 'systemctl stop "Yggdrasil_*_Update*.service"',
-                        'Description_One': 'This script was designed to stop all running update services of Yggdrasil during startup.',
-                        'Path': '/etc/yggdrasil/Yggdrasil_Service_Stop.sh'
                 }
         }
 
@@ -379,7 +439,11 @@ WantedBy=timers.target"""
                 Service_Writer(f'{Temp_File_Name}.timer', Base_Timer)
                 Service_Writer(Crontab_Commands[Unit]['Path'], Crontab_Commands[Unit]['Command'])
 
+
+
+###############################################################
 # Main
+###############################################################
 if __name__ == '__main__':
         try:
                 if ("crontab" in argv[1]):
@@ -389,7 +453,8 @@ if __name__ == '__main__':
                 elif ("rules.v6" in argv[1]): Firewall_Configuration(argv[1])
                 elif (".zshrc" in argv[1] or ".bashrc" in argv[1] or ".profile" in argv[1]): Alias_Configuration(argv[1], argv[2], argv[3])
                 elif ("/systemd/system" in argv[1]):
-                        if ("shred" in argv[3]):    Systemd_Shredder_Configuration(argv[1], argv[2], argv[4])
-                        elif ("normal" in argv[3]): Systemd_Service_And_Timer_Configuration(argv[1], argv[2])
+                        if ("shred" in argv[3]):          Systemd_Shredder_Configuration(argv[1], argv[2], argv[4])
+                        elif ("normal" in argv[3]):       Systemd_Service_And_Timer_Configuration(argv[1], argv[2])
+                        elif ("systemd_stop" in argv[3]): Systemd_Stop(argv[1])
         except FileNotFoundError: pass
 
