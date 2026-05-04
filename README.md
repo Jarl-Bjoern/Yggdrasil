@@ -130,8 +130,7 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 | --- | --- |
 | Disk Space | 100 GB |
 
-
-
+<br/>
 
 ## 🏗️ Project Structure
 
@@ -228,7 +227,7 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 ├── README.md
 ├── yggdrasil.py
 ```
-
+<br/>
 
 
 # 🏆 Special Thanks
