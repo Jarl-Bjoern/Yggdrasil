@@ -123,6 +123,109 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 <br />
 
 
+## ⛓️ Requirements
+
+| Component |	Size |
+| --- | --- |
+| Disk Space | 100 GB |
+
+
+## 🏗️ Project Structure
+
+```terminal
+├── Config
+|   ├── Automation (UNDER CONSTRUCTION)
+|   |   ├── Install.cfg
+|   ├── Linux
+|   |   ├── Custom
+|   |   |   ├── install.txt
+|   |   ├── Development
+|   |   |   ├── Exploit_Development
+|   |   |   ├── Malware_Development
+|   |   |   ├── Reverse_Engineering
+|   |   |   ├── Source_Code_Analysis
+|   |   ├── Forensic
+|   |   |   ├── Cloud
+|   |   |   ├── Crypto
+|   |   |   ├── Infrastructure
+|   |   |   ├── Mobile
+|   |   ├── General
+|   |   |   ├── gui.txt
+|   |   |   ├── standard.txt
+|   |   ├── Hardening
+|   |   |   ├── Cloud
+|   |   |   ├── Infrastructure
+|   |   ├── Pentest
+|   |   |   ├── Cloud
+|   |   |   ├── IOT
+|   |   |   ├── Infrastructure
+|   |   |   ├── Mobile
+|   |   |   ├── Web
+|   |   ├── Red_Teaming
+|   |   |   ├── Active_Directory
+|   |   |   ├── OSINT
+|   |   |   ├── Phishing
+|   |   |   ├── Physical_Pentesting
+|   |   ├── Training
+|   |   |   ├── full.txt
+├── Custom
+|   ├── burp_install.sh (UNDER CONSTRUCTION)
+|   ├── covenant_install.sh
+|   ├── display_driver.sh
+|   ├── edge_install.sh
+|   ├── old_kali_wallpapers.sh
+|   ├── sliver_install.exp (UNDER CONSTRUCTION)
+|   ├── wlan_driver.sh
+├── Information
+|   ├── Changelog
+|   |   ├── full.md
+|   ├── Info (UNDER CONSTRUCTION)
+|   |   ├── forensic.txt
+|   |   ├── red_teaming.txt
+|   |   ├── training.txt
+|   ├── Pages
+|   |   ├── Active_Directory.txt
+|   |   ├── Custom.txt
+|   |   ├── Education.txt
+|   |   ├── Forensic.txt
+|   |   ├── Hardening.txt
+|   |   ├── Infrastructure.txt
+|   |   ├── Mobile.txt
+|   |   ├── OSINT.txt
+|   |   ├── Phishing.txt
+|   |   ├── Web.txt
+|   ├── info.txt
+├── Resource
+|   ├── Auto
+|   |   ├── Linux
+|   |   |   ├── Burp
+|   |   |   |   ├── burp_install_01 - 08.jpg
+|   |   |   ├── Firefox
+|   |   |   |   ├── Firefox_ADD.jpg
+|   |   |   ├── Transparency
+|   ├── Python
+|   |   ├── Standard_Operations
+|   |   |   ├── ArgParser.py
+|   |   |   ├── Colors.py
+|   |   |   ├── Libraries.py
+|   |   |   ├── Logger.py
+|   |   |   ├── Standard.py
+|   |   ├── auto.py
+|   |   ├── browse.py
+|   |   ├── clean.py
+|   |   ├── filter.py
+|   |   ├── install.py
+|   |   ├── nic.py
+|   |   ├── zip.py
+|   ├── URL_Opener
+|   |   ├── index.html
+|   ├── Workfiles
+|   |   ├── configurator.sh
+├── LICENSE
+├── README.md
+├── yggdrasil.py
+```
+
 # 🏆 Special Thanks
 In the context of the development of the tool, I would like to thank the following people for their contribution:
   - atreus92
