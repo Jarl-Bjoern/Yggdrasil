@@ -135,42 +135,42 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 ## 🏗️ Project Structure
 
 ```terminal
-├── Config
-|   ├── Automation (UNDER CONSTRUCTION)
+├── 📁 Config
+|   ├── 📁 Automation (UNDER CONSTRUCTION)
 |   |   ├── Install.cfg
-|   ├── Linux
-|   |   ├── Custom
+|   ├── 📁 Linux
+|   |   ├── 📁 Custom
 |   |   |   ├── install.txt
-|   |   ├── Development
-|   |   |   ├── Exploit_Development
-|   |   |   ├── Malware_Development
-|   |   |   ├── Reverse_Engineering
-|   |   |   ├── Source_Code_Analysis
-|   |   ├── Forensic
-|   |   |   ├── Cloud
-|   |   |   ├── Crypto
-|   |   |   ├── Infrastructure
-|   |   |   ├── Mobile
-|   |   ├── General
+|   |   ├── 📁 Development
+|   |   |   ├── 📁 Exploit_Development
+|   |   |   ├── 📁 Malware_Development
+|   |   |   ├── 📁 Reverse_Engineering
+|   |   |   ├── 📁 Source_Code_Analysis
+|   |   ├── 📁 Forensic
+|   |   |   ├── 📁 Cloud
+|   |   |   ├── 📁 Crypto
+|   |   |   ├── 📁 Infrastructure
+|   |   |   ├── 📁 Mobile
+|   |   ├── 📁 General
 |   |   |   ├── gui.txt
 |   |   |   ├── standard.txt
-|   |   ├── Hardening
-|   |   |   ├── Cloud
-|   |   |   ├── Infrastructure
-|   |   ├── Pentest
-|   |   |   ├── Cloud
-|   |   |   ├── IOT
-|   |   |   ├── Infrastructure
-|   |   |   ├── Mobile
-|   |   |   ├── Web
-|   |   ├── Red_Teaming
-|   |   |   ├── Active_Directory
-|   |   |   ├── OSINT
-|   |   |   ├── Phishing
-|   |   |   ├── Physical_Pentesting
-|   |   ├── Training
+|   |   ├── 📁 Hardening
+|   |   |   ├── 📁 Cloud
+|   |   |   ├── 📁 Infrastructure
+|   |   ├── 📁 Pentest
+|   |   |   ├── 📁 Cloud
+|   |   |   ├── 📁 IOT
+|   |   |   ├── 📁 Infrastructure
+|   |   |   ├── 📁 Mobile
+|   |   |   ├── 📁 Web
+|   |   ├── 📁 Red_Teaming
+|   |   |   ├── 📁 Active_Directory
+|   |   |   ├── 📁 OSINT
+|   |   |   ├── 📁 Phishing
+|   |   |   ├── 📁 Physical_Pentesting
+|   |   ├── 📁 Training
 |   |   |   ├── full.txt
-├── Custom
+├── 📁 Custom
 |   ├── burp_install.sh (UNDER CONSTRUCTION)
 |   ├── covenant_install.sh
 |   ├── display_driver.sh
@@ -178,14 +178,14 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 |   ├── old_kali_wallpapers.sh
 |   ├── sliver_install.exp (UNDER CONSTRUCTION)
 |   ├── wlan_driver.sh
-├── Information
-|   ├── Changelog
+├── 📁 Information
+|   ├── 📁 Changelog
 |   |   ├── full.md
-|   ├── Info (UNDER CONSTRUCTION)
+|   ├── 📁 Info (UNDER CONSTRUCTION)
 |   |   ├── forensic.txt
 |   |   ├── red_teaming.txt
 |   |   ├── training.txt
-|   ├── Pages
+|   ├── 📁 Pages
 |   |   ├── Active_Directory.txt
 |   |   ├── Custom.txt
 |   |   ├── Education.txt
@@ -197,16 +197,16 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 |   |   ├── Phishing.txt
 |   |   ├── Web.txt
 |   ├── info.txt
-├── Resource
-|   ├── Auto
-|   |   ├── Linux
-|   |   |   ├── Burp
+├── 📁 Resource
+|   ├── 📁 Auto
+|   |   ├── 📁 Linux
+|   |   |   ├── 📁 Burp
 |   |   |   |   ├── burp_install_01 - 08.jpg
-|   |   |   ├── Firefox
+|   |   |   ├── 📁 Firefox
 |   |   |   |   ├── Firefox_ADD.jpg
-|   |   |   ├── Transparency
-|   ├── Python
-|   |   ├── Standard_Operations
+|   |   |   ├── 📁 Transparency
+|   ├── 📁 Python
+|   |   ├── 📁 Standard_Operations
 |   |   |   ├── ArgParser.py
 |   |   |   ├── Colors.py
 |   |   |   ├── Libraries.py
@@ -219,9 +219,9 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 |   |   ├── install.py
 |   |   ├── nic.py
 |   |   ├── zip.py
-|   ├── URL_Opener
+|   ├── 📁 URL_Opener
 |   |   ├── index.html
-|   ├── Workfiles
+|   ├── 📁 Workfiles
 |   |   ├── configurator.sh
 ├── LICENSE
 ├── README.md
