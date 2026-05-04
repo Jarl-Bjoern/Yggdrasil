@@ -48,6 +48,7 @@
     - Not all timers was enabled.
     - Path filter process for custom configs was fixed.
     - Workspace Cleaner was fixed.
+    - All timers was fixed to prevent the execution of all services during system startup.
 - Additional Changes:
   -  The planned feature for provisioning a Windows machine with the necessary tools was ultimately deferred due to time constraints.
 - New Aliases:
