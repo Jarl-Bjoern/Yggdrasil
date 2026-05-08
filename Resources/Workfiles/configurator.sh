@@ -37,7 +37,7 @@ Switch_Firewall=false
 Switch_GO=false
 Switch_Hardening=false
 Switch_IGNORE=false
-Switch_License=false
+Switch_Auto_Accept=false
 Switch_NGINX=false
 Switch_NEOVIM=false
 Switch_REPO=false
@@ -288,6 +288,19 @@ function header() {
         fi
         echo -e "${CYAN}|${NOCOLOR}                                                               ${CYAN}|${NOCOLOR}"
         echo -e "${CYAN}-----------------------------------------------------------------${NOCOLOR}\n"
+}
+
+function Check_Input_Before_Install {
+        if [[ "$Switch_Auto_Accept" == false ]]; then
+            echo "Due to security reasons a warning will be displayed that the downloaded file LOREM IPSUM will be automatically installed."
+			echo "Would you confirm this behavior or skip the installation?"
+		    read -rp "Your Choice (Y/n): " temp_check_input
+			if [[ "$temp_check_input" == "Y" || "$temp_check_input" == "y" ]]; then
+                echo "The installation was confirmed."
+			else
+                echo "The installation was skipped."
+			fi
+        fi
 }
 
 function Create_Filter_Array() {
@@ -619,7 +632,7 @@ function File_Installer() {
 	 								echo -e "${RED}rust${NOCOLOR} already exists." | tee -a "$FULL_PATH/yggdrasil.log"
 	 							fi
                                                         else
-								wget --content-disposition "$FILE"
+                                                                wget --content-disposition "$FILE"
                                                                 sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                                 elif [ "$MODE" = "Extension" ]; then
@@ -629,11 +642,11 @@ function File_Installer() {
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
                                                                 wget --content-disposition "$FILE"
-								sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
+                                                                sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         else
                                                                 FILE_NAME=$(echo "$line" | cut -d" " -f2)
                                                                 wget "$FILE" -O "$FILE_NAME".deb
-								sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2).deb" | tee -a "$FULL_PATH/yggdrasil.log"
+                                                                sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2).deb" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                         fi
                                                 Logger "$FILE" "$FILE_NAME"
@@ -692,19 +705,19 @@ function Forensic_Check() {
 }
 
 function Hardening_Check() {
-        hardening_type=$1
+    hardening_type=$1
 	if [[ $hardening_type == "complete" || $hardening_type == "1" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Cloud")
-              Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Infrastructure")
+        Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Cloud")
+        Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Infrastructure")
 	elif [[ $hardening_type == "cloud" || $hardening_type == "2" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Cloud")
+        Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Cloud")
 	elif [[ $hardening_type == "infrastructure" || $hardening_type == "3" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Infrastructure")
+        Array_Categories+=("$FULL_PATH/Config/Linux/Hardening/Infrastructure")
 	else
-	      echo -e "\nYour decision was not accepted!\nPlease try again."
-              Show_Error_Message=true
+        echo -e "\nYour decision was not accepted!\nPlease try again."
+        Show_Error_Message=true
 	fi
-        Array_URL+=("$FULL_PATH/Information/Pages/Hardening.txt")
+    Array_URL+=("$FULL_PATH/Information/Pages/Hardening.txt")
 }
 
 function Pentest_Check() {
@@ -733,7 +746,7 @@ function Red_Team_Check() {
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Assumed_Breach")
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/OSINT")
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Phishing")
-              Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Pentesting")
+              Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Security")
               Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
 	elif [[ $red_team == "assumed_breach" || $red_team == "2" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Assumed_Breach")
@@ -743,7 +756,7 @@ function Red_Team_Check() {
 	elif [[ $red_team == "phishing" || $red_team == "4" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Phishing")
 	elif [[ $red_team == "physical" || $red_team == "5" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Pentesting")
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Security")
 	else
 	      echo -e "\nYour decision was not accepted!\nPlease try again."
               Show_Error_Message=true
@@ -802,7 +815,7 @@ for arg; do
 	elif [[ $arg == "-sC" ]]; then
 		Switch_Skip_Configs=true
 	elif [[ $arg == "-aL" ]]; then
-    	Switch_License=true
+    	Switch_Auto_Accept=true
 	elif [[ $arg == "-v" ]]; then
     	Switch_Verbose=true
 	elif [[ $arg == "-sI" ]]; then
@@ -1592,7 +1605,7 @@ fi
 
 if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $category_type = "1" ]]; then
         if [[ -f $(find "$OPT_Path/veracrypt" -maxdepth 1 ! -path "$OPT_Path" 2>/dev/null | grep "setup-gui-x64") ]]; then
-                if [[ $Switch_License == true ]]; then
+                if [[ "$Switch_Auto_Accept" == true ]]; then
                         sudo python3 "$FULL_PATH/Resources/Python/auto.py" Veracrypt "$(find "$OPT_Path/veracrypt" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
                 else
                         sudo bash "$(find "$OPT_Path/veracrypt" -maxdepth 1 ! -path "$OPT_Path" | grep "setup-gui-x64")"
@@ -1602,7 +1615,7 @@ if [[ $decision = "full" || $decision = "1" || $category_type = "complete" || $c
         if [[ $category_type = "pentest" || $category_type = "4" ]]; then
                 ln -sf "$OPT_Path/API/Postman/app/Postman" /usr/local/bin/postman
                 if [[ $(find "$OPT_Path" -maxdepth 1 ! -path "$OPT_Path" -name "*.xpi") ]]; then
-                        if [[ $Switch_License == true ]]; then
+                        if [[ "$Switch_Auto_Accept" == true ]]; then
                                 sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "True"
                         else
                                 sudo python3 "$FULL_PATH/Resources/Python/auto.py" Firefox "$OPT_Path" "False"
