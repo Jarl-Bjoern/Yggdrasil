@@ -292,18 +292,30 @@ function header() {
 
 function Check_Input_Before_Install {
         file_name=$1
+		mode=$2
+
+        function Installer_Mode {
+			if [[ "$2" == "DPKG" ]]; then
+                sudo python3 "$FULL_PATH/Resources/Python/install.py" "$1" | tee -a "$FULL_PATH/yggdrasil.log"
+            elif [[ "$2" == "Installer" ]]; then
+                sudo bash "$1" -y | tee -a "$FULL_PATH/yggdrasil.log"
+			elif [[ "$2" == "Extension" ]]; then
+                
+			fi
+		}
+
         if [[ "$Switch_Auto_Accept" == false ]]; then
-            echo -e "Due to security reasons a warning will be displayed that the downloaded file ${ORANGE}$1${NOCOLOR} will be automatically installed."
-			echo "Would you confirm this behavior or skip the installation?"
+            echo -e "\n\nDue to security reasons a warning will be displayed that the downloaded file ${ORANGE}$file_name${NOCOLOR} will be automatically installed."
+			echo "Would you confirm or skip the installation?"
 		    read -rp "Your Choice (Y/n): " temp_check_input < /dev/tty
 			if [[ "$temp_check_input" == "Y" || "$temp_check_input" == "y" ]]; then
-                echo "The installation was confirmed."
-				sudo python3 "$FULL_PATH/Resources/Python/install.py" "$1" | tee -a "$FULL_PATH/yggdrasil.log"
+                echo -e "${ORANGE}The installation was confirmed.${NOCOLOR}"
+				Installer_Mode $file_name $mode
 			else
-                echo "The installation was skipped."
+                echo -e "${ORANGE}The installation was skipped.${NOCOLOR}"
 			fi
 		else
-            sudo python3 "$FULL_PATH/Resources/Python/install.py" "$1" | tee -a "$FULL_PATH/yggdrasil.log"
+            Installer_Mode $file_name $mode
         fi
 }
 
@@ -627,8 +639,8 @@ function File_Installer() {
 								Temp_Rust_Array=($(find "/home" "/root" -maxdepth 3 -name ".cargo"))
 								if [[ ${#Temp_Rust_Array} -eq 0 ]]; then
 									wget --content-disposition "$FILE"
-									Check_Input_Before_Install "$2/$(echo $FILE_NAME | cut -d '"' -f2)"
-									sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
+									Check_Input_Before_Install "$2/$(echo $FILE_NAME | cut -d '"' -f2)" "Installer"
+									#sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
 									if [[ -d "/root/.cargo" ]]; then
 										Switch_Cargo=true
 									fi
@@ -647,12 +659,12 @@ function File_Installer() {
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
                                                                 wget --content-disposition "$FILE"
-																Check_Input_Before_Install "$2/$(echo $FILE_NAME | cut -d '"' -f2)"
+																Check_Input_Before_Install "$2/$(echo $FILE_NAME | cut -d '"' -f2)" "DPKG"
                                                                 #sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         else
                                                                 FILE_NAME=$(echo "$line" | cut -d" " -f2)
                                                                 wget "$FILE" -O "$FILE_NAME".deb
-																Check_Input_Before_Install "$2/$(echo $FILE_NAME | cut -d '"' -f2)"
+																Check_Input_Before_Install "$2/$(echo $FILE_NAME | cut -d '"' -f2)" "DPKG"
                                                                 #sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2).deb" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                         fi
