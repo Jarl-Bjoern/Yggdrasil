@@ -293,7 +293,7 @@ function header() {
 function Check_Input_Before_Install {
         file_name=$1
         if [[ "$Switch_Auto_Accept" == false ]]; then
-            echo "Due to security reasons a warning will be displayed that the downloaded file ${ORANGE}$1${NOCOLOR} will be automatically installed."
+            echo -e "Due to security reasons a warning will be displayed that the downloaded file ${ORANGE}$1${NOCOLOR} will be automatically installed."
 			echo "Would you confirm this behavior or skip the installation?"
 		    read -rp "Your Choice (Y/n): " temp_check_input
 			if [[ "$temp_check_input" == "Y" || "$temp_check_input" == "y" ]]; then
