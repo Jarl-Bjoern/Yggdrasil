@@ -300,7 +300,7 @@ function Check_Input_Before_Install {
             elif [[ "$2" == "Installer" ]]; then
                 sudo bash "$1" -y | tee -a "$FULL_PATH/yggdrasil.log"
 			elif [[ "$2" == "Extension" ]]; then
-                
+                echo ""
 			fi
 		}
 
