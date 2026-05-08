@@ -291,15 +291,19 @@ function header() {
 }
 
 function Check_Input_Before_Install {
+        file_name=$1
         if [[ "$Switch_Auto_Accept" == false ]]; then
-            echo "Due to security reasons a warning will be displayed that the downloaded file LOREM IPSUM will be automatically installed."
+            echo "Due to security reasons a warning will be displayed that the downloaded file ${ORANGE}$1${NOCOLOR} will be automatically installed."
 			echo "Would you confirm this behavior or skip the installation?"
 		    read -rp "Your Choice (Y/n): " temp_check_input
 			if [[ "$temp_check_input" == "Y" || "$temp_check_input" == "y" ]]; then
                 echo "The installation was confirmed."
+				sudo python3 "$FULL_PATH/Resources/Python/install.py" "$1" | tee -a "$FULL_PATH/yggdrasil.log"
 			else
                 echo "The installation was skipped."
 			fi
+		else
+            sudo python3 "$FULL_PATH/Resources/Python/install.py" "$1" | tee -a "$FULL_PATH/yggdrasil.log"
         fi
 }
 
@@ -623,6 +627,7 @@ function File_Installer() {
 								Temp_Rust_Array=($(find "/home" "/root" -maxdepth 3 -name ".cargo"))
 								if [[ ${#Temp_Rust_Array} -eq 0 ]]; then
 									wget --content-disposition "$FILE"
+									Check_Input_Before_Install "$2/$(echo $FILE_NAME | cut -d '"' -f2)"
 									sudo bash "$2"/"$(echo "$FILE_NAME" | cut -d '"' -f2)" -y | tee -a "$FULL_PATH/yggdrasil.log"
 									if [[ -d "/root/.cargo" ]]; then
 										Switch_Cargo=true
@@ -642,11 +647,13 @@ function File_Installer() {
                                                         FILE_NAME=$(curl -L --head -s "$FILE" | grep filename | tail -n1 | cut -d "=" -f2)
                                                         if [[ ${#FILE_NAME} -gt 0 ]]; then
                                                                 wget --content-disposition "$FILE"
-                                                                sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
+																Check_Input_Before_Install "$2/$(echo $FILE_NAME | cut -d '"' -f2)"
+                                                                #sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2)" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         else
                                                                 FILE_NAME=$(echo "$line" | cut -d" " -f2)
                                                                 wget "$FILE" -O "$FILE_NAME".deb
-                                                                sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2).deb" | tee -a "$FULL_PATH/yggdrasil.log"
+																Check_Input_Before_Install "$2/$(echo $FILE_NAME | cut -d '"' -f2)"
+                                                                #sudo python3 "$FULL_PATH/Resources/Python/install.py" "$2/$(echo $FILE_NAME | cut -d '"' -f2).deb" | tee -a "$FULL_PATH/yggdrasil.log"
                                                         fi
                                         fi
                                                 Logger "$FILE" "$FILE_NAME"
