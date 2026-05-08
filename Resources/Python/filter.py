@@ -308,6 +308,7 @@ def Systemd_Stop(path_to_file):
                         'Time': '0',
                         'Command': 'systemctl stop "Yggdrasil_*_Update*.service"',
                         'Path': '/etc/yggdrasil/Yggdrasil_Service_Stop.sh'
+                }
         }
 
         Temp_File_Name = join(path_to_file, 'Yggdrasil_Service_Stop')
