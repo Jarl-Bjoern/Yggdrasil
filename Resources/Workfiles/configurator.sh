@@ -305,7 +305,8 @@ function Check_Input_Before_Install {
 		}
 
         if [[ "$Switch_Auto_Accept" == false ]]; then
-            echo -e "\n\nDue to security reasons a warning will be displayed that the downloaded file ${ORANGE}$file_name${NOCOLOR} will be automatically installed."
+		    sleep 2
+            echo -e "Due to security reasons a warning will be displayed that the downloaded file ${ORANGE}$file_name${NOCOLOR} will be automatically installed."
 			echo "Would you confirm or skip the installation?"
 		    read -rp "Your Choice (Y/n): " temp_check_input < /dev/tty
 			if [[ "$temp_check_input" == "Y" || "$temp_check_input" == "y" ]]; then
