@@ -250,7 +250,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}5${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}           :   tools for cloud  pentesting         ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "red_team" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}            :   complete configuration          ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}2${NOCOLOR}] ${PURPLE}active_directory${NOCOLOR}    :   tools for active directory      ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}2${NOCOLOR}] ${PURPLE}assumed_breach${NOCOLOR}    :   tools for assumed breach      ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}3${NOCOLOR}] ${CYAN}osint${NOCOLOR}               :   tools for osint                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}4${NOCOLOR}] ${GREEN}phishing${NOCOLOR}            :   tools for phishing              ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}5${NOCOLOR}] ${ORANGE}physical${NOCOLOR}            :   tools for physical tests        ${CYAN}|${NOCOLOR}"
@@ -730,13 +730,13 @@ function Pentest_Check() {
 function Red_Team_Check() {
         red_team=$1
 	if [[ $red_team == "complete" || $red_team == "1" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Active_Directory")
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Assumed_Breach")
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/OSINT")
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Phishing")
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Pentesting")
               Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
-	elif [[ $red_team == "active_directory" || $red_team == "2" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Active_Directory")
+	elif [[ $red_team == "assumed_breach" || $red_team == "2" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Assumed_Breach")
 	elif [[ $red_team == "osint" || $red_team == "3" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/OSINT")
 	      Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
@@ -912,7 +912,7 @@ if [[ "$Switch_Skip_Installation" == false ]]; then
 		                Informational="$FULL_PATH/Information/info.txt"
 		                decision="full"
 		        else
-		                if [[ $pentest_check = "iot" || $pentest_check = "2" || $pentest_check = "mobile" || $pentest_check = "3" || $pentest_check = "web" || $pentest_check = "4" || $pentest_check = "cloud" || $pentest_check = "5" || $red_team = "1" || $red_team = "complete" || $red_team = "2" || $red_team = "active_directory" || $red_team = "3" || $red_team = "osint" || $red_team = "4" || $red_team = "phishing" || $red_team = "5" || $red_team = "physical" ]]; then
+		                if [[ $pentest_check = "iot" || $pentest_check = "2" || $pentest_check = "mobile" || $pentest_check = "3" || $pentest_check = "web" || $pentest_check = "4" || $pentest_check = "cloud" || $pentest_check = "5" || $red_team = "1" || $red_team = "complete" || $red_team = "2" || $red_team = "assumed_breach" || $red_team = "3" || $red_team = "osint" || $red_team = "4" || $red_team = "phishing" || $red_team = "5" || $red_team = "physical" ]]; then
 		                        File_Path="${Path_Way}/full.txt"
 		                        decision="full"
 		                        Informational="$FULL_PATH/Information/info.txt"
