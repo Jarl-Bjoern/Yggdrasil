@@ -2,7 +2,6 @@
 bloodyad
 certipy-ad
 coercer
-crackmapexec
 dnscat2
 enum4linux-ng
 evil-winrm
@@ -16,12 +15,10 @@ metasploit-framework
 mitmproxy
 mitm6
 netexec
-powershell-empire
 proxychains4
 python3-impacket
 rdate
 responder
-starkiller
 
 # Docker
 tenableofficial/nessus
@@ -135,6 +132,11 @@ https://github.com/login-securite/DonPAPI
 https://github.com/peass-ng/PEASS-ng
 https://github.com/leoloobeek/LAPSToolkit
 https://github.com/init5-SF/CTF-toolBox
+https://github.com/trustedsec/cs-situational-awareness-bof
+https://github.com/trustedsec/CS-Remote-OPs-BOF
+https://github.com/outflanknl/C2-Tool-Collection
+https://github.com/RalfHacker/Kerbeus-BOF
+https://github.com/WKL-Sec/HiddenDesktop
 
 # Git_Branch
 https://github.com/PowerShellMafia/PowerSploit dev
