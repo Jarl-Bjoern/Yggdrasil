@@ -4,6 +4,7 @@ freeradius
 hcxtools
 hostapd-wpe
 hostapd
+macchanger
 reaver
 
 # Cargo
