@@ -2,6 +2,7 @@
 evolution
 filezilla
 flameshot
+freerdp3-x11
 gnome-disk-utility
 gnome-screenshot
 keepassxc
