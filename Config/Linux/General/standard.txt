@@ -58,6 +58,7 @@ x11vnc
 
 # Python
 defaultcreds-cheat-sheet
+uv
 
 # Wget
 https://sh.rustup.rs rust Installer
