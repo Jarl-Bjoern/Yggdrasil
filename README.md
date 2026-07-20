@@ -5,7 +5,7 @@
     <img alt="Kali 22-4" src="https://img.shields.io/badge/%20-Linux-1f425f.svg?logo=linux&logoColor=cyan" />
   </a>
   <a href="https://www.python.org/downloads/release/python-3110/">
-    <img alt="python" src="https://img.shields.io/badge/python-3.11-blue.svg?logo=python&logoColor=cyan" />
+    <img alt="python" src="https://img.shields.io/badge/python-3.11+-blue.svg?logo=python&logoColor=cyan" />
   </a>
 </div>
 <div align="center">
@@ -31,7 +31,7 @@
   </a>
 </div><br/>
 
-`Yggdrasil`, the world tree in Norse mythology, symbolizes connection and structure — an idea that reflects this program's purpose. Designed for multiple cybersecurity domains, it automates the installation of missing tools and streamlines the configuration of Kali Linux after a fresh setup, saving valuable time.<br />
+`Yggdrasil`, the world tree in Norse mythology, symbolizes connection and structure — an idea that reflects this program's purpose. Designed for multiple cybersecurity domains, it automates the installation of missing tools and streamlines the configuration of debian based linux distros (e.g., Kali Linux) after a fresh setup, saving valuable time.<br />
 <br />
 
 > [!IMPORTANT]
