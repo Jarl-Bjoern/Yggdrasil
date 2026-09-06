@@ -1,0 +1,43 @@
+# APT
+recon-ng
+
+# Cargo
+
+# Docker
+
+# Gem
+
+# Git
+https://github.com/p1ngul1n0/blackbird
+https://github.com/martinvigo/email2phonenumber
+https://github.com/loseys/Goblyn
+https://github.com/1N3/Goohak
+https://github.com/SpiderLabs/HostHunter
+https://github.com/initstring/linkedin2username
+https://github.com/sundowndev/phoneinfoga
+https://github.com/sherlock-project/sherlock
+https://github.com/eth0izzle/shhgit
+https://github.com/aboul3la/Sublist3r
+https://github.com/RedKatz/SocialMediaHackingToolkit
+https://github.com/lc/gau
+https://github.com/josh0xA/darkdump
+https://github.com/TebbaaX/Katana
+https://github.com/MikeMeliz/TorCrawl.py
+
+# Go
+https://github.com/iudicium/pryingdeep
+
+# Python
+
+# Wget
+https://addons.mozilla.org/de/firefox/addon/foxyrecon/ foxyrecon Extension
+
+# Wordlists
+https://github.com/netbiosX/Default-Credentials
+https://github.com/fuzzdb-project/fuzzdb
+https://github.com/swisskyrepo/PayloadsAllTheThings
+https://github.com/danielmiessler/SecLists
+https://github.com/xajkep/wordlists
+https://github.com/random-robbie/bruteforce-lists
+https://github.com/google/fuzzing
+https://github.com/six2dez/OneListForAll

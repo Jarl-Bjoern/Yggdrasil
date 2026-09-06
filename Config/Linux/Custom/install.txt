@@ -1,0 +1,25 @@
+# APT
+
+# Cargo
+
+# Docker
+
+# Gem
+
+# Git
+
+# Git_Branch
+
+# Git_Submodules
+
+# Go
+
+# NPM
+
+# Python
+
+# Wget
+
+# Wordlists
+
+# Hashcat_Rules

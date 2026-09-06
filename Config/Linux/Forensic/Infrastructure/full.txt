@@ -1,0 +1,65 @@
+# APT
+autoconf
+automake
+bison
+build-essential
+bulk-extractor
+ewf-tools
+flex
+foremost
+ghidra
+hexedit
+jadx
+jd-gui
+kpartx
+libtool
+libyara-dev
+libyara9
+libclang-dev
+libncurses-dev
+lvm2
+make
+moreutils
+qemu-utils
+sleuthkit
+tree
+
+# Cargo
+dfir-toolkit
+dionysos
+evtx
+evtxtools
+mft2bodyfile
+ntdsextract2
+nt_hive2
+regview
+stringsext
+usnjrnl
+xsv
+
+# Docker
+
+# Gem
+
+# Git
+https://github.com/Aorimn/dislocker
+https://github.com/Yamato-Security/hayabusa
+https://github.com/airbus-cert/regrippy
+https://github.com/BurntSushi/ripgrep
+https://github.com/getreu/stringsext
+https://github.com/log2timeline/plaso
+https://github.com/gfoss/PSRecon
+https://github.com/Invoke-IR/PowerForensics
+https://github.com/Neo23x0/Loki
+https://github.com/Velocidex/velociraptor
+
+# Go
+
+# Python
+evtxtract
+
+# Wget
+https://dragokas.com/tools/HiJackThis.zip HiJackThis Archive
+https://download.sysinternals.com/files/SysinternalsSuite.zip Sysinternals Archive
+
+# Wordlists

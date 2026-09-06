@@ -1,0 +1,28 @@
+# APT
+
+# Cargo
+
+# Docker
+bkimminich/juice-shop
+tleemcjr/metasploitable2
+webgoat/webgoat
+
+# Gem
+
+# Git
+https://github.com/sonofagl1tch/AWSDetonationLab
+https://github.com/RhinoSecurityLabs/cloudgoat
+https://github.com/m6a-UdS/dvca
+https://github.com/OWASP/Serverless-Goat
+https://github.com/vulhub/vulhub
+https://github.com/safebuffer/vulnerable-AD
+https://github.com/ikstream/vulnerable-container
+https://github.com/davidprowe/BadBlood
+
+# Go
+
+# Python
+
+# Wget
+
+# Wordlists

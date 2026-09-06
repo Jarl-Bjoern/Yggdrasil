@@ -1,0 +1,57 @@
+# APT
+autoconf
+automake
+bison
+build-essential
+bulk-extractor
+ewf-tools
+flex
+foremost
+hexedit
+kpartx
+libtool
+libyara-dev
+libyara9
+libclang-dev
+libncurses-dev
+lvm2
+make
+moreutils
+ranger
+sleuthkit
+tree
+yara
+
+# Cargo
+dfir-toolkit
+dionysos
+evtx
+evtxtools
+mft2bodyfile
+ntdsextract2
+nt_hive2
+regview
+stringsext
+usnjrnl
+xsv
+
+# Docker
+
+# Gem
+
+# Git
+https://github.com/Aorimn/dislocker
+https://github.com/Yamato-Security/hayabusa
+https://github.com/airbus-cert/regrippy
+https://github.com/BurntSushi/ripgrep
+https://github.com/getreu/stringsext
+https://github.com/log2timeline/plaso
+
+# Go
+
+# Python
+evtxtract
+
+# Wget
+
+# Wordlists

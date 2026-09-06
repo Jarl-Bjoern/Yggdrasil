@@ -1,0 +1,8 @@
+# APT
+bulk-extractor
+
+# Python
+scrapy
+
+# Git
+https://github.com/SomethingTotallyRandom/Wallet-Transaction-Monitor

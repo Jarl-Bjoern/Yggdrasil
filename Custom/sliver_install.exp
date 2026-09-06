@@ -1,0 +1,23 @@
+#!/usr/bin/expect
+# Rainer Christian Bjoern Herold
+
+# Download_Sliver
+spawn /bin/bash
+send "curl -s https://sliver.sh/install | sudo bash\r"
+send "exit\r"
+interact
+
+# Restart Service
+spawn /bin/bash
+send "systemctl daemon-reload\r"
+send "systemctl restart sliver\r"
+send "exit\r"
+interact
+
+# Installation_of_all_Packages
+spawn sliver
+expect "> "
+send "armory install all\r"
+expect "y/N"
+send "y\r"
+interact

@@ -1,0 +1,42 @@
+[global]
+        # Standard
+        workgroup = XXXXXXX
+        server string = --
+        netbios name = --
+        security = user
+        map to guest = never
+
+        # Network
+        dns proxy = no
+        interfaces = 127.0.0.1, $SMB_IP_Addresses
+        bind interfaces only = yes
+        hosts allow localhost, $SMB_Hosts
+        smb ports = 445
+
+        # Encryption
+        client min protocol = SMB3
+        client signing = required
+        min protocol = SMB3
+        server signing = required
+
+        # Security
+        browseable = no
+        deadtime = 15
+        disable netbios = yes
+        guest ok = no
+        invalid users = root
+        keep alive = 30
+        max connections = 1
+        restrict anonymous = 2
+        usershare allow guests = no
+        usershare max shares = 0
+        unix password sync = no
+
+        # Logging
+        max log size = 1024
+
+[$SMB_Share_Name]
+        path = $SMB_Share_Path
+        valid users = $SMB_Valid_Users
+        writable = no
+        read only = yes

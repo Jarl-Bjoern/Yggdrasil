@@ -1,0 +1,12 @@
+# APT
+ghidra
+jadx
+jd-gui
+
+# Docker
+ghcr.io/gchq/cyberchef
+
+# Git
+https://github.com/xtiankisutsa/MARA_Framework
+https://github.com/dnSpyEx/dnSpy
+https://github.com/WerWolv/ImHex

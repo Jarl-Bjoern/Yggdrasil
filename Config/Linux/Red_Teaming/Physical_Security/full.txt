@@ -1,0 +1,38 @@
+# APT
+aircrack-ng
+freeradius
+hcxtools
+hostapd-wpe
+hostapd
+macchanger
+reaver
+
+# Cargo
+
+# Docker
+
+# Gem
+
+# Git
+https://github.com/FluxionNetwork/fluxion
+https://github.com/trustedsec/social-engineer-toolkit
+https://github.com/ghostop14/sparrow-wifi
+https://github.com/s0lst1c3/eaphammer
+https://github.com/hak5/usbrubberducky-payloads
+
+# Go
+
+# Python
+
+# Wget
+
+# Wordlists
+https://github.com/netbiosX/Default-Credentials
+https://github.com/fuzzdb-project/fuzzdb
+https://github.com/swisskyrepo/PayloadsAllTheThings
+https://github.com/danielmiessler/SecLists
+https://github.com/xajkep/wordlists
+https://github.com/random-robbie/bruteforce-lists
+https://github.com/google/fuzzing
+https://github.com/six2dez/OneListForAll
+https://github.com/carlospolop/Auto_Wordlists
