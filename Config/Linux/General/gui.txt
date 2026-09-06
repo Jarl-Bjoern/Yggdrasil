@@ -9,7 +9,6 @@ keepassxc
 kitty
 i3
 meld
-nitrogen
 npm
 obsidian
 putty
