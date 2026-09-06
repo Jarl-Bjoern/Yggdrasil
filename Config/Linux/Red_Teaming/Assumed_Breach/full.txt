@@ -155,7 +155,7 @@ scapy
 
 # Wget
 https://download.sysinternals.com/files/SysinternalsSuite.zip Sysinternals Archive
-https://github.com/SpecterOps/BloodHound-Legacy/releases/download/v4.3.1/BloodHound-linux-x64.zip BloodHound Archive
+https://github.com/SpecterOps/BloodHound-Legacy/releases/download/v4.3.1/BloodHound-linux-x64.zip BloodHound_Legacy Archive
 
 # Wordlists
 https://github.com/netbiosX/Default-Credentials
