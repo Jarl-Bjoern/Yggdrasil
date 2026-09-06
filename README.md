@@ -39,7 +39,12 @@
 <br />
 
 ## ❗ News
-<strong>Upcoming changes for version</strong> `0.9d`:
+
+<details>
+  <summary>Upcoming Changes</summary>
+
+
+<strong>Version</strong> `0.9d`:
 - Hotfixes:
   - `Exa` was replaced with `Eza`.
   - Systemd Units:
@@ -75,7 +80,7 @@
     - `Preparations`
     - `Tools Overview`
     - `Using the Automated Variant`
- 
+ </details>
 
 <div align="center">
 ➡️ <a href="https://github.com/Jarl-Bjoern/Yggdrasil/blob/main/Information/Changelog/full.md">
@@ -133,6 +138,9 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 <br/>
 
 ## 🏗️ Project Structure
+
+<details>
+<summary>Project Structure</summary>
 
 ```console
 ├── 📁 Config
@@ -237,6 +245,8 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 ├── README.md
 ├── yggdrasil.py
 ```
+
+</details>
 <br/>
 
 
