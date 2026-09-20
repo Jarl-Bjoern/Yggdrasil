@@ -1,0 +1,7 @@
+# Git
+https://github.com/trustedsec/cs-situational-awareness-bof
+https://github.com/trustedsec/CS-Remote-OPs-BOF
+https://github.com/outflanknl/C2-Tool-Collection
+https://github.com/RalfHacker/Kerbeus-BOF
+https://github.com/KingOfTheNOPs/cookie-monster
+https://github.com/WKL-Sec/HiddenDesktop
