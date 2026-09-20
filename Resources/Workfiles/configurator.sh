@@ -253,9 +253,9 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}2${NOCOLOR}] ${PURPLE}assumed_breach${NOCOLOR}      :   tools for assumed breach        ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}3${NOCOLOR}] ${CYAN}osint${NOCOLOR}               :   tools for osint                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}4${NOCOLOR}] ${GREEN}phishing${NOCOLOR}            :   tools for phishing              ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}5${NOCOLOR}] ${ORANGE}physical_breach${NOCOLOR}     :   tools for physical breach        ${CYAN}|${NOCOLOR}"
-				echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}bof_setup${NOCOLOR}           :   BOFs for c2 frameworks          ${CYAN}|${NOCOLOR}"
-				echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}8${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}               :   tools for cloud                 ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}5${NOCOLOR}] ${ORANGE}physical_breach${NOCOLOR}     :   tools for physical breach       ${CYAN}|${NOCOLOR}"
+				echo -e "${CYAN}|${NOCOLOR}   [${RED}6${NOCOLOR}] ${RED}bof_setup${NOCOLOR}           :   BOFs for c2 frameworks          ${CYAN}|${NOCOLOR}"
+				echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}7${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}               :   tools for cloud                 ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "hardening" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration             ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}firewall${NOCOLOR}         :   firewall configuration             ${CYAN}|${NOCOLOR}"
