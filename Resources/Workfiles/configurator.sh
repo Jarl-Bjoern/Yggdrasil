@@ -253,7 +253,9 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}2${NOCOLOR}] ${PURPLE}assumed_breach${NOCOLOR}      :   tools for assumed breach        ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}3${NOCOLOR}] ${CYAN}osint${NOCOLOR}               :   tools for osint                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}4${NOCOLOR}] ${GREEN}phishing${NOCOLOR}            :   tools for phishing              ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}5${NOCOLOR}] ${ORANGE}physical${NOCOLOR}            :   tools for physical tests        ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}5${NOCOLOR}] ${ORANGE}physical_breach${NOCOLOR}            :   tools for physical breach        ${CYAN}|${NOCOLOR}"
+				echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}bof_setup${NOCOLOR}            :   BOFs for c2 frameworks        ${CYAN}|${NOCOLOR}"
+				echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}8${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}           :   tools for cloud        ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "hardening" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration             ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}firewall${NOCOLOR}         :   firewall configuration             ${CYAN}|${NOCOLOR}"
@@ -768,6 +770,8 @@ function Red_Team_Check() {
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/OSINT")
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Phishing")
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Security")
+			  Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/BOF_Setup")
+			  Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Cloud_Security")
               Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
 	elif [[ $red_team == "assumed_breach" || $red_team == "2" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Assumed_Breach")
@@ -776,8 +780,12 @@ function Red_Team_Check() {
 	      Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
 	elif [[ $red_team == "phishing" || $red_team == "4" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Phishing")
-	elif [[ $red_team == "physical" || $red_team == "5" ]]; then
+	elif [[ $red_team == "physical_breach" || $red_team == "5" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Security")
+	elif [[ $red_team == "bof_setup" || $red_team == "6" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/BOF_Setup")
+	elif [[ $red_team == "cloud" || $red_team == "7" ]]; then
+	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Cloud_Security")
 	else
 	      echo -e "\nYour decision was not accepted!\nPlease try again."
               Show_Error_Message=true
