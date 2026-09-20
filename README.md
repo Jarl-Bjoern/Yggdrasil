@@ -25,10 +25,6 @@
   </a>
   <a href="https://www.gnu.org/software/bash/">
     <img alt="bash" src="https://img.shields.io/badge/Made%20with-Bash-1f425f.svg" />
-  </a>
-    <a href="https://learn.microsoft.com/de-de/powershell/">
-    <img alt="powershell" src="https://img.shields.io/badge/Made%20with-PowerShell-1f425f.svg" />
-  </a>
 </div><br/>
 
 `Yggdrasil`, the world tree in Norse mythology, symbolizes connection and structure — an idea that reflects this program's purpose. Designed for multiple cybersecurity domains, it automates the installation of missing tools and streamlines the configuration of debian based linux distros (e.g., Kali Linux) after a fresh setup, saving valuable time.<br />
