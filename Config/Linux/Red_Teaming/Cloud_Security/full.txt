@@ -1,1 +1,38 @@
+# APT
+awscli
+curl
+apt-transport-https
+ca-certificates
+gnupg
+lsb-release
 
+# Docker
+
+# Git
+https://github.com/dirkjanm/ROADtools
+https://github.com/prowler-cloud/prowler
+https://github.com/nccgroup/ScoutSuite
+https://github.com/silverhack/monkey365
+https://github.com/JulianHayward/Azure-MG-Sub-Governance-Reporting
+https://github.com/NetSPI/MicroBurst
+https://github.com/hausec/PowerZure
+https://github.com/dafthack/GraphRunner
+https://github.com/Azure/Stormspotter
+https://github.com/0xZDH/o365spray
+https://github.com/dafthack/MSOLSpray
+https://github.com/knavesec/CredMaster
+https://github.com/gerenios/aadinternals
+https://github.com/SpecterOps/AzureHound
+
+# Go
+
+# Python
+google-api-python-client
+google-cloud-pubsub
+o365
+
+# Wget
+
+# Wordlists
+
+# Hashcat_Rules
