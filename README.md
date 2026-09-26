@@ -66,6 +66,7 @@
   - `-FTS` parameter was added to use `--break-system-packages` for pip packages.
   - `pipx` was added as a new download category.
   - `uv` was added as a new download category.
+  - Capability to skip `hardening` or `settings` tab without using parameters.
 - New Improvements:
   - Downloader:
     - To speed up the installation process, the timer for packages that have already been installed has been reduced.
