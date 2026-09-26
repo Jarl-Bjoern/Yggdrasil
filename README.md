@@ -46,20 +46,26 @@
   - Systemd Units:
     - Cargo Updater was fixed.
     - Incorrect output during the filter process was issued several times if the installation path did not exist.
-    - Not all timers was enabled.
+    - Not all timers were enabled.
     - Path filter process for custom configs was fixed.
     - Workspace Cleaner was fixed.
     - All timers was fixed to prevent the execution of all services during system startup.
 - Additional Changes:
-  -  The planned feature for provisioning a Windows machine with the necessary tools was ultimately deferred due to time constraints.
+  -  The planned feature for provisioning a Windows machine with the necessary tools was ultimately. deferred due to time constraints.
+  -  `Physical` was renamed to `physical_breach`.
+  -  `Active Directory` was renamed to `assumed_breach`
 - New Aliases:
   - `yggdrasil-services` was added to monitor all systemd units of the tool.
 - New Category:
   - `Malware Development`
+  - `cloud` in Red Teaming.
+  - `bof_setup` in Red Teaming.
 - New Features:
   - `npm` was added as a new download category.
   - `smb` was added to the hardening options.
   - `-FTS` parameter was added to use `--break-system-packages` for pip packages.
+  - `pipx` was added as a new download category.
+  - `uv` was added as a new download category.
 - New Improvements:
   - Downloader:
     - To speed up the installation process, the timer for packages that have already been installed has been reduced.
