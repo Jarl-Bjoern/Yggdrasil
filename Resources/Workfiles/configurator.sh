@@ -253,9 +253,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}2${NOCOLOR}] ${PURPLE}assumed_breach${NOCOLOR}      :   tools for assumed breach        ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}3${NOCOLOR}] ${CYAN}osint${NOCOLOR}               :   tools for osint                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${GREEN}4${NOCOLOR}] ${GREEN}phishing${NOCOLOR}            :   tools for phishing              ${CYAN}|${NOCOLOR}"
-                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}5${NOCOLOR}] ${ORANGE}physical_breach${NOCOLOR}     :   tools for physical breach       ${CYAN}|${NOCOLOR}"
-				echo -e "${CYAN}|${NOCOLOR}   [${RED}6${NOCOLOR}] ${RED}bof_setup${NOCOLOR}           :   BOFs for c2 frameworks          ${CYAN}|${NOCOLOR}"
-				echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}7${NOCOLOR}] ${PURPLE}cloud${NOCOLOR}               :   tools for cloud                 ${CYAN}|${NOCOLOR}"
+                echo -e "${CYAN}|${NOCOLOR}   [${ORANGE}5${NOCOLOR}] ${ORANGE}physical${NOCOLOR}            :   tools for physical tests        ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "hardening" ]; then
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}         :   complete configuration             ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${CYAN}2${NOCOLOR}] ${CYAN}firewall${NOCOLOR}         :   firewall configuration             ${CYAN}|${NOCOLOR}"
@@ -264,8 +262,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}apache${NOCOLOR}           :   apache   hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx    hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}smb${NOCOLOR}              :   smb      hardening                 ${CYAN}|${NOCOLOR}"
-                #echo -e "${CYAN}|${NOCOLOR}   [${CYAN}8${NOCOLOR}] ${CYAN}ftp${NOCOLOR}           :   ftp   hardening                 ${CYAN}|${NOCOLOR}"
-                #echo -e "${CYAN}|${NOCOLOR}   [${GREEN}9${NOCOLOR}] ${GREEN}squid${NOCOLOR}            :   squid    hardening                 ${CYAN}|${NOCOLOR}"
+				echo -e "${CYAN}|${NOCOLOR}   [${RED}0${NOCOLOR}] ${RED}skip${NOCOLOR}              :   skip                 ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "settings" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}      :   complete configuration                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}updates${NOCOLOR}       :   automated updates                      ${CYAN}|${NOCOLOR}"
@@ -277,7 +274,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}7${NOCOLOR}] ${RED}shredder${NOCOLOR}      :   workspace file shredding script        ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}                        (${RED}after 90 days [${ORANGE}default${RED}]${NOCOLOR})              ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}8${NOCOLOR}] ${CYAN}tmux${NOCOLOR}          :   custom tmux config                     ${CYAN}|${NOCOLOR}"
-                #echo -e "${CYAN}|${NOCOLOR}  [${CYAN}9${NOCOLOR}] ${CYAN}neovim${NOCOLOR}          :   custom neovim config                     ${CYAN}|${NOCOLOR}"
+				echo -e "${CYAN}|${NOCOLOR}   [${RED}0${NOCOLOR}] ${RED}skip${NOCOLOR}              :   skip                 ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "task" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}cronjob${NOCOLOR}      :   cronjob configuration                   ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}timer${NOCOLOR}        :   systemd timer configuration             ${CYAN}|${NOCOLOR}"
@@ -528,6 +525,12 @@ function File_Installer() {
                             Command="pip3 install"
                         fi
                         Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
+                elif [[ $line = "# PIPX" ]]; then
+                        Command="pipx install"
+                        Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
+                elif [[ $line = "# UV" ]]; then
+                        Command="uv install"
+                        Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# NPM" ]]; then
                         Command="npm install --global" ; Skip=true ; Switch_WGET=false ; Switch_BRANCH=false ; Switch_GO=false ; Switch_BloodHound=false
                 elif [[ $line = "# Git" ]]; then
@@ -770,8 +773,6 @@ function Red_Team_Check() {
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/OSINT")
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Phishing")
               Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Security")
-			  Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/BOF_Setup")
-			  Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Cloud_Security")
               Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
 	elif [[ $red_team == "assumed_breach" || $red_team == "2" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Assumed_Breach")
@@ -780,12 +781,8 @@ function Red_Team_Check() {
 	      Array_URL+=("$FULL_PATH/Information/Pages/OSINT.txt")
 	elif [[ $red_team == "phishing" || $red_team == "4" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Phishing")
-	elif [[ $red_team == "physical_breach" || $red_team == "5" ]]; then
+	elif [[ $red_team == "physical" || $red_team == "5" ]]; then
 	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Physical_Security")
-	elif [[ $red_team == "bof_setup" || $red_team == "6" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/BOF_Setup")
-	elif [[ $red_team == "cloud" || $red_team == "7" ]]; then
-	      Array_Categories+=("$FULL_PATH/Config/Linux/Red_Teaming/Cloud_Security")
 	else
 	      echo -e "\nYour decision was not accepted!\nPlease try again."
               Show_Error_Message=true
