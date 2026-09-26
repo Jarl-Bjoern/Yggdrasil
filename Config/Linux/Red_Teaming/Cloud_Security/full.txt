@@ -1,10 +1,11 @@
 # APT
-awscli
-curl
 apt-transport-https
 ca-certificates
+curl
 gnupg
 lsb-release
+awscli
+azure-cli
 
 # Docker
 
