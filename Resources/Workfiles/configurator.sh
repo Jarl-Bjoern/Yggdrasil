@@ -264,7 +264,7 @@ function header() {
                 echo -e "${CYAN}|${NOCOLOR}   [${BLUE}5${NOCOLOR}] ${BLUE}apache${NOCOLOR}           :   apache   hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${PURPLE}6${NOCOLOR}] ${PURPLE}nginx${NOCOLOR}            :   nginx    hardening                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}   [${RED}7${NOCOLOR}] ${RED}smb${NOCOLOR}              :   smb      hardening                 ${CYAN}|${NOCOLOR}"
-				echo -e "${CYAN}|${NOCOLOR}   [${RED}0${NOCOLOR}] ${RED}skip${NOCOLOR}              :   skip                 ${CYAN}|${NOCOLOR}"
+				echo -e "${CYAN}|${NOCOLOR}   [${NOCOLOR}0${NOCOLOR}] ${NOCOLOR}skip${NOCOLOR}          :   skip hardening                           ${CYAN}|${NOCOLOR}"
         elif [ "$1" = "settings" ]; then
                 echo -e "${CYAN}|${NOCOLOR}  [${RED}1${NOCOLOR}] ${RED}complete${NOCOLOR}      :   complete configuration                 ${CYAN}|${NOCOLOR}"
                 echo -e "${CYAN}|${NOCOLOR}  [${CYAN}2${NOCOLOR}] ${CYAN}updates${NOCOLOR}       :   automated updates                      ${CYAN}|${NOCOLOR}"
