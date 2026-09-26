@@ -110,7 +110,6 @@ https://github.com/ohpe/juicy-potato
 https://github.com/FalconForceTeam/SOAPHound
 https://github.com/Yaxxine7/ASRepCatcher
 https://github.com/aniqfakhrul/powerview.py
-https://github.com/micahvandeusen/gMSADumper
 https://github.com/nettitude/SharpWSUS
 https://github.com/GoSecure/pywsus
 https://github.com/FSecureLABS/SharpGPOAbuse
@@ -133,12 +132,6 @@ https://github.com/peass-ng/PEASS-ng
 https://github.com/leoloobeek/LAPSToolkit
 https://github.com/init5-SF/CTF-toolBox
 https://github.com/mattifestation/WDACTools
-https://github.com/trustedsec/cs-situational-awareness-bof
-https://github.com/trustedsec/CS-Remote-OPs-BOF
-https://github.com/outflanknl/C2-Tool-Collection
-https://github.com/RalfHacker/Kerbeus-BOF
-https://github.com/KingOfTheNOPs/cookie-monster
-https://github.com/WKL-Sec/HiddenDesktop
 
 
 # Git_Branch
