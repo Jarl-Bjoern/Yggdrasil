@@ -24,12 +24,16 @@ https://github.com/dafthack/MSOLSpray
 https://github.com/knavesec/CredMaster
 https://github.com/gerenios/aadinternals
 https://github.com/SpecterOps/AzureHound
+https://github.com/carlospolop/AzureAppsSweep
+https://github.com/ticarpi/jwt_tool
 
 # Go
 
 # Python
 google-api-python-client
 google-cloud-pubsub
+
+# PIPX
 o365
 
 # Wget
