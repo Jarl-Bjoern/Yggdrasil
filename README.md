@@ -186,9 +186,11 @@ The following link contains the official cheat sheet for `Yggdrasil`.
 |   |   |   ├── 📁 Web
 |   |   ├── 📁 Red_Teaming
 |   |   |   ├── 📁 Active_Directory
+|   |   |   ├── 📁 BOF_Setup
+|   |   |   ├── 📁 Cloud_Security
 |   |   |   ├── 📁 OSINT
 |   |   |   ├── 📁 Phishing
-|   |   |   ├── 📁 Physical_Pentesting
+|   |   |   ├── 📁 Physical_Security
 |   |   ├── 📁 Training
 |   |   |   ├── full.txt
 ├── 📁 Custom
