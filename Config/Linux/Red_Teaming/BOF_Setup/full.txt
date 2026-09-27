@@ -5,3 +5,4 @@ https://github.com/outflanknl/C2-Tool-Collection
 https://github.com/RalfHacker/Kerbeus-BOF
 https://github.com/KingOfTheNOPs/cookie-monster
 https://github.com/WKL-Sec/HiddenDesktop
+https://github.com/paranoidninja/BRC4-BOF-Artillery
