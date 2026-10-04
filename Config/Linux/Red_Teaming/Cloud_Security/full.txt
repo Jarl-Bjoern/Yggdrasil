@@ -26,6 +26,8 @@ https://github.com/gerenios/aadinternals
 https://github.com/SpecterOps/AzureHound
 https://github.com/carlospolop/AzureAppsSweep
 https://github.com/ticarpi/jwt_tool
+https://github.com/AlteredSecurity/365-Stealer
+https://github.com/mdsecactivebreach/o365-attack-toolkit
 
 # Go
 
